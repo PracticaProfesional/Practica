@@ -12,6 +12,7 @@ public class Paciente {
    private String telefono;
    private String email;
    private String fechaNacimiento;
+   private String sexo;
    private String nacionalidad;
    private String direccion1;
    private String direccion2;
@@ -86,6 +87,14 @@ public class Paciente {
 
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getNacionalidad() {
