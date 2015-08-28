@@ -62,7 +62,7 @@ public class Inicio extends javax.swing.JFrame {
 
         panelPrincipal.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         panelPrincipal.setToolTipText("");
-        panelPrincipal.setFont(new java.awt.Font("Droid Sans", 1, 18)); // NOI18N
+        panelPrincipal.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
         panelPrincipal.setName("Panel principal"); // NOI18N
         panelPrincipal.addTab("Administrador", tabAdministrador);
 
@@ -156,7 +156,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
