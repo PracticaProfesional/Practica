@@ -191,10 +191,14 @@ public class Inicio extends javax.swing.JFrame {
         panelPrincipal.addTab("Agenda", tapAgenda);
         panelPrincipal.addTab("Reportes", tabReportes);
 
+        jMenuBar1.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
+
         jMenu1.setText("File");
+        jMenu1.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
+        jMenu2.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -205,7 +209,7 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+                .addComponent(panelPrincipal)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
