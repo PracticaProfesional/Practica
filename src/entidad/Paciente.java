@@ -15,7 +15,7 @@ public class Paciente {
    private String nacionalidad;
    private String direccion1;
    private String direccion2;
-   private String sexo;
+   private String sexo;         //Masculino/Femenino
 
     public String getSexo() {
         return sexo;
