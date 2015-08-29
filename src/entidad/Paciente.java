@@ -16,6 +16,16 @@ public class Paciente {
    private String nacionalidad;
    private String direccion1;
    private String direccion2;
+   private String sexo;
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+   
    
     public String getDireccion1() {
         return direccion1;
