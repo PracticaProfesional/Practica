@@ -20,5 +20,5 @@ public class DatosPaciente {
             
         }// fin de catch
     }// fin del metodo insertarPaciente
-    
+    // solo probando un cambio 
 }// fin de la clase DatosPaciente
