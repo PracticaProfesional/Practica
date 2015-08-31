@@ -1,472 +1,320 @@
--- phpMyAdmin SQL Dump
--- version 4.3.11
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Aug 31, 2015 at 05:02 PM
--- Server version: 5.6.24
--- PHP Version: 5.6.8
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `sigos`
---
-
-DELIMITER $$
---
--- Procedures
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertarPaciente`(in IdPac int, in nomPac varchar(45), 
-		in ape1Pac varchar(45), in ape2Pac varchar(45), in fecNacPac date,
-		in nacionalidadPac varchar(45), in cedPac varchar(45), in dir1 varchar(45),
-		in dir2 varchar(45), in ema varchar(45), in tel int, in consMed int,
-		in sex varchar(45))
-BEGIN
-	INSERT INTO Paciente (idPaciente, nombrePaciente, apellido1Paciente,
-			apellido2Paciente, fechaNacimientoPaciente, nacionalidadPaciente,
-			cedulaPaciente, direccion1, direccion2, email, telefono, 
-			consultaMed, Sexo)
-	VALUES (IdPac, nomPac, ape1Pac, ape2Pac, fecNacPac, nacionalidadPac, cedPac,
-			dir1, dir2, ema, tel, consMed, sex);
-END$$
-
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `adicciones`
---
-
-CREATE TABLE IF NOT EXISTS `adicciones` (
-  `idAdicciones` int(11) NOT NULL,
-  `nombreAdiccion` varchar(45) NOT NULL,
-  `descripcionAdiccion` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `alergias`
---
-
-CREATE TABLE IF NOT EXISTS `alergias` (
-  `idAlergias` int(11) NOT NULL,
-  `nombreAlergia` varchar(45) NOT NULL,
-  `descripcionAlergia` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `antecedentesfamiliares`
---
-
-CREATE TABLE IF NOT EXISTS `antecedentesfamiliares` (
-  `idAntecedentesFamiliares` int(11) NOT NULL,
-  `padecimiento` varchar(45) NOT NULL,
-  `parentesco` varchar(45) NOT NULL,
-  `detalle` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cita`
---
-
-CREATE TABLE IF NOT EXISTS `cita` (
-  `idcita` int(11) NOT NULL,
-  `estado` tinyint(4) NOT NULL,
-  `fechaCreacion` date NOT NULL,
-  `fechaConsulta` date NOT NULL,
-  `anotaciones` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cita`
---
-
-INSERT INTO `cita` (`idcita`, `estado`, `fechaCreacion`, `fechaConsulta`, `anotaciones`) VALUES
-(1, 1, '2015-08-28', '2015-09-01', 'Revisar reflejos');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `consultamedica`
---
-
-CREATE TABLE IF NOT EXISTS `consultamedica` (
-  `idConsultaMedica` int(11) NOT NULL,
-  `cedulaPaciente` varchar(45) NOT NULL,
-  `motivoConsulta` varchar(45) NOT NULL,
-  `descripcionSintomas` varchar(45) NOT NULL,
-  `diagnostico` varchar(45) DEFAULT NULL,
-  `citaMedica` int(11) NOT NULL,
-  `receta` int(11) NOT NULL,
-  `signosVitales` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `examenmedico`
---
-
-CREATE TABLE IF NOT EXISTS `examenmedico` (
-  `idExamenMedico` int(11) NOT NULL,
-  `archivoExamen` blob
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `expedientemedico`
---
-
-CREATE TABLE IF NOT EXISTS `expedientemedico` (
-  `idExpedienteMedico` int(11) NOT NULL,
-  `paciente` int(11) NOT NULL,
-  `padecimientosP` int(11) DEFAULT NULL,
-  `examenMedicoP` int(11) DEFAULT NULL,
-  `adiccionesP` int(11) DEFAULT NULL,
-  `alergiasP` int(11) DEFAULT NULL,
-  `antedecentesFamP` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `inventario`
---
-
-CREATE TABLE IF NOT EXISTS `inventario` (
-  `idInventario` int(11) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `tipo` varchar(45) NOT NULL,
-  `descripcion` varchar(45) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `receta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `paciente`
---
-
-CREATE TABLE IF NOT EXISTS `paciente` (
-  `idPaciente` int(11) NOT NULL,
-  `nombrePaciente` varchar(45) NOT NULL,
-  `apellido1Paciente` varchar(45) NOT NULL,
-  `apellido2Paciente` varchar(45) NOT NULL,
-  `fechaNacimientoPaciente` date NOT NULL,
-  `nacionalidadPaciente` varchar(45) NOT NULL,
-  `cedulaPaciente` varchar(45) NOT NULL,
-  `direccion1` varchar(45) NOT NULL,
-  `direccion2` varchar(45) DEFAULT NULL,
-  `email` varchar(45) NOT NULL,
-  `telefono` int(11) NOT NULL,
-  `consultaMed` int(11) DEFAULT NULL,
-  `Sexo` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `padecimientos`
---
-
-CREATE TABLE IF NOT EXISTS `padecimientos` (
-  `idPadecimientos` int(11) NOT NULL,
-  `fechaDiagnostico` varchar(45) DEFAULT NULL,
-  `nombrePadecimiento` varchar(45) DEFAULT NULL,
-  `descripcion` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `receta`
---
-
-CREATE TABLE IF NOT EXISTS `receta` (
-  `idReceta` int(11) NOT NULL,
-  `nombreMedicamento` varchar(45) NOT NULL,
-  `cantidad` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `receta`
---
-
-INSERT INTO `receta` (`idReceta`, `nombreMedicamento`, `cantidad`) VALUES
-(1, 'Panadol', 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `signosvitales`
---
-
-CREATE TABLE IF NOT EXISTS `signosvitales` (
-  `idSignosVitales` int(11) NOT NULL,
-  `peso` double NOT NULL,
-  `altura` double NOT NULL,
-  `FC` double NOT NULL,
-  `PAR` double NOT NULL,
-  `IMC` double NOT NULL,
-  `IMB` double NOT NULL,
-  `H2O` double NOT NULL,
-  `MM` double NOT NULL,
-  `GC` double NOT NULL,
-  `ASS` tinyint(1) NOT NULL,
-  `AF` tinyint(1) NOT NULL,
-  `SS` tinyint(1) NOT NULL,
-  `PAP` tinyint(1) NOT NULL,
-  `IM` tinyint(1) NOT NULL,
-  `IV` tinyint(1) NOT NULL,
-  `SC` tinyint(1) NOT NULL,
-  `GM` tinyint(1) NOT NULL,
-  `CP` tinyint(1) NOT NULL,
-  `ES` tinyint(1) NOT NULL,
-  `PA` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `signosvitales`
---
-
-INSERT INTO `signosvitales` (`idSignosVitales`, `peso`, `altura`, `FC`, `PAR`, `IMC`, `IMB`, `H2O`, `MM`, `GC`, `ASS`, `AF`, `SS`, `PAP`, `IM`, `IV`, `SC`, `GM`, `CP`, `ES`, `PA`) VALUES
-(1, 64, 1.83, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `telefono`
---
-
-CREATE TABLE IF NOT EXISTS `telefono` (
-  `idtelefono` int(11) NOT NULL,
-  `numeroTelefono` varchar(45) NOT NULL,
-  `detalle` varchar(45) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `telefono`
---
-
-INSERT INTO `telefono` (`idtelefono`, `numeroTelefono`, `detalle`) VALUES
-(1, '86585958', 'Kolbi');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usuario`
---
-
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `idUsuario` int(11) NOT NULL,
-  `nombreUsuario` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `adicciones`
---
-ALTER TABLE `adicciones`
-  ADD PRIMARY KEY (`idAdicciones`);
-
---
--- Indexes for table `alergias`
---
-ALTER TABLE `alergias`
-  ADD PRIMARY KEY (`idAlergias`);
-
---
--- Indexes for table `antecedentesfamiliares`
---
-ALTER TABLE `antecedentesfamiliares`
-  ADD PRIMARY KEY (`idAntecedentesFamiliares`);
-
---
--- Indexes for table `cita`
---
-ALTER TABLE `cita`
-  ADD PRIMARY KEY (`idcita`);
-
---
--- Indexes for table `consultamedica`
---
-ALTER TABLE `consultamedica`
-  ADD PRIMARY KEY (`idConsultaMedica`), ADD KEY `citaMedica_idx` (`citaMedica`), ADD KEY `receta_idx` (`receta`), ADD KEY `signosVitales_idx` (`signosVitales`);
-
---
--- Indexes for table `examenmedico`
---
-ALTER TABLE `examenmedico`
-  ADD PRIMARY KEY (`idExamenMedico`);
-
---
--- Indexes for table `expedientemedico`
---
-ALTER TABLE `expedientemedico`
-  ADD PRIMARY KEY (`idExpedienteMedico`), ADD KEY `examenMed_idx` (`examenMedicoP`), ADD KEY `adiccionesPac_idx` (`adiccionesP`), ADD KEY `alergiasPac_idx` (`alergiasP`), ADD KEY `padecimientosPac_idx` (`padecimientosP`), ADD KEY `antecedentesFam_idx` (`antedecentesFamP`), ADD KEY `paciente_idx` (`paciente`);
-
---
--- Indexes for table `inventario`
---
-ALTER TABLE `inventario`
-  ADD PRIMARY KEY (`idInventario`), ADD KEY `rebajaReceta_idx` (`receta`);
-
---
--- Indexes for table `paciente`
---
-ALTER TABLE `paciente`
-  ADD PRIMARY KEY (`idPaciente`), ADD KEY `telefono_idx` (`telefono`), ADD KEY `consultaMed_idx` (`consultaMed`);
-
---
--- Indexes for table `padecimientos`
---
-ALTER TABLE `padecimientos`
-  ADD PRIMARY KEY (`idPadecimientos`);
-
---
--- Indexes for table `receta`
---
-ALTER TABLE `receta`
-  ADD PRIMARY KEY (`idReceta`);
-
---
--- Indexes for table `signosvitales`
---
-ALTER TABLE `signosvitales`
-  ADD PRIMARY KEY (`idSignosVitales`);
-
---
--- Indexes for table `telefono`
---
-ALTER TABLE `telefono`
-  ADD PRIMARY KEY (`idtelefono`);
-
---
--- Indexes for table `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idUsuario`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `adicciones`
---
-ALTER TABLE `adicciones`
-  MODIFY `idAdicciones` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `antecedentesfamiliares`
---
-ALTER TABLE `antecedentesfamiliares`
-  MODIFY `idAntecedentesFamiliares` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `cita`
---
-ALTER TABLE `cita`
-  MODIFY `idcita` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `consultamedica`
---
-ALTER TABLE `consultamedica`
-  MODIFY `idConsultaMedica` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `examenmedico`
---
-ALTER TABLE `examenmedico`
-  MODIFY `idExamenMedico` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `expedientemedico`
---
-ALTER TABLE `expedientemedico`
-  MODIFY `idExpedienteMedico` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `paciente`
---
-ALTER TABLE `paciente`
-  MODIFY `idPaciente` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `padecimientos`
---
-ALTER TABLE `padecimientos`
-  MODIFY `idPadecimientos` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `receta`
---
-ALTER TABLE `receta`
-  MODIFY `idReceta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `signosvitales`
---
-ALTER TABLE `signosvitales`
-  MODIFY `idSignosVitales` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `telefono`
---
-ALTER TABLE `telefono`
-  MODIFY `idtelefono` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `consultamedica`
---
-ALTER TABLE `consultamedica`
-ADD CONSTRAINT `citaMedica` FOREIGN KEY (`citaMedica`) REFERENCES `cita` (`idcita`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `receta` FOREIGN KEY (`receta`) REFERENCES `receta` (`idReceta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `signosVitales` FOREIGN KEY (`signosVitales`) REFERENCES `signosvitales` (`idSignosVitales`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `expedientemedico`
---
-ALTER TABLE `expedientemedico`
-ADD CONSTRAINT `adiccionesPac` FOREIGN KEY (`adiccionesP`) REFERENCES `adicciones` (`idAdicciones`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `alergiasPac` FOREIGN KEY (`alergiasP`) REFERENCES `alergias` (`idAlergias`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `antecedentesFam` FOREIGN KEY (`antedecentesFamP`) REFERENCES `antecedentesfamiliares` (`idAntecedentesFamiliares`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `examenMed` FOREIGN KEY (`examenMedicoP`) REFERENCES `examenmedico` (`idExamenMedico`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `paciente` FOREIGN KEY (`paciente`) REFERENCES `paciente` (`idPaciente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `padecimientosPac` FOREIGN KEY (`padecimientosP`) REFERENCES `padecimientos` (`idPadecimientos`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `inventario`
---
-ALTER TABLE `inventario`
-ADD CONSTRAINT `rebajaReceta` FOREIGN KEY (`receta`) REFERENCES `receta` (`idReceta`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `paciente`
---
-ALTER TABLE `paciente`
-ADD CONSTRAINT `consultaMed` FOREIGN KEY (`consultaMed`) REFERENCES `consultamedica` (`idConsultaMedica`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `telefono` FOREIGN KEY (`telefono`) REFERENCES `telefono` (`idtelefono`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- MySQL Script generated by MySQL Workbench
+-- lun 31 ago 2015 14:16:26 CST
+-- Model: New Model    Version: 1.0
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema sigos
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema sigos
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `sigos` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `sigos` ;
+
+-- -----------------------------------------------------
+-- Table `sigos`.`telefono`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`telefono` (
+  `idtelefono` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `numeroTelefono` VARCHAR(45) NOT NULL COMMENT '',
+  `detalle` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`idtelefono`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`Paciente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`Paciente` (
+  `idPaciente` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `nombrePaciente` VARCHAR(45) NOT NULL COMMENT '',
+  `apellido1Paciente` VARCHAR(45) NOT NULL COMMENT '',
+  `apellido2Paciente` VARCHAR(45) NOT NULL COMMENT '',
+  `sexo` TINYINT NOT NULL COMMENT '',
+  `fechaNacimientoPaciente` DATE NOT NULL COMMENT '',
+  `nacionalidadPaciente` VARCHAR(45) NOT NULL COMMENT '',
+  `cedulaPaciente` VARCHAR(45) NOT NULL COMMENT '',
+  `idtelefono` INT NULL COMMENT '',
+  `direccion1` VARCHAR(45) NOT NULL COMMENT '',
+  `direccion2` VARCHAR(45) NULL COMMENT '',
+  `email` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`idPaciente`)  COMMENT '',
+  INDEX `fk_telefono_idx` (`idtelefono` ASC)  COMMENT '',
+  CONSTRAINT `fk_telefono`
+    FOREIGN KEY (`idtelefono`)
+    REFERENCES `sigos`.`telefono` (`idtelefono`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`ExamenMedico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`ExamenMedico` (
+  `idExamenMedico` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `archivoExamen` BLOB NULL COMMENT '',
+  PRIMARY KEY (`idExamenMedico`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`Padecimientos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`Padecimientos` (
+  `idPadecimientos` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `nombrePadecimiento` VARCHAR(45) NOT NULL COMMENT '',
+  `descripcion` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`idPadecimientos`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`Alergias`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`Alergias` (
+  `idAlergias` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `nombreAlergia` VARCHAR(45) NOT NULL COMMENT '',
+  `descripcionAlergia` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`idAlergias`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`Vacunas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`Vacunas` (
+  `idVacunas` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `tipo` VARCHAR(45) NOT NULL COMMENT '',
+  `fechaAplicacion` DATE NOT NULL COMMENT '',
+  PRIMARY KEY (`idVacunas`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`AntecedentesPersonales`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`AntecedentesPersonales` (
+  `idAntecedentesPersonales` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `idAlergias` INT NULL COMMENT '',
+  `tratamiento` VARCHAR(45) NOT NULL COMMENT '',
+  `idPadecimientos` INT NULL COMMENT '',
+  `idVacunas` INT NULL COMMENT '',
+  `medicamento` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`idAntecedentesPersonales`)  COMMENT '',
+  INDEX `fk_padecimientos_idx` (`idPadecimientos` ASC)  COMMENT '',
+  INDEX `fk_alergias_idx` (`idAlergias` ASC)  COMMENT '',
+  INDEX `fk_vacunas_idx` (`idVacunas` ASC)  COMMENT '',
+  CONSTRAINT `fk_padecimientos`
+    FOREIGN KEY (`idPadecimientos`)
+    REFERENCES `sigos`.`Padecimientos` (`idPadecimientos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_alergias`
+    FOREIGN KEY (`idAlergias`)
+    REFERENCES `sigos`.`Alergias` (`idAlergias`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_vacunas`
+    FOREIGN KEY (`idVacunas`)
+    REFERENCES `sigos`.`Vacunas` (`idVacunas`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`AntecedentesFamiliares`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`AntecedentesFamiliares` (
+  `idAntecedentesFamiliares` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `idPadecimientos` INT NOT NULL COMMENT '',
+  `parentesco` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`idAntecedentesFamiliares`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`ExpedienteMedico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`ExpedienteMedico` (
+  `idExpedienteMedico` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `idPaciente` INT NOT NULL COMMENT '',
+  `idExamenMedico` INT NULL COMMENT '',
+  `idAntecedentesPersonales` INT NOT NULL COMMENT '',
+  `idAntecedentesFamiliares` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`idExpedienteMedico`)  COMMENT '',
+  INDEX `fk_paciente_idx` (`idPaciente` ASC)  COMMENT '',
+  INDEX `fk_examenMedico_idx` (`idExamenMedico` ASC)  COMMENT '',
+  INDEX `fk_antecedentesPersonales_idx` (`idAntecedentesPersonales` ASC)  COMMENT '',
+  INDEX `fk_antecedentesFamiliares_idx` (`idAntecedentesFamiliares` ASC)  COMMENT '',
+  CONSTRAINT `fk_paciente`
+    FOREIGN KEY (`idPaciente`)
+    REFERENCES `sigos`.`Paciente` (`idPaciente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_examenMedico`
+    FOREIGN KEY (`idExamenMedico`)
+    REFERENCES `sigos`.`ExamenMedico` (`idExamenMedico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_antecedentesPersonales`
+    FOREIGN KEY (`idAntecedentesPersonales`)
+    REFERENCES `sigos`.`AntecedentesPersonales` (`idAntecedentesPersonales`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_antecedentesFamiliares`
+    FOREIGN KEY (`idAntecedentesFamiliares`)
+    REFERENCES `sigos`.`AntecedentesFamiliares` (`idAntecedentesFamiliares`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`ExamenFisico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`ExamenFisico` (
+  `idExamenFisico` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `categoria` VARCHAR(45) NULL COMMENT '',
+  `subCategoria` VARCHAR(45) NULL COMMENT '',
+  `estado` VARCHAR(45) NULL COMMENT '',
+  `detalle` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`idExamenFisico`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`cita`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`cita` (
+  `idcita` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `estado` TINYINT NOT NULL COMMENT '',
+  `fechaCreacion` VARCHAR(45) NULL COMMENT '',
+  `fechaConsulta` VARCHAR(45) NULL COMMENT '',
+  `anotaciones` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`idcita`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`Receta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`Receta` (
+  `idReceta` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `nombreMedicamento` VARCHAR(45) NOT NULL COMMENT '',
+  `cantidad` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`idReceta`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`SignosVitales`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`SignosVitales` (
+  `idSignosVitales` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `peso` DOUBLE NOT NULL COMMENT '',
+  `FC` DOUBLE NOT NULL COMMENT '',
+  `PAR` DOUBLE NOT NULL COMMENT '',
+  `IMC` DOUBLE NOT NULL COMMENT '',
+  `IMB` DOUBLE NOT NULL COMMENT '',
+  `H2O` DOUBLE NOT NULL COMMENT '',
+  `MM` DOUBLE NOT NULL COMMENT '',
+  `GC` DOUBLE NOT NULL COMMENT '',
+  `AS` TINYINT(1) NOT NULL COMMENT '',
+  `AF` TINYINT(1) NOT NULL COMMENT '',
+  `SS` TINYINT(1) NOT NULL COMMENT '',
+  `PAP` TINYINT(1) NOT NULL COMMENT '',
+  `IM` TINYINT(1) NOT NULL COMMENT '',
+  `IV` TINYINT(1) NOT NULL COMMENT '',
+  `SC` TINYINT(1) NOT NULL COMMENT '',
+  `GM` TINYINT(1) NOT NULL COMMENT '',
+  `CP` TINYINT(1) NOT NULL COMMENT '',
+  `ES` TINYINT(1) NOT NULL COMMENT '',
+  `PA` TINYINT(1) NOT NULL COMMENT '',
+  `glicemia` VARCHAR(45) NULL COMMENT '',
+  `talla` DOUBLE NULL COMMENT '',
+  PRIMARY KEY (`idSignosVitales`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`ConsultaMedica`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`ConsultaMedica` (
+  `idConsultaMedica` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `idExpedienteMedico` INT NOT NULL COMMENT '',
+  `idExamenFisico` INT NULL COMMENT '',
+  `motivoConsulta` VARCHAR(45) NOT NULL COMMENT '',
+  `descripcionSintomas` VARCHAR(45) NOT NULL COMMENT '',
+  `diagnostico` VARCHAR(45) NULL COMMENT '',
+  `signosVitales` INT NOT NULL COMMENT '',
+  `idCita` INT NULL COMMENT '',
+  `idReceta` INT NULL COMMENT '',
+  PRIMARY KEY (`idConsultaMedica`)  COMMENT '',
+  INDEX `fk_expedienteMedico_idx` (`idExpedienteMedico` ASC)  COMMENT '',
+  INDEX `fk_examenFisico_idx` (`idExamenFisico` ASC)  COMMENT '',
+  INDEX `fk_citaMedica_idx` (`idCita` ASC)  COMMENT '',
+  INDEX `fk_receta_idx` (`idReceta` ASC)  COMMENT '',
+  INDEX `fk_signosVitales_idx` (`signosVitales` ASC)  COMMENT '',
+  CONSTRAINT `fk_expedienteMedico`
+    FOREIGN KEY (`idExpedienteMedico`)
+    REFERENCES `sigos`.`ExpedienteMedico` (`idExpedienteMedico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_examenFisico`
+    FOREIGN KEY (`idExamenFisico`)
+    REFERENCES `sigos`.`ExamenFisico` (`idExamenFisico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_citaMedica`
+    FOREIGN KEY (`idCita`)
+    REFERENCES `sigos`.`cita` (`idcita`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_receta`
+    FOREIGN KEY (`idReceta`)
+    REFERENCES `sigos`.`Receta` (`idReceta`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_signosVitales`
+    FOREIGN KEY (`signosVitales`)
+    REFERENCES `sigos`.`SignosVitales` (`idSignosVitales`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`Inventario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`Inventario` (
+  `idInventario` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `nombre` VARCHAR(45) NOT NULL COMMENT '',
+  `tipo` VARCHAR(45) NOT NULL COMMENT '',
+  `descripcion` VARCHAR(45) NOT NULL COMMENT '',
+  `cantidad` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`idInventario`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`Usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sigos`.`Usuario` (
+  `idUsuario` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `nombreUsuario` VARCHAR(45) NOT NULL COMMENT '',
+  `password` VARCHAR(45) NOT NULL COMMENT '',
+  PRIMARY KEY (`idUsuario`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
