@@ -14,7 +14,7 @@ public class Conexion {
     {
         try
         {
-            Class.forName("com..mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "");
             return conexion;
         }// fin de try

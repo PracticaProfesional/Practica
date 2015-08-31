@@ -2,15 +2,17 @@ package datos;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import entidad.Paciente;
 
 public class DatosPaciente {
     
     private Conexion objetoDeConexion;
-    Statement estado;
+    private Statement estado;
     
-    public void insertarPaciente()
+    public void insertarPaciente(Paciente objetoPaciente)
     {
-        try{
+        try
+        {
             estado = objetoDeConexion.conectar().createStatement();
             estado.executeQuery(null);
             estado.close();
@@ -20,5 +22,5 @@ public class DatosPaciente {
             
         }// fin de catch
     }// fin del metodo insertarPaciente
-    // solo probando un cambio 
+    
 }// fin de la clase DatosPaciente
