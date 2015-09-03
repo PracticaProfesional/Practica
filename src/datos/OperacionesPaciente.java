@@ -2,7 +2,7 @@ package datos;
 
 import java.sql.SQLException;
 import java.sql.Statement;
-import entidad.Paciente;
+import entidad.Paciente; // Cambiar a capa de negocio
 
 public class OperacionesPaciente {
     
