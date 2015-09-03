@@ -16,7 +16,7 @@ public class OperacionesTelefono {
         
         try{
             estado = objetoDeConexion.conectar().createStatement();
-            estado.executeQuery("Call ("+datosTelefono+")");
+            estado.executeQuery("Call InsertarTelefono("+datosTelefono+")");
         }
         catch(SQLException e){
         }
