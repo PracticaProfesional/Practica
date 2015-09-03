@@ -196,8 +196,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `sigos`.`cita` (
   `idcita` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `estado` TINYINT NOT NULL COMMENT '',
-  `fechaCreacion` VARCHAR(45) NULL COMMENT '',
-  `fechaConsulta` VARCHAR(45) NULL COMMENT '',
+  `fechaCreacion` DATE NULL COMMENT '',
+  `fechaConsulta` DATE NULL COMMENT '',
   `anotaciones` VARCHAR(45) NULL COMMENT '',
   PRIMARY KEY (`idcita`)  COMMENT '')
 ENGINE = InnoDB;
