@@ -17,7 +17,7 @@ public class OperacionesPadecimiento {
                                    +"'"+padecimiento.getDescripcion()+"'";
         try{
             estado = objetoDeConexion.conectar().createStatement();
-            estado.executeQuery("Call ("+datosPadecimiento+")");
+            estado.executeQuery("Call InsertarPadecimientos("+datosPadecimiento+")");
             estado.close();
         }catch(SQLException e){
         }
