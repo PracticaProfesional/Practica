@@ -55,8 +55,103 @@ CREATE PROCEDURE InsertarExamenMedico ()
 BEGIN
 	insert into examenmedico ()
 	values ();
-END
+END $
 
+
+DELIMITER $  -- insertar en la tabla padecimientos
+CREATE PROCEDURE InsertarPadecimientos (in nomPad varchar(45), in descrip varchar(45))
+BEGIN
+	insert into padecimientos(nombrePadecimiento, descripcion)
+	values (nomPad, descrip);
+END $
+
+
+DELIMITER $  --  insertar en la tabla vacunas
+CREATE PROCEDURE InsertarVacunas (in tip varchar(45), in fecApl date)
+BEGIN
+	insert into vacunas (tipo, fechaAplicacion)
+	values (tip, fecApl);
+END $
+
+
+DELIMITER $  --  insertar en la tabla examen fisico
+CREATE PROCEDURE InsertarExamenFisico (in cat varchar(45), in subCat varchar(45),
+		in est varchar(45), in det varchar(45))
+BEGIN
+	insert into examenfisico (categoria, subCategoria, estado, detalle)
+	values (cat, subCat, est, det);
+END $
+
+
+DELIMITER $  --  insertar en la tabla alergias0
+CREATE PROCEDURE InsertarAlergias (in nomAle varchar(45), in desAle varchar(45))
+BEGIN
+	insert into alergias (nombreAlergia, descripcionAlergia)
+	values (nomAle, desAle);
+END $
+
+
+DELIMITER $  --  insertar en la tabla cita
+CREATE PROCEDURE InsertarCita (in est tinyint, in fecCrea date, in fecCon date,
+		in anot varchar(15))
+BEGIN
+	insert into cita (estado, fechaCreacion, fechaConsulta, anotaciones)
+	values (est, fecCrea, fecCon, anot);
+END $
+
+
+DELIMITER $  --  insertar en la tabla antecedentes personales
+CREATE PROCEDURE InsertarAntecedentesPersonales (in idAle int, in trata varchar(45), 
+		in idPad int, in idVac int, in med varchar(45))
+BEGIN
+	insert into antecedentespersonales (idAlergias, tratamiento, idPadecimientos, 
+			idVacunas, medicamento)
+	values (idAle, trata, idPad, idVac, med);
+END $
+
+
+DELIMITER $
+CREATE PROCEDURE InsertarAntecedentesFamiliares (in idPad int, in par varchar(45))
+BEGIN
+	insert into antecedentesfamiliares (idPadecimientos, parentesco)
+	values (idPad, par);
+END $
+
+
+DELIMITER $
+CREATE PROCEDURE InsertarPaciente (in nomPac varchar(45), in ape1Pac varchar(45),
+		in ape2Pac varchar(45), in sex tinyint, in fecNacPac date, 
+		in nacPac varchar(45), cedPac varchar(45), in idTel int, in dir1 varchar(45),
+		in dir2 varchar(45), in ema varchar(45))
+BEGIN
+	insert into paciente (nombrePaciente, apellido1Paciente, apellido2Paciente,
+			sexo, fechaNacimientoPaciente, nacionalidadPaciente, cedulaPaciente,
+			idtelefono, direccion1, direccion2, email)
+	values (nomPac, ape1Pac, ape2Pac, sex, fecNacPac, nacPac, cedPac, idTel, dir1,
+			dir2, ema);
+END $
+
+
+
+DELIMITER $
+CREATE PROCEDURE InsertarExpedienteMedico (in idPac int, in idExaMed int,
+		in idAntPer int, in idAntFam int)
+BEGIN
+	insert into expedientemedico (idPaciente, idExamenMedico,
+			idAntecedentesPersonales, idAntecedentesFamiliares)
+	values (idPac, idExaMed, idAntPer, idAntFam);
+END $
+
+
+DELIMITER $
+CREATE PROCEDURE InsertarConsultaMedica (in idExpMed int, in idExaFis int, 
+		in motiCon varchar(45), in descripSint varchar(45), in diag varchar(45),
+		in idSigVit int, in idCit int, in idRec int)
+BEGIN
+	insert into consultamedica (idExpedienteMedico, idExamenFisico, motivoConsulta,
+			descripcionSintomas, diagnostico, signosVitales, idCita, idReceta)
+	values (idExpMed, idExaFis, motiCon, descripSint, diag, idSigVit, idCit, idRec);
+END
 
 
 
@@ -81,5 +176,40 @@ Call InsertarReceta('Jarabe', 6);
 $
 
 Call InsertarExamenMedico ();
+$
+
+Call InsertarPadecimientos('Diabetes', 'Grado 1');
+$
+
+Call InsertarVacunas ('Tetano', '2015-03-15');
+$
+
+Call InsertarExamenFisico ('Ojos', 'Algo', 'Activo', 'Caratatas');
+$
+
+Call InsertarAlergias ('Gatos', 'Alergia a los gatos');
+$
+
+Call InsertarCita ('1', '2015-09-02', 2015-09-20, 'Nada');
+$
+
+Call InsertarAntecedentesPersonales (1, 'Nada', 1, 1, 'Nada');
+$
+
+Call InsertarAntecedentesFamiliares (1, 'Abuelo');
+$
+
+Call InsertarPaciente ('Pedro', 'Pasos', 'Vargas', 1, '2015-03-22', 'costa rica',
+		'123456789', 1, 'Lib', 'Bag', 'ppasosv');
+$
+
+Call InsertarExpedienteMedico (1, null, 1, 1);
+$
+
+Call InsertarConsultaMedica (1, 1, 'Nada', 'Nada', 'Nada', 1, 1, 1)
+
+
+
+
 
 
