@@ -9,7 +9,7 @@ BEGIN
 END $
 
 
-DELIMITER $ -- insertar en la inventario
+DELIMITER $$ -- insertar en la inventario
 CREATE PROCEDURE InsertarInventario (in nom varchar(45), in tip varchar(45), 
 		in des varchar(45), in can int)
 BEGIN
@@ -26,17 +26,37 @@ BEGIN
 END $
 
 
-DELIMITER $
+DELIMITER $ -- insertar en la tabla telefono
 CREATE PROCEDURE InsertarSignosVitales (in pes double, in fc double, in par double,
 		in imc double, in imb double, in h2o double, in mm double, in gc double,
-		in `as` tinyint, in af tinyint, in ss tinyint, in pap tinyint, in im tinyint,
-		in iv tinyint, in sc tinyint, in gm tinyint, in cp tinyint, in es tinyint,
-		in pa tinyint, in glic varchar(45), in tall double)
+		in ass tinyint(1), in af tinyint(1), in ss tinyint(1), in pap tinyint(1), 
+		in im tinyint(1),
+		in iv tinyint(1), in sc tinyint(1), in gm tinyint(1), in cp tinyint(1), 
+		in es tinyint(1),
+		in pa tinyint(1), in glic varchar(45), in tall double)
 BEGIN
 	insert into signosvitales (peso, FC, PAR, IMC, IMB, H2O, MM, GC, `AS`, AF, SS, 
 				PAP, IM, IV, SC, GM, CP, ES, PA, glicemia, talla)
-	values (pes, fc, par, )
+	values (pes, fc, par, imc, imb, h2o, mm, gc, ass, af, ss, pap, im, 
+			iv, sc, gm, cp, es, pa, glic, tall);
+END$
+
+
+DELIMITER $  -- insertar en la tabla receta
+CREATE PROCEDURE InsertarReceta(in nomMed varchar(45), in cant int)
+BEGIN
+	insert into receta (nombreMedicamento, cantidad)
+	values (nomMed, cant);
 END $
+
+
+DELIMITER $ -- insertar en la tabla de examen medico aqui no se utiliza la variable blob para hacer la insercio pero deberia
+CREATE PROCEDURE InsertarExamenMedico ()
+BEGIN
+	insert into examenmedico ()
+	values ();
+END
+
 
 
 
@@ -50,5 +70,16 @@ $
 Call InsertarInventario ('Parasetamol', 'Pastillas', '100mg', 10);
 $
 
-Call InsertarTelefono ('86163602', 'Celular')
+Call InsertarTelefono ('86163602', 'Celular');
+$
+
+Call InsertarSignosVitales (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+							'Si', 30);
+$
+
+Call InsertarReceta('Jarabe', 6);
+$
+
+Call InsertarExamenMedico ();
+
 
