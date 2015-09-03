@@ -78,7 +78,7 @@ DELIMITER $  --  insertar en la tabla examen fisico
 CREATE PROCEDURE InsertarExamenFisico (in cat varchar(45), in subCat varchar(45),
 		in est tinyint(1), in det varchar(45))
 BEGIN
-	insert into examenfisico (categoria, subCategoria, estadoExamenFisico, detalle)
+	insert into examenfisico (categoria, subCategoria, detalle)
 	values (cat, subCat, est, det);
 END $
 
