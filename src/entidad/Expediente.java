@@ -6,40 +6,40 @@ package entidad;
  * @author cooper15
  */
 public class Expediente {
+    private int antecedentesFamiliares;
+    private int antecedentesPersonales;
+    private int paciente;
+    private int examenMedico;
 
-    public Padecimiento getPadecimiento() {
-        return padecimiento;
+    public int getAntecedentesFamiliares() {
+        return antecedentesFamiliares;
     }
 
-    public void setPadecimiento(Padecimiento padecimiento) {
-        this.padecimiento = padecimiento;
+    public void setAntecedentesFamiliares(int antecedentesFamiliares) {
+        this.antecedentesFamiliares = antecedentesFamiliares;
     }
 
-    public Alergia getAlergia() {
-        return alergia;
+    public int getAntecedentesPersonales() {
+        return antecedentesPersonales;
     }
 
-    public void setAlergia(Alergia alergia) {
-        this.alergia = alergia;
+    public void setAntecedentesPersonales(int antecedentesPersonales) {
+        this.antecedentesPersonales = antecedentesPersonales;
     }
 
-    public Adiccion getAdiccion() {
-        return adiccion;
+    public int getPaciente() {
+        return paciente;
     }
 
-    public void setAdiccion(Adiccion adiccion) {
-        this.adiccion = adiccion;
+    public void setPaciente(int paciente) {
+        this.paciente = paciente;
     }
 
-    public AntecedenteFamiliar getAntecedenteFamiliar() {
-        return antecedenteFamiliar;
+    public int getExamenMedico() {
+        return examenMedico;
     }
 
-    public void setAntecedenteFamiliar(AntecedenteFamiliar antecedenteFamiliar) {
-        this.antecedenteFamiliar = antecedenteFamiliar;
+    public void setExamenMedico(int examenMedico) {
+        this.examenMedico = examenMedico;
     }
-    private Padecimiento padecimiento;
-    private Alergia alergia;
-    private Adiccion  adiccion;
-    private AntecedenteFamiliar antecedenteFamiliar;
 }
