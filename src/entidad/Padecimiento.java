@@ -6,13 +6,15 @@ package entidad;
  * @author cooper15
  */
 public class Padecimiento {
+    private String nombrePadecimiento;
+    private String descripcion; 
 
-    public String getFechaDiagnostico() {
-        return fechaDiagnostico;
+    public String getNombrePadecimiento() {
+        return nombrePadecimiento;
     }
 
-    public void setFechaDiagnostico(String fechaDiagnostico) {
-        this.fechaDiagnostico = fechaDiagnostico;
+    public void setNombrePadecimiento(String nombrePadecimiento) {
+        this.nombrePadecimiento = nombrePadecimiento;
     }
 
     public String getDescripcion() {
@@ -22,6 +24,4 @@ public class Padecimiento {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    private String fechaDiagnostico;
-    private String descripcion;
 }
