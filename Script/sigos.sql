@@ -184,7 +184,6 @@ CREATE TABLE IF NOT EXISTS `sigos`.`ExamenFisico` (
   `idExamenFisico` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `categoria` VARCHAR(45) NULL COMMENT '',
   `subCategoria` VARCHAR(45) NULL COMMENT '',
-  `estado` VARCHAR(45) NULL COMMENT '',
   `detalle` VARCHAR(45) NULL COMMENT '',
   PRIMARY KEY (`idExamenFisico`)  COMMENT '')
 ENGINE = InnoDB;
@@ -240,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `sigos`.`SignosVitales` (
   `PA` TINYINT(1) NOT NULL COMMENT '',
   `exMama` TINYINT(1) NULL COMMENT '',
   `curaciones` TINYINT(1) NULL COMMENT '',
-  `temperatura` TINYINT(1) NULL COMMENT '',
+  `temperatura` DOUBLE NULL COMMENT '',
   `talla` DOUBLE NULL COMMENT '',
   PRIMARY KEY (`idSignosVitales`)  COMMENT '')
 ENGINE = InnoDB;
