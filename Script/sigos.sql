@@ -21,10 +21,10 @@ USE `sigos` ;
 -- Table `sigos`.`telefono`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`telefono` (
-  `idtelefono` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `numeroTelefono` VARCHAR(45) NOT NULL COMMENT '',
   `detalle` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`idtelefono`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -32,7 +32,7 @@ ENGINE = InnoDB;
 -- Table `sigos`.`Paciente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`Paciente` (
-  `idPaciente` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nombrePaciente` VARCHAR(45) NOT NULL COMMENT '',
   `apellido1Paciente` VARCHAR(45) NOT NULL COMMENT '',
   `apellido2Paciente` VARCHAR(45) NOT NULL COMMENT '',
@@ -44,11 +44,11 @@ CREATE TABLE IF NOT EXISTS `sigos`.`Paciente` (
   `direccion1` VARCHAR(45) NOT NULL COMMENT '',
   `direccion2` VARCHAR(45) NULL COMMENT '',
   `email` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`idPaciente`)  COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_telefono_idx` (`idtelefono` ASC)  COMMENT '',
   CONSTRAINT `fk_telefono`
     FOREIGN KEY (`idtelefono`)
-    REFERENCES `sigos`.`telefono` (`idtelefono`)
+    REFERENCES `sigos`.`telefono` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -58,9 +58,9 @@ ENGINE = InnoDB;
 -- Table `sigos`.`ExamenMedico`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`ExamenMedico` (
-  `idExamenMedico` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `archivoExamen` BLOB NULL COMMENT '',
-  PRIMARY KEY (`idExamenMedico`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -68,10 +68,10 @@ ENGINE = InnoDB;
 -- Table `sigos`.`Padecimientos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`Padecimientos` (
-  `idPadecimientos` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nombrePadecimiento` VARCHAR(45) NOT NULL COMMENT '',
   `descripcion` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`idPadecimientos`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -79,10 +79,10 @@ ENGINE = InnoDB;
 -- Table `sigos`.`Alergias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`Alergias` (
-  `idAlergias` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nombreAlergia` VARCHAR(45) NOT NULL COMMENT '',
   `descripcionAlergia` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`idAlergias`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -90,10 +90,10 @@ ENGINE = InnoDB;
 -- Table `sigos`.`Vacunas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`Vacunas` (
-  `idVacunas` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `tipo` VARCHAR(45) NOT NULL COMMENT '',
   `fechaAplicacion` DATE NOT NULL COMMENT '',
-  PRIMARY KEY (`idVacunas`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -101,29 +101,29 @@ ENGINE = InnoDB;
 -- Table `sigos`.`AntecedentesPersonales`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`AntecedentesPersonales` (
-  `idAntecedentesPersonales` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `idAlergias` INT NULL COMMENT '',
   `tratamiento` VARCHAR(45) NOT NULL COMMENT '',
   `idPadecimientos` INT NULL COMMENT '',
   `idVacunas` INT NULL COMMENT '',
   `medicamento` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`idAntecedentesPersonales`)  COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_padecimientos_idx` (`idPadecimientos` ASC)  COMMENT '',
   INDEX `fk_alergias_idx` (`idAlergias` ASC)  COMMENT '',
   INDEX `fk_vacunas_idx` (`idVacunas` ASC)  COMMENT '',
   CONSTRAINT `fk_padecimientos`
     FOREIGN KEY (`idPadecimientos`)
-    REFERENCES `sigos`.`Padecimientos` (`idPadecimientos`)
+    REFERENCES `sigos`.`Padecimientos` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_alergias`
     FOREIGN KEY (`idAlergias`)
-    REFERENCES `sigos`.`Alergias` (`idAlergias`)
+    REFERENCES `sigos`.`Alergias` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_vacunas`
     FOREIGN KEY (`idVacunas`)
-    REFERENCES `sigos`.`Vacunas` (`idVacunas`)
+    REFERENCES `sigos`.`Vacunas` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -133,10 +133,10 @@ ENGINE = InnoDB;
 -- Table `sigos`.`AntecedentesFamiliares`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`AntecedentesFamiliares` (
-  `idAntecedentesFamiliares` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `idPadecimientos` INT NOT NULL COMMENT '',
   `parentesco` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`idAntecedentesFamiliares`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -144,34 +144,34 @@ ENGINE = InnoDB;
 -- Table `sigos`.`ExpedienteMedico`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`ExpedienteMedico` (
-  `idExpedienteMedico` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `idPaciente` INT NOT NULL COMMENT '',
   `idExamenMedico` INT NULL COMMENT '',
   `idAntecedentesPersonales` INT NOT NULL COMMENT '',
   `idAntecedentesFamiliares` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`idExpedienteMedico`)  COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_paciente_idx` (`idPaciente` ASC)  COMMENT '',
   INDEX `fk_examenMedico_idx` (`idExamenMedico` ASC)  COMMENT '',
   INDEX `fk_antecedentesPersonales_idx` (`idAntecedentesPersonales` ASC)  COMMENT '',
   INDEX `fk_antecedentesFamiliares_idx` (`idAntecedentesFamiliares` ASC)  COMMENT '',
   CONSTRAINT `fk_paciente`
     FOREIGN KEY (`idPaciente`)
-    REFERENCES `sigos`.`Paciente` (`idPaciente`)
+    REFERENCES `sigos`.`Paciente` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_examenMedico`
     FOREIGN KEY (`idExamenMedico`)
-    REFERENCES `sigos`.`ExamenMedico` (`idExamenMedico`)
+    REFERENCES `sigos`.`ExamenMedico` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_antecedentesPersonales`
     FOREIGN KEY (`idAntecedentesPersonales`)
-    REFERENCES `sigos`.`AntecedentesPersonales` (`idAntecedentesPersonales`)
+    REFERENCES `sigos`.`AntecedentesPersonales` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_antecedentesFamiliares`
     FOREIGN KEY (`idAntecedentesFamiliares`)
-    REFERENCES `sigos`.`AntecedentesFamiliares` (`idAntecedentesFamiliares`)
+    REFERENCES `sigos`.`AntecedentesFamiliares` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -181,11 +181,11 @@ ENGINE = InnoDB;
 -- Table `sigos`.`ExamenFisico`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`ExamenFisico` (
-  `idExamenFisico` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `categoria` VARCHAR(45) NULL COMMENT '',
   `subCategoria` VARCHAR(45) NULL COMMENT '',
   `detalle` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`idExamenFisico`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -193,12 +193,12 @@ ENGINE = InnoDB;
 -- Table `sigos`.`cita`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`cita` (
-  `idcita` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `estado` TINYINT NOT NULL COMMENT '',
   `fechaCreacion` DATE NULL COMMENT '',
   `fechaConsulta` DATE NULL COMMENT '',
   `anotaciones` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`idcita`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -206,10 +206,10 @@ ENGINE = InnoDB;
 -- Table `sigos`.`Receta`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`Receta` (
-  `idReceta` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nombreMedicamento` VARCHAR(45) NOT NULL COMMENT '',
   `cantidad` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`idReceta`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -217,7 +217,7 @@ ENGINE = InnoDB;
 -- Table `sigos`.`SignosVitales`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`SignosVitales` (
-  `idSignosVitales` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `peso` DOUBLE NOT NULL COMMENT '',
   `FC` DOUBLE NOT NULL COMMENT '',
   `PAR` DOUBLE NOT NULL COMMENT '',
@@ -241,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `sigos`.`SignosVitales` (
   `curaciones` TINYINT(1) NULL COMMENT '',
   `temperatura` DOUBLE NULL COMMENT '',
   `talla` DOUBLE NULL COMMENT '',
-  PRIMARY KEY (`idSignosVitales`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -249,7 +249,7 @@ ENGINE = InnoDB;
 -- Table `sigos`.`ConsultaMedica`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`ConsultaMedica` (
-  `idConsultaMedica` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `idExpedienteMedico` INT NOT NULL COMMENT '',
   `idExamenFisico` INT NULL COMMENT '',
   `motivoConsulta` VARCHAR(45) NOT NULL COMMENT '',
@@ -258,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `sigos`.`ConsultaMedica` (
   `signosVitales` INT NOT NULL COMMENT '',
   `idCita` INT NULL COMMENT '',
   `idReceta` INT NULL COMMENT '',
-  PRIMARY KEY (`idConsultaMedica`)  COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_expedienteMedico_idx` (`idExpedienteMedico` ASC)  COMMENT '',
   INDEX `fk_examenFisico_idx` (`idExamenFisico` ASC)  COMMENT '',
   INDEX `fk_citaMedica_idx` (`idCita` ASC)  COMMENT '',
@@ -266,27 +266,27 @@ CREATE TABLE IF NOT EXISTS `sigos`.`ConsultaMedica` (
   INDEX `fk_signosVitales_idx` (`signosVitales` ASC)  COMMENT '',
   CONSTRAINT `fk_expedienteMedico`
     FOREIGN KEY (`idExpedienteMedico`)
-    REFERENCES `sigos`.`ExpedienteMedico` (`idExpedienteMedico`)
+    REFERENCES `sigos`.`ExpedienteMedico` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_examenFisico`
     FOREIGN KEY (`idExamenFisico`)
-    REFERENCES `sigos`.`ExamenFisico` (`idExamenFisico`)
+    REFERENCES `sigos`.`ExamenFisico` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_citaMedica`
     FOREIGN KEY (`idCita`)
-    REFERENCES `sigos`.`cita` (`idcita`)
+    REFERENCES `sigos`.`cita` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_receta`
     FOREIGN KEY (`idReceta`)
-    REFERENCES `sigos`.`Receta` (`idReceta`)
+    REFERENCES `sigos`.`Receta` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_signosVitales`
     FOREIGN KEY (`signosVitales`)
-    REFERENCES `sigos`.`SignosVitales` (`idSignosVitales`)
+    REFERENCES `sigos`.`SignosVitales` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -296,12 +296,12 @@ ENGINE = InnoDB;
 -- Table `sigos`.`Inventario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`Inventario` (
-  `idInventario` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nombre` VARCHAR(45) NOT NULL COMMENT '',
   `tipo` VARCHAR(45) NOT NULL COMMENT '',
   `descripcion` VARCHAR(45) NOT NULL COMMENT '',
   `cantidad` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`idInventario`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
@@ -309,10 +309,10 @@ ENGINE = InnoDB;
 -- Table `sigos`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sigos`.`Usuario` (
-  `idUsuario` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nombreUsuario` VARCHAR(45) NOT NULL COMMENT '',
   `password` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`idUsuario`)  COMMENT '')
+  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
