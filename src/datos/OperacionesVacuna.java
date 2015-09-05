@@ -15,7 +15,7 @@ public class OperacionesVacuna {
         String datosVacuna = "'"+vacuna.getTipo()+"'"+','+"'"+vacuna.getFechaAplicacion()+"'";
         try{
             estado = objetoDeConexion.conectar().createStatement();
-            estado.executeQuery("");
+            estado.executeQuery("Call InsertarVacunas)"+datosVacuna+")");
             estado.close();
         }
         catch(SQLException e){
