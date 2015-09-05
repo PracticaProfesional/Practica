@@ -15,7 +15,7 @@ public class ObtenerUltimoId {
     
     public String obtenerUltimoId(String nombreTabla) throws SQLException{
         estado = objetoDeConexion.conectar().createStatement();
-        ResultSet rs = estado.executeQuery("Call ("+nombreTabla+")");
+        ResultSet rs = estado.executeQuery("Call obtenerUltimoId("+nombreTabla+")");
         String id = rs.getString("id");
         
         return id;
