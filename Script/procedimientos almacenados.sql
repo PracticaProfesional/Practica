@@ -33,13 +33,15 @@ CREATE PROCEDURE InsertarSignosVitales (in pes double, in fc double, in par doub
 		in im tinyint(1),
 		in iv tinyint(1), in sc tinyint(1), in gm tinyint(1), in cp tinyint(1), 
 		in es tinyint(1),
-		in pa tinyint(1), in glic varchar(45), in tall double)
+		in pa tinyint(1), in exaMama tinyint(1), in cura tinyint(1),
+		in temp double, in tall double)
 BEGIN
 	insert into signosvitales (peso, FC, PAR, IMC, IMB, H2O, MM, GC, `AS`, AF, SS, 
-				PAP, IM, IV, SC, GM, CP, ES, PA, glicemia, talla)
+				PAP, IM, IV, SC, GM, CP, ES, PA, exMama, curaciones, temperatura,
+				talla)
 	values (pes, fc, par, imc, imb, h2o, mm, gc, ass, af, ss, pap, im, 
-			iv, sc, gm, cp, es, pa, glic, tall);
-END$
+			iv, sc, gm, cp, es, pa, exaMama, cura, temp, tall);
+END $
 
 
 DELIMITER $  -- insertar en la tabla receta
@@ -76,10 +78,10 @@ END $
 
 DELIMITER $  --  insertar en la tabla examen fisico
 CREATE PROCEDURE InsertarExamenFisico (in cat varchar(45), in subCat varchar(45),
-		in est tinyint(1), in det varchar(45))
+			in det varchar(45))
 BEGIN
 	insert into examenfisico (categoria, subCategoria, detalle)
-	values (cat, subCat, est, det);
+	values (cat, subCat, det);
 END $
 
 
@@ -169,7 +171,7 @@ Call InsertarTelefono ('86163602', 'Celular');
 $
 
 Call InsertarSignosVitales (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-							'Si', 30);
+							1, 1, 1, 30);
 $
 
 Call InsertarReceta('Jarabe', 6);
@@ -184,7 +186,7 @@ $
 Call InsertarVacunas ('Tetano', '2015-03-15');
 $
 
-Call InsertarExamenFisico ('Ojos', 'Algo', 'Activo', 'Caratatas');
+Call InsertarExamenFisico ('Ojos', 'Algo', 'Caratatas');
 $
 
 Call InsertarAlergias ('Gatos', 'Alergia a los gatos');
