@@ -167,7 +167,7 @@ $
 Call InsertarInventario ('Parasetamol', 'Pastillas', '100mg', 10);
 $
 
-Call InsertarTelefono ('86163602', 'Celular');
+Call InsertarTelefono ('95698569', 'Casa');
 $
 
 Call InsertarSignosVitales (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -209,6 +209,19 @@ Call InsertarExpedienteMedico (1, null, 1, 1);
 $
 
 Call InsertarConsultaMedica (1, 1, 'Nada', 'Nada', 'Nada', 1, 1, 1)
+
+
+
+
+
+
+
+
+
+
+
+
+-- Consulta para obtener el ultimo registro insertado en una tabla
 
 
 
