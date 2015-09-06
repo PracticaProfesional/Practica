@@ -1,6 +1,6 @@
 package datos;
 
-import entidad.Vacunas;
+import entidad.Vacuna;
 import java.sql.Statement;
 import java.sql.SQLException;
 /**
@@ -11,7 +11,7 @@ public class OperacionesVacuna {
     private Conexion objetoDeConexion;
     private Statement estado;
     
-    public void insetarVacuna(Vacunas vacuna){
+    public void insertarVacuna(Vacuna vacuna){
         String datosVacuna = "'"+vacuna.getTipo()+"'"+','+"'"+vacuna.getFechaAplicacion()+"'";
         try{
             estado = objetoDeConexion.conectar().createStatement();
