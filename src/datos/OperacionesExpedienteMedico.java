@@ -1,7 +1,7 @@
 package datos;
 
 import java.sql.Statement;
-import entidad.Expediente;
+//import entidad.Expediente;
 import java.sql.SQLException;
 /**
  *
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class OperacionesExpedienteMedico {
     private Conexion objetoDeConexion;
     private Statement estado;
-    public void insertarExpedienteMedico(Expediente nuevoExpediente) throws SQLException{
+    public void insertarExpedienteMedico() throws SQLException{
         objetoDeConexion = new Conexion();
         String idAntecedentesPersonales;
         String idAntecedentesFam;
