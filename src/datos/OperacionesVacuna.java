@@ -12,6 +12,7 @@ public class OperacionesVacuna {
     private Statement estado;
     
     public void insertarVacuna(Vacuna vacuna){
+        objetoDeConexion = new Conexion();
         String datosVacuna = "'"+vacuna.getTipo()+"'"+','+"'"+vacuna.getFechaAplicacion()+"'";
         try{
             estado = objetoDeConexion.conectar().createStatement();

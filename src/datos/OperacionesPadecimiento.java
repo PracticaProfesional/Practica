@@ -13,6 +13,7 @@ public class OperacionesPadecimiento {
     private Statement estado;
     
     public void insertarPadecimiento(Padecimiento padecimiento){
+        objetoDeConexion = new Conexion();
         String datosPadecimiento = "'"+padecimiento.getNombrePadecimiento()+"'"+","
                                    +"'"+padecimiento.getDescripcion()+"'";
         try{

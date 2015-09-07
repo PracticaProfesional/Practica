@@ -13,6 +13,7 @@ public class OperacionesAntecedentesPersonales {
     private Statement estado;
     
     public void insertarAntecedentesPersonales(AntecedentesPersonales antecPersonales) throws SQLException{
+        objetoDeConexion = new Conexion();
         String idVacuna;
         String idPadecimiento;
         String idAlergia;

@@ -12,6 +12,7 @@ public class OperacionesTelefono {
     private Statement estado;
     
     public void insertarTelefono(String numero, String detalle){
+        objetoDeConexion = new Conexion();
         String datosTelefono = "'"+numero+"'"+","+"'"+detalle+"'";
         
         try{

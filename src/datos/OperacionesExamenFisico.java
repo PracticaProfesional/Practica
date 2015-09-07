@@ -12,6 +12,6 @@ public class OperacionesExamenFisico {
     private Statement estado;
     
     public void insertarExamenFisico(){
-        
+       objetoDeConexion = new Conexion(); 
     }
 }

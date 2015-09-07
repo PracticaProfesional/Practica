@@ -11,6 +11,7 @@ public class OperacionesAntecedentesFamiliares {
     private Conexion objetoDeConexion;
     private Statement estado;
     public void insertarAntecedentesFamiliares(AntecedenteFamiliar antecedenteFamiliar) throws SQLException{
+        objetoDeConexion = new Conexion();
         String idPadecimientos;
         ObtenerUltimoId ultimoId = new ObtenerUltimoId();
         idPadecimientos = ultimoId.obtenerUltimoId("Padecimientos");

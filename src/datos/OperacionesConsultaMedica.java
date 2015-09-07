@@ -13,6 +13,7 @@ public class OperacionesConsultaMedica
     
     public void insertarConsultaMedica(ConsultaMedica objetoConsultaMedica) throws SQLException
     {
+        objetoDeConexion = new Conexion();
         String idExpedienteMedico, idExamenFisico, idSignosVitales, idCita, idReceta;
         
         // objeto para llamar al ultimo registro(id) insertado en una tabla

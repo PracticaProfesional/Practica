@@ -13,6 +13,7 @@ public class OperacionesAlergia {
     private Statement estado;
     
     public void insertarAlergia(Alergia alergia){
+        objetoDeConexion = new Conexion();
         String datosAlergia = "'"+alergia.getNombreAlergia()+"'"+","+"'"+alergia.getDetalleAlergia()+"'";
         try{
             estado = objetoDeConexion.conectar().createStatement();

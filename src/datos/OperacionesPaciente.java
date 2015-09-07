@@ -11,6 +11,7 @@ public class OperacionesPaciente {
     
     public void insertarPaciente(Paciente objetoPaciente)
     { 
+        objetoDeConexion = new Conexion();
         String datosPaciente = "'"+objetoPaciente.getNombrePaciente()+"'"+","+"'"+objetoPaciente.getApellido1()+"'"+","
                                 +"'"+objetoPaciente.getSexo()+"'"+","+"'"+objetoPaciente.getFechaNacimiento()+"'"+","
                                 +"'"+objetoPaciente.getNacionalidad()+"'"+","+"'"+objetoPaciente.getIdentificacion()+"'"+","
