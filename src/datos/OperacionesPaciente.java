@@ -20,7 +20,7 @@ public class OperacionesPaciente {
         try
         {
             estado = objetoDeConexion.conectar().createStatement();
-            estado.executeQuery("Call ("+datosPaciente+")");
+            estado.executeQuery("Call InsertarPaciente("+datosPaciente+")");
             estado.close();
         }// fin de try
         catch (SQLException e)
