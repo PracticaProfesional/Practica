@@ -619,7 +619,7 @@
                 </Component>
                 <Component class="datechooser.beans.DateChooserCombo" name="textVacunaFechaApli">
                   <Properties>
-                    <Property name="dch_combo_dateFormat" type="int" value="0"/>
+                    <Property name="dch_combo_dateFormat" type="int" value="2"/>
                     <Property name="dch_navigPane" type="int" value="0"/>
                     <Property name="dch_behavior" type="datechooser.model.multiple.MultyModelBehavior" editor="datechooser.beans.editor.ModelBehaviorEditor">
                       <SerializedValue value="-84,-19,0,5,126,114,0,45,100,97,116,101,99,104,111,111,115,101,114,46,109,111,100,101,108,46,109,117,108,116,105,112,108,101,46,77,117,108,116,121,77,111,100,101,108,66,101,104,97,118,105,111,114,0,0,0,0,0,0,0,0,18,0,0,120,114,0,14,106,97,118,97,46,108,97,110,103,46,69,110,117,109,0,0,0,0,0,0,0,0,18,0,0,120,112,116,0,13,83,69,76,69,67,84,95,83,73,78,71,76,69"/>

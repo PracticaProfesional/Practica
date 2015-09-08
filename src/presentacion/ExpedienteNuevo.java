@@ -419,7 +419,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     jLabel16.setText("Fecha Aplicación");
 
-    textVacunaFechaApli.setFormat(0);
+    textVacunaFechaApli.setFormat(2);
     textVacunaFechaApli.setCurrentNavigateIndex(0);
     textVacunaFechaApli.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
 
@@ -584,7 +584,19 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         insertarPadecimiento(nuevoPadecimiento);     
         insertarAlergia(nuevaAlergia);
         insertarVacuna(nuevaVacuna);
+        
+        insertarAntecedentesPersonal();
+        
+        
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
+
+    private void insertarAntecedentesPersonal() {
+        entidad.AntecedentesPersonales nuevoAntPer = new entidad.AntecedentesPersonales();
+        nuevoAntPer.setTratamiento(textTratamiento.getText());
+        nuevoAntPer.setMedicamento(textMedicamentos.getText());
+        negocio.AntecedentePersonal insertarAntPer = new negocio.AntecedentePersonal();
+        insertarAntPer.insertarAntecedentePersonal(nuevoAntPer);
+    }
 
     private void insertarTelefono(Telefono nuevoTelefono) {
         negocio.NegocioTelefono insertarTelefono = new negocio.NegocioTelefono();
