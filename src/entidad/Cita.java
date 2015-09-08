@@ -5,17 +5,18 @@ package entidad;
  * @author cooper15
  */
 public class Cita {
-    private int detalle;
+    //private int detalle;
+    private int estado;
     private String fechaCreacion;
     private String fechaConsulta;
     private String anotaciones;
 
-    public int getDetalle() {
-        return detalle;
+    public int getEstado() {
+        return estado;
     }
 
-    public void setDetalle(int detalle) {
-        this.detalle = detalle;
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
     public String getFechaCreacion() {
