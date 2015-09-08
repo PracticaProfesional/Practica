@@ -594,7 +594,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         entidad.AntecedentesPersonales nuevoAntPer = new entidad.AntecedentesPersonales();
         nuevoAntPer.setTratamiento(textTratamiento.getText());
         nuevoAntPer.setMedicamento(textMedicamentos.getText());
-        negocio.AntecedentePersonal insertarAntPer = new negocio.AntecedentePersonal();
+        negocio.NegocioAntecedentePersonal insertarAntPer = new negocio.NegocioAntecedentePersonal();
         insertarAntPer.insertarAntecedentePersonal(nuevoAntPer);
     }
 
