@@ -21,7 +21,7 @@ public class ObtenerUltimoId {
         String id = "";
         objetoDeConexion = new Conexion();
         estado = objetoDeConexion.conectar().createStatement();
-        ResultSet rs = estado.executeQuery("Select MAX(id) as id FROM telefono");
+        ResultSet rs = estado.executeQuery("Select MAX(id) as id FROM "+nombreTabla);
         if(rs.next()){
             id = rs.getString("id"); 
            
