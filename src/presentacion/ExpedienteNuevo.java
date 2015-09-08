@@ -30,6 +30,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         panelBtnExpedienteNUevo = new javax.swing.JPanel();
         btnExpedienteNuevoGuardar = new javax.swing.JButton();
         btnExpedienteNuevoCancelar = new javax.swing.JButton();
@@ -82,10 +83,28 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         textAntFamDescrip = new javax.swing.JTextField();
         textAntFamParentezco = new javax.swing.JTextField();
 
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nuevo Expediente");
 
         btnExpedienteNuevoGuardar.setText("Guardar");
+        btnExpedienteNuevoGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExpedienteNuevoGuardarActionPerformed(evt);
+            }
+        });
 
         btnExpedienteNuevoCancelar.setText("Cancelar");
         btnExpedienteNuevoCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -457,6 +476,24 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnExpedienteNuevoCancelarActionPerformed
 
+    private void btnExpedienteNuevoGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpedienteNuevoGuardarActionPerformed
+        // Primero que nada se deben validar los datos ingresados.
+        entidad.Paciente nuevoPaciente = new entidad.Paciente();
+        entidad.Vacuna nuevaVacuna = new entidad.Vacuna();
+        entidad.Alergia nuevaAlergia = new entidad.Alergia();
+        entidad.Padecimiento nuevoPadecimiento = new entidad.Padecimiento();
+        
+        nuevoPaciente.setNombrePaciente(textNombre.getText());
+        nuevoPaciente.setApellido1(textApellido1.getText());
+        nuevoPaciente.setApellido2(textApellido2.getText());
+        nuevoPaciente.setIdentificacion(textIdentificacion.getText());
+        nuevoPaciente.setFechaNacimiento(textFechaNac.getText());
+        nuevoPaciente.setNacionalidad(textNacionalidad.getText());
+        nuevoPaciente.setEmail(textEmail.getText());
+        nuevoPaciente.setDireccion1(textDireccionFamiliar.getText());
+        nuevoPaciente.setDireccion2(textDireccionLectiva.getText());
+    }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -502,6 +539,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExpedienteNuevoCancelar;
     private javax.swing.JButton btnExpedienteNuevoGuardar;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
