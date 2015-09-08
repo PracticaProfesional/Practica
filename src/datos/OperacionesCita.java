@@ -23,6 +23,6 @@ public class OperacionesCita
         estado = objetoDeConexion.conectar().createStatement();
         estado.executeQuery("Call InsertarCita("+datosCita+")");
         estado.close();
-    }// fin del metodo insertarExamenFisico
+    }// fin del metodo insertarCita
     
 }// fin de la clase OperacionesCita

@@ -7,7 +7,6 @@ package entidad;
  */
 public class SignosVitales {
     private double peso;
-    private double altura;
     private int frecuenciaCardiaca;
     private String presionArterial;
     private double indiceMasaCorporal;
@@ -26,6 +25,9 @@ public class SignosVitales {
     private boolean cuidadoPrenatal;
     private boolean entornoSaludable;
     private boolean prevencionAdicciones;
+    private boolean examenMama;
+    private boolean curaciones;
+    private double temperatura;
     private double talla;
 
     public double getPeso() {
@@ -34,14 +36,6 @@ public class SignosVitales {
 
     public void setPeso(double peso) {
         this.peso = peso;
-    }
-
-    public double getAltura() {
-        return altura;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
     }
 
     public int getFrecuenciaCardiaca() {
@@ -194,6 +188,33 @@ public class SignosVitales {
 
     public void setTalla(double talla) {
         this.talla = talla;
+    }
+
+    /**
+     * @return the examenMama
+     */
+    public boolean isExamenMama() {
+        return examenMama;
+    }
+
+    public void setExamenMama(boolean examenMama) {
+        this.examenMama = examenMama;
+    }
+
+    public boolean isCuraciones() {
+        return curaciones;
+    }
+
+    public void setCuraciones(boolean curaciones) {
+        this.curaciones = curaciones;
+    }
+
+    public double getTemperatura() {
+        return temperatura;
+    }
+
+    public void setTemperatura(double temperatura) {
+        this.temperatura = temperatura;
     }
     
 }
