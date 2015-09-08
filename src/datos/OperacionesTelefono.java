@@ -2,6 +2,7 @@ package datos;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import entidad.Telefono;
 
 /**
  *
@@ -11,9 +12,9 @@ public class OperacionesTelefono {
     private Conexion objetoDeConexion;
     private Statement estado;
     
-    public void insertarTelefono(String numero, String detalle){
+    public void insertarTelefono(Telefono nuevoTelefono){
         objetoDeConexion = new Conexion();
-        String datosTelefono = "'"+numero+"'"+","+"'"+detalle+"'";
+        String datosTelefono = "'"+nuevoTelefono.getTelefono()+"'"+","+"'"+nuevoTelefono.getDetalle()+"'";
         
         try{
             estado = objetoDeConexion.conectar().createStatement();
