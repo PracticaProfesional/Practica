@@ -6,7 +6,11 @@
 package presentacion;
 
 import datos.ObtenerUltimoId;
+import entidad.Alergia;
 import entidad.Paciente;
+import entidad.Padecimiento;
+import entidad.Telefono;
+import entidad.Vacuna;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -85,8 +89,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         jPanel6 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        textVacunaFechaApli = new javax.swing.JTextField();
         textVacunaTipo = new javax.swing.JTextField();
+        textVacunaFechaApli = new datechooser.beans.DateChooserCombo();
         jPanel1 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -415,6 +419,10 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     jLabel16.setText("Fecha Aplicación");
 
+    textVacunaFechaApli.setFormat(0);
+    textVacunaFechaApli.setCurrentNavigateIndex(0);
+    textVacunaFechaApli.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
+
     javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
     jPanel6.setLayout(jPanel6Layout);
     jPanel6Layout.setHorizontalGroup(
@@ -425,10 +433,10 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
                 .addComponent(jLabel16)
                 .addComponent(jLabel15))
             .addGap(123, 123, 123)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(textVacunaFechaApli, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(textVacunaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(82, 82, 82))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(textVacunaTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addComponent(textVacunaFechaApli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap())
     );
     jPanel6Layout.setVerticalGroup(
         jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,10 +446,10 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
                 .addComponent(textVacunaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel15))
             .addGap(18, 18, 18)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(textVacunaFechaApli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel16))
-            .addGap(35, 35, 35))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jLabel16)
+                .addComponent(textVacunaFechaApli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(40, 40, 40))
     );
 
     javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -568,18 +576,43 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         entidad.Padecimiento nuevoPadecimiento = new entidad.Padecimiento();
         entidad.Telefono nuevoTelefono = new entidad.Telefono();
         
+        insertarTelefono(nuevoTelefono);   
+        datos.ObtenerUltimoId ultimoId = new datos.ObtenerUltimoId(); // Cambia el obtener id a la capa de datos.
+   
+        // Llamada a funcion para realizar los procedimientos de insercion de paciente.
+        insertarPaciente(nuevoPaciente, ultimoId);   
+        insertarPadecimiento(nuevoPadecimiento);     
+        insertarAlergia(nuevaAlergia);
+        insertarVacuna(nuevaVacuna);
+    }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
+
+    private void insertarTelefono(Telefono nuevoTelefono) {
         negocio.NegocioTelefono insertarTelefono = new negocio.NegocioTelefono();
         nuevoTelefono.setTelefono(textTelefono.getText());
         nuevoTelefono.setDetalle("Nada..");
         insertarTelefono.insertarTelefono(nuevoTelefono);
-        
-        datos.ObtenerUltimoId ultimoId = new datos.ObtenerUltimoId();
-        
-        // Llamada a funcion para realizar los procedimientos de insercion de paciente.
-        insertarPaciente(nuevoPaciente, ultimoId);
-        
-        
-    }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
+    }
+
+    private void insertarVacuna(Vacuna nuevaVacuna) {
+        nuevaVacuna.setFechaAplicacion(getFechaVacuna());
+        nuevaVacuna.setTipo(textVacunaTipo.getText());
+        negocio.NegocioVacuna insertarVacuna = new negocio.NegocioVacuna();
+        insertarVacuna.insertarVacuna(nuevaVacuna);
+    }
+
+    private void insertarAlergia(Alergia nuevaAlergia) {
+        nuevaAlergia.setNombreAlergia(textAlergiaNombre.getText());
+        nuevaAlergia.setDetalleAlergia(textAlergiaDescrip.getText());
+        negocio.NegocioAlergia insertarAlergia = new negocio.NegocioAlergia();
+        insertarAlergia.insertarAlergia(nuevaAlergia);
+    }
+
+    private void insertarPadecimiento(Padecimiento nuevoPadecimiento) {
+        nuevoPadecimiento.setNombrePadecimiento(textPadecimientoNombre.getText());
+        nuevoPadecimiento.setDescripcion(textPadecimientoDesc.getText());
+        negocio.NegocioPadecimiento insertarPadecimiento = new negocio.NegocioPadecimiento();
+        insertarPadecimiento.insertarPadecimiento(nuevoPadecimiento);
+    }
 
     private void insertarPaciente(Paciente nuevoPaciente, ObtenerUltimoId ultimoId) {
         nuevoPaciente.setNombrePaciente(textNombre.getText());
@@ -606,13 +639,22 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         negocio.NegocioPaciente insertarPaciente = new negocio.NegocioPaciente();
         insertarPaciente.insetarPaciente(nuevoPaciente);
     }
-    public String getFechaNac(){
+    // PROBAR PASAR EL NOMBRE DEL CAMPO DE TEXTO COMO PARAMETRO.
+    private String getFechaNac(){
         String fechaNac = "";
         final int year = textFechaNac.getCurrent().get(Calendar.YEAR);
         final int day = textFechaNac.getCurrent().get(Calendar.DAY_OF_MONTH);
         final int month = textFechaNac.getCurrent().get(Calendar.MONTH) + 1;
         fechaNac = year+"-"+month+"-"+day;
         return fechaNac;
+    }
+    private String getFechaVacuna(){
+        String fechaVacuna = "";
+        final int year = textVacunaFechaApli.getCurrent().get(Calendar.YEAR);
+        final int day = textVacunaFechaApli.getCurrent().get(Calendar.DAY_OF_MONTH);
+        final int month = textVacunaFechaApli.getCurrent().get(Calendar.MONTH) + 1;
+        fechaVacuna = year+"-"+month+"-"+day;
+        return fechaVacuna;
     }
     /**
      * @param args the command line arguments
@@ -713,7 +755,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     private javax.swing.JTextField textSexo;
     private javax.swing.JTextField textTelefono;
     private javax.swing.JTextField textTratamiento;
-    private javax.swing.JTextField textVacunaFechaApli;
+    private datechooser.beans.DateChooserCombo textVacunaFechaApli;
     private javax.swing.JTextField textVacunaTipo;
     // End of variables declaration//GEN-END:variables
 }
