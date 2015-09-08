@@ -13,15 +13,15 @@ public class OperacionesPaciente {
     { 
         objetoDeConexion = new Conexion();
         String datosPaciente = "'"+objetoPaciente.getNombrePaciente()+"'"+","+"'"+objetoPaciente.getApellido1()+"'"+","
+                                +"'"+objetoPaciente.getApellido2()+"'"+","
                                 +"'"+objetoPaciente.getSexo()+"'"+","+"'"+objetoPaciente.getFechaNacimiento()+"'"+","
                                 +"'"+objetoPaciente.getNacionalidad()+"'"+","+"'"+objetoPaciente.getIdentificacion()+"'"+","
                                 +"'"+objetoPaciente.getTelefono()+"'"+","+"'"+objetoPaciente.getDireccion1()+"'"+","
                                 +"'"+objetoPaciente.getDireccion2()+"'"+","+"'"+objetoPaciente.getEmail()+"'";
         try
         {
-            estado = objetoDeConexion.conectar().createStatement();
-            estado.executeQuery("Call InsertarPaciente("+datosPaciente+")");
-            estado.close();
+           estado = objetoDeConexion.conectar().createStatement();
+           estado.executeQuery("Call InsertarPaciente("+datosPaciente+")");  
         }// fin de try
         catch (SQLException e)
         {

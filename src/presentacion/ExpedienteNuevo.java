@@ -5,6 +5,10 @@
  */
 package presentacion;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author cooper15
@@ -58,6 +62,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         textDireccionLectiva = new javax.swing.JTextArea();
+        jLabel20 = new javax.swing.JLabel();
+        textTelefono = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -162,6 +168,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         textDireccionLectiva.setRows(5);
         jScrollPane2.setViewportView(textDireccionLectiva);
 
+        jLabel20.setText("Telefono");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -210,8 +218,13 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addGap(18, 18, 18)
-                                        .addComponent(textFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(textTelefono)
+                                            .addComponent(textFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel20)))
                         .addGap(0, 49, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -237,7 +250,10 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
                         .addComponent(textFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel20)
+                        .addComponent(textTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(textNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8)
@@ -482,16 +498,39 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         entidad.Vacuna nuevaVacuna = new entidad.Vacuna();
         entidad.Alergia nuevaAlergia = new entidad.Alergia();
         entidad.Padecimiento nuevoPadecimiento = new entidad.Padecimiento();
+        entidad.Telefono nuevoTelefono = new entidad.Telefono();
+        
+        negocio.NegocioTelefono insertarTelefono = new negocio.NegocioTelefono();
+        nuevoTelefono.setTelefono(textTelefono.getText());
+        nuevoTelefono.setDetalle("Nada..");
+        insertarTelefono.insertarTelefono(nuevoTelefono);
+        
+        datos.ObtenerUltimoId ultimoId = new datos.ObtenerUltimoId();
+        
         
         nuevoPaciente.setNombrePaciente(textNombre.getText());
         nuevoPaciente.setApellido1(textApellido1.getText());
         nuevoPaciente.setApellido2(textApellido2.getText());
+        nuevoPaciente.setSexo(textSexo.getText());
+        try {
+            nuevoPaciente.setTelefono(ultimoId.obtenerUltimoId("telefono"));
+        } catch (SQLException ex) {
+            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            ultimoId.getEstado().close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         nuevoPaciente.setIdentificacion(textIdentificacion.getText());
         nuevoPaciente.setFechaNacimiento(textFechaNac.getText());
         nuevoPaciente.setNacionalidad(textNacionalidad.getText());
         nuevoPaciente.setEmail(textEmail.getText());
         nuevoPaciente.setDireccion1(textDireccionFamiliar.getText());
         nuevoPaciente.setDireccion2(textDireccionLectiva.getText());
+        
+        negocio.NegocioPaciente insertarPaciente = new negocio.NegocioPaciente();
+        insertarPaciente.insetarPaciente(nuevoPaciente);
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
 
     /**
@@ -552,6 +591,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -587,6 +627,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     private javax.swing.JTextField textPadecimientoDesc;
     private javax.swing.JTextField textPadecimientoNombre;
     private javax.swing.JTextField textSexo;
+    private javax.swing.JTextField textTelefono;
     private javax.swing.JTextField textVacunaFechaApli;
     private javax.swing.JTextField textVacunaTipo;
     // End of variables declaration//GEN-END:variables
