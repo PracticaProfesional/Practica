@@ -1,10 +1,7 @@
-
+// Los tipos enteros estan por definirse si se quedaran asi o se cambiaran
 package entidad;
 
-/**
- *
- * @author cooper15
- */
+
 public class SignosVitales {
     private double peso;
     private int frecuenciaCardiaca;
@@ -14,21 +11,127 @@ public class SignosVitales {
     private double aguaCorporal;
     private double masaCorporal;
     private double grasaCorporal;
-    private boolean alimentacionSaludable;
-    private boolean actividadFisica;
-    private boolean saludSexual;
-    private boolean papanicolaou;
-    private boolean tratamientoIntramuscular;
-    private boolean tratamientoIntravenoso;
-    private boolean tratamientoSubcutaneo;
-    private boolean glicemiaMicroMetodo;
-    private boolean cuidadoPrenatal;
-    private boolean entornoSaludable;
-    private boolean prevencionAdicciones;
-    private boolean examenMama;
-    private boolean curaciones;
+    private int alimentacionSaludable;
+    private int actividadFisica;
+    private int saludSexual;
+    private int papanicolaou;
+    private int tratamientoIntramuscular;
+    private int tratamientoIntravenoso;
+    private int tratamientoSubcutaneo;
+    private int glicemiaMicroMetodo;
+    private int cuidadoPrenatal;
+    private int entornoSaludable;
+    private int prevencionAdicciones;
+    private int examenMama;
+    private int curaciones;
     private double temperatura;
     private double talla;
+    
+
+    public int getAlimentacionSaludable() {
+        return alimentacionSaludable;
+    }
+
+    public void setAlimentacionSaludable(int alimentacionSaludable) {
+        this.alimentacionSaludable = alimentacionSaludable;
+    }
+
+    public int getActividadFisica() {
+        return actividadFisica;
+    }
+
+    public void setActividadFisica(int actividadFisica) {
+        this.actividadFisica = actividadFisica;
+    }
+
+    public int getSaludSexual() {
+        return saludSexual;
+    }
+
+    public void setSaludSexual(int saludSexual) {
+        this.saludSexual = saludSexual;
+    }
+
+    public int getPapanicolaou() {
+        return papanicolaou;
+    }
+
+    public void setPapanicolaou(int papanicolaou) {
+        this.papanicolaou = papanicolaou;
+    }
+
+    public int getTratamientoIntramuscular() {
+        return tratamientoIntramuscular;
+    }
+
+    public void setTratamientoIntramuscular(int tratamientoIntramuscular) {
+        this.tratamientoIntramuscular = tratamientoIntramuscular;
+    }
+
+    public int getTratamientoIntravenoso() {
+        return tratamientoIntravenoso;
+    }
+
+    public void setTratamientoIntravenoso(int tratamientoIntravenoso) {
+        this.tratamientoIntravenoso = tratamientoIntravenoso;
+    }
+
+    public int getTratamientoSubcutaneo() {
+        return tratamientoSubcutaneo;
+    }
+
+    public void setTratamientoSubcutaneo(int tratamientoSubcutaneo) {
+        this.tratamientoSubcutaneo = tratamientoSubcutaneo;
+    }
+
+    public int getGlicemiaMicroMetodo() {
+        return glicemiaMicroMetodo;
+    }
+
+    public void setGlicemiaMicroMetodo(int glicemiaMicroMetodo) {
+        this.glicemiaMicroMetodo = glicemiaMicroMetodo;
+    }
+
+    public int getCuidadoPrenatal() {
+        return cuidadoPrenatal;
+    }
+
+    public void setCuidadoPrenatal(int cuidadoPrenatal) {
+        this.cuidadoPrenatal = cuidadoPrenatal;
+    }
+
+    public int getEntornoSaludable() {
+        return entornoSaludable;
+    }
+
+    public void setEntornoSaludable(int entornoSaludable) {
+        this.entornoSaludable = entornoSaludable;
+    }
+
+    public int getPrevencionAdicciones() {
+        return prevencionAdicciones;
+    }
+
+    public void setPrevencionAdicciones(int prevencionAdicciones) {
+        this.prevencionAdicciones = prevencionAdicciones;
+    }
+
+    public int getExamenMama() {
+        return examenMama;
+    }
+
+    public void setExamenMama(int examenMama) {
+        this.examenMama = examenMama;
+    }
+
+    public int getCuraciones() {
+        return curaciones;
+    }
+
+    public void setCuraciones(int curaciones) {
+        this.curaciones = curaciones;
+    }
+    
 
     public double getPeso() {
         return peso;
@@ -94,93 +197,7 @@ public class SignosVitales {
         this.grasaCorporal = grasaCorporal;
     }
 
-    public boolean isAlimentacionSaludable() {
-        return alimentacionSaludable;
-    }
-
-    public void setAlimentacionSaludable(boolean alimentacionSaludable) {
-        this.alimentacionSaludable = alimentacionSaludable;
-    }
-
-    public boolean isActividadFisica() {
-        return actividadFisica;
-    }
-
-    public void setActividadFisica(boolean actividadFisica) {
-        this.actividadFisica = actividadFisica;
-    }
-
-    public boolean isSaludSexual() {
-        return saludSexual;
-    }
-
-    public void setSaludSexual(boolean saludSexual) {
-        this.saludSexual = saludSexual;
-    }
-
-    public boolean isPapanicolaou() {
-        return papanicolaou;
-    }
-
-    public void setPapanicolaou(boolean papanicolaou) {
-        this.papanicolaou = papanicolaou;
-    }
-
-    public boolean isTratamientoIntramuscular() {
-        return tratamientoIntramuscular;
-    }
-
-    public void setTratamientoIntramuscular(boolean tratamientoIntramuscular) {
-        this.tratamientoIntramuscular = tratamientoIntramuscular;
-    }
-
-    public boolean isTratamientoIntravenoso() {
-        return tratamientoIntravenoso;
-    }
-
-    public void setTratamientoIntravenoso(boolean tratamientoIntravenoso) {
-        this.tratamientoIntravenoso = tratamientoIntravenoso;
-    }
-
-    public boolean isTratamientoSubcutaneo() {
-        return tratamientoSubcutaneo;
-    }
-
-    public void setTratamientoSubcutaneo(boolean tratamientoSubcutaneo) {
-        this.tratamientoSubcutaneo = tratamientoSubcutaneo;
-    }
-
-    public boolean isGlicemiaMicroMetodo() {
-        return glicemiaMicroMetodo;
-    }
-
-    public void setGlicemiaMicroMetodo(boolean glicemiaMicroMetodo) {
-        this.glicemiaMicroMetodo = glicemiaMicroMetodo;
-    }
-
-    public boolean isCuidadoPrenatal() {
-        return cuidadoPrenatal;
-    }
-
-    public void setCuidadoPrenatal(boolean cuidadoPrenatal) {
-        this.cuidadoPrenatal = cuidadoPrenatal;
-    }
-
-    public boolean isEntornoSaludable() {
-        return entornoSaludable;
-    }
-
-    public void setEntornoSaludable(boolean entornoSaludable) {
-        this.entornoSaludable = entornoSaludable;
-    }
-
-    public boolean isPrevencionAdicciones() {
-        return prevencionAdicciones;
-    }
-
-    public void setPrevencionAdicciones(boolean prevencionAdicciones) {
-        this.prevencionAdicciones = prevencionAdicciones;
-    }
+    
 
     public double getTalla() {
         return talla;
@@ -190,24 +207,6 @@ public class SignosVitales {
         this.talla = talla;
     }
 
-    /**
-     * @return the examenMama
-     */
-    public boolean isExamenMama() {
-        return examenMama;
-    }
-
-    public void setExamenMama(boolean examenMama) {
-        this.examenMama = examenMama;
-    }
-
-    public boolean isCuraciones() {
-        return curaciones;
-    }
-
-    public void setCuraciones(boolean curaciones) {
-        this.curaciones = curaciones;
-    }
 
     public double getTemperatura() {
         return temperatura;

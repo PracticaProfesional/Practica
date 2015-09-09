@@ -23,19 +23,19 @@ public class OperacionesSignosVitales
                                     "'" + objetoSignosVitales.getAguaCorporal() + "'" + "," +
                                     "'" + objetoSignosVitales.getMasaCorporal() + "'" + "," +
                                     "'" + objetoSignosVitales.getGrasaCorporal() + "'" + "," +
-                                    "'" + objetoSignosVitales.isAlimentacionSaludable()+ "'" + "," +
-                                    "'" + objetoSignosVitales.isActividadFisica() + "'" + "," +
-                                    "'" + objetoSignosVitales.isSaludSexual() + "'" + "," +
-                                    "'" + objetoSignosVitales.isPapanicolaou() + "'" + "," +
-                                    "'" + objetoSignosVitales.isTratamientoIntramuscular() + "'" + "," +
-                                    "'" + objetoSignosVitales.isTratamientoIntravenoso() + "'" + "," +
-                                    "'" + objetoSignosVitales.isTratamientoSubcutaneo() + "'" + "," +
-                                    "'" + objetoSignosVitales.isGlicemiaMicroMetodo() + "'" + "," +
-                                    "'" + objetoSignosVitales.isCuidadoPrenatal() + "'" + "," +
-                                    "'" + objetoSignosVitales.isEntornoSaludable() + "'" + "," +
-                                    "'" + objetoSignosVitales.isPrevencionAdicciones() + "'" + "," +
-                                    "'" + objetoSignosVitales.isExamenMama() + "'" + "," +
-                                    "'" + objetoSignosVitales.isCuraciones() + "'" + "," +
+                                    "'" + objetoSignosVitales.getAlimentacionSaludable() + "'" + "," +
+                                    "'" + objetoSignosVitales.getActividadFisica() + "'" + "," +
+                                    "'" + objetoSignosVitales.getSaludSexual() + "'" + "," +
+                                    "'" + objetoSignosVitales.getPapanicolaou() + "'" + "," +
+                                    "'" + objetoSignosVitales.getTratamientoIntramuscular() + "'" + "," +
+                                    "'" + objetoSignosVitales.getTratamientoIntravenoso() + "'" + "," +
+                                    "'" + objetoSignosVitales.getTratamientoSubcutaneo() + "'" + "," +
+                                    "'" + objetoSignosVitales.getGlicemiaMicroMetodo() + "'" + "," +
+                                    "'" + objetoSignosVitales.getCuidadoPrenatal() + "'" + "," +
+                                    "'" + objetoSignosVitales.getEntornoSaludable() + "'" + "," +
+                                    "'" + objetoSignosVitales.getPrevencionAdicciones() + "'" + "," +
+                                    "'" + objetoSignosVitales.getExamenMama() + "'" + "," +
+                                    "'" + objetoSignosVitales.getCuraciones() + "'" + "," +
                                     "'" + objetoSignosVitales.getTemperatura() + "'" + "," +
                                     "'" + objetoSignosVitales.getTalla() + "'";
        
