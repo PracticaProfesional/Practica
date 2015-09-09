@@ -586,6 +586,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         insertarAntecedentesPersonal();
         insertarAntecedenteFamiliar();
         crearExpedienteMedico();
+        this.dispose();
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
 
     private void crearExpedienteMedico() {
