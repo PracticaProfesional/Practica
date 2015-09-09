@@ -548,7 +548,7 @@ public class Inicio extends javax.swing.JFrame {
 //        }
         try
     {
-        BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.translucencySmallShadow;
+        BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
         UIManager.put("RootPane.setupButtonVisible", false);
         org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
         
