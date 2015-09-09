@@ -419,7 +419,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     jLabel16.setText("Fecha Aplicación");
 
-    textVacunaFechaApli.setFormat(2);
     textVacunaFechaApli.setCurrentNavigateIndex(0);
     textVacunaFechaApli.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
 
@@ -583,12 +582,27 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         insertarPaciente(nuevoPaciente, ultimoId);   
         insertarPadecimiento(nuevoPadecimiento);     
         insertarAlergia(nuevaAlergia);
-        insertarVacuna(nuevaVacuna);
-        
+        insertarVacuna(nuevaVacuna); 
         insertarAntecedentesPersonal();
         
-        
+        insertarAntecedenteFamiliar();
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
+
+    private void insertarAntecedenteFamiliar() {
+        entidad.AntecedenteFamiliar nuevoAntFam = new entidad.AntecedenteFamiliar();
+        entidad.Padecimiento padecimientoFam = new entidad.Padecimiento();
+        nuevoAntFam.setParentezco(textAntFamParentezco.getText());
+        padecimientoFam.setNombrePadecimiento(textAntFamNombre.getText());
+        padecimientoFam.setDescripcion(textAntFamDescrip.getText());
+        negocio.NegocioPadecimiento nuevoPad = new negocio.NegocioPadecimiento();
+        nuevoPad.insertarPadecimiento(padecimientoFam);
+        negocio.NegocioAntecedenteFamiliar insertarAntFam = new negocio.NegocioAntecedenteFamiliar();
+        try {
+            insertarAntFam.insertarAntecedenteFamiliar(nuevoAntFam);
+        } catch (SQLException ex) {
+            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void insertarAntecedentesPersonal() {
         entidad.AntecedentesPersonales nuevoAntPer = new entidad.AntecedentesPersonales();
