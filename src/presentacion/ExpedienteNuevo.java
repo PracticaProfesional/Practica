@@ -584,9 +584,18 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         insertarAlergia(nuevaAlergia);
         insertarVacuna(nuevaVacuna); 
         insertarAntecedentesPersonal();
-        
         insertarAntecedenteFamiliar();
+        crearExpedienteMedico();
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
+
+    private void crearExpedienteMedico() {
+        negocio.NegocioExpedienteMedico insertarExpediente = new negocio.NegocioExpedienteMedico();
+        try {
+            insertarExpediente.insertarExpedientMedico();
+        } catch (SQLException ex) {
+            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void insertarAntecedenteFamiliar() {
         entidad.AntecedenteFamiliar nuevoAntFam = new entidad.AntecedenteFamiliar();
