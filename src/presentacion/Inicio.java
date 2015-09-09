@@ -110,10 +110,10 @@ public class Inicio extends javax.swing.JFrame {
         comboBoxIntraVenoso = new javax.swing.JComboBox();
         tabInventario = new javax.swing.JTabbedPane();
         tapAgenda = new javax.swing.JTabbedPane();
-        jPanel8 = new javax.swing.JPanel();
+        agendaPanelPrincipal = new javax.swing.JPanel();
         agendaPanelCalendario = new javax.swing.JPanel();
-        dateChooserPanel1 = new datechooser.beans.DateChooserPanel();
-        agendaPanelHoras = new javax.swing.JPanel();
+        agendaCalendario = new datechooser.beans.DateChooserPanel();
+        agendaPanelActividades = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         tabReportes = new javax.swing.JTabbedPane();
@@ -489,16 +489,18 @@ public class Inicio extends javax.swing.JFrame {
             agendaPanelCalendarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agendaPanelCalendarioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dateChooserPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(agendaCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         agendaPanelCalendarioLayout.setVerticalGroup(
             agendaPanelCalendarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agendaPanelCalendarioLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(dateChooserPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(agendaCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        agendaPanelActividades.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actividades", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -551,45 +553,45 @@ public class Inicio extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(0).setMaxWidth(100);
         }
 
-        javax.swing.GroupLayout agendaPanelHorasLayout = new javax.swing.GroupLayout(agendaPanelHoras);
-        agendaPanelHoras.setLayout(agendaPanelHorasLayout);
-        agendaPanelHorasLayout.setHorizontalGroup(
-            agendaPanelHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(agendaPanelHorasLayout.createSequentialGroup()
+        javax.swing.GroupLayout agendaPanelActividadesLayout = new javax.swing.GroupLayout(agendaPanelActividades);
+        agendaPanelActividades.setLayout(agendaPanelActividadesLayout);
+        agendaPanelActividadesLayout.setHorizontalGroup(
+            agendaPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agendaPanelActividadesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        agendaPanelHorasLayout.setVerticalGroup(
-            agendaPanelHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(agendaPanelHorasLayout.createSequentialGroup()
+        agendaPanelActividadesLayout.setVerticalGroup(
+            agendaPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agendaPanelActividadesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout agendaPanelPrincipalLayout = new javax.swing.GroupLayout(agendaPanelPrincipal);
+        agendaPanelPrincipal.setLayout(agendaPanelPrincipalLayout);
+        agendaPanelPrincipalLayout.setHorizontalGroup(
+            agendaPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agendaPanelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(agendaPanelCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(agendaPanelHoras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(agendaPanelActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+        agendaPanelPrincipalLayout.setVerticalGroup(
+            agendaPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agendaPanelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(agendaPanelHoras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(agendaPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(agendaPanelActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(agendaPanelCalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        tapAgenda.addTab("Citas", jPanel8);
+        tapAgenda.addTab("Citas", agendaPanelPrincipal);
 
         panelPrincipal.addTab("Agenda", tapAgenda);
         panelPrincipal.addTab("Reportes", tabReportes);
@@ -684,8 +686,10 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private datechooser.beans.DateChooserPanel agendaCalendario;
+    private javax.swing.JPanel agendaPanelActividades;
     private javax.swing.JPanel agendaPanelCalendario;
-    private javax.swing.JPanel agendaPanelHoras;
+    private javax.swing.JPanel agendaPanelPrincipal;
     private javax.swing.JButton btnConsultaMedica;
     private javax.swing.JButton btnCrearExpediente;
     private javax.swing.JButton btnGuardarConsultaMedica;
@@ -700,7 +704,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox comboBoxPrevencionAdicciones;
     private javax.swing.JComboBox comboBoxSaludSexual;
     private javax.swing.JComboBox comboBoxSubCutaneo;
-    private datechooser.beans.DateChooserPanel dateChooserPanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -736,7 +739,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
