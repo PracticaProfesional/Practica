@@ -16,7 +16,7 @@ public class OperacionesExpedienteMedico {
         String idAntecedentesFam;
         String idPaciente;
         ObtenerUltimoId ultimoId = new ObtenerUltimoId();
-        idAntecedentesPersonales = ultimoId.obtenerUltimoId("AntecendentesPersonales");
+        idAntecedentesPersonales = ultimoId.obtenerUltimoId("AntecedentesPersonales");
         idAntecedentesFam = ultimoId.obtenerUltimoId("AntecedentesFamiliares");
         idPaciente = ultimoId.obtenerUltimoId("Paciente");
         estado = objetoDeConexion.conectar().createStatement();
