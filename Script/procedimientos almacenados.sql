@@ -153,8 +153,17 @@ BEGIN
 	insert into consultamedica (idExpedienteMedico, idExamenFisico, motivoConsulta,
 			descripcionSintomas, diagnostico, signosVitales, idCita, idReceta)
 	values (idExpMed, idExaFis, motiCon, descripSint, diag, idSigVit, idCit, idRec);
-END
+END $
 
+
+DELIMITER $
+CREATE PROCEDURE InsertarAntecedentesPersonalesPadecimientos (in idPad int,
+		in idAntPer int)
+BEGIN
+	insert into `AntecedentesPersonales-Padecimientos` (idPadecimientos, 
+			idAntecedentesPersonales)
+	values (idPad, idAntPer);
+END
 
 
 
@@ -208,7 +217,11 @@ $
 Call InsertarExpedienteMedico (1, null, 1, 1);
 $
 
-Call InsertarConsultaMedica (1, 1, 'Nada', 'Nada', 'Nada', 1, 1, 1)
+Call InsertarConsultaMedica (1, 1, 'Nada', 'Nada', 'Nada', 1, 1, 1);
+$
+
+Call InsertarAntecedentesPersonalesPadecimientos (1, 1)
+
 
 
 
