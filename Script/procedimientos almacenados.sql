@@ -106,7 +106,7 @@ DELIMITER $  --  insertar en la tabla antecedentes personales
 CREATE PROCEDURE InsertarAntecedentesPersonales (in idAle int, in trata varchar(45), 
 		in idPad int, in idVac int, in med varchar(45))
 BEGIN
-	insert into antecedentespersonales (idAlergias, tratamiento, idPadecimientos, 
+	insert into AntecedentesPersonales (idAlergias, tratamiento, idPadecimientos, 
 			idVacunas, medicamento)
 	values (idAle, trata, idPad, idVac, med);
 END $
@@ -115,7 +115,7 @@ END $
 DELIMITER $
 CREATE PROCEDURE InsertarAntecedentesFamiliares (in idPad int, in par varchar(45))
 BEGIN
-	insert into antecedentesfamiliares (idPadecimientos, parentesco)
+	insert into AntecedentesFamiliares (idPadecimientos, parentesco)
 	values (idPad, par);
 END $
 
@@ -153,8 +153,17 @@ BEGIN
 	insert into consultamedica (idExpedienteMedico, idExamenFisico, motivoConsulta,
 			descripcionSintomas, diagnostico, signosVitales, idCita, idReceta)
 	values (idExpMed, idExaFis, motiCon, descripSint, diag, idSigVit, idCit, idRec);
-END
+END $
 
+
+DELIMITER $
+CREATE PROCEDURE InsertarAntecedentesPersonalesPadecimientos (in idPad int,
+		in idAntPer int)
+BEGIN
+	insert into `AntecedentesPersonales-Padecimientos` (idPadecimientos, 
+			idAntecedentesPersonales)
+	values (idPad, idAntPer);
+END
 
 
 
@@ -208,7 +217,11 @@ $
 Call InsertarExpedienteMedico (1, null, 1, 1);
 $
 
-Call InsertarConsultaMedica (1, 1, 'Nada', 'Nada', 'Nada', 1, 1, 1)
+Call InsertarConsultaMedica (1, 1, 'Nada', 'Nada', 'Nada', 1, 1, 1);
+$
+
+Call InsertarAntecedentesPersonalesPadecimientos (1, 1)
+
 
 
 

@@ -73,14 +73,12 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         textFechaNac = new datechooser.beans.DateChooserCombo();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        textPadecimientoNombre = new javax.swing.JTextField();
-        textPadecimientoDesc = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         textTratamiento = new javax.swing.JTextField();
         Medicamentos = new javax.swing.JLabel();
         textMedicamentos = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -144,11 +142,11 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         panelBtnExpedienteNUevoLayout.setVerticalGroup(
             panelBtnExpedienteNUevoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBtnExpedienteNUevoLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelBtnExpedienteNUevoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExpedienteNuevoGuardar)
                     .addComponent(btnExpedienteNuevoCancelar))
-                .addGap(33, 33, 33))
+                .addGap(24, 24, 24))
         );
 
         jLabel1.setText("Nombre");
@@ -322,20 +320,20 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             .addComponent(jLabel10)
             .addGap(18, 18, 18)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(79, Short.MAX_VALUE))
+            .addContainerGap(96, Short.MAX_VALUE))
     );
 
     jTabbedPane1.addTab("Datos Personales", jPanel4);
 
     jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Padecimientos"));
 
-    jLabel11.setText("Nombre");
-
-    jLabel12.setText("Descripcion");
-
     jLabel21.setText("Tratamiento");
 
     Medicamentos.setText("Medicamentos");
+
+    jLabel11.setText("Padecimientos");
+
+    jButton2.setText("Añadir");
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -344,30 +342,24 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         .addGroup(jPanel2Layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel11)
-                .addComponent(jLabel12)
                 .addComponent(jLabel21)
-                .addComponent(Medicamentos))
+                .addComponent(Medicamentos)
+                .addComponent(jLabel11))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(textTratamiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(textMedicamentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(textPadecimientoDesc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(textPadecimientoNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(118, 118, 118))
     );
     jPanel2Layout.setVerticalGroup(
         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel2Layout.createSequentialGroup()
-            .addContainerGap()
+            .addGap(20, 20, 20)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel11)
-                .addComponent(textPadecimientoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(textPadecimientoDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel12))
-            .addGap(18, 18, 18)
+                .addComponent(jButton2))
+            .addGap(29, 29, 29)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(textTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel21))
@@ -375,7 +367,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(Medicamentos)
                 .addComponent(textMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap(36, Short.MAX_VALUE))
     );
 
     jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Alergias"));
@@ -419,7 +411,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     jLabel16.setText("Fecha Aplicación");
 
-    textVacunaFechaApli.setFormat(2);
     textVacunaFechaApli.setCurrentNavigateIndex(0);
     textVacunaFechaApli.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
 
@@ -468,12 +459,12 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel5Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap())
+            .addContainerGap(26, Short.MAX_VALUE))
     );
 
     jTabbedPane1.addTab("Antecedentes Personales", jPanel5);
@@ -535,7 +526,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addGap(99, 99, 99)
             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(244, Short.MAX_VALUE))
+            .addContainerGap(261, Short.MAX_VALUE))
     );
 
     jTabbedPane1.addTab("Antecedentes Familiares", jPanel1);
@@ -555,8 +546,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
             .addComponent(panelBtnExpedienteNUevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(23, 23, 23))
     );
@@ -583,17 +574,42 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         insertarPaciente(nuevoPaciente, ultimoId);   
         insertarPadecimiento(nuevoPadecimiento);     
         insertarAlergia(nuevaAlergia);
-        insertarVacuna(nuevaVacuna);
-        
+        insertarVacuna(nuevaVacuna); 
         insertarAntecedentesPersonal();
-        
-        
+        insertarAntecedenteFamiliar();
+        crearExpedienteMedico();
+        this.dispose();
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
+
+    private void crearExpedienteMedico() {
+        negocio.NegocioExpedienteMedico insertarExpediente = new negocio.NegocioExpedienteMedico();
+        try {
+            insertarExpediente.insertarExpedientMedico();
+        } catch (SQLException ex) {
+            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void insertarAntecedenteFamiliar() {
+        entidad.AntecedenteFamiliar nuevoAntFam = new entidad.AntecedenteFamiliar();
+        entidad.Padecimiento padecimientoFam = new entidad.Padecimiento();
+        nuevoAntFam.setParentezco(textAntFamParentezco.getText());
+        padecimientoFam.setNombrePadecimiento(textAntFamNombre.getText());
+        padecimientoFam.setDescripcion(textAntFamDescrip.getText());
+        negocio.NegocioPadecimiento nuevoPad = new negocio.NegocioPadecimiento();
+        nuevoPad.insertarPadecimiento(padecimientoFam);
+        negocio.NegocioAntecedenteFamiliar insertarAntFam = new negocio.NegocioAntecedenteFamiliar();
+        try {
+            insertarAntFam.insertarAntecedenteFamiliar(nuevoAntFam);
+        } catch (SQLException ex) {
+            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void insertarAntecedentesPersonal() {
         entidad.AntecedentesPersonales nuevoAntPer = new entidad.AntecedentesPersonales();
-        nuevoAntPer.setTratamiento(textTratamiento.getText());
-        nuevoAntPer.setMedicamento(textMedicamentos.getText());
+//        nuevoAntPer.setTratamiento(textTratamiento.getText());
+//        nuevoAntPer.setMedicamento(textMedicamentos.getText());
         negocio.NegocioAntecedentePersonal insertarAntPer = new negocio.NegocioAntecedentePersonal();
         insertarAntPer.insertarAntecedentePersonal(nuevoAntPer);
     }
@@ -620,10 +636,10 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     }
 
     private void insertarPadecimiento(Padecimiento nuevoPadecimiento) {
-        nuevoPadecimiento.setNombrePadecimiento(textPadecimientoNombre.getText());
-        nuevoPadecimiento.setDescripcion(textPadecimientoDesc.getText());
-        negocio.NegocioPadecimiento insertarPadecimiento = new negocio.NegocioPadecimiento();
-        insertarPadecimiento.insertarPadecimiento(nuevoPadecimiento);
+//        nuevoPadecimiento.setNombrePadecimiento(textPadecimientoNombre.getText());
+//        nuevoPadecimiento.setDescripcion(textPadecimientoDesc.getText());
+//        negocio.NegocioPadecimiento insertarPadecimiento = new negocio.NegocioPadecimiento();
+//        insertarPadecimiento.insertarPadecimiento(nuevoPadecimiento);
     }
 
     private void insertarPaciente(Paciente nuevoPaciente, ObtenerUltimoId ultimoId) {
@@ -714,11 +730,11 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     private javax.swing.JLabel Medicamentos;
     private javax.swing.JButton btnExpedienteNuevoCancelar;
     private javax.swing.JButton btnExpedienteNuevoGuardar;
+    private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -762,8 +778,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     private javax.swing.JTextField textMedicamentos;
     private javax.swing.JTextField textNacionalidad;
     private javax.swing.JTextField textNombre;
-    private javax.swing.JTextField textPadecimientoDesc;
-    private javax.swing.JTextField textPadecimientoNombre;
     private javax.swing.JTextField textSexo;
     private javax.swing.JTextField textTelefono;
     private javax.swing.JTextField textTratamiento;

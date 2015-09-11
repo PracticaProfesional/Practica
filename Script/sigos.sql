@@ -316,6 +316,30 @@ CREATE TABLE IF NOT EXISTS `sigos`.`Usuario` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `sigos`.`AntecedentesPersonales-Padecimientos`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sigos`.`AntecedentesPersonales-Padecimientos` (
+  `Id` INT NOT NULL AUTO_INCREMENT ,
+  `idPadecimientos` INT NOT NULL ,
+  `idAntecedentesPersonales` INT NOT NULL ,
+  PRIMARY KEY (`Id`) ,
+  INDEX `fk_Padecimientos_idx` (`IdPadecimientos` ASC) ,
+  INDEX `fk_AntecendentesPersonales_idx` (`IdAntecedentesPersonales` ASC) ,
+  CONSTRAINT `fk_Padecimientos`
+    FOREIGN KEY (`idPadecimientos` )
+    REFERENCES `sigos`.`Padecimientos` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_AntecendentesPersonales`
+    FOREIGN KEY (`idAntecedentesPersonales` )
+    REFERENCES `sigos`.`AntecedentesPersonales` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+USE `sigos` ;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
