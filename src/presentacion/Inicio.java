@@ -10,7 +10,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.UIManager;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author cooper15
@@ -125,7 +125,7 @@ public class Inicio extends javax.swing.JFrame {
         agendaCalendario = new datechooser.beans.DateChooserPanel();
         agendaPanelActividades = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        agendaTabla = new javax.swing.JTable();
         tabReportes = new javax.swing.JTabbedPane();
         tabAdministrador = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -776,6 +776,12 @@ public class Inicio extends javax.swing.JFrame {
 
         agendaPanelCalendario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calendario", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
 
+        agendaCalendario.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
+            public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
+                agendaCalendarioOnSelectionChange(evt);
+            }
+        });
+
         javax.swing.GroupLayout agendaPanelCalendarioLayout = new javax.swing.GroupLayout(agendaPanelCalendario);
         agendaPanelCalendario.setLayout(agendaPanelCalendarioLayout);
         agendaPanelCalendarioLayout.setHorizontalGroup(
@@ -795,28 +801,28 @@ public class Inicio extends javax.swing.JFrame {
 
         agendaPanelActividades.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actividades", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        agendaTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"00:00", null},
-                {"01:00", null},
-                {"02:00", null},
-                {"03:00", null},
-                {"04:00", null},
-                {"05:00", null},
-                {"06:00", null},
-                {"07:00", null},
                 {"08:00", null},
+                {"08:30", null},
                 {"09:00", null},
+                {"09:30", null},
                 {"10:00", null},
+                {"10:30", null},
                 {"11:00", null},
+                {"11:30", null},
                 {"12:00", null},
+                {"12:30", null},
                 {"13:00", null},
+                {"13:30", null},
                 {"14:00", null},
+                {"14:30", null},
                 {"15:00", null},
+                {"15:30", null},
                 {"16:00", null},
+                {"16:30", null},
                 {"17:00", null},
-                {"18:00", null},
-                {"19:00", null},
+                {"17:30", null},
                 {"20:00", null},
                 {"21:00", null},
                 {"22:00", null},
@@ -841,9 +847,14 @@ public class Inicio extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setMaxWidth(100);
+        agendaTabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agendaTablaMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(agendaTabla);
+        if (agendaTabla.getColumnModel().getColumnCount() > 0) {
+            agendaTabla.getColumnModel().getColumn(0).setMaxWidth(100);
         }
 
         javax.swing.GroupLayout agendaPanelActividadesLayout = new javax.swing.GroupLayout(agendaPanelActividades);
@@ -937,6 +948,16 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbOidosActionPerformed
 
+    private void agendaTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendaTablaMouseClicked
+        // al presionar la actividad de la tabla mostrar menu para ingresar actividad en caso de que no exista
+        
+        JOptionPane.showMessageDialog(rootPane, "Colocar actividad.");
+    }//GEN-LAST:event_agendaTablaMouseClicked
+
+    private void agendaCalendarioOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_agendaCalendarioOnSelectionChange
+        // recargar la informacion de la tabla segun el dia elegido
+    }//GEN-LAST:event_agendaCalendarioOnSelectionChange
+
     /**
      * @param args the command line arguments
      */
@@ -987,6 +1008,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel agendaPanelActividades;
     private javax.swing.JPanel agendaPanelCalendario;
     private javax.swing.JPanel agendaPanelPrincipal;
+    private javax.swing.JTable agendaTabla;
     private javax.swing.JButton btnConsultaMedica;
     private javax.swing.JButton btnCrearExpediente;
     private javax.swing.JComboBox cbConductos;
@@ -1074,7 +1096,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jlConductos;
     private javax.swing.JLabel jlOidos;
