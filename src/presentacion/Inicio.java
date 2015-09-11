@@ -257,7 +257,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 790, Short.MAX_VALUE)
+            .addGap(0, 693, Short.MAX_VALUE)
         );
 
         jTabbedPane4.addTab("Signos Vitales", jPanel1);
@@ -859,7 +859,7 @@ public class Inicio extends javax.swing.JFrame {
             agendaPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agendaPanelActividadesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -932,7 +932,8 @@ public class Inicio extends javax.swing.JFrame {
         ExpedienteNuevo nuevo = new ExpedienteNuevo(this, true);
         nuevo.setVisible(true);
     }//GEN-LAST:event_btnCrearExpedienteActionPerformed
-
+    
+   
     private void cbOidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOidosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbOidosActionPerformed
@@ -992,8 +993,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox cbConductos;
     private javax.swing.JComboBox cbConductos15;
     private javax.swing.JComboBox cbConductos16;
-    private javax.swing.JComboBox cbConductos18;
-    private javax.swing.JComboBox cbConductos19;
     private javax.swing.JComboBox cbConductos2;
     private javax.swing.JComboBox cbConductos3;
     private javax.swing.JComboBox cbConductos4;
@@ -1005,8 +1004,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox cbOidos1;
     private javax.swing.JComboBox cbOidos12;
     private javax.swing.JComboBox cbOidos13;
-    private javax.swing.JComboBox cbOidos18;
-    private javax.swing.JComboBox cbOidos19;
     private javax.swing.JComboBox cbOidos2;
     private javax.swing.JComboBox cbOidos5;
     private javax.swing.JComboBox cbOidos6;
@@ -1019,8 +1016,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox cbTimpanos1;
     private javax.swing.JComboBox cbTimpanos14;
     private javax.swing.JComboBox cbTimpanos15;
-    private javax.swing.JComboBox cbTimpanos16;
-    private javax.swing.JComboBox cbTimpanos17;
     private javax.swing.JComboBox cbTimpanos2;
     private javax.swing.JComboBox cbTimpanos3;
     private javax.swing.JComboBox cbTimpanos5;
@@ -1051,12 +1046,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1065,7 +1054,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
