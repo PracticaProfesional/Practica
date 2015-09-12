@@ -91,14 +91,15 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
         cbDislipidemia = new javax.swing.JCheckBox();
         jlEnfTiroides = new javax.swing.JLabel();
         tfTiroides = new javax.swing.JTextField();
-        btnIngresar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         jScrollBar1 = new javax.swing.JScrollBar();
+        jPanel1 = new javax.swing.JPanel();
+        btnCancelar = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Padecimientos");
 
-        jpOidos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Oídos"));
+        jpOidos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Oídos"));
 
         jLabel1.setText("Vertigo");
 
@@ -123,16 +124,21 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
             jpOidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOidosLayout.createSequentialGroup()
                 .addGroup(jpOidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpOidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(cbVertigo)
+                    .addGroup(jpOidosLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
                         .addComponent(jLabel1))
-                    .addGroup(jpOidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(cbSordera)
-                        .addComponent(jlSordera)))
-                .addGap(0, 9, Short.MAX_VALUE))
+                    .addGroup(jpOidosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(cbVertigo))
+                    .addGroup(jpOidosLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(jpOidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbSordera)
+                            .addComponent(jlSordera))))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jpOjos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Ojos"));
+        jpOjos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ojos"));
 
         jlMiopia.setText("Miopía");
 
@@ -156,17 +162,16 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
         jpOjosLayout.setVerticalGroup(
             jpOjosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOjosLayout.createSequentialGroup()
+                .addGap(7, 7, 7)
                 .addGroup(jpOjosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpOjosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jlAstigmatismo)
-                        .addComponent(cbAstigmatismo))
-                    .addGroup(jpOjosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(cbMiopia)
-                        .addComponent(jlMiopia)))
+                    .addComponent(cbAstigmatismo)
+                    .addComponent(cbMiopia)
+                    .addComponent(jlMiopia)
+                    .addComponent(jlAstigmatismo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Otros"));
 
         jLabel6.setText("Enfermedades Gastrointestinales");
 
@@ -312,7 +317,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpCorazon.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Corazón"));
+        jpCorazon.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Corazón"));
 
         jlPresionAlta.setText("Presión Alta");
 
@@ -346,22 +351,25 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
             jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCorazonLayout.createSequentialGroup()
                 .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorazonLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlCardiopatía)
-                            .addComponent(cbCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpCorazonLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbPresionAlta)
-                            .addComponent(jlPresionAlta))))
-                .addGap(18, 18, 18)
-                .addComponent(tfCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorazonLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jlCardiopatía)
+                                    .addComponent(cbCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jpCorazonLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jlPresionAlta)))
+                        .addGap(18, 18, 18)
+                        .addComponent(tfCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpCorazonLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(cbPresionAlta)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpMetabolismo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Metabolismo"));
+        jpMetabolismo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Metabolismo"));
 
         jlPrediabetes.setText("Prediabetes");
 
@@ -427,38 +435,37 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpMetabolismoLayout.createSequentialGroup()
                         .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbPrediabetes)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMetabolismoLayout.createSequentialGroup()
+                            .addGroup(jpMetabolismoLayout.createSequentialGroup()
                                 .addComponent(cbBajopeso)
-                                .addGap(1, 1, 1)))
+                                .addGap(2, 2, 2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMetabolismoLayout.createSequentialGroup()
+                                .addComponent(cbPrediabetes)
+                                .addGap(3, 3, 3)))
                         .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
                                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jpMetabolismoLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(tfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
                                         .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                                                    .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jlDiabetes)
-                                                        .addComponent(cbDiabetes))
-                                                    .addGap(16, 16, 16))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMetabolismoLayout.createSequentialGroup()
-                                                    .addComponent(jlSobrepeso)
-                                                    .addGap(18, 18, 18)))
-                                            .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                                                .addComponent(cbSobrepeso)
-                                                .addGap(18, 18, 18)))
-                                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jlDiabetes)
+                                            .addComponent(cbDiabetes))
+                                        .addGap(14, 14, 14)
+                                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cbDislipidemia)
                                             .addComponent(jlDislipidemia))))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(22, Short.MAX_VALUE))
                             .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                                .addGap(45, 45, 45)
+                                .addGap(9, 9, 9)
                                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cbObesidad)
-                                    .addComponent(jlObesidad))
+                                    .addComponent(jlSobrepeso)
+                                    .addComponent(cbSobrepeso))
+                                .addGap(11, 11, 11)
+                                .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlObesidad, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cbObesidad, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jpMetabolismoLayout.createSequentialGroup()
                         .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -469,16 +476,37 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        btnIngresar.setText("Ingresar");
-
-        btnCancelar.setText("Cancelar");
-
         jScrollBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollBar1.addAdjustmentListener(new java.awt.event.AdjustmentListener() {
             public void adjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {
                 jScrollBar1AdjustmentValueChanged(evt);
             }
         });
+
+        btnCancelar.setText("Cancelar");
+
+        btnIngresar.setText("Ingresar");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnIngresar)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelar)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnIngresar))
+                .addGap(25, 25, 25))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -488,17 +516,13 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnIngresar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jpOidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jpOjos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jpMetabolismo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpCorazon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jpCorazon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -507,10 +531,11 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jpOidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jpOjos, javax.swing.GroupLayout.PREFERRED_SIZE, 51, Short.MAX_VALUE))
+                            .addComponent(jpOjos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jpCorazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -518,12 +543,8 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCancelar)
-                            .addComponent(btnIngresar))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -616,6 +637,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JTextField jTextField1;
