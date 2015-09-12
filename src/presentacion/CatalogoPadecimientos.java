@@ -209,6 +209,22 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alcoholismo", "Drogadicción", "Tabaquismo", "Otros" }));
 
+        jTextField1.setEnabled(false);
+
+        jTextField2.setEnabled(false);
+
+        jTextField3.setEnabled(false);
+
+        jTextField4.setEnabled(false);
+
+        jTextField5.setEnabled(false);
+
+        jTextField6.setEnabled(false);
+
+        jTextField7.setEnabled(false);
+
+        jTextField8.setEnabled(false);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -330,6 +346,8 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
             }
         });
 
+        tfCardiopatia.setEnabled(false);
+
         javax.swing.GroupLayout jpCorazonLayout = new javax.swing.GroupLayout(jpCorazon);
         jpCorazon.setLayout(jpCorazonLayout);
         jpCorazonLayout.setHorizontalGroup(
@@ -386,6 +404,8 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
         cbEnfTiroides.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hipotiroidismo", "Hipertiroidismo", "Tiroiditis", "Otros", " " }));
 
         jlEnfTiroides.setText("Enfermedades de la Tiroides");
+
+        tfTiroides.setEnabled(false);
 
         javax.swing.GroupLayout jpMetabolismoLayout = new javax.swing.GroupLayout(jpMetabolismo);
         jpMetabolismo.setLayout(jpMetabolismoLayout);

@@ -272,7 +272,7 @@
                 <Container class="javax.swing.JTabbedPane" name="jTabbedPane4">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="Center"/>
+                      <BorderConstraints direction="First"/>
                     </Constraint>
                   </Constraints>
 
@@ -315,9 +315,9 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="226" max="32767" attributes="0"/>
+                                  <EmptySpace pref="254" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -864,13 +864,11 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel42" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel43" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jTextField15" alignment="0" pref="557" max="32767" attributes="0"/>
                                           <Component id="jTextField16" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTextField17" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -889,11 +887,6 @@
                                           <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jTextField16" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -910,16 +903,9 @@
                                 <Property name="text" type="java.lang.String" value="S&#xed;ntomas"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel43">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Diagn&#xf3;stico"/>
-                              </Properties>
-                            </Component>
                             <Component class="javax.swing.JTextField" name="jTextField15">
                             </Component>
                             <Component class="javax.swing.JTextField" name="jTextField16">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField17">
                             </Component>
                           </SubComponents>
                         </Container>
@@ -937,12 +923,17 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jPanel6" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="textDiagnostico" max="32767" attributes="0"/>
+                                              </Group>
                                               <Component id="jPanel8" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
@@ -971,8 +962,13 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="textDiagnostico" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="114" max="32767" attributes="0"/>
                               </Group>
                               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
@@ -1003,7 +999,7 @@
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="cbOidos1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbNariz" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1024,30 +1020,37 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jComboBox3" max="32767" attributes="0"/>
-                                          <Component id="jComboBox2" max="32767" attributes="0"/>
+                                          <Component id="cbDetallesNariz" max="32767" attributes="0"/>
+                                          <Component id="cbDetallesOidos" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="textOtrosDetallesOidos" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="textOtrosDetallesNariz" min="-2" pref="100" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="cbOidos7" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbAdenopatias" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="cbOidos5" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbTiroides" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="cbOidos2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbBoca" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
+                                      <Component id="cbDetallesBoca" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="textOtrosDetallesBoca" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1065,7 +1068,10 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jComboBox2" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                                                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                              <Component id="cbDetallesOidos" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                                              <Component id="textOtrosDetallesOidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
                                                           <Group type="103" groupAlignment="3" attributes="0">
                                                               <Component id="jlOidos" alignment="3" min="-2" max="-2" attributes="0"/>
                                                               <Component id="cbOidos" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1074,8 +1080,9 @@
                                                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="3" attributes="0">
                                                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="cbOidos1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="cbNariz" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="cbDetallesNariz" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="textOtrosDetallesNariz" alignment="3" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -1083,18 +1090,19 @@
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="cbOidos2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cbBoca" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cbDetallesBoca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="textOtrosDetallesBoca" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="cbOidos5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cbTiroides" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="cbOidos7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cbAdenopatias" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1143,7 +1151,7 @@
                                 <Property name="text" type="java.lang.String" value="Nariz"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbOidos1">
+                            <Component class="javax.swing.JComboBox" name="cbNariz">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1152,13 +1160,16 @@
                                   </StringArray>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbNarizActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel7">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Boca"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbOidos2">
+                            <Component class="javax.swing.JComboBox" name="cbBoca">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1167,13 +1178,16 @@
                                   </StringArray>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbBocaActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel8">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Tiroides"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbOidos7">
+                            <Component class="javax.swing.JComboBox" name="cbAdenopatias">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1188,7 +1202,7 @@
                                 <Property name="text" type="java.lang.String" value="Adenopat&#xed;as"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbOidos5">
+                            <Component class="javax.swing.JComboBox" name="cbTiroides">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1198,7 +1212,7 @@
                                 </Property>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox2">
+                            <Component class="javax.swing.JComboBox" name="cbDetallesOidos">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="3">
@@ -1207,9 +1221,13 @@
                                     <StringItem index="2" value="Otros"/>
                                   </StringArray>
                                 </Property>
+                                <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDetallesOidosActionPerformed"/>
+                              </Events>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox3">
+                            <Component class="javax.swing.JComboBox" name="cbDetallesNariz">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="4">
@@ -1219,9 +1237,13 @@
                                     <StringItem index="3" value="Otros"/>
                                   </StringArray>
                                 </Property>
+                                <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDetallesNarizActionPerformed"/>
+                              </Events>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox4">
+                            <Component class="javax.swing.JComboBox" name="cbDetallesBoca">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="5">
@@ -1232,6 +1254,25 @@
                                     <StringItem index="4" value="Otros"/>
                                   </StringArray>
                                 </Property>
+                                <Property name="enabled" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDetallesBocaActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="textOtrosDetallesOidos">
+                              <Properties>
+                                <Property name="enabled" type="boolean" value="false"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="textOtrosDetallesNariz">
+                              <Properties>
+                                <Property name="enabled" type="boolean" value="false"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="textOtrosDetallesBoca">
+                              <Properties>
+                                <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
                             </Component>
                           </SubComponents>
@@ -1255,26 +1296,36 @@
                                           <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="cbOidos8" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="cbTorax" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox6" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="cbDetallesTorax" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="cbOidos6" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbCorazon" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox5" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
-                                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                              <Component id="cbOidos9" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="186" max="32767" attributes="0"/>
+                                              <Component id="cbDetallesCorazon" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="textOtrosDetallesCorazon" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="315" max="-2" attributes="0"/>
+                                              <Component id="textOtrosDetallesAbdomen" min="-2" pref="100" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="textOtrosDetallesTorax" min="-2" pref="100" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="cbAbdomen" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                              <Component id="cbDetallesAbdomen" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace pref="186" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1285,23 +1336,28 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cbOidos6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbTorax" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbDetallesTorax" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="textOtrosDetallesTorax" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
                                                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="cbOidos9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cbAbdomen" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cbDetallesAbdomen" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbOidos8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbCorazon" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbDetallesCorazon" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="textOtrosDetallesCorazon" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="textOtrosDetallesAbdomen" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="1" pref="19" max="32767" attributes="0"/>
                                   </Group>
@@ -1314,7 +1370,7 @@
                                 <Property name="text" type="java.lang.String" value="T&#xf3;rax"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbOidos6">
+                            <Component class="javax.swing.JComboBox" name="cbTorax">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1323,13 +1379,16 @@
                                   </StringArray>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbToraxActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel11">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Coraz&#xf3;n"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbOidos8">
+                            <Component class="javax.swing.JComboBox" name="cbCorazon">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1338,13 +1397,16 @@
                                   </StringArray>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbCorazonActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel12">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Abdomen"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbOidos9">
+                            <Component class="javax.swing.JComboBox" name="cbAbdomen">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1353,8 +1415,11 @@
                                   </StringArray>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbAbdomenActionPerformed"/>
+                              </Events>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox1">
+                            <Component class="javax.swing.JComboBox" name="cbDetallesAbdomen">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="5">
@@ -1365,9 +1430,13 @@
                                     <StringItem index="4" value="Otros"/>
                                   </StringArray>
                                 </Property>
+                                <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDetallesAbdomenActionPerformed"/>
+                              </Events>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox5">
+                            <Component class="javax.swing.JComboBox" name="cbDetallesTorax">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1375,9 +1444,13 @@
                                     <StringItem index="1" value="Otros"/>
                                   </StringArray>
                                 </Property>
+                                <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDetallesToraxActionPerformed"/>
+                              </Events>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox6">
+                            <Component class="javax.swing.JComboBox" name="cbDetallesCorazon">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="3">
@@ -1386,6 +1459,25 @@
                                     <StringItem index="2" value="Ritmo"/>
                                   </StringArray>
                                 </Property>
+                                <Property name="enabled" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDetallesCorazonActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="textOtrosDetallesTorax">
+                              <Properties>
+                                <Property name="enabled" type="boolean" value="false"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="textOtrosDetallesCorazon">
+                              <Properties>
+                                <Property name="enabled" type="boolean" value="false"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="textOtrosDetallesAbdomen">
+                              <Properties>
+                                <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
                             </Component>
                           </SubComponents>
@@ -1413,23 +1505,23 @@
                                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
-                                                      <Component id="cbOidos14" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cbUrinario" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="jComboBox8" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cbDetallesUrinario" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="textOtrosDetallesUrinario" min="-2" pref="100" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="cbOidos13" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cbNervioso" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="cbOidos12" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbEsqueletico" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox7" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
-                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                              <Component id="jComboBox9" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbDetallesEsqueletico" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                              <Component id="textOtrosDetallesEsqueletico" min="-2" pref="100" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
@@ -1442,21 +1534,21 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbOidos12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbEsqueletico" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbDetallesEsqueletico" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="textOtrosDetallesEsqueletico" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbOidos13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbNervioso" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbOidos14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbUrinario" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbDetallesUrinario" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="textOtrosDetallesUrinario" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -1469,7 +1561,7 @@
                                 <Property name="text" type="java.lang.String" value="Sistema Esquel&#xe9;tico"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbOidos12">
+                            <Component class="javax.swing.JComboBox" name="cbEsqueletico">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1478,13 +1570,16 @@
                                   </StringArray>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbEsqueleticoActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel34">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Sistema Nervioso"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbOidos13">
+                            <Component class="javax.swing.JComboBox" name="cbNervioso">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1499,7 +1594,7 @@
                                 <Property name="text" type="java.lang.String" value="Sistema Urinario"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbOidos14">
+                            <Component class="javax.swing.JComboBox" name="cbUrinario">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -1508,8 +1603,11 @@
                                   </StringArray>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbUrinarioActionPerformed"/>
+                              </Events>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox7">
+                            <Component class="javax.swing.JComboBox" name="cbDetallesEsqueletico">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="4">
@@ -1519,9 +1617,13 @@
                                     <StringItem index="3" value="nL/anL"/>
                                   </StringArray>
                                 </Property>
+                                <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDetallesEsqueleticoActionPerformed"/>
+                              </Events>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox8">
+                            <Component class="javax.swing.JComboBox" name="cbDetallesUrinario">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="3">
@@ -1530,21 +1632,20 @@
                                     <StringItem index="2" value="Otros"/>
                                   </StringArray>
                                 </Property>
+                                <Property name="enabled" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDetallesUrinarioActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="textOtrosDetallesEsqueletico">
+                              <Properties>
+                                <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel3">
+                            <Component class="javax.swing.JTextField" name="textOtrosDetallesUrinario">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Adenopat&#xed;as"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox9">
-                              <Properties>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="2">
-                                    <StringItem index="0" value="Normal"/>
-                                    <StringItem index="1" value="Anormal"/>
-                                  </StringArray>
-                                </Property>
+                                <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
                             </Component>
                           </SubComponents>
@@ -1593,159 +1694,13 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                         </Container>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JPanel" name="jPanel7">
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Consulta Medica">
-                            <Property name="tabTitle" type="java.lang.String" value="Consulta Medica"/>
-                          </JTabbedPaneConstraints>
-                        </Constraint>
-                      </Constraints>
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jPanel9" max="32767" attributes="0"/>
-                                      <Component id="jPanel10" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="256" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                  <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="535" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                      <SubComponents>
-                        <Container class="javax.swing.JPanel" name="jPanel9">
+                        <Component class="javax.swing.JLabel" name="jLabel45">
                           <Properties>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                                <TitledBorder title="Datos Consulta"/>
-                              </Border>
-                            </Property>
+                            <Property name="text" type="java.lang.String" value="Diagn&#xf3;stico"/>
                           </Properties>
-
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField2" pref="557" max="32767" attributes="0"/>
-                                          <Component id="jTextField3" max="32767" attributes="0"/>
-                                          <Component id="jTextField4" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
-                          <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel4">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Motivo"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel5">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="S&#xed;ntomas"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel10">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Diagn&#xf3;stico"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField2">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField3">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField4">
-                            </Component>
-                          </SubComponents>
-                        </Container>
-                        <Container class="javax.swing.JPanel" name="jPanel10">
-
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="384" max="32767" attributes="0"/>
-                                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
-                          <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel13">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Paciente"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel14">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Fecha Consulta"/>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="textDiagnostico">
+                        </Component>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="jPanel15">
@@ -1770,9 +1725,9 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                                   <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="594" max="32767" attributes="0"/>
+                                  <EmptySpace pref="588" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1783,19 +1738,19 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="589" max="32767" attributes="0"/>
-                                      <Component id="jButton6" min="-2" pref="127" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                                      <Component id="jButton6" min="-2" pref="372" max="-2" attributes="0"/>
+                                      <EmptySpace pref="207" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="100" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace pref="27" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
