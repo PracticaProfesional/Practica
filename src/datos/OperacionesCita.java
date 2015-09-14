@@ -16,10 +16,10 @@ public class OperacionesCita
     {
         objetoDeConexion = new Conexion();
        
-        String datosCita = "'" + objetoCita.getEstado() + "'" + "," + 
-                           "'" + objetoCita.getFechaCreacion() + "'" + "," + 
+        String datosCita = "'" + objetoCita.getEstado() + "'" + "," +  
                            "'" + objetoCita.getFechaConsulta() + "'" + "," +
-                           "'" + objetoCita.getAnotaciones() + "'";
+                           "'" + objetoCita.getAnotaciones() + "'" + "," +
+                           "'" + objetoCita.getHora() + "'" ;
        
         estado = objetoDeConexion.conectar().createStatement();
         estado.executeQuery("Call InsertarCita("+datosCita+")");
