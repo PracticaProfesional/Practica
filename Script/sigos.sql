@@ -326,12 +326,12 @@ CREATE  TABLE IF NOT EXISTS `sigos`.`AntecedentesPersonales-Padecimientos` (
   PRIMARY KEY (`Id`) ,
   INDEX `fk_Padecimientos_idx` (`IdPadecimientos` ASC) ,
   INDEX `fk_AntecendentesPersonales_idx` (`IdAntecedentesPersonales` ASC) ,
-  CONSTRAINT `fk_Padecimientos`
+  CONSTRAINT `fk_Padecimientos2`
     FOREIGN KEY (`idPadecimientos` )
     REFERENCES `sigos`.`Padecimientos` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_AntecendentesPersonales`
+  CONSTRAINT `fk_AntecendentesPersonales2`
     FOREIGN KEY (`idAntecedentesPersonales` )
     REFERENCES `sigos`.`AntecedentesPersonales` (`id` )
     ON DELETE NO ACTION
