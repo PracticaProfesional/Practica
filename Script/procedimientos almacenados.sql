@@ -176,7 +176,7 @@ $
 Call InsertarInventario ('Parasetamol', 'Pastillas', '100mg', 10);
 $
 
-Call InsertarTelefono ('95698569', 'Casa');
+Call InsertarTelefono ('26711972', 'Casa');
 $
 
 Call InsertarSignosVitales (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -220,7 +220,8 @@ $
 Call InsertarConsultaMedica (1, 1, 'Nada', 'Nada', 'Nada', 1, 1, 1);
 $
 
-Call InsertarAntecedentesPersonalesPadecimientos (1, 1)
+Call InsertarAntecedentesPersonalesPadecimientos (1, 1);
+$
 
 
 
@@ -230,14 +231,139 @@ Call InsertarAntecedentesPersonalesPadecimientos (1, 1)
 
 
 
+-- Inserciones en la tabla Padecimientos para formar el catalogo
+
+
+-- Padecimientos del corazon
+Call InsertarPadecimientos('Presion Alta', null);
+$
+
+Call InsertarPadecimientos('Cardiopatia', 'Soplo');
+$
+Call InsertarPadecimientos('Cardiopatia', 'Infarto');
+$
+Call InsertarPadecimientos('Cardiopatia', 'Arritmia');
+$
+Call InsertarPadecimientos('Cardiopatia', 'Otro');
+$
+
+
+-- Padecimientos neurologicos
+Call InsertarPadecimientos('Evento cerebro vascular', null);
+$
+
+
+-- Padecimientos del metabolismo
+Call InsertarPadecimientos('Pre-diabetes', null);
+$
+Call InsertarPadecimientos('Dislipidemia', null);
+$
+
+
+-- Padecimientos pulmobares
+Call InsertarPadecimientos('Enfermedad Pulmonar', 'Asama');
+$
+Call InsertarPadecimientos('Enfermedad Pulmonar', 'EPOC');
+$
+Call InsertarPadecimientos('Enfermedad Pulmonar', 'Otro');
+$
+
+
+-- Padecimientos de la tiroides
+Call InsertarPadecimientos('Tiroides', 'Hipotiroidismo');
+$
+Call InsertarPadecimientos('Tiroides', 'Hipertiroidismo');
+$
+Call InsertarPadecimientos('Tiroides', 'Otro');
+$
+
+
+-- Padecimientos enfermedades mentales
+Call InsertarPadecimientos('Enfermedad mental', 'Ansiedad');
+$
+Call InsertarPadecimientos('Enfermedad mental', 'Depresion');
+$
+Call InsertarPadecimientos('Enfermedad mental', 'Esquisofrenia');
+$
+Call InsertarPadecimientos('Enfermedad mental', 'Otro');
+$
+
+
+-- Padecimientos cancer
+Call InsertarPadecimientos('Cancer', 'Piel');
+$
+Call InsertarPadecimientos('Cancer', 'Mama');
+$
+Call InsertarPadecimientos('Cancer', 'Pulmon');
+$
+Call InsertarPadecimientos('Cancer', 'Gastrico');
+$
+Call InsertarPadecimientos('Cancer', 'Otro');
+$
+
+
+
+-- Padecimientos varios
+Call InsertarPadecimientos('Enfermedad renal', null);
+$
+Call InsertarPadecimientos('Diabetes', null);
+$
+Call InsertarPadecimientos('Obesidad', null);
+$
+Call InsertarPadecimientos('Sobre peso', null);
+$
+Call InsertarPadecimientos('Bajo peso', null);
+$
+Call InsertarPadecimientos('Miopia', null);
+$
+Call InsertarPadecimientos('Astigmatismo', null);
+$
+Call InsertarPadecimientos('Vertigo', null);
+$
+Call InsertarPadecimientos('Sordera', null);
+$
+
+
+-- Padecimientos musculoesqueleticos
+Call InsertarPadecimientos('Enfermedad musculoesqueletica', 'Atritis');
+$
+Call InsertarPadecimientos('Enfermedad musculoesqueletica', 'Fibromialgia');
+$
+Call InsertarPadecimientos('Enfermedad musculoesqueletica', 'Lumbalgia');
+$
+Call InsertarPadecimientos('Enfermedad musculoesqueletica', 'Gonoartrosis');
+$
+Call InsertarPadecimientos('Enfermedad musculoesqueletica', 'Artrosis');
+$
+
+
+-- Padecimientos Gastroinstestinales
+Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Gastritis');
+$
+Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Reflujo');
+$
+Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Colitis');
+$
+Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Estreñimiento');
+$
+Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Colelitiasis');
+$
+Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Ulcera');
+$
+Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Hepatitis');
+$
+Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Polipos');
 
 
 
 
--- Consulta para obtener el ultimo registro insertado en una tabla
+-- Procedimientos para consultar
+DELIMITER $
+CREATE PROCEDURE ConsultarNombrePadecimiento (in nom varchar(45) )
+BEGIN
+	select id from Padecimientos
+	where nombrePadecimiento = nom;
+END $
 
-
-
-
-
+Call ConsultarNombrePadecimiento ('Vertigo')
 
