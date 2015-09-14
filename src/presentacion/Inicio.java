@@ -24,6 +24,7 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
+    private String idPaciente;
     public Inicio() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
@@ -231,6 +232,11 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         btnConsultaMedica.setText("Consulta Medica");
+        btnConsultaMedica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaMedicaActionPerformed(evt);
+            }
+        });
 
         btnCrearExpediente.setText("Crear Expediente");
         btnCrearExpediente.setBorderPainted(false);
@@ -246,9 +252,9 @@ public class Inicio extends javax.swing.JFrame {
             panelBtnBuscarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBtnBuscarPacienteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnConsultaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCrearExpediente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnConsultaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(btnCrearExpediente, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelBtnBuscarPacienteLayout.setVerticalGroup(
@@ -1477,6 +1483,16 @@ public class Inicio extends javax.swing.JFrame {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnConsultaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMedicaActionPerformed
+       // Obtener el idPaciente de la fila seleccionada.
+        int filaSeleccionada = this.tableBuscarPaciente.getSelectedRow();
+        if(filaSeleccionada == -1)
+            JOptionPane.showMessageDialog(rootPane, "Por favor seleccione un paciente.");
+        else
+            this.idPaciente = tableBuscarPaciente.getValueAt(filaSeleccionada, 0).toString();
+        this.tabExpediente.setSelectedIndex(1);
+    }//GEN-LAST:event_btnConsultaMedicaActionPerformed
 
     /**
      * @param args the command line arguments
