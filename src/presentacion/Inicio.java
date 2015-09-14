@@ -9,6 +9,7 @@ package presentacion;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -27,7 +28,7 @@ public class Inicio extends javax.swing.JFrame {
     private String idPaciente;
     public Inicio() {
         initComponents();
-        this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_BOTH);
+        this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_HORIZ);
     }
     private void resolucion(){
         Toolkit t = Toolkit.getDefaultToolkit();
@@ -172,7 +173,7 @@ public class Inicio extends javax.swing.JFrame {
         agendaPanelCalendario = new javax.swing.JPanel();
         agendaCalendario = new datechooser.beans.DateChooserPanel();
         agendaPanelActividades = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         agendaTabla = new javax.swing.JTable();
         tabReportes = new javax.swing.JTabbedPane();
         tabAdministrador = new javax.swing.JTabbedPane();
@@ -1188,13 +1189,21 @@ public class Inicio extends javax.swing.JFrame {
         agendaTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"08:00", null},
+                {"08:15", null},
                 {"08:30", null},
+                {"08:45", null},
                 {"09:00", null},
+                {"09:15", null},
                 {"09:30", null},
+                {"09:45", null},
                 {"10:00", null},
+                {"10:15", null},
                 {"10:30", null},
+                {"10:45", null},
                 {"11:00", null},
+                {"11:15", null},
                 {"11:30", null},
+                {"11:45", null},
                 {"12:00", null},
                 {"12:30", null},
                 {"13:00", null},
@@ -1208,9 +1217,7 @@ public class Inicio extends javax.swing.JFrame {
                 {"17:00", null},
                 {"17:30", null},
                 {"20:00", null},
-                {"21:00", null},
-                {"22:00", null},
-                {"23:00", null}
+                {"21:00", null}
             },
             new String [] {
                 "Hora", "Actividad"
@@ -1231,12 +1238,14 @@ public class Inicio extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        agendaTabla.setRowHeight(35);
+        agendaTabla.getTableHeader().setReorderingAllowed(false);
         agendaTabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 agendaTablaMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(agendaTabla);
+        jScrollPane2.setViewportView(agendaTabla);
         if (agendaTabla.getColumnModel().getColumnCount() > 0) {
             agendaTabla.getColumnModel().getColumn(0).setMaxWidth(100);
         }
@@ -1247,14 +1256,14 @@ public class Inicio extends javax.swing.JFrame {
             agendaPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agendaPanelActividadesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
         agendaPanelActividadesLayout.setVerticalGroup(
             agendaPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agendaPanelActividadesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
 
@@ -1447,8 +1456,29 @@ public class Inicio extends javax.swing.JFrame {
    
     private void agendaTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendaTablaMouseClicked
         // al presionar la actividad de la tabla mostrar menu para ingresar actividad en caso de que no exista
+        agendaActividad nuevaActividad = new agendaActividad(this, true);
+        nuevaActividad.setVisible(true);
+        String actividad = nuevaActividad.getDetalles();
+        String fechaSeleccionada;
+        String horaActividad;
+        int year, month, day;
+        year = agendaCalendario.getCurrent().get(Calendar.YEAR);
+        month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
+        day = agendaCalendario.getCurrent().get(Calendar.DAY_OF_MONTH);
+        fechaSeleccionada = year + "-" + month + "-" + day;
+        try{
+            agendaTabla.setValueAt(actividad, agendaTabla.getSelectedRow(), 1);
+            horaActividad = agendaTabla.getValueAt(agendaTabla.getSelectedRow(), 0).toString();
+            entidad.Cita nuevaCita = new entidad.Cita();
+            nuevaCita.setFechaConsulta(fechaSeleccionada);
+            nuevaCita.setHora(horaActividad);
+            nuevaCita.setAnotaciones(actividad);
+            negocio.NegocioCita insertarCita = new negocio.NegocioCita();
+            insertarCita.insertarCita(nuevaCita);
+        }
+        catch(NullPointerException e){
         
-        JOptionPane.showMessageDialog(rootPane, "Colocar actividad.");
+        }   
     }//GEN-LAST:event_agendaTablaMouseClicked
 
     private void agendaCalendarioOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_agendaCalendarioOnSelectionChange
@@ -1494,6 +1524,9 @@ public class Inicio extends javax.swing.JFrame {
         this.tabExpediente.setSelectedIndex(1);
     }//GEN-LAST:event_btnConsultaMedicaActionPerformed
 
+    private void cargarActividadesAgenda(){
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -1640,7 +1673,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTextField jTextField1;

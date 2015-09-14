@@ -1872,7 +1872,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" pref="824" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1881,33 +1881,38 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" pref="668" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="agendaTabla">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="2" rowCount="24">
+                              <Table columnCount="2" rowCount="30">
                                 <Column editable="false" title="Hora" type="java.lang.String">
                                   <Data value="08:00"/>
+                                  <Data value="08:15"/>
                                   <Data value="08:30"/>
+                                  <Data value="08:45"/>
                                   <Data value="09:00"/>
+                                  <Data value="09:15"/>
                                   <Data value="09:30"/>
+                                  <Data value="09:45"/>
                                   <Data value="10:00"/>
+                                  <Data value="10:15"/>
                                   <Data value="10:30"/>
+                                  <Data value="10:45"/>
                                   <Data value="11:00"/>
+                                  <Data value="11:15"/>
                                   <Data value="11:30"/>
+                                  <Data value="11:45"/>
                                   <Data value="12:00"/>
                                   <Data value="12:30"/>
                                   <Data value="13:00"/>
@@ -1922,8 +1927,6 @@
                                   <Data value="17:30"/>
                                   <Data value="20:00"/>
                                   <Data value="21:00"/>
-                                  <Data value="22:00"/>
-                                  <Data value="23:00"/>
                                 </Column>
                                 <Column editable="true" title="Actividad" type="java.lang.String"/>
                               </Table>
@@ -1942,8 +1945,9 @@
                                 </Column>
                               </TableColumnModel>
                             </Property>
+                            <Property name="rowHeight" type="int" value="35"/>
                             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                             </Property>
                           </Properties>
                           <Events>
