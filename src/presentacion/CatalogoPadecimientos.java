@@ -18,7 +18,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
     public CatalogoPadecimientos(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-       
+        this.setLocationRelativeTo(parent);
         //this.taCardiopatia.setVisible(false);
         //this.taCardiopatia.setVisible(false);
         //this.taCardiopatia.setEnabled(false);
@@ -35,13 +35,9 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
     private void initComponents() {
 
         jpOidos = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jlSordera = new javax.swing.JLabel();
         cbSordera = new javax.swing.JCheckBox();
         cbVertigo = new javax.swing.JCheckBox();
         jpOjos = new javax.swing.JPanel();
-        jlMiopia = new javax.swing.JLabel();
-        jlAstigmatismo = new javax.swing.JLabel();
         cbMiopia = new javax.swing.JCheckBox();
         cbAstigmatismo = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
@@ -70,18 +66,11 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jpCorazon = new javax.swing.JPanel();
-        jlPresionAlta = new javax.swing.JLabel();
         jlCardiopatía = new javax.swing.JLabel();
         cbPresionAlta = new javax.swing.JCheckBox();
         cbCardiopatia = new javax.swing.JComboBox();
         tfCardiopatia = new javax.swing.JTextField();
         jpMetabolismo = new javax.swing.JPanel();
-        jlPrediabetes = new javax.swing.JLabel();
-        jlDiabetes = new javax.swing.JLabel();
-        jlObesidad = new javax.swing.JLabel();
-        jlSobrepeso = new javax.swing.JLabel();
-        jlBajopeso = new javax.swing.JLabel();
-        jlDislipidemia = new javax.swing.JLabel();
         cbDiabetes = new javax.swing.JCheckBox();
         cbSobrepeso = new javax.swing.JCheckBox();
         cbPrediabetes = new javax.swing.JCheckBox();
@@ -91,7 +80,6 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
         cbDislipidemia = new javax.swing.JCheckBox();
         jlEnfTiroides = new javax.swing.JLabel();
         tfTiroides = new javax.swing.JTextField();
-        jScrollBar1 = new javax.swing.JScrollBar();
         jPanel1 = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnIngresar = new javax.swing.JButton();
@@ -99,11 +87,13 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Padecimientos");
 
-        jpOidos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Oídos"));
+        jpOidos.setBorder(javax.swing.BorderFactory.createTitledBorder("Oídos"));
 
-        jLabel1.setText("Vertigo");
+        cbSordera.setText("Sordera");
+        cbSordera.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        jlSordera.setText("Sordera");
+        cbVertigo.setText("Vértigo");
+        cbVertigo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout jpOidosLayout = new javax.swing.GroupLayout(jpOidos);
         jpOidos.setLayout(jpOidosLayout);
@@ -111,38 +101,28 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
             jpOidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOidosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
                 .addComponent(cbVertigo)
-                .addGap(18, 18, 18)
-                .addComponent(jlSordera)
-                .addGap(18, 18, 18)
+                .addGap(139, 139, 139)
                 .addComponent(cbSordera)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpOidosLayout.setVerticalGroup(
             jpOidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOidosLayout.createSequentialGroup()
-                .addGroup(jpOidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpOidosLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel1))
-                    .addGroup(jpOidosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cbVertigo))
-                    .addGroup(jpOidosLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(jpOidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbSordera)
-                            .addComponent(jlSordera))))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
+                .addGroup(jpOidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(cbSordera)
+                    .addComponent(cbVertigo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpOjos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ojos"));
+        jpOjos.setBorder(javax.swing.BorderFactory.createTitledBorder("Ojos"));
 
-        jlMiopia.setText("Miopía");
+        cbMiopia.setText("Miopía");
+        cbMiopia.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        jlAstigmatismo.setText("Astigmatismo");
+        cbAstigmatismo.setText("Astigmatismo");
+        cbAstigmatismo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout jpOjosLayout = new javax.swing.GroupLayout(jpOjos);
         jpOjos.setLayout(jpOjosLayout);
@@ -150,12 +130,8 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
             jpOjosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOjosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlMiopia)
-                .addGap(18, 18, 18)
                 .addComponent(cbMiopia)
-                .addGap(18, 18, 18)
-                .addComponent(jlAstigmatismo)
-                .addGap(18, 18, 18)
+                .addGap(169, 169, 169)
                 .addComponent(cbAstigmatismo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -163,11 +139,9 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
             jpOjosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpOjosLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addGroup(jpOjosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbAstigmatismo)
+                .addGroup(jpOjosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cbMiopia)
-                    .addComponent(jlMiopia)
-                    .addComponent(jlAstigmatismo))
+                    .addComponent(cbAstigmatismo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -232,112 +206,86 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(51, 51, 51)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(jcbCancer2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jcbCancer, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addGap(69, 69, 69)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jcbCancer3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(53, 53, 53)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel12)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jcbCancer1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel21)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel13)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcbCancer, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbCancer2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbCancer3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbCancer1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel8)
                     .addComponent(jcbCancer3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel10)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jcbCancer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)
-                        .addComponent(jcbCancer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel6)
+                    .addComponent(jcbCancer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jcbCancer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbCancer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel12)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbCancer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jpCorazon.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Corazón"));
-
-        jlPresionAlta.setText("Presión Alta");
+        jpCorazon.setBorder(javax.swing.BorderFactory.createTitledBorder("Corazón"));
 
         jlCardiopatía.setText("Cardiopatía");
+
+        cbPresionAlta.setText("Presión Alta");
+        cbPresionAlta.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         cbCardiopatia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Taquicardia", "Soplo", "Infarto", "Arritmia", "Otros" }));
         cbCardiopatia.addActionListener(new java.awt.event.ActionListener() {
@@ -354,54 +302,53 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
             jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorazonLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlPresionAlta)
-                .addGap(18, 18, 18)
                 .addComponent(cbPresionAlta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(125, 125, 125)
                 .addComponent(jlCardiopatía)
-                .addGap(18, 18, 18)
-                .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(49, 49, 49)
+                .addComponent(cbCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(tfCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpCorazonLayout.setVerticalGroup(
             jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCorazonLayout.createSequentialGroup()
-                .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpCorazonLayout.createSequentialGroup()
-                        .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorazonLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jlCardiopatía)
-                                    .addComponent(cbCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jpCorazonLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jlPresionAlta)))
-                        .addGap(18, 18, 18)
-                        .addComponent(tfCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpCorazonLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(cbPresionAlta)))
+                .addGap(14, 14, 14)
+                .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(tfCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlCardiopatía)
+                    .addComponent(cbPresionAlta))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpMetabolismo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Metabolismo"));
+        jpMetabolismo.setBorder(javax.swing.BorderFactory.createTitledBorder("Metabolismo"));
 
-        jlPrediabetes.setText("Prediabetes");
+        cbDiabetes.setText("Diabetes");
+        cbDiabetes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        cbDiabetes.setIconTextGap(13);
 
-        jlDiabetes.setText("Diabetes");
+        cbSobrepeso.setText("Sobrepeso");
+        cbSobrepeso.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        jlObesidad.setText("Obesidad");
+        cbPrediabetes.setText("Prediabetes");
+        cbPrediabetes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cbPrediabetes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        cbPrediabetes.setIconTextGap(5);
 
-        jlSobrepeso.setText("Sobrepeso");
+        cbBajopeso.setText("Bajopeso");
+        cbBajopeso.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        cbBajopeso.setIconTextGap(19);
 
-        jlBajopeso.setText("Bajopeso");
-
-        jlDislipidemia.setText("Dislipidemia");
+        cbObesidad.setText("Obecidad");
+        cbObesidad.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        cbObesidad.setIconTextGap(19);
 
         cbEnfTiroides.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hipotiroidismo", "Hipertiroidismo", "Tiroiditis", "Otros", " " }));
+
+        cbDislipidemia.setText("Dislipidemia");
+        cbDislipidemia.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         jlEnfTiroides.setText("Enfermedades de la Tiroides");
 
@@ -414,96 +361,50 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMetabolismoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                        .addComponent(jlPrediabetes)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbPrediabetes))
-                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlDiabetes)
-                            .addComponent(jlDislipidemia))
-                        .addGap(21, 21, 21)
-                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbDiabetes)
-                            .addComponent(cbDislipidemia))))
-                .addGap(44, 44, 44)
+                    .addComponent(cbBajopeso, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbPrediabetes, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(39, 39, 39)
                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                        .addComponent(jlBajopeso)
-                        .addGap(25, 25, 25)
-                        .addComponent(cbBajopeso)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlEnfTiroides)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbEnfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlSobrepeso)
-                            .addComponent(jlObesidad))
-                        .addGap(18, 18, 18)
-                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbObesidad)
-                            .addComponent(cbSobrepeso))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(cbSobrepeso, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbDiabetes, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(52, 52, 52)
+                .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbObesidad, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbDislipidemia, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(88, 88, 88)
+                .addComponent(jlEnfTiroides)
+                .addGap(62, 62, 62)
+                .addComponent(cbEnfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
         jpMetabolismoLayout.setVerticalGroup(
             jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
+                .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(cbPrediabetes)
+                    .addComponent(cbDiabetes)
+                    .addComponent(cbDislipidemia)
+                    .addComponent(jlEnfTiroides)
+                    .addComponent(cbEnfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                                .addComponent(cbBajopeso)
-                                .addGap(2, 2, 2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMetabolismoLayout.createSequentialGroup()
-                                .addComponent(cbPrediabetes)
-                                .addGap(3, 3, 3)))
-                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                                .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(tfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jlDiabetes)
-                                            .addComponent(cbDiabetes))
-                                        .addGap(14, 14, 14)
-                                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cbDislipidemia)
-                                            .addComponent(jlDislipidemia))))
-                                .addContainerGap(22, Short.MAX_VALUE))
-                            .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jlSobrepeso)
-                                    .addComponent(cbSobrepeso))
-                                .addGap(11, 11, 11)
-                                .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlObesidad, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cbObesidad, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
-                        .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlEnfTiroides)
-                            .addComponent(cbEnfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlPrediabetes)
-                            .addComponent(jlBajopeso))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbObesidad)
+                        .addComponent(cbSobrepeso))
+                    .addComponent(cbBajopeso))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jScrollBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollBar1.addAdjustmentListener(new java.awt.event.AdjustmentListener() {
-            public void adjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {
-                jScrollBar1AdjustmentValueChanged(evt);
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
             }
         });
-
-        btnCancelar.setText("Cancelar");
 
         btnIngresar.setText("Ingresar");
 
@@ -532,39 +433,36 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpOidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jpOjos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jpMetabolismo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpCorazon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jpOidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(jpOjos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jpCorazon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jpOidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jpOjos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jpCorazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jpMetabolismo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpOidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpOjos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jpCorazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpMetabolismo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -580,10 +478,9 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
          }
     }//GEN-LAST:event_cbCardiopatiaActionPerformed
 
-    private void jScrollBar1AdjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {//GEN-FIRST:event_jScrollBar1AdjustmentValueChanged
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jScrollBar1AdjustmentValueChanged
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -648,7 +545,6 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JComboBox jComboBox5;
     private javax.swing.JComboBox jComboBox6;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -659,7 +555,6 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -672,18 +567,8 @@ public class CatalogoPadecimientos extends javax.swing.JDialog {
     private javax.swing.JComboBox jcbCancer1;
     private javax.swing.JComboBox jcbCancer2;
     private javax.swing.JComboBox jcbCancer3;
-    private javax.swing.JLabel jlAstigmatismo;
-    private javax.swing.JLabel jlBajopeso;
     private javax.swing.JLabel jlCardiopatía;
-    private javax.swing.JLabel jlDiabetes;
-    private javax.swing.JLabel jlDislipidemia;
     private javax.swing.JLabel jlEnfTiroides;
-    private javax.swing.JLabel jlMiopia;
-    private javax.swing.JLabel jlObesidad;
-    private javax.swing.JLabel jlPrediabetes;
-    private javax.swing.JLabel jlPresionAlta;
-    private javax.swing.JLabel jlSobrepeso;
-    private javax.swing.JLabel jlSordera;
     private javax.swing.JPanel jpCorazon;
     private javax.swing.JPanel jpMetabolismo;
     private javax.swing.JPanel jpOidos;

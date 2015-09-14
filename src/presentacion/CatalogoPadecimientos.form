@@ -24,21 +24,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel3" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jpMetabolismo" max="32767" attributes="0"/>
+                  <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jpOidos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                       <Component id="jpOjos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jpMetabolismo" alignment="0" max="32767" attributes="0"/>
                   <Component id="jpCorazon" alignment="0" max="32767" attributes="0"/>
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollBar1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,24 +46,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollBar1" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jpOidos" max="32767" attributes="0"/>
-                          <Component id="jpOjos" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jpCorazon" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jpMetabolismo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jpOidos" max="32767" attributes="0"/>
+                  <Component id="jpOjos" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jpCorazon" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jpMetabolismo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,9 +68,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="O&#xed;dos">
-              <Border PropertyName="innerBorder" info="null"/>
-            </TitledBorder>
+            <TitledBorder title="O&#xed;dos"/>
           </Border>
         </Property>
       </Properties>
@@ -85,12 +78,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="cbVertigo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlSordera" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                   <Component id="cbSordera" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -99,42 +88,28 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cbVertigo" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbSordera" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlSordera" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="cbSordera" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbVertigo" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Vertigo"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jlSordera">
+        <Component class="javax.swing.JCheckBox" name="cbSordera">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sordera"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cbSordera">
-        </Component>
         <Component class="javax.swing.JCheckBox" name="cbVertigo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="V&#xe9;rtigo"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -142,9 +117,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Ojos">
-              <Border PropertyName="innerBorder" info="null"/>
-            </TitledBorder>
+            <TitledBorder title="Ojos"/>
           </Border>
         </Property>
       </Properties>
@@ -154,12 +127,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jlMiopia" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="cbMiopia" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlAstigmatismo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                   <Component id="cbAstigmatismo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -169,11 +138,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cbAstigmatismo" min="-2" max="-2" attributes="0"/>
-                      <Component id="cbMiopia" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlMiopia" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlAstigmatismo" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="cbMiopia" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbAstigmatismo" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -181,19 +148,17 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jlMiopia">
+        <Component class="javax.swing.JCheckBox" name="cbMiopia">
           <Properties>
             <Property name="text" type="java.lang.String" value="Miop&#xed;a"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jlAstigmatismo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Astigmatismo"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="cbMiopia">
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbAstigmatismo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Astigmatismo"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -212,77 +177,47 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                          <Component id="jComboBox2" min="-2" pref="120" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jTextField3" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                          <Component id="jcbCancer2" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextField1" min="-2" pref="120" max="-2" attributes="0"/>
-                                              <Component id="jcbCancer" min="-2" pref="120" max="-2" attributes="0"/>
-                                              <Component id="jTextField4" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jTextField8" min="-2" pref="120" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="69" pref="69" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jTextField2" min="-2" pref="120" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jTextField5" min="-2" pref="120" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jTextField6" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <Component id="jTextField7" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jcbCancer3" min="-2" pref="120" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jComboBox6" min="-2" pref="120" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jcbCancer1" min="-2" pref="120" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jComboBox5" min="-2" pref="120" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jComboBox4" min="-2" pref="120" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
+                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jcbCancer" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jcbCancer2" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                      <Component id="jComboBox2" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jcbCancer3" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jTextField2" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jTextField3" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jTextField1" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jTextField4" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="80" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jComboBox4" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jComboBox5" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jcbCancer1" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jComboBox6" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jTextField5" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jTextField6" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jTextField7" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="jTextField8" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -290,56 +225,42 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jcbCancer3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="jLabel8" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbCancer3" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField2" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel13" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox4" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField5" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="jLabel10" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox2" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField3" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel21" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox5" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField6" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="jLabel6" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbCancer2" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField1" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbCancer1" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField7" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField6" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="jLabel7" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcbCancer" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField4" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox6" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField8" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jcbCancer2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jcbCancer1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jcbCancer" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -544,9 +465,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Coraz&#xf3;n">
-              <Border PropertyName="innerBorder" info="null"/>
-            </TitledBorder>
+            <TitledBorder title="Coraz&#xf3;n"/>
           </Border>
         </Property>
       </Properties>
@@ -556,45 +475,26 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jlPresionAlta" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="cbPresionAlta" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                   <Component id="jlCardiopatía" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tfCardiopatia" min="-2" pref="120" max="-2" attributes="0"/>
-                      <Component id="cbCardiopatia" min="-2" pref="120" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="cbCardiopatia" min="-2" pref="120" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="tfCardiopatia" min="-2" pref="120" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jlCardiopatía" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbCardiopatia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="jlPresionAlta" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="tfCardiopatia" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="cbPresionAlta" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="tfCardiopatia" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbCardiopatia" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCardiopatía" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbPresionAlta" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -602,17 +502,16 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jlPresionAlta">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Presi&#xf3;n Alta"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jlCardiopat&#xed;a">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cardiopat&#xed;a"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbPresionAlta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Presi&#xf3;n Alta"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbCardiopatia">
           <Properties>
@@ -641,9 +540,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Metabolismo">
-              <Border PropertyName="innerBorder" info="null"/>
-            </TitledBorder>
+            <TitledBorder title="Metabolismo"/>
           </Border>
         </Property>
       </Properties>
@@ -654,159 +551,89 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jlPrediabetes" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="cbPrediabetes" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jlDiabetes" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlDislipidemia" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbDiabetes" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbDislipidemia" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="cbBajopeso" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbPrediabetes" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jlBajopeso" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="cbBajopeso" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jlEnfTiroides" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="cbEnfTiroides" min="-2" pref="120" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jlSobrepeso" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlObesidad" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbObesidad" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbSobrepeso" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="tfTiroides" min="-2" pref="120" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="cbSobrepeso" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbDiabetes" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="cbObesidad" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbDislipidemia" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                  <Component id="jlEnfTiroides" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                  <Component id="cbEnfTiroides" min="-2" pref="120" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="tfTiroides" min="-2" pref="120" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="cbBajopeso" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="cbPrediabetes" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                          <Component id="tfTiroides" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jlDiabetes" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cbDiabetes" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cbDislipidemia" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jlDislipidemia" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace pref="22" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jlSobrepeso" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbSobrepeso" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jlObesidad" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbObesidad" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jlEnfTiroides" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbEnfTiroides" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlPrediabetes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jlBajopeso" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="2" attributes="0">
+                      <Component id="cbPrediabetes" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbDiabetes" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbDislipidemia" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlEnfTiroides" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbEnfTiroides" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfTiroides" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="cbObesidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbSobrepeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="cbBajopeso" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jlPrediabetes">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Prediabetes"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jlDiabetes">
+        <Component class="javax.swing.JCheckBox" name="cbDiabetes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Diabetes"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
+            <Property name="iconTextGap" type="int" value="13"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jlObesidad">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Obesidad"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jlSobrepeso">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Sobrepeso"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jlBajopeso">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Bajopeso"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jlDislipidemia">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Dislipidemia"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="cbDiabetes">
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbSobrepeso">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sobrepeso"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbPrediabetes">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Prediabetes"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
+            <Property name="iconTextGap" type="int" value="5"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbBajopeso">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Bajopeso"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
+            <Property name="iconTextGap" type="int" value="19"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbObesidad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Obecidad"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
+            <Property name="iconTextGap" type="int" value="19"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbEnfTiroides">
           <Properties>
@@ -822,6 +649,10 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbDislipidemia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Dislipidemia"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jlEnfTiroides">
           <Properties>
@@ -835,16 +666,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JScrollBar" name="jScrollBar1">
-      <Properties>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor Por defecto"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="adjustmentValueChanged" listener="java.awt.event.AdjustmentListener" parameters="java.awt.event.AdjustmentEvent" handler="jScrollBar1AdjustmentValueChanged"/>
-      </Events>
-    </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
 
       <Layout>
@@ -877,6 +698,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnIngresar">
           <Properties>
