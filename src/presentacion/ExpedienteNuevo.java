@@ -334,6 +334,11 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     jLabel11.setText("Padecimientos");
 
     jButton2.setText("Añadir");
+    jButton2.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton2ActionPerformed(evt);
+        }
+    });
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -580,6 +585,11 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         crearExpedienteMedico();
         this.dispose();
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(this, true);
+        padecimientos.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void crearExpedienteMedico() {
         negocio.NegocioExpedienteMedico insertarExpediente = new negocio.NegocioExpedienteMedico();
