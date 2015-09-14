@@ -320,7 +320,7 @@ ENGINE = InnoDB;
 -- Table `sigos`.`AntecedentesPersonales-Padecimientos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `sigos`.`AntecedentesPersonales-Padecimientos` (
-  `Id` INT NOT NULL AUTO_INCREMENT ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `idPadecimientos` INT NOT NULL ,
   `idAntecedentesPersonales` INT NOT NULL ,
   PRIMARY KEY (`Id`) ,
@@ -334,6 +334,29 @@ CREATE  TABLE IF NOT EXISTS `sigos`.`AntecedentesPersonales-Padecimientos` (
   CONSTRAINT `fk_AntecendentesPersonales2`
     FOREIGN KEY (`idAntecedentesPersonales` )
     REFERENCES `sigos`.`AntecedentesPersonales` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sigos`.`AntecedentesFamiliares-Padecimientos`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sigos`.`AntecedentesFamiliares-Padecimientos` (
+  `Id` INT NOT NULL AUTO_INCREMENT ,
+  `idPadecimiento` INT NOT NULL ,
+  `idAntecedenteFamiliar` INT NOT NULL ,
+  PRIMARY KEY (`Id`) ,
+  INDEX `fk_Padecimiento3_idx` (`idPadecimiento` ASC) ,
+  INDEX `fk_AntecedenteFam3_idx` (`idAntecedenteFamiliar` ASC) ,
+  CONSTRAINT `fk_Padecimiento3`
+    FOREIGN KEY (`idPadecimiento` )
+    REFERENCES `sigos`.`Padecimientos` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_AntecedenteFam3`
+    FOREIGN KEY (`idAntecedenteFamiliar` )
+    REFERENCES `sigos`.`AntecedentesFamiliares` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
