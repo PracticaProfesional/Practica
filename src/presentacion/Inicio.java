@@ -8,9 +8,13 @@ package presentacion;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author cooper15
@@ -177,6 +181,11 @@ public class Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Gestion Oficina de Salud");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         panelPrincipal.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         panelPrincipal.setToolTipText("");
@@ -196,13 +205,10 @@ public class Inicio extends javax.swing.JFrame {
 
         tableBuscarPaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Cédula", "Nombre", "P. Apellido", "S. Apellido"
             }
         ));
         jScrollPane1.setViewportView(tableBuscarPaciente);
@@ -1446,6 +1452,31 @@ public class Inicio extends javax.swing.JFrame {
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        java.sql.ResultSet rs;
+        negocio.NegocioExpedienteMedico opExpediente = new negocio.NegocioExpedienteMedico();
+        try {
+            rs = opExpediente.obtenerExpedientePaciente();
+            DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
+            this.tableBuscarPaciente.setModel(nuevoModeloTabla);
+            String [] nombreColumnas = {"Id", "Cedula", "Nombre", "P. Apellido", "S. Apellido"};
+            for(int i = 0; i < 5; i++)
+                nuevoModeloTabla.addColumn(nombreColumnas[i]);
+            while(rs.next()){
+                Object [] fila = new Object[5];
+                for(int i = 0; i < 5; i++)
+                    fila[i] = rs.getObject(i+1);
+                nuevoModeloTabla.addRow(fila);
+                
+            }
+        tableBuscarPaciente.getColumnModel().getColumn(0).setMaxWidth(0);
+        tableBuscarPaciente.getColumnModel().getColumn(0).setMinWidth(0);
+        tableBuscarPaciente.getColumnModel().getColumn(0).setPreferredWidth(0);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
