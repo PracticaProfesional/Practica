@@ -23,7 +23,7 @@ public class OperacionesCita
        
         estado = objetoDeConexion.conectar().createStatement();
         estado.executeQuery("Call InsertarCita("+datosCita+")");
-        estado.close();
+ 
     }// fin del metodo insertarCita
         
     public ResultSet obtenerFechaConsulta(String fecha) throws SQLException{
