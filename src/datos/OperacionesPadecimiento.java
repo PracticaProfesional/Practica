@@ -12,11 +12,12 @@ import java.sql.ResultSet;
 public class OperacionesPadecimiento 
 {
     
-    private Conexion objetoDeConexion = new Conexion();
+   private Conexion objetoDeConexion;
     private Statement estado;
     
     public void insertarPadecimiento(Padecimiento padecimiento)
     {
+        objetoDeConexion = new Conexion();
         String datosPadecimiento = "'"+padecimiento.getNombrePadecimiento()+"'"+","
                                    +"'"+padecimiento.getDescripcion()+"'";
         
@@ -34,13 +35,13 @@ public class OperacionesPadecimiento
     // El siguiente metodo obtiene el id de la tabla a partir de otro atributo
     public int obtenerId(String nombrePadecimiento)
     {
+        objetoDeConexion = new Conexion();
         int id = 0;
-        ResultSet rs;
      
         try 
         {
             estado = objetoDeConexion.conectar().createStatement();
-            rs = estado.executeQuery("Call ConsultarIdPadecimiento (" + nombrePadecimiento + ")");
+            ResultSet rs = estado.executeQuery("Call ConsultarIdPadecimiento ('" + nombrePadecimiento + "')");
        
             if (rs.next())
                 id = rs.getInt("id");
@@ -49,6 +50,7 @@ public class OperacionesPadecimiento
         }// fin del try
         catch (SQLException e)
         {
+            e.printStackTrace();
             return 0;
         }// fin de catach
     }// fin del metodo obtenerId

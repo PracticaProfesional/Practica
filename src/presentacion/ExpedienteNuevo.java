@@ -652,21 +652,31 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 //        insertarPadecimiento.insertarPadecimiento(nuevoPadecimiento);
     }
 
-    private void insertarPaciente(Paciente nuevoPaciente, ObtenerUltimoId ultimoId) {
+    private void insertarPaciente(Paciente nuevoPaciente, ObtenerUltimoId ultimoId) 
+    {
+        
         nuevoPaciente.setNombrePaciente(textNombre.getText());
         nuevoPaciente.setApellido1(textApellido1.getText());
         nuevoPaciente.setApellido2(textApellido2.getText());
         nuevoPaciente.setSexo(textSexo.getText());
-        try {
+        
+        try 
+        {
             nuevoPaciente.setTelefono(ultimoId.obtenerUltimoId("telefono"));
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) 
+        {
             Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
+        try 
+        {
             ultimoId.getEstado().close();
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) 
+        {
             Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         nuevoPaciente.setIdentificacion(textIdentificacion.getText());
         nuevoPaciente.setFechaNacimiento(getFechaNac());
         nuevoPaciente.setNacionalidad(textNacionalidad.getText());

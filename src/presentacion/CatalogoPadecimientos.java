@@ -1,9 +1,12 @@
 // @author Paula Yacira
 package presentacion;
 
+import negocio.NegocioPadecimiento;
+
 public class CatalogoPadecimientos extends javax.swing.JDialog
 {
     String arreglo [] = new String [21];
+    int contador;  // contador de los padecimientos seleccionados
     
     public CatalogoPadecimientos(java.awt.Dialog parent, boolean modal) 
     {
@@ -484,13 +487,13 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         
         for (int i = 0; i < arreglo.length; i++)
             System.out.println("Padecimiento: " + arreglo[i]);
+        
+        obtenerIds();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     // Este metodo nos retorna el numero de padecimientos seleccionados para su posterior uso
     public void obtenerNumeroPadecimientos()
-    {
-        int contador = 0;
-        
+    { 
         if (chbVertigo.isSelected())
         {
             arreglo[contador] = "Vertigo";
@@ -623,7 +626,15 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     // metodo para obtener todos los id seleccionados en este formulario
     public void obtenerIds()
     {
-        int arregloIds [] = new int [5];
+        int arregloIds [] = new int [contador];
+        NegocioPadecimiento objetoPadecimiento = new NegocioPadecimiento();
+        
+        for (int i = 0; i < arregloIds.length; i++)
+        {
+            arregloIds[i] = objetoPadecimiento.obtenerId(arreglo[i]);
+            System.out.println("Id: " + arregloIds[i]);
+        }// fin del for
+        
     }// fin del metodo obtenerIds
     
     
