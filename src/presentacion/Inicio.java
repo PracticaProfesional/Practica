@@ -193,6 +193,11 @@ public class Inicio extends javax.swing.JFrame {
         panelPrincipal.setToolTipText("");
         panelPrincipal.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
         panelPrincipal.setName("Panel principal"); // NOI18N
+        panelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelPrincipalMouseClicked(evt);
+            }
+        });
 
         tabExpediente.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
 
@@ -1512,6 +1517,11 @@ public class Inicio extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
+//        try {
+//            cargarActividadesAgenda();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnConsultaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMedicaActionPerformed
@@ -1524,7 +1534,42 @@ public class Inicio extends javax.swing.JFrame {
         this.tabExpediente.setSelectedIndex(1);
     }//GEN-LAST:event_btnConsultaMedicaActionPerformed
 
-    private void cargarActividadesAgenda(){
+    private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
+         try {
+            cargarActividadesAgenda();
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_panelPrincipalMouseClicked
+
+    private void cargarActividadesAgenda() throws SQLException{
+        String fechaSeleccionada;
+//        String horaActividad;
+        int year, month, day;
+        year = agendaCalendario.getCurrent().get(Calendar.YEAR);
+        month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
+        day = agendaCalendario.getCurrent().get(Calendar.DAY_OF_MONTH);
+        fechaSeleccionada = "'" +year + "-" + month + "-" + day + "'";
+        String arregloHoras [] = {"08:00","08:15","08:30", "08:45", "09:00", 
+                                  "09:15", "09:30", "09:45", "10:00", "10:15", 
+                                  "10:30",  "10:45", "11:00", "11:15", "11:30",
+                                  "11:45", "12:00", "12:30", "13:00", "13:30",
+                                  "14:00", "14:30","15:00","15:30", "16:00",
+                                  "16:30", "17:00","17:30",  "20:00", "21:00"};
+        negocio.NegocioCita obtenerCitas = new negocio.NegocioCita();
+        java.sql.ResultSet rs = obtenerCitas.obtenerFechaConsulta(fechaSeleccionada);
+        java.sql.ResultSet copiaRs = rs;
+//        copiaRs.last();
+//        int numFilas = copiaRs.getRow();
+        
+            while(rs.next()){
+                for(int i = 0; i < arregloHoras.length; i++){
+                    if(arregloHoras[i].equals(rs.getString("horaConsulta")))
+                        agendaTabla.setValueAt(rs.getString("anotaciones"), i, 1);
+                }
+                
+                
+            }
         
     }
     /**
