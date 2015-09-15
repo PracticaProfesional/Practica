@@ -4,6 +4,7 @@ package negocio;
 
 import entidad.Cita;
 import datos.OperacionesCita;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class NegocioCita
@@ -21,4 +22,8 @@ public class NegocioCita
         
     }// fin del metodo insertarCita
     
+    public ResultSet obtenerFechaConsulta(String fecha) throws SQLException{
+        OperacionesCita operacionesCita = new OperacionesCita();
+        return operacionesCita.obtenerFechaConsulta(fecha);
+    }
 }// fin de la clase NegocioCita
