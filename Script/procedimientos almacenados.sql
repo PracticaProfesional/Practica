@@ -61,10 +61,10 @@ END $
 
 
 DELIMITER $  -- insertar en la tabla padecimientos
-CREATE PROCEDURE InsertarPadecimientos (in nomPad varchar(45), in descrip varchar(45))
+CREATE PROCEDURE InsertarPadecimientos (in nomPad varchar(45))
 BEGIN
-	insert into padecimientos(nombrePadecimiento, descripcion)
-	values (nomPad, descrip);
+	insert into padecimientos(nombrePadecimiento)
+	values (nomPad);
 END $
 
 
@@ -232,127 +232,140 @@ $
 
 
 -- Inserciones en la tabla Padecimientos para formar el catalogo
+Call InsertarPadecimientos('Vertigo');
+$
+Call InsertarPadecimientos('Sordera');
+$
+Call InsertarPadecimientos('Miopia');
+$
+Call InsertarPadecimientos('Astigmatismo');
+$
 
 
 -- Padecimientos del corazon
-Call InsertarPadecimientos('Presion Alta', null);
+Call InsertarPadecimientos('Presion Alta');
 $
 
-Call InsertarPadecimientos('Cardiopatia', 'Soplo');
+Call InsertarPadecimientos('Soplo');
 $
-Call InsertarPadecimientos('Cardiopatia', 'Infarto');
+Call InsertarPadecimientos('Infarto');
 $
-Call InsertarPadecimientos('Cardiopatia', 'Arritmia');
+Call InsertarPadecimientos('Arritmia');
 $
-Call InsertarPadecimientos('Cardiopatia', 'Otro');
-$
+
 
 
 -- Padecimientos neurologicos
-Call InsertarPadecimientos('Evento cerebro vascular', null);
+Call InsertarPadecimientos('ECV');
 $
-
+Call InsertarPadecimientos('Convulsiones');
+$
 
 -- Padecimientos del metabolismo
-Call InsertarPadecimientos('Pre-diabetes', null);
+Call InsertarPadecimientos('Pre-diabetes');
 $
-Call InsertarPadecimientos('Dislipidemia', null);
+Call InsertarPadecimientos('Dislipidemia');
 $
+Call InsertarPadecimientos('Diabetes');
+$
+Call InsertarPadecimientos('Obesidad');
+$
+Call InsertarPadecimientos('Sobre peso');
+$
+Call InsertarPadecimientos('Bajo peso');
+$
+
 
 
 -- Padecimientos pulmobares
-Call InsertarPadecimientos('Enfermedad Pulmonar', 'Asama');
+Call InsertarPadecimientos('Asama');
 $
-Call InsertarPadecimientos('Enfermedad Pulmonar', 'EPOC');
-$
-Call InsertarPadecimientos('Enfermedad Pulmonar', 'Otro');
+Call InsertarPadecimientos('EPOC');
 $
 
 
 -- Padecimientos de la tiroides
-Call InsertarPadecimientos('Tiroides', 'Hipotiroidismo');
+Call InsertarPadecimientos('Hipotiroidismo');
 $
-Call InsertarPadecimientos('Tiroides', 'Hipertiroidismo');
+Call InsertarPadecimientos('Hipertiroidismo');
 $
-Call InsertarPadecimientos('Tiroides', 'Otro');
+Call InsertarPadecimientos('Tiroiditis');
 $
 
 
 -- Padecimientos enfermedades mentales
-Call InsertarPadecimientos('Enfermedad mental', 'Ansiedad');
+Call InsertarPadecimientos('Ansiedad');
 $
-Call InsertarPadecimientos('Enfermedad mental', 'Depresion');
+Call InsertarPadecimientos('Depresion');
 $
-Call InsertarPadecimientos('Enfermedad mental', 'Esquisofrenia');
+Call InsertarPadecimientos('Esquisofrenia');
 $
-Call InsertarPadecimientos('Enfermedad mental', 'Otro');
+Call InsertarPadecimientos('Alzheimer');
+$
+Call InsertarPadecimientos('Trastornos Alimenticios');
 $
 
 
 -- Padecimientos cancer
-Call InsertarPadecimientos('Cancer', 'Piel');
+Call InsertarPadecimientos('Piel');
 $
-Call InsertarPadecimientos('Cancer', 'Mama');
+Call InsertarPadecimientos('Mama');
 $
-Call InsertarPadecimientos('Cancer', 'Pulmon');
+Call InsertarPadecimientos('Pulmon');
 $
-Call InsertarPadecimientos('Cancer', 'Gastrico');
+Call InsertarPadecimientos('Gastrico');
 $
-Call InsertarPadecimientos('Cancer', 'Otro');
+Call InsertarPadecimientos('Tiroides');
+$
+Call InsertarPadecimientos('Prostata');
+$
+Call InsertarPadecimientos('Colon');
+$
+Call InsertarPadecimientos('Leucemia');
+$
+Call InsertarPadecimientos('Melanoma');
 $
 
 
 
 -- Padecimientos varios
-Call InsertarPadecimientos('Enfermedad renal', null);
+Call InsertarPadecimientos('Insuficiencia renal');
 $
-Call InsertarPadecimientos('Diabetes', null);
+Call InsertarPadecimientos('Calculo renal');
 $
-Call InsertarPadecimientos('Obesidad', null);
-$
-Call InsertarPadecimientos('Sobre peso', null);
-$
-Call InsertarPadecimientos('Bajo peso', null);
-$
-Call InsertarPadecimientos('Miopia', null);
-$
-Call InsertarPadecimientos('Astigmatismo', null);
-$
-Call InsertarPadecimientos('Vertigo', null);
-$
-Call InsertarPadecimientos('Sordera', null);
-$
+
+
 
 
 -- Padecimientos musculoesqueleticos
-Call InsertarPadecimientos('Enfermedad musculoesqueletica', 'Atritis');
+Call InsertarPadecimientos('Atritis');
 $
-Call InsertarPadecimientos('Enfermedad musculoesqueletica', 'Fibromialgia');
+Call InsertarPadecimientos('Fibromialgia');
 $
-Call InsertarPadecimientos('Enfermedad musculoesqueletica', 'Lumbalgia');
+Call InsertarPadecimientos('Lumbalgia');
 $
-Call InsertarPadecimientos('Enfermedad musculoesqueletica', 'Gonoartrosis');
+Call InsertarPadecimientos('Gonoartrosis');
 $
-Call InsertarPadecimientos('Enfermedad musculoesqueletica', 'Artrosis');
+Call InsertarPadecimientos('Artrosis');
 $
 
 
 -- Padecimientos Gastroinstestinales
-Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Gastritis');
+Call InsertarPadecimientos('Gastritis');
 $
-Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Reflujo');
+Call InsertarPadecimientos('Reflujo');
 $
-Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Colitis');
+Call InsertarPadecimientos('Colitis');
 $
-Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Estreñimiento');
+Call InsertarPadecimientos('Estreñimiento');
 $
-Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Colelitiasis');
+Call InsertarPadecimientos('Colelitiasis');
 $
-Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Ulcera');
+Call InsertarPadecimientos('Ulcera');
 $
-Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Hepatitis');
+Call InsertarPadecimientos('Hepatitis');
 $
-Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Polipos');
+Call InsertarPadecimientos('Polipos');
 
 
 
@@ -361,9 +374,13 @@ Call InsertarPadecimientos('Enfermedad gastrointestinal', 'Polipos');
 DELIMITER $
 CREATE PROCEDURE ConsultarNombrePadecimiento (in nom varchar(45) )
 BEGIN
-	select id from Padecimientos
-	where nombrePadecimiento = nom;
+		select id from Padecimientos
+		where descripcion = nom;
 END $
 
-Call ConsultarNombrePadecimiento ('Vertigo')
+Call ConsultarNombrePadecimiento ('Vertigo');
+$
+
+
+ALTER TABLE `sigos`.`padecimientos` DROP COLUMN `descripcion` ;
 
