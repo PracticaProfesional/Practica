@@ -6,12 +6,12 @@ import entidad.Paciente; // Cambiar a capa de negocio
 
 public class OperacionesPaciente {
     
-    private Conexion objetoDeConexion;
+    private Conexion objetoDeConexion = new Conexion() ;
     private Statement estado;
     
     public void insertarPaciente(Paciente objetoPaciente)
     { 
-        objetoDeConexion = new Conexion();
+        
         String datosPaciente = "'"+objetoPaciente.getNombrePaciente()+"'"+","+"'"+objetoPaciente.getApellido1()+"'"+","
                                 +"'"+objetoPaciente.getApellido2()+"'"+","
                                 +"'"+objetoPaciente.getSexo()+"'"+","+"'"+objetoPaciente.getFechaNacimiento()+"'"+","

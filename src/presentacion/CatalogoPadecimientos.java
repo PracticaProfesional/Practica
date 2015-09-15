@@ -467,12 +467,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     
     
     private void cbCardiopatiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCardiopatiaActionPerformed
-        // TODO add your handling code here:
-         
-         if(cbCardiopatia.getSelectedItem().toString().equals("Otros")){
-            // taCardiopatia.setVisible(true); 
-            // taCardiopatia.setEnabled(true);
-         }
+
     }//GEN-LAST:event_cbCardiopatiaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -480,8 +475,6 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -497,7 +490,6 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     public void obtenerNumeroPadecimientos()
     {
         int contador = 0;
-        
         
         if (chbVertigo.isSelected())
         {
@@ -628,7 +620,15 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         //return contador;
     }// fin del metodo obtnerNumeroPadecimientos
     
-    public static void main(String args[]) {
+    // metodo para obtener todos los id seleccionados en este formulario
+    public void obtenerIds()
+    {
+        int arregloIds [] = new int [5];
+    }// fin del metodo obtenerIds
+    
+    
+    public static void main(String args[]) 
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -652,21 +652,26 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         }
         //</editor-fold>
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CatalogoPadecimientos dialog = new CatalogoPadecimientos(new javax.swing.JDialog(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-                
-            }
-        });
-    }
+        java.awt.EventQueue.invokeLater(new Runnable() 
+            {
+                public void run() 
+                {
+                    CatalogoPadecimientos dialog = new CatalogoPadecimientos(new javax.swing.JDialog(), true);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() 
+                        {
+                            @Override
+                            public void windowClosing(java.awt.event.WindowEvent e) 
+                            {
+                                System.exit(0);
+                            }// fin del metodo windowClosing
+                        }// fin de la clase interna anonima
+                    );// fin del metodo addWindowListener
+                    
+                    dialog.setVisible(true);               
+                }// fin del metodo run
+            }// fin de la clase interna anonima
+        );// fin del metodo invokeLater
+    }// fin del main
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
