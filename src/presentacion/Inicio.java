@@ -1487,8 +1487,18 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_agendaTablaMouseClicked
 
     private void agendaCalendarioOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_agendaCalendarioOnSelectionChange
-        // recargar la informacion de la tabla segun el dia elegido
+        limpiaAgenda();
+        try{
+            cargarActividadesAgenda();
+        }
+        catch(java.sql.SQLException e){
+        }
     }//GEN-LAST:event_agendaCalendarioOnSelectionChange
+
+    private void limpiaAgenda() {
+        for(int i = 0; i < 30; i++)
+            agendaTabla.setValueAt("", i, 1);
+    }
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
@@ -1557,20 +1567,13 @@ public class Inicio extends javax.swing.JFrame {
                                   "14:00", "14:30","15:00","15:30", "16:00",
                                   "16:30", "17:00","17:30",  "20:00", "21:00"};
         negocio.NegocioCita obtenerCitas = new negocio.NegocioCita();
-        java.sql.ResultSet rs = obtenerCitas.obtenerFechaConsulta(fechaSeleccionada);
-        java.sql.ResultSet copiaRs = rs;
-//        copiaRs.last();
-//        int numFilas = copiaRs.getRow();
-        
+        java.sql.ResultSet rs = obtenerCitas.obtenerFechaConsulta(fechaSeleccionada);      
             while(rs.next()){
                 for(int i = 0; i < arregloHoras.length; i++){
                     if(arregloHoras[i].equals(rs.getString("horaConsulta")))
                         agendaTabla.setValueAt(rs.getString("anotaciones"), i, 1);
-                }
-                
-                
-            }
-        
+                }   
+            }  
     }
     /**
      * @param args the command line arguments
