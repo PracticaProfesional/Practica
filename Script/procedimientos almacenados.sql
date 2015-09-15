@@ -372,13 +372,13 @@ Call InsertarPadecimientos('Polipos');
 
 -- Procedimientos para consultar
 DELIMITER $
-CREATE PROCEDURE ConsultarNombrePadecimiento (in nom varchar(45) )
+CREATE PROCEDURE ConsultarIdPadecimiento (in nom varchar(45) )
 BEGIN
 		select id from Padecimientos
-		where descripcion = nom;
+		where nombrePadecimiento = nom;
 END $
 
-Call ConsultarNombrePadecimiento ('Vertigo');
+Call ConsultarNombrePadecimiento ('Dislipidemia');
 $
 
 
