@@ -56,7 +56,7 @@ public class Inicio extends javax.swing.JFrame {
         btnConsultaMedica = new javax.swing.JButton();
         btnCrearExpediente = new javax.swing.JButton();
         tabConsultaMedica = new javax.swing.JPanel();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
+        panelConsultaMedica = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -272,7 +272,7 @@ public class Inicio extends javax.swing.JFrame {
         panelBtnBuscarPacienteLayout.setVerticalGroup(
             panelBtnBuscarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBtnBuscarPacienteLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addGroup(panelBtnBuscarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsultaMedica)
                     .addComponent(btnCrearExpediente))
@@ -672,7 +672,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(2133, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Signos Vitales", jPanel1);
+        panelConsultaMedica.addTab("Signos Vitales", jPanel1);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Cabeza"));
 
@@ -1123,7 +1123,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane4.addTab("Examen Físico", jPanel2);
+        panelConsultaMedica.addTab("Examen Físico", jPanel2);
 
         jButton6.setText("Adjuntar Examen");
 
@@ -1161,9 +1161,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(2516, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Examen Medico", jPanel15);
+        panelConsultaMedica.addTab("Examen Medico", jPanel15);
 
-        tabConsultaMedica.add(jTabbedPane4, java.awt.BorderLayout.PAGE_START);
+        tabConsultaMedica.add(panelConsultaMedica, java.awt.BorderLayout.PAGE_START);
 
         tabExpediente.addTab("Consulta Medica", tabConsultaMedica);
 
@@ -1549,9 +1549,10 @@ public class Inicio extends javax.swing.JFrame {
         int filaSeleccionada = this.tableBuscarPaciente.getSelectedRow();
         if(filaSeleccionada == -1)
             JOptionPane.showMessageDialog(rootPane, "Por favor seleccione un paciente.");
-        else
+        else{
             this.idPaciente = tableBuscarPaciente.getValueAt(filaSeleccionada, 0).toString();
-        this.tabExpediente.setSelectedIndex(1);
+            this.tabExpediente.setSelectedIndex(1);
+        }   
     }//GEN-LAST:event_btnConsultaMedicaActionPerformed
 
     private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
@@ -1564,7 +1565,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void textBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBuscarPacienteActionPerformed
         if(textBuscarPaciente.getText().equals(""))
-            cargarTablaBuscarPaciente();
+        cargarTablaBuscarPaciente();
     }//GEN-LAST:event_textBuscarPacienteActionPerformed
 
     private void cargarActividadesAgenda() throws SQLException{
@@ -1754,7 +1755,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -1770,6 +1770,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jlOidos;
     private javax.swing.JLabel jlOjos;
     private javax.swing.JPanel panelBtnBuscarPaciente;
+    private javax.swing.JTabbedPane panelConsultaMedica;
     private javax.swing.JTabbedPane panelPrincipal;
     private javax.swing.JTabbedPane tabAdministrador;
     private javax.swing.JPanel tabBuscarPaciente;

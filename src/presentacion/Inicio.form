@@ -271,7 +271,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="40" max="32767" attributes="0"/>
+                              <EmptySpace pref="31" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnConsultaMedica" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnCrearExpediente" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -314,7 +314,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JTabbedPane" name="jTabbedPane4">
+                <Container class="javax.swing.JTabbedPane" name="panelConsultaMedica">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                       <BorderConstraints direction="First"/>
