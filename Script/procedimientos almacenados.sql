@@ -113,10 +113,10 @@ END $
 
 
 DELIMITER $
-CREATE PROCEDURE InsertarAntecedentesFamiliares (in idPad int, in par varchar(45))
+CREATE PROCEDURE InsertarAntecedentesFamiliares (in par varchar(45), in des varchar(100))
 BEGIN
-	insert into AntecedentesFamiliares (idPadecimientos, parentesco)
-	values (idPad, par);
+	insert into AntecedentesFamiliares (parentesco, descripcion)
+	values (par, des);
 END $
 
 
@@ -163,8 +163,16 @@ BEGIN
 	insert into `AntecedentesPersonales-Padecimientos` (idPadecimientos, 
 			idAntecedentesPersonales)
 	values (idPad, idAntPer);
-END
+END $
 
+DELIMITER $
+CREATE PROCEDURE InsertarAntecedentesFamiliaresPadecimientos (in idPad int,
+		in idAntFam int)
+BEGIN
+	insert into `AntecedentesFamiliares-Padecimientos` (idPadecimiento, 
+			idAntecedenteFamiliar)
+	values (idPad, idAntFam);
+END
 
 
 
