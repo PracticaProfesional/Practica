@@ -550,13 +550,13 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         
         if (chbBajopeso.isSelected())
         {
-            arreglo[contador] = "Bajopeso";
+            arreglo[contador] = "Bajo peso";
             contador++;
         }// fin de if
         
         if (chbSobrepeso.isSelected())
         {
-            arreglo[contador] = "Sobrepeso";
+            arreglo[contador] = "Sobre peso";
             contador++;
         }// fin de if
         

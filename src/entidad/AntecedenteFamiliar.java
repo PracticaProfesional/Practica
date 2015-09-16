@@ -6,9 +6,9 @@ package entidad;
  * @author cooper15
  */
 public class AntecedenteFamiliar {
-   private String nombreAntecedenteFamiliar; 
+   private String nombreAntecedenteFamiliar;    // Este atributo creo que esta haciendo nada
    private String parentezco;
-   private String detalles;
+   private String descripcion;
 
     public String getNombreAntecedenteFamiliar() {
         return nombreAntecedenteFamiliar;
@@ -26,12 +26,12 @@ public class AntecedenteFamiliar {
         this.parentezco = parentezco;
     }
 
-    public String getDetalles() {
-        return detalles;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDetalles(String detalles) {
-        this.detalles = detalles;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
    
-}
+}// fin de la clase AntecedenteFamiliar

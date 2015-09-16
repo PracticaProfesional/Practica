@@ -7,6 +7,7 @@ package presentacion;
 
 import datos.ObtenerUltimoId;
 import entidad.Alergia;
+import entidad.AntecedenteFamiliar;
 import entidad.AntecedentesPersPad;
 import entidad.Paciente;
 import entidad.Padecimiento;
@@ -18,6 +19,9 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import negocio.NegocioAntecedentesPersPad;
+import negocio.NegocioAntecedenteFamiliar;
+import negocio.NegocioAntecedentesFamPad;
+import entidad.AntecedentesFamPad;
 
 /**
  *
@@ -98,9 +102,9 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        textAntFamNombre = new javax.swing.JTextField();
         textAntFamDescrip = new javax.swing.JTextField();
         textAntFamParentezco = new javax.swing.JTextField();
+        btnAgregarPadecimiento = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -185,38 +189,38 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
         textFechaNac.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
             new datechooser.view.appearance.ViewAppearance("custom",
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(85, 85, 85),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(85, 85, 85),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
                     new java.awt.Color(0, 0, 255),
                     true,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
                     new java.awt.Color(0, 0, 255),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
                     new java.awt.Color(128, 128, 128),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(85, 85, 85),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(85, 85, 85),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
                     new java.awt.Color(255, 0, 0),
                     false,
                     false,
@@ -224,7 +228,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
                 (datechooser.view.BackRenderer)null,
                 false,
                 true)));
-    textFechaNac.setFormat(2);
     textFechaNac.setCurrentNavigateIndex(0);
     textFechaNac.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
 
@@ -486,6 +489,13 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     jLabel19.setText("Parentezco");
 
+    btnAgregarPadecimiento.setText("Añadir");
+    btnAgregarPadecimiento.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnAgregarPadecimientoActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
     jPanel7.setLayout(jPanel7Layout);
     jPanel7Layout.setHorizontalGroup(
@@ -497,19 +507,19 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
                 .addComponent(jLabel18)
                 .addComponent(jLabel19))
             .addGap(109, 109, 109)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(textAntFamParentezco, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(textAntFamDescrip, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(textAntFamNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(textAntFamParentezco, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(textAntFamDescrip, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(btnAgregarPadecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addContainerGap(132, Short.MAX_VALUE))
     );
     jPanel7Layout.setVerticalGroup(
         jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel7Layout.createSequentialGroup()
-            .addGap(21, 21, 21)
+            .addGap(20, 20, 20)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel17)
-                .addComponent(textAntFamNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnAgregarPadecimiento))
             .addGap(18, 18, 18)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel18)
@@ -535,7 +545,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addGap(99, 99, 99)
             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(261, Short.MAX_VALUE))
+            .addContainerGap(289, Short.MAX_VALUE))
     );
 
     jTabbedPane1.addTab("Antecedentes Familiares", jPanel1);
@@ -585,8 +595,9 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         insertarAlergia(nuevaAlergia);
         insertarVacuna(nuevaVacuna);
         insertarAntecedentesPersonal(ultimoId);
-        insertarAntecedentesPersonalesPadec(ultimoId);
-        //insertarAntecedenteFamiliar();
+        insertarAntecedentesPersonalesPadecimientos(ultimoId);
+        insertarAntecedenteFamiliar();
+        insertarAntecedenteFamiliaresPAdecimientos(ultimoId);
         crearExpedienteMedico();
         this.dispose();
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
@@ -604,7 +615,24 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         {
             System.out.println("Id: " + ids[i]);
         }// fin del for
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnAgregarPadecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoActionPerformed
+        
+        CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(this, true);
+        padecimientos.setVisible(true);
+        
+        ids = new int [padecimientos.obtenerContador()];
+        
+        ids = padecimientos.cargarIdsAArreglo();
+        
+        for (int i = 0; i < ids.length; i++)
+        {
+            System.out.println("Id: " + ids[i]);
+        }// fin del for
+        
+    }//GEN-LAST:event_btnAgregarPadecimientoActionPerformed
 
     private void crearExpedienteMedico() {
         negocio.NegocioExpedienteMedico insertarExpediente = new negocio.NegocioExpedienteMedico();
@@ -615,21 +643,24 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         }
     }
 
-    private void insertarAntecedenteFamiliar() {
-        entidad.AntecedenteFamiliar nuevoAntFam = new entidad.AntecedenteFamiliar();
-        entidad.Padecimiento padecimientoFam = new entidad.Padecimiento();
+    private void insertarAntecedenteFamiliar() 
+    {
+        NegocioAntecedenteFamiliar objetoNegocioAntFam = new NegocioAntecedenteFamiliar();
+        AntecedenteFamiliar nuevoAntFam = new AntecedenteFamiliar();
+        
         nuevoAntFam.setParentezco(textAntFamParentezco.getText());
-        padecimientoFam.setNombrePadecimiento(textAntFamNombre.getText());
-        padecimientoFam.setDescripcion(textAntFamDescrip.getText());
-        negocio.NegocioPadecimiento nuevoPad = new negocio.NegocioPadecimiento();
-        nuevoPad.insertarPadecimiento(padecimientoFam);
-        negocio.NegocioAntecedenteFamiliar insertarAntFam = new negocio.NegocioAntecedenteFamiliar();
-        try {
-            insertarAntFam.insertarAntecedenteFamiliar(nuevoAntFam);
-        } catch (SQLException ex) {
-            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        nuevoAntFam.setDescripcion(textAntFamDescrip.getText());
+        
+        try
+        {
+            objetoNegocioAntFam.insertarAntecedenteFamiliar(nuevoAntFam);
+        }// fin del try
+        catch(SQLException ex)
+        {
+            System.out.println("Exepcion");
+        }// fin del catch
+        
+    }// fin del metodo insertarAntecedenteFamiliar
 
     private void insertarAntecedentesPersonal(ObtenerUltimoId ultimoId) 
     {
@@ -681,7 +712,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         insertarAlergia.insertarAlergia(nuevaAlergia);
     }
     
-    private void insertarAntecedentesPersonalesPadec(ObtenerUltimoId ultimoId)
+    private void insertarAntecedentesPersonalesPadecimientos(ObtenerUltimoId ultimoId)
     {
         NegocioAntecedentesPersPad negocioAntecedentes = new NegocioAntecedentesPersPad();
         AntecedentesPersPad nuevoAntecedente = new AntecedentesPersPad();
@@ -693,14 +724,35 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
                 nuevoAntecedente.setIdPadecimientos(ids[i]);
                 nuevoAntecedente.setIdAntecedentesPersonales(
                         Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesPersonales")));
-            }
+            }// fin del try
             catch(SQLException e)
             {
-            }
+            }// fin del catch
             
             negocioAntecedentes.insertarAntecedentePersPad(nuevoAntecedente);
-        }
-    }// fin del metodo 
+        }// fin del for
+    }// fin del metodo insertarAntecedentesPersonalesPadecimientos
+    
+    public void insertarAntecedenteFamiliaresPAdecimientos(ObtenerUltimoId ultimoId)
+    {
+        NegocioAntecedentesFamPad negocioAntecedentes = new NegocioAntecedentesFamPad();
+        AntecedentesFamPad nuevoAntecedente = new AntecedentesFamPad();
+        
+        for (int i = 0; i < ids.length; i++)
+        {
+            try
+            {
+                nuevoAntecedente.setIdPadecimiento(ids[i]);
+                nuevoAntecedente.setIdAntecedenteFamiliar(
+                        Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesFamiliares")));
+            }// fin del try
+            catch(SQLException e)
+            {
+            }// fin del catch
+            
+            negocioAntecedentes.insertarAntecedenteFamiliarPadecimiento(nuevoAntecedente);
+        }// fin del for
+    }// fin del metodo insertarAntecedenteFamiliaresPAdecimientos
     
     private void insertarPadecimiento(Padecimiento nuevoPadecimiento) {
 //        nuevoPadecimiento.setNombrePadecimiento(textPadecimientoNombre.getText());
@@ -810,6 +862,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Medicamentos;
+    private javax.swing.JButton btnAgregarPadecimiento;
     private javax.swing.JButton btnExpedienteNuevoCancelar;
     private javax.swing.JButton btnExpedienteNuevoGuardar;
     private javax.swing.JButton jButton2;
@@ -848,7 +901,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     private javax.swing.JTextField textAlergiaDescrip;
     private javax.swing.JTextField textAlergiaNombre;
     private javax.swing.JTextField textAntFamDescrip;
-    private javax.swing.JTextField textAntFamNombre;
     private javax.swing.JTextField textAntFamParentezco;
     private javax.swing.JTextField textApellido1;
     private javax.swing.JTextField textApellido2;

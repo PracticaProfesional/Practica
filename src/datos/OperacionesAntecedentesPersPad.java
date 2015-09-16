@@ -26,6 +26,6 @@ public class OperacionesAntecedentesPersPad
         catch(SQLException e)
         {
         }// fin de catch
-    }// fin del metodo insertar
+    }// fin del metodo insertarAntecedentePersPad
     
 }// fin de la clase OperacionesAntecedentesPersPad
