@@ -363,6 +363,8 @@ ENGINE = InnoDB;
 
 USE `sigos` ;
 
+ALTER TABLE `sigos`.`antecedentesfamiliares` CHANGE COLUMN `parentesco` `parentesco` VARCHAR(45) NOT NULL  AFTER `id` , CHANGE COLUMN `idPadecimientos` `descripcion` VARCHAR(100) NOT NULL  ;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
