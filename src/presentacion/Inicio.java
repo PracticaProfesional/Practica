@@ -201,6 +201,12 @@ public class Inicio extends javax.swing.JFrame {
 
         tabExpediente.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
 
+        textBuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBuscarPacienteActionPerformed(evt);
+            }
+        });
+
         btnBuscarPaciente.setText("Buscar");
         btnBuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1505,6 +1511,10 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTablaBuscarPaciente();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void cargarTablaBuscarPaciente() {
         java.sql.ResultSet rs;
         negocio.NegocioExpedienteMedico opExpediente = new negocio.NegocioExpedienteMedico();
         try {
@@ -1521,9 +1531,9 @@ public class Inicio extends javax.swing.JFrame {
                 nuevoModeloTabla.addRow(fila);
                 
             }
-        tableBuscarPaciente.getColumnModel().getColumn(0).setMaxWidth(0);
-        tableBuscarPaciente.getColumnModel().getColumn(0).setMinWidth(0);
-        tableBuscarPaciente.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tableBuscarPaciente.getColumnModel().getColumn(0).setMaxWidth(0);
+            tableBuscarPaciente.getColumnModel().getColumn(0).setMinWidth(0);
+            tableBuscarPaciente.getColumnModel().getColumn(0).setPreferredWidth(0);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1532,7 +1542,7 @@ public class Inicio extends javax.swing.JFrame {
 //        } catch (SQLException ex) {
 //            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-    }//GEN-LAST:event_formWindowOpened
+    }
 
     private void btnConsultaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMedicaActionPerformed
        // Obtener el idPaciente de la fila seleccionada.
@@ -1551,6 +1561,11 @@ public class Inicio extends javax.swing.JFrame {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_panelPrincipalMouseClicked
+
+    private void textBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBuscarPacienteActionPerformed
+        if(textBuscarPaciente.getText().equals(""))
+            cargarTablaBuscarPaciente();
+    }//GEN-LAST:event_textBuscarPacienteActionPerformed
 
     private void cargarActividadesAgenda() throws SQLException{
         String fechaSeleccionada;
@@ -1575,7 +1590,7 @@ public class Inicio extends javax.swing.JFrame {
             }  
     }
     private void buscarPaciente(){
-        java.util.LinkedList<String> paciente = new java.util.LinkedList<String>();
+        java.util.LinkedList<String> paciente = new java.util.LinkedList();
         int numeroFilas = tableBuscarPaciente.getRowCount();
         // Se realiza la comparacion y se guardan los datos.
         for(int i = 0; i < numeroFilas; i++)
