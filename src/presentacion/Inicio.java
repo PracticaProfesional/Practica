@@ -46,8 +46,8 @@ public class Inicio extends javax.swing.JFrame {
         panelPrincipal = new javax.swing.JTabbedPane();
         tabExpediente = new javax.swing.JTabbedPane();
         tabBuscarPaciente = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        textBuscarPaciente = new javax.swing.JTextField();
+        btnBuscarPaciente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -201,10 +201,10 @@ public class Inicio extends javax.swing.JFrame {
 
         tabExpediente.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarPaciente.setText("Buscar");
+        btnBuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBuscarPacienteActionPerformed(evt);
             }
         });
 
@@ -281,9 +281,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(93, 93, 93)
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(263, Short.MAX_VALUE))
             .addGroup(tabBuscarPacienteLayout.createSequentialGroup()
                 .addContainerGap()
@@ -297,8 +297,8 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(tabBuscarPacienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabBuscarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(textBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarPaciente)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1333,9 +1333,9 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPacienteActionPerformed
+       buscarPaciente();
+    }//GEN-LAST:event_btnBuscarPacienteActionPerformed
 
     private void btnCrearExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearExpedienteActionPerformed
         ExpedienteNuevo nuevo = new ExpedienteNuevo(this, true);
@@ -1554,7 +1554,6 @@ public class Inicio extends javax.swing.JFrame {
 
     private void cargarActividadesAgenda() throws SQLException{
         String fechaSeleccionada;
-//        String horaActividad;
         int year, month, day;
         year = agendaCalendario.getCurrent().get(Calendar.YEAR);
         month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
@@ -1574,6 +1573,23 @@ public class Inicio extends javax.swing.JFrame {
                         agendaTabla.setValueAt(rs.getString("anotaciones"), i, 1);
                 }   
             }  
+    }
+    private void buscarPaciente(){
+        java.util.LinkedList<String> paciente = new java.util.LinkedList<String>();
+        int numeroFilas = tableBuscarPaciente.getRowCount();
+        // Se realiza la comparacion y se guardan los datos.
+        for(int i = 0; i < numeroFilas; i++)
+            if(tableBuscarPaciente.getValueAt(i, 1).toString().equals(textBuscarPaciente.getText().trim())){
+                for(int j = 0; j < 5; j++)
+                    paciente.add(tableBuscarPaciente.getValueAt(i, j).toString());
+            }
+        // Limpia el contenido actual
+        for(int k = 0; k < numeroFilas; k++)
+            for(int l = 0; l < 5; l++)
+                tableBuscarPaciente.setValueAt("", k, l);
+        // Posiciona el resultado en la primer fila
+        for(int q = 0; q < 5; q++)
+            tableBuscarPaciente.setValueAt(paciente.removeFirst(), 0, q);
     }
     /**
      * @param args the command line arguments
@@ -1626,6 +1642,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel agendaPanelCalendario;
     private javax.swing.JPanel agendaPanelPrincipal;
     private javax.swing.JTable agendaTabla;
+    private javax.swing.JButton btnBuscarPaciente;
     private javax.swing.JButton btnConsultaMedica;
     private javax.swing.JButton btnCrearExpediente;
     private javax.swing.JComboBox cbAbdomen;
@@ -1648,7 +1665,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox cbTiroides;
     private javax.swing.JComboBox cbTorax;
     private javax.swing.JComboBox cbUrinario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1724,7 +1740,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -1749,6 +1764,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabReportes;
     private javax.swing.JTable tableBuscarPaciente;
     private javax.swing.JTabbedPane tapAgenda;
+    private javax.swing.JTextField textBuscarPaciente;
     private javax.swing.JTextField textDiagnostico;
     private javax.swing.JTextField textOtrosDetallesAbdomen;
     private javax.swing.JTextField textOtrosDetallesBoca;
