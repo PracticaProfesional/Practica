@@ -252,6 +252,8 @@ Call InsertarPadecimientos('Infarto');
 $
 Call InsertarPadecimientos('Arritmia');
 $
+Call InsertarPadecimientos('Taquicardia');
+$
 
 
 
@@ -378,8 +380,11 @@ BEGIN
 		where nombrePadecimiento = nom;
 END $
 
-Call ConsultarNombrePadecimiento ('Dislipidemia');
+
+Call ConsultarIdPadecimiento ('Dislipidemia');
 $
+
+
 
 
 ALTER TABLE `sigos`.`padecimientos` DROP COLUMN `descripcion` ;
