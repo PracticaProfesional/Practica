@@ -6,7 +6,7 @@ import negocio.NegocioPadecimiento;
 public class CatalogoPadecimientos extends javax.swing.JDialog
 {
     String arreglo [] = new String [21];
-    int contador;  // contador de los padecimientos seleccionados
+    private int contador;  // contador de los padecimientos seleccionados
     
     public CatalogoPadecimientos(java.awt.Dialog parent, boolean modal) 
     {
@@ -488,7 +488,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         for (int i = 0; i < arreglo.length; i++)
             System.out.println("Padecimiento: " + arreglo[i]);
         
-        obtenerIds();
+        //cargarIdsAArreglo();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     // Este metodo nos retorna el numero de padecimientos seleccionados para su posterior uso
@@ -623,8 +623,8 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         //return contador;
     }// fin del metodo obtnerNumeroPadecimientos
     
-    // metodo para obtener todos los id seleccionados en este formulario
-    public void obtenerIds()
+    // metodo para cargar  todos los id seleccionados en un arrglo
+    public int [] cargarIdsAArreglo()
     {
         int arregloIds [] = new int [contador];
         NegocioPadecimiento objetoPadecimiento = new NegocioPadecimiento();
@@ -632,9 +632,9 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         for (int i = 0; i < arregloIds.length; i++)
         {
             arregloIds[i] = objetoPadecimiento.obtenerId(arreglo[i]);
-            System.out.println("Id: " + arregloIds[i]);
         }// fin del for
         
+        return arregloIds;
     }// fin del metodo obtenerIds
     
     
@@ -683,6 +683,11 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
             }// fin de la clase interna anonima
         );// fin del metodo invokeLater
     }// fin del main
+    
+    public int obtenerContador()
+    {
+        return contador;
+    }// fin del metodo obtenerContador
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

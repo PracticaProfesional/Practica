@@ -7,14 +7,17 @@ package presentacion;
 
 import datos.ObtenerUltimoId;
 import entidad.Alergia;
+import entidad.AntecedentesPersPad;
 import entidad.Paciente;
 import entidad.Padecimiento;
 import entidad.Telefono;
 import entidad.Vacuna;
+import entidad.AntecedentesPersonales;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import negocio.NegocioAntecedentesPersPad;
 
 /**
  *
@@ -22,9 +25,10 @@ import java.util.logging.Logger;
  */
 public class ExpedienteNuevo extends javax.swing.JDialog {
 
-    /**
-     * Creates new form ExpedienteNuevo
-     */
+    
+    int ids [];
+    
+    
     public ExpedienteNuevo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -577,18 +581,29 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
    
         // Llamada a funcion para realizar los procedimientos de insercion de paciente.
         insertarPaciente(nuevoPaciente, ultimoId);   
-        insertarPadecimiento(nuevoPadecimiento);     
+        //insertarPadecimiento(nuevoPadecimiento);     
         insertarAlergia(nuevaAlergia);
-        insertarVacuna(nuevaVacuna); 
-        insertarAntecedentesPersonal();
-        insertarAntecedenteFamiliar();
+        insertarVacuna(nuevaVacuna);
+        insertarAntecedentesPersonal(ultimoId);
+        insertarAntecedentesPersonalesPadec(ultimoId);
+        //insertarAntecedenteFamiliar();
         crearExpedienteMedico();
         this.dispose();
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
         CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(this, true);
         padecimientos.setVisible(true);
+        
+        ids = new int [padecimientos.obtenerContador()];
+        
+        ids = padecimientos.cargarIdsAArreglo();
+        
+        for (int i = 0; i < ids.length; i++)
+        {
+            System.out.println("Id: " + ids[i]);
+        }// fin del for
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void crearExpedienteMedico() {
@@ -616,13 +631,34 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         }
     }
 
-    private void insertarAntecedentesPersonal() {
-        entidad.AntecedentesPersonales nuevoAntPer = new entidad.AntecedentesPersonales();
-//        nuevoAntPer.setTratamiento(textTratamiento.getText());
-//        nuevoAntPer.setMedicamento(textMedicamentos.getText());
+    private void insertarAntecedentesPersonal(ObtenerUltimoId ultimoId) 
+    {
+        AntecedentesPersonales nuevoAntPer = new AntecedentesPersonales();
+        
+        nuevoAntPer.setTratamiento(textTratamiento.getText());
+        nuevoAntPer.setMedicamento(textMedicamentos.getText());
+        
+        try 
+        {
+            nuevoAntPer.setAlergias(Integer.parseInt(ultimoId.obtenerUltimoId("alergias")));
+            nuevoAntPer.setVacunas(Integer.parseInt(ultimoId.obtenerUltimoId("vacunas")));
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try 
+        {
+            ultimoId.getEstado().close();
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         negocio.NegocioAntecedentePersonal insertarAntPer = new negocio.NegocioAntecedentePersonal();
         insertarAntPer.insertarAntecedentePersonal(nuevoAntPer);
-    }
+    }// fin del metodo insertarAntecedentesPersonal
 
     private void insertarTelefono(Telefono nuevoTelefono) {
         negocio.NegocioTelefono insertarTelefono = new negocio.NegocioTelefono();
@@ -644,7 +680,28 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         negocio.NegocioAlergia insertarAlergia = new negocio.NegocioAlergia();
         insertarAlergia.insertarAlergia(nuevaAlergia);
     }
-
+    
+    private void insertarAntecedentesPersonalesPadec(ObtenerUltimoId ultimoId)
+    {
+        NegocioAntecedentesPersPad negocioAntecedentes = new NegocioAntecedentesPersPad();
+        AntecedentesPersPad nuevoAntecedente = new AntecedentesPersPad();
+        
+        for (int i = 0; i < ids.length; i++)
+        {
+            try
+            {
+                nuevoAntecedente.setIdPadecimientos(ids[i]);
+                nuevoAntecedente.setIdAntecedentesPersonales(
+                        Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesPersonales")));
+            }
+            catch(SQLException e)
+            {
+            }
+            
+            negocioAntecedentes.insertarAntecedentePersPad(nuevoAntecedente);
+        }
+    }// fin del metodo 
+    
     private void insertarPadecimiento(Padecimiento nuevoPadecimiento) {
 //        nuevoPadecimiento.setNombrePadecimiento(textPadecimientoNombre.getText());
 //        nuevoPadecimiento.setDescripcion(textPadecimientoDesc.getText());
@@ -704,6 +761,11 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         fechaVacuna = year+"-"+month+"-"+day;
         return fechaVacuna;
     }
+    
+    
+    public void revisarArreglo (int Ids [])
+    {
+    }// fin del metodo
     /**
      * @param args the command line arguments
      */
