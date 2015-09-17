@@ -7,9 +7,9 @@ package entidad;
  */
 public class ExamenFisico {
     private String categoria;
-    private String subCategoria;
+    private String subCategoria = "";
     //private int estadoExamenFisico; // Esto sera de tipo enum.
-    private String detalle;
+    private String detalle = "";
 
     public String getCategoria() {
         return categoria;
