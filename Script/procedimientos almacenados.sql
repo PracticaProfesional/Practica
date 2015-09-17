@@ -61,10 +61,10 @@ END $
 
 
 DELIMITER $  -- insertar en la tabla padecimientos
-CREATE PROCEDURE InsertarPadecimientos (in nomPad varchar(45), in descrip varchar(45))
+CREATE PROCEDURE InsertarPadecimientos (in nomPad varchar(45))
 BEGIN
-	insert into padecimientos(nombrePadecimiento, descripcion)
-	values (nomPad, descrip);
+	insert into padecimientos(nombrePadecimiento)
+	values (nomPad);
 END $
 
 
@@ -113,10 +113,10 @@ END $
 
 
 DELIMITER $
-CREATE PROCEDURE InsertarAntecedentesFamiliares (in idPad int, in par varchar(45))
+CREATE PROCEDURE InsertarAntecedentesFamiliares (in par varchar(45), in des varchar(100))
 BEGIN
-	insert into AntecedentesFamiliares (idPadecimientos, parentesco)
-	values (idPad, par);
+	insert into AntecedentesFamiliares (parentesco, descripcion)
+	values (par, des);
 END $
 
 
@@ -163,8 +163,16 @@ BEGIN
 	insert into `AntecedentesPersonales-Padecimientos` (idPadecimientos, 
 			idAntecedentesPersonales)
 	values (idPad, idAntPer);
-END
+END $
 
+DELIMITER $
+CREATE PROCEDURE InsertarAntecedentesFamiliaresPadecimientos (in idPad int,
+		in idAntFam int)
+BEGIN
+	insert into `AntecedentesFamiliares-Padecimientos` (idPadecimiento, 
+			idAntecedenteFamiliar)
+	values (idPad, idAntFam);
+END
 
 
 
@@ -176,7 +184,7 @@ $
 Call InsertarInventario ('Parasetamol', 'Pastillas', '100mg', 10);
 $
 
-Call InsertarTelefono ('95698569', 'Casa');
+Call InsertarTelefono ('26711972', 'Casa');
 $
 
 Call InsertarSignosVitales (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -220,7 +228,8 @@ $
 Call InsertarConsultaMedica (1, 1, 'Nada', 'Nada', 'Nada', 1, 1, 1);
 $
 
-Call InsertarAntecedentesPersonalesPadecimientos (1, 1)
+Call InsertarAntecedentesPersonalesPadecimientos (1, 1);
+$
 
 
 
@@ -230,14 +239,161 @@ Call InsertarAntecedentesPersonalesPadecimientos (1, 1)
 
 
 
+-- Inserciones en la tabla Padecimientos para formar el catalogo
+Call InsertarPadecimientos('Vertigo');
+$
+Call InsertarPadecimientos('Sordera');
+$
+Call InsertarPadecimientos('Miopia');
+$
+Call InsertarPadecimientos('Astigmatismo');
+$
+
+
+-- Padecimientos del corazon
+Call InsertarPadecimientos('Presion Alta');
+$
+
+Call InsertarPadecimientos('Soplo');
+$
+Call InsertarPadecimientos('Infarto');
+$
+Call InsertarPadecimientos('Arritmia');
+$
+Call InsertarPadecimientos('Taquicardia');
+$
+
+
+
+-- Padecimientos neurologicos
+Call InsertarPadecimientos('ECV');
+$
+Call InsertarPadecimientos('Convulsiones');
+$
+
+-- Padecimientos del metabolismo
+Call InsertarPadecimientos('Pre-diabetes');
+$
+Call InsertarPadecimientos('Dislipidemia');
+$
+Call InsertarPadecimientos('Diabetes');
+$
+Call InsertarPadecimientos('Obesidad');
+$
+Call InsertarPadecimientos('Sobre peso');
+$
+Call InsertarPadecimientos('Bajo peso');
+$
+
+
+
+-- Padecimientos pulmobares
+Call InsertarPadecimientos('Asama');
+$
+Call InsertarPadecimientos('EPOC');
+$
+
+
+-- Padecimientos de la tiroides
+Call InsertarPadecimientos('Hipotiroidismo');
+$
+Call InsertarPadecimientos('Hipertiroidismo');
+$
+Call InsertarPadecimientos('Tiroiditis');
+$
+
+
+-- Padecimientos enfermedades mentales
+Call InsertarPadecimientos('Ansiedad');
+$
+Call InsertarPadecimientos('Depresion');
+$
+Call InsertarPadecimientos('Esquisofrenia');
+$
+Call InsertarPadecimientos('Alzheimer');
+$
+Call InsertarPadecimientos('Trastornos Alimenticios');
+$
+
+
+-- Padecimientos cancer
+Call InsertarPadecimientos('Piel');
+$
+Call InsertarPadecimientos('Mama');
+$
+Call InsertarPadecimientos('Pulmon');
+$
+Call InsertarPadecimientos('Gastrico');
+$
+Call InsertarPadecimientos('Tiroides');
+$
+Call InsertarPadecimientos('Prostata');
+$
+Call InsertarPadecimientos('Colon');
+$
+Call InsertarPadecimientos('Leucemia');
+$
+Call InsertarPadecimientos('Melanoma');
+$
+
+
+
+-- Padecimientos varios
+Call InsertarPadecimientos('Insuficiencia renal');
+$
+Call InsertarPadecimientos('Calculo renal');
+$
 
 
 
 
--- Consulta para obtener el ultimo registro insertado en una tabla
+-- Padecimientos musculoesqueleticos
+Call InsertarPadecimientos('Atritis');
+$
+Call InsertarPadecimientos('Fibromialgia');
+$
+Call InsertarPadecimientos('Lumbalgia');
+$
+Call InsertarPadecimientos('Gonoartrosis');
+$
+Call InsertarPadecimientos('Artrosis');
+$
+
+
+-- Padecimientos Gastroinstestinales
+Call InsertarPadecimientos('Gastritis');
+$
+Call InsertarPadecimientos('Reflujo');
+$
+Call InsertarPadecimientos('Colitis');
+$
+Call InsertarPadecimientos('Estreñimiento');
+$
+Call InsertarPadecimientos('Colelitiasis');
+$
+Call InsertarPadecimientos('Ulcera');
+$
+Call InsertarPadecimientos('Hepatitis');
+$
+Call InsertarPadecimientos('Polipos');
 
 
 
 
+-- Procedimientos para consultar
+DELIMITER $
+CREATE PROCEDURE ConsultarIdPadecimiento (in nom varchar(45) )
+BEGIN
+		select id from Padecimientos
+		where nombrePadecimiento = nom;
+END $
 
+
+Call ConsultarIdPadecimiento ('Dislipidemia');
+$
+
+
+
+
+ALTER TABLE `sigos`.`padecimientos` DROP COLUMN `descripcion` ;
 

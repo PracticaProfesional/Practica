@@ -3,6 +3,7 @@ package datos;
 import java.sql.Statement;
 //import entidad.Expediente;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 /**
  *
  * @author cooper15
@@ -23,5 +24,12 @@ public class OperacionesExpedienteMedico {
         String datosExpediente = "'"+idPaciente+"'"+","+"'"+idAntecedentesPersonales+"'"+","
                                 +"'"+idAntecedentesFam+"'";
         estado.executeQuery("Call InsertarExpedienteMedico("+datosExpediente+")");
+    }
+    
+    public ResultSet obtenerExpedientePaciente() throws SQLException{
+        objetoDeConexion = new Conexion();
+        estado = objetoDeConexion.conectar().createStatement();
+        ResultSet rs = estado.executeQuery("Call obtenerExpedientePaciente()");
+        return rs;
     }
 }

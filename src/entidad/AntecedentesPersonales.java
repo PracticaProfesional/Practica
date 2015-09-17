@@ -13,6 +13,8 @@ public class AntecedentesPersonales {
  
     private String tratamiento;
     private String medicamento;
+    private int alergias;
+    private int vacunas;
 
     public String getTratamiento() {
         return tratamiento;
@@ -29,4 +31,22 @@ public class AntecedentesPersonales {
     public void setMedicamento(String medicamento) {
         this.medicamento = medicamento;
     }
-}
+
+    public int getAlergias() {
+        return alergias;
+    }
+
+    public void setAlergias(int alergias) {
+        this.alergias = alergias;
+    }
+
+    public int getVacunas() {
+        return vacunas;
+    }
+
+    public void setVacunas(int vacunas) {
+        this.vacunas = vacunas;
+    }
+    
+    
+}// fin de la calse AntecedentesPersonales

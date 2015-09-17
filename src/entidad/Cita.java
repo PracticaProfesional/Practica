@@ -10,6 +10,15 @@ public class Cita {
     private String fechaCreacion;
     private String fechaConsulta;
     private String anotaciones;
+    private String hora;
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
 
     public int getEstado() {
         return estado;
@@ -42,5 +51,6 @@ public class Cita {
     public void setAnotaciones(String anotaciones) {
         this.anotaciones = anotaciones;
     }
+
     
 }

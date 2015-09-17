@@ -15,4 +15,9 @@ public class NegocioExpedienteMedico {
         OperacionesExpedienteMedico opExpediente = new OperacionesExpedienteMedico();
         opExpediente.insertarExpedienteMedico();
     }
+    
+    public java.sql.ResultSet obtenerExpedientePaciente() throws SQLException{
+        OperacionesExpedienteMedico opExpediente = new OperacionesExpedienteMedico();
+        return opExpediente.obtenerExpedientePaciente();
+    }
 }
