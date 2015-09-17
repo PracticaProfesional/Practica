@@ -12,7 +12,7 @@ public class OperacionesCita
     private Statement estado;
     
     
-    public void insertarCita(Cita objetoCita) throws SQLException
+    public void insertarCita(Cita objetoCita) 
     {
         objetoDeConexion = new Conexion();
        
@@ -20,10 +20,14 @@ public class OperacionesCita
                            "'" + objetoCita.getFechaConsulta() + "'" + "," +
                            "'" + objetoCita.getAnotaciones() + "'" + "," +
                            "'" + objetoCita.getHora() + "'" ;
-       
-        estado = objetoDeConexion.conectar().createStatement();
-        estado.executeQuery("Call InsertarCita("+datosCita+")");
- 
+       try{
+           System.out.println(objetoCita.getAnotaciones().length() + objetoCita.getAnotaciones());
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call InsertarCita("+datosCita+")");
+       }
+       catch(SQLException e){
+           e.printStackTrace();
+       }
     }// fin del metodo insertarCita
         
     public ResultSet obtenerFechaConsulta(String fecha) throws SQLException{
