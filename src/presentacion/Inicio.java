@@ -1635,7 +1635,20 @@ public class Inicio extends javax.swing.JFrame {
                 nuevoExamen.setDetalle(textOtrosDetallesAbdomen.getText());
             listaExamenFisico.add(nuevoExamen);
         }
-        
+        if(cbEsqueletico.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Esquelitico");
+            nuevoExamen.setSubCategoria(cbDetallesEsqueletico.getSelectedItem().toString());
+            if(textOtrosDetallesEsqueletico.isEnabled())
+                nuevoExamen.setDetalle(textOtrosDetallesEsqueletico.getText());
+            listaExamenFisico.add(nuevoExamen);
+        }
+        if(cbUrinario.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Urinario");
+            nuevoExamen.setSubCategoria(cbDetallesUrinario.getSelectedItem().toString());
+            if(textOtrosDetallesUrinario.isEnabled())
+                nuevoExamen.setDetalle(textOtrosDetallesUrinario.getSelectedText());
+            listaExamenFisico.add(nuevoExamen);
+        }
     }//GEN-LAST:event_btnGuardarExamenFisicoActionPerformed
 
     private void cargarActividadesAgenda() throws SQLException{
