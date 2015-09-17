@@ -11,14 +11,10 @@ public class NegocioCita
 {
     public void insertarCita(Cita nuevaCita)
     {
-        try
-        {
-            OperacionesCita operacionesCita = new OperacionesCita();
-            operacionesCita.insertarCita(nuevaCita);
-        }// fin de try
-        catch(SQLException e)
-        {
-        }// fin de catch
+        // fin de catch
+        
+        OperacionesCita operacionesCita = new OperacionesCita();
+        operacionesCita.insertarCita(nuevaCita);
         
     }// fin del metodo insertarCita
     
