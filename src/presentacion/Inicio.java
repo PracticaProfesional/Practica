@@ -160,7 +160,7 @@ public class Inicio extends javax.swing.JFrame {
         textOtrosDetallesUrinario = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnGuardarExamenFisico = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jLabel45 = new javax.swing.JLabel();
         textDiagnostico = new javax.swing.JTextField();
@@ -1050,7 +1050,12 @@ public class Inicio extends javax.swing.JFrame {
 
         jButton2.setText("Cancelar");
 
-        jButton3.setText("Guardar");
+        btnGuardarExamenFisico.setText("Guardar");
+        btnGuardarExamenFisico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarExamenFisicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -1058,7 +1063,7 @@ public class Inicio extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnGuardarExamenFisico)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addContainerGap())
@@ -1069,7 +1074,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnGuardarExamenFisico))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -1568,7 +1573,73 @@ public class Inicio extends javax.swing.JFrame {
         cargarTablaBuscarPaciente();
     }//GEN-LAST:event_textBuscarPacienteActionPerformed
 
+    private void btnGuardarExamenFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarExamenFisicoActionPerformed
+        // Accion del boton guardar examen fisico.
+        // DEPURAR CODIGO.
+        java.util.LinkedList <entidad.ExamenFisico> listaExamenFisico = new java.util.LinkedList<entidad.ExamenFisico>();
+        entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
+        if(cbOjos.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Ojos");
+            nuevoExamen.setSubCategoria(cbOjos.getSelectedItem().toString());
+            listaExamenFisico.add(nuevoExamen);
+        }
+        if(cbOidos.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Oidos");
+            nuevoExamen.setSubCategoria(cbDetallesOidos.getSelectedItem().toString());
+            if(textOtrosDetallesOidos.isEnabled())
+                nuevoExamen.setDetalle(textOtrosDetallesOidos.getText());
+            listaExamenFisico.add(nuevoExamen);
+        }
+        if(cbNariz.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Nariz");
+            nuevoExamen.setSubCategoria(cbDetallesNariz.getSelectedItem().toString());
+            if(textOtrosDetallesNariz.isEnabled())
+                nuevoExamen.setDetalle(textOtrosDetallesNariz.getText());
+            listaExamenFisico.add(nuevoExamen);
+        }
+        if(cbBoca.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Boca");
+            nuevoExamen.setSubCategoria(cbDetallesBoca.getSelectedItem().toString());
+            if(textOtrosDetallesBoca.isEnabled())
+                nuevoExamen.setDetalle(textOtrosDetallesBoca.getText());
+            listaExamenFisico.add(nuevoExamen);
+        }
+        if(cbTiroides.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Tiroides");
+            nuevoExamen.setSubCategoria("");
+            listaExamenFisico.add(nuevoExamen);
+        }
+        if(cbAdenopatias.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Adenopatias");
+            nuevoExamen.setSubCategoria("");
+            listaExamenFisico.add(nuevoExamen);
+        }
+        if(cbTorax.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Torax");
+            nuevoExamen.setSubCategoria(cbDetallesTorax.getSelectedItem().toString());
+            if(textOtrosDetallesTorax.isEnabled())
+                nuevoExamen.setDetalle(textOtrosDetallesTorax.getText());
+            listaExamenFisico.add(nuevoExamen);
+        }
+        if(cbCorazon.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Corazon");
+            nuevoExamen.setSubCategoria(cbDetallesCorazon.getSelectedItem().toString());
+            if(textOtrosDetallesCorazon.isEnabled())
+                nuevoExamen.setDetalle(textOtrosDetallesCorazon.getText());
+            listaExamenFisico.add(nuevoExamen);
+        }
+        if(cbAbdomen.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+            nuevoExamen.setCategoria("Abdomen");
+            nuevoExamen.setSubCategoria(cbDetallesAbdomen.getSelectedItem().toString());
+            if(textOtrosDetallesAbdomen.isEnabled())
+                nuevoExamen.setDetalle(textOtrosDetallesAbdomen.getText());
+            listaExamenFisico.add(nuevoExamen);
+        }
+        
+    }//GEN-LAST:event_btnGuardarExamenFisicoActionPerformed
+
     private void cargarActividadesAgenda() throws SQLException{
+        // DEPURAR CODIGO.
         String fechaSeleccionada;
         int year, month, day;
         year = agendaCalendario.getCurrent().get(Calendar.YEAR);
@@ -1591,7 +1662,7 @@ public class Inicio extends javax.swing.JFrame {
             }  
     }
     private void buscarPaciente(){
-        java.util.LinkedList<String> paciente = new java.util.LinkedList();
+        java.util.LinkedList<String> paciente = new java.util.LinkedList<>();
         int numeroFilas = tableBuscarPaciente.getRowCount();
         // Se realiza la comparacion y se guardan los datos.
         for(int i = 0; i < numeroFilas; i++)
@@ -1661,6 +1732,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarPaciente;
     private javax.swing.JButton btnConsultaMedica;
     private javax.swing.JButton btnCrearExpediente;
+    private javax.swing.JButton btnGuardarExamenFisico;
     private javax.swing.JComboBox cbAbdomen;
     private javax.swing.JComboBox cbAdenopatias;
     private javax.swing.JComboBox cbBoca;
@@ -1682,7 +1754,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox cbTorax;
     private javax.swing.JComboBox cbUrinario;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
