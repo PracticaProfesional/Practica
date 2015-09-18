@@ -94,11 +94,11 @@ END $
 
 
 DELIMITER $  --  insertar en la tabla cita
-CREATE PROCEDURE InsertarCita (in est tinyint, in fecCrea date, in fecCon date,
-		in anot varchar(15))
+CREATE PROCEDURE InsertarCita (in est tinyint, in fecCon date,
+		in anot varchar(45), in hor varchar(10))
 BEGIN
-	insert into cita (estado, fechaCreacion, fechaConsulta, anotaciones)
-	values (est, fecCrea, fecCon, anot);
+	insert into cita (estado, fechaConsulta, anotaciones, hora)
+	values (est, fecCon, anot, hor);
 END $
 
 
@@ -174,7 +174,10 @@ BEGIN
 	values (idPad, idAntFam);
 END
 
-
+CREATE PROCEDURE `obtenerExpedientePaciente`()
+BEGIN
+	SELECT id, cedulaPaciente, nombrePaciente,apellido1Paciente,apellido2Paciente FROM sigos.Paciente;
+END
 
 -- Llamadas a los procedimientos almacenados
 $
@@ -230,7 +233,7 @@ $
 
 Call InsertarAntecedentesPersonalesPadecimientos (1, 1);
 $
-
+Call InsertarCita('0','2015-09-17','Cadena de texto bastante larguisisima','08:30');
 
 
 
