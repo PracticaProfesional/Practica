@@ -174,7 +174,10 @@ BEGIN
 	values (idPad, idAntFam);
 END
 
-
+CREATE PROCEDURE `obtenerExpedientePaciente`()
+BEGIN
+	SELECT id, cedulaPaciente, nombrePaciente,apellido1Paciente,apellido2Paciente FROM sigos.Paciente;
+END
 
 -- Llamadas a los procedimientos almacenados
 $
