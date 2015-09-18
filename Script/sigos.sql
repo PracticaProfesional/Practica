@@ -143,52 +143,58 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `sigos`.`ExpedienteMedico`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sigos`.`ExpedienteMedico` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `idPaciente` INT NOT NULL COMMENT '',
-  `idExamenMedico` INT NULL COMMENT '',
-  `idAntecedentesPersonales` INT NOT NULL COMMENT '',
-  `idAntecedentesFamiliares` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_paciente_idx` (`idPaciente` ASC)  COMMENT '',
-  INDEX `fk_examenMedico_idx` (`idExamenMedico` ASC)  COMMENT '',
-  INDEX `fk_antecedentesPersonales_idx` (`idAntecedentesPersonales` ASC)  COMMENT '',
-  INDEX `fk_antecedentesFamiliares_idx` (`idAntecedentesFamiliares` ASC)  COMMENT '',
-  CONSTRAINT `fk_paciente`
-    FOREIGN KEY (`idPaciente`)
-    REFERENCES `sigos`.`Paciente` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_examenMedico`
-    FOREIGN KEY (`idExamenMedico`)
-    REFERENCES `sigos`.`ExamenMedico` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_antecedentesPersonales`
-    FOREIGN KEY (`idAntecedentesPersonales`)
-    REFERENCES `sigos`.`AntecedentesPersonales` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_antecedentesFamiliares`
-    FOREIGN KEY (`idAntecedentesFamiliares`)
-    REFERENCES `sigos`.`AntecedentesFamiliares` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+DROP TABLE IF EXISTS `ExpedienteMedico`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ExpedienteMedico` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idPaciente` int(11) NOT NULL,
+  `idAntecedentesPersonales` int(11) NOT NULL,
+  `idAntecedentesFamiliares` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_paciente_idx` (`idPaciente`),
+  KEY `fk_antecedentesPersonales_idx` (`idAntecedentesPersonales`),
+  KEY `fk_antecedentesFamiliares_idx` (`idAntecedentesFamiliares`),
+  CONSTRAINT `fk_antecedentesFamiliares` FOREIGN KEY (`idAntecedentesFamiliares`) REFERENCES `AntecedentesFamiliares` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_antecedentesPersonales` FOREIGN KEY (`idAntecedentesPersonales`) REFERENCES `AntecedentesPersonales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_paciente` FOREIGN KEY (`idPaciente`) REFERENCES `Paciente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 
 -- -----------------------------------------------------
 -- Table `sigos`.`ExamenFisico`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sigos`.`ExamenFisico` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `categoria` VARCHAR(45) NULL COMMENT '',
-  `subCategoria` VARCHAR(45) NULL COMMENT '',
-  `detalle` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
-ENGINE = InnoDB;
+DROP TABLE IF EXISTS `ExamenFisico`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ExamenFisico` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(45) DEFAULT NULL,
+  `subCategoria` varchar(45) DEFAULT NULL,
+  `detalle` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-
+--------------------------------------------------------
+-- ExamenFisico-Expediente
+--------------------------------------------------------
+DROP TABLE IF EXISTS `ExamenFisico-Expediente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ExamenFisico-Expediente` (
+  `id` int(11) NOT NULL,
+  `idExamenFisico` int(11) DEFAULT NULL,
+  `idExpediente` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fkExamenFisico_idx` (`idExamenFisico`),
+  KEY `fkExpediente_idx` (`idExpediente`),
+  KEY `Expediente_idx` (`idExpediente`),
+  CONSTRAINT `Expediente` FOREIGN KEY (`idExpediente`) REFERENCES `ExamenFisico` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fkExamenFisico` FOREIGN KEY (`idExamenFisico`) REFERENCES `ExamenFisico` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 -- -----------------------------------------------------
 -- Table `sigos`.`cita`
 -- -----------------------------------------------------
@@ -248,48 +254,26 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `sigos`.`ConsultaMedica`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sigos`.`ConsultaMedica` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `idExpedienteMedico` INT NOT NULL COMMENT '',
-  `idExamenFisico` INT NULL COMMENT '',
-  `motivoConsulta` VARCHAR(45) NOT NULL COMMENT '',
-  `descripcionSintomas` VARCHAR(45) NOT NULL COMMENT '',
-  `diagnostico` VARCHAR(45) NULL COMMENT '',
-  `signosVitales` INT NOT NULL COMMENT '',
-  `idCita` INT NULL COMMENT '',
-  `idReceta` INT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_expedienteMedico_idx` (`idExpedienteMedico` ASC)  COMMENT '',
-  INDEX `fk_examenFisico_idx` (`idExamenFisico` ASC)  COMMENT '',
-  INDEX `fk_citaMedica_idx` (`idCita` ASC)  COMMENT '',
-  INDEX `fk_receta_idx` (`idReceta` ASC)  COMMENT '',
-  INDEX `fk_signosVitales_idx` (`signosVitales` ASC)  COMMENT '',
-  CONSTRAINT `fk_expedienteMedico`
-    FOREIGN KEY (`idExpedienteMedico`)
-    REFERENCES `sigos`.`ExpedienteMedico` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_examenFisico`
-    FOREIGN KEY (`idExamenFisico`)
-    REFERENCES `sigos`.`ExamenFisico` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_citaMedica`
-    FOREIGN KEY (`idCita`)
-    REFERENCES `sigos`.`cita` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_receta`
-    FOREIGN KEY (`idReceta`)
-    REFERENCES `sigos`.`Receta` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_signosVitales`
-    FOREIGN KEY (`signosVitales`)
-    REFERENCES `sigos`.`SignosVitales` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+DROP TABLE IF EXISTS `ConsultaMedica`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ConsultaMedica` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idExpedienteMedico` int(11) NOT NULL,
+  `idExamenFisico` int(11) DEFAULT NULL,
+  `motivoConsulta` varchar(45) NOT NULL,
+  `descripcionSintomas` varchar(45) NOT NULL,
+  `diagnostico` varchar(45) DEFAULT NULL,
+  `signosVitales` int(11) NOT NULL,
+  `idReceta` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_expedienteMedico_idx` (`idExpedienteMedico`),
+  KEY `fk_receta_idx` (`idReceta`),
+  KEY `fk_signosVitales_idx` (`signosVitales`),
+  CONSTRAINT `fk_expedienteMedico` FOREIGN KEY (`idExpedienteMedico`) REFERENCES `ExpedienteMedico` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_receta` FOREIGN KEY (`idReceta`) REFERENCES `Receta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_signosVitales` FOREIGN KEY (`signosVitales`) REFERENCES `SignosVitales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 -- -----------------------------------------------------
