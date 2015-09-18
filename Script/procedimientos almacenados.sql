@@ -179,6 +179,16 @@ BEGIN
 	SELECT id, cedulaPaciente, nombrePaciente,apellido1Paciente,apellido2Paciente FROM sigos.Paciente;
 END
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerIdUsuario`(
+    in nomUsu varchar(45), in con varchar(45)
+    )
+BEGIN
+    SELECT  *
+      FROM sigos.usuario
+        WHERE usuario.nombreUsuario = nomUsu
+          AND usuario.contrasena = con;
+END
+
 -- Llamadas a los procedimientos almacenados
 $
 Call InsertarUsuario ('Juanito', '1234');
