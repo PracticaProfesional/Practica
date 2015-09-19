@@ -1585,6 +1585,10 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_textBuscarPacienteActionPerformed
 
     private void btnGuardarExamenFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarExamenFisicoActionPerformed
+        insertarExamenFisico();
+    }//GEN-LAST:event_btnGuardarExamenFisicoActionPerformed
+
+    private void insertarExamenFisico() {
         // Accion del boton guardar examen fisico.
         // DEPURAR CODIGO.
         java.util.LinkedList <entidad.ExamenFisico> listaExamenFisico = new java.util.LinkedList<entidad.ExamenFisico>();
@@ -1617,7 +1621,7 @@ public class Inicio extends javax.swing.JFrame {
                         if(textOtrosDetallesNariz.isEnabled())
                             nuevoExamen.setDetalle(textOtrosDetallesNariz.getText());
                         listaExamenFisico.add(nuevoExamen);
-            }
+                    }
                 }
             }
             if(!"Boca".equals(rs.getString(1))){
@@ -1628,7 +1632,7 @@ public class Inicio extends javax.swing.JFrame {
                     if(textOtrosDetallesBoca.isEnabled())
                         nuevoExamen.setDetalle(textOtrosDetallesBoca.getText());
                     listaExamenFisico.add(nuevoExamen);
-                }  
+                }
             }
             if(!"Tiroides".equals(rs.getString(1))){
                 if(cbTiroides.getSelectedItem().toString().equalsIgnoreCase("anormal")){
@@ -1667,14 +1671,14 @@ public class Inicio extends javax.swing.JFrame {
                 }
             }
             if(!"Abdomen".equals(rs.getString(1))){
-                  if(cbAbdomen.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+                if(cbAbdomen.getSelectedItem().toString().equalsIgnoreCase("anormal")){
                     entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
                     nuevoExamen.setCategoria("Abdomen");
                     nuevoExamen.setSubCategoria(cbDetallesAbdomen.getSelectedItem().toString());
                     if(textOtrosDetallesAbdomen.isEnabled())
                         nuevoExamen.setDetalle(textOtrosDetallesAbdomen.getText());
                     listaExamenFisico.add(nuevoExamen);
-                }   
+                }
             }
             if(!"Esqueletico".equals(rs.getString(1))){
                 if(cbEsqueletico.getSelectedItem().toString().equalsIgnoreCase("anormal")){
@@ -1705,9 +1709,10 @@ public class Inicio extends javax.swing.JFrame {
             }
         }
         catch(SQLException e){
-        }  
+        }
         negocio.NegocioExamenFisico nuevoExFisico = new negocio.NegocioExamenFisico();
         negocio.NegocioObtenerUltimoId ultimoId = new negocio.NegocioObtenerUltimoId();
+        negocio.NegocioExpedienteMedico expediente = new negocio.NegocioExpedienteMedico();
         java.util.LinkedList<String> listaIdExamenFisico = new java.util.LinkedList<String>();
         int contador = listaExamenFisico.size();
         for(int i = 0; i < contador; i++){
@@ -1715,18 +1720,43 @@ public class Inicio extends javax.swing.JFrame {
             listaIdExamenFisico.add(ultimoId.obtenerUltimoId("ExamenFisico"));
         }
         
-    }//GEN-LAST:event_btnGuardarExamenFisicoActionPerformed
+        negocio.NegocioExamenExpediente exaExp = new negocio.NegocioExamenExpediente();
+        for(int j = 0; j < contador; j++){
+            final String idExpedientePaciente = expediente.obtenerIdExpedienteMedico(idPaciente);
+            exaExp.insertarExamenExpediente(listaIdExamenFisico.removeFirst(), idExpedientePaciente);
+        }
+    }
 
     private void panelConsultaMedicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelConsultaMedicaMouseClicked
-        negocio.NegocioExamenFisico nuevoExamen = new negocio.NegocioExamenFisico();
-        java.sql.ResultSet rs = nuevoExamen.obtenerExamenFisico(idPaciente);
-        try{
-            while(rs.next()){
-                
-            }
-        }
-        catch(java.sql.SQLException e){
-        }
+//        negocio.NegocioExamenFisico nuevoExamen = new negocio.NegocioExamenFisico();
+//        negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
+//        negocio.NegocioExamenExpediente exaExpe = new negocio.NegocioExamenExpediente();
+//        String idExpediente = consExp.obtenerIdExpedienteMedico(idPaciente);
+//        java.sql.ResultSet idsExamenesEx = exaExpe.obtenerIdExamenesMedicos(idExpediente);
+//        java.sql.ResultSet examenFisico = null;
+//        
+//        try{
+//            while(idsExamenesEx.next()){
+//                examenFisico = nuevoExamen.obtenerExamenFisico(idsExamenesEx.getString(1));
+//            }
+//        }
+//        catch(java.sql.SQLException e){
+//        }
+//        
+//        try{
+//            while(examenFisico.next()){
+//               if("Ojos".equals(examenFisico.getString(1)))
+//                   cbOjos.setSelectedIndex(1);
+//               if("Oidos".equals(examenFisico.getString(1))){
+//                   cbOidos.setSelectedIndex(1);
+//                   cbDetallesOidos.setSelectedItem(examenFisico.getString(2));
+//                   textOtrosDetallesOidos.setText(examenFisico.getString(3));
+//               }
+//            }
+//        }
+//        catch(java.sql.SQLException e){
+//        
+//        }
     }//GEN-LAST:event_panelConsultaMedicaMouseClicked
 
     private void cargarActividadesAgenda() throws SQLException{
