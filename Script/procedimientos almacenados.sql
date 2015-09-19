@@ -189,6 +189,30 @@ BEGIN
           AND usuario.contrasena = con;
 END
 
+-- PROCEDIMIENTOS NUEVOS 19-09-2015
+CREATE  PROCEDURE `obtenerExamenFisico`(idpas int)
+BEGIN
+	Select categoria, subCategoria, detalle from ExamenFisico
+		where id = idpas;
+END
+
+CREATE PROCEDURE obtenerIdPaciente (cedula varchar(45))
+BEGIN
+	Select id from Paciente
+		Where cedulaPaciente = cedula;
+END
+
+CREATE PROCEDURE `obtenerIdExpedienteMedico` (idpas int)
+BEGIN
+	Select id from ExpedienteMedico
+    where idPaciente = idpas;
+END
+
+CREATE PROCEDURE `obtenerIdExamenExpediente` (idEx int)
+BEGIN
+	Select idExamenFisico from `ExamenFisico-Expediente`
+		where idExpediente = idEx;
+END
 -- Llamadas a los procedimientos almacenados
 $
 Call InsertarUsuario ('Juanito', '1234');
