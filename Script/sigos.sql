@@ -195,16 +195,18 @@ CREATE TABLE `ExamenFisico-Expediente` (
   CONSTRAINT `fkExamenFisico` FOREIGN KEY (`idExamenFisico`) REFERENCES `ExamenFisico` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 -- -----------------------------------------------------
--- Table `sigos`.`cita`
+-- Table `sigos`.`Cita`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sigos`.`cita` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `estado` TINYINT NOT NULL COMMENT '',
-  `fechaCreacion` DATE NULL COMMENT '',
-  `fechaConsulta` DATE NULL COMMENT '',
-  `anotaciones` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
+CREATE  TABLE IF NOT EXISTS `sigos`.`Cita` (
+  `idcita` INT NOT NULL AUTO_INCREMENT ,
+  `estado` TINYINT NOT NULL ,
+  `fechaConsulta` DATE NULL ,
+  `anotaciones` VARCHAR(200) NULL ,
+  `hora` VARCHAR(10) NULL ,
+  PRIMARY KEY (`idcita`) )
 ENGINE = InnoDB;
 
 
@@ -264,6 +266,7 @@ CREATE TABLE `ConsultaMedica` (
   `motivoConsulta` varchar(45) NOT NULL,
   `descripcionSintomas` varchar(45) NOT NULL,
   `diagnostico` varchar(45) DEFAULT NULL,
+  `fechaCita` DATE NOT NULL
   `signosVitales` int(11) NOT NULL,
   `idReceta` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
