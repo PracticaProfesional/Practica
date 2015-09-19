@@ -9,6 +9,13 @@ import java.sql.Statement;
 public class OperacionesExamenExpediente {
     private Conexion objetoDeConexion;
     private Statement estado;
+
+    /**
+     * Inserta los valores los valores en la tabla relacion ExamenFisico-
+     * Expediente.
+     * @param idExFis
+     * @param idExp
+     */
     public void insertarRelacionExamenExpediente(String idExFis, String idExp){
         objetoDeConexion = new Conexion();
         try{
@@ -21,7 +28,14 @@ public class OperacionesExamenExpediente {
         
     }
     // Obtiene los id de padecimientos en examen fisico que estan relacionados con un expediente.
-    public java.sql.ResultSet obtenerIdExamenesMedicos(String idExpediente){
+
+    /**
+     * Este metodo permite obtener los id presentes en la tabla ExamenFisico-Expediente
+     * y que representan los rubros incluidos en la interfaz de examen fisico.
+     * @param idExpediente
+     * @return
+     */
+        public java.sql.ResultSet obtenerIdExamenesMedicos(String idExpediente){
         objetoDeConexion = new Conexion();
         java.sql.ResultSet rs = null;
         try{
