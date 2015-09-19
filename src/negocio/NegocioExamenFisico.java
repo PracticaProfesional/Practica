@@ -5,6 +5,7 @@ package negocio;
 import entidad.ExamenFisico;
 import datos.OperacionesExamenFisico;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 public class NegocioExamenFisico 
 {
@@ -20,5 +21,8 @@ public class NegocioExamenFisico
         }// fin de catch
         
     }// fin del metodo insertarExamenFisico
-    
+    public ResultSet obtenerExamenFisico(String id){
+        datos.OperacionesExamenFisico nuevoExamen = new datos.OperacionesExamenFisico();
+        return nuevoExamen.obtenerExamenFisico(id);
+    }
 }// fin de la clase NegocioExamenFisico
