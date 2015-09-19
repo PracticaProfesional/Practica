@@ -27,7 +27,6 @@ public class OperacionesExamenExpediente {
         }
         
     }
-    // Obtiene los id de padecimientos en examen fisico que estan relacionados con un expediente.
 
     /**
      * Este metodo permite obtener los id presentes en la tabla ExamenFisico-Expediente
