@@ -20,4 +20,9 @@ public class NegocioExpedienteMedico {
         OperacionesExpedienteMedico opExpediente = new OperacionesExpedienteMedico();
         return opExpediente.obtenerExpedientePaciente();
     }
+    
+    public String obtenerIdExpedienteMedico(String idPaciente){
+        OperacionesExpedienteMedico opExpediente = new OperacionesExpedienteMedico();
+        return opExpediente.obtenerIdExpedienteMedico(idPaciente);
+    }
 }
