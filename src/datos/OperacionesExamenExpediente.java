@@ -41,8 +41,8 @@ public class OperacionesExamenExpediente {
             estado = objetoDeConexion.conectar().createStatement();
             rs = estado.executeQuery("Call obtenerIdExamenExpediente("+idExpediente+")");
         }
-        catch(java.sql.SQLException E){
-            
+        catch(java.sql.SQLException e){
+            System.out.println(e.getErrorCode()+e.getMessage());
         }
         return rs;
     }
