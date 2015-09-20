@@ -43,11 +43,12 @@ public class OperacionesExpedienteMedico {
         String idExpediente = "";
         try{
             estado = objetoDeConexion.conectar().createStatement();
-            ResultSet rs = estado.executeQuery("obtenerIdExpedienteMedico("+idPaciente+")");
-            idExpediente = rs.getString(0);
+            ResultSet rs = estado.executeQuery("call obtenerIdExpedienteMedico("+"'"+idPaciente+"'"+")");
+             if(rs.next())
+                idExpediente = rs.getString("id");
         }
         catch(SQLException e){
-            System.out.println("Error al obtener id expediente medico");
+            System.out.println(e.getErrorCode());
         }
         return idExpediente;
     }
