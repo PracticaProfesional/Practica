@@ -1831,41 +1831,33 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     private void panelConsultaMedicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelConsultaMedicaMouseClicked
-//        try {
-//            negocio.NegocioExamenFisico nuevoExamen = new negocio.NegocioExamenFisico();
-//            negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
-//            negocio.NegocioExamenExpediente exaExpe = new negocio.NegocioExamenExpediente();
-//            String idExpediente = consExp.obtenerIdExpedienteMedico(idPaciente);
-//            java.sql.ResultSet idsExamenesEx = exaExpe.obtenerIdExamenesMedicos(idExpediente);
-//            java.sql.ResultSet examenFisico = null;
-//            if(!idsExamenesEx.wasNull()){
-//                try{
-//                    while(idsExamenesEx.next()){
-//                        examenFisico = nuevoExamen.obtenerExamenFisico(idsExamenesEx.getString(1));
-//                    }
-//                }
-//                catch(java.sql.SQLException e){
-//                }
-//                
-//                try{
-//                    while(examenFisico.next()){
-//                        if("Ojos".equals(examenFisico.getString(1)))
-//                            cbOjos.setSelectedIndex(1);
-//                        if("Oidos".equals(examenFisico.getString(1))){
-//                            cbOidos.setSelectedIndex(1);
-//                            cbDetallesOidos.setSelectedItem(examenFisico.getString(2));
-//                            textOtrosDetallesOidos.setText(examenFisico.getString(3));
-//                        }
-//                    }
-//                }
-//                catch(java.sql.SQLException e){
-//                }
-//            }
-//            else System.out.println("Error al cargar datos");
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
+        negocio.NegocioExamenFisico nuevoExamen = new negocio.NegocioExamenFisico();
+        negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
+        negocio.NegocioExamenExpediente exaExpe = new negocio.NegocioExamenExpediente();
+        String idExpediente = consExp.obtenerIdExpedienteMedico(idPaciente);
+        // obtiene todos los id de examen fisico que correspondan al idExpediente.
+        java.sql.ResultSet idsExamenesEx = exaExpe.obtenerIdExamenesMedicos(idExpediente); 
+        java.sql.ResultSet examenFisico = null;
+        java.util.LinkedList<String>strIdsExEp = new java.util.LinkedList<String>();
+        java.util.LinkedList<String>nombresExExp = new java.util.LinkedList<String>();
+        if(idsExamenesEx !=  null){
+            try{
+                while(idsExamenesEx.next()){
+                    strIdsExEp.add(idsExamenesEx.getString(1));
+                }
+                for(String elemento:strIdsExEp){
+                    examenFisico = nuevoExamen.obtenerExamenFisico(elemento);
+                    while(examenFisico.next())
+                        nombresExExp.add(examenFisico.getString(1));
+                }
+                for(String elemento:nombresExExp)
+                    System.out.println(elemento);
+            }
+            catch(java.sql.SQLException e){
+                System.out.println(e.getErrorCode());
+            }
+        }
+
     }//GEN-LAST:event_panelConsultaMedicaMouseClicked
 
     private void cargarActividadesAgenda() throws SQLException{
