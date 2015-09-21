@@ -1855,8 +1855,12 @@ public class Inicio extends javax.swing.JFrame {
                 // Se obtienen los nombres de los rubros de examen fisico.
                 for(String elemento:strIdsExEp){
                     examenFisico = nuevoExamen.obtenerExamenFisico(elemento);
-                    while(examenFisico.next())
+                    while(examenFisico.next()){
                         categExFi.add(examenFisico.getString(1));
+                        subCategExFi.add(examenFisico.getString(2));
+                        detalleExFi.add(examenFisico.getString(3));
+                    }
+                        
                 }
                 // Desplegar y distribuir en los componentes la informacion obtenida.
                 for(String elemento:categExFi){
@@ -1864,37 +1868,53 @@ public class Inicio extends javax.swing.JFrame {
                         cbOjos.setSelectedIndex(1);
                     }
                     if(elemento.equals("Oidos")){
-                        
+                        cbOidos.setSelectedIndex(1);
+                        cbDetallesOidos.setSelectedItem(subCategExFi.removeFirst());
+                        textOtrosDetallesOidos.setText(detalleExFi.removeFirst());
                     }
                     if(elemento.equals("Nariz")){
-                        
+                        cbNariz.setSelectedIndex(1);
+                        cbDetallesNariz.setSelectedItem(subCategExFi.removeFirst());
+                        textOtrosDetallesNariz.setText(detalleExFi.removeFirst());
                     }
                     if(elemento.equals("Boca")){
-                        
+                        cbBoca.setSelectedIndex(1);
+                        cbDetallesBoca.setSelectedItem(subCategExFi.removeFirst());
+                        textOtrosDetallesBoca.setText(detalleExFi.removeFirst());
                     }
                     if(elemento.equals("Tiroides")){
-                        
+                        cbTiroides.setSelectedIndex(1);                       
                     }
                     if(elemento.equals("Adenopatias")){
-                        
+                        cbAdenopatias.setSelectedIndex(1);
                     }
                     if(elemento.equals("Torax")){
-                        
+                        cbTorax.setSelectedIndex(1);
+                        cbDetallesTorax.setSelectedItem(subCategExFi.removeFirst());
+                        textOtrosDetallesTorax.setText(detalleExFi.removeFirst());
                     }
                     if(elemento.equals("Corazon")){
-                        
+                        cbCorazon.setSelectedIndex(1);
+                        cbDetallesTorax.setSelectedItem(subCategExFi.removeFirst());
+                        textOtrosDetallesCorazon.setText(detalleExFi.removeFirst());
                     }
                     if(elemento.equals("Abdomen")){
-                        
+                        cbAbdomen.setSelectedIndex(1);
+                        cbDetallesAbdomen.setSelectedItem(subCategExFi.removeFirst());
+                        textOtrosDetallesAbdomen.setText(detalleExFi.removeFirst());
                     }
                     if(elemento.equals("Esqueletico")){
-                        
+                        cbEsqueletico.setSelectedIndex(1);
+                        cbDetallesEsqueletico.setSelectedItem(subCategExFi.removeFirst());
+                        textOtrosDetallesEsqueletico.setText(detalleExFi.removeFirst());
                     }
                     if(elemento.equals("Urinario")){
-                        
+                        cbUrinario.setSelectedIndex(1);
+                        cbDetallesUrinario.setSelectedItem(subCategExFi.removeFirst());
+                        textOtrosDetallesUrinario.setText(detalleExFi.removeFirst());
                     }
                     if(elemento.equals("Nervioso")){
-                        
+                        cbNervioso.setSelectedIndex(1);
                     }
                 }
             }
