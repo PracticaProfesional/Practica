@@ -1286,7 +1286,7 @@ public class Inicio extends javax.swing.JFrame {
             agendaPanelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agendaPanelActividadesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1303,12 +1303,12 @@ public class Inicio extends javax.swing.JFrame {
         );
         agendaPanelPrincipalLayout.setVerticalGroup(
             agendaPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agendaPanelPrincipalLayout.createSequentialGroup()
+            .addGroup(agendaPanelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(agendaPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(agendaPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(agendaPanelActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(agendaPanelCalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         tapAgenda.addTab("Citas", agendaPanelPrincipal);
@@ -1345,7 +1345,7 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1932,20 +1932,27 @@ public class Inicio extends javax.swing.JFrame {
         month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
         day = agendaCalendario.getCurrent().get(Calendar.DAY_OF_MONTH);
         fechaSeleccionada = "'" +year + "-" + month + "-" + day + "'";
-        String arregloHoras [] = {"08:00","08:15","08:30", "08:45", "09:00", 
+        final String arregloHoras [] = {"08:00","08:15","08:30", "08:45", "09:00", 
                                   "09:15", "09:30", "09:45", "10:00", "10:15", 
                                   "10:30",  "10:45", "11:00", "11:15", "11:30",
                                   "11:45", "12:00", "12:30", "13:00", "13:30",
                                   "14:00", "14:30","15:00","15:30", "16:00",
                                   "16:30", "17:00","17:30",  "20:00", "21:00"};
         negocio.NegocioCita obtenerCitas = new negocio.NegocioCita();
-        java.sql.ResultSet rs = obtenerCitas.obtenerFechaConsulta(fechaSeleccionada);      
-            while(rs.next()){
-                for(int i = 0; i < arregloHoras.length; i++){
-                    if(arregloHoras[i].equals(rs.getString("horaConsulta")))
-                        agendaTabla.setValueAt(rs.getString("anotaciones"), i, 1);
-                }   
-            }  
+        java.sql.ResultSet rs = obtenerCitas.obtenerFechaConsulta(fechaSeleccionada);
+        java.util.LinkedList<String> listHoraConsulta = new java.util.LinkedList<>();
+        java.util.LinkedList<String> listAnotaciones = new java.util.LinkedList<>();
+        while(rs.next()){
+            listHoraConsulta.add(rs.getString("horaConsulta"));
+            listAnotaciones.add(rs.getString("anotaciones"));
+        }
+        rs.close();
+        for(String appointment:listHoraConsulta){
+            for(int i = 0; i < arregloHoras.length; i++){
+                if(arregloHoras[i].equals(appointment))
+                    agendaTabla.setValueAt(listAnotaciones.removeFirst(), i, 1);
+            }
+        }
     }
     private void buscarPaciente(){
         java.util.LinkedList<String> paciente = new java.util.LinkedList<>();
