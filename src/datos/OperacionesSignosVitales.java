@@ -11,11 +11,11 @@ public class OperacionesSignosVitales
     private Statement estado;
     
     
-    public void insertarSignosVitales(SignosVitales objetoSignosVitales) throws SQLException
+    public void insertarSignosVitales(SignosVitales objetoSignosVitales) 
     {
         objetoDeConexion = new Conexion();
-       
-        String datosSignosVitales = "'" + objetoSignosVitales.getPeso() + "'" + "," + 
+       try{
+            String datosSignosVitales = "'" + objetoSignosVitales.getPeso() + "'" + "," + 
                                     "'" + objetoSignosVitales.getFrecuenciaCardiaca() + "'" + "," + 
                                     "'" + objetoSignosVitales.getPresionArterial() + "'" + "," +
                                     "'" + objetoSignosVitales.getIndiceMasaCorporal() + "'" + "," +
@@ -39,8 +39,13 @@ public class OperacionesSignosVitales
                                     "'" + objetoSignosVitales.getTemperatura() + "'" + "," +
                                     "'" + objetoSignosVitales.getTalla() + "'";
        
-        estado = objetoDeConexion.conectar().createStatement();
-        estado.executeQuery("Call InsertarCita("+datosSignosVitales+")");
-        estado.close();
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call InsertarSignosVitales("+datosSignosVitales+")");
+            estado.close(); 
+       }
+       catch(java.sql.SQLException e){
+           System.out.println(e.getErrorCode() + e.getMessage());
+       }
+       
     }// fin del metodo insertarCita
 }// fin de la clase OperacionesSignosVitales
