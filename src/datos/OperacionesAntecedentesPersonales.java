@@ -22,10 +22,10 @@ public class OperacionesAntecedentesPersonales {
         idPadecimiento = obtenerId.obtenerUltimoId("Padecimientos");
         idAlergia = obtenerId.obtenerUltimoId("Alergias");
         
-        String datosAntecPersonales = "'" + idAlergia + "'"+ "," + 
-                                      "'" + antecPersonales.getTratamiento() + "'" + "," +
-                                      "'" + idVacuna + "'" + "," +
-                                      "'" + antecPersonales.getMedicamento() + "'";
+        String datosAntecPersonales = "'" + antecPersonales.getTratamiento() + "'"+ "," + 
+                                      "'" + antecPersonales.getMedicamento() + "'" + "," +
+                                      "'" + antecPersonales.getAlergias() + "'" + "," +
+                                      "'" + antecPersonales.getVacunas() + "'";
         estado = objetoDeConexion.conectar().createStatement();
         estado.executeQuery("Call InsertarAntecedentesPersonales("+datosAntecPersonales+")");
         estado.close();
