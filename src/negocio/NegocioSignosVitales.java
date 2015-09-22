@@ -10,14 +10,10 @@ public class NegocioSignosVitales
 {
     public void insertarSignosVitales(SignosVitales nuevosSignosVitales)
     {
-        try
-        {
-            OperacionesSignosVitales operacionesSignosVitales = new OperacionesSignosVitales();
-            operacionesSignosVitales.insertarSignosVitales(nuevosSignosVitales);
-        }// fin de try
-        catch(SQLException e)
-        {
-        }// fin de catch
+        // fin de catch
+        
+        OperacionesSignosVitales operacionesSignosVitales = new OperacionesSignosVitales();
+        operacionesSignosVitales.insertarSignosVitales(nuevosSignosVitales);
     
     }// fin del metodo insertarSignosVitales
     
