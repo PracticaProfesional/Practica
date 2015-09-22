@@ -189,38 +189,38 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
         textFechaNac.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
             new datechooser.view.appearance.ViewAppearance("custom",
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                    new java.awt.Color(85, 85, 85),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                    new java.awt.Color(85, 85, 85),
                     new java.awt.Color(0, 0, 255),
                     true,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
                     new java.awt.Color(0, 0, 255),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
                     new java.awt.Color(128, 128, 128),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                    new java.awt.Color(85, 85, 85),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                    new java.awt.Color(85, 85, 85),
                     new java.awt.Color(255, 0, 0),
                     false,
                     false,
@@ -670,9 +670,9 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         nuevoAntPer.setMedicamento(textMedicamentos.getText());
         
         try 
-        {
-            nuevoAntPer.setAlergias(Integer.parseInt(ultimoId.obtenerUltimoId("alergias")));
-            nuevoAntPer.setVacunas(Integer.parseInt(ultimoId.obtenerUltimoId("vacunas")));
+        {   // la base de datos de pedro tiene el nombre de estas tablas en minuscula
+            nuevoAntPer.setAlergias(Integer.parseInt(ultimoId.obtenerUltimoId("Alergias")));
+            nuevoAntPer.setVacunas(Integer.parseInt(ultimoId.obtenerUltimoId("Vacunas")));
         } 
         catch (SQLException ex) 
         {
@@ -812,6 +812,22 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         final int month = textVacunaFechaApli.getCurrent().get(Calendar.MONTH) + 1;
         fechaVacuna = year+"-"+month+"-"+day;
         return fechaVacuna;
+    }
+    private boolean validaciones(){
+      boolean validado = false;
+      if(!emailValidation())
+          System.out.print("Email invalido");
+      return validado;
+    }
+
+    private boolean emailValidation() {
+        String emailValidator = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        java.util.regex.Pattern patronComparar;
+        java.util.regex.Matcher comparador;
+        patronComparar = java.util.regex.Pattern.compile(emailValidator);
+        comparador = patronComparar.matcher(textEmail.getText());
+        return comparador.matches();  
     }
     
     
