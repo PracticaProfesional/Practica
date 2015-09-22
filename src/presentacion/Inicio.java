@@ -1361,6 +1361,7 @@ public class Inicio extends javax.swing.JFrame {
     private void btnCrearExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearExpedienteActionPerformed
         ExpedienteNuevo nuevo = new ExpedienteNuevo(this, true);
         nuevo.setVisible(true);
+        cargarTablaBuscarPaciente();
     }//GEN-LAST:event_btnCrearExpedienteActionPerformed
 
     private void cbOidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOidosActionPerformed
