@@ -487,7 +487,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         
         for (int i = 0; i < arreglo.length; i++)
             System.out.println("Padecimiento: " + arreglo[i]);
-        
+        this.dispose();
         //cargarIdsAArreglo();
     }//GEN-LAST:event_btnIngresarActionPerformed
 

@@ -32,4 +32,24 @@ public class OperacionesExpedienteMedico {
         ResultSet rs = estado.executeQuery("Call obtenerExpedientePaciente()");
         return rs;
     }
+    
+    /**
+     * Obtiene el id de expediente medico que le corresponde a un paciente determinado.
+     * @param idPaciente
+     * @return
+     */
+    public String obtenerIdExpedienteMedico(String idPaciente){
+        objetoDeConexion = new Conexion();
+        String idExpediente = "";
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            ResultSet rs = estado.executeQuery("call obtenerIdExpedienteMedico("+"'"+idPaciente+"'"+")");
+             if(rs.next())
+                idExpediente = rs.getString("id");
+        }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode());
+        }
+        return idExpediente;
+    }
 }
