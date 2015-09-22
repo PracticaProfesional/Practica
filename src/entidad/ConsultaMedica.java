@@ -11,7 +11,16 @@ public class ConsultaMedica {
     private String motivoConsulta = "";
     private String sintomaPaciente = "";
     private String diagnostico = "";
+    private int signosVitales = 0; 
     private int idexpediente = 0;
+
+    public int getSignosVitales() {
+        return signosVitales;
+    }
+
+    public void setSignosVitales(int signosVitales) {
+        this.signosVitales = signosVitales;
+    }
 
     public String getIdReceta() {
         return idReceta;
