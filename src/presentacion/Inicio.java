@@ -113,8 +113,8 @@ public class Inicio extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
+        textMotivoConsulta = new javax.swing.JTextField();
+        textSintomas = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jlOjos = new javax.swing.JLabel();
@@ -616,8 +616,8 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jLabel42))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
-                    .addComponent(jTextField16))
+                    .addComponent(textMotivoConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+                    .addComponent(textSintomas))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
@@ -626,11 +626,11 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel41)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textMotivoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textSintomas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1357,18 +1357,24 @@ public class Inicio extends javax.swing.JFrame {
         entidad.SignosVitales signosV = new entidad.SignosVitales();
         signosV = obtenerSignosVitales(signosV);
         negocio.NegocioSignosVitales insertarSignosVitales = new negocio.NegocioSignosVitales();
+        negocio.NegocioConsultaMedica insertarConsulta = new negocio.NegocioConsultaMedica();
         insertarSignosVitales.insertarSignosVitales(signosV);
         negocio.NegocioObtenerUltimoId obUltimoId = new negocio.NegocioObtenerUltimoId();
-        String idSignosVitales = obUltimoId.obtenerUltimoId("SignosVitales");
-        String fechaActual = obtenerFechaActual();
-        String idExpediente = obtenerIdExpedienteMedico();
+        entidad.ConsultaMedica nuevaConsulta = new entidad.ConsultaMedica();
+        nuevaConsulta.setSignosVitales(Integer.parseInt(obUltimoId.obtenerUltimoId("SignosVitales")));
+        nuevaConsulta.setFecha(obtenerFechaActual());
+        nuevaConsulta.setIdexpediente(Integer.parseInt(obtenerIdExpedienteMedico()));
+        nuevaConsulta.setMotivoConsulta(textMotivoConsulta.getText());
+        nuevaConsulta.setSintomaPaciente(textSintomas.getText());
+        insertarConsulta.insertarConsultaMedica(nuevaConsulta);
+        
         
     }//GEN-LAST:event_btnSignosVitalesGuardarActionPerformed
 
     private String obtenerFechaActual() {
         Calendar calendario = Calendar.getInstance();
         int day = calendario.get(Calendar.DAY_OF_MONTH);
-        int month = calendario.get(Calendar.MONTH);
+        int month = calendario.get(Calendar.MONTH) + 1;
         int year = calendario.get(Calendar.YEAR);
         return year + "-" + month + "-" + day;
     }
@@ -2164,8 +2170,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JLabel jlOidos;
     private javax.swing.JLabel jlOjos;
     private javax.swing.JPanel panelBtnBuscarPaciente;
@@ -2187,6 +2191,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField textIMB;
     private javax.swing.JTextField textIMC;
     private javax.swing.JTextField textMM;
+    private javax.swing.JTextField textMotivoConsulta;
     private javax.swing.JTextField textOtrosDetallesAbdomen;
     private javax.swing.JTextField textOtrosDetallesBoca;
     private javax.swing.JTextField textOtrosDetallesCorazon;
@@ -2197,6 +2202,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField textOtrosDetallesUrinario;
     private javax.swing.JTextField textPAR;
     private javax.swing.JTextField textPeso;
+    private javax.swing.JTextField textSintomas;
     private javax.swing.JTextField textTalla;
     private javax.swing.JTextField textTemperatura;
     // End of variables declaration//GEN-END:variables
