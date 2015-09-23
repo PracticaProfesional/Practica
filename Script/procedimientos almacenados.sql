@@ -1,5 +1,11 @@
 -- Procedimientos almacenados de insercion en las tablas de la base de datos SIGOS
 
+-- INNER JOIN CON DATOS DE PERSONAS EN CONSULTA MEDICA
+SELECT idExpedienteMedico,idPaciente, nombrePaciente,apellido1Paciente, apellido2Paciente,signosVitales from ExpedienteMedico join ConsultaMedica
+on ExpedienteMedico.id = ConsultaMedica.idExpedienteMedico
+join Paciente on ExpedienteMedico.id = Paciente.id
+Where ConsultaMedica.fecha = '2015-08-22';
+
 
 DELIMITER $   -- insertar en la tabla usuario
 CREATE PROCEDURE InsertarUsuario (in nomUsu varchar(45), in pass varchar(45))
