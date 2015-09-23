@@ -6,7 +6,6 @@ package entidad;
  * @author cooper15
  */
 public class ConsultaMedica {
-    private String idReceta = "";
     private String fecha = "";
     private String motivoConsulta = "";
     private String sintomaPaciente = "";
@@ -21,15 +20,6 @@ public class ConsultaMedica {
     public void setSignosVitales(int signosVitales) {
         this.signosVitales = signosVitales;
     }
-
-    public String getIdReceta() {
-        return idReceta;
-    }
-
-    public void setIdReceta(String idReceta) {
-        this.idReceta = idReceta;
-    }
-
     public String getFecha() {
         return fecha;
     }
