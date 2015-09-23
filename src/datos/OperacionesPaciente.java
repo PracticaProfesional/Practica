@@ -28,5 +28,17 @@ public class OperacionesPaciente {
             
         }// fin de catch
     }// fin del metodo insertarPaciente
-    
+    public java.sql.ResultSet obtenerPacientesConsulta(String date){
+        String datos = "'"+date+"'";
+        objetoDeConexion = new Conexion();
+        java.sql.ResultSet rs = null;
+        try{
+            estado  = objetoDeConexion.conectar().createStatement();
+            rs = estado.executeQuery("Call obtenerPacientesConsulta("+datos+")"); 
+        }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode()+e.getMessage());
+        }    
+        return rs;
+    }
 }// fin de la clase OperacionesPaciente
