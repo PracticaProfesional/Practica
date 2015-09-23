@@ -17,6 +17,7 @@ public class PacientesConsulta extends javax.swing.JDialog {
     public PacientesConsulta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(parent);
     }
 
     /**
@@ -29,8 +30,8 @@ public class PacientesConsulta extends javax.swing.JDialog {
     private void initComponents() {
 
         panelBotonesPacientesConsulta = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnPacientesConsultaAceptar = new javax.swing.JButton();
+        btnPacientesConsultaCancelar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         scrollTablaPacientesConsulta = new javax.swing.JScrollPane();
@@ -39,9 +40,14 @@ public class PacientesConsulta extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pacientes a consultar");
 
-        jButton1.setText("Aceptar");
+        btnPacientesConsultaAceptar.setText("Aceptar");
 
-        jButton2.setText("Cancelar");
+        btnPacientesConsultaCancelar.setText("Cancelar");
+        btnPacientesConsultaCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPacientesConsultaCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBotonesPacientesConsultaLayout = new javax.swing.GroupLayout(panelBotonesPacientesConsulta);
         panelBotonesPacientesConsulta.setLayout(panelBotonesPacientesConsultaLayout);
@@ -49,18 +55,18 @@ public class PacientesConsulta extends javax.swing.JDialog {
             panelBotonesPacientesConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonesPacientesConsultaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton2)
+                .addComponent(btnPacientesConsultaAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(btnPacientesConsultaCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelBotonesPacientesConsultaLayout.setVerticalGroup(
             panelBotonesPacientesConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotonesPacientesConsultaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelBotonesPacientesConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                .addGroup(panelBotonesPacientesConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPacientesConsultaCancelar)
+                    .addComponent(btnPacientesConsultaAceptar))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -119,6 +125,10 @@ public class PacientesConsulta extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPacientesConsultaCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacientesConsultaCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnPacientesConsultaCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -162,8 +172,8 @@ public class PacientesConsulta extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnPacientesConsultaAceptar;
+    private javax.swing.JButton btnPacientesConsultaCancelar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
