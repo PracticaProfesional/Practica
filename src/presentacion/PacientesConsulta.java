@@ -5,6 +5,8 @@
  */
 package presentacion;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author cooper15
@@ -39,6 +41,11 @@ public class PacientesConsulta extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pacientes a consultar");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btnPacientesConsultaAceptar.setText("Aceptar");
 
@@ -129,6 +136,38 @@ public class PacientesConsulta extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnPacientesConsultaCancelarActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarTablaPacientesConsulta();
+    }//GEN-LAST:event_formWindowOpened
+    private void cargarTablaPacientesConsulta(){
+        String [] nombreColumnas = {"IdExpediente", "IdPaciente", "Nombre", "P.Apellido", "S.Apellido", "IdSignosVitales"};
+        DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
+        tablaPacientesConsulta.setModel(nuevoModeloTabla);
+        String fecha = obtenerFechaActual();
+//        for(String nombre:nombreColumnas)
+          for(int i = 0; i < 6; i++)
+            nuevoModeloTabla.addColumn(nombreColumnas[i]);
+        negocio.NegocioPaciente obtenerPacientesConsulta = new negocio.NegocioPaciente();
+        try{
+            java.sql.ResultSet rs = obtenerPacientesConsulta.obtenerPacientesConsulta(fecha);
+            while(rs.next()){
+                Object [] fila = new Object[6];
+                for(int i = 0; i < 6; i++)
+                    fila[i] =rs.getObject(i+1);
+                nuevoModeloTabla.addRow(fila);
+            }
+        }
+        catch(java.sql.SQLException e){
+            
+        }     
+    }
+    private String obtenerFechaActual() {
+        java.util.Calendar calendario = java.util.Calendar.getInstance();
+        int day = calendario.get(java.util.Calendar.DAY_OF_MONTH);
+        int month = calendario.get(java.util.Calendar.MONTH) ; // se le debe sumar 1 para obtener el mes actual
+        int year = calendario.get(java.util.Calendar.YEAR);
+        return year + "-" + month + "-" + day;
+    }
     /**
      * @param args the command line arguments
      */
@@ -175,7 +214,6 @@ public class PacientesConsulta extends javax.swing.JDialog {
     private javax.swing.JButton btnPacientesConsultaAceptar;
     private javax.swing.JButton btnPacientesConsultaCancelar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel panelBotonesPacientesConsulta;
     private javax.swing.JScrollPane scrollTablaPacientesConsulta;
