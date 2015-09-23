@@ -12,9 +12,6 @@ public class NegocioConsultaMedica
         
             OperacionesConsultaMedica operacionesConsultaMedica = new OperacionesConsultaMedica();
             operacionesConsultaMedica.insertarConsultaMedica(nuevaConsultaMedica);
-        
-      
-    
     }// fin del metodo insertarConsultaMedica
     
 }// fin de la clase NegocioConsultaMedica
