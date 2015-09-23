@@ -11,19 +11,26 @@ public class OperacionesConsultaMedica
     private Statement estado;
     
     
-    public void insertarConsultaMedica(ConsultaMedica nuevaConsulta) throws SQLException
-    {
-        String datosConsultaMedica = "'"+nuevaConsulta.getIdexpediente()+"'"+","+
+    public void insertarConsultaMedica(ConsultaMedica nuevaConsulta) 
+    {   
+        objetoDeConexion = new Conexion();
+        try{
+            String datosConsultaMedica = "'"+nuevaConsulta.getIdexpediente()+"'"+","+
                                      "'"+nuevaConsulta.getMotivoConsulta()+"'"+","+
                                      "'"+nuevaConsulta.getSintomaPaciente()+"'"+","+
                                      "'"+nuevaConsulta.getDiagnostico()+"'"+","+
                                      "'"+nuevaConsulta.getSignosVitales()+"'"+","+
-                                     "'"+nuevaConsulta.getIdReceta()+"'"+","+
                                      "'"+nuevaConsulta.getFecha()+"'";
         
-        estado = objetoDeConexion.conectar().createStatement();
-        estado.executeQuery("Call InsertarConsultaMedica("+datosConsultaMedica+")");
-        estado.close();
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call InsertarConsultaMedica("+datosConsultaMedica+")");
+            estado.close();
+        
+        }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode() + e.getMessage());
+        }
+      
         
     }// fin del metodo insertarConsultaMedica
     
