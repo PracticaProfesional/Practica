@@ -181,7 +181,13 @@ public class Inicio extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Gestion Oficina de Salud");
@@ -1307,9 +1313,38 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenu2.setText("Mantenimiento");
         jMenu2.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
+
+        jMenu4.setText("Paciente");
+
+        jMenuItem2.setText("Datos Paciente");
+        jMenu4.add(jMenuItem2);
+
+        jMenu2.add(jMenu4);
+
+        jMenu5.setText("Usuarios");
+
+        jMenuItem3.setText("Cambiar Contraseña");
+        jMenu5.add(jMenuItem3);
+
+        jMenuItem4.setText("Añadir usuario");
+        jMenu5.add(jMenuItem4);
+
+        jMenu2.add(jMenu5);
+
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Ayuda");
+        jMenu3.setText("Consulta");
+        jMenu3.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Pacientes a consulta");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -1879,6 +1914,11 @@ public class Inicio extends javax.swing.JFrame {
     private void panelConsultaMedicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelConsultaMedicaMouseClicked
         cargarExamenFisico();
     }//GEN-LAST:event_panelConsultaMedicaMouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        PacientesConsulta pacientesConsulta = new PacientesConsulta(this, true);
+        pacientesConsulta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     private String obtenerIdExpedienteMedico(){
         negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
         String idExpediente = consExp.obtenerIdExpedienteMedico(idPaciente);
@@ -2153,7 +2193,13 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
