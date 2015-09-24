@@ -19,18 +19,19 @@ public class OperacionesUsuario {
         try
         {
            estado = objetoDeConexion.conectar().createStatement();
-           result = estado.executeQuery("Call ObtenerIdUsuario("+datosUsuario+")");             
-        }// fin de try
-        catch (SQLException e)
-        {
-            System.out.println();
-        }// fin de catch
-        if(result.next()){
+           result = estado.executeQuery("Call ObtenerIdUsuario("+datosUsuario+")"); 
+            if(result.next()){
             entidad.Usuario usu = new Usuario();
             usu.setNombreUsuario(result.getString("nombreUsuario"));
             usu.setContrasena(result.getString("contrasena"));
             return usu;
-        }
+         }
+        }// fin de try
+        catch (SQLException e)
+        {
+            System.out.println(e.getErrorCode() + e.getMessage());
+        }// fin de catch
+       
         return null;
     }// fin del metodo insertarPaciente
     
