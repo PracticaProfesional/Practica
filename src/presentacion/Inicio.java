@@ -27,6 +27,7 @@ public class Inicio extends javax.swing.JFrame {
      * Creates new form Inicio
      */
     private String idPaciente;
+    private String idExpediente;
     public Inicio() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_HORIZ);
@@ -1918,6 +1919,7 @@ public class Inicio extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         PacientesConsulta pacientesConsulta = new PacientesConsulta(this, true);
         pacientesConsulta.setVisible(true);
+        idExpediente = pacientesConsulta.getIdExpedienteMedico();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     private String obtenerIdExpedienteMedico(){
         negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
