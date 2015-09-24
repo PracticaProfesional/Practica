@@ -1563,7 +1563,7 @@ public class Inicio extends javax.swing.JFrame {
    
     private void agendaTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendaTablaMouseClicked
         // al presionar la actividad de la tabla mostrar menu para ingresar actividad en caso de que no exista
-        agendaActividad nuevaActividad = new agendaActividad(this, true);
+        AgendaActividad nuevaActividad = new AgendaActividad(this, true);
         nuevaActividad.setVisible(true);
         String actividad = nuevaActividad.getDetalles();
         String fechaSeleccionada;
