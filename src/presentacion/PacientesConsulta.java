@@ -5,7 +5,9 @@
  */
 package presentacion;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.security.x509.PrivateKeyUsageExtension;
 
 /**
  *
@@ -16,6 +18,12 @@ public class PacientesConsulta extends javax.swing.JDialog {
     /**
      * Creates new form PacientesConsulta
      */
+    private String idExpedienteMedico;
+
+    public String getIdExpedienteMedico() {
+        return idExpedienteMedico;
+    }
+    
     public PacientesConsulta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -48,6 +56,11 @@ public class PacientesConsulta extends javax.swing.JDialog {
         });
 
         btnPacientesConsultaAceptar.setText("Aceptar");
+        btnPacientesConsultaAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPacientesConsultaAceptarActionPerformed(evt);
+            }
+        });
 
         btnPacientesConsultaCancelar.setText("Cancelar");
         btnPacientesConsultaCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,11 +152,23 @@ public class PacientesConsulta extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTablaPacientesConsulta();
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnPacientesConsultaAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacientesConsultaAceptarActionPerformed
+        if(tablaPacientesConsulta.getSelectedRow() != -1){
+            int filaSeleccionada = tablaPacientesConsulta.getSelectedRow();
+            idExpedienteMedico = tablaPacientesConsulta.getValueAt(filaSeleccionada, 1).toString();
+            this.dispose();
+        }
+        else
+            JOptionPane.showMessageDialog(rootPane, "No selecciono ninguna fila",null,JOptionPane.WARNING_MESSAGE);
+            
+    }//GEN-LAST:event_btnPacientesConsultaAceptarActionPerformed
     private void cargarTablaPacientesConsulta(){
         String [] nombreColumnas = {"IdExpediente", "IdPaciente", "Nombre", "P.Apellido", "S.Apellido", "IdSignosVitales"};
         DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
         tablaPacientesConsulta.setModel(nuevoModeloTabla);
-        String fecha = obtenerFechaActual();
+        //String fecha = obtenerFechaActual();
+        String fecha = "2015-08-22";
 //        for(String nombre:nombreColumnas)
           for(int i = 0; i < 6; i++)
             nuevoModeloTabla.addColumn(nombreColumnas[i]);
