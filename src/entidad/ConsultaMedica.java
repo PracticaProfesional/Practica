@@ -12,6 +12,26 @@ public class ConsultaMedica {
     private String diagnostico = "";
     private int signosVitales = 0; 
     private int idexpediente = 0;
+    private String motivo2 = "";
+    private String observaciones = "";
+
+    public String getMotivo2() {
+        return motivo2;
+    }
+
+    public void setMotivo2(String motivo2) {
+        this.motivo2 = motivo2;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+    
+    
 
     public int getSignosVitales() {
         return signosVitales;
