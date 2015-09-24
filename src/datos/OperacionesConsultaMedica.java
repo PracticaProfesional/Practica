@@ -43,7 +43,8 @@ public class OperacionesConsultaMedica
                        "'"+consultaMedica.getObservaciones()+"'";
         try{
             estado = objetoDeConexion.conectar().createStatement();
-            java.sql.ResultSet rs = estado.executeQuery("Call actualizarConsultaMedica("+datos+")");
+            estado.executeQuery("Call actualizarConsultaMedica("+datos+")");
+            estado.close();
         }
         catch(SQLException e){
             System.out.println(e.getErrorCode()+ e.getMessage());
