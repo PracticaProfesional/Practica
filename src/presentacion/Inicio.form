@@ -1005,11 +1005,11 @@
                                                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                                  <Component id="jTextField1" min="-2" pref="241" max="-2" attributes="0"/>
+                                                  <Component id="textMotivo2" min="-2" pref="241" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                                   <Component id="jLabel10" min="-2" pref="99" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="jTextField2" min="-2" pref="240" max="-2" attributes="0"/>
+                                                  <Component id="textObservaciones" min="-2" pref="240" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="jPanel8" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
@@ -1043,9 +1043,9 @@
                                       <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="textDiagnostico" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="textMotivo2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="textObservaciones" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
@@ -1779,14 +1779,14 @@
                             <Property name="text" type="java.lang.String" value="Motivo"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField1">
+                        <Component class="javax.swing.JTextField" name="textMotivo2">
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel10">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Observaciones"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextField2">
+                        <Component class="javax.swing.JTextField" name="textObservaciones">
                         </Component>
                       </SubComponents>
                     </Container>
