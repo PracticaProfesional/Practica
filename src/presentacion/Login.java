@@ -9,6 +9,9 @@ import datos.OperacionesUsuario;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import entidad.Usuario;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
 
 public class Login extends javax.swing.JFrame {
 
@@ -16,7 +19,9 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
+        this.setUndecorated(true);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,13 +36,13 @@ public class Login extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jColorChooser1 = new javax.swing.JColorChooser();
         jOptionPane1 = new javax.swing.JOptionPane();
-        SIGOS = new javax.swing.JLabel();
-        jLNombreUsuario = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jTNombreUsuario = new javax.swing.JTextField();
-        jLContrasena = new javax.swing.JLabel();
-        jBAceptar = new javax.swing.JButton();
-        jBCancelar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPTContrasena = new javax.swing.JPasswordField();
+        jBAceptar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -55,13 +60,25 @@ public class Login extends javax.swing.JFrame {
         setName("Login"); // NOI18N
         setResizable(false);
 
-        SIGOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/sigos.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/home/cooper15/NetBeansProjects/SIGOS/Practica/img/key.png")); // NOI18N
 
-        jLNombreUsuario.setText("Nombre usuario:");
+        jPanel1.setLayout(new java.awt.GridLayout(5, 0));
+
+        jLabel3.setText("Contraseña");
+        jPanel1.add(jLabel3);
 
         jTNombreUsuario.setName("jtNombre"); // NOI18N
+        jPanel1.add(jTNombreUsuario);
 
-        jLContrasena.setText("Contraseña:");
+        jLabel2.setText("Usuario");
+        jPanel1.add(jLabel2);
+
+        jPTContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPTContrasenaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jPTContrasena);
 
         jBAceptar.setText("Aceptar");
         jBAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,63 +92,29 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jBCancelar.setText("Cancelar");
-        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelarActionPerformed(evt);
-            }
-        });
-
-        jPTContrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPTContrasenaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLNombreUsuario)
-                    .addComponent(jLContrasena))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                    .addComponent(jPTContrasena))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jBAceptar)
-                        .addGap(40, 40, 40)
-                        .addComponent(jBCancelar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(SIGOS, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1))
+                    .addComponent(jBAceptar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLNombreUsuario)
-                            .addComponent(jTNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLContrasena)
-                            .addComponent(jPTContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(SIGOS, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBCancelar)
-                            .addComponent(jBAceptar))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,20 +126,16 @@ public class Login extends javax.swing.JFrame {
             mensaje += "El nombre de usuario es requerido.\n";
         }
         
-        if(jPTContrasena.getText().isEmpty()){
+        if(jPTContrasena.getPassword().length == 0){
             mensaje += "La contraseña es requerida.\n";
         }
         
-        if(mensaje != ""){
-            jOptionPane1.showMessageDialog(null, mensaje);
+        if(!mensaje.equals("")){
+            JOptionPane.showMessageDialog(this, mensaje,null,JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
     }
-    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_jBCancelarActionPerformed
-
     private void jPTContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPTContrasenaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPTContrasenaActionPerformed
@@ -177,7 +156,7 @@ public class Login extends javax.swing.JFrame {
                     pI.setVisible(true);
                     dispose();                    
                 }else{
-                    jOptionPane1.showMessageDialog(null, "Nombre de Usuario y Contraseña no coinciden!!");
+                    JOptionPane.showMessageDialog(null, "Nombre de Usuario y Contraseña no coinciden!!");
                 }                            
             }catch(SQLException e){
                 
@@ -200,22 +179,17 @@ public class Login extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+           try
+    {
+        BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
+        UIManager.put("RootPane.setupButtonVisible", false);
+        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+        
+    }
+    catch(Exception e)
+    {
+        //TODO exception
+    }
         //</editor-fold>
 
         /* Create and display the form */
@@ -227,15 +201,15 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel SIGOS;
     private javax.swing.JButton jBAceptar;
-    private javax.swing.JButton jBCancelar;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLContrasena;
-    private javax.swing.JLabel jLNombreUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPasswordField jPTContrasena;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTNombreUsuario;
     // End of variables declaration//GEN-END:variables
 }
