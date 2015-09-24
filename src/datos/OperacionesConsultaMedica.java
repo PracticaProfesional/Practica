@@ -20,7 +20,9 @@ public class OperacionesConsultaMedica
                                      "'"+nuevaConsulta.getSintomaPaciente()+"'"+","+
                                      "'"+nuevaConsulta.getDiagnostico()+"'"+","+
                                      "'"+nuevaConsulta.getSignosVitales()+"'"+","+
-                                     "'"+nuevaConsulta.getFecha()+"'";
+                                     "'"+nuevaConsulta.getFecha()+"'"+","+
+                                     "'"+nuevaConsulta.getMotivo2()+"'"+","+
+                                     "'"+nuevaConsulta.getObservaciones()+"'";
         
             estado = objetoDeConexion.conectar().createStatement();
             estado.executeQuery("Call InsertarConsultaMedica("+datosConsultaMedica+")");
@@ -33,5 +35,18 @@ public class OperacionesConsultaMedica
       
         
     }// fin del metodo insertarConsultaMedica
-    
+    public void actualizarConsultaMedica(String idExpediente, entidad.ConsultaMedica consultaMedica){
+        objetoDeConexion = new Conexion();
+        String datos = "'"+idExpediente+"'"+","+
+                       "'"+consultaMedica.getDiagnostico()+"'"+","+
+                       "'"+consultaMedica.getMotivo2()+"'"+","+
+                       "'"+consultaMedica.getObservaciones()+"'";
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            java.sql.ResultSet rs = estado.executeQuery("Call actualizarConsultaMedica("+datos+")");
+        }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode()+ e.getMessage());
+        }
+    }
 }// fin de la clase OperacionesConsultaMedica
