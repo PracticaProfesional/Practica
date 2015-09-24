@@ -293,6 +293,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="textBuscarPaciente">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Digite la cedula y presione buscar.Para ver todos los elementos borre el contenido y presione Enter"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textBuscarPacienteActionPerformed"/>
                       </Events>

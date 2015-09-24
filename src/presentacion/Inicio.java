@@ -17,6 +17,7 @@ import javax.swing.UIManager;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 /**
  *
  * @author cooper15
@@ -31,10 +32,7 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_HORIZ);
-    }
-    private void resolucion(){
-        Toolkit t = Toolkit.getDefaultToolkit();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        btnBuscarPaciente.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.green));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -232,6 +230,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel1.setText("Cédula Paciente");
 
+        textBuscarPaciente.setToolTipText("Digite la cedula y presione buscar.Para ver todos los elementos borre el contenido y presione Enter");
         textBuscarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textBuscarPacienteActionPerformed(evt);
@@ -1449,6 +1448,20 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_cbOidosActionPerformed
 
     private void btnSignosVitalesGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignosVitalesGuardarActionPerformed
+        ingresarSignosConsulta();
+        limpiarSignosVitales();
+    }//GEN-LAST:event_btnSignosVitalesGuardarActionPerformed
+
+    private void limpiarSignosVitales() {
+        javax.swing.JTextField []
+            textsSignosVitales = {textFC, textGC, textH2O,
+            textIMB, textIMC, textMM, textMotivoConsulta, textPAR, textPeso,
+            textTalla, textTemperatura, textSintomas};
+        for(javax.swing.JTextField campo:textsSignosVitales)
+            campo.setText("");
+    }
+
+    private void ingresarSignosConsulta() throws NumberFormatException {
         entidad.SignosVitales signosV = new entidad.SignosVitales();
         signosV = obtenerSignosVitales(signosV);
         negocio.NegocioSignosVitales insertarSignosVitales = new negocio.NegocioSignosVitales();
@@ -1462,9 +1475,7 @@ public class Inicio extends javax.swing.JFrame {
         nuevaConsulta.setMotivoConsulta(textMotivoConsulta.getText());
         nuevaConsulta.setSintomaPaciente(textSintomas.getText());
         insertarConsulta.insertarConsultaMedica(nuevaConsulta);
-        
-        
-    }//GEN-LAST:event_btnSignosVitalesGuardarActionPerformed
+    }
 
     private String obtenerFechaActual() {
         Calendar calendario = Calendar.getInstance();
