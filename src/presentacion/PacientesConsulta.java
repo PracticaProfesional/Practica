@@ -19,6 +19,9 @@ public class PacientesConsulta extends javax.swing.JDialog {
      * Creates new form PacientesConsulta
      */
     private String idExpedienteMedico;
+    private final int ID_EXPEDIENTE = 0;
+    private final int ID_PACIENTE = 1;
+    private final int ID_SIGNOS_VITALES = 5;
 
     public String getIdExpedienteMedico() {
         return idExpedienteMedico;
@@ -46,6 +49,7 @@ public class PacientesConsulta extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         scrollTablaPacientesConsulta = new javax.swing.JScrollPane();
         tablaPacientesConsulta = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pacientes a consultar");
@@ -108,36 +112,46 @@ public class PacientesConsulta extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollTablaPacientesConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE)
+                .addComponent(scrollTablaPacientesConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollTablaPacientesConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(scrollTablaPacientesConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/home/cooper15/NetBeansProjects/SIGOS/Practica/img/running.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(panelBotonesPacientesConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelBotonesPacientesConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                .addComponent(jScrollPane2)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(442, 442, 442)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
-                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelBotonesPacientesConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -167,10 +181,10 @@ public class PacientesConsulta extends javax.swing.JDialog {
         String [] nombreColumnas = {"IdExpediente", "IdPaciente", "Nombre", "P.Apellido", "S.Apellido", "IdSignosVitales"};
         DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
         tablaPacientesConsulta.setModel(nuevoModeloTabla);
-        //String fecha = obtenerFechaActual();
-        String fecha = "2015-08-22";
+        String fecha = obtenerFechaActual();
+        
 //        for(String nombre:nombreColumnas)
-          for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 6; i++)
             nuevoModeloTabla.addColumn(nombreColumnas[i]);
         negocio.NegocioPaciente obtenerPacientesConsulta = new negocio.NegocioPaciente();
         try{
@@ -184,12 +198,20 @@ public class PacientesConsulta extends javax.swing.JDialog {
         }
         catch(java.sql.SQLException e){
             
-        }     
+        }
+        esconderColumnas(ID_EXPEDIENTE);
+        esconderColumnas(ID_PACIENTE);
+        esconderColumnas(ID_SIGNOS_VITALES);
+    }
+    private void esconderColumnas(int numColumna){
+        tablaPacientesConsulta.getColumnModel().getColumn(numColumna).setMaxWidth(0);
+        tablaPacientesConsulta.getColumnModel().getColumn(numColumna).setMinWidth(0);
+        tablaPacientesConsulta.getColumnModel().getColumn(numColumna).setPreferredWidth(0);
     }
     private String obtenerFechaActual() {
         java.util.Calendar calendario = java.util.Calendar.getInstance();
         int day = calendario.get(java.util.Calendar.DAY_OF_MONTH);
-        int month = calendario.get(java.util.Calendar.MONTH) ; // se le debe sumar 1 para obtener el mes actual
+        int month = calendario.get(java.util.Calendar.MONTH) + 1; // se le debe sumar 1 para obtener el mes actual
         int year = calendario.get(java.util.Calendar.YEAR);
         return year + "-" + month + "-" + day;
     }
@@ -238,6 +260,7 @@ public class PacientesConsulta extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPacientesConsultaAceptar;
     private javax.swing.JButton btnPacientesConsultaCancelar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel panelBotonesPacientesConsulta;
