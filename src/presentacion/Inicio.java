@@ -1685,9 +1685,9 @@ public class Inicio extends javax.swing.JFrame {
         // DEPURAR CODIGO.
         java.util.LinkedList <entidad.ExamenFisico> listaExamenFisico = new java.util.LinkedList<entidad.ExamenFisico>();
         negocio.NegocioExamenFisico consExamen = new negocio.NegocioExamenFisico();
-        negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
+//        negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
         negocio.NegocioExamenExpediente exaExpe = new negocio.NegocioExamenExpediente();
-        String idExpediente = consExp.obtenerIdExpedienteMedico(idPaciente);
+//        String idExp = consExp.obtenerIdExpedienteMedico(idPaciente);
         java.sql.ResultSet idsExameFisicos = exaExpe.obtenerIdExamenesMedicos(idExpediente);
         java.sql.ResultSet rs = null;
         if(!idsExameFisicos.wasNull()){
@@ -1929,15 +1929,15 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     private String obtenerIdExpedienteMedico(){
         negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
-        String idExpediente = consExp.obtenerIdExpedienteMedico(idPaciente);
-        return idExpediente;
+        String idExp = consExp.obtenerIdExpedienteMedico(idPaciente);
+        return idExp;
     }
     private void cargarExamenFisico() {
         negocio.NegocioExamenFisico nuevoExamen = new negocio.NegocioExamenFisico();
-        String idExpediente = obtenerIdExpedienteMedico();
+//        String idExp = obtenerIdExpedienteMedico();
         negocio.NegocioExamenExpediente exaExpe = new negocio.NegocioExamenExpediente();
         
-        // obtiene todos los id de examen fisico que correspondan al idExpediente.
+        // obtiene todos los id de examen fisico que correspondan al idExp.
         java.sql.ResultSet idsExamenesEx = exaExpe.obtenerIdExamenesMedicos(idExpediente);
         java.sql.ResultSet examenFisico = null;
         // Colecciones para almacenar datos obtenidos mediante consultas SQL.
