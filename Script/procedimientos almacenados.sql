@@ -103,12 +103,12 @@ END $
 
 
 DELIMITER $  --  insertar en la tabla antecedentes personales
-CREATE PROCEDURE InsertarAntecedentesPersonales (in idAle int, in trata varchar(45), 
-		in idPad int, in idVac int, in med varchar(45))
+CREATE PROCEDURE InsertarAntecedentesPersonales (in trata varchar(45), in med varchar(45),
+		in idAle int, in idVac int)
 BEGIN
-	insert into AntecedentesPersonales (idAlergias, tratamiento, idPadecimientos, 
-			idVacunas, medicamento)
-	values (idAle, trata, idPad, idVac, med);
+	insert into AntecedentesPersonales (tratamiento, medicamento,
+			idAlergias, idVacunas)
+	values (trata, med, idAle, idVac);
 END $
 
 
@@ -123,12 +123,12 @@ END $
 DELIMITER $
 CREATE PROCEDURE InsertarPaciente (in nomPac varchar(45), in ape1Pac varchar(45),
 		in ape2Pac varchar(45), in sex tinyint, in fecNacPac date, 
-		in nacPac varchar(45), cedPac varchar(45), in idTel int, in dir1 varchar(45),
+		in nacPac varchar(45), cedPac varchar(45), in idTel int,  in dir1 varchar(45),
 		in dir2 varchar(45), in ema varchar(45))
 BEGIN
 	insert into paciente (nombrePaciente, apellido1Paciente, apellido2Paciente,
-			sexo, fechaNacimientoPaciente, nacionalidadPaciente, cedulaPaciente,
-			idtelefono, direccion1, direccion2, email)
+			sexo, fechaNacimientoPaciente, nacionalidadPaciente, 
+			cedulaPaciente, idtelefono, direccion1, direccion2, email)
 	values (nomPac, ape1Pac, ape2Pac, sex, fecNacPac, nacPac, cedPac, idTel, dir1,
 			dir2, ema);
 END $
@@ -256,7 +256,7 @@ Call InsertarAntecedentesFamiliares (1, 'Abuelo');
 $
 
 Call InsertarPaciente ('Pedro', 'Pasos', 'Vargas', 1, '2015-03-22', 'costa rica',
-		'123456789', 1, 'Lib', 'Bag', 'ppasosv');
+		'123456789', 'Lib', 'Bag', 'ppasosv');
 $
 
 Call InsertarExpedienteMedico (1, null, 1, 1);
