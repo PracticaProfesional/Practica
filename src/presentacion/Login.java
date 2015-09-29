@@ -38,10 +38,10 @@ public class Login extends javax.swing.JFrame {
         jOptionPane1 = new javax.swing.JOptionPane();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jTNombreUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPTContrasena = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        jTNombreUsuario = new javax.swing.JTextField();
         jBAceptar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -64,12 +64,6 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridLayout(5, 0));
 
-        jLabel3.setText("Contraseña");
-        jPanel1.add(jLabel3);
-
-        jTNombreUsuario.setName("jtNombre"); // NOI18N
-        jPanel1.add(jTNombreUsuario);
-
         jLabel2.setText("Usuario");
         jPanel1.add(jLabel2);
 
@@ -79,6 +73,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jPTContrasena);
+
+        jLabel3.setText("Contraseña");
+        jPanel1.add(jLabel3);
+
+        jTNombreUsuario.setName("jtNombre"); // NOI18N
+        jPanel1.add(jTNombreUsuario);
 
         jBAceptar.setText("Aceptar");
         jBAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
