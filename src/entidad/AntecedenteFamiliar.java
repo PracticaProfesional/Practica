@@ -6,9 +6,16 @@ package entidad;
  * @author cooper15
  */
 public class AntecedenteFamiliar {
-   private String nombreAntecedenteFamiliar;    // Este atributo creo que esta haciendo nada
-   private String parentezco;
-   private String descripcion;
+    private String nombreAntecedenteFamiliar;    // Este atributo creo que esta haciendo nada
+    private String parentezco;
+    private String descripcion;
+   
+   
+    public AntecedenteFamiliar()
+    {
+       this.parentezco = "No tiene";
+       this.descripcion = "No tiene";
+    }// fin del constructor AntecedenteFamiliar
 
     public String getNombreAntecedenteFamiliar() {
         return nombreAntecedenteFamiliar;

@@ -15,6 +15,13 @@ public class AntecedentesPersonales {
     private String medicamento;
     private int alergias;
     private int vacunas;
+    
+    
+    public AntecedentesPersonales()
+    {
+        this.tratamiento = "No tiene";
+        this.medicamento = "No tiene";
+    }// fin del constructor de AntecedentesPersonales
 
     public String getTratamiento() {
         return tratamiento;
