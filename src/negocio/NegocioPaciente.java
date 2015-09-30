@@ -11,4 +11,8 @@ public class NegocioPaciente {
        OperacionesPaciente operacionesPaciente = new OperacionesPaciente();
        operacionesPaciente.insertarPaciente(nuevoPaciente); 
    }
+   public java.sql.ResultSet obtenerPacientesConsulta(String date){
+       OperacionesPaciente operacionesPaciente = new OperacionesPaciente();
+       return operacionesPaciente.obtenerPacientesConsulta(date);
+   }
 }

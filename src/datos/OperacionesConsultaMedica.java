@@ -11,20 +11,43 @@ public class OperacionesConsultaMedica
     private Statement estado;
     
     
-    public void insertarConsultaMedica(ConsultaMedica nuevaConsulta) throws SQLException
-    {
-        String datosConsultaMedica = "'"+nuevaConsulta.getIdexpediente()+"'"+","+
+    public void insertarConsultaMedica(ConsultaMedica nuevaConsulta) 
+    {   
+        objetoDeConexion = new Conexion();
+        try{
+            String datosConsultaMedica = "'"+nuevaConsulta.getIdexpediente()+"'"+","+
                                      "'"+nuevaConsulta.getMotivoConsulta()+"'"+","+
                                      "'"+nuevaConsulta.getSintomaPaciente()+"'"+","+
                                      "'"+nuevaConsulta.getDiagnostico()+"'"+","+
                                      "'"+nuevaConsulta.getSignosVitales()+"'"+","+
-                                     "'"+nuevaConsulta.getIdReceta()+"'"+","+
-                                     "'"+nuevaConsulta.getFecha()+"'";
+                                     "'"+nuevaConsulta.getFecha()+"'"+","+
+                                     "'"+nuevaConsulta.getMotivo2()+"'"+","+
+                                     "'"+nuevaConsulta.getObservaciones()+"'";
         
-        estado = objetoDeConexion.conectar().createStatement();
-        estado.executeQuery("Call InsertarConsultaMedica("+datosConsultaMedica+")");
-        estado.close();
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call InsertarConsultaMedica("+datosConsultaMedica+")");
+            estado.close();
+        
+        }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode() + e.getMessage());
+        }
+      
         
     }// fin del metodo insertarConsultaMedica
-    
+    public void actualizarConsultaMedica(String idExpediente, entidad.ConsultaMedica consultaMedica){
+        objetoDeConexion = new Conexion();
+        String datos = "'"+idExpediente+"'"+","+
+                       "'"+consultaMedica.getDiagnostico()+"'"+","+
+                       "'"+consultaMedica.getMotivo2()+"'"+","+
+                       "'"+consultaMedica.getObservaciones()+"'";
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call actualizarConsultaMedica("+datos+")");
+            estado.close();
+        }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode()+ e.getMessage());
+        }
+    }
 }// fin de la clase OperacionesConsultaMedica

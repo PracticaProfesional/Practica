@@ -1,5 +1,19 @@
 -- Procedimientos almacenados de insercion en las tablas de la base de datos SIGOS
 
+--  ACTUALIZA ALGUNOS DATOS DE LA TABLA ConsultaMedica.
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarConsultaMedica`(in id int, in diag varchar(45), in motiv varchar(45), in obs varchar(200))
+BEGIN
+	UPDATE ConsultaMedica
+    SET diagnostico = diag, motivo2 = motiv, observaciones = obs
+    WHERE idExpedienteMedico = id;
+END
+
+-- INNER JOIN CON DATOS DE PERSONAS EN CONSULTA MEDICA
+SELECT idExpedienteMedico,idPaciente, nombrePaciente,apellido1Paciente, apellido2Paciente,signosVitales from ExpedienteMedico join ConsultaMedica
+on ExpedienteMedico.id = ConsultaMedica.idExpedienteMedico
+join Paciente on ExpedienteMedico.id = Paciente.id
+Where ConsultaMedica.fecha = '2015-08-22';
+
 
 DELIMITER $   -- insertar en la tabla usuario
 CREATE PROCEDURE InsertarUsuario (in nomUsu varchar(45), in pass varchar(45))
