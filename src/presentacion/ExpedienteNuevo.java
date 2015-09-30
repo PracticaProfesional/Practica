@@ -22,6 +22,7 @@ import negocio.NegocioAntecedentesPersPad;
 import negocio.NegocioAntecedenteFamiliar;
 import negocio.NegocioAntecedentesFamPad;
 import entidad.AntecedentesFamPad;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -88,7 +89,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         Medicamentos = new javax.swing.JLabel();
         textMedicamentos = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnAgregarPadecimientoPer = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -106,7 +107,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         jLabel19 = new javax.swing.JLabel();
         textAntFamDescrip = new javax.swing.JTextField();
         textAntFamParentezco = new javax.swing.JTextField();
-        btnAgregarPadecimiento = new javax.swing.JButton();
+        btnAgregarPadecimientoFam = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -189,38 +190,38 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
         textFechaNac.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
             new datechooser.view.appearance.ViewAppearance("custom",
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(85, 85, 85),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(85, 85, 85),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
                     new java.awt.Color(0, 0, 255),
                     true,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
                     new java.awt.Color(0, 0, 255),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
                     new java.awt.Color(128, 128, 128),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(85, 85, 85),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
-                    new java.awt.Color(85, 85, 85),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                    new java.awt.Color(0, 0, 0),
                     new java.awt.Color(255, 0, 0),
                     false,
                     false,
@@ -368,10 +369,10 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     jLabel11.setText("Padecimientos");
 
-    jButton2.setText("Añadir");
-    jButton2.addActionListener(new java.awt.event.ActionListener() {
+    btnAgregarPadecimientoPer.setText("Añadir");
+    btnAgregarPadecimientoPer.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton2ActionPerformed(evt);
+            btnAgregarPadecimientoPerActionPerformed(evt);
         }
     });
 
@@ -389,8 +390,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(textTratamiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(textMedicamentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnAgregarPadecimientoPer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(118, 118, 118))
     );
     jPanel2Layout.setVerticalGroup(
         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,8 +399,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             .addGap(20, 20, 20)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel11)
-                .addComponent(jButton2))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAgregarPadecimientoPer))
+            .addGap(29, 29, 29)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(textTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel21))
@@ -517,10 +518,10 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     jLabel19.setText("Parentezco");
 
-    btnAgregarPadecimiento.setText("Añadir");
-    btnAgregarPadecimiento.addActionListener(new java.awt.event.ActionListener() {
+    btnAgregarPadecimientoFam.setText("Añadir");
+    btnAgregarPadecimientoFam.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnAgregarPadecimientoActionPerformed(evt);
+            btnAgregarPadecimientoFamActionPerformed(evt);
         }
     });
 
@@ -538,8 +539,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(textAntFamParentezco, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addComponent(textAntFamDescrip, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
-                .addComponent(btnAgregarPadecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addContainerGap(336, Short.MAX_VALUE))
+                .addComponent(btnAgregarPadecimientoFam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap(132, Short.MAX_VALUE))
     );
     jPanel7Layout.setVerticalGroup(
         jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,7 +548,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             .addGap(20, 20, 20)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel17)
-                .addComponent(btnAgregarPadecimiento))
+                .addComponent(btnAgregarPadecimientoFam))
             .addGap(18, 18, 18)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel18)
@@ -630,7 +631,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAgregarPadecimientoPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoPerActionPerformed
         
         CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(this, true);
         padecimientos.setVisible(true);
@@ -644,9 +645,9 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             System.out.println("Id: " + ids[i]);
         }// fin del for
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAgregarPadecimientoPerActionPerformed
 
-    private void btnAgregarPadecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoActionPerformed
+    private void btnAgregarPadecimientoFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoFamActionPerformed
         
         CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(this, true);
         padecimientos.setVisible(true);
@@ -660,7 +661,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             System.out.println("Id: " + ids[i]);
         }// fin del for
         
-    }//GEN-LAST:event_btnAgregarPadecimientoActionPerformed
+    }//GEN-LAST:event_btnAgregarPadecimientoFamActionPerformed
 
     private void crearExpedienteMedico() {
         negocio.NegocioExpedienteMedico insertarExpediente = new negocio.NegocioExpedienteMedico();
@@ -676,8 +677,11 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         NegocioAntecedenteFamiliar objetoNegocioAntFam = new NegocioAntecedenteFamiliar();
         AntecedenteFamiliar nuevoAntFam = new AntecedenteFamiliar();
         
-        nuevoAntFam.setParentezco(textAntFamParentezco.getText());
-        nuevoAntFam.setDescripcion(textAntFamDescrip.getText());
+        if (! textAntFamParentezco.getText().equals(""))  // valida si el campo de texto de parentesco esta vacio
+            nuevoAntFam.setParentezco(textAntFamParentezco.getText());
+        
+        if (! textAntFamDescrip.getText().equals("")) // valida si el campo de de texto de medicamento esta vacio
+            nuevoAntFam.setDescripcion(textAntFamDescrip.getText());
         
         try
         {
@@ -694,17 +698,28 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     {
         AntecedentesPersonales nuevoAntPer = new AntecedentesPersonales();
         
-        nuevoAntPer.setTratamiento(textTratamiento.getText());
-        nuevoAntPer.setMedicamento(textMedicamentos.getText());
+        if (! textTratamiento.getText().equals(""))  // valida si el campo de texto de tratamiento esta vacio
+            nuevoAntPer.setTratamiento(textTratamiento.getText());
+        
+        if (! textMedicamentos.getText().equals(""))  // valida si el campo de de texto de medicamento esta vacio
+            nuevoAntPer.setMedicamento(textMedicamentos.getText());
         
         try 
-        {   // la base de datos de pedro tiene el nombre de estas tablas en minuscula
-            nuevoAntPer.setAlergias(Integer.parseInt(ultimoId.obtenerUltimoId("Alergias")));
-            nuevoAntPer.setVacunas(Integer.parseInt(ultimoId.obtenerUltimoId("Vacunas")));
-        } 
+        {   
+            if (! textAlergiaNombre.getText().equals("") || ! textAlergiaDescrip.getText().equals(""))
+            {
+                // la base de datos de pedro tiene el nombre de estas tablas en minuscula
+                nuevoAntPer.setAlergias(Integer.parseInt(ultimoId.obtenerUltimoId("Alergias")));
+            
+            }// fin del if
+            
+            if (! textVacunaTipo.getText().equals(""))
+                nuevoAntPer.setVacunas(Integer.parseInt(ultimoId.obtenerUltimoId("Vacunas")));
+        }// fin del try 
         catch (SQLException ex) 
         {
-            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getErrorCode());
+            //Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
         }
         try 
         {
@@ -712,7 +727,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         } 
         catch (SQLException ex) 
         {
-            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getErrorCode());
+            //Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         negocio.NegocioAntecedentePersonal insertarAntPer = new negocio.NegocioAntecedentePersonal();
@@ -727,38 +743,55 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     }
 
     private void insertarVacuna(Vacuna nuevaVacuna) {
+        
         nuevaVacuna.setFechaAplicacion(getFechaVacuna());
         nuevaVacuna.setTipo(textVacunaTipo.getText());
-        negocio.NegocioVacuna insertarVacuna = new negocio.NegocioVacuna();
-        insertarVacuna.insertarVacuna(nuevaVacuna);
-    }
+        
+        if (! nuevaVacuna.getTipo().equals(""))
+        {
+            negocio.NegocioVacuna insertarVacuna = new negocio.NegocioVacuna();
+            insertarVacuna.insertarVacuna(nuevaVacuna);
+        }// fin del if        
+    }// fin del metodo insertarVacuna
 
-    private void insertarAlergia(Alergia nuevaAlergia) {
+    private void insertarAlergia(Alergia nuevaAlergia) 
+    {
         nuevaAlergia.setNombreAlergia(textAlergiaNombre.getText());
         nuevaAlergia.setDetalleAlergia(textAlergiaDescrip.getText());
-        negocio.NegocioAlergia insertarAlergia = new negocio.NegocioAlergia();
-        insertarAlergia.insertarAlergia(nuevaAlergia);
-    }
+        
+        if (! nuevaAlergia.getNombreAlergia().equals("") && ! nuevaAlergia.getDetalleAlergia().equals(""))
+        {
+            negocio.NegocioAlergia insertarAlergia = new negocio.NegocioAlergia();
+            insertarAlergia.insertarAlergia(nuevaAlergia);
+        }// fin del if
+    }// fin del metodo insertarAlergia
     
     private void insertarAntecedentesPersonalesPadecimientos(ObtenerUltimoId ultimoId)
     {
         NegocioAntecedentesPersPad negocioAntecedentes = new NegocioAntecedentesPersPad();
         AntecedentesPersPad nuevoAntecedente = new AntecedentesPersPad();
         
-        for (int i = 0; i < ids.length; i++)
+        try
         {
-            try
+            for (int i = 0; i < ids.length; i++)
             {
-                nuevoAntecedente.setIdPadecimientos(ids[i]);
-                nuevoAntecedente.setIdAntecedentesPersonales(
-                        Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesPersonales")));
-            }// fin del try
-            catch(SQLException e)
-            {
-            }// fin del catch
+                try
+                {
+                    nuevoAntecedente.setIdPadecimientos(ids[i]);
+                    nuevoAntecedente.setIdAntecedentesPersonales(
+                            Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesPersonales")));
+                }// fin del try
+                catch(SQLException e)
+                {
+                }// fin del catch
             
-            negocioAntecedentes.insertarAntecedentePersPad(nuevoAntecedente);
-        }// fin del for
+                negocioAntecedentes.insertarAntecedentePersPad(nuevoAntecedente);
+            }// fin del for
+        }// fin del try
+        catch (NullPointerException npe)
+        {
+            JOptionPane.showMessageDialog(null, "No se asociaron padecimientos a el paciente");
+        }// fin del catch
     }// fin del metodo insertarAntecedentesPersonalesPadecimientos
     
     public void insertarAntecedenteFamiliaresPAdecimientos(ObtenerUltimoId ultimoId)
@@ -766,20 +799,27 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         NegocioAntecedentesFamPad negocioAntecedentes = new NegocioAntecedentesFamPad();
         AntecedentesFamPad nuevoAntecedente = new AntecedentesFamPad();
         
-        for (int i = 0; i < ids.length; i++)
+        try
         {
-            try
+            for (int i = 0; i < ids.length; i++)
             {
-                nuevoAntecedente.setIdPadecimiento(ids[i]);
-                nuevoAntecedente.setIdAntecedenteFamiliar(
-                        Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesFamiliares")));
-            }// fin del try
-            catch(SQLException e)
-            {
-            }// fin del catch
+                try
+                {
+                    nuevoAntecedente.setIdPadecimiento(ids[i]);
+                    nuevoAntecedente.setIdAntecedenteFamiliar(
+                           Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesFamiliares")));
+                }// fin del try
+                catch(SQLException e)
+                {
+                }// fin del catch
             
-            negocioAntecedentes.insertarAntecedenteFamiliarPadecimiento(nuevoAntecedente);
-        }// fin del for
+                negocioAntecedentes.insertarAntecedenteFamiliarPadecimiento(nuevoAntecedente);
+            }// fin del for
+        }// fin del try
+        catch(NullPointerException npe)
+        {
+            JOptionPane.showMessageDialog(null, "No se asociaron padecimientos a los antecedentes familiares del paciente");
+        }// fin del catach
     }// fin del metodo insertarAntecedenteFamiliaresPAdecimientos
     
     private void insertarPadecimiento(Padecimiento nuevoPadecimiento) {
@@ -906,10 +946,10 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Medicamentos;
-    private javax.swing.JButton btnAgregarPadecimiento;
+    private javax.swing.JButton btnAgregarPadecimientoFam;
+    private javax.swing.JButton btnAgregarPadecimientoPer;
     private javax.swing.JButton btnExpedienteNuevoCancelar;
     private javax.swing.JButton btnExpedienteNuevoGuardar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
