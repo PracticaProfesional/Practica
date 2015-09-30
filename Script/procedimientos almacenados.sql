@@ -106,9 +106,19 @@ DELIMITER $  --  insertar en la tabla antecedentes personales
 CREATE PROCEDURE InsertarAntecedentesPersonales (in trata varchar(45), in med varchar(45),
 		in idAle int, in idVac int)
 BEGIN
-	insert into AntecedentesPersonales (tratamiento, medicamento,
-			idAlergias, idVacunas)
-	values (trata, med, idAle, idVac);
+	declare alergia int;
+	declare vacuna int;
+	
+	if idAle <> 0 then
+		set alergia = idAle;
+	end if;
+
+	if idVac <> 0 then
+		set vacuna = idVac;
+	end if;
+
+	insert into AntecedentesPersonales (tratamiento, medicamento, idAlergias, idVacunas)
+	values (trata, med, alergia, vacuna);
 END $
 
 
@@ -416,7 +426,6 @@ Call InsertarPadecimientos('Polipos');
 
 
 
-
 -- Procedimientos para consultar
 DELIMITER $
 CREATE PROCEDURE ConsultarIdPadecimiento (in nom varchar(45) )
@@ -430,7 +439,6 @@ Call ConsultarIdPadecimiento ('Dislipidemia');
 $
 
 
-
-
-ALTER TABLE `sigos`.`padecimientos` DROP COLUMN `descripcion` ;
+$
+Call InsertarAntPer ('nada', 'nada', 0, 0);
 
