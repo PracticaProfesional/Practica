@@ -10,8 +10,6 @@ public class NegocioExamenFisico
 {
     public void insertarExamenFisico(ExamenFisico nuevoExamenFisico)
     {
-        // fin de catch
-        
         OperacionesExamenFisico operacionesExamenFisico = new OperacionesExamenFisico();
         operacionesExamenFisico.insertarExamenFisico(nuevoExamenFisico);
         
