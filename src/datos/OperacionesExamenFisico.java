@@ -13,17 +13,21 @@ public class OperacionesExamenFisico
     private Conexion objetoDeConexion;
     private Statement estado;
     
-    public void insertarExamenFisico(ExamenFisico objetoExamenFisico) throws SQLException
-    {
+    public void insertarExamenFisico(ExamenFisico objetoExamenFisico) {
         objetoDeConexion = new Conexion();
        
         String datosExamenFisico = "'" + objetoExamenFisico.getCategoria() + "'" + "," + 
                                   "'" + objetoExamenFisico.getSubCategoria() + "'" + "," + 
                                   "'" + objetoExamenFisico.getDetalle() + "'";
+       try{
+           estado = objetoDeConexion.conectar().createStatement();
+           estado.executeQuery("Call InsertarExamenFisico("+datosExamenFisico+")");
+           estado.close();
+       }
+       catch(SQLException e){
+           System.out.println(e.getErrorCode() + e.getMessage());
+       }
        
-        estado = objetoDeConexion.conectar().createStatement();
-        estado.executeQuery("Call InsertarExamenFisico("+datosExamenFisico+")");
-        estado.close();
     }// fin del metodo insertarExamenFisico
     
     public ResultSet obtenerExamenFisico(String id){
