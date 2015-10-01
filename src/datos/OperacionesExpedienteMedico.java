@@ -48,7 +48,7 @@ public class OperacionesExpedienteMedico {
                 idExpediente = rs.getString("id");
         }
         catch(SQLException e){
-            System.out.println(e.getErrorCode());
+            System.out.println(e.getErrorCode() + e.getMessage());
         }
         return idExpediente;
     }
