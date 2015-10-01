@@ -6,11 +6,14 @@
 package presentacion;
 
 
+import entidad.ExamenFisico;
 import entidad.SignosVitales;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -29,6 +32,7 @@ public class Inicio extends javax.swing.JFrame {
      */
     private String idPaciente;
     private String idExpediente;
+    private String pacienteActual;
     public Inicio() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_HORIZ);
@@ -165,6 +169,8 @@ public class Inicio extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         btnGuardarExamenFisico = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        lblPacienteActual = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jLabel45 = new javax.swing.JLabel();
         textDiagnostico = new javax.swing.JTextField();
@@ -215,7 +221,6 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        tabExpediente.setEnabled(false);
         tabExpediente.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
 
         tableBuscarPaciente.setModel(new javax.swing.table.DefaultTableModel(
@@ -848,7 +853,7 @@ public class Inicio extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(cbDetallesBoca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textOtrosDetallesBoca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(cbTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1081,12 +1086,18 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        jLabel13.setText("Atendiendo a:");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addGap(44, 44, 44)
+                .addComponent(lblPacienteActual, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnGuardarExamenFisico)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
@@ -1096,9 +1107,12 @@ public class Inicio extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(btnGuardarExamenFisico))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPacienteActual, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton2)
+                        .addComponent(btnGuardarExamenFisico)
+                        .addComponent(jLabel13)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -1712,14 +1726,21 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnConsultaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMedicaActionPerformed
        // Obtener el idPaciente de la fila seleccionada.
-        int filaSeleccionada = this.tableBuscarPaciente.getSelectedRow();
-        idPaciente = tableBuscarPaciente.getValueAt(filaSeleccionada, 0).toString();
-        if(filaSeleccionada == -1)
-            JOptionPane.showMessageDialog(rootPane, "Por favor seleccione un paciente.");
-        else{
-            this.idPaciente = tableBuscarPaciente.getValueAt(filaSeleccionada, 0).toString();
-            this.tabExpediente.setSelectedIndex(1);
-        }   
+        
+        try{
+            int filaSeleccionada = this.tableBuscarPaciente.getSelectedRow();
+            idPaciente = tableBuscarPaciente.getValueAt(filaSeleccionada, 0).toString();
+            if(filaSeleccionada == -1)
+                JOptionPane.showMessageDialog(rootPane, "Por favor seleccione un paciente.");
+            else{
+                this.idPaciente = tableBuscarPaciente.getValueAt(filaSeleccionada, 0).toString();
+                this.tabExpediente.setSelectedIndex(1);
+            }   
+        }
+        catch(ArrayIndexOutOfBoundsException ae){
+            JOptionPane.showMessageDialog(this, "Parece que no hay expedientes, cree uno nuevo para continuar.",null, JOptionPane.ERROR_MESSAGE);
+        }
+          
     }//GEN-LAST:event_btnConsultaMedicaActionPerformed
 
     private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
@@ -1736,12 +1757,8 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_textBuscarPacienteActionPerformed
 
     private void btnGuardarExamenFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarExamenFisicoActionPerformed
-        try {
-            insertarExamenFisico();
-            actualizarConsulta();
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        insertarExamenFisico();
+        actualizarConsulta();
         tabExpediente.setSelectedIndex(0);
     }//GEN-LAST:event_btnGuardarExamenFisicoActionPerformed
     private void actualizarConsulta(){
@@ -1753,242 +1770,157 @@ public class Inicio extends javax.swing.JFrame {
         actConsulta.actualizarConsultaMedica(this.idExpediente, consulta);
         
     }
-    private void insertarExamenFisico() throws SQLException {
-        // Accion del boton guardar examen fisico.
-        // DEPURAR CODIGO.
-        java.util.LinkedList <entidad.ExamenFisico> listaExamenFisico = new java.util.LinkedList<entidad.ExamenFisico>();
+    private void insertarExamenFisico(){
         negocio.NegocioExamenFisico consExamen = new negocio.NegocioExamenFisico();
-//        negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
         negocio.NegocioExamenExpediente exaExpe = new negocio.NegocioExamenExpediente();
-//        String idExp = consExp.obtenerIdExpedienteMedico(idPaciente);
-        java.sql.ResultSet idsExameFisicos = exaExpe.obtenerIdExamenesMedicos(idExpediente);
+        java.sql.ResultSet idsExameFisicos = exaExpe.obtenerIdExamenesMedicos(idExpediente); // Se obtienen los id de exames fisicos relacionados a los id de expediente
         java.sql.ResultSet rs = null;
-        if(!idsExameFisicos.wasNull()){
+        ArrayList<entidad.ExamenFisico> listaExamen = new ArrayList<>();
+        ArrayList<String> listaCategoria = new ArrayList<>();// Guarda las categorias anormales que el paciente tiene en la base de datos.
+        LinkedList<entidad.ExamenFisico> listaInsertar = new LinkedList<>();
+        listaExamen = obtenerDatosExamenFisico(listaExamen);
+        
+        try{
+            if(!idsExameFisicos.wasNull()){
             while(idsExameFisicos.next())
                 rs = consExamen.obtenerExamenFisico(idsExameFisicos.getString(1));
-        }       
-        if(rs != null){
-            try {
-            while(rs.next()){
-                if(!"Ojos".equalsIgnoreCase(rs.getString(1))){
-                    if(cbOjos.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                        entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                        nuevoExamen.setCategoria("Ojos");
-                        listaExamenFisico.add(nuevoExamen);
-                    }
-                }
-                if(!"Oidos".equalsIgnoreCase(rs.getString(1))){
-                    if(cbOidos.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                        entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                        nuevoExamen.setCategoria("Oidos");
-                        nuevoExamen.setSubCategoria(cbDetallesOidos.getSelectedItem().toString());
-                        if(textOtrosDetallesOidos.isEnabled())
-                            nuevoExamen.setDetalle(textOtrosDetallesOidos.getText());
-                        listaExamenFisico.add(nuevoExamen);
-                    }
-                }
-                if(!"Nariz".equals(rs.getString(1))){
-                    if(cbNariz.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                        entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                        nuevoExamen.setCategoria("Nariz");
-                        nuevoExamen.setSubCategoria(cbDetallesNariz.getSelectedItem().toString());
-                        if(textOtrosDetallesNariz.isEnabled())
-                            nuevoExamen.setDetalle(textOtrosDetallesNariz.getText());
-                        listaExamenFisico.add(nuevoExamen);
-                    }
-                }
             }
-            if(!"Boca".equals(rs.getString(1))){
-                if(cbBoca.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                    entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                    nuevoExamen.setCategoria("Boca");
-                    nuevoExamen.setSubCategoria(cbDetallesBoca.getSelectedItem().toString());
-                    if(textOtrosDetallesBoca.isEnabled())
-                        nuevoExamen.setDetalle(textOtrosDetallesBoca.getText());
-                    listaExamenFisico.add(nuevoExamen);
+            if(rs != null){
+                while(rs.next()){
+                    listaCategoria.add(rs.getString(1));
                 }
+                idsExameFisicos.close(); // liberar RS.
+                rs.close();
             }
-            if(!"Tiroides".equals(rs.getString(1))){
-                if(cbTiroides.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                    entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                    nuevoExamen.setCategoria("Tiroides");
-                    nuevoExamen.setSubCategoria("");
-                    listaExamenFisico.add(nuevoExamen);
+            // Eliminacion de anormalidades repetidas.
+            if(listaCategoria.size() > 0){  
+                ArrayList<entidad.ExamenFisico>eliminar = new ArrayList<>();
+                for(entidad.ExamenFisico examen:listaExamen){
+                    for(String categoria:listaCategoria){
+                        if(examen.getCategoria().equalsIgnoreCase(categoria)){
+                            eliminar.add(examen); // se llena con elementos a eliminar.
+                        }
+                    }    
                 }
+                listaExamen.removeAll(eliminar);
+                insertarAnormalidadesExFisico(listaExamen);
             }
-            if(!"Adenopatias".equals(rs.getString(1))){
-                if(cbAdenopatias.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                    entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                    nuevoExamen.setCategoria("Adenopatias");
-                    nuevoExamen.setSubCategoria("");
-                    listaExamenFisico.add(nuevoExamen);
-                }
-            }
-            if(!"Torax".equals(rs.getString(1))){
-                if(cbTorax.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                    entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                    nuevoExamen.setCategoria("Torax");
-                    nuevoExamen.setSubCategoria(cbDetallesTorax.getSelectedItem().toString());
-                    if(textOtrosDetallesTorax.isEnabled())
-                        nuevoExamen.setDetalle(textOtrosDetallesTorax.getText());
-                    listaExamenFisico.add(nuevoExamen);
-                }
-            }
-            if(!"Corazon".equals(rs.getString(1))){
-                if(cbCorazon.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                    entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                    nuevoExamen.setCategoria("Corazon");
-                    nuevoExamen.setSubCategoria(cbDetallesCorazon.getSelectedItem().toString());
-                    if(textOtrosDetallesCorazon.isEnabled())
-                        nuevoExamen.setDetalle(textOtrosDetallesCorazon.getText());
-                    listaExamenFisico.add(nuevoExamen);
-                }
-            }
-            if(!"Abdomen".equals(rs.getString(1))){
-                if(cbAbdomen.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                    entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                    nuevoExamen.setCategoria("Abdomen");
-                    nuevoExamen.setSubCategoria(cbDetallesAbdomen.getSelectedItem().toString());
-                    if(textOtrosDetallesAbdomen.isEnabled())
-                        nuevoExamen.setDetalle(textOtrosDetallesAbdomen.getText());
-                    listaExamenFisico.add(nuevoExamen);
-                }
-            }
-            if(!"Esqueletico".equals(rs.getString(1))){
-                if(cbEsqueletico.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                    entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                    nuevoExamen.setCategoria("Esqueletico");
-                    nuevoExamen.setSubCategoria(cbDetallesEsqueletico.getSelectedItem().toString());
-                    if(textOtrosDetallesEsqueletico.isEnabled())
-                        nuevoExamen.setDetalle(textOtrosDetallesEsqueletico.getText());
-                    listaExamenFisico.add(nuevoExamen);
-                }
-            }
-            if(!"Urinario".equals(rs.getString(1))){
-                if(cbUrinario.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                    entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                    nuevoExamen.setCategoria("Urinario");
-                    nuevoExamen.setSubCategoria(cbDetallesUrinario.getSelectedItem().toString());
-                    if(textOtrosDetallesUrinario.isEnabled())
-                        nuevoExamen.setDetalle(textOtrosDetallesUrinario.getSelectedText());
-                    listaExamenFisico.add(nuevoExamen);
-                }
-            }
-            if(!"Nervioso".equals(rs.getString(1))){
-                if(cbNervioso.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-                    entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-                    nuevoExamen.setCategoria("Nervioso");
-                    listaExamenFisico.add(nuevoExamen);
-                }
+            else{
+                insertarAnormalidadesExFisico(listaExamen);
             }
         }
         catch(SQLException e){
+            System.out.println(e.getErrorCode() + e.getMessage());
         }
+       
+    }
+
+    private void insertarAnormalidadesExFisico(ArrayList<ExamenFisico> listaExamen) {
+        negocio.NegocioExamenFisico nuevoExFisico = new negocio.NegocioExamenFisico();
+        negocio.NegocioObtenerUltimoId ultimoId = new negocio.NegocioObtenerUltimoId();
+        negocio.NegocioExpedienteMedico expediente = new negocio.NegocioExpedienteMedico();
+        java.util.LinkedList<String> listaIdExamenFisico = new java.util.LinkedList<String>();
+        for(entidad.ExamenFisico examen:listaExamen){
+            nuevoExFisico.insertarExamenFisico(examen);
+            listaIdExamenFisico.add(ultimoId.obtenerUltimoId("ExamenFisico"));
         }
-        else
-        {
-            if(cbOjos.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+        negocio.NegocioExamenExpediente exaExp = new negocio.NegocioExamenExpediente();
+        final String idExpedientePaciente = expediente.obtenerIdExpedienteMedico(idPaciente);
+        for(String ids:listaIdExamenFisico){
+            exaExp.insertarExamenExpediente(ids, idExpedientePaciente);
+        }
+    }
+
+    private ArrayList obtenerDatosExamenFisico(ArrayList<ExamenFisico> listaExamen) {
+        // Se llena la lista con los items seleccionados.
+        if(cbOjos.getSelectedIndex() == 1){
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
             nuevoExamen.setCategoria("Ojos");
-            listaExamenFisico.add(nuevoExamen);
+            listaExamen.add(nuevoExamen);
+                        
         }
-        if(cbOidos.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+        if(cbOidos.getSelectedIndex() == 1){
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
             nuevoExamen.setCategoria("Oidos");
             nuevoExamen.setSubCategoria(cbDetallesOidos.getSelectedItem().toString());
             if(textOtrosDetallesOidos.isEnabled())
                 nuevoExamen.setDetalle(textOtrosDetallesOidos.getText());
-            listaExamenFisico.add(nuevoExamen);
+            listaExamen.add(nuevoExamen);
         }
-        if(cbNariz.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+        if(cbNariz.getSelectedIndex() == 1){
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
             nuevoExamen.setCategoria("Nariz");
             nuevoExamen.setSubCategoria(cbDetallesNariz.getSelectedItem().toString());
             if(textOtrosDetallesNariz.isEnabled())
                 nuevoExamen.setDetalle(textOtrosDetallesNariz.getText());
-            listaExamenFisico.add(nuevoExamen);
+            listaExamen.add(nuevoExamen);
         }
-        if(cbBoca.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+        if(cbBoca.getSelectedIndex() == 1){
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
             nuevoExamen.setCategoria("Boca");
             nuevoExamen.setSubCategoria(cbDetallesBoca.getSelectedItem().toString());
             if(textOtrosDetallesBoca.isEnabled())
                 nuevoExamen.setDetalle(textOtrosDetallesBoca.getText());
-            listaExamenFisico.add(nuevoExamen);
+            listaExamen.add(nuevoExamen);
         }
-        if(cbTiroides.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-            entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-            nuevoExamen.setCategoria("Tiroides");
-            nuevoExamen.setSubCategoria("");
-            listaExamenFisico.add(nuevoExamen);
-        }
-        if(cbAdenopatias.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+        if(cbAdenopatias.getSelectedIndex() == 1){
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
             nuevoExamen.setCategoria("Adenopatias");
             nuevoExamen.setSubCategoria("");
-            listaExamenFisico.add(nuevoExamen);
+            listaExamen.add(nuevoExamen);
         }
-        if(cbTorax.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-            entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-            nuevoExamen.setCategoria("Torax");
-            nuevoExamen.setSubCategoria(cbDetallesTorax.getSelectedItem().toString());
-            if(textOtrosDetallesTorax.isEnabled())
-                nuevoExamen.setDetalle(textOtrosDetallesTorax.getText());
-            listaExamenFisico.add(nuevoExamen);
-        }
-        if(cbCorazon.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+        if(cbCorazon.getSelectedIndex() == 1){
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
             nuevoExamen.setCategoria("Corazon");
             nuevoExamen.setSubCategoria(cbDetallesCorazon.getSelectedItem().toString());
             if(textOtrosDetallesCorazon.isEnabled())
                 nuevoExamen.setDetalle(textOtrosDetallesCorazon.getText());
-            listaExamenFisico.add(nuevoExamen);
+            listaExamen.add(nuevoExamen);    
         }
-        if(cbAbdomen.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+        if(cbEsqueletico.getSelectedIndex() == 1){
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-            nuevoExamen.setCategoria("Abdomen");
-            nuevoExamen.setSubCategoria(cbDetallesAbdomen.getSelectedItem().toString());
-            if(textOtrosDetallesAbdomen.isEnabled())
-                nuevoExamen.setDetalle(textOtrosDetallesAbdomen.getText());
-            listaExamenFisico.add(nuevoExamen);
-        }
-        if(cbEsqueletico.getSelectedItem().toString().equalsIgnoreCase("anormal")){
-            entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-            nuevoExamen.setCategoria("Esquelitico");
+            nuevoExamen.setCategoria("Esqueletico");
             nuevoExamen.setSubCategoria(cbDetallesEsqueletico.getSelectedItem().toString());
             if(textOtrosDetallesEsqueletico.isEnabled())
                 nuevoExamen.setDetalle(textOtrosDetallesEsqueletico.getText());
-            listaExamenFisico.add(nuevoExamen);
+            listaExamen.add(nuevoExamen);
         }
-        if(cbUrinario.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+        if(cbNervioso.getSelectedIndex() == 1){
+            entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
+            nuevoExamen.setCategoria("Nervioso");
+            listaExamen.add(nuevoExamen);
+        }
+        if(cbUrinario.getSelectedIndex() == 1){
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
             nuevoExamen.setCategoria("Urinario");
             nuevoExamen.setSubCategoria(cbDetallesUrinario.getSelectedItem().toString());
             if(textOtrosDetallesUrinario.isEnabled())
                 nuevoExamen.setDetalle(textOtrosDetallesUrinario.getSelectedText());
-            listaExamenFisico.add(nuevoExamen);
+            listaExamen.add(nuevoExamen);    
         }
-        if(cbNervioso.getSelectedItem().toString().equalsIgnoreCase("anormal")){
+        if(cbAbdomen.getSelectedIndex() == 1){
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
-            nuevoExamen.setCategoria("Nervioso");
-            listaExamenFisico.add(nuevoExamen);
+            nuevoExamen.setCategoria("Abdomen");
+            nuevoExamen.setSubCategoria(cbDetallesAbdomen.getSelectedItem().toString());
+            if(textOtrosDetallesAbdomen.isEnabled())
+                nuevoExamen.setDetalle(textOtrosDetallesAbdomen.getText());
+            listaExamen.add(nuevoExamen);
         }
+        if(cbTorax.getSelectedIndex() == 1){
+            entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
+            nuevoExamen.setCategoria("Torax");
+            nuevoExamen.setSubCategoria(cbDetallesTorax.getSelectedItem().toString());
+            if(textOtrosDetallesTorax.isEnabled())
+                nuevoExamen.setDetalle(textOtrosDetallesTorax.getText());
+            listaExamen.add(nuevoExamen);
         }
-        negocio.NegocioExamenFisico nuevoExFisico = new negocio.NegocioExamenFisico();
-        negocio.NegocioObtenerUltimoId ultimoId = new negocio.NegocioObtenerUltimoId();
-        negocio.NegocioExpedienteMedico expediente = new negocio.NegocioExpedienteMedico();
-        java.util.LinkedList<String> listaIdExamenFisico = new java.util.LinkedList<String>();
-        int contador = listaExamenFisico.size();
-        for(int i = 0; i < contador; i++){
-            nuevoExFisico.insertarExamenFisico(listaExamenFisico.removeFirst());
-            listaIdExamenFisico.add(ultimoId.obtenerUltimoId("ExamenFisico"));
+        if(cbTiroides.getSelectedIndex() == 1){
+            entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
+            nuevoExamen.setCategoria("Tiroides");
+            nuevoExamen.setSubCategoria("");
+            listaExamen.add(nuevoExamen);
         }
-        
-        negocio.NegocioExamenExpediente exaExp = new negocio.NegocioExamenExpediente();
-        final String idExpedientePaciente = expediente.obtenerIdExpedienteMedico(idPaciente);
-        for(int j = 0; j < contador; j++){          
-            exaExp.insertarExamenExpediente(listaIdExamenFisico.removeFirst(), idExpedientePaciente);
-        }
+        return listaExamen;
     }
 
     private void panelConsultaMedicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelConsultaMedicaMouseClicked
@@ -1999,6 +1931,11 @@ public class Inicio extends javax.swing.JFrame {
         PacientesConsulta pacientesConsulta = new PacientesConsulta(this, true);
         pacientesConsulta.setVisible(true);
         idExpediente = pacientesConsulta.getIdExpedienteMedico();
+        cargarExamenFisico();
+        pacienteActual = pacientesConsulta.getPacienteActual();
+        this.lblPacienteActual.setText(pacienteActual);
+        
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnLabGabineteAdjuntarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLabGabineteAdjuntarExamenActionPerformed
@@ -2243,6 +2180,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -2311,6 +2249,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel jlOidos;
     private javax.swing.JLabel jlOjos;
+    private javax.swing.JLabel lblPacienteActual;
     private javax.swing.JPanel panelBtnBuscarPaciente;
     private javax.swing.JTabbedPane panelConsultaMedica;
     private javax.swing.JTabbedPane panelPrincipal;
