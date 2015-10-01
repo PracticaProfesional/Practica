@@ -4,21 +4,16 @@ package negocio;
 
 import entidad.ExamenFisico;
 import datos.OperacionesExamenFisico;
-import java.sql.SQLException;
 import java.sql.ResultSet;
 
 public class NegocioExamenFisico 
 {
     public void insertarExamenFisico(ExamenFisico nuevoExamenFisico)
     {
-        try
-        {
-            OperacionesExamenFisico operacionesExamenFisico = new OperacionesExamenFisico();
-            operacionesExamenFisico.insertarExamenFisico(nuevoExamenFisico);
-        }// fin de try
-        catch(SQLException e)
-        {
-        }// fin de catch
+        // fin de catch
+        
+        OperacionesExamenFisico operacionesExamenFisico = new OperacionesExamenFisico();
+        operacionesExamenFisico.insertarExamenFisico(nuevoExamenFisico);
         
     }// fin del metodo insertarExamenFisico
     public ResultSet obtenerExamenFisico(String id){
