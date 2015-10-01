@@ -1789,7 +1789,9 @@ public class Inicio extends javax.swing.JFrame {
                     System.out.println("imprime");
                 }
             }
-                
+                if(rs != null)
+                    rs.close();
+                idsExameFisicos.close();
             }
             // Eliminacion de anormalidades repetidas.
             if(listaCategoria.size() > 0){
@@ -1804,9 +1806,9 @@ public class Inicio extends javax.swing.JFrame {
                     }    
                 }
                 listaExamen.removeAll(eliminar);
-//                insertarAnormalidadesExFisico(listaExamen);
-                for(entidad.ExamenFisico examen:listaExamen)
-                    System.out.println(examen.getCategoria());
+                insertarAnormalidadesExFisico(listaExamen);
+//                for(entidad.ExamenFisico examen:listaExamen)
+//                    System.out.println(examen.getCategoria());
             }
             else{
                 insertarAnormalidadesExFisico(listaExamen);
