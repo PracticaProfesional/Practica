@@ -24,7 +24,7 @@ public class OperacionesExamenExpediente {
             estado.executeQuery("call InsertarExFisicoExpediente("+datos+")");
         }
         catch(java.sql.SQLException e){
-            e.printStackTrace();
+            System.out.print(e.getErrorCode() + e.getMessage());
 
         }
         
