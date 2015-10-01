@@ -1776,34 +1776,37 @@ public class Inicio extends javax.swing.JFrame {
         java.sql.ResultSet idsExameFisicos = exaExpe.obtenerIdExamenesMedicos(idExpediente); // Se obtienen los id de exames fisicos relacionados a los id de expediente
         java.sql.ResultSet rs = null;
         ArrayList<entidad.ExamenFisico> listaExamen = new ArrayList<>();
-        ArrayList<String> listaCategoria = new ArrayList<>();// Guarda las categorias anormales que el paciente tiene en la base de datos.
+        LinkedList<String> listaCategoria = new LinkedList<>();// Guarda las categorias anormales que el paciente tiene en la base de datos.
         LinkedList<entidad.ExamenFisico> listaInsertar = new LinkedList<>();
         listaExamen = obtenerDatosExamenFisico(listaExamen);
         
         try{
             if(!idsExameFisicos.wasNull()){
-            while(idsExameFisicos.next())
+            while(idsExameFisicos.next()){
                 rs = consExamen.obtenerExamenFisico(idsExameFisicos.getString(1));
-            }
-            if(rs != null){
                 while(rs.next()){
                     listaCategoria.add(rs.getString(1));
+                    System.out.println("imprime");
                 }
-                idsExameFisicos.close(); // liberar RS.
-                rs.close();
+            }
+                
             }
             // Eliminacion de anormalidades repetidas.
-            if(listaCategoria.size() > 0){  
+            if(listaCategoria.size() > 0){
+                System.out.println(listaCategoria.size());
                 ArrayList<entidad.ExamenFisico>eliminar = new ArrayList<>();
                 for(entidad.ExamenFisico examen:listaExamen){
                     for(String categoria:listaCategoria){
                         if(examen.getCategoria().equalsIgnoreCase(categoria)){
+                            System.out.println(examen.getCategoria()+"-"+categoria);
                             eliminar.add(examen); // se llena con elementos a eliminar.
                         }
                     }    
                 }
                 listaExamen.removeAll(eliminar);
-                insertarAnormalidadesExFisico(listaExamen);
+//                insertarAnormalidadesExFisico(listaExamen);
+                for(entidad.ExamenFisico examen:listaExamen)
+                    System.out.println(examen.getCategoria());
             }
             else{
                 insertarAnormalidadesExFisico(listaExamen);
