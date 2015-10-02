@@ -9,7 +9,7 @@ BEGIN
 END
 
 -- INNER JOIN CON DATOS DE PERSONAS EN CONSULTA MEDICA
-SELECT idExpedienteMedico,idPaciente, nombrePaciente,apellido1Paciente, apellido2Paciente,signosVitales from ExpedienteMedico join ConsultaMedica
+SELECT ConsultaMedica.id,idExpedienteMedico,idPaciente, nombrePaciente,apellido1Paciente, apellido2Paciente,signosVitales from ExpedienteMedico join ConsultaMedica
 on ExpedienteMedico.id = ConsultaMedica.idExpedienteMedico
 join Paciente on ExpedienteMedico.id = Paciente.id
 Where ConsultaMedica.fecha = '2015-08-22';
