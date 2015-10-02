@@ -18,7 +18,8 @@ public class OperacionesExamenFisico
        
         String datosExamenFisico = "'" + objetoExamenFisico.getCategoria() + "'" + "," + 
                                   "'" + objetoExamenFisico.getSubCategoria() + "'" + "," + 
-                                  "'" + objetoExamenFisico.getDetalle() + "'";
+                                  "'" + objetoExamenFisico.getDetalle() + "'"+","+
+                                  "'"+objetoExamenFisico.getConsultaMedica()+"'";
        try{
            estado = objetoDeConexion.conectar().createStatement();
            estado.executeQuery("Call InsertarExamenFisico("+datosExamenFisico+")");
