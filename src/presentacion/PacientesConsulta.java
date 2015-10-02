@@ -20,9 +20,10 @@ public class PacientesConsulta extends javax.swing.JDialog {
      */
     private String idExpedienteMedico;
     private String pacienteActual;
-    private final int ID_EXPEDIENTE = 0;
-    private final int ID_PACIENTE = 1;
-    private final int ID_SIGNOS_VITALES = 5;
+    private final int ID_CONSULTA = 0;
+    private final int ID_EXPEDIENTE = 1;
+    private final int ID_PACIENTE = 2;
+    private final int ID_SIGNOS_VITALES = 6;
 
     public String getPacienteActual() {
         return pacienteActual;
@@ -187,27 +188,29 @@ public class PacientesConsulta extends javax.swing.JDialog {
             
     }//GEN-LAST:event_btnPacientesConsultaAceptarActionPerformed
     private void cargarTablaPacientesConsulta(){
-        String [] nombreColumnas = {"IdExpediente", "IdPaciente", "Nombre", "P.Apellido", "S.Apellido", "IdSignosVitales"};
+        String [] nombreColumnas = {"IdConsultaMedica","IdExpediente", "IdPaciente", "Nombre", "P.Apellido", "S.Apellido", "IdSignosVitales"};
         DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
         tablaPacientesConsulta.setModel(nuevoModeloTabla);
         String fecha = obtenerFechaActual();
         
 //        for(String nombre:nombreColumnas)
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 7; i++)
             nuevoModeloTabla.addColumn(nombreColumnas[i]);
         negocio.NegocioPaciente obtenerPacientesConsulta = new negocio.NegocioPaciente();
         try{
             java.sql.ResultSet rs = obtenerPacientesConsulta.obtenerPacientesConsulta(fecha);
             while(rs.next()){
-                Object [] fila = new Object[6];
-                for(int i = 0; i < 6; i++)
+                Object [] fila = new Object[7];
+                for(int i = 0; i < 7; i++)
                     fila[i] =rs.getObject(i+1);
                 nuevoModeloTabla.addRow(fila);
             }
+            rs.close();
         }
         catch(java.sql.SQLException e){
             
         }
+        esconderColumnas(ID_CONSULTA);
         esconderColumnas(ID_EXPEDIENTE);
         esconderColumnas(ID_PACIENTE);
         esconderColumnas(ID_SIGNOS_VITALES);
