@@ -33,6 +33,7 @@ public class Inicio extends javax.swing.JFrame {
     private String idPaciente;
     private String idExpediente;
     private String pacienteActual;
+    private String idConsultaMedica;
     public Inicio() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_HORIZ);
@@ -1668,7 +1669,6 @@ public class Inicio extends javax.swing.JFrame {
             insertarCita.insertarCita(nuevaCita);
         }
         catch(NullPointerException e){
-        
         }   
     }//GEN-LAST:event_agendaTablaMouseClicked
 
@@ -1770,70 +1770,28 @@ public class Inicio extends javax.swing.JFrame {
         actConsulta.actualizarConsultaMedica(this.idExpediente, consulta);
         
     }
-    private void insertarExamenFisico(){
-        negocio.NegocioExamenFisico consExamen = new negocio.NegocioExamenFisico();
-        negocio.NegocioExamenExpediente exaExpe = new negocio.NegocioExamenExpediente();
-        java.sql.ResultSet idsExameFisicos = exaExpe.obtenerIdExamenesMedicos(idExpediente); // Se obtienen los id de exames fisicos relacionados a los id de expediente
-        java.sql.ResultSet rs = null;
+    private void insertarExamenFisico(){    
         ArrayList<entidad.ExamenFisico> listaExamen = new ArrayList<>();
-        LinkedList<String> listaCategoria = new LinkedList<>();// Guarda las categorias anormales que el paciente tiene en la base de datos.
-        LinkedList<entidad.ExamenFisico> listaInsertar = new LinkedList<>();
         listaExamen = obtenerDatosExamenFisico(listaExamen);
-        
-        try{
-            if(!idsExameFisicos.wasNull()){
-            while(idsExameFisicos.next()){
-                rs = consExamen.obtenerExamenFisico(idsExameFisicos.getString(1));
-                while(rs.next()){
-                    listaCategoria.add(rs.getString(1));
-                    System.out.println("imprime");
-                }
-            }
-                if(rs != null)
-                    rs.close();
-                idsExameFisicos.close();
-            }
-            // Eliminacion de anormalidades repetidas.
-            if(listaCategoria.size() > 0){
-                System.out.println(listaCategoria.size());
-                ArrayList<entidad.ExamenFisico>eliminar = new ArrayList<>();
-                for(entidad.ExamenFisico examen:listaExamen){
-                    for(String categoria:listaCategoria){
-                        if(examen.getCategoria().equalsIgnoreCase(categoria)){
-                            System.out.println(examen.getCategoria()+"-"+categoria);
-                            eliminar.add(examen); // se llena con elementos a eliminar.
-                        }
-                    }    
-                }
-                listaExamen.removeAll(eliminar);
-                insertarAnormalidadesExFisico(listaExamen);
-//                for(entidad.ExamenFisico examen:listaExamen)
-//                    System.out.println(examen.getCategoria());
-            }
-            else{
-                insertarAnormalidadesExFisico(listaExamen);
-            }
-        }
-        catch(SQLException e){
-            System.out.println(e.getErrorCode() + e.getMessage());
-        }
-       
+        insertarAnormalidadesExFisico(listaExamen);    
     }
 
     private void insertarAnormalidadesExFisico(ArrayList<ExamenFisico> listaExamen) {
         negocio.NegocioExamenFisico nuevoExFisico = new negocio.NegocioExamenFisico();
-        negocio.NegocioObtenerUltimoId ultimoId = new negocio.NegocioObtenerUltimoId();
-        negocio.NegocioExpedienteMedico expediente = new negocio.NegocioExpedienteMedico();
-        java.util.LinkedList<String> listaIdExamenFisico = new java.util.LinkedList<String>();
+//        negocio.NegocioObtenerUltimoId ultimoId = new negocio.NegocioObtenerUltimoId();
+//        negocio.NegocioExpedienteMedico expediente = new negocio.NegocioExpedienteMedico();
+//        java.util.LinkedList<String> listaIdExamenFisico = new java.util.LinkedList<String>();
         for(entidad.ExamenFisico examen:listaExamen){
+            examen.setConsultaMedica(Integer.parseInt(idConsultaMedica));
             nuevoExFisico.insertarExamenFisico(examen);
-            listaIdExamenFisico.add(ultimoId.obtenerUltimoId("ExamenFisico"));
+//            listaIdExamenFisico.add(ultimoId.obtenerUltimoId("ExamenFisico"));
         }
-        negocio.NegocioExamenExpediente exaExp = new negocio.NegocioExamenExpediente();
-        final String idExpedientePaciente = expediente.obtenerIdExpedienteMedico(idPaciente);
-        for(String ids:listaIdExamenFisico){
-            exaExp.insertarExamenExpediente(ids, idExpedientePaciente);
-        }
+//        negocio.NegocioExamenExpediente exaExp = new negocio.NegocioExamenExpediente();
+//        final String idExpedientePaciente = expediente.obtenerIdExpedienteMedico(idPaciente);
+//        for(String ids:listaIdExamenFisico){
+//            exaExp.insertarExamenExpediente(ids, idExpedientePaciente);
+//        }
+        
     }
 
     private ArrayList obtenerDatosExamenFisico(ArrayList<ExamenFisico> listaExamen) {
@@ -1929,18 +1887,16 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     private void panelConsultaMedicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelConsultaMedicaMouseClicked
-        cargarExamenFisico();
+            // evento del panel de consulta medica
     }//GEN-LAST:event_panelConsultaMedicaMouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         PacientesConsulta pacientesConsulta = new PacientesConsulta(this, true);
         pacientesConsulta.setVisible(true);
         idExpediente = pacientesConsulta.getIdExpedienteMedico();
-        cargarExamenFisico();
         pacienteActual = pacientesConsulta.getPacienteActual();
-        this.lblPacienteActual.setText(pacienteActual);
-        
-        
+        idConsultaMedica = pacientesConsulta.getIdConsultaMedica();
+        this.lblPacienteActual.setText(pacienteActual);  
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnLabGabineteAdjuntarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLabGabineteAdjuntarExamenActionPerformed
@@ -1952,96 +1908,6 @@ public class Inicio extends javax.swing.JFrame {
         String idExp = consExp.obtenerIdExpedienteMedico(idPaciente);
         return idExp;
     }
-    private void cargarExamenFisico() {
-        negocio.NegocioExamenFisico nuevoExamen = new negocio.NegocioExamenFisico();
-//        String idExp = obtenerIdExpedienteMedico();
-        negocio.NegocioExamenExpediente exaExpe = new negocio.NegocioExamenExpediente();
-        
-        // obtiene todos los id de examen fisico que correspondan al idExp.
-        java.sql.ResultSet idsExamenesEx = exaExpe.obtenerIdExamenesMedicos(idExpediente);
-        java.sql.ResultSet examenFisico = null;
-        // Colecciones para almacenar datos obtenidos mediante consultas SQL.
-        java.util.LinkedList<String>strIdsExEp = new java.util.LinkedList<String>();
-        java.util.LinkedList<String>categExFi = new java.util.LinkedList<String>();
-        java.util.LinkedList<String>subCategExFi = new java.util.LinkedList<String>();
-        java.util.LinkedList<String>detalleExFi = new java.util.LinkedList<String>();
-        if(idsExamenesEx !=  null){
-            try{
-                while(idsExamenesEx.next()){
-                    strIdsExEp.add(idsExamenesEx.getString(1));
-                }
-                // Se obtienen los nombres de los rubros de examen fisico.
-                for(String elemento:strIdsExEp){
-                    examenFisico = nuevoExamen.obtenerExamenFisico(elemento);
-                    while(examenFisico.next()){
-                        categExFi.add(examenFisico.getString(1));
-                        subCategExFi.add(examenFisico.getString(2));
-                        detalleExFi.add(examenFisico.getString(3));
-                    }
-                        
-                }
-                // Desplegar y distribuir en los componentes la informacion obtenida.
-                for(String elemento:categExFi){
-                    if(elemento.equals("Ojos")){
-                        cbOjos.setSelectedIndex(1);
-                    }
-                    if(elemento.equals("Oidos")){
-                        cbOidos.setSelectedIndex(1);
-                        cbDetallesOidos.setSelectedItem(subCategExFi.removeFirst());
-                        textOtrosDetallesOidos.setText(detalleExFi.removeFirst());
-                    }
-                    if(elemento.equals("Nariz")){
-                        cbNariz.setSelectedIndex(1);
-                        cbDetallesNariz.setSelectedItem(subCategExFi.removeFirst());
-                        textOtrosDetallesNariz.setText(detalleExFi.removeFirst());
-                    }
-                    if(elemento.equals("Boca")){
-                        cbBoca.setSelectedIndex(1);
-                        cbDetallesBoca.setSelectedItem(subCategExFi.removeFirst());
-                        textOtrosDetallesBoca.setText(detalleExFi.removeFirst());
-                    }
-                    if(elemento.equals("Tiroides")){
-                        cbTiroides.setSelectedIndex(1);                       
-                    }
-                    if(elemento.equals("Adenopatias")){
-                        cbAdenopatias.setSelectedIndex(1);
-                    }
-                    if(elemento.equals("Torax")){
-                        cbTorax.setSelectedIndex(1);
-                        cbDetallesTorax.setSelectedItem(subCategExFi.removeFirst());
-                        textOtrosDetallesTorax.setText(detalleExFi.removeFirst());
-                    }
-                    if(elemento.equals("Corazon")){
-                        cbCorazon.setSelectedIndex(1);
-                        cbDetallesTorax.setSelectedItem(subCategExFi.removeFirst());
-                        textOtrosDetallesCorazon.setText(detalleExFi.removeFirst());
-                    }
-                    if(elemento.equals("Abdomen")){
-                        cbAbdomen.setSelectedIndex(1);
-                        cbDetallesAbdomen.setSelectedItem(subCategExFi.removeFirst());
-                        textOtrosDetallesAbdomen.setText(detalleExFi.removeFirst());
-                    }
-                    if(elemento.equals("Esqueletico")){
-                        cbEsqueletico.setSelectedIndex(1);
-                        cbDetallesEsqueletico.setSelectedItem(subCategExFi.removeFirst());
-                        textOtrosDetallesEsqueletico.setText(detalleExFi.removeFirst());
-                    }
-                    if(elemento.equals("Urinario")){
-                        cbUrinario.setSelectedIndex(1);
-                        cbDetallesUrinario.setSelectedItem(subCategExFi.removeFirst());
-                        textOtrosDetallesUrinario.setText(detalleExFi.removeFirst());
-                    }
-                    if(elemento.equals("Nervioso")){
-                        cbNervioso.setSelectedIndex(1);
-                    }
-                }
-            }
-            catch(java.sql.SQLException e){
-                System.out.println(e.getErrorCode());
-            }
-        }
-    }
-
     private void cargarActividadesAgenda() throws SQLException{
         // DEPURAR CODIGO.
         String fechaSeleccionada;
