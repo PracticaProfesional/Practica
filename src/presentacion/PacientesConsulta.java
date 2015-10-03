@@ -136,7 +136,7 @@ public class PacientesConsulta extends javax.swing.JDialog {
 
         jScrollPane2.setViewportView(jPanel1);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/cooper15/NetBeansProjects/SIGOS/Practica/img/running.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/icons/running.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
