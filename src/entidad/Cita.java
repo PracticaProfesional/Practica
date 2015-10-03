@@ -4,7 +4,8 @@ package entidad;
  *
  * @author cooper15
  */
-public class Cita {
+public class Cita 
+{
     //private int detalle;
     private EstadoCitaEnum estado;
     private String fechaCreacion;
