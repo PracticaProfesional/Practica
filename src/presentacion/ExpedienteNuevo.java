@@ -40,6 +40,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(parent);
+        this.btnExpedienteNuevoGuardar.setEnabled(false);
     }
 
     /**
@@ -55,7 +56,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         panelBtnExpedienteNUevo = new javax.swing.JPanel();
         btnExpedienteNuevoGuardar = new javax.swing.JButton();
         btnExpedienteNuevoCancelar = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        btnSiguiente = new javax.swing.JButton();
+        tabExpedienteNuevo = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -142,12 +144,21 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             }
         });
 
+        btnSiguiente.setText("Siguiente >");
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBtnExpedienteNUevoLayout = new javax.swing.GroupLayout(panelBtnExpedienteNUevo);
         panelBtnExpedienteNUevo.setLayout(panelBtnExpedienteNUevoLayout);
         panelBtnExpedienteNUevoLayout.setHorizontalGroup(
             panelBtnExpedienteNUevoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBtnExpedienteNUevoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExpedienteNuevoGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExpedienteNuevoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,7 +170,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelBtnExpedienteNUevoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExpedienteNuevoGuardar)
-                    .addComponent(btnExpedienteNuevoCancelar))
+                    .addComponent(btnExpedienteNuevoCancelar)
+                    .addComponent(btnSiguiente))
                 .addGap(24, 24, 24))
         );
 
@@ -403,7 +415,7 @@ jPanel4Layout.setHorizontalGroup(
             .addGap(36, 36, 36))
     );
 
-    jTabbedPane1.addTab("Datos Personales", jPanel4);
+    tabExpedienteNuevo.addTab("Datos Personales", jPanel4);
 
     jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Padecimientos"));
 
@@ -552,7 +564,7 @@ jPanel4Layout.setHorizontalGroup(
             .addContainerGap(50, Short.MAX_VALUE))
     );
 
-    jTabbedPane1.addTab("Antecedentes Personales", jPanel5);
+    tabExpedienteNuevo.addTab("Antecedentes Personales", jPanel5);
 
     jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Padecimientos"));
 
@@ -621,7 +633,7 @@ jPanel4Layout.setHorizontalGroup(
             .addContainerGap(196, Short.MAX_VALUE))
     );
 
-    jTabbedPane1.addTab("Antecedentes Familiares", jPanel1);
+    tabExpedienteNuevo.addTab("Antecedentes Familiares", jPanel1);
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -630,7 +642,7 @@ jPanel4Layout.setHorizontalGroup(
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jTabbedPane1)
+                .addComponent(tabExpedienteNuevo)
                 .addComponent(panelBtnExpedienteNUevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGap(15, 15, 15))
     );
@@ -638,7 +650,7 @@ jPanel4Layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabExpedienteNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
             .addComponent(panelBtnExpedienteNUevo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(23, 23, 23))
@@ -710,6 +722,18 @@ jPanel4Layout.setHorizontalGroup(
         }// fin del for
         
     }//GEN-LAST:event_btnAgregarPadecimientoFamActionPerformed
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+        if(tabExpedienteNuevo.getSelectedIndex() == 0)
+            if(validaciones())
+                tabExpedienteNuevo.setSelectedIndex(1);
+//        if(tabExpedienteNuevo.getSelectedIndex() == 1)
+//            if(validaciones())
+//                tabExpedienteNuevo.setSelectedIndex(2);
+//        if(tabExpedienteNuevo.getSelectedIndex() == 2)
+//            if(validaciones()){
+//            }  
+    }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void crearExpedienteMedico() {
         negocio.NegocioExpedienteMedico insertarExpediente = new negocio.NegocioExpedienteMedico();
@@ -1020,6 +1044,7 @@ jPanel4Layout.setHorizontalGroup(
     private javax.swing.JButton btnAgregarPadecimientoPer;
     private javax.swing.JButton btnExpedienteNuevoCancelar;
     private javax.swing.JButton btnExpedienteNuevoGuardar;
+    private javax.swing.JButton btnSiguiente;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1052,8 +1077,8 @@ jPanel4Layout.setHorizontalGroup(
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panelBtnExpedienteNUevo;
+    private javax.swing.JTabbedPane tabExpedienteNuevo;
     private javax.swing.JTextField textAlergiaDescrip;
     private javax.swing.JTextField textAlergiaNombre;
     private javax.swing.JTextField textAntFamDescrip;
