@@ -18,12 +18,17 @@ public class PacientesConsulta extends javax.swing.JDialog {
     /**
      * Creates new form PacientesConsulta
      */
+    private String idConsultaMedica;
     private String idExpedienteMedico;
     private String pacienteActual;
     private final int ID_CONSULTA = 0;
     private final int ID_EXPEDIENTE = 1;
     private final int ID_PACIENTE = 2;
     private final int ID_SIGNOS_VITALES = 6;
+
+    public String getIdConsultaMedica() {
+        return idConsultaMedica;
+    }
 
     public String getPacienteActual() {
         return pacienteActual;
