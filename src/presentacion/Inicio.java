@@ -55,6 +55,7 @@ public class Inicio extends javax.swing.JFrame {
         textBuscarPaciente = new javax.swing.JTextField();
         btnBuscarPaciente = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
         panelBtnBuscarPaciente = new javax.swing.JPanel();
         btnConsultaMedica = new javax.swing.JButton();
         btnCrearExpediente = new javax.swing.JButton();
@@ -249,6 +250,8 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/magnifyingglass.png"))); // NOI18N
 
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/icons/magnifyingglass.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -260,7 +263,9 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel3)
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel30)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
                 .addComponent(textBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,7 +281,8 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(textBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarPaciente)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel30))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2057,6 +2063,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
