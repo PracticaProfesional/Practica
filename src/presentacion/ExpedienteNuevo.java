@@ -653,26 +653,30 @@ jPanel4Layout.setHorizontalGroup(
 
     private void btnExpedienteNuevoGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpedienteNuevoGuardarActionPerformed
         // Primero que nada se deben validar los datos ingresados.
-        entidad.Paciente nuevoPaciente = new entidad.Paciente();
-        entidad.Vacuna nuevaVacuna = new entidad.Vacuna();
-        entidad.Alergia nuevaAlergia = new entidad.Alergia();
-        entidad.Padecimiento nuevoPadecimiento = new entidad.Padecimiento();
-        entidad.Telefono nuevoTelefono = new entidad.Telefono();
-        
-        insertarTelefono(nuevoTelefono);   
-        datos.ObtenerUltimoId ultimoId = new datos.ObtenerUltimoId(); // Cambia el obtener id a la capa de datos.
-   
-        // Llamada a funcion para realizar los procedimientos de insercion de paciente.
-        insertarPaciente(nuevoPaciente, ultimoId);   
-        //insertarPadecimiento(nuevoPadecimiento);     
-        insertarAlergia(nuevaAlergia);
-        insertarVacuna(nuevaVacuna);
-        insertarAntecedentesPersonal(ultimoId);
-        insertarAntecedentesPersonalesPadecimientos(ultimoId);
-        insertarAntecedenteFamiliar();
-        insertarAntecedenteFamiliaresPAdecimientos(ultimoId);
-        crearExpedienteMedico();
-        this.dispose();
+//        entidad.Paciente nuevoPaciente = new entidad.Paciente();
+//        entidad.Vacuna nuevaVacuna = new entidad.Vacuna();
+//        entidad.Alergia nuevaAlergia = new entidad.Alergia();
+//        entidad.Padecimiento nuevoPadecimiento = new entidad.Padecimiento();
+//        entidad.Telefono nuevoTelefono = new entidad.Telefono();
+//        
+//        insertarTelefono(nuevoTelefono);   
+//        datos.ObtenerUltimoId ultimoId = new datos.ObtenerUltimoId(); // Cambia el obtener id a la capa de datos.
+//   
+//        // Llamada a funcion para realizar los procedimientos de insercion de paciente.
+//        insertarPaciente(nuevoPaciente, ultimoId);   
+//        //insertarPadecimiento(nuevoPadecimiento);     
+//        insertarAlergia(nuevaAlergia);
+//        insertarVacuna(nuevaVacuna);
+//        insertarAntecedentesPersonal(ultimoId);
+//        insertarAntecedentesPersonalesPadecimientos(ultimoId);
+//        insertarAntecedenteFamiliar();
+//        insertarAntecedenteFamiliaresPAdecimientos(ultimoId);
+//        crearExpedienteMedico();
+//        this.dispose();
+        if(validaciones())
+            JOptionPane.showMessageDialog(this, "Validaciones OK");
+        else
+            JOptionPane.showMessageDialog(this, "Validaciones wrong");
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
 
     private void btnAgregarPadecimientoPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoPerActionPerformed
@@ -943,20 +947,24 @@ jPanel4Layout.setHorizontalGroup(
                                  + "*(\\.[A-Za-z]{2,})$";
                  String regTelefono = ".*[1-9].*";
                  String regCedula = ".*[1-9].*";
-                 if(!regExValidation(regEmail) 
-                         || !regExValidation(regTelefono) 
-                         || !regExValidation(regCedula))
-                    return true;
+                 if (!regExValidation(regEmail, textEmail) 
+                         || !regExValidation(regTelefono, textTelefono) 
+                         || !regExValidation(regCedula, textIdentificacion))
+                     return validado;
+                 else{
+                     validado = true;
+                     return validado;
+                 }
             }
       
       return validado;
     }
 
-    private boolean regExValidation(String validador) {
+    private boolean regExValidation(String validador, JTextField campo) {
         java.util.regex.Pattern patronComparar;
         java.util.regex.Matcher comparador;
         patronComparar = java.util.regex.Pattern.compile(validador);
-        comparador = patronComparar.matcher(textEmail.getText());
+        comparador = patronComparar.matcher(campo.getText());
         return comparador.matches();  
     }
     
