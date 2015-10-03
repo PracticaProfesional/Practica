@@ -954,34 +954,52 @@ jPanel4Layout.setHorizontalGroup(
         return fechaVacuna;
     }
     private boolean validaciones(){
-      boolean validado = false;
-        JTextField [] camposTexto = {textNombre, textApellido1, textApellido2, 
-                                    textIdentificacion, textEmail,textTelefono, 
-                                    textNacionalidad};
+        switch(tabExpedienteNuevo.getSelectedIndex()){
+            case 0:
+                return validaDatosPersonales();
+            case 1:
+                return validaAntecedentesPersonales();
+            case 2:
+                return validaAntecedentesFamiliares();
+        }
+      return false;
+    }
+
+    private boolean validaDatosPersonales() {
+        boolean validado = false;
+        JTextField [] camposTexto = {textNombre, textApellido1, textApellido2,
+            textIdentificacion, textEmail,textTelefono,
+            textNacionalidad};
         for(JTextField campo:camposTexto)
-            if(campo.getText().equals("") 
-                    || textDireccionFamiliar.getText().equals("") 
+            if(campo.getText().equals("")
+                    || textDireccionFamiliar.getText().equals("")
                     || textDireccionLectiva.getText().equals("") 
                     || textSexo.getSelectedItem().toString().equals("Seleccione"))
                 return false;
             else{
                 // no estan vacios los campos, procede a validar email y telefono.
-                 String regEmail = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)"
-                                 + "*(\\.[A-Za-z]{2,})$";
-                 String regTelefono = ".*[1-9].*";
-                 String regCedula = ".*[1-9].*";
-                 if (!regExValidation(regEmail, textEmail) 
-                         || !regExValidation(regTelefono, textTelefono) 
-                         || !regExValidation(regCedula, textIdentificacion))
-                     return validado;
-                 else{
-                     validado = true;
-                     return validado;
-                 }
+                String regEmail = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)"
+                        + "*(\\.[A-Za-z]{2,})$";
+                String regTelefono = ".*[1-9].*";
+                String regCedula = ".*[1-9].*";
+                if (!regExValidation(regEmail, textEmail)
+                        || !regExValidation(regTelefono, textTelefono)
+                        || !regExValidation(regCedula, textIdentificacion))
+                    return validado;
+                else{
+                    validado = true;
+                    return validado;
+                }
             }
-      
-      return validado;
+        
+        return validado;
+    }
+    private boolean validaAntecedentesPersonales(){
+        return false;
+    }
+    private boolean validaAntecedentesFamiliares(){
+        return false;
     }
 
     private boolean regExValidation(String validador, JTextField campo) {
