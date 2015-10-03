@@ -245,32 +245,28 @@
                               <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="textApellido1" max="32767" attributes="0"/>
+                              <Component id="textEmail" pref="170" max="32767" attributes="0"/>
+                              <Component id="textSexo" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="textApellido1" max="32767" attributes="0"/>
-                                      <Component id="textEmail" min="-2" pref="170" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="textApellido2" min="-2" pref="170" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="textTelefono" max="32767" attributes="0"/>
-                                              <Component id="textFechaNac" min="-2" pref="170" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                  <Component id="textApellido2" min="-2" pref="170" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="textTelefono" max="32767" attributes="0"/>
+                                      <Component id="textFechaNac" min="-2" pref="170" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="textSexo" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
                                   <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -306,7 +302,6 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="textSexo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="textTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -315,6 +310,7 @@
                                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="textSexo" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -346,8 +342,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Sexo"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="textSexo">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
@@ -393,6 +387,17 @@
                 <Component class="javax.swing.JTextField" name="textTelefono">
                 </Component>
                 <Component class="javax.swing.JTextField" name="textNombre">
+                </Component>
+                <Component class="javax.swing.JComboBox" name="textSexo">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="Seleccione"/>
+                        <StringItem index="1" value="Masculino"/>
+                        <StringItem index="2" value="Femenino"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

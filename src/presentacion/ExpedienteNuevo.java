@@ -23,6 +23,7 @@ import negocio.NegocioAntecedenteFamiliar;
 import negocio.NegocioAntecedentesFamPad;
 import entidad.AntecedentesFamPad;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -68,7 +69,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        textSexo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         textEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -81,6 +81,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         textTelefono = new javax.swing.JTextField();
         textNombre = new javax.swing.JTextField();
+        textSexo = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
         textTelefono1 = new javax.swing.JTextField();
         textFechaNac1 = new datechooser.beans.DateChooserCombo();
@@ -236,6 +237,8 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     jLabel7.setText("Nacionalidad");
 
+    textSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Masculino", "Femenino" }));
+
     javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
     jPanel8.setLayout(jPanel8Layout);
     jPanel8Layout.setHorizontalGroup(
@@ -261,26 +264,24 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
                 .addComponent(jLabel5)
                 .addComponent(jLabel8))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(textApellido1)
+                .addComponent(textEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addComponent(textSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(18, 18, 18)
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(textApellido1)
-                        .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
                     .addGap(18, 18, 18)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel8Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(textApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel8Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(textTelefono)
-                                .addComponent(textFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(textApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel8Layout.createSequentialGroup()
-                    .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
                     .addGap(18, 18, 18)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(textTelefono)
+                        .addComponent(textFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addGap(115, 115, 115)
                     .addComponent(jLabel20)))
             .addContainerGap())
     );
@@ -308,13 +309,13 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             .addGap(18, 18, 18)
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
                     .addComponent(textTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel7)))
+                    .addComponent(jLabel7))
+                .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap())
     );
 
@@ -878,7 +879,7 @@ jPanel4Layout.setHorizontalGroup(
         nuevoPaciente.setNombrePaciente(textNombre.getText());
         nuevoPaciente.setApellido1(textApellido1.getText());
         nuevoPaciente.setApellido2(textApellido2.getText());
-        nuevoPaciente.setSexo(textSexo.getText());
+        nuevoPaciente.setSexo(textSexo.getSelectedItem().toString());
         
         try 
         {
@@ -926,17 +927,35 @@ jPanel4Layout.setHorizontalGroup(
     }
     private boolean validaciones(){
       boolean validado = false;
-      if(!emailValidation())
-          System.out.print("Email invalido");
+        JTextField [] camposTexto = {textNombre, textApellido1, textApellido2, 
+                                    textIdentificacion, textEmail,textTelefono, 
+                                    textNacionalidad};
+        for(JTextField campo:camposTexto)
+            if(campo.getText().equals("") 
+                    || textDireccionFamiliar.getText().equals("") 
+                    || textDireccionLectiva.getText().equals("") 
+                    || textSexo.getSelectedItem().toString().equals("Seleccione"))
+                return false;
+            else{
+                // no estan vacios los campos, procede a validar email y telefono.
+                 String regEmail = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)"
+                                 + "*(\\.[A-Za-z]{2,})$";
+                 String regTelefono = ".*[1-9].*";
+                 String regCedula = ".*[1-9].*";
+                 if(!regExValidation(regEmail) 
+                         || !regExValidation(regTelefono) 
+                         || !regExValidation(regCedula))
+                    return true;
+            }
+      
       return validado;
     }
 
-    private boolean emailValidation() {
-        String emailValidator = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private boolean regExValidation(String validador) {
         java.util.regex.Pattern patronComparar;
         java.util.regex.Matcher comparador;
-        patronComparar = java.util.regex.Pattern.compile(emailValidator);
+        patronComparar = java.util.regex.Pattern.compile(validador);
         comparador = patronComparar.matcher(textEmail.getText());
         return comparador.matches();  
     }
@@ -1042,7 +1061,7 @@ jPanel4Layout.setHorizontalGroup(
     private javax.swing.JTextField textMedicamentos;
     private javax.swing.JTextField textNacionalidad;
     private javax.swing.JTextField textNombre;
-    private javax.swing.JTextField textSexo;
+    private javax.swing.JComboBox textSexo;
     private javax.swing.JTextField textTelefono;
     private javax.swing.JTextField textTelefono1;
     private javax.swing.JTextField textTratamiento;
