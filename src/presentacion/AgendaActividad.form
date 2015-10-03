@@ -127,7 +127,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/presentacion/compose.png"/>
+                  <Image iconType="3" name="/presentacion/icons/magnifyingglass.png"/>
                 </Property>
               </Properties>
             </Component>
