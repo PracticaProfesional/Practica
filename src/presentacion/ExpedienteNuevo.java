@@ -318,7 +318,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
             .addContainerGap())
     );
 
-    jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/profile128.png"))); // NOI18N
+    jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/icons/profile128.png"))); // NOI18N
 
     textFechaNac1.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
         new datechooser.view.appearance.ViewAppearance("custom",
