@@ -8,6 +8,7 @@ package entidad;
 public class ExamenFisico {
     private String categoria;
     private String subCategoria = "";
+    private int consultaMedica = 0;
     //private int estadoExamenFisico; // Esto sera de tipo enum.
     private String detalle = "";
 
@@ -26,6 +27,15 @@ public class ExamenFisico {
     public void setSubCategoria(String subCategoria) {
         this.subCategoria = subCategoria;
     }
+
+    public int getConsultaMedica() {
+        return consultaMedica;
+    }
+
+    public void setConsultaMedica(int consultaMedica) {
+        this.consultaMedica = consultaMedica;
+    }
+    
 
     /*public int getEstadoExamenFisico() {
         return estadoExamenFisico;
