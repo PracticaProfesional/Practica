@@ -27,7 +27,7 @@ CREATE TABLE `Alergias` (
   `nombreAlergia` varchar(45) NOT NULL,
   `descripcionAlergia` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `Alergias` (
 
 LOCK TABLES `Alergias` WRITE;
 /*!40000 ALTER TABLE `Alergias` DISABLE KEYS */;
-INSERT INTO `Alergias` VALUES (1,'',''),(2,'',''),(3,'f','f'),(4,'s','s'),(5,'s','s'),(6,'d','d'),(7,'s','s');
+INSERT INTO `Alergias` VALUES (1,'Ninguna conocida','No aplica');
 /*!40000 ALTER TABLE `Alergias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +61,7 @@ CREATE TABLE `AntecedentesFamiliares` (
 
 LOCK TABLES `AntecedentesFamiliares` WRITE;
 /*!40000 ALTER TABLE `AntecedentesFamiliares` DISABLE KEYS */;
-INSERT INTO `AntecedentesFamiliares` VALUES (1,'g','f');
+INSERT INTO `AntecedentesFamiliares` VALUES (1,'Abuelos','No aplica');
 /*!40000 ALTER TABLE `AntecedentesFamiliares` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +111,7 @@ CREATE TABLE `AntecedentesPersonales` (
   KEY `fk_vacunas_idx` (`idVacunas`),
   CONSTRAINT `fk_alergias` FOREIGN KEY (`idAlergias`) REFERENCES `Alergias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_vacunas` FOREIGN KEY (`idVacunas`) REFERENCES `Vacunas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `AntecedentesPersonales` (
 
 LOCK TABLES `AntecedentesPersonales` WRITE;
 /*!40000 ALTER TABLE `AntecedentesPersonales` DISABLE KEYS */;
-INSERT INTO `AntecedentesPersonales` VALUES (1,7,'s',7,'s');
+INSERT INTO `AntecedentesPersonales` VALUES (5,1,'No tiene',1,'No toma');
 /*!40000 ALTER TABLE `AntecedentesPersonales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +149,7 @@ CREATE TABLE `AntecedentesPersonales-Padecimientos` (
 
 LOCK TABLES `AntecedentesPersonales-Padecimientos` WRITE;
 /*!40000 ALTER TABLE `AntecedentesPersonales-Padecimientos` DISABLE KEYS */;
-INSERT INTO `AntecedentesPersonales-Padecimientos` VALUES (1,24,1),(2,31,1);
+INSERT INTO `AntecedentesPersonales-Padecimientos` VALUES (1,27,5),(2,36,5);
 /*!40000 ALTER TABLE `AntecedentesPersonales-Padecimientos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,21 +163,19 @@ DROP TABLE IF EXISTS `ConsultaMedica`;
 CREATE TABLE `ConsultaMedica` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idExpedienteMedico` int(11) NOT NULL,
-  `idExamenFisico` int(11) DEFAULT NULL,
   `motivoConsulta` varchar(45) NOT NULL,
   `descripcionSintomas` varchar(45) NOT NULL,
   `diagnostico` varchar(45) DEFAULT NULL,
   `signosVitales` int(11) NOT NULL,
-  `idReceta` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
+  `motivo2` varchar(45) DEFAULT NULL,
+  `observaciones` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_expedienteMedico_idx` (`idExpedienteMedico`),
-  KEY `fk_receta_idx` (`idReceta`),
   KEY `fk_signosVitales_idx` (`signosVitales`),
   CONSTRAINT `fk_expedienteMedico` FOREIGN KEY (`idExpedienteMedico`) REFERENCES `ExpedienteMedico` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_receta` FOREIGN KEY (`idReceta`) REFERENCES `Receta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_signosVitales` FOREIGN KEY (`signosVitales`) REFERENCES `SignosVitales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,6 +184,7 @@ CREATE TABLE `ConsultaMedica` (
 
 LOCK TABLES `ConsultaMedica` WRITE;
 /*!40000 ALTER TABLE `ConsultaMedica` DISABLE KEYS */;
+INSERT INTO `ConsultaMedica` VALUES (2,1,'Diarrea','Retortijones','f',2,'2015-09-24','f','f'),(3,1,'diarrea','deposiciones freq','f',3,'2015-09-29','f','f'),(4,1,'Infeccion','Dolor de garganta','f',4,'2015-09-30','f','f'),(5,1,'ss','s','f',5,'2015-10-01','f','f');
 /*!40000 ALTER TABLE `ConsultaMedica` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,8 +200,11 @@ CREATE TABLE `ExamenFisico` (
   `categoria` varchar(45) DEFAULT NULL,
   `subCategoria` varchar(45) DEFAULT NULL,
   `detalle` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `idConsultaMedica` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_ConsultaMedica_idx` (`idConsultaMedica`),
+  CONSTRAINT `fk_ConsultaMedica` FOREIGN KEY (`idConsultaMedica`) REFERENCES `ConsultaMedica` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,37 +213,7 @@ CREATE TABLE `ExamenFisico` (
 
 LOCK TABLES `ExamenFisico` WRITE;
 /*!40000 ALTER TABLE `ExamenFisico` DISABLE KEYS */;
-INSERT INTO `ExamenFisico` VALUES (1,'Ojos','',''),(2,'Boca','Garganta',''),(3,'Adenopatias','','');
 /*!40000 ALTER TABLE `ExamenFisico` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ExamenFisico-Expediente`
---
-
-DROP TABLE IF EXISTS `ExamenFisico-Expediente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ExamenFisico-Expediente` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idExamenFisico` int(11) NOT NULL,
-  `idExpediente` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fkExamenFisico_idx` (`idExamenFisico`),
-  KEY `fk_expediente_idx` (`idExpediente`),
-  CONSTRAINT `fkExamenFisico` FOREIGN KEY (`idExamenFisico`) REFERENCES `ExamenFisico` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_expediente` FOREIGN KEY (`idExpediente`) REFERENCES `ExpedienteMedico` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ExamenFisico-Expediente`
---
-
-LOCK TABLES `ExamenFisico-Expediente` WRITE;
-/*!40000 ALTER TABLE `ExamenFisico-Expediente` DISABLE KEYS */;
-INSERT INTO `ExamenFisico-Expediente` VALUES (1,1,1),(2,2,1),(3,3,1);
-/*!40000 ALTER TABLE `ExamenFisico-Expediente` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -298,7 +270,7 @@ CREATE TABLE `ExpedienteMedico` (
 
 LOCK TABLES `ExpedienteMedico` WRITE;
 /*!40000 ALTER TABLE `ExpedienteMedico` DISABLE KEYS */;
-INSERT INTO `ExpedienteMedico` VALUES (1,1,1,1);
+INSERT INTO `ExpedienteMedico` VALUES (1,1,5,1);
 /*!40000 ALTER TABLE `ExpedienteMedico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,7 +332,7 @@ CREATE TABLE `Paciente` (
 
 LOCK TABLES `Paciente` WRITE;
 /*!40000 ALTER TABLE `Paciente` DISABLE KEYS */;
-INSERT INTO `Paciente` VALUES (1,'Yanela','Alvarado','Perez',2,'2015-09-22','costarricense','6655',27,'liberia','liberia','asf');
+INSERT INTO `Paciente` VALUES (1,'Yanela','Alvarado','Pérez',2,'2015-09-24','costarricense','55555',31,'Nicoya','Nicoya','yanela@gmail.com');
 /*!40000 ALTER TABLE `Paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -445,7 +417,7 @@ CREATE TABLE `SignosVitales` (
   `temperatura` double DEFAULT NULL,
   `talla` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -454,6 +426,7 @@ CREATE TABLE `SignosVitales` (
 
 LOCK TABLES `SignosVitales` WRITE;
 /*!40000 ALTER TABLE `SignosVitales` DISABLE KEYS */;
+INSERT INTO `SignosVitales` VALUES (2,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1),(3,2,2,2,2,2,2,2,2,1,1,1,0,1,1,1,1,1,1,1,1,1,2,2),(4,4,4,4,4,4,4,4,4,1,1,1,0,1,1,1,1,1,1,1,1,1,4,4),(5,444,4,4,4,44,4,44,4,1,1,1,0,1,1,1,1,1,1,1,1,1,4,4);
 /*!40000 ALTER TABLE `SignosVitales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -467,9 +440,9 @@ DROP TABLE IF EXISTS `Usuario`;
 CREATE TABLE `Usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombreUsuario` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `contrasena` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -478,6 +451,7 @@ CREATE TABLE `Usuario` (
 
 LOCK TABLES `Usuario` WRITE;
 /*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
+INSERT INTO `Usuario` VALUES (1,'victor','123');
 /*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,7 +467,7 @@ CREATE TABLE `Vacunas` (
   `tipo` varchar(45) NOT NULL,
   `fechaAplicacion` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -502,7 +476,7 @@ CREATE TABLE `Vacunas` (
 
 LOCK TABLES `Vacunas` WRITE;
 /*!40000 ALTER TABLE `Vacunas` DISABLE KEYS */;
-INSERT INTO `Vacunas` VALUES (1,'','2015-09-22'),(2,'','2015-09-22'),(3,'g','2015-09-22'),(4,'s','2015-09-22'),(5,'s','2015-09-22'),(6,'d','2015-09-22'),(7,'s','2015-09-22');
+INSERT INTO `Vacunas` VALUES (1,'Tetanos','2013-09-14');
 /*!40000 ALTER TABLE `Vacunas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -544,7 +518,7 @@ CREATE TABLE `telefono` (
   `numeroTelefono` varchar(45) NOT NULL,
   `detalle` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -553,13 +527,34 @@ CREATE TABLE `telefono` (
 
 LOCK TABLES `telefono` WRITE;
 /*!40000 ALTER TABLE `telefono` DISABLE KEYS */;
-INSERT INTO `telefono` VALUES (21,'3333','Nada..'),(22,'56','Nada..'),(23,'55','Nada..'),(24,'646','Nada..'),(25,'646','Nada..'),(26,'66','Nada..'),(27,'8787','Nada..');
+INSERT INTO `telefono` VALUES (21,'3333','Nada..'),(22,'56','Nada..'),(23,'55','Nada..'),(24,'646','Nada..'),(25,'646','Nada..'),(26,'66','Nada..'),(27,'8787','Nada..'),(28,'5454','Nada..'),(29,'55','Nada..'),(30,'666','Nada..'),(31,'464','Nada..');
 /*!40000 ALTER TABLE `telefono` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'sigos'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `actualizarConsultaMedica` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarConsultaMedica`(in id int, in diag varchar(45), in motiv varchar(45), in obs varchar(200))
+BEGIN
+	UPDATE ConsultaMedica
+    SET diagnostico = diag, motivo2 = motiv, observaciones = obs
+    WHERE idExpedienteMedico = id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ConsultarFechaCita` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -705,6 +700,29 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `InsertarConsultaMedica` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarConsultaMedica`(in idExpMed int, 
+		in motiCon varchar(45), in descripSint varchar(45), in diag varchar(45),
+		in idSigVit int,in fech date, in motivo varchar(45), in obser varchar (200))
+BEGIN
+	insert into ConsultaMedica (idExpedienteMedico, motivoConsulta,
+			descripcionSintomas, diagnostico, signosVitales,fecha, motivo2, observaciones)
+	values (idExpMed, motiCon, descripSint, diag, idSigVit,fech, motivo, obser);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `InsertarExamenFisico` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -716,30 +734,10 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarExamenFisico`(in cat varchar(45), in subCat varchar(45),
-			in det varchar(45))
+			in det varchar(45), in idConMed int)
 BEGIN
-	insert into ExamenFisico (categoria, subCategoria, detalle)
-	values (cat, subCat, det);
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `InsertarExFisicoExpediente` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarExFisicoExpediente`(in idExFisico int, in idExExpediente int)
-BEGIN
-	Insert into `ExamenFisico-Expediente`(idExamenFisico, idExpediente)
-    values(idExFisico, idExExpediente);
+	insert into ExamenFisico (categoria, subCategoria, detalle, idConsultaMedica)
+	values (cat, subCat, det, idConMed);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -808,6 +806,36 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarPadecimientos`(in nomPad va
 BEGIN
 	insert into Padecimientos(nombrePadecimiento)
 	values (nomPad);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `InsertarSignosVitales` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarSignosVitales`(in pes double, in fc double, in par double,
+		in imc double, in imb double, in h2o double, in mm double, in gc double,
+		in ass tinyint(1), in af tinyint(1), in ss tinyint(1), in pap tinyint(1), 
+		in im tinyint(1),
+		in iv tinyint(1), in sc tinyint(1), in gm tinyint(1), in cp tinyint(1), 
+		in es tinyint(1),
+		in pa tinyint(1), in exaMama tinyint(1), in cura tinyint(1),
+		in temp double, in tall double)
+BEGIN
+	insert into SignosVitales (peso, FC, PAR, IMC, IMB, H2O, MM, GC, `AS`, AF, SS, 
+				PAP, IM, IV, SC, GM, CP, ES, PA, exMama, curaciones, temperatura,
+				talla)
+	values (pes, fc, par, imc, imb, h2o, mm, gc, ass, af, ss, pap, im, 
+			iv, sc, gm, cp, es, pa, exaMama, cura, temp, tall);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -953,6 +981,52 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `ObtenerIdUsuario` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerIdUsuario`(
+    in nomUsu varchar(45), in con varchar(45)
+    )
+BEGIN
+    SELECT  *
+      FROM sigos.Usuario
+        WHERE Usuario.nombreUsuario = nomUsu
+          AND Usuario.contrasena = con;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `obtenerPacientesConsulta` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `obtenerPacientesConsulta`(fecha date)
+BEGIN
+	SELECT ConsultaMedica.id,idExpedienteMedico,idPaciente, nombrePaciente,apellido1Paciente, apellido2Paciente,signosVitales from ExpedienteMedico join ConsultaMedica
+	on ExpedienteMedico.id = ConsultaMedica.idExpedienteMedico
+	join Paciente on ExpedienteMedico.id = Paciente.id
+	Where ConsultaMedica.fecha = fecha;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `obtenerUltimoId` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -984,4 +1058,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-09-22 10:32:19
+-- Dump completed on 2015-10-02 20:26:57
