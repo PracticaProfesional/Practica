@@ -8,12 +8,9 @@ package presentacion;
 
 import entidad.ExamenFisico;
 import entidad.SignosVitales;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -250,7 +247,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/cooper15/NetBeansProjects/SIGOS/Practica/img/magnifyingglass.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/magnifyingglass.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1778,20 +1775,10 @@ public class Inicio extends javax.swing.JFrame {
 
     private void insertarAnormalidadesExFisico(ArrayList<ExamenFisico> listaExamen) {
         negocio.NegocioExamenFisico nuevoExFisico = new negocio.NegocioExamenFisico();
-//        negocio.NegocioObtenerUltimoId ultimoId = new negocio.NegocioObtenerUltimoId();
-//        negocio.NegocioExpedienteMedico expediente = new negocio.NegocioExpedienteMedico();
-//        java.util.LinkedList<String> listaIdExamenFisico = new java.util.LinkedList<String>();
         for(entidad.ExamenFisico examen:listaExamen){
             examen.setConsultaMedica(Integer.parseInt(idConsultaMedica));
             nuevoExFisico.insertarExamenFisico(examen);
-//            listaIdExamenFisico.add(ultimoId.obtenerUltimoId("ExamenFisico"));
         }
-//        negocio.NegocioExamenExpediente exaExp = new negocio.NegocioExamenExpediente();
-//        final String idExpedientePaciente = expediente.obtenerIdExpedienteMedico(idPaciente);
-//        for(String ids:listaIdExamenFisico){
-//            exaExp.insertarExamenExpediente(ids, idExpedientePaciente);
-//        }
-        
     }
 
     private ArrayList obtenerDatosExamenFisico(ArrayList<ExamenFisico> listaExamen) {
