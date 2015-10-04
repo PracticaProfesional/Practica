@@ -6,6 +6,7 @@
 package presentacion;
 
 
+import entidad.EstadoCitaEnum;
 import entidad.ExamenFisico;
 import entidad.SignosVitales;
 import java.sql.SQLException;
@@ -1659,6 +1660,9 @@ public class Inicio extends javax.swing.JFrame {
             agendaTabla.setValueAt(actividad, agendaTabla.getSelectedRow(), 1);
             horaActividad = agendaTabla.getValueAt(agendaTabla.getSelectedRow(), 0).toString();
             entidad.Cita nuevaCita = new entidad.Cita();
+            
+            // la siguiente linea es para probar si esta ingresando correctamente el estado
+            nuevaCita.setEstado(EstadoCitaEnum.Pendiente);
             nuevaCita.setFechaConsulta(fechaSeleccionada);
             nuevaCita.setHora(horaActividad);
             nuevaCita.setAnotaciones(actividad);
