@@ -105,7 +105,7 @@ DELIMITER $  --  insertar en la tabla cita
 CREATE PROCEDURE InsertarCita (in est tinyint, in fecCon date,
 		in anot varchar(45), in hor varchar(10))
 BEGIN
-	insert into cita (estado, fechaConsulta, anotaciones, hora)
+	insert into cita (estado, fechaConsulta, anotaciones, horaConsulta)
 	values (est, fecCon, anot, hor);
 END $
 
