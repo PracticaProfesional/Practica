@@ -46,6 +46,11 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popMenuAccionesActividad = new javax.swing.JPopupMenu();
+        popItemNuevaActividad = new javax.swing.JMenuItem();
+        popSubMenuEstado = new javax.swing.JMenu();
+        popItemCompletada = new javax.swing.JMenuItem();
+        popItemCancelada = new javax.swing.JMenuItem();
         panelPrincipal = new javax.swing.JTabbedPane();
         tabExpediente = new javax.swing.JTabbedPane();
         tabBuscarPaciente = new javax.swing.JPanel();
@@ -201,6 +206,24 @@ public class Inicio extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+
+        popItemNuevaActividad.setText("Añadir actividad");
+        popItemNuevaActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                popItemNuevaActividadActionPerformed(evt);
+            }
+        });
+        popMenuAccionesActividad.add(popItemNuevaActividad);
+
+        popSubMenuEstado.setText("Cambiar estado");
+
+        popItemCompletada.setText("Completada");
+        popSubMenuEstado.add(popItemCompletada);
+
+        popItemCancelada.setText("Cancelada");
+        popSubMenuEstado.add(popItemCancelada);
+
+        popMenuAccionesActividad.add(popSubMenuEstado);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Gestion Oficina de Salud");
@@ -667,7 +690,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
                     .addComponent(textSintomas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -1321,6 +1344,7 @@ public class Inicio extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        agendaTabla.setComponentPopupMenu(popMenuAccionesActividad);
         agendaTabla.setRowHeight(35);
         agendaTabla.getTableHeader().setReorderingAllowed(false);
         agendaTabla.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1645,6 +1669,10 @@ public class Inicio extends javax.swing.JFrame {
     
    
     private void agendaTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendaTablaMouseClicked
+        
+    }//GEN-LAST:event_agendaTablaMouseClicked
+
+    private void insertarNuevaActividad() {
         // al presionar la actividad de la tabla mostrar menu para ingresar actividad en caso de que no exista
         AgendaActividad nuevaActividad = new AgendaActividad(this, true);
         nuevaActividad.setVisible(true);
@@ -1670,8 +1698,8 @@ public class Inicio extends javax.swing.JFrame {
             insertarCita.insertarCita(nuevaCita);
         }
         catch(NullPointerException e){
-        }   
-    }//GEN-LAST:event_agendaTablaMouseClicked
+        }
+    }
 
     private void agendaCalendarioOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_agendaCalendarioOnSelectionChange
         limpiaAgenda();
@@ -1894,6 +1922,10 @@ public class Inicio extends javax.swing.JFrame {
             javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
             fileChooser.showOpenDialog(this);
     }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
+
+    private void popItemNuevaActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemNuevaActividadActionPerformed
+       insertarNuevaActividad();
+    }//GEN-LAST:event_popItemNuevaActividadActionPerformed
     private String obtenerIdExpedienteMedico(){
         negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
         String idExp = consExp.obtenerIdExpedienteMedico(idPaciente);
@@ -2115,6 +2147,11 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel panelBtnBuscarPaciente;
     private javax.swing.JTabbedPane panelConsultaMedica;
     private javax.swing.JTabbedPane panelPrincipal;
+    private javax.swing.JMenuItem popItemCancelada;
+    private javax.swing.JMenuItem popItemCompletada;
+    private javax.swing.JMenuItem popItemNuevaActividad;
+    private javax.swing.JPopupMenu popMenuAccionesActividad;
+    private javax.swing.JMenu popSubMenuEstado;
     private javax.swing.JTabbedPane tabAdministrador;
     private javax.swing.JPanel tabBuscarPaciente;
     private javax.swing.JPanel tabConsultaMedica;
