@@ -734,9 +734,10 @@ jPanel4Layout.setHorizontalGroup(
                 tabExpedienteNuevo.setSelectedIndex(2);
                 cuentaClick++;
             }               
-//        if(tabExpedienteNuevo.getSelectedIndex() == 2)
-//            if(validaciones()){
-//            } 
+        if(tabExpedienteNuevo.getSelectedIndex() == 2)
+            if(validaciones()){
+                btnExpedienteNuevoGuardar.setEnabled(true);
+            } 
         System.out.println(cuentaClick);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
