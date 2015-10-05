@@ -738,7 +738,7 @@ jPanel4Layout.setHorizontalGroup(
             if(validaciones()){
                 btnExpedienteNuevoGuardar.setEnabled(true);
             } 
-        System.out.println(cuentaClick);
+        cuentaClick++;
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void crearExpedienteMedico() {
@@ -1013,6 +1013,8 @@ jPanel4Layout.setHorizontalGroup(
                 if(confirmacion == 0)
                     return true;
             }
+            else 
+                return true;
         }
         return false;
     }
