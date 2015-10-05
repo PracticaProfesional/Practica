@@ -16,7 +16,7 @@ public class OperacionesCita
     {
         objetoDeConexion = new Conexion();
        
-        String datosCita = "'" + objetoCita.getEstado() + "'" + "," +  
+        String datosCita = "'" + objetoCita.getEstado().obtenerEstadoNumero() + "'" + "," +  
                            "'" + objetoCita.getFechaConsulta() + "'" + "," +
                            "'" + objetoCita.getAnotaciones() + "'" + "," +
                            "'" + objetoCita.getHora() + "'" ;

@@ -1,12 +1,6 @@
 -- Procedimientos almacenados de insercion en las tablas de la base de datos SIGOS
 
---  ACTUALIZA ALGUNOS DATOS DE LA TABLA ConsultaMedica.
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarConsultaMedica`(in id int, in diag varchar(45), in motiv varchar(45), in obs varchar(200))
-BEGIN
-	UPDATE ConsultaMedica
-    SET diagnostico = diag, motivo2 = motiv, observaciones = obs
-    WHERE idExpedienteMedico = id;
-END
+
 
 -- INNER JOIN CON DATOS DE PERSONAS EN CONSULTA MEDICA
 SELECT ConsultaMedica.id,idExpedienteMedico,idPaciente, nombrePaciente,apellido1Paciente, apellido2Paciente,signosVitales from ExpedienteMedico join ConsultaMedica
@@ -40,7 +34,7 @@ BEGIN
 END $
 
 
-DELIMITER $ -- insertar en la tabla telefono
+DELIMITER $ -- insertar en la tabla SignosVitales
 CREATE PROCEDURE InsertarSignosVitales (in pes double, in fc double, in par double,
 		in imc double, in imb double, in h2o double, in mm double, in gc double,
 		in ass tinyint(1), in af tinyint(1), in ss tinyint(1), in pap tinyint(1), 
@@ -111,7 +105,7 @@ DELIMITER $  --  insertar en la tabla cita
 CREATE PROCEDURE InsertarCita (in est tinyint, in fecCon date,
 		in anot varchar(45), in hor varchar(10))
 BEGIN
-	insert into cita (estado, fechaConsulta, anotaciones, hora)
+	insert into cita (estado, fechaConsulta, anotaciones, horaConsulta)
 	values (est, fecCon, anot, hor);
 END $
 
@@ -196,13 +190,23 @@ BEGIN
 	insert into `AntecedentesFamiliares-Padecimientos` (idPadecimiento, 
 			idAntecedenteFamiliar)
 	values (idPad, idAntFam);
-END
+END $
 
-CREATE PROCEDURE `obtenerExpedientePaciente`()
+DELIMITER $
+CREATE DEFINER=`root`@`localhost` PROCEDURE `obtenerExpedientePaciente`()
 BEGIN
 	SELECT id, cedulaPaciente, nombrePaciente,apellido1Paciente,apellido2Paciente FROM sigos.Paciente;
-END
+END $
 
+DELIMITER $
+CREATE DEFINER=`root`@`localhost` PROCEDURE `obtenerUltimoId`(in tabla varchar(45))
+BEGIN
+	declare nombreTabla Varchar(45);
+	set nombreTabla = tabla;
+	Select MAX(id) FROM nombreTabla;
+END $
+
+DELIMITER $
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerIdUsuario`(
     in nomUsu varchar(45), in con varchar(45)
     )
@@ -211,34 +215,65 @@ BEGIN
       FROM sigos.usuario
         WHERE usuario.nombreUsuario = nomUsu
           AND usuario.contrasena = con;
-END
+END $
 
 -- PROCEDIMIENTOS NUEVOS 19-09-2015
+DELIMITER $
 CREATE  PROCEDURE `obtenerExamenFisico`(idpas int)
 BEGIN
 	Select categoria, subCategoria, detalle from ExamenFisico
 		where id = idpas;
-END
+END $
 
+DELIMITER $
 CREATE PROCEDURE obtenerIdPaciente (cedula varchar(45))
 BEGIN
 	Select id from Paciente
 		Where cedulaPaciente = cedula;
-END
+END $
 
+DELIMITER $
 CREATE PROCEDURE `obtenerIdExpedienteMedico` (idpas int)
 BEGIN
 	Select id from ExpedienteMedico
     where idPaciente = idpas;
-END
+END $
 
+DELIMITER $
 CREATE PROCEDURE `obtenerIdExamenExpediente` (idEx int)
 BEGIN
 	Select idExamenFisico from `ExamenFisico-Expediente`
 		where idExpediente = idEx;
-END
+END $
+
+
+--  ACTUALIZA ALGUNOS DATOS DE LA TABLA ConsultaMedica.
+DELIMITER $
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarConsultaMedica`(in id int, in diag varchar(45), in motiv varchar(45), in obs varchar(200))
+BEGIN
+	UPDATE ConsultaMedica
+    SET diagnostico = diag, motivo2 = motiv, observaciones = obs
+    WHERE idExpedienteMedico = id;
+END $
+
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `obtenerPacientesConsulta`(fecha date)
+BEGIN
+	SELECT ConsultaMedica.id,idExpedienteMedico,idPaciente, nombrePaciente,apellido1Paciente, apellido2Paciente,signosVitales from ExpedienteMedico join ConsultaMedica
+	on ExpedienteMedico.id = ConsultaMedica.idExpedienteMedico
+	join Paciente on ExpedienteMedico.id = Paciente.id
+	Where ConsultaMedica.fecha = fecha;
+END $
+
+DELIMITER $
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ConsultarFechaCita`(fechaCita date)
+BEGIN
+	select * from cita 
+    where cita.fechaConsulta = fechaCita;
+END $
+
 -- Llamadas a los procedimientos almacenados
-$
+
 Call InsertarUsuario ('Juanito', '1234');
 $
 

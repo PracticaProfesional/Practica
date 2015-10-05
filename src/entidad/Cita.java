@@ -4,14 +4,23 @@ package entidad;
  *
  * @author cooper15
  */
-public class Cita {
+public class Cita 
+{
     //private int detalle;
-    private int estado;
+    private EstadoCitaEnum estado;
     private String fechaCreacion;
     private String fechaConsulta;
     private String anotaciones;
     private String hora;
 
+    
+    public EstadoCitaEnum getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoCitaEnum estado) {
+        this.estado = estado;
+    }
     public String getHora() {
         return hora;
     }
@@ -20,13 +29,6 @@ public class Cita {
         this.hora = hora;
     }
 
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
 
     public String getFechaCreacion() {
         return fechaCreacion;
