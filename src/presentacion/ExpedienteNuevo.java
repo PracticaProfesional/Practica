@@ -33,7 +33,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     
     int ids [];
-    
+    int cuentaClick = 1;
     
     public ExpedienteNuevo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -725,14 +725,19 @@ jPanel4Layout.setHorizontalGroup(
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         if(tabExpedienteNuevo.getSelectedIndex() == 0)
-            if(validaciones())
+            if(validaciones()){
                 tabExpedienteNuevo.setSelectedIndex(1);
-//        if(tabExpedienteNuevo.getSelectedIndex() == 1)
-//            if(validaciones())
-//                tabExpedienteNuevo.setSelectedIndex(2);
+                cuentaClick++;
+            }
+        if(tabExpedienteNuevo.getSelectedIndex() == 1)
+            if(validaciones()){
+                tabExpedienteNuevo.setSelectedIndex(2);
+                cuentaClick++;
+            }               
 //        if(tabExpedienteNuevo.getSelectedIndex() == 2)
 //            if(validaciones()){
-//            }  
+//            } 
+        System.out.println(cuentaClick);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void crearExpedienteMedico() {
@@ -815,10 +820,10 @@ jPanel4Layout.setHorizontalGroup(
     }
 
     private void insertarVacuna(Vacuna nuevaVacuna) {
-        
-        nuevaVacuna.setFechaAplicacion(getFechaVacuna());
-        nuevaVacuna.setTipo(textVacunaTipo.getText());
-        
+        if(!getFechaNac().equals("") & !textVacunaTipo.getText().equals("")){
+            nuevaVacuna.setFechaAplicacion(getFechaVacuna());
+            nuevaVacuna.setTipo(textVacunaTipo.getText());
+        }  
         if (! nuevaVacuna.getTipo().equals(""))
         {
             negocio.NegocioVacuna insertarVacuna = new negocio.NegocioVacuna();
@@ -826,11 +831,11 @@ jPanel4Layout.setHorizontalGroup(
         }// fin del if        
     }// fin del metodo insertarVacuna
 
-    private void insertarAlergia(Alergia nuevaAlergia) 
-    {
-        nuevaAlergia.setNombreAlergia(textAlergiaNombre.getText());
-        nuevaAlergia.setDetalleAlergia(textAlergiaDescrip.getText());
-        
+    private void insertarAlergia(Alergia nuevaAlergia){
+        if(!textAlergiaNombre.getText().equals("") & !textAlergiaDescrip.getText().equals("")){
+            nuevaAlergia.setNombreAlergia(textAlergiaNombre.getText());
+            nuevaAlergia.setDetalleAlergia(textAlergiaDescrip.getText());
+        } 
         if (! nuevaAlergia.getNombreAlergia().equals("") && ! nuevaAlergia.getDetalleAlergia().equals(""))
         {
             negocio.NegocioAlergia insertarAlergia = new negocio.NegocioAlergia();
@@ -996,6 +1001,18 @@ jPanel4Layout.setHorizontalGroup(
         return validado;
     }
     private boolean validaAntecedentesPersonales(){
+        int confirmacion;
+        JTextField [] campos = {textAlergiaNombre,textAlergiaDescrip
+                                , textTratamiento, textVacunaTipo
+                                , textMedicamentos};
+        if(cuentaClick > 2){
+            for(JTextField campo:campos)
+            if(campo.getText().equals("")){
+                confirmacion = JOptionPane.showConfirmDialog(this, "Esta seguro en dejar los campos en blanco.");
+                if(confirmacion == 0)
+                    return true;
+            }
+        }
         return false;
     }
     private boolean validaAntecedentesFamiliares(){
