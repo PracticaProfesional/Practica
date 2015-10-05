@@ -22,7 +22,7 @@ public class Alergia {
     public void setDetalleAlergia(String detalleAlergia) {
         this.detalleAlergia = detalleAlergia;
     }
-    private String nombreAlergia;
-    private String detalleAlergia;
+    private String nombreAlergia = "No posee";
+    private String detalleAlergia = "No aplica";
     
 }
