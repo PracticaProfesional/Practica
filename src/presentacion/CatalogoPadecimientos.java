@@ -1,6 +1,7 @@
 // @author Paula Yacira
 package presentacion;
 
+import javax.swing.JComboBox;
 import negocio.NegocioPadecimiento;
 
 public class CatalogoPadecimientos extends javax.swing.JDialog
@@ -47,19 +48,19 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         cbRenales = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
         cbAdicciones = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        txtEnfermedadesGastrointestinales = new javax.swing.JTextField();
+        txtEnfermedadesMentales = new javax.swing.JTextField();
+        txtEnfermedadesNeurologicas = new javax.swing.JTextField();
+        txtEnfermedadesMusculoesqueleticas = new javax.swing.JTextField();
+        txtEnfermedadesPulmonares = new javax.swing.JTextField();
+        txtEnfermedadesRenales = new javax.swing.JTextField();
+        txtCancer = new javax.swing.JTextField();
+        txtAdicciones = new javax.swing.JTextField();
         jpCorazon = new javax.swing.JPanel();
         jlCardiopatía = new javax.swing.JLabel();
         chbPresionAlta = new javax.swing.JCheckBox();
         cbCardiopatia = new javax.swing.JComboBox();
-        tfCardiopatia = new javax.swing.JTextField();
+        txtCardiopatia = new javax.swing.JTextField();
         jpMetabolismo = new javax.swing.JPanel();
         chbDiabetes = new javax.swing.JCheckBox();
         chbSobrepeso = new javax.swing.JCheckBox();
@@ -69,7 +70,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         cbEnfTiroides = new javax.swing.JComboBox();
         chbDislipidemia = new javax.swing.JCheckBox();
         jlEnfTiroides = new javax.swing.JLabel();
-        tfTiroides = new javax.swing.JTextField();
+        txtTiroides = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnIngresar = new javax.swing.JButton();
@@ -146,19 +147,39 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
 
         cbMusculoEsqueleticas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Artritis", "Fibromialgia", "Lumbalgia", "Gonoartrosis", "Artrosis", "Otros" }));
         cbMusculoEsqueleticas.setName("Cancer"); // NOI18N
+        cbMusculoEsqueleticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMusculoEsqueleticasActionPerformed(evt);
+            }
+        });
 
-        jLabel7.setText("Enfermedades Musculoesuqeleticas");
+        jLabel7.setText("Enfermedades Musculoesqueléticas");
 
-        cbGastrointestinales.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Gastritis", "Reflujo", "Colitis", "Estreñimiento", "Colelitiasis", "úlcera", "Hepatitis", "Pólipos", "otros" }));
+        cbGastrointestinales.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Gastritis", "Reflujo", "Colitis", "Estreñimiento", "Colelitiasis", "Úlcera", "Hepatitis", "Pólipos", "Otros" }));
         cbGastrointestinales.setName("Cancer"); // NOI18N
+        cbGastrointestinales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbGastrointestinalesActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Enfermedades Mentales");
 
-        cbMentales.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Esquizofrenia", "Ansiedad", "Depresión", "Alzhéimer", "Transtornos Alimenticios" }));
+        cbMentales.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Esquizofrenia", "Ansiedad", "Depresión", "Alzhéimer", "Transtornos Alimenticios", "Otros" }));
         cbMentales.setName("Cancer"); // NOI18N
+        cbMentales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMentalesActionPerformed(evt);
+            }
+        });
 
         cbCancer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Piel", "Mama", "Pulmón", "Gastrico", "Tiroides", "Próstata", "Tiroides", "Colon", "Leucemia", "Melanoma", "Otros" }));
         cbCancer.setName("Cancer"); // NOI18N
+        cbCancer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCancerActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Cáncer");
 
@@ -167,32 +188,65 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         jLabel13.setText("Enfermedades Pulmonares");
 
         cbNeurologicas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Convulsiones", "ECV", "Otros" }));
+        cbNeurologicas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNeurologicasActionPerformed(evt);
+            }
+        });
 
         cbPulmonares.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Asma", "EPOC", "Bronquitis", "Otros" }));
+        cbPulmonares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbPulmonaresActionPerformed(evt);
+            }
+        });
 
         jLabel21.setText("Enfermedades Renales");
 
         cbRenales.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Insuficiencia Renal", "Cálculos Renales", "Otros" }));
+        cbRenales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbRenalesActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Adicciones");
 
         cbAdicciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Alcoholismo", "Drogadicción", "Tabaquismo", "Otros" }));
+        cbAdicciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAdiccionesActionPerformed(evt);
+            }
+        });
 
-        jTextField1.setEnabled(false);
+        txtEnfermedadesGastrointestinales.setEditable(false);
+        txtEnfermedadesGastrointestinales.setEnabled(false);
 
-        jTextField2.setEnabled(false);
+        txtEnfermedadesMentales.setEditable(false);
+        txtEnfermedadesMentales.setEnabled(false);
 
-        jTextField3.setEnabled(false);
+        txtEnfermedadesNeurologicas.setEditable(false);
+        txtEnfermedadesNeurologicas.setEnabled(false);
+        txtEnfermedadesNeurologicas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEnfermedadesNeurologicasActionPerformed(evt);
+            }
+        });
 
-        jTextField4.setEnabled(false);
+        txtEnfermedadesMusculoesqueleticas.setEditable(false);
+        txtEnfermedadesMusculoesqueleticas.setEnabled(false);
 
-        jTextField5.setEnabled(false);
+        txtEnfermedadesPulmonares.setEditable(false);
+        txtEnfermedadesPulmonares.setEnabled(false);
 
-        jTextField6.setEnabled(false);
+        txtEnfermedadesRenales.setEditable(false);
+        txtEnfermedadesRenales.setEnabled(false);
 
-        jTextField7.setEnabled(false);
+        txtCancer.setEditable(false);
+        txtCancer.setEnabled(false);
 
-        jTextField8.setEnabled(false);
+        txtAdicciones.setEditable(false);
+        txtAdicciones.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -213,10 +267,10 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
                     .addComponent(cbMentales, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEnfermedadesMentales, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnfermedadesNeurologicas, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnfermedadesGastrointestinales, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnfermedadesMusculoesqueleticas, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel21)
@@ -231,10 +285,10 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
                     .addComponent(cbAdicciones, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEnfermedadesPulmonares, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnfermedadesRenales, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCancer, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAdicciones, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
         jPanel3Layout.setVerticalGroup(
@@ -244,34 +298,34 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel8)
                     .addComponent(cbMentales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnfermedadesMentales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
                     .addComponent(cbPulmonares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEnfermedadesPulmonares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel10)
                     .addComponent(cbNeurologicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnfermedadesNeurologicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
                     .addComponent(cbRenales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEnfermedadesRenales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel6)
                     .addComponent(cbGastrointestinales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnfermedadesGastrointestinales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(cbCancer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCancer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel7)
                     .addComponent(cbMusculoEsqueleticas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnfermedadesMusculoesqueleticas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(cbAdicciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAdicciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -289,7 +343,8 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
             }
         });
 
-        tfCardiopatia.setEnabled(false);
+        txtCardiopatia.setEditable(false);
+        txtCardiopatia.setEnabled(false);
 
         javax.swing.GroupLayout jpCorazonLayout = new javax.swing.GroupLayout(jpCorazon);
         jpCorazon.setLayout(jpCorazonLayout);
@@ -303,7 +358,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
                 .addGap(49, 49, 49)
                 .addComponent(cbCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(tfCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpCorazonLayout.setVerticalGroup(
@@ -311,7 +366,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
             .addGroup(jpCorazonLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jpCorazonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(tfCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbCardiopatia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCardiopatía)
                     .addComponent(chbPresionAlta))
@@ -340,14 +395,20 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         chbObesidad.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         chbObesidad.setIconTextGap(19);
 
-        cbEnfTiroides.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Hipotiroidismo", "Hipertiroidismo", "Tiroiditis", "Otros", " " }));
+        cbEnfTiroides.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Hipotiroidismo", "Hipertiroidismo", "Tiroiditis", "Otros" }));
+        cbEnfTiroides.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbEnfTiroidesActionPerformed(evt);
+            }
+        });
 
         chbDislipidemia.setText("Dislipidemia");
         chbDislipidemia.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         jlEnfTiroides.setText("Enfermedades de la Tiroides");
 
-        tfTiroides.setEnabled(false);
+        txtTiroides.setEditable(false);
+        txtTiroides.setEnabled(false);
 
         javax.swing.GroupLayout jpMetabolismoLayout = new javax.swing.GroupLayout(jpMetabolismo);
         jpMetabolismo.setLayout(jpMetabolismoLayout);
@@ -371,7 +432,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
                 .addGap(62, 62, 62)
                 .addComponent(cbEnfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
         );
         jpMetabolismoLayout.setVerticalGroup(
@@ -384,7 +445,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
                     .addComponent(chbDislipidemia)
                     .addComponent(jlEnfTiroides)
                     .addComponent(cbEnfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -470,7 +531,11 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     
     
     private void cbCardiopatiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCardiopatiaActionPerformed
-
+        
+        boolean estado;
+        estado = seleccionaCombo(cbCardiopatia);
+        txtCardiopatia.setEnabled(estado);
+        txtCardiopatia.setEditable(estado);
     }//GEN-LAST:event_cbCardiopatiaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -482,7 +547,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     }//GEN-LAST:event_formWindowOpened
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        // TODO add your handling code here:
+        
         obtenerNumeroPadecimientos();
         
         for (int i = 0; i < arreglo.length; i++)
@@ -490,6 +555,82 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         this.dispose();
         //cargarIdsAArreglo();
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void cbMentalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMentalesActionPerformed
+        
+        boolean estado;
+        estado = seleccionaCombo(cbMentales);
+        txtEnfermedadesMentales.setEnabled(estado);
+        txtEnfermedadesMentales.setEditable(estado);
+    }//GEN-LAST:event_cbMentalesActionPerformed
+
+    private void txtEnfermedadesNeurologicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnfermedadesNeurologicasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnfermedadesNeurologicasActionPerformed
+
+    private void cbNeurologicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNeurologicasActionPerformed
+        
+        boolean estado;
+        estado = seleccionaCombo(cbNeurologicas);
+        txtEnfermedadesNeurologicas.setEnabled(estado);
+        txtEnfermedadesNeurologicas.setEditable(estado);
+    }//GEN-LAST:event_cbNeurologicasActionPerformed
+
+    private void cbGastrointestinalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbGastrointestinalesActionPerformed
+        
+        boolean estado;
+        estado = seleccionaCombo(cbGastrointestinales);
+        txtEnfermedadesGastrointestinales.setEnabled(estado);
+        txtEnfermedadesGastrointestinales.setEditable(estado);
+    }//GEN-LAST:event_cbGastrointestinalesActionPerformed
+
+    private void cbMusculoEsqueleticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMusculoEsqueleticasActionPerformed
+        
+        boolean estado;
+        estado = seleccionaCombo(cbMusculoEsqueleticas);
+        txtEnfermedadesMusculoesqueleticas.setEnabled(estado);
+        txtEnfermedadesMusculoesqueleticas.setEditable(estado);
+    }//GEN-LAST:event_cbMusculoEsqueleticasActionPerformed
+
+    private void cbPulmonaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPulmonaresActionPerformed
+        
+        boolean estado;
+        estado = seleccionaCombo(cbPulmonares);
+        txtEnfermedadesPulmonares.setEnabled(estado);
+        txtEnfermedadesPulmonares.setEditable(estado);
+    }//GEN-LAST:event_cbPulmonaresActionPerformed
+
+    private void cbRenalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRenalesActionPerformed
+        
+        boolean estado;
+        estado = seleccionaCombo(cbRenales);
+        txtEnfermedadesRenales.setEnabled(estado);
+        txtEnfermedadesRenales.setEditable(estado);
+    }//GEN-LAST:event_cbRenalesActionPerformed
+
+    private void cbCancerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCancerActionPerformed
+        
+        boolean estado;
+        estado = seleccionaCombo(cbCancer);
+        txtCancer.setEnabled(estado);
+        txtCancer.setEditable(estado);
+    }//GEN-LAST:event_cbCancerActionPerformed
+
+    private void cbAdiccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAdiccionesActionPerformed
+        
+        boolean estado;
+        estado = seleccionaCombo(cbAdicciones);
+        txtAdicciones.setEnabled(estado);
+        txtAdicciones.setEditable(estado);
+    }//GEN-LAST:event_cbAdiccionesActionPerformed
+
+    private void cbEnfTiroidesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEnfTiroidesActionPerformed
+        
+        boolean estado;
+        estado = seleccionaCombo(cbEnfTiroides);
+        txtTiroides.setEnabled(estado);
+        txtTiroides.setEditable(estado);
+    }//GEN-LAST:event_cbEnfTiroidesActionPerformed
 
     // Este metodo nos retorna el numero de padecimientos seleccionados para su posterior uso
     public void obtenerNumeroPadecimientos()
@@ -689,6 +830,23 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         return contador;
     }// fin del metodo obtenerContador
 
+    public boolean seleccionaCombo(JComboBox comboGenerico)
+    {
+        String seleccionado;
+        boolean retorno;
+        
+        seleccionado = comboGenerico.getSelectedItem().toString();
+        
+        if(seleccionado.equals("Otros"))
+            retorno = true;
+                    
+        else
+            retorno = false;
+        
+        return retorno;
+    }// fin del metodo seleccionaCombo
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnIngresar;
@@ -723,22 +881,22 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel jlCardiopatía;
     private javax.swing.JLabel jlEnfTiroides;
     private javax.swing.JPanel jpCorazon;
     private javax.swing.JPanel jpMetabolismo;
     private javax.swing.JPanel jpOidos;
     private javax.swing.JPanel jpOjos;
-    private javax.swing.JTextField tfCardiopatia;
-    private javax.swing.JTextField tfTiroides;
+    private javax.swing.JTextField txtAdicciones;
+    private javax.swing.JTextField txtCancer;
+    private javax.swing.JTextField txtCardiopatia;
+    private javax.swing.JTextField txtEnfermedadesGastrointestinales;
+    private javax.swing.JTextField txtEnfermedadesMentales;
+    private javax.swing.JTextField txtEnfermedadesMusculoesqueleticas;
+    private javax.swing.JTextField txtEnfermedadesNeurologicas;
+    private javax.swing.JTextField txtEnfermedadesPulmonares;
+    private javax.swing.JTextField txtEnfermedadesRenales;
+    private javax.swing.JTextField txtTiroides;
     // End of variables declaration//GEN-END:variables
 
 

@@ -194,10 +194,10 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextField2" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                      <Component id="jTextField3" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                      <Component id="jTextField4" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesMentales" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesNeurologicas" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesGastrointestinales" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesMusculoesqueleticas" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -215,10 +215,10 @@
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextField5" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                      <Component id="jTextField6" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                      <Component id="jTextField7" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                      <Component id="jTextField8" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesPulmonares" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesRenales" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="txtCancer" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="txtAdicciones" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
@@ -231,37 +231,37 @@
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="jLabel8" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="cbMentales" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField2" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesMentales" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel13" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="cbPulmonares" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField5" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesPulmonares" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="jLabel10" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="cbNeurologicas" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField3" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesNeurologicas" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel21" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="cbRenales" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField6" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesRenales" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="jLabel6" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="cbGastrointestinales" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesGastrointestinales" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="cbCancer" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField7" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCancer" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="jLabel7" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="cbMusculoEsqueleticas" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField4" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEnfermedadesMusculoesqueleticas" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel12" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="cbAdicciones" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField8" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAdicciones" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
@@ -289,10 +289,13 @@
             </Property>
             <Property name="name" type="java.lang.String" value="Cancer" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbMusculoEsqueleticasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enfermedades Musculoesuqeleticas"/>
+            <Property name="text" type="java.lang.String" value="Enfermedades Musculoesquel&#xe9;ticas"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbGastrointestinales">
@@ -305,14 +308,17 @@
                 <StringItem index="3" value="Colitis"/>
                 <StringItem index="4" value="Estre&#xf1;imiento"/>
                 <StringItem index="5" value="Colelitiasis"/>
-                <StringItem index="6" value="&#xfa;lcera"/>
+                <StringItem index="6" value="&#xda;lcera"/>
                 <StringItem index="7" value="Hepatitis"/>
                 <StringItem index="8" value="P&#xf3;lipos"/>
-                <StringItem index="9" value="otros"/>
+                <StringItem index="9" value="Otros"/>
               </StringArray>
             </Property>
             <Property name="name" type="java.lang.String" value="Cancer" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbGastrointestinalesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -322,17 +328,21 @@
         <Component class="javax.swing.JComboBox" name="cbMentales">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
+              <StringArray count="7">
                 <StringItem index="0" value="Seleccione"/>
                 <StringItem index="1" value="Esquizofrenia"/>
                 <StringItem index="2" value="Ansiedad"/>
                 <StringItem index="3" value="Depresi&#xf3;n"/>
                 <StringItem index="4" value="Alzh&#xe9;imer"/>
                 <StringItem index="5" value="Transtornos Alimenticios"/>
+                <StringItem index="6" value="Otros"/>
               </StringArray>
             </Property>
             <Property name="name" type="java.lang.String" value="Cancer" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbMentalesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbCancer">
           <Properties>
@@ -354,6 +364,9 @@
             </Property>
             <Property name="name" type="java.lang.String" value="Cancer" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbCancerActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -381,6 +394,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbNeurologicasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbPulmonares">
           <Properties>
@@ -394,6 +410,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbPulmonaresActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel21">
           <Properties>
@@ -411,6 +430,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbRenalesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -429,44 +451,58 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbAdiccionesActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txtEnfermedadesGastrointestinales">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="txtEnfermedadesMentales">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="txtEnfermedadesNeurologicas">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnfermedadesNeurologicasActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEnfermedadesMusculoesqueleticas">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="txtEnfermedadesPulmonares">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
+        <Component class="javax.swing.JTextField" name="txtEnfermedadesRenales">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField6">
+        <Component class="javax.swing.JTextField" name="txtCancer">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField7">
+        <Component class="javax.swing.JTextField" name="txtAdicciones">
           <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField8">
-          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -492,7 +528,7 @@
                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="cbCardiopatia" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="tfCardiopatia" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="txtCardiopatia" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -502,7 +538,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="tfCardiopatia" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCardiopatia" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="cbCardiopatia" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jlCardiopatía" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="chbPresionAlta" alignment="2" min="-2" max="-2" attributes="0"/>
@@ -541,8 +577,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbCardiopatiaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfCardiopatia">
+        <Component class="javax.swing.JTextField" name="txtCardiopatia">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -581,7 +618,7 @@
                   <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                   <Component id="cbEnfTiroides" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="tfTiroides" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="txtTiroides" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -596,7 +633,7 @@
                       <Component id="chbDislipidemia" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jlEnfTiroides" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="cbEnfTiroides" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfTiroides" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTiroides" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -650,16 +687,18 @@
         <Component class="javax.swing.JComboBox" name="cbEnfTiroides">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
+              <StringArray count="5">
                 <StringItem index="0" value="Seleccione"/>
                 <StringItem index="1" value="Hipotiroidismo"/>
                 <StringItem index="2" value="Hipertiroidismo"/>
                 <StringItem index="3" value="Tiroiditis"/>
                 <StringItem index="4" value="Otros"/>
-                <StringItem index="5" value=" "/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbEnfTiroidesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="chbDislipidemia">
           <Properties>
@@ -672,8 +711,9 @@
             <Property name="text" type="java.lang.String" value="Enfermedades de la Tiroides"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfTiroides">
+        <Component class="javax.swing.JTextField" name="txtTiroides">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
