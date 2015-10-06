@@ -25,6 +25,8 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgPadecimientosDiabetes = new javax.swing.ButtonGroup();
+        btgPeso = new javax.swing.ButtonGroup();
         jpOidos = new javax.swing.JPanel();
         chbSordera = new javax.swing.JCheckBox();
         chbVertigo = new javax.swing.JCheckBox();
@@ -62,15 +64,15 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         cbCardiopatia = new javax.swing.JComboBox();
         txtCardiopatia = new javax.swing.JTextField();
         jpMetabolismo = new javax.swing.JPanel();
-        chbDiabetes = new javax.swing.JCheckBox();
-        chbSobrepeso = new javax.swing.JCheckBox();
-        chbPrediabetes = new javax.swing.JCheckBox();
-        chbBajopeso = new javax.swing.JCheckBox();
-        chbObesidad = new javax.swing.JCheckBox();
         cbEnfTiroides = new javax.swing.JComboBox();
         chbDislipidemia = new javax.swing.JCheckBox();
         jlEnfTiroides = new javax.swing.JLabel();
         txtTiroides = new javax.swing.JTextField();
+        rbnPrediabetes = new javax.swing.JRadioButton();
+        rbnDiabetes = new javax.swing.JRadioButton();
+        rbnBajopeso = new javax.swing.JRadioButton();
+        rbnSobrepeso = new javax.swing.JRadioButton();
+        rbnObecidad = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnIngresar = new javax.swing.JButton();
@@ -375,26 +377,6 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
 
         jpMetabolismo.setBorder(javax.swing.BorderFactory.createTitledBorder("Metabolismo"));
 
-        chbDiabetes.setText("Diabetes");
-        chbDiabetes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        chbDiabetes.setIconTextGap(13);
-
-        chbSobrepeso.setText("Sobrepeso");
-        chbSobrepeso.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-
-        chbPrediabetes.setText("Prediabetes");
-        chbPrediabetes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        chbPrediabetes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        chbPrediabetes.setIconTextGap(5);
-
-        chbBajopeso.setText("Bajopeso");
-        chbBajopeso.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        chbBajopeso.setIconTextGap(19);
-
-        chbObesidad.setText("Obecidad");
-        chbObesidad.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        chbObesidad.setIconTextGap(19);
-
         cbEnfTiroides.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Hipotiroidismo", "Hipertiroidismo", "Tiroiditis", "Otros" }));
         cbEnfTiroides.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -404,11 +386,53 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
 
         chbDislipidemia.setText("Dislipidemia");
         chbDislipidemia.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        chbDislipidemia.setIconTextGap(8);
+        chbDislipidemia.setInheritsPopupMenu(true);
 
         jlEnfTiroides.setText("Enfermedades de la Tiroides");
 
         txtTiroides.setEditable(false);
         txtTiroides.setEnabled(false);
+
+        btgPadecimientosDiabetes.add(rbnPrediabetes);
+        rbnPrediabetes.setText("Prediabetes");
+        rbnPrediabetes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        rbnPrediabetes.setIconTextGap(12);
+        rbnPrediabetes.setInheritsPopupMenu(true);
+        rbnPrediabetes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbnPrediabetesActionPerformed(evt);
+            }
+        });
+
+        btgPadecimientosDiabetes.add(rbnDiabetes);
+        rbnDiabetes.setText("Diabetes");
+        rbnDiabetes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        rbnDiabetes.setIconTextGap(18);
+        rbnDiabetes.setInheritsPopupMenu(true);
+
+        btgPeso.add(rbnBajopeso);
+        rbnBajopeso.setText("Bajopeso");
+        rbnBajopeso.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        rbnBajopeso.setIconTextGap(24);
+        rbnBajopeso.setInheritsPopupMenu(true);
+        rbnBajopeso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbnBajopesoActionPerformed(evt);
+            }
+        });
+
+        btgPeso.add(rbnSobrepeso);
+        rbnSobrepeso.setText("Sobrepeso");
+        rbnSobrepeso.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        rbnSobrepeso.setIconTextGap(9);
+        rbnSobrepeso.setInheritsPopupMenu(true);
+
+        btgPeso.add(rbnObecidad);
+        rbnObecidad.setText("Obecidad");
+        rbnObecidad.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        rbnObecidad.setIconTextGap(17);
+        rbnObecidad.setInheritsPopupMenu(true);
 
         javax.swing.GroupLayout jpMetabolismoLayout = new javax.swing.GroupLayout(jpMetabolismo);
         jpMetabolismo.setLayout(jpMetabolismoLayout);
@@ -417,41 +441,43 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMetabolismoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chbBajopeso, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chbPrediabetes, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(39, 39, 39)
+                    .addComponent(rbnPrediabetes)
+                    .addComponent(rbnBajopeso))
+                .addGap(36, 36, 36)
                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chbSobrepeso, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chbDiabetes, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(52, 52, 52)
+                    .addComponent(rbnDiabetes)
+                    .addComponent(rbnSobrepeso))
+                .addGap(36, 36, 36)
                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chbObesidad, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chbDislipidemia, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(88, 88, 88)
-                .addComponent(jlEnfTiroides)
-                .addGap(62, 62, 62)
-                .addComponent(cbEnfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
+                        .addComponent(chbDislipidemia)
+                        .addGap(88, 88, 88)
+                        .addComponent(jlEnfTiroides)
+                        .addGap(62, 62, 62)
+                        .addComponent(cbEnfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addComponent(txtTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))
+                    .addGroup(jpMetabolismoLayout.createSequentialGroup()
+                        .addComponent(rbnObecidad)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jpMetabolismoLayout.setVerticalGroup(
             jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpMetabolismoLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(chbPrediabetes)
-                    .addComponent(chbDiabetes)
                     .addComponent(chbDislipidemia)
                     .addComponent(jlEnfTiroides)
                     .addComponent(cbEnfTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTiroides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbnPrediabetes)
+                    .addComponent(rbnDiabetes))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chbObesidad)
-                        .addComponent(chbSobrepeso))
-                    .addComponent(chbBajopeso))
+                .addGroup(jpMetabolismoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbnBajopeso)
+                    .addComponent(rbnSobrepeso)
+                    .addComponent(rbnObecidad))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -632,6 +658,14 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         txtTiroides.setEditable(estado);
     }//GEN-LAST:event_cbEnfTiroidesActionPerformed
 
+    private void rbnPrediabetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnPrediabetesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbnPrediabetesActionPerformed
+
+    private void rbnBajopesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnBajopesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbnBajopesoActionPerformed
+
     // Este metodo nos retorna el numero de padecimientos seleccionados para su posterior uso
     public void obtenerNumeroPadecimientos()
     { 
@@ -671,13 +705,13 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
             contador++;
         }// fin de if
         
-        if (chbPrediabetes.isSelected())
+        if (rbnPrediabetes.isSelected())
         {
             arreglo[contador] = "Pre-diabetes";
             contador++;
         }// fin de if
         
-        if (chbDiabetes.isSelected())
+        if (rbnDiabetes.isSelected())
         {
             arreglo[contador] = "Diabetes";
             contador++;
@@ -689,19 +723,19 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
             contador++;
         }// fin de if
         
-        if (chbBajopeso.isSelected())
+        if (rbnBajopeso.isSelected())
         {
             arreglo[contador] = "Bajo peso";
             contador++;
         }// fin de if
         
-        if (chbSobrepeso.isSelected())
+        if (rbnSobrepeso.isSelected())
         {
             arreglo[contador] = "Sobre peso";
             contador++;
         }// fin de if
         
-        if (chbObesidad.isSelected())
+        if (rbnObecidad.isSelected())
         {
             arreglo[contador] = "Obesidad";
             contador++;
@@ -848,6 +882,8 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgPadecimientosDiabetes;
+    private javax.swing.ButtonGroup btgPeso;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JComboBox cbAdicciones;
@@ -861,14 +897,9 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     private javax.swing.JComboBox cbPulmonares;
     private javax.swing.JComboBox cbRenales;
     private javax.swing.JCheckBox chbAstigmatismo;
-    private javax.swing.JCheckBox chbBajopeso;
-    private javax.swing.JCheckBox chbDiabetes;
     private javax.swing.JCheckBox chbDislipidemia;
     private javax.swing.JCheckBox chbMiopia;
-    private javax.swing.JCheckBox chbObesidad;
-    private javax.swing.JCheckBox chbPrediabetes;
     private javax.swing.JCheckBox chbPresionAlta;
-    private javax.swing.JCheckBox chbSobrepeso;
     private javax.swing.JCheckBox chbSordera;
     private javax.swing.JCheckBox chbVertigo;
     private javax.swing.JLabel jLabel10;
@@ -887,6 +918,11 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     private javax.swing.JPanel jpMetabolismo;
     private javax.swing.JPanel jpOidos;
     private javax.swing.JPanel jpOjos;
+    private javax.swing.JRadioButton rbnBajopeso;
+    private javax.swing.JRadioButton rbnDiabetes;
+    private javax.swing.JRadioButton rbnObecidad;
+    private javax.swing.JRadioButton rbnPrediabetes;
+    private javax.swing.JRadioButton rbnSobrepeso;
     private javax.swing.JTextField txtAdicciones;
     private javax.swing.JTextField txtCancer;
     private javax.swing.JTextField txtCardiopatia;
