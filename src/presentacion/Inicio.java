@@ -186,7 +186,6 @@ public class Inicio extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
         btnLabGabineteAdjuntarExamen = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        tabInventario = new javax.swing.JTabbedPane();
         tapAgenda = new javax.swing.JTabbedPane();
         agendaPanelPrincipal = new javax.swing.JPanel();
         agendaPanelCalendario = new javax.swing.JPanel();
@@ -195,6 +194,7 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         agendaTabla = new javax.swing.JTable();
         tabReportes = new javax.swing.JTabbedPane();
+        tabInventario = new javax.swing.JTabbedPane();
         tabAdministrador = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -1263,7 +1263,6 @@ public class Inicio extends javax.swing.JFrame {
         tabExpediente.addTab("Consulta Medica", tabConsultaMedica);
 
         panelPrincipal.addTab("Expediente", tabExpediente);
-        panelPrincipal.addTab("Inventario", tabInventario);
 
         agendaPanelCalendario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calendario", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
 
@@ -1399,6 +1398,7 @@ public class Inicio extends javax.swing.JFrame {
 
         panelPrincipal.addTab("Agenda", tapAgenda);
         panelPrincipal.addTab("Reportes", tabReportes);
+        panelPrincipal.addTab("Inventario", tabInventario);
         panelPrincipal.addTab("Administrador", tabAdministrador);
 
         jMenuBar1.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
@@ -1690,12 +1690,17 @@ public class Inicio extends javax.swing.JFrame {
             entidad.Cita nuevaCita = new entidad.Cita();
             
             // la siguiente linea es para probar si esta ingresando correctamente el estado
-            nuevaCita.setEstado(EstadoCitaEnum.Pendiente);
-            nuevaCita.setFechaConsulta(fechaSeleccionada);
-            nuevaCita.setHora(horaActividad);
-            nuevaCita.setAnotaciones(actividad);
-            negocio.NegocioCita insertarCita = new negocio.NegocioCita();
-            insertarCita.insertarCita(nuevaCita);
+            if(!actividad.isEmpty()){
+                nuevaCita.setEstado(EstadoCitaEnum.Pendiente);
+                nuevaCita.setFechaConsulta(fechaSeleccionada);
+                nuevaCita.setHora(horaActividad);
+                nuevaCita.setAnotaciones(actividad);
+                negocio.NegocioCita insertarCita = new negocio.NegocioCita();
+                insertarCita.insertarCita(nuevaCita);
+            }
+            else
+                JOptionPane.showMessageDialog(this, "Nada que insertar");
+           
         }
         catch(NullPointerException e){
         }
