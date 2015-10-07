@@ -1941,7 +1941,7 @@ public class Inicio extends javax.swing.JFrame {
                         "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else
-            JOptionPane.showMessageDialog(this, "No selecciono ninguna fila", 
+            JOptionPane.showMessageDialog(this, "No seleccionó ninguna fila", 
                                         "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_popItemNuevaActividadActionPerformed
 
@@ -1991,7 +1991,13 @@ public class Inicio extends javax.swing.JFrame {
         java.util.LinkedList<String> listAnotaciones = new java.util.LinkedList<>();
         while(rs.next()){
             listHoraConsulta.add(rs.getString("horaConsulta"));
-            listAnotaciones.add(rs.getString("anotaciones"));
+            switch(Integer.parseInt(rs.getString("estado"))){
+                case 1:listAnotaciones.add(rs.getString("anotaciones")+" Pendiente");
+                    break;
+                case 2: listAnotaciones.add(rs.getString("anotaciones")+" Completa");
+                    break;
+            }
+            
         }
         rs.close();
         for(String appointment:listHoraConsulta){
