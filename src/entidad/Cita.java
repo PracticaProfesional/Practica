@@ -1,5 +1,7 @@
 package entidad;
 
+import entidad.enums.EstadoCitaEnum;
+
 /**
  *
  * @author cooper15
