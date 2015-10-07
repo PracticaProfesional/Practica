@@ -14,7 +14,7 @@ public class OperacionesPaciente {
         
         String datosPaciente = "'"+objetoPaciente.getNombrePaciente()+"'"+","+"'"+objetoPaciente.getApellido1()+"'"+","
                                 +"'"+objetoPaciente.getApellido2()+"'"+","
-                                +"'"+objetoPaciente.getSexo()+"'"+","+"'"+objetoPaciente.getFechaNacimiento()+"'"+","
+                                +"'"+objetoPaciente.getSexo().getSexo()+"'"+","+"'"+objetoPaciente.getFechaNacimiento()+"'"+","
                                 +"'"+objetoPaciente.getNacionalidad()+"'"+","+"'"+objetoPaciente.getIdentificacion()+"'"+","
                                 +"'"+objetoPaciente.getTelefono()+"'"+","+"'"+objetoPaciente.getDireccion1()+"'"+","
                                 +"'"+objetoPaciente.getDireccion2()+"'"+","+"'"+objetoPaciente.getEmail()+"'";
@@ -25,7 +25,7 @@ public class OperacionesPaciente {
         }// fin de try
         catch (SQLException e)
         {
-            
+            System.out.println(e.getErrorCode() + e.getMessage());
         }// fin de catch
     }// fin del metodo insertarPaciente
     public java.sql.ResultSet obtenerPacientesConsulta(String date){
