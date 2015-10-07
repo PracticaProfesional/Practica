@@ -1927,7 +1927,12 @@ public class Inicio extends javax.swing.JFrame {
         final int selectedRow = agendaTabla.getSelectedRow();
         if(selectedRow != -1){
             String currentActivity = agendaTabla.getValueAt(selectedRow, 1).toString();
-            insertarNuevaActividad();
+            if(currentActivity.isEmpty())
+                insertarNuevaActividad();
+            else
+                JOptionPane.showMessageDialog(this, "Ya existe una actividad, "
+                        + "debe borrarla antes de asignar un nuevo espacio",
+                        "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else
             JOptionPane.showMessageDialog(this, "No selecciono ninguna fila","Error", JOptionPane.ERROR_MESSAGE);
