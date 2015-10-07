@@ -6,7 +6,7 @@
 package presentacion;
 
 
-import entidad.EstadoCitaEnum;
+import entidad.enums.EstadoCitaEnum;
 import entidad.ExamenFisico;
 import entidad.SignosVitales;
 import java.sql.SQLException;
