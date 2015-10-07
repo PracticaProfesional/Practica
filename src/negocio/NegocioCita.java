@@ -22,4 +22,9 @@ public class NegocioCita
         OperacionesCita operacionesCita = new OperacionesCita();
         return operacionesCita.obtenerFechaConsulta(fecha);
     }
+    
+    public void actualizarCita(Cita actCita){
+        OperacionesCita operacionesCita = new OperacionesCita();
+        operacionesCita.actualizarCita(actCita);
+    }
 }// fin de la clase NegocioCita
