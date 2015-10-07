@@ -48,9 +48,8 @@ public class Inicio extends javax.swing.JFrame {
 
         popMenuAccionesActividad = new javax.swing.JPopupMenu();
         popItemNuevaActividad = new javax.swing.JMenuItem();
-        popSubMenuEstado = new javax.swing.JMenu();
-        popItemCompletada = new javax.swing.JMenuItem();
-        popItemCancelada = new javax.swing.JMenuItem();
+        popItemCompletarActividad = new javax.swing.JMenuItem();
+        popItemEliminarActividad = new javax.swing.JMenuItem();
         panelPrincipal = new javax.swing.JTabbedPane();
         tabExpediente = new javax.swing.JTabbedPane();
         tabBuscarPaciente = new javax.swing.JPanel();
@@ -215,15 +214,11 @@ public class Inicio extends javax.swing.JFrame {
         });
         popMenuAccionesActividad.add(popItemNuevaActividad);
 
-        popSubMenuEstado.setText("Cambiar estado");
+        popItemCompletarActividad.setText("Completa");
+        popMenuAccionesActividad.add(popItemCompletarActividad);
 
-        popItemCompletada.setText("Completada");
-        popSubMenuEstado.add(popItemCompletada);
-
-        popItemCancelada.setText("Cancelada");
-        popSubMenuEstado.add(popItemCancelada);
-
-        popMenuAccionesActividad.add(popSubMenuEstado);
+        popItemEliminarActividad.setText("Eliminar");
+        popMenuAccionesActividad.add(popItemEliminarActividad);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Gestion Oficina de Salud");
@@ -1669,7 +1664,7 @@ public class Inicio extends javax.swing.JFrame {
     
    
     private void agendaTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendaTablaMouseClicked
-        
+    
     }//GEN-LAST:event_agendaTablaMouseClicked
 
     private void insertarNuevaActividad() {
@@ -1929,7 +1924,13 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
 
     private void popItemNuevaActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemNuevaActividadActionPerformed
-       insertarNuevaActividad();
+        final int selectedRow = agendaTabla.getSelectedRow();
+        if(selectedRow != -1){
+            String currentActivity = agendaTabla.getValueAt(selectedRow, 1).toString();
+            insertarNuevaActividad();
+        }
+        else
+            JOptionPane.showMessageDialog(this, "No selecciono ninguna fila","Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_popItemNuevaActividadActionPerformed
     private String obtenerIdExpedienteMedico(){
         negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
@@ -2152,11 +2153,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel panelBtnBuscarPaciente;
     private javax.swing.JTabbedPane panelConsultaMedica;
     private javax.swing.JTabbedPane panelPrincipal;
-    private javax.swing.JMenuItem popItemCancelada;
-    private javax.swing.JMenuItem popItemCompletada;
+    private javax.swing.JMenuItem popItemCompletarActividad;
+    private javax.swing.JMenuItem popItemEliminarActividad;
     private javax.swing.JMenuItem popItemNuevaActividad;
     private javax.swing.JPopupMenu popMenuAccionesActividad;
-    private javax.swing.JMenu popSubMenuEstado;
     private javax.swing.JTabbedPane tabAdministrador;
     private javax.swing.JPanel tabBuscarPaciente;
     private javax.swing.JPanel tabConsultaMedica;
