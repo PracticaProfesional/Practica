@@ -37,4 +37,18 @@ public class OperacionesCita
         rs = estado.executeQuery("Call ConsultarFechaCita("+fecha+")");
         return rs;
     }
+    
+    public void actualizarCita(Cita actCita){
+        objetoDeConexion = new Conexion();
+        String datosCita = "'" + actCita.getEstado() +"'" + ","
+                           + "'" + actCita.getFechaConsulta() +"'" +","
+                           + "'" + actCita.getHora() + "'";
+        try{     
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call ActualizarCita("+datosCita+")");
+        }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode() + e.getMessage());
+        }
+    }
 }// fin de la clase OperacionesCita
