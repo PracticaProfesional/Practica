@@ -1,5 +1,7 @@
 package entidad;
 
+import entidad.enums.SexoEnum;
+
 /**
  *
  * @author cooper15
@@ -15,17 +17,16 @@ public class Paciente {
    private String nacionalidad;
    private String direccion1;
    private String direccion2;
-   private String sexo;         //Masculino/Femenino
+   entidad.enums.SexoEnum sexo;        //Masculino/Femenino
 
-    public String getSexo() {
+    public SexoEnum getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(SexoEnum sexo) {
         this.sexo = sexo;
     }
-   
-   
+
     public String getDireccion1() {
         return direccion1;
     }
