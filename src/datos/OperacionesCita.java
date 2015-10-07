@@ -10,8 +10,7 @@ public class OperacionesCita
 {
     private Conexion objetoDeConexion;
     private Statement estado;
-    
-    
+ 
     public void insertarCita(Cita objetoCita) 
     {
         objetoDeConexion = new Conexion();
@@ -26,7 +25,7 @@ public class OperacionesCita
             estado.executeQuery("Call InsertarCita("+datosCita+")");
        }
        catch(SQLException e){
-           e.printStackTrace();
+           System.out.println(e.getErrorCode() + e.getMessage());
        }
     }// fin del metodo insertarCita
         
