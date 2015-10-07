@@ -1,9 +1,7 @@
 package negocio;
 import entidad.AntecedentesPersonales;
 import datos.OperacionesAntecedentesPersonales;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 /**
  *
  * @author cooper15
