@@ -1708,11 +1708,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void agendaCalendarioOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_agendaCalendarioOnSelectionChange
         limpiaAgenda();
-        try{
-            cargarActividadesAgenda();
-        }
-        catch(java.sql.SQLException e){
-        }
+        cargarActividadesAgenda();
     }//GEN-LAST:event_agendaCalendarioOnSelectionChange
 
     private void limpiaAgenda() {
@@ -1779,11 +1775,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultaMedicaActionPerformed
 
     private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
-         try {
-            cargarActividadesAgenda();
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        cargarActividadesAgenda();
     }//GEN-LAST:event_panelPrincipalMouseClicked
 
     private void textBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBuscarPacienteActionPerformed
@@ -1964,14 +1956,14 @@ public class Inicio extends javax.swing.JFrame {
         else
             JOptionPane.showMessageDialog(this, "No seleccionó ninguna fila",
                                             "Error", JOptionPane.ERROR_MESSAGE);
-        
+        cargarActividadesAgenda();
     }//GEN-LAST:event_popItemCompletarActividadActionPerformed
     private String obtenerIdExpedienteMedico(){
         negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
         String idExp = consExp.obtenerIdExpedienteMedico(idPaciente);
         return idExp;
     }
-    private void cargarActividadesAgenda() throws SQLException{
+    private void cargarActividadesAgenda(){
         // DEPURAR CODIGO.
         String fechaSeleccionada;
         int year, month, day;
@@ -1986,26 +1978,33 @@ public class Inicio extends javax.swing.JFrame {
                                   "14:00", "14:30","15:00","15:30", "16:00",
                                   "16:30", "17:00","17:30",  "20:00", "21:00"};
         negocio.NegocioCita obtenerCitas = new negocio.NegocioCita();
-        java.sql.ResultSet rs = obtenerCitas.obtenerFechaConsulta(fechaSeleccionada);
-        java.util.LinkedList<String> listHoraConsulta = new java.util.LinkedList<>();
-        java.util.LinkedList<String> listAnotaciones = new java.util.LinkedList<>();
-        while(rs.next()){
-            listHoraConsulta.add(rs.getString("horaConsulta"));
-            switch(Integer.parseInt(rs.getString("estado"))){
-                case 1:listAnotaciones.add(rs.getString("anotaciones")+" Pendiente");
-                    break;
-                case 2: listAnotaciones.add(rs.getString("anotaciones")+" Completa");
-                    break;
+        try{
+            java.sql.ResultSet rs = obtenerCitas.obtenerFechaConsulta(fechaSeleccionada);
+            java.util.LinkedList<String> listHoraConsulta = new java.util.LinkedList<>();
+            java.util.LinkedList<String> listAnotaciones = new java.util.LinkedList<>();
+            while(rs.next()){
+                listHoraConsulta.add(rs.getString("horaConsulta"));
+                switch(Integer.parseInt(rs.getString("estado"))){
+                    case 1:listAnotaciones.add(rs.getString("anotaciones")+" Pendiente");
+                        break;
+                    case 2: listAnotaciones.add(rs.getString("anotaciones")+" Completa");
+                        break;
+                }
+
             }
-            
-        }
-        rs.close();
-        for(String appointment:listHoraConsulta){
-            for(int i = 0; i < arregloHoras.length; i++){
-                if(arregloHoras[i].equals(appointment))
-                    agendaTabla.setValueAt(listAnotaciones.removeFirst(), i, 1);
+            rs.close();
+            for(String appointment:listHoraConsulta){
+                for(int i = 0; i < arregloHoras.length; i++){
+                    if(arregloHoras[i].equals(appointment))
+                        agendaTabla.setValueAt(listAnotaciones.removeFirst(), i, 1);
+                }
             }
         }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode() + e.getMessage());
+        }
+        
+       
     }
     private void buscarPaciente(){
         java.util.LinkedList<String> paciente = new java.util.LinkedList<>();
