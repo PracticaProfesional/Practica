@@ -1946,7 +1946,25 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_popItemNuevaActividadActionPerformed
 
     private void popItemCompletarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemCompletarActividadActionPerformed
-       
+        entidad.Cita actCita = new entidad.Cita();
+        int year = agendaCalendario.getCurrent().get(Calendar.YEAR);
+        int month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
+        int day = agendaCalendario.getCurrent().get(Calendar.DAY_OF_MONTH);
+        String fecha = year + "-" + month + "-" + day;
+        String hora;
+        int fila  = agendaTabla.getSelectedRow();
+        if(fila != -1){
+           hora = agendaTabla.getValueAt(fila, 0).toString();
+           actCita.setEstado(EstadoCitaEnum.Completada);
+           actCita.setHora(hora);
+           actCita.setFechaConsulta(fecha);
+           negocio.NegocioCita cita = new negocio.NegocioCita();
+           cita.actualizarCita(actCita);
+        }
+        else
+            JOptionPane.showMessageDialog(this, "No seleccionó ninguna fila",
+                                            "Error", JOptionPane.ERROR_MESSAGE);
+        
     }//GEN-LAST:event_popItemCompletarActividadActionPerformed
     private String obtenerIdExpedienteMedico(){
         negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
