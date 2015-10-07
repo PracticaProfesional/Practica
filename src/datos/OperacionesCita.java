@@ -40,12 +40,12 @@ public class OperacionesCita
     
     public void actualizarCita(Cita actCita){
         objetoDeConexion = new Conexion();
-        String datosCita = "'" + actCita.getEstado() +"'" + ","
+        String datosCita = "'" + actCita.getEstado().obtenerEstadoNumero() +"'" + ","
                            + "'" + actCita.getFechaConsulta() +"'" +","
                            + "'" + actCita.getHora() + "'";
         try{     
             estado = objetoDeConexion.conectar().createStatement();
-            estado.executeQuery("Call ActualizarCita("+datosCita+")");
+            estado.executeQuery("Call ActualizarEstadoCita("+datosCita+")");
         }
         catch(SQLException e){
             System.out.println(e.getErrorCode() + e.getMessage());
