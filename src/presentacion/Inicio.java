@@ -215,6 +215,11 @@ public class Inicio extends javax.swing.JFrame {
         popMenuAccionesActividad.add(popItemNuevaActividad);
 
         popItemCompletarActividad.setText("Completa");
+        popItemCompletarActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                popItemCompletarActividadActionPerformed(evt);
+            }
+        });
         popMenuAccionesActividad.add(popItemCompletarActividad);
 
         popItemEliminarActividad.setText("Eliminar");
@@ -1935,8 +1940,13 @@ public class Inicio extends javax.swing.JFrame {
                         "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else
-            JOptionPane.showMessageDialog(this, "No selecciono ninguna fila","Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No selecciono ninguna fila", 
+                                        "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_popItemNuevaActividadActionPerformed
+
+    private void popItemCompletarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemCompletarActividadActionPerformed
+       
+    }//GEN-LAST:event_popItemCompletarActividadActionPerformed
     private String obtenerIdExpedienteMedico(){
         negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
         String idExp = consExp.obtenerIdExpedienteMedico(idPaciente);
