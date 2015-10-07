@@ -1735,7 +1735,8 @@ public class Inicio extends javax.swing.JFrame {
             rs = opExpediente.obtenerExpedientePaciente();
             DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
             this.tableBuscarPaciente.setModel(nuevoModeloTabla);
-            String [] nombreColumnas = {"Id", "Cedula", "Nombre", "P. Apellido", "S. Apellido"};
+            String [] nombreColumnas = {"Id", "Cédula", "Nombre",
+                                        "Primer Apellido", "Segundo Apellido"};
             for(int i = 0; i < 5; i++)
                 nuevoModeloTabla.addColumn(nombreColumnas[i]);
             while(rs.next()){
