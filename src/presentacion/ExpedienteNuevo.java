@@ -22,6 +22,7 @@ import negocio.NegocioAntecedentesPersPad;
 import negocio.NegocioAntecedenteFamiliar;
 import negocio.NegocioAntecedentesFamPad;
 import entidad.AntecedentesFamPad;
+import entidad.enums.SexoEnum;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -913,8 +914,12 @@ jPanel4Layout.setHorizontalGroup(
         nuevoPaciente.setNombrePaciente(textNombre.getText());
         nuevoPaciente.setApellido1(textApellido1.getText());
         nuevoPaciente.setApellido2(textApellido2.getText());
-        nuevoPaciente.setSexo(textSexo.getSelectedItem().toString());
-        
+        switch(textSexo.getSelectedIndex()){
+            case 0: nuevoPaciente.setSexo(SexoEnum.MASCULINO);
+                break;
+            case 1: nuevoPaciente.setSexo(SexoEnum.FEMENINO);
+                break;
+        }
         try 
         {
             nuevoPaciente.setTelefono(ultimoId.obtenerUltimoId("telefono"));
@@ -1019,7 +1024,7 @@ jPanel4Layout.setHorizontalGroup(
         return false;
     }
     private boolean validaAntecedentesFamiliares(){
-        return false;
+        return true;
     }
 
     private boolean regExValidation(String validador, JTextField campo) {
