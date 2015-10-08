@@ -154,12 +154,12 @@ END $
 
 
 DELIMITER $
-CREATE PROCEDURE InsertarExpedienteMedico (in idPac int, in idExaMed int,
+CREATE PROCEDURE InsertarExpedienteMedico (in idPac int,
 		in idAntPer int, in idAntFam int)
 BEGIN
-	insert into expedientemedico (idPaciente, idExamenMedico,
+	insert into expedientemedico (idPaciente,
 			idAntecedentesPersonales, idAntecedentesFamiliares)
-	values (idPac, idExaMed, idAntPer, idAntFam);
+	values (idPac, idAntPer, idAntFam);
 END $
 
 
