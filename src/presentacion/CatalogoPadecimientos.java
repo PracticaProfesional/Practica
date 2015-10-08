@@ -430,7 +430,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         rbnSobrepeso.setInheritsPopupMenu(true);
 
         btgPeso.add(rbnObecidad);
-        rbnObecidad.setText("Obecidad");
+        rbnObecidad.setText("Obesidad");
         rbnObecidad.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         rbnObecidad.setIconTextGap(17);
         rbnObecidad.setInheritsPopupMenu(true);
@@ -583,74 +583,6 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         //cargarIdsAArreglo();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
-    private void cbMentalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMentalesActionPerformed
-        
-        boolean estado;
-        estado = seleccionaCombo(cbMentales);
-        txtEnfermedadesMentales.setEnabled(estado);
-        txtEnfermedadesMentales.setEditable(estado);
-    }//GEN-LAST:event_cbMentalesActionPerformed
-
-    private void txtEnfermedadesNeurologicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnfermedadesNeurologicasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEnfermedadesNeurologicasActionPerformed
-
-    private void cbNeurologicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNeurologicasActionPerformed
-        
-        boolean estado;
-        estado = seleccionaCombo(cbNeurologicas);
-        txtEnfermedadesNeurologicas.setEnabled(estado);
-        txtEnfermedadesNeurologicas.setEditable(estado);
-    }//GEN-LAST:event_cbNeurologicasActionPerformed
-
-    private void cbGastrointestinalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbGastrointestinalesActionPerformed
-        
-        boolean estado;
-        estado = seleccionaCombo(cbGastrointestinales);
-        txtEnfermedadesGastrointestinales.setEnabled(estado);
-        txtEnfermedadesGastrointestinales.setEditable(estado);
-    }//GEN-LAST:event_cbGastrointestinalesActionPerformed
-
-    private void cbMusculoEsqueleticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMusculoEsqueleticasActionPerformed
-        
-        boolean estado;
-        estado = seleccionaCombo(cbMusculoEsqueleticas);
-        txtEnfermedadesMusculoesqueleticas.setEnabled(estado);
-        txtEnfermedadesMusculoesqueleticas.setEditable(estado);
-    }//GEN-LAST:event_cbMusculoEsqueleticasActionPerformed
-
-    private void cbPulmonaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPulmonaresActionPerformed
-        
-        boolean estado;
-        estado = seleccionaCombo(cbPulmonares);
-        txtEnfermedadesPulmonares.setEnabled(estado);
-        txtEnfermedadesPulmonares.setEditable(estado);
-    }//GEN-LAST:event_cbPulmonaresActionPerformed
-
-    private void cbRenalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRenalesActionPerformed
-        
-        boolean estado;
-        estado = seleccionaCombo(cbRenales);
-        txtEnfermedadesRenales.setEnabled(estado);
-        txtEnfermedadesRenales.setEditable(estado);
-    }//GEN-LAST:event_cbRenalesActionPerformed
-
-    private void cbCancerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCancerActionPerformed
-        
-        boolean estado;
-        estado = seleccionaCombo(cbCancer);
-        txtCancer.setEnabled(estado);
-        txtCancer.setEditable(estado);
-    }//GEN-LAST:event_cbCancerActionPerformed
-
-    private void cbAdiccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAdiccionesActionPerformed
-        
-        boolean estado;
-        estado = seleccionaCombo(cbAdicciones);
-        txtAdicciones.setEnabled(estado);
-        txtAdicciones.setEditable(estado);
-    }//GEN-LAST:event_cbAdiccionesActionPerformed
-
     private void cbEnfTiroidesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEnfTiroidesActionPerformed
         
         boolean estado;
@@ -666,6 +598,74 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     private void rbnBajopesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnBajopesoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbnBajopesoActionPerformed
+
+    private void txtEnfermedadesNeurologicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnfermedadesNeurologicasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnfermedadesNeurologicasActionPerformed
+
+    private void cbAdiccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAdiccionesActionPerformed
+
+        boolean estado;
+        estado = seleccionaCombo(cbAdicciones);
+        txtAdicciones.setEnabled(estado);
+        txtAdicciones.setEditable(estado);
+    }//GEN-LAST:event_cbAdiccionesActionPerformed
+
+    private void cbCancerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCancerActionPerformed
+
+        boolean estado;
+        estado = seleccionaCombo(cbCancer);
+        txtCancer.setEnabled(estado);
+        txtCancer.setEditable(estado);
+    }//GEN-LAST:event_cbCancerActionPerformed
+
+    private void cbRenalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRenalesActionPerformed
+
+        boolean estado;
+        estado = seleccionaCombo(cbRenales);
+        txtEnfermedadesRenales.setEnabled(estado);
+        txtEnfermedadesRenales.setEditable(estado);
+    }//GEN-LAST:event_cbRenalesActionPerformed
+
+    private void cbPulmonaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPulmonaresActionPerformed
+
+        boolean estado;
+        estado = seleccionaCombo(cbPulmonares);
+        txtEnfermedadesPulmonares.setEnabled(estado);
+        txtEnfermedadesPulmonares.setEditable(estado);
+    }//GEN-LAST:event_cbPulmonaresActionPerformed
+
+    private void cbMusculoEsqueleticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMusculoEsqueleticasActionPerformed
+
+        boolean estado;
+        estado = seleccionaCombo(cbMusculoEsqueleticas);
+        txtEnfermedadesMusculoesqueleticas.setEnabled(estado);
+        txtEnfermedadesMusculoesqueleticas.setEditable(estado);
+    }//GEN-LAST:event_cbMusculoEsqueleticasActionPerformed
+
+    private void cbGastrointestinalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbGastrointestinalesActionPerformed
+
+        boolean estado;
+        estado = seleccionaCombo(cbGastrointestinales);
+        txtEnfermedadesGastrointestinales.setEnabled(estado);
+        txtEnfermedadesGastrointestinales.setEditable(estado);
+    }//GEN-LAST:event_cbGastrointestinalesActionPerformed
+
+    private void cbNeurologicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNeurologicasActionPerformed
+
+        boolean estado;
+        estado = seleccionaCombo(cbNeurologicas);
+        txtEnfermedadesNeurologicas.setEnabled(estado);
+        txtEnfermedadesNeurologicas.setEditable(estado);
+    }//GEN-LAST:event_cbNeurologicasActionPerformed
+
+    private void cbMentalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMentalesActionPerformed
+
+        boolean estado;
+        estado = seleccionaCombo(cbMentales);
+        txtEnfermedadesMentales.setEnabled(estado);
+        txtEnfermedadesMentales.setEditable(estado);
+    }//GEN-LAST:event_cbMentalesActionPerformed
 
     // Este metodo nos retorna el numero de padecimientos seleccionados para su posterior uso
     public void obtenerNumeroPadecimientos()
