@@ -8,7 +8,8 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
 {
     String arreglo [] = new String [21];
     private int contador;  // contador de los padecimientos seleccionados
-    
+    NegocioPadecimiento objetoPadecimiento = new NegocioPadecimiento(); /* objeto creado para llamar a sus metodos
+                                                                         desde distintos metodos */
     public CatalogoPadecimientos(java.awt.Dialog parent, boolean modal) 
     {
         super(parent, modal);
@@ -702,6 +703,13 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         if (cbCardiopatia.getSelectedIndex() != 0)  // combo box
         {
             arreglo[contador] = cbCardiopatia.getSelectedItem().toString();
+            
+            if (arreglo[contador].equals("Otros"))
+            {
+                objetoPadecimiento.consultarOInsertarPadecimiento(txtCardiopatia.getText());
+                arreglo[contador] = txtCardiopatia.getText();
+            }// fin del if
+            
             contador++;
         }// fin de if
         
@@ -744,54 +752,117 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         if (cbEnfTiroides.getSelectedIndex() != 0)
         {
             arreglo[contador] = cbEnfTiroides.getSelectedItem().toString();
+            
+            if (arreglo[contador].equals("Otros"))
+            {
+                objetoPadecimiento.consultarOInsertarPadecimiento(txtTiroides.getText());
+                arreglo[contador] = txtTiroides.getText();
+            }// fin del if
+            
             contador++;
         }// fin de if
         
         if (cbMentales.getSelectedIndex() != 0)
         {
             arreglo[contador] = cbMentales.getSelectedItem().toString();
+            
+            if (arreglo[contador].equals("Otros"))
+            {
+                objetoPadecimiento.consultarOInsertarPadecimiento(txtEnfermedadesMentales.getText());
+                arreglo[contador] = txtEnfermedadesMentales.getText();
+            }// fin del if
+            
             contador++;
         }// fin de if
         
         if (cbNeurologicas.getSelectedIndex() != 0)
         {
             arreglo[contador] = cbNeurologicas.getSelectedItem().toString();
+            
+            if (arreglo[contador].equals("Otros"))
+            {
+                objetoPadecimiento.consultarOInsertarPadecimiento(txtEnfermedadesNeurologicas.getText());
+                arreglo[contador] = txtEnfermedadesNeurologicas.getText();
+            }// fin del if
+            
             contador++;
         }// fin de if
         
         if (cbGastrointestinales.getSelectedIndex() != 0)
         {
             arreglo[contador] = cbGastrointestinales.getSelectedItem().toString();
+            
+            if (arreglo[contador].equals("Otros"))
+            {
+                objetoPadecimiento.consultarOInsertarPadecimiento(txtEnfermedadesGastrointestinales.getText());
+                arreglo[contador] = txtEnfermedadesGastrointestinales.getText();
+            }// fin del if
+            
             contador++;
         }// fin de if
         
         if (cbMusculoEsqueleticas.getSelectedIndex() != 0)
         {
             arreglo[contador] = cbMusculoEsqueleticas.getSelectedItem().toString();
+            
+            if (arreglo[contador].equals("Otros"))
+            {
+                objetoPadecimiento.consultarOInsertarPadecimiento(txtEnfermedadesMusculoesqueleticas.getText());
+                arreglo[contador] = txtEnfermedadesMusculoesqueleticas.getText();
+            }// fin del if
+            
             contador++;
         }// fin de if
         
         if (cbPulmonares.getSelectedIndex() != 0)
         {
             arreglo[contador] = cbPulmonares.getSelectedItem().toString();
+            
+            if (arreglo[contador].equals("Otros"))
+            {
+                objetoPadecimiento.consultarOInsertarPadecimiento(txtEnfermedadesPulmonares.getText());
+                arreglo[contador] = txtEnfermedadesPulmonares.getText();
+            }// fin del if
+            
             contador++;
         }// fin de if
         
         if (cbRenales.getSelectedIndex() != 0)
         {
             arreglo[contador] = cbRenales.getSelectedItem().toString();
+            
+            if (arreglo[contador].equals("Otros"))
+            {
+                objetoPadecimiento.consultarOInsertarPadecimiento(txtEnfermedadesRenales.getText());
+                arreglo[contador] = txtEnfermedadesRenales.getText();
+            }// fin del if
+            
             contador++;
         }// fin de if
         
         if (cbCancer.getSelectedIndex() != 0)
         {
             arreglo[contador] = cbCancer.getSelectedItem().toString();
+            
+            if (arreglo[contador].equals("Otros"))
+            {
+                objetoPadecimiento.consultarOInsertarPadecimiento(txtCancer.getText());
+                arreglo[contador] = txtCancer.getText();
+            }// fin del if
+            
             contador++;
         }// fin de if
         
         if (cbAdicciones.getSelectedIndex() != 0)
         {
             arreglo[contador] = cbAdicciones.getSelectedItem().toString();
+            
+            if (arreglo[contador].equals("Otros"))
+            {
+                objetoPadecimiento.consultarOInsertarPadecimiento(txtAdicciones.getText());
+                arreglo[contador] = txtAdicciones.getText();
+            }// fin del if
+            
             contador++;
         }// fin de if
         
@@ -802,7 +873,6 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     public int [] cargarIdsAArreglo()
     {
         int arregloIds [] = new int [contador];
-        NegocioPadecimiento objetoPadecimiento = new NegocioPadecimiento();
         
         for (int i = 0; i < arregloIds.length; i++)
         {

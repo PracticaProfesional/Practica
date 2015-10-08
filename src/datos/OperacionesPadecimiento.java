@@ -42,10 +42,11 @@ public class OperacionesPadecimiento
         {
             estado = objetoDeConexion.conectar().createStatement();
             ResultSet rs = estado.executeQuery("Call ConsultarIdPadecimiento ('" + nombrePadecimiento + "')");
-       
+            
             if (rs.next())
                 id = rs.getInt("id");
-        
+            
+            estado.close();
             return id;
         }// fin del try
         catch (SQLException e)
@@ -54,5 +55,24 @@ public class OperacionesPadecimiento
             return 0;
         }// fin de catach
     }// fin del metodo obtenerId
+    
+    // El siguiente metodo llama a un procedimiento almacenado para insertar un padecimiento siempre y cuando
+    // el padecimiento ya no se encuentre ingresado
+    public void consultarOInsertarPadecimiento(String nombrePadecimiento)
+    {
+        objetoDeConexion = new Conexion();
+        
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call ConsultarOInsertarPadecimiento ('" + nombrePadecimiento + "')");
+            estado.close();
+        }// fin del try
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }// fin de catch
+        
+    }// fin del metodo consultarOInsertarPadecimiento
     
 }// fin de la clase OperacionePadecimiento

@@ -20,4 +20,10 @@ public class NegocioPadecimiento
         return operacionesPadecimiento.obtenerId(nombrePadecimiento);
     }// fin del metodo obtenerID
     
+    public void consultarOInsertarPadecimiento(String nombrePadecimiento)
+    {
+        OperacionesPadecimiento operacionesPadecimiento = new OperacionesPadecimiento();
+        operacionesPadecimiento.consultarOInsertarPadecimiento(nombrePadecimiento);
+    }// fin del metodo consultarOInsertarPadecimiento 
+    
 }// fin de la clase NegocioPadecimiento
