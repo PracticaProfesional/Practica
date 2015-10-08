@@ -193,7 +193,9 @@ public class PacientesConsulta extends javax.swing.JDialog {
             
     }//GEN-LAST:event_btnPacientesConsultaAceptarActionPerformed
     private void cargarTablaPacientesConsulta(){
-        String [] nombreColumnas = {"IdConsultaMedica","IdExpediente", "IdPaciente", "Nombre", "P.Apellido", "S.Apellido", "IdSignosVitales"};
+        String [] nombreColumnas = {"IdConsultaMedica","IdExpediente", 
+                                    "IdPaciente", "Nombre", "Primer Apellido",
+                                    "Segundo Apellido", "IdSignosVitales"};
         DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
         tablaPacientesConsulta.setModel(nuevoModeloTabla);
         String fecha = obtenerFechaActual();
