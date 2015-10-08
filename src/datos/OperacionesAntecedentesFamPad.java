@@ -26,6 +26,7 @@ public class OperacionesAntecedentesFamPad
         }
         catch(SQLException e)
         {
+            System.out.println(e.getErrorCode() + e.getMessage());
         }// fin de catch
     }// fin del metodo insertarAntecedentePersPad
 }// fin de la clase OperacionesAntecedentesFamPad
