@@ -1679,11 +1679,7 @@ public class Inicio extends javax.swing.JFrame {
         String actividad = nuevaActividad.getDetalles();
         String fechaSeleccionada;
         String horaActividad;
-        int year, month, day;
-        year = agendaCalendario.getCurrent().get(Calendar.YEAR);
-        month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
-        day = agendaCalendario.getCurrent().get(Calendar.DAY_OF_MONTH);
-        fechaSeleccionada = year + "-" + month + "-" + day;
+        fechaSeleccionada = obtenerFechaCalendario();
         try{
             agendaTabla.setValueAt(actividad, agendaTabla.getSelectedRow(), 1);
             horaActividad = agendaTabla.getValueAt(agendaTabla.getSelectedRow(), 0).toString();
@@ -1924,8 +1920,7 @@ public class Inicio extends javax.swing.JFrame {
     private void popItemNuevaActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemNuevaActividadActionPerformed
         final int selectedRow = agendaTabla.getSelectedRow();
         if(selectedRow != -1){
-            String currentActivity = agendaTabla.getValueAt(selectedRow, 1).toString();
-            if(currentActivity.isEmpty())
+            if(agendaTabla.getValueAt(selectedRow, 1) == null)
                 insertarNuevaActividad();
             else
                 JOptionPane.showMessageDialog(this, "Ya existe una actividad, "
@@ -1939,10 +1934,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void popItemCompletarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemCompletarActividadActionPerformed
         entidad.Cita actCita = new entidad.Cita();
-        int year = agendaCalendario.getCurrent().get(Calendar.YEAR);
-        int month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
-        int day = agendaCalendario.getCurrent().get(Calendar.DAY_OF_MONTH);
-        String fecha = year + "-" + month + "-" + day;
+        String fecha = obtenerFechaCalendario();
         String hora;
         int fila  = agendaTabla.getSelectedRow();
         if(fila != -1){
@@ -1958,6 +1950,14 @@ public class Inicio extends javax.swing.JFrame {
                                             "Error", JOptionPane.ERROR_MESSAGE);
         cargarActividadesAgenda();
     }//GEN-LAST:event_popItemCompletarActividadActionPerformed
+
+    private String obtenerFechaCalendario() {
+        int year = agendaCalendario.getCurrent().get(Calendar.YEAR);
+        int month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
+        int day = agendaCalendario.getCurrent().get(Calendar.DAY_OF_MONTH);
+        String fecha = year + "-" + month + "-" + day;
+        return fecha;
+    }
     private String obtenerIdExpedienteMedico(){
         negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
         String idExp = consExp.obtenerIdExpedienteMedico(idPaciente);
@@ -1966,11 +1966,7 @@ public class Inicio extends javax.swing.JFrame {
     private void cargarActividadesAgenda(){
         // DEPURAR CODIGO.
         String fechaSeleccionada;
-        int year, month, day;
-        year = agendaCalendario.getCurrent().get(Calendar.YEAR);
-        month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
-        day = agendaCalendario.getCurrent().get(Calendar.DAY_OF_MONTH);
-        fechaSeleccionada = "'" +year + "-" + month + "-" + day + "'";
+        fechaSeleccionada = "'" +obtenerFechaCalendario() + "'";
         final String arregloHoras [] = {"08:00","08:15","08:30", "08:45", "09:00", 
                                   "09:15", "09:30", "09:45", "10:00", "10:15", 
                                   "10:30",  "10:45", "11:00", "11:15", "11:30",
