@@ -35,12 +35,5 @@ public class OperacionesAntecedentesPersonales {
             System.out.println(e.getErrorCode() + e.getMessage());
         }
         
-        String datosAntecPersonales = "'" + antecPersonales.getAlergias() + "'"+ "," + 
-                                      "'" + antecPersonales.getMedicamento() + "'" + "," +
-                                      "'" + antecPersonales.getVacunas() + "'" + "," +
-                                      "'" + antecPersonales.getTratamiento() + "'";
-        estado = objetoDeConexion.conectar().createStatement();
-        estado.executeQuery("Call InsertarAntecedentesPersonales("+datosAntecPersonales+")");
-        estado.close();
     }
 }
