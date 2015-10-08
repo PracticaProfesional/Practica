@@ -490,4 +490,22 @@ $
 
 $
 Call InsertarAntPer ('nada', 'nada', 0, 0);
+$
 
+DELIMITER $
+CREATE PROCEDURE ConsultarOInsertarPadecimiento (in nom varchar(45))
+BEGIN
+	declare nombreP varchar(45);
+
+	select nombrePadecimiento into nombreP from Padecimientos
+	where nombrePadecimiento = nom;
+	
+	if nombreP <=> null then
+		insert into padecimientos (nombrePadecimiento)
+		values (nom);
+		
+	end if;
+		
+END $
+
+Call ConsultarOInsertarPadecimiento ('Vertigo')
