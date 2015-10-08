@@ -272,6 +272,13 @@ BEGIN
     where cita.fechaConsulta = fechaCita;
 END $
 
+CREATE  PROCEDURE `ActualizarEstadoCita`(in est int, in fec date, in hor varchar(10))
+BEGIN
+	update cita
+    set estado = est
+    where fechaConsulta = fec  and horaConsulta = hor;
+END
+
 -- Llamadas a los procedimientos almacenados
 
 Call InsertarUsuario ('Juanito', '1234');

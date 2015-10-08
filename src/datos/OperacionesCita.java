@@ -10,8 +10,7 @@ public class OperacionesCita
 {
     private Conexion objetoDeConexion;
     private Statement estado;
-    
-    
+ 
     public void insertarCita(Cita objetoCita) 
     {
         objetoDeConexion = new Conexion();
@@ -26,7 +25,7 @@ public class OperacionesCita
             estado.executeQuery("Call InsertarCita("+datosCita+")");
        }
        catch(SQLException e){
-           e.printStackTrace();
+           System.out.println(e.getErrorCode() + e.getMessage());
        }
     }// fin del metodo insertarCita
         
@@ -36,5 +35,19 @@ public class OperacionesCita
         estado = objetoDeConexion.conectar().createStatement();
         rs = estado.executeQuery("Call ConsultarFechaCita("+fecha+")");
         return rs;
+    }
+    
+    public void actualizarCita(Cita actCita){
+        objetoDeConexion = new Conexion();
+        String datosCita = "'" + actCita.getEstado().obtenerEstadoNumero() +"'" + ","
+                           + "'" + actCita.getFechaConsulta() +"'" +","
+                           + "'" + actCita.getHora() + "'";
+        try{     
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call ActualizarEstadoCita("+datosCita+")");
+        }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode() + e.getMessage());
+        }
     }
 }// fin de la clase OperacionesCita

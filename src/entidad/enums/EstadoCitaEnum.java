@@ -1,6 +1,6 @@
 // @author QUINCHO
 
-package entidad;
+package entidad.enums;
  
 public enum EstadoCitaEnum 
 {

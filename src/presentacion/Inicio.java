@@ -6,7 +6,7 @@
 package presentacion;
 
 
-import entidad.EstadoCitaEnum;
+import entidad.enums.EstadoCitaEnum;
 import entidad.ExamenFisico;
 import entidad.SignosVitales;
 import java.sql.SQLException;
@@ -48,9 +48,8 @@ public class Inicio extends javax.swing.JFrame {
 
         popMenuAccionesActividad = new javax.swing.JPopupMenu();
         popItemNuevaActividad = new javax.swing.JMenuItem();
-        popSubMenuEstado = new javax.swing.JMenu();
-        popItemCompletada = new javax.swing.JMenuItem();
-        popItemCancelada = new javax.swing.JMenuItem();
+        popItemCompletarActividad = new javax.swing.JMenuItem();
+        popItemEliminarActividad = new javax.swing.JMenuItem();
         panelPrincipal = new javax.swing.JTabbedPane();
         tabExpediente = new javax.swing.JTabbedPane();
         tabBuscarPaciente = new javax.swing.JPanel();
@@ -215,15 +214,16 @@ public class Inicio extends javax.swing.JFrame {
         });
         popMenuAccionesActividad.add(popItemNuevaActividad);
 
-        popSubMenuEstado.setText("Cambiar estado");
+        popItemCompletarActividad.setText("Completa");
+        popItemCompletarActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                popItemCompletarActividadActionPerformed(evt);
+            }
+        });
+        popMenuAccionesActividad.add(popItemCompletarActividad);
 
-        popItemCompletada.setText("Completada");
-        popSubMenuEstado.add(popItemCompletada);
-
-        popItemCancelada.setText("Cancelada");
-        popSubMenuEstado.add(popItemCancelada);
-
-        popMenuAccionesActividad.add(popSubMenuEstado);
+        popItemEliminarActividad.setText("Eliminar");
+        popMenuAccionesActividad.add(popItemEliminarActividad);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Gestion Oficina de Salud");
@@ -1669,7 +1669,7 @@ public class Inicio extends javax.swing.JFrame {
     
    
     private void agendaTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendaTablaMouseClicked
-        
+    
     }//GEN-LAST:event_agendaTablaMouseClicked
 
     private void insertarNuevaActividad() {
@@ -1708,11 +1708,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void agendaCalendarioOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_agendaCalendarioOnSelectionChange
         limpiaAgenda();
-        try{
-            cargarActividadesAgenda();
-        }
-        catch(java.sql.SQLException e){
-        }
+        cargarActividadesAgenda();
     }//GEN-LAST:event_agendaCalendarioOnSelectionChange
 
     private void limpiaAgenda() {
@@ -1735,7 +1731,8 @@ public class Inicio extends javax.swing.JFrame {
             rs = opExpediente.obtenerExpedientePaciente();
             DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
             this.tableBuscarPaciente.setModel(nuevoModeloTabla);
-            String [] nombreColumnas = {"Id", "Cedula", "Nombre", "P. Apellido", "S. Apellido"};
+            String [] nombreColumnas = {"Id", "Cédula", "Nombre",
+                                        "Primer Apellido", "Segundo Apellido"};
             for(int i = 0; i < 5; i++)
                 nuevoModeloTabla.addColumn(nombreColumnas[i]);
             while(rs.next()){
@@ -1778,11 +1775,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultaMedicaActionPerformed
 
     private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
-         try {
-            cargarActividadesAgenda();
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        cargarActividadesAgenda();
     }//GEN-LAST:event_panelPrincipalMouseClicked
 
     private void textBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBuscarPacienteActionPerformed
@@ -1929,14 +1922,48 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
 
     private void popItemNuevaActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemNuevaActividadActionPerformed
-       insertarNuevaActividad();
+        final int selectedRow = agendaTabla.getSelectedRow();
+        if(selectedRow != -1){
+            String currentActivity = agendaTabla.getValueAt(selectedRow, 1).toString();
+            if(currentActivity.isEmpty())
+                insertarNuevaActividad();
+            else
+                JOptionPane.showMessageDialog(this, "Ya existe una actividad, "
+                        + "debe borrarla antes de asignar un nuevo espacio",
+                        "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+            JOptionPane.showMessageDialog(this, "No seleccionó ninguna fila", 
+                                        "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_popItemNuevaActividadActionPerformed
+
+    private void popItemCompletarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemCompletarActividadActionPerformed
+        entidad.Cita actCita = new entidad.Cita();
+        int year = agendaCalendario.getCurrent().get(Calendar.YEAR);
+        int month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
+        int day = agendaCalendario.getCurrent().get(Calendar.DAY_OF_MONTH);
+        String fecha = year + "-" + month + "-" + day;
+        String hora;
+        int fila  = agendaTabla.getSelectedRow();
+        if(fila != -1){
+           hora = agendaTabla.getValueAt(fila, 0).toString();
+           actCita.setEstado(EstadoCitaEnum.Completada);
+           actCita.setHora(hora);
+           actCita.setFechaConsulta(fecha);
+           negocio.NegocioCita cita = new negocio.NegocioCita();
+           cita.actualizarCita(actCita);
+        }
+        else
+            JOptionPane.showMessageDialog(this, "No seleccionó ninguna fila",
+                                            "Error", JOptionPane.ERROR_MESSAGE);
+        cargarActividadesAgenda();
+    }//GEN-LAST:event_popItemCompletarActividadActionPerformed
     private String obtenerIdExpedienteMedico(){
         negocio.NegocioExpedienteMedico consExp = new negocio.NegocioExpedienteMedico();
         String idExp = consExp.obtenerIdExpedienteMedico(idPaciente);
         return idExp;
     }
-    private void cargarActividadesAgenda() throws SQLException{
+    private void cargarActividadesAgenda(){
         // DEPURAR CODIGO.
         String fechaSeleccionada;
         int year, month, day;
@@ -1951,20 +1978,33 @@ public class Inicio extends javax.swing.JFrame {
                                   "14:00", "14:30","15:00","15:30", "16:00",
                                   "16:30", "17:00","17:30",  "20:00", "21:00"};
         negocio.NegocioCita obtenerCitas = new negocio.NegocioCita();
-        java.sql.ResultSet rs = obtenerCitas.obtenerFechaConsulta(fechaSeleccionada);
-        java.util.LinkedList<String> listHoraConsulta = new java.util.LinkedList<>();
-        java.util.LinkedList<String> listAnotaciones = new java.util.LinkedList<>();
-        while(rs.next()){
-            listHoraConsulta.add(rs.getString("horaConsulta"));
-            listAnotaciones.add(rs.getString("anotaciones"));
-        }
-        rs.close();
-        for(String appointment:listHoraConsulta){
-            for(int i = 0; i < arregloHoras.length; i++){
-                if(arregloHoras[i].equals(appointment))
-                    agendaTabla.setValueAt(listAnotaciones.removeFirst(), i, 1);
+        try{
+            java.sql.ResultSet rs = obtenerCitas.obtenerFechaConsulta(fechaSeleccionada);
+            java.util.LinkedList<String> listHoraConsulta = new java.util.LinkedList<>();
+            java.util.LinkedList<String> listAnotaciones = new java.util.LinkedList<>();
+            while(rs.next()){
+                listHoraConsulta.add(rs.getString("horaConsulta"));
+                switch(Integer.parseInt(rs.getString("estado"))){
+                    case 1:listAnotaciones.add(rs.getString("anotaciones")+" Pendiente");
+                        break;
+                    case 2: listAnotaciones.add(rs.getString("anotaciones")+" Completa");
+                        break;
+                }
+
+            }
+            rs.close();
+            for(String appointment:listHoraConsulta){
+                for(int i = 0; i < arregloHoras.length; i++){
+                    if(arregloHoras[i].equals(appointment))
+                        agendaTabla.setValueAt(listAnotaciones.removeFirst(), i, 1);
+                }
             }
         }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode() + e.getMessage());
+        }
+        
+       
     }
     private void buscarPaciente(){
         java.util.LinkedList<String> paciente = new java.util.LinkedList<>();
@@ -2152,11 +2192,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel panelBtnBuscarPaciente;
     private javax.swing.JTabbedPane panelConsultaMedica;
     private javax.swing.JTabbedPane panelPrincipal;
-    private javax.swing.JMenuItem popItemCancelada;
-    private javax.swing.JMenuItem popItemCompletada;
+    private javax.swing.JMenuItem popItemCompletarActividad;
+    private javax.swing.JMenuItem popItemEliminarActividad;
     private javax.swing.JMenuItem popItemNuevaActividad;
     private javax.swing.JPopupMenu popMenuAccionesActividad;
-    private javax.swing.JMenu popSubMenuEstado;
     private javax.swing.JTabbedPane tabAdministrador;
     private javax.swing.JPanel tabBuscarPaciente;
     private javax.swing.JPanel tabConsultaMedica;

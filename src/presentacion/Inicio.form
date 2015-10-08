@@ -16,23 +16,19 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="popItemNuevaActividadActionPerformed"/>
           </Events>
         </MenuItem>
-        <Menu class="javax.swing.JMenu" name="popSubMenuEstado">
+        <MenuItem class="javax.swing.JMenuItem" name="popItemCompletarActividad">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cambiar estado"/>
+            <Property name="text" type="java.lang.String" value="Completa"/>
           </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="popItemCompletada">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Completada"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="popItemCancelada">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelada"/>
-              </Properties>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="popItemCompletarActividadActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="popItemEliminarActividad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Eliminar"/>
+          </Properties>
+        </MenuItem>
       </SubComponents>
     </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
