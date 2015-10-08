@@ -978,7 +978,11 @@ jPanel9Layout.setHorizontalGroup(
         nuevoPaciente.setEmail(textEmail.getText());
         nuevoPaciente.setDireccion1(textDireccionFamiliar.getText());
         nuevoPaciente.setDireccion2(textDireccionLectiva.getText());
-        
+        switch(textSexo.getSelectedIndex()){
+            case 0: nuevoPaciente.setSexo(SexoEnum.MASCULINO);
+                break;
+            case 1: nuevoPaciente.setSexo(SexoEnum.FEMENINO);
+        }
         negocio.NegocioPaciente insertarPaciente = new negocio.NegocioPaciente();
         insertarPaciente.insetarPaciente(nuevoPaciente);
     }
