@@ -925,6 +925,8 @@ jPanel9Layout.setHorizontalGroup(
                 }// fin del try
                 catch(SQLException e)
                 {
+                    System.out
+                            .println(e.getErrorCode() + e.getMessage());
                 }// fin del catch
             
                 negocioAntecedentes.insertarAntecedenteFamiliarPadecimiento(nuevoAntecedente);
@@ -950,9 +952,9 @@ jPanel9Layout.setHorizontalGroup(
         nuevoPaciente.setApellido1(textApellido1.getText());
         nuevoPaciente.setApellido2(textApellido2.getText());
         switch(textSexo.getSelectedIndex()){
-            case 0: nuevoPaciente.setSexo(SexoEnum.MASCULINO);
+            case 1: nuevoPaciente.setSexo(SexoEnum.MASCULINO);
                 break;
-            case 1: nuevoPaciente.setSexo(SexoEnum.FEMENINO);
+            case 2: nuevoPaciente.setSexo(SexoEnum.FEMENINO);
                 break;
         }
         try 
