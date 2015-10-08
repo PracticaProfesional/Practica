@@ -33,7 +33,8 @@ import javax.swing.JTextField;
 public class ExpedienteNuevo extends javax.swing.JDialog {
 
     
-    int ids [];
+    int idsAntecedentesPersonales [];
+    int idsAntecedentesFamiliares [];
     int cuentaClick = 1;
     
     public ExpedienteNuevo(java.awt.Frame parent, boolean modal) {
@@ -722,13 +723,13 @@ jPanel9Layout.setHorizontalGroup(
         CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(this, true);
         padecimientos.setVisible(true);
         
-        ids = new int [padecimientos.obtenerContador()];
+        idsAntecedentesPersonales = new int [padecimientos.obtenerContador()];
         
-        ids = padecimientos.cargarIdsAArreglo();
+        idsAntecedentesPersonales = padecimientos.cargarIdsAArreglo();
         
-        for (int i = 0; i < ids.length; i++)
+        for (int i = 0; i < idsAntecedentesPersonales.length; i++)
         {
-            System.out.println("Id: " + ids[i]);
+            System.out.println("Id: " + idsAntecedentesPersonales[i]);
         }// fin del for
         
     }//GEN-LAST:event_btnAgregarPadecimientoPerActionPerformed
@@ -738,13 +739,13 @@ jPanel9Layout.setHorizontalGroup(
         CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(this, true);
         padecimientos.setVisible(true);
         
-        ids = new int [padecimientos.obtenerContador()];
+        idsAntecedentesFamiliares = new int [padecimientos.obtenerContador()];
         
-        ids = padecimientos.cargarIdsAArreglo();
+        idsAntecedentesFamiliares = padecimientos.cargarIdsAArreglo();
         
-        for (int i = 0; i < ids.length; i++)
+        for (int i = 0; i < idsAntecedentesFamiliares.length; i++)
         {
-            System.out.println("Id: " + ids[i]);
+            System.out.println("Id: " + idsAntecedentesFamiliares[i]);
         }// fin del for
         
     }//GEN-LAST:event_btnAgregarPadecimientoFamActionPerformed
@@ -886,11 +887,11 @@ jPanel9Layout.setHorizontalGroup(
         
         try
         {
-            for (int i = 0; i < ids.length; i++)
+            for (int i = 0; i < idsAntecedentesPersonales.length; i++)
             {
                 try
                 {
-                    nuevoAntecedente.setIdPadecimientos(ids[i]);
+                    nuevoAntecedente.setIdPadecimientos(idsAntecedentesPersonales[i]);
                     nuevoAntecedente.setIdAntecedentesPersonales(
                             Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesPersonales")));
                 }// fin del try
@@ -914,11 +915,11 @@ jPanel9Layout.setHorizontalGroup(
         
         try
         {
-            for (int i = 0; i < ids.length; i++)
+            for (int i = 0; i < idsAntecedentesFamiliares.length; i++)
             {
                 try
                 {
-                    nuevoAntecedente.setIdPadecimiento(ids[i]);
+                    nuevoAntecedente.setIdPadecimiento(idsAntecedentesFamiliares[i]);
                     nuevoAntecedente.setIdAntecedenteFamiliar(
                            Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesFamiliares")));
                 }// fin del try
