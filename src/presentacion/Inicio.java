@@ -2023,7 +2023,10 @@ public class Inicio extends javax.swing.JFrame {
         int numeroFilas = tableBuscarPaciente.getRowCount();
         String  [][] backUpList = new String[numeroFilas][5];
         
-        tomarDatosTablaBuscar(numeroFilas, backUpList);
+        for(int i = 0; i < numeroFilas; i++){
+            for(int j = 0; j < 5; j++)
+                backUpList[i][j] = tableBuscarPaciente.getValueAt(i, j).toString();
+        }
         
         for(int i = 0; i < numeroFilas; i++)
             if(backUpList[i][1].equals(textBuscarPaciente.getText().trim())){
@@ -2043,12 +2046,6 @@ public class Inicio extends javax.swing.JFrame {
         
     }
 
-    private void tomarDatosTablaBuscar(int numeroFilas, String[][] backUpList) {
-        for(int i = 0; i < numeroFilas; i++){
-            for(int j = 0; j < 5; j++)
-                backUpList[i][j] = tableBuscarPaciente.getValueAt(i, j).toString();
-        }
-    }
     /**
      * @param args the command line arguments
      */
