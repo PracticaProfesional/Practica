@@ -32,6 +32,7 @@ public class Inicio extends javax.swing.JFrame {
     private String idExpediente;
     private String pacienteActual;
     private String idConsultaMedica;
+    private int  contador = 0;
     public Inicio() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_HORIZ);
@@ -2005,19 +2006,28 @@ public class Inicio extends javax.swing.JFrame {
     private void buscarPaciente(){
         java.util.LinkedList<String> paciente = new java.util.LinkedList<>();
         int numeroFilas = tableBuscarPaciente.getRowCount();
-        // Se realiza la comparacion y se guardan los datos.
+        final String  [][] backUpList = new String[numeroFilas][5];
+        
+        for(int i = 0; i < numeroFilas; i++){
+            for(int j = 0; j < 5; j++)
+                backUpList[i][j] = tableBuscarPaciente.getValueAt(i, j).toString();
+        }
         for(int i = 0; i < numeroFilas; i++)
-            if(tableBuscarPaciente.getValueAt(i, 1).toString().equals(textBuscarPaciente.getText().trim())){
+            if(backUpList[i][1].equals(textBuscarPaciente.getText().trim())){
                 for(int j = 0; j < 5; j++)
-                    paciente.add(tableBuscarPaciente.getValueAt(i, j).toString());
+                    paciente.add(backUpList[i][j]);
             }
+        
         // Limpia el contenido actual
         for(int k = 0; k < numeroFilas; k++)
             for(int l = 0; l < 5; l++)
                 tableBuscarPaciente.setValueAt("", k, l);
         // Posiciona el resultado en la primer fila
-        for(int q = 0; q < 5; q++)
-            tableBuscarPaciente.setValueAt(paciente.removeFirst(), 0, q);
+        for(int p = 0; p < paciente.size(); p++){
+            for(int q = 0; q < 5; q++)
+                tableBuscarPaciente.setValueAt(paciente.removeFirst(), p, q);
+        }
+        
     }
     /**
      * @param args the command line arguments
