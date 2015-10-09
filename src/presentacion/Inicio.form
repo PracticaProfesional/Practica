@@ -240,8 +240,10 @@
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="textBuscarPaciente" min="-2" pref="570" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnBuscarPaciente" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnRefrescarTablaBuscar" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -255,6 +257,7 @@
                                   <Component id="textBuscarPaciente" alignment="2" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnBuscarPaciente" alignment="2" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnRefrescarTablaBuscar" alignment="2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="378" max="-2" attributes="0"/>
@@ -342,6 +345,14 @@
                           <Image iconType="3" name="/presentacion/icons/magnifyingglass.png"/>
                         </Property>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnRefrescarTablaBuscar">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Refrescar Tabla"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRefrescarTablaBuscarActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

@@ -61,6 +61,7 @@ public class Inicio extends javax.swing.JFrame {
         textBuscarPaciente = new javax.swing.JTextField();
         btnBuscarPaciente = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        btnRefrescarTablaBuscar = new javax.swing.JButton();
         panelBtnBuscarPaciente = new javax.swing.JPanel();
         btnConsultaMedica = new javax.swing.JButton();
         btnCrearExpediente = new javax.swing.JButton();
@@ -274,6 +275,13 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/icons/magnifyingglass.png"))); // NOI18N
 
+        btnRefrescarTablaBuscar.setText("Refrescar Tabla");
+        btnRefrescarTablaBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefrescarTablaBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -289,8 +297,10 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
                 .addComponent(textBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addComponent(btnBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRefrescarTablaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -301,7 +311,8 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(textBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarPaciente)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(btnRefrescarTablaBuscar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1952,6 +1963,10 @@ public class Inicio extends javax.swing.JFrame {
         cargarActividadesAgenda();
     }//GEN-LAST:event_popItemCompletarActividadActionPerformed
 
+    private void btnRefrescarTablaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarTablaBuscarActionPerformed
+        cargarTablaBuscarPaciente();
+    }//GEN-LAST:event_btnRefrescarTablaBuscarActionPerformed
+
     private String obtenerFechaCalendario() {
         int year = agendaCalendario.getCurrent().get(Calendar.YEAR);
         int month = agendaCalendario.getCurrent().get(Calendar.MONTH) + 1;
@@ -2006,12 +2021,10 @@ public class Inicio extends javax.swing.JFrame {
     private void buscarPaciente(){
         java.util.LinkedList<String> paciente = new java.util.LinkedList<>();
         int numeroFilas = tableBuscarPaciente.getRowCount();
-        final String  [][] backUpList = new String[numeroFilas][5];
+        String  [][] backUpList = new String[numeroFilas][5];
         
-        for(int i = 0; i < numeroFilas; i++){
-            for(int j = 0; j < 5; j++)
-                backUpList[i][j] = tableBuscarPaciente.getValueAt(i, j).toString();
-        }
+        tomarDatosTablaBuscar(numeroFilas, backUpList);
+        
         for(int i = 0; i < numeroFilas; i++)
             if(backUpList[i][1].equals(textBuscarPaciente.getText().trim())){
                 for(int j = 0; j < 5; j++)
@@ -2028,6 +2041,13 @@ public class Inicio extends javax.swing.JFrame {
                 tableBuscarPaciente.setValueAt(paciente.removeFirst(), p, q);
         }
         
+    }
+
+    private void tomarDatosTablaBuscar(int numeroFilas, String[][] backUpList) {
+        for(int i = 0; i < numeroFilas; i++){
+            for(int j = 0; j < 5; j++)
+                backUpList[i][j] = tableBuscarPaciente.getValueAt(i, j).toString();
+        }
     }
     /**
      * @param args the command line arguments
@@ -2085,6 +2105,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearExpediente;
     private javax.swing.JButton btnGuardarExamenFisico;
     private javax.swing.JButton btnLabGabineteAdjuntarExamen;
+    private javax.swing.JButton btnRefrescarTablaBuscar;
     private javax.swing.JButton btnSignosVitalesCancelar;
     private javax.swing.JButton btnSignosVitalesGuardar;
     private javax.swing.JComboBox cbAbdomen;
