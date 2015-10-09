@@ -1579,6 +1579,9 @@ public class Inicio extends javax.swing.JFrame {
         if (cbDetallesNariz.getSelectedItem().toString().equals("Otros")){
             textOtrosDetallesNariz.setEnabled(true);
         }
+        
+        else
+            textOtrosDetallesNariz.setEnabled(false);
     }//GEN-LAST:event_cbDetallesNarizActionPerformed
 
     private void cbDetallesBocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesBocaActionPerformed
@@ -1586,6 +1589,9 @@ public class Inicio extends javax.swing.JFrame {
         if (cbDetallesBoca.getSelectedItem().toString().equals("Otros")){
             textOtrosDetallesBoca.setEnabled(true);
         }
+        
+        else
+            textOtrosDetallesBoca.setEnabled(false);
     }//GEN-LAST:event_cbDetallesBocaActionPerformed
 
     private void cbBocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBocaActionPerformed
@@ -1642,6 +1648,9 @@ public class Inicio extends javax.swing.JFrame {
         if (cbDetallesOidos.getSelectedItem().toString().equals("Otros")){
             textOtrosDetallesOidos.setEnabled(true);
         }
+        
+        else
+            textOtrosDetallesOidos.setEnabled(false);
     }//GEN-LAST:event_cbDetallesOidosActionPerformed
 
     private void cbDetallesToraxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesToraxActionPerformed
@@ -1649,6 +1658,9 @@ public class Inicio extends javax.swing.JFrame {
         if (cbDetallesTorax.getSelectedItem().toString().equals("Otros")){
             textOtrosDetallesTorax.setEnabled(true);
         }
+        
+        else
+            textOtrosDetallesTorax.setEnabled(false);
     }//GEN-LAST:event_cbDetallesToraxActionPerformed
 
     private void cbDetallesCorazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesCorazonActionPerformed
@@ -1656,6 +1668,9 @@ public class Inicio extends javax.swing.JFrame {
         if (cbDetallesCorazon.getSelectedItem().toString().equals("Otros")){
             textOtrosDetallesCorazon.setEnabled(true);
         }
+        
+        else
+            textOtrosDetallesCorazon.setEnabled(false);
     }//GEN-LAST:event_cbDetallesCorazonActionPerformed
 
     private void cbDetallesAbdomenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesAbdomenActionPerformed
@@ -1663,6 +1678,9 @@ public class Inicio extends javax.swing.JFrame {
         if (cbDetallesAbdomen.getSelectedItem().toString().equals("Otros")){
             textOtrosDetallesAbdomen.setEnabled(true);
         }
+        
+        else
+            textOtrosDetallesAbdomen.setEnabled(false);
     }//GEN-LAST:event_cbDetallesAbdomenActionPerformed
 
     private void cbDetallesEsqueleticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesEsqueleticoActionPerformed
@@ -1670,6 +1688,9 @@ public class Inicio extends javax.swing.JFrame {
         if (cbDetallesEsqueletico.getSelectedItem().toString().equals("Otros")){
             textOtrosDetallesEsqueletico.setEnabled(true);
         }
+        
+        else
+            textOtrosDetallesEsqueletico.setEnabled(false);
     }//GEN-LAST:event_cbDetallesEsqueleticoActionPerformed
 
     private void cbDetallesUrinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesUrinarioActionPerformed
@@ -1677,6 +1698,9 @@ public class Inicio extends javax.swing.JFrame {
         if (cbDetallesUrinario.getSelectedItem().toString().equals("Otros")){
             textOtrosDetallesUrinario.setEnabled(true);
         }
+        
+        else
+            textOtrosDetallesUrinario.setEnabled(false);
     }//GEN-LAST:event_cbDetallesUrinarioActionPerformed
     
    
@@ -1792,9 +1816,16 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_textBuscarPacienteActionPerformed
 
     private void btnGuardarExamenFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarExamenFisicoActionPerformed
+        
+        if (! verificarVacios())
+            JOptionPane.showMessageDialog(null, "Uno o mas campos son requeridos", "Información", 
+                    JOptionPane.INFORMATION_MESSAGE);
+        
+        else {
         insertarExamenFisico();
         actualizarConsulta();
         tabExpediente.setSelectedIndex(0);
+        }// fin del else
     }//GEN-LAST:event_btnGuardarExamenFisicoActionPerformed
     private void actualizarConsulta(){
         entidad.ConsultaMedica consulta = new entidad.ConsultaMedica();
@@ -1805,10 +1836,18 @@ public class Inicio extends javax.swing.JFrame {
         actConsulta.actualizarConsultaMedica(this.idExpediente, consulta);
         
     }
-    private void insertarExamenFisico(){    
-        ArrayList<entidad.ExamenFisico> listaExamen = new ArrayList<>();
-        listaExamen = obtenerDatosExamenFisico(listaExamen);
-        insertarAnormalidadesExFisico(listaExamen);    
+    private void insertarExamenFisico(){
+        
+        /*if (! verificarVacios())
+            JOptionPane.showMessageDialog(null, 
+                    "Uno o mas campos de texto estan vacios y requieren ser llenados", "Información", 
+                    JOptionPane.INFORMATION_MESSAGE);*/
+        
+        //else {
+            ArrayList<entidad.ExamenFisico> listaExamen = new ArrayList<>();
+            listaExamen = obtenerDatosExamenFisico(listaExamen);
+            insertarAnormalidadesExFisico(listaExamen);
+        //}// fin del else
     }
 
     private void insertarAnormalidadesExFisico(ArrayList<ExamenFisico> listaExamen) {
@@ -2046,6 +2085,45 @@ public class Inicio extends javax.swing.JFrame {
         
     }
 
+    public boolean verificarVacios()
+    {
+        boolean vacio = true;
+        
+        if (textOtrosDetallesOidos.isEnabled())
+            if (textOtrosDetallesOidos.getText().isEmpty())
+                vacio = false;
+        
+        if (textOtrosDetallesNariz.isEnabled())
+            if (textOtrosDetallesNariz.getText().isEmpty())
+                vacio = false;
+        
+        if (textOtrosDetallesBoca.isEnabled())
+            if (textOtrosDetallesBoca.getText().isEmpty())
+                vacio = false;
+        
+        if (textOtrosDetallesTorax.isEnabled())
+            if (textOtrosDetallesTorax.getText().isEmpty())
+                vacio = false;
+        
+        if (textOtrosDetallesCorazon.isEnabled())
+            if (textOtrosDetallesCorazon.getText().isEmpty())
+                vacio = false;
+        
+        if (textOtrosDetallesAbdomen.isEnabled())
+            if (textOtrosDetallesAbdomen.getText().isEmpty())
+                vacio = false;
+        
+        if (textOtrosDetallesEsqueletico.isEnabled())
+            if (textOtrosDetallesEsqueletico.getText().isEmpty())
+                vacio = false;
+        
+        if (textOtrosDetallesUrinario.isEnabled())
+            if (textOtrosDetallesUrinario.getText().isEmpty())
+                vacio = false;
+        
+        return vacio;
+    }// fin del metodo verificarVacios
+    
     /**
      * @param args the command line arguments
      */
