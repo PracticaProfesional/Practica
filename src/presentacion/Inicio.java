@@ -1504,10 +1504,19 @@ public class Inicio extends javax.swing.JFrame {
     private void limpiarSignosVitales() {
         javax.swing.JTextField []
             textsSignosVitales = {textFC, textGC, textH2O,
-            textIMB, textIMC, textMM, textMotivoConsulta, textPAR, textPeso,
-            textTalla, textTemperatura, textSintomas};
+                                  textIMB, textIMC, textMM, 
+                                  textMotivoConsulta, textPAR, textPeso,
+                                  textTalla, textTemperatura, textSintomas};
         for(javax.swing.JTextField campo:textsSignosVitales)
             campo.setText("");
+        
+        javax.swing.JCheckBox [] box = {chAF, chAS, chCP, chCuraciones,
+                                        chES, chExMamas, chGM, chIM,
+                                        chIV, chPA, chPAP, chSC, chSS};
+        for(javax.swing.JCheckBox boxItem: box){
+            boxItem.setSelected(true);
+            boxItem.doClick();
+        }
     }
 
     private void ingresarSignosConsulta() throws NumberFormatException {
