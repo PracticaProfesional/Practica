@@ -1497,7 +1497,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_cbOidosActionPerformed
 
     private void btnSignosVitalesGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignosVitalesGuardarActionPerformed
-        ingresarSignosConsulta();
+//        ingresarSignosConsulta();
         limpiarSignosVitales();
     }//GEN-LAST:event_btnSignosVitalesGuardarActionPerformed
 
@@ -1514,8 +1514,8 @@ public class Inicio extends javax.swing.JFrame {
                                         chES, chExMamas, chGM, chIM,
                                         chIV, chPA, chPAP, chSC, chSS};
         for(javax.swing.JCheckBox boxItem: box){
-            boxItem.setSelected(true);
-            boxItem.doClick();
+            if(boxItem.isSelected())
+                boxItem.doClick();
         }
     }
 
