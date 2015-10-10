@@ -1497,12 +1497,12 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_cbOidosActionPerformed
 
     private void btnSignosVitalesGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignosVitalesGuardarActionPerformed
-//        ingresarSignosConsulta();
+        ingresarSignosConsulta();
         limpiarSignosVitales();
     }//GEN-LAST:event_btnSignosVitalesGuardarActionPerformed
 
     private void limpiarSignosVitales() {
-        javax.swing.JTextField []
+        javax.swing.JTextField [] 
             textsSignosVitales = {textFC, textGC, textH2O,
                                   textIMB, textIMC, textMM, 
                                   textMotivoConsulta, textPAR, textPeso,
@@ -1546,30 +1546,56 @@ public class Inicio extends javax.swing.JFrame {
     private entidad.SignosVitales obtenerSignosVitales(SignosVitales signosV) throws NumberFormatException {
         if(chAF.isSelected())
             signosV.setActividadFisica(1);
+        else
+            signosV.setActividadFisica(0);
         if(chAS.isSelected())
             signosV.setAlimentacionSaludable(1);
+        else
+            signosV.setAlimentacionSaludable(0);
         if(chCP.isSelected())
             signosV.setCuidadoPrenatal(1);
+        else
+            signosV.setCuidadoPrenatal(0);
         if(chCuraciones.isSelected())
             signosV.setCuraciones(1);
+        else
+            signosV.setCuraciones(0);
         if(chES.isSelected())
             signosV.setEntornoSaludable(1);
+        else
+            signosV.setEntornoSaludable(0);
         if(chExMamas.isSelected())
             signosV.setExamenMama(1);
+        else
+            signosV.setExamenMama(0);
         if(chGM.isSelected())
             signosV.setGlicemiaMicroMetodo(1);
+        else
+            signosV.setGlicemiaMicroMetodo(0);
         if(chIM.isSelected())
             signosV.setTratamientoIntramuscular(1);
+        else
+            signosV.setTratamientoIntramuscular(0);
         if(chIV.isSelected())
             signosV.setTratamientoIntravenoso(1);
+        else
+            signosV.setTratamientoIntravenoso(0);
         if(chSC.isSelected())
             signosV.setTratamientoSubcutaneo(1);
+        else
+            signosV.setTratamientoSubcutaneo(0);
         if(chPA.isSelected())
             signosV.setPrevencionAdicciones(1);
+        else 
+            signosV.setPrevencionAdicciones(0);
         if(chSS.isSelected())
             signosV.setSaludSexual(1);
+        else
+            signosV.setSaludSexual(0);
         if(chPAP.isSelected())
-            signosV.getPapanicolaou();
+            signosV.setPapanicolaou(1);
+        else
+            signosV.setPapanicolaou(0);
         signosV.setAguaCorporal(Double.parseDouble(textH2O.getText()));
         signosV.setGrasaCorporal(Double.parseDouble(textGC.getText()));
         signosV.setIndiceMasaCorporal(Double.parseDouble(textIMC.getText()));
