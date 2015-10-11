@@ -164,13 +164,13 @@ END $
 
 
 DELIMITER $
-CREATE PROCEDURE InsertarConsultaMedica (in idExpMed int, in idExaFis int, 
+CREATE  PROCEDURE `InsertarConsultaMedica`(in idExpMed int, 
 		in motiCon varchar(45), in descripSint varchar(45), in diag varchar(45),
-		in idSigVit int, in idCit int, in idRec int)
+		in idSigVit int,in fech date, in motivo varchar(45), in obser varchar (200))
 BEGIN
-	insert into consultamedica (idExpedienteMedico, idExamenFisico, motivoConsulta,
-			descripcionSintomas, diagnostico, signosVitales, idCita, idReceta)
-	values (idExpMed, idExaFis, motiCon, descripSint, diag, idSigVit, idCit, idRec);
+	insert into ConsultaMedica (idExpedienteMedico, motivoConsulta,
+			descripcionSintomas, diagnostico, signosVitales,fecha, motivo2, observaciones)
+	values (idExpMed, motiCon, descripSint, diag, idSigVit,fech, motivo, obser);
 END $
 
 
