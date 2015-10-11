@@ -1565,10 +1565,11 @@
                             <Component class="javax.swing.JComboBox" name="cbDetallesCorazon">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="3">
+                                  <StringArray count="4">
                                     <StringItem index="0" value="Soplos"/>
                                     <StringItem index="1" value="Tonos"/>
                                     <StringItem index="2" value="Ritmo"/>
+                                    <StringItem index="3" value="Otros"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="enabled" type="boolean" value="false"/>
@@ -1722,11 +1723,12 @@
                             <Component class="javax.swing.JComboBox" name="cbDetallesEsqueletico">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="4">
+                                  <StringArray count="5">
                                     <StringItem index="0" value="Reflejos"/>
                                     <StringItem index="1" value="Fuerza"/>
                                     <StringItem index="2" value="Tono"/>
                                     <StringItem index="3" value="nL/anL"/>
+                                    <StringItem index="4" value="Otros"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="enabled" type="boolean" value="false"/>
