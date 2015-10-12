@@ -14,6 +14,15 @@ public class ConsultaMedica {
     private int idexpediente = 0;
     private String motivo2 = "";
     private String observaciones = "";
+    private String notaEnfermeria = "";
+
+    public String getNotaEnfermeria() {
+        return notaEnfermeria;
+    }
+
+    public void setNotaEnfermeria(String notaEnfermeria) {
+        this.notaEnfermeria = notaEnfermeria;
+    }
 
     public String getMotivo2() {
         return motivo2;
