@@ -26,9 +26,9 @@ public class CalculoSignosVitales {
                                            double peso, double talla, int edad){
         double imb = 0.0;
         switch(sexo.getSexo()){
-            case 1: imb = 66 + (13.75 * peso) + (5.08 * talla) - (6.78 * edad);
+            case 1: imb = (10 * peso) + (6.25 * talla) + (5 * edad) + 5;
                 break;
-            case 2: imb = 655 + (9.56 * peso) + (1.85 * talla) - (4.68 * edad);
+            case 2: imb = (10 * peso) + (6.25 * talla) - (5 * edad) - 161;
                 break;
         }
         imb = format(imb);        
