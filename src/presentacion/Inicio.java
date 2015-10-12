@@ -9,6 +9,7 @@ package presentacion;
 import entidad.enums.EstadoCitaEnum;
 import entidad.ExamenFisico;
 import entidad.SignosVitales;
+import entidad.enums.SexoEnum;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,6 +34,10 @@ public class Inicio extends javax.swing.JFrame {
     private String pacienteActual;
     private String idConsultaMedica;
     private int  contador = 0;
+    private int dayBirth;
+    private int monthBirth;
+    private int yearBirth;
+    private int sexo;
     public Inicio() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_HORIZ);
@@ -1836,19 +1841,20 @@ public class Inicio extends javax.swing.JFrame {
             DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
             this.tableBuscarPaciente.setModel(nuevoModeloTabla);
             String [] nombreColumnas = {"Id", "Cédula", "Nombre",
-                                        "Primer Apellido", "Segundo Apellido"};
-            for(int i = 0; i < 5; i++)
+                                        "Primer Apellido", "Segundo Apellido",
+                                        "Fecha Nacimiento", "sexo"};
+            for(int i = 0; i < 7; i++)
                 nuevoModeloTabla.addColumn(nombreColumnas[i]);
             while(rs.next()){
-                Object [] fila = new Object[5];
-                for(int i = 0; i < 5; i++)
+                Object [] fila = new Object[7];
+                for(int i = 0; i < 7; i++)
                     fila[i] = rs.getObject(i+1);
                 nuevoModeloTabla.addRow(fila);
                 
             }
-            tableBuscarPaciente.getColumnModel().getColumn(0).setMaxWidth(0);
-            tableBuscarPaciente.getColumnModel().getColumn(0).setMinWidth(0);
-            tableBuscarPaciente.getColumnModel().getColumn(0).setPreferredWidth(0);
+            escondeColumna(0);
+            escondeColumna(6);
+            
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1857,6 +1863,12 @@ public class Inicio extends javax.swing.JFrame {
 //        } catch (SQLException ex) {
 //            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+    }
+
+    private void escondeColumna(int numCol) {
+        tableBuscarPaciente.getColumnModel().getColumn(numCol).setMaxWidth(0);
+        tableBuscarPaciente.getColumnModel().getColumn(numCol).setMinWidth(0);
+        tableBuscarPaciente.getColumnModel().getColumn(numCol).setPreferredWidth(0);
     }
 
     private void btnConsultaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMedicaActionPerformed
@@ -1869,6 +1881,8 @@ public class Inicio extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Por favor seleccione un paciente.");
             else{
                 this.idPaciente = tableBuscarPaciente.getValueAt(filaSeleccionada, 0).toString();
+                splitFechaNac(tableBuscarPaciente.getValueAt(filaSeleccionada, 5).toString());
+                this.sexo = Integer.parseInt(tableBuscarPaciente.getValueAt(filaSeleccionada, 6).toString());
                 this.tabExpediente.setSelectedIndex(1);
             }   
         }
@@ -2080,14 +2094,66 @@ public class Inicio extends javax.swing.JFrame {
 
     private void textTallaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTallaFocusLost
         if(!textPeso.getText().equals("") || !textTalla.getText().equals("")){
+            calcularImc();
+            calcularImb();
+        }
+        
+        
+        
+    }//GEN-LAST:event_textTallaFocusLost
+    private void splitFechaNac(String fecha){
+        String year = "";
+        String month = "";
+        String day = "";
+        int [] indexY = {0, 1, 2, 3};
+        int [] indexM = {5, 6};
+        int [] indexD = {8, 9};
+        for(int i:indexY)
+            year += fecha.charAt(i);
+        this.yearBirth = Integer.parseInt(year);
+        for(int m:indexM)
+            month += fecha.charAt(m);
+        this.monthBirth = Integer.parseInt(month);
+        for(int d:indexD)
+            day += fecha.charAt(d);
+        this.dayBirth = Integer.parseInt(day);
+    }
+    
+    private void calcularImb(){
+        try{
+            final double peso = Double.parseDouble(textPeso.getText());
+            final double talla = Double.parseDouble(textTalla.getText());
+            double imb = 0.0;
+            negocio.CalculoSignosVitales nSignos;
+            negocio.Edad nEdad = new negocio.Edad();
+            int edad = Integer.parseInt(nEdad.getAge(this.yearBirth, this.monthBirth, this.dayBirth));
+            nSignos = new negocio.CalculoSignosVitales();
+            switch(this.sexo){
+                case 1: imb = nSignos.getIndiceMetabolicoBasal(SexoEnum.MASCULINO, peso, talla, edad);
+                    break;
+                case 2: imb = nSignos.getIndiceMetabolicoBasal(SexoEnum.FEMENINO, peso, talla, edad);
+                    break;
+            }
+            textIMB.setText(Double.toString(imb));
+        }
+        catch(NumberFormatException nfe){
+            System.out.println(nfe.getMessage());
+        }
+    }
+    
+    private void calcularImc(){
+        try{
             final double peso = Double.parseDouble(textPeso.getText());
             final double talla = Double.parseDouble(textTalla.getText());
             negocio.CalculoSignosVitales nSignos;
             nSignos = new negocio.CalculoSignosVitales();
             double imc = nSignos.getIndiceMasaCorporal(peso, talla);
-            textIMC.setText(Double.toString(imc));
+            textIMC.setText(Double.toString(imc)); 
         }
-    }//GEN-LAST:event_textTallaFocusLost
+        catch(NumberFormatException nfe){
+            System.out.println(nfe.getMessage());
+        }     
+    }
 
     private String obtenerFechaCalendario() {
         int year = agendaCalendario.getCurrent().get(Calendar.YEAR);
