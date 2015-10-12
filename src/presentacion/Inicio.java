@@ -125,7 +125,7 @@ public class Inicio extends javax.swing.JFrame {
         textMotivoConsulta = new javax.swing.JTextField();
         textSintomas = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textNotaEnfermeria = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -421,6 +421,8 @@ public class Inicio extends javax.swing.JFrame {
 
         textIMC.setEditable(false);
 
+        textIMB.setEditable(false);
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -674,9 +676,9 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel42.setText("Síntomas");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textNotaEnfermeria.setColumns(20);
+        textNotaEnfermeria.setRows(5);
+        jScrollPane1.setViewportView(textNotaEnfermeria);
 
         jLabel4.setText("Nota de enfermeria");
 
@@ -1545,6 +1547,7 @@ public class Inicio extends javax.swing.JFrame {
         nuevaConsulta.setIdexpediente(Integer.parseInt(obtenerIdExpedienteMedico()));
         nuevaConsulta.setMotivoConsulta(textMotivoConsulta.getText());
         nuevaConsulta.setSintomaPaciente(textSintomas.getText());
+        nuevaConsulta.setNotaEnfermeria(textNotaEnfermeria.getText());
         insertarConsulta.insertarConsultaMedica(nuevaConsulta);
     }
 
@@ -2375,7 +2378,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel jlOidos;
     private javax.swing.JLabel jlOjos;
     private javax.swing.JLabel lblPacienteActual;
@@ -2404,6 +2406,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField textMM;
     private javax.swing.JTextField textMotivo2;
     private javax.swing.JTextField textMotivoConsulta;
+    private javax.swing.JTextArea textNotaEnfermeria;
     private javax.swing.JTextField textObservaciones;
     private javax.swing.JTextField textOtrosDetallesAbdomen;
     private javax.swing.JTextField textOtrosDetallesBoca;
