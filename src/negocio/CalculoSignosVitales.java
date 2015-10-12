@@ -18,11 +18,10 @@ public class CalculoSignosVitales {
     public double getIndiceMasaCorporal(double peso, double talla){
         double imc;
         imc = peso / Math.pow(talla, 2);
-        DecimalFormat formateador = new DecimalFormat("####.###");
-        imc = Double.parseDouble(formateador.format(imc));
+        imc = format(imc);
         return imc;
     }
-    
+
     public double getIndiceMetabolicoBasal(entidad.enums.SexoEnum sexo, 
                                            double peso, double talla, int edad){
         double imb = 0.0;
@@ -32,6 +31,13 @@ public class CalculoSignosVitales {
             case 2: imb = 655 + (9.56 * peso) + (1.85 * talla) - (4.68 * edad);
                 break;
         }
+        imb = format(imb);        
         return imb;
+    }
+    
+    private double format(double value) throws NumberFormatException {
+        DecimalFormat formateador = new DecimalFormat("####.###");
+        value = Double.parseDouble(formateador.format(value));
+        return value;
     }
 }
