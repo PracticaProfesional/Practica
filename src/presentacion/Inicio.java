@@ -413,6 +413,14 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel25.setText("G.C");
 
+        textTalla.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textTallaFocusLost(evt);
+            }
+        });
+
+        textIMC.setEditable(false);
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -440,31 +448,33 @@ public class Inicio extends javax.swing.JFrame {
                             .addComponent(jLabel25))
                         .addGap(22, 22, 22)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel11Layout.createSequentialGroup()
+                            .addComponent(textGC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                                 .addComponent(textH2O, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(textFC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(107, 107, 107)
-                                .addComponent(jLabel23)
-                                .addGap(22, 22, 22)
-                                .addComponent(textMM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(textGC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textIMC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel11Layout.createSequentialGroup()
+                                        .addComponent(textFC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(107, 107, 107)
+                                        .addComponent(jLabel23)
+                                        .addGap(22, 22, 22)
+                                        .addComponent(textMM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel16)
                         .addGap(18, 18, 18)
-                        .addComponent(textIMC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textTalla, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(68, 68, 68)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addGap(65, 65, 65)
-                                .addComponent(textTalla, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(107, 107, 107)
+                                .addComponent(jLabel20)
+                                .addGap(248, 248, 248)
                                 .addComponent(jLabel21)
                                 .addGap(18, 18, 18)
                                 .addComponent(textIMB, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,7 +551,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(jLabel40)
                         .addGap(20, 20, 20)
                         .addComponent(chES)))
-                .addGap(12, 12, Short.MAX_VALUE)
+                .addGap(26, 26, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel37)
                     .addComponent(jLabel35))
@@ -591,7 +601,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jLabel32)
                 .addGap(34, 34, 34)
                 .addComponent(chSS)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -719,7 +729,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2064,6 +2074,17 @@ public class Inicio extends javax.swing.JFrame {
     private void btnRefrescarTablaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarTablaBuscarActionPerformed
         cargarTablaBuscarPaciente();
     }//GEN-LAST:event_btnRefrescarTablaBuscarActionPerformed
+
+    private void textTallaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTallaFocusLost
+        if(!textPeso.getText().equals("") || !textTalla.getText().equals("")){
+            final double peso = Double.parseDouble(textPeso.getText());
+            final double talla = Double.parseDouble(textTalla.getText());
+            negocio.CalculoSignosVitales nSignos;
+            nSignos = new negocio.CalculoSignosVitales();
+            double imc = nSignos.getIndiceMasaCorporal(peso, talla);
+            textIMC.setText(Double.toString(imc));
+        }
+    }//GEN-LAST:event_textTallaFocusLost
 
     private String obtenerFechaCalendario() {
         int year = agendaCalendario.getCurrent().get(Calendar.YEAR);

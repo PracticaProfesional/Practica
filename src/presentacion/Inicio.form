@@ -448,7 +448,7 @@
                                       <Component id="jPanel14" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jPanel13" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="222" max="32767" attributes="0"/>
+                                  <EmptySpace pref="194" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -510,30 +510,34 @@
                                               </Group>
                                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
+                                                  <Component id="textGC" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="1" attributes="0">
                                                       <Component id="textH2O" min="-2" pref="50" max="-2" attributes="0"/>
                                                       <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="textFC" min="-2" pref="50" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                                                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                                      <Component id="textMM" min="-2" pref="50" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="textIMC" min="-2" pref="50" max="-2" attributes="0"/>
+                                                          <Group type="102" attributes="0">
+                                                              <Component id="textFC" min="-2" pref="50" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                                                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                                              <Component id="textMM" min="-2" pref="50" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
                                                   </Group>
-                                                  <Component id="textGC" min="-2" pref="50" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="textIMC" min="-2" pref="50" max="-2" attributes="0"/>
+                                              <Component id="textTalla" min="-2" pref="50" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" attributes="0">
-                                                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                                                      <Component id="textTalla" min="-2" pref="50" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                                                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
                                                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Component id="textIMB" min="-2" pref="50" max="-2" attributes="0"/>
@@ -541,7 +545,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="127" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -641,12 +645,18 @@
                             <Component class="javax.swing.JTextField" name="textTemperatura">
                             </Component>
                             <Component class="javax.swing.JTextField" name="textTalla">
+                              <Events>
+                                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textTallaFocusLost"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JTextField" name="textFC">
                             </Component>
                             <Component class="javax.swing.JTextField" name="textPAR">
                             </Component>
                             <Component class="javax.swing.JTextField" name="textIMC">
+                              <Properties>
+                                <Property name="editable" type="boolean" value="false"/>
+                              </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="textIMB">
                             </Component>
@@ -684,7 +694,7 @@
                                               <Component id="chES" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="76" pref="12" max="32767" attributes="0"/>
+                                      <EmptySpace min="76" pref="26" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="2" attributes="0">
                                           <Component id="jLabel37" alignment="2" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel35" alignment="2" min="-2" max="-2" attributes="0"/>
@@ -747,7 +757,7 @@
                                       <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                       <Component id="chSS" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="96" max="32767" attributes="0"/>
+                                      <EmptySpace pref="110" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
