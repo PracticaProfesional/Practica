@@ -26,7 +26,7 @@ public class CalculoSignosVitales {
                                            double peso, double talla, int edad){
         double imb = 0.0;
         switch(sexo.getSexo()){
-            case 1: imb = (10 * peso) + (6.25 * talla) + (5 * edad) + 5;
+            case 1: imb = (10 * peso) + (6.25 * talla) - (5 * edad) + 5;
                 break;
             case 2: imb = (10 * peso) + (6.25 * talla) - (5 * edad) - 161;
                 break;
@@ -36,7 +36,7 @@ public class CalculoSignosVitales {
     }
     
     private double format(double value) throws NumberFormatException {
-        DecimalFormat formateador = new DecimalFormat("####.###");
+        DecimalFormat formateador = new DecimalFormat("####.#");
         value = Double.parseDouble(formateador.format(value));
         return value;
     }
