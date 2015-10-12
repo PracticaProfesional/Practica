@@ -1,5 +1,7 @@
 package negocio;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author cooper15
@@ -16,6 +18,8 @@ public class CalculoSignosVitales {
     public double getIndiceMasaCorporal(double peso, double talla){
         double imc;
         imc = peso / Math.pow(talla, 2);
+        DecimalFormat formateador = new DecimalFormat("####.###");
+        imc = Double.parseDouble(formateador.format(imc));
         return imc;
     }
     
