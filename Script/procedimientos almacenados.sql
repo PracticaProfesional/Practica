@@ -1,5 +1,8 @@
 -- Procedimientos almacenados de insercion en las tablas de la base de datos SIGOS
 
+-- Alteracion en tabla consultamedica
+ALTER TABLE `sigos`.`ConsultaMedica` 
+ADD COLUMN `notaEnfermeria` VARCHAR(500) NULL COMMENT '' AFTER `observaciones`;
 
 
 -- INNER JOIN CON DATOS DE PERSONAS EN CONSULTA MEDICA
@@ -166,12 +169,12 @@ END $
 DELIMITER $
 CREATE  PROCEDURE `InsertarConsultaMedica`(in idExpMed int, 
 		in motiCon varchar(45), in descripSint varchar(45), in diag varchar(45),
-		in idSigVit int,in fech date, in motivo varchar(45), in obser varchar (200))
+		in idSigVit int,in fech date, in motivo varchar(45), in obser varchar (200), in notaE varchar(500))
 BEGIN
 	insert into ConsultaMedica (idExpedienteMedico, motivoConsulta,
-			descripcionSintomas, diagnostico, signosVitales,fecha, motivo2, observaciones)
-	values (idExpMed, motiCon, descripSint, diag, idSigVit,fech, motivo, obser);
-END $
+			descripcionSintomas, diagnostico, signosVitales,fecha, motivo2, observaciones, notaEnfermeria)
+	values (idExpMed, motiCon, descripSint, diag, idSigVit,fech, motivo, obser, notaE);
+END$
 
 
 DELIMITER $
