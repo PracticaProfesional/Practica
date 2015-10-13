@@ -37,14 +37,13 @@ public class Inicio extends javax.swing.JFrame {
     private String idExpediente;
     private String pacienteActual;
     private String idConsultaMedica;
-    private int  contador = 0;
     private int dayBirth;
     private int monthBirth;
     private int yearBirth;
     private int sexo;
     public Inicio() {
         initComponents();
-        this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_HORIZ);
+        this.setExtendedState(this.getExtendedState() | Inicio.MAXIMIZED_HORIZ);
         btnGuardarLabGab.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
         btnRefrescarTablaBuscar.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
     }
