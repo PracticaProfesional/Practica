@@ -26,9 +26,9 @@ public class OperacionesLaboratorioGabinete {
         try {
             FileInputStream entraDatos = new FileInputStream(archivo);
             java.sql.PreparedStatement ps;
-            ps = conect.conectar().prepareStatement("Insert into ExamenMedico(null, ?, ?)");
-            ps.setString(1, archivo.getName());
-            ps.setBlob(2, entraDatos);
+            ps = conect.conectar().prepareStatement("Insert into ExamenMedico values(null, ?, ?)");
+            ps.setBlob(1, entraDatos);
+            ps.setInt(2, idExPaciente);
             ps.execute();
             entraDatos.close();
             ps.close();
