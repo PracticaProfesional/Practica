@@ -5,13 +5,10 @@
  */
 package datos;
 
-import com.mysql.jdbc.PreparedStatement;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
