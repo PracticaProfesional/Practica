@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import javax.swing.JOptionPane;
@@ -2091,8 +2092,12 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnLabGabineteAdjuntarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLabGabineteAdjuntarExamenActionPerformed
-            javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
-            fileChooser.showOpenDialog(this);
+        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+        int seleccion = fileChooser.showSaveDialog(this);
+        if(seleccion == JFileChooser.APPROVE_OPTION){
+            java.io.File fichero = fileChooser.getSelectedFile();
+            System.out.println(fichero);
+        }
     }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
 
     private void popItemNuevaActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemNuevaActividadActionPerformed
