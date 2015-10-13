@@ -183,9 +183,10 @@ public class PacientesConsulta extends javax.swing.JDialog {
             int filaSeleccionada = tablaPacientesConsulta.getSelectedRow();
             idExpedienteMedico = tablaPacientesConsulta.getValueAt(filaSeleccionada, 1).toString();
             pacienteActual = 
-                    tablaPacientesConsulta.getValueAt(filaSeleccionada, 2).toString() 
-                   +" "+tablaPacientesConsulta.getValueAt(filaSeleccionada, 3).toString()
-                   +" "+tablaPacientesConsulta.getValueAt(filaSeleccionada, 4).toString();
+                    tablaPacientesConsulta.getValueAt(filaSeleccionada, 3).toString() 
+                   +" "+tablaPacientesConsulta.getValueAt(filaSeleccionada, 4).toString()
+                   +" "+tablaPacientesConsulta.getValueAt(filaSeleccionada, 5).toString();
+            idConsultaMedica = tablaPacientesConsulta.getValueAt(filaSeleccionada, 0).toString();
             this.dispose();
         }
         else
