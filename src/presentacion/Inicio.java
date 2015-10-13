@@ -1561,10 +1561,13 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbOidos.getSelectedItem().toString().equals("Anormal")){
             cbDetallesOidos.setEnabled(true);
-        }
+        }// fin del if
         
-        else
+        else {
             cbDetallesOidos.setEnabled(false);
+            textOtrosDetallesOidos.setEnabled(false);
+            cbDetallesOidos.setSelectedIndex(0);
+        }// fin del else
     }//GEN-LAST:event_cbOidosActionPerformed
 
     private void btnSignosVitalesGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignosVitalesGuardarActionPerformed
@@ -1748,40 +1751,52 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbBoca.getSelectedItem().toString().equals("Anormal")){
             cbDetallesBoca.setEnabled(true);
-        }
+        }// fin del if
         
-        else
+        else {
             cbDetallesBoca.setEnabled(false);
+            textOtrosDetallesBoca.setEnabled(false);
+            cbDetallesBoca.setSelectedIndex(0);
+        }// fin del else
     }//GEN-LAST:event_cbBocaActionPerformed
 
     private void cbNarizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNarizActionPerformed
         // TODO add your handling code here:
          if (cbNariz.getSelectedItem().toString().equals("Anormal")){
             cbDetallesNariz.setEnabled(true);
-        }
+        }// fin del if
          
-        else
-             cbDetallesNariz.setEnabled(false);
+         else {
+            cbDetallesNariz.setEnabled(false);
+            textOtrosDetallesNariz.setEnabled(false);
+            cbDetallesNariz.setSelectedIndex(0);
+         }// fin del else
     }//GEN-LAST:event_cbNarizActionPerformed
 
     private void cbToraxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbToraxActionPerformed
         // TODO add your handling code here:
         if (cbTorax.getSelectedItem().toString().equals("Anormal")){
             cbDetallesTorax.setEnabled(true);
-        }
+        }// fin del if
          
-        else
+        else {
             cbDetallesTorax.setEnabled(false);
+            textOtrosDetallesTorax.setEnabled(false);
+            cbDetallesTorax.setSelectedIndex(0);
+        }// fin del else
     }//GEN-LAST:event_cbToraxActionPerformed
 
     private void cbCorazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCorazonActionPerformed
         // TODO add your handling code here:
         if (cbCorazon.getSelectedItem().toString().equals("Anormal")){
             cbDetallesCorazon.setEnabled(true);
-        }
+        }// fin del if
         
-        else
+        else {
             cbDetallesCorazon.setEnabled(false);
+            textOtrosDetallesCorazon.setEnabled(false);
+            cbDetallesCorazon.setSelectedIndex(0);
+        }// fin del else
     }//GEN-LAST:event_cbCorazonActionPerformed
 
     private void cbAbdomenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAbdomenActionPerformed
@@ -1790,28 +1805,37 @@ public class Inicio extends javax.swing.JFrame {
             cbDetallesAbdomen.setEnabled(true);
         }
          
-        else
+        else {
             cbDetallesAbdomen.setEnabled(false);
+            textOtrosDetallesAbdomen.setEnabled(false);
+            cbDetallesAbdomen.setSelectedIndex(0);
+        }// fin del else
     }//GEN-LAST:event_cbAbdomenActionPerformed
 
     private void cbEsqueleticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEsqueleticoActionPerformed
         // TODO add your handling code here:
         if (cbEsqueletico.getSelectedItem().toString().equals("Anormal")){
             cbDetallesEsqueletico.setEnabled(true);
-        }
+        }// fin del if
         
-        else
+        else {
             cbDetallesEsqueletico.setEnabled(false);
+            textOtrosDetallesEsqueletico.setEnabled(false);
+            cbDetallesEsqueletico.setSelectedIndex(0);
+        }// fin del else
     }//GEN-LAST:event_cbEsqueleticoActionPerformed
 
     private void cbUrinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUrinarioActionPerformed
         // TODO add your handling code here:
         if (cbUrinario.getSelectedItem().toString().equals("Anormal")){
             cbDetallesUrinario.setEnabled(true);
-        }
+        }// fin del if
         
-        else
+        else {
             cbDetallesUrinario.setEnabled(false);
+            textOtrosDetallesUrinario.setEnabled(false);
+            cbDetallesUrinario.setSelectedIndex(0);
+        }// fin del else
     }//GEN-LAST:event_cbUrinarioActionPerformed
 
     private void cbDetallesOidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesOidosActionPerformed
