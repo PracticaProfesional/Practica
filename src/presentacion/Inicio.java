@@ -32,6 +32,7 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
+    java.io.File fichero;
     private String idPaciente;
     private String idExpediente;
     private String pacienteActual;
@@ -44,7 +45,8 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | this.MAXIMIZED_HORIZ);
-        btnBuscarPaciente.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.green));
+        btnGuardarLabGab.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
+        btnRefrescarTablaBuscar.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -194,7 +196,10 @@ public class Inicio extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         btnLabGabineteAdjuntarExamen = new javax.swing.JButton();
+        textRutaLabGab = new javax.swing.JTextField();
+        btnGuardarLabGab = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
         tapAgenda = new javax.swing.JTabbedPane();
         agendaPanelPrincipal = new javax.swing.JPanel();
         agendaPanelCalendario = new javax.swing.JPanel();
@@ -750,7 +755,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(2294, Short.MAX_VALUE))
+                .addContainerGap(2317, Short.MAX_VALUE))
         );
 
         panelConsultaMedica.addTab("Signos Vitales", jPanel1);
@@ -1226,7 +1231,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(textObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(2236, Short.MAX_VALUE))
+                .addContainerGap(2259, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1236,10 +1241,21 @@ public class Inicio extends javax.swing.JFrame {
 
         panelConsultaMedica.addTab("Examen Físico", jPanel2);
 
-        btnLabGabineteAdjuntarExamen.setText("Adjuntar Examen");
+        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Adjuntar"));
+
+        btnLabGabineteAdjuntarExamen.setText("Cargar");
         btnLabGabineteAdjuntarExamen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLabGabineteAdjuntarExamenActionPerformed(evt);
+            }
+        });
+
+        textRutaLabGab.setEditable(false);
+
+        btnGuardarLabGab.setText("Guardar");
+        btnGuardarLabGab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarLabGabActionPerformed(evt);
             }
         });
 
@@ -1247,20 +1263,41 @@ public class Inicio extends javax.swing.JFrame {
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(btnLabGabineteAdjuntarExamen, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(207, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnGuardarLabGab, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                    .addComponent(textRutaLabGab))
+                .addGap(18, 18, 18)
+                .addComponent(btnLabGabineteAdjuntarExamen, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(btnLabGabineteAdjuntarExamen)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLabGabineteAdjuntarExamen)
+                    .addComponent(textRutaLabGab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(btnGuardarLabGab)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/icons/document.png"))); // NOI18N
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Mostrar"));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 531, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -1269,21 +1306,25 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGap(473, 473, 473)
+                        .addGap(528, 528, 528)
                         .addComponent(jLabel14)))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel14)
-                .addGap(85, 85, 85)
-                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(2457, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(2465, Short.MAX_VALUE))
         );
 
         panelConsultaMedica.addTab("Laboratorio & Gabinete", jPanel15);
@@ -2096,9 +2137,10 @@ public class Inicio extends javax.swing.JFrame {
         javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
         int seleccion = fileChooser.showSaveDialog(this);
         if(seleccion == JFileChooser.APPROVE_OPTION){
-            java.io.File fichero = fileChooser.getSelectedFile();
+            
+            fichero = fileChooser.getSelectedFile();
             System.out.println(fichero);
-            insertarLabGab(fichero);
+            textRutaLabGab.setText(fichero.getPath());
         }
     }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
 
@@ -2155,6 +2197,14 @@ public class Inicio extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_textTallaFocusLost
+
+    private void btnGuardarLabGabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarLabGabActionPerformed
+        if(fichero != null)
+            insertarLabGab(fichero);
+        else
+            JOptionPane.showMessageDialog(this, "No seleccionó ningún archivo",
+                                          "Error", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_btnGuardarLabGabActionPerformed
     private void splitFechaNac(String fecha){
         String year = "";
         String month = "";
@@ -2391,6 +2441,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultaMedica;
     private javax.swing.JButton btnCrearExpediente;
     private javax.swing.JButton btnGuardarExamenFisico;
+    private javax.swing.JButton btnGuardarLabGab;
     private javax.swing.JButton btnLabGabineteAdjuntarExamen;
     private javax.swing.JButton btnRefrescarTablaBuscar;
     private javax.swing.JButton btnSignosVitalesCancelar;
@@ -2494,6 +2545,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2539,6 +2591,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField textOtrosDetallesUrinario;
     private javax.swing.JTextField textPAR;
     private javax.swing.JTextField textPeso;
+    private javax.swing.JTextField textRutaLabGab;
     private javax.swing.JTextField textSintomas;
     private javax.swing.JTextField textTalla;
     private javax.swing.JTextField textTemperatura;
