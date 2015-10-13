@@ -1623,6 +1623,7 @@ public class Inicio extends javax.swing.JFrame {
         for(javax.swing.JTextField campo:textsSignosVitales)
             campo.setText("");
         
+        textNotaEnfermeria.setText("");
         javax.swing.JCheckBox [] box = {chAF, chAS, chCP, chCuraciones,
                                         chES, chExMamas, chGM, chIM,
                                         chIV, chPA, chPAP, chSC, chSS};
