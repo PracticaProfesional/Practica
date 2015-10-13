@@ -10,6 +10,7 @@ import entidad.enums.EstadoCitaEnum;
 import entidad.ExamenFisico;
 import entidad.SignosVitales;
 import entidad.enums.SexoEnum;
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -2097,9 +2098,16 @@ public class Inicio extends javax.swing.JFrame {
         if(seleccion == JFileChooser.APPROVE_OPTION){
             java.io.File fichero = fileChooser.getSelectedFile();
             System.out.println(fichero);
+            insertarLabGab(fichero);
         }
     }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
 
+    private void insertarLabGab(File fichero) throws NumberFormatException {
+        negocio.NegocioLaboratorioGabinete inLab;
+        inLab = new negocio.NegocioLaboratorioGabinete();
+        inLab.guardarExamen(fichero, Integer.parseInt(idExpediente));
+    }
+    
     private void popItemNuevaActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemNuevaActividadActionPerformed
         final int selectedRow = agendaTabla.getSelectedRow();
         if(selectedRow != -1){
