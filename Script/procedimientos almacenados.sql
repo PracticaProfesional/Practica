@@ -89,10 +89,10 @@ END $
 
 DELIMITER $  --  insertar en la tabla examen fisico
 CREATE PROCEDURE InsertarExamenFisico (in cat varchar(45), in subCat varchar(45),
-			in det varchar(45))
+			in det varchar(45), in idConMed int)
 BEGIN
-	insert into examenfisico (categoria, subCategoria, detalle)
-	values (cat, subCat, det);
+	insert into examenfisico (categoria, subCategoria, detalle, idConsultaMedica)
+	values (cat, subCat, det, idConMed);
 END $
 
 
@@ -198,7 +198,7 @@ END $
 DELIMITER $
 CREATE DEFINER=`root`@`localhost` PROCEDURE `obtenerExpedientePaciente`()
 BEGIN
-	SELECT id, cedulaPaciente, nombrePaciente,apellido1Paciente,apellido2Paciente FROM sigos.Paciente;
+	SELECT id, cedulaPaciente, nombrePaciente,apellido1Paciente,apellido2Paciente, fechaNacimientoPaciente, sexo FROM sigos.Paciente;
 END $
 
 DELIMITER $
