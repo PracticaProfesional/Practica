@@ -2015,7 +2015,8 @@ public class Inicio extends javax.swing.JFrame {
         
         //else {
             ArrayList<entidad.ExamenFisico> listaExamen = new ArrayList<>();
-            listaExamen = obtenerDatosExamenFisico(listaExamen);
+//            listaExamen = obtenerDatosExamenFisico(listaExamen);
+            obtenerDatosExamenFisico(listaExamen);
             insertarAnormalidadesExFisico(listaExamen);
         //}// fin del else
     }
