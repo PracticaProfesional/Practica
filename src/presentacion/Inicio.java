@@ -1517,10 +1517,12 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnSignosVitalesGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignosVitalesGuardarActionPerformed
         if(validaSVitales()){
-//            ingresarSignosConsulta();
-//            limpiarSignosVitales();
-            System.out.println("INgresa signos");
+            ingresarSignosConsulta();
+            limpiarSignosVitales();
         }
+        else
+            JOptionPane.showMessageDialog(this, "Parecen haber datos incompletos"
+                    + "o erroneos", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnSignosVitalesGuardarActionPerformed
     private boolean validaSVitales(){
         String validadorNumerico = ".*[1-9].*";
