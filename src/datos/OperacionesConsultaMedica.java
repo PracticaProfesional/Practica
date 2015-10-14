@@ -42,7 +42,8 @@ public class OperacionesConsultaMedica
         String datos = "'"+idExpediente+"'"+","+
                        "'"+consultaMedica.getDiagnostico()+"'"+","+
                        "'"+consultaMedica.getMotivo2()+"'"+","+
-                       "'"+consultaMedica.getObservaciones()+"'";
+                       "'"+consultaMedica.getObservaciones()+"'"+","+
+                       "'"+consultaMedica.getEstado().obtenerEstadoNumero();
         try{
             estado = objetoDeConexion.conectar().createStatement();
             estado.executeQuery("Call actualizarConsultaMedica("+datos+")");
