@@ -536,6 +536,8 @@ INSERT INTO `telefono` VALUES (21,'3333','Nada..'),(22,'56','Nada..'),(23,'55','
 /*!40000 ALTER TABLE `telefono` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+ALTER TABLE `sigos`.`paciente` ADD COLUMN `tipo` INT NOT NULL  AFTER `email` ;
 --
 -- Dumping routines for database 'sigos'
 

@@ -1,6 +1,7 @@
 package entidad;
 
 import entidad.enums.SexoEnum;
+import entidad.enums.TipoEnum;
 
 /**
  *
@@ -18,6 +19,8 @@ public class Paciente {
    private String direccion1;
    private String direccion2;
    entidad.enums.SexoEnum sexo;        //Masculino/Femenino
+   private entidad.enums.TipoEnum tipo;
+   
 
     public SexoEnum getSexo() {
         return sexo;
@@ -106,5 +109,15 @@ public class Paciente {
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
+
+    public TipoEnum getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+    
+    
    
 }

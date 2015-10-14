@@ -145,13 +145,13 @@ DELIMITER $
 CREATE PROCEDURE InsertarPaciente (in nomPac varchar(45), in ape1Pac varchar(45),
 		in ape2Pac varchar(45), in sex tinyint, in fecNacPac date, 
 		in nacPac varchar(45), cedPac varchar(45), in idTel int,  in dir1 varchar(45),
-		in dir2 varchar(45), in ema varchar(45))
+		in dir2 varchar(45), in ema varchar(45), in tip int)
 BEGIN
 	insert into paciente (nombrePaciente, apellido1Paciente, apellido2Paciente,
 			sexo, fechaNacimientoPaciente, nacionalidadPaciente, 
-			cedulaPaciente, idtelefono, direccion1, direccion2, email)
+			cedulaPaciente, idtelefono, direccion1, direccion2, email, tipo)
 	values (nomPac, ape1Pac, ape2Pac, sex, fecNacPac, nacPac, cedPac, idTel, dir1,
-			dir2, ema);
+			dir2, ema, tip);
 END $
 
 
