@@ -169,12 +169,14 @@ END $
 DELIMITER $
 CREATE  PROCEDURE `InsertarConsultaMedica`(in idExpMed int, 
 		in motiCon varchar(45), in descripSint varchar(45), in diag varchar(45),
-		in idSigVit int,in fech date, in motivo varchar(45), in obser varchar (200), in notaE varchar(500))
+		in idSigVit int,in fech date, in motivo varchar(45), in obser varchar (200), in notaE varchar(500),
+		in est int)
 BEGIN
 	insert into ConsultaMedica (idExpedienteMedico, motivoConsulta,
-			descripcionSintomas, diagnostico, signosVitales,fecha, motivo2, observaciones, notaEnfermeria)
-	values (idExpMed, motiCon, descripSint, diag, idSigVit,fech, motivo, obser, notaE);
-END$
+			descripcionSintomas, diagnostico, signosVitales,fecha, motivo2, observaciones, 
+			notaEnfermeria, estado)
+	values (idExpMed, motiCon, descripSint, diag, idSigVit,fech, motivo, obser, notaE, est);
+END $
 
 
 DELIMITER $
@@ -252,10 +254,13 @@ END $
 
 --  ACTUALIZA ALGUNOS DATOS DE LA TABLA ConsultaMedica.
 DELIMITER $
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarConsultaMedica`(in id int, in diag varchar(45), in motiv varchar(45), in obs varchar(200))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarConsultaMedica`(
+		in id int, in diag varchar(45), in motiv varchar(45), 
+		in obs varchar(200), in est int)
 BEGIN
 	UPDATE ConsultaMedica
-    SET diagnostico = diag, motivo2 = motiv, observaciones = obs
+    SET diagnostico = diag, motivo2 = motiv, observaciones = obs, 
+		estado = est 
     WHERE idExpedienteMedico = id;
 END $
 

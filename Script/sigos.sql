@@ -538,6 +538,10 @@ UNLOCK TABLES;
 
 
 ALTER TABLE `sigos`.`paciente` ADD COLUMN `tipo` INT NOT NULL  AFTER `email` ;
+
+
+ALTER TABLE `sigos`.`consultamedica` CHANGE COLUMN `notaEnfermeria` `notaEnfermeria` VARCHAR(500) NULL  , ADD COLUMN `estado` INT NOT NULL  AFTER `notaEnfermeria` ;
+
 --
 -- Dumping routines for database 'sigos'
 
