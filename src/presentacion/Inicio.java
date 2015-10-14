@@ -2089,6 +2089,7 @@ public class Inicio extends javax.swing.JFrame {
         consulta.setDiagnostico(textDiagnostico.getText());
         consulta.setMotivo2(textMotivo2.getText());
         consulta.setObservaciones(textObservaciones.getText());
+        consulta.setEstado(EstadoConsultaMedicaEnum.Completa);
         negocio.NegocioConsultaMedica actConsulta = new negocio.NegocioConsultaMedica();
         actConsulta.actualizarConsultaMedica(this.idExpediente, consulta);
         
