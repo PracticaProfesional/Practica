@@ -308,7 +308,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1173, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1176, Short.MAX_VALUE)
                         .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -749,7 +749,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1219,7 +1219,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 57, Short.MAX_VALUE))
+                        .addGap(0, 60, Short.MAX_VALUE))
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1258,6 +1258,7 @@ public class Inicio extends javax.swing.JFrame {
         panelConsultaMedica.addTab("Examen Físico", jPanel2);
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Adjuntar"));
+        jPanel16.setMaximumSize(new java.awt.Dimension(543, 171));
 
         btnLabGabineteAdjuntarExamen.setText("Cargar");
         btnLabGabineteAdjuntarExamen.addActionListener(new java.awt.event.ActionListener() {
@@ -1267,6 +1268,8 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         textRutaLabGab.setEditable(false);
+        textRutaLabGab.setAutoscrolls(false);
+        textRutaLabGab.setMaximumSize(new java.awt.Dimension(10, 27));
 
         btnGuardarLabGab.setText("Guardar");
         btnGuardarLabGab.addActionListener(new java.awt.event.ActionListener() {
@@ -1283,7 +1286,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnGuardarLabGab, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                    .addComponent(textRutaLabGab))
+                    .addComponent(textRutaLabGab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(btnLabGabineteAdjuntarExamen, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
@@ -1300,13 +1303,15 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Mostrar"));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Vista previa"));
+
+        panelImagenLabGab.setAutoscrolls(true);
 
         javax.swing.GroupLayout panelImagenLabGabLayout = new javax.swing.GroupLayout(panelImagenLabGab);
         panelImagenLabGab.setLayout(panelImagenLabGabLayout);
         panelImagenLabGabLayout.setHorizontalGroup(
             panelImagenLabGabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 507, Short.MAX_VALUE)
+            .addGap(0, 1145, Short.MAX_VALUE)
         );
         panelImagenLabGabLayout.setVerticalGroup(
             panelImagenLabGabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1327,7 +1332,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jScrollPane4)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1336,19 +1341,21 @@ public class Inicio extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(330, 330, 330)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(346, Short.MAX_VALUE))
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(2400, Short.MAX_VALUE))
         );
 
@@ -2218,7 +2225,6 @@ public class Inicio extends javax.swing.JFrame {
         if(seleccion == JFileChooser.APPROVE_OPTION){
             
             fichero = fileChooser.getSelectedFile();
-            System.out.println(fichero);
             textRutaLabGab.setText(fichero.getPath());
             ImagenLabGab img = new ImagenLabGab(panelImagenLabGab, fichero.getPath());
             panelImagenLabGab.add(img).repaint();

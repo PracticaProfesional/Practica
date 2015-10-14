@@ -232,7 +232,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jScrollPane3" pref="1173" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane3" pref="1176" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -458,7 +458,7 @@
                                       <Component id="jPanel14" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jPanel13" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="206" max="32767" attributes="0"/>
+                                  <EmptySpace pref="209" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1066,7 +1066,7 @@
                                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                                               <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="60" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="jPanel6" alignment="1" max="32767" attributes="0"/>
                                   </Group>
@@ -1906,23 +1906,25 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="330" max="-2" attributes="0"/>
                                   <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="69" max="32767" attributes="0"/>
+                                  <EmptySpace pref="346" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel7" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                  <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="2400" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1935,6 +1937,9 @@
                               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                                 <TitledBorder title="Adjuntar"/>
                               </Border>
+                            </Property>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[543, 171]"/>
                             </Property>
                           </Properties>
 
@@ -1980,6 +1985,10 @@
                             <Component class="javax.swing.JTextField" name="textRutaLabGab">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
+                                <Property name="autoscrolls" type="boolean" value="false"/>
+                                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[10, 27]"/>
+                                </Property>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JButton" name="btnGuardarLabGab">
@@ -1996,7 +2005,7 @@
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                                <TitledBorder title="Mostrar"/>
+                                <TitledBorder title="Vista previa"/>
                               </Border>
                             </Property>
                           </Properties>
@@ -2014,7 +2023,7 @@
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jScrollPane4" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane4" pref="272" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2026,11 +2035,14 @@
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
                                 <Container class="javax.swing.JPanel" name="panelImagenLabGab">
+                                  <Properties>
+                                    <Property name="autoscrolls" type="boolean" value="true"/>
+                                  </Properties>
 
                                   <Layout>
                                     <DimensionLayout dim="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <EmptySpace min="0" pref="507" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="1145" max="32767" attributes="0"/>
                                       </Group>
                                     </DimensionLayout>
                                     <DimensionLayout dim="1">
