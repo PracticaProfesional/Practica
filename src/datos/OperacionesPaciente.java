@@ -17,7 +17,9 @@ public class OperacionesPaciente {
                                 +"'"+objetoPaciente.getSexo().getSexo()+"'"+","+"'"+objetoPaciente.getFechaNacimiento()+"'"+","
                                 +"'"+objetoPaciente.getNacionalidad()+"'"+","+"'"+objetoPaciente.getIdentificacion()+"'"+","
                                 +"'"+objetoPaciente.getTelefono()+"'"+","+"'"+objetoPaciente.getDireccion1()+"'"+","
-                                +"'"+objetoPaciente.getDireccion2()+"'"+","+"'"+objetoPaciente.getEmail()+"'";
+                                +"'"+objetoPaciente.getDireccion2()+"'"+","+"'"+objetoPaciente.getEmail()+"'"+","
+                                + "'" + objetoPaciente.getTipo().obtenerTipoNumero() + "'";
+        
         try
         {
            estado = objetoDeConexion.conectar().createStatement();
