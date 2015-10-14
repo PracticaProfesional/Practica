@@ -2375,16 +2375,21 @@ public class Inicio extends javax.swing.JFrame {
                 for(int j = 0; j < 6; j++)
                     paciente.add(backUpList[i][j]);
             }
-        
-        // Limpia el contenido actual
-        for(int k = 0; k < numeroFilas; k++)
-            for(int l = 0; l < 6; l++)
-                tableBuscarPaciente.setValueAt("", k, l);
-        // Posiciona el resultado en la primer fila
-        for(int p = 0; p < paciente.size(); p++){
-            for(int q = 0; q < 6; q++)
-                tableBuscarPaciente.setValueAt(paciente.removeFirst(), p, q);
+        if(paciente.size() == 0)
+            JOptionPane.showMessageDialog(this, "No se encontraron registros",
+                                          "Error", JOptionPane.ERROR_MESSAGE);
+        else{
+            // Limpia el contenido actual
+            for(int k = 0; k < numeroFilas; k++)
+                for(int l = 0; l < 6; l++)
+                    tableBuscarPaciente.setValueAt("", k, l);
+            // Posiciona el resultado en la primer fila
+            for(int p = 0; p < paciente.size(); p++){
+                for(int q = 0; q < 6; q++)
+                    tableBuscarPaciente.setValueAt(paciente.removeFirst(), p, q);
+            }
         }
+        
         
     }
 
