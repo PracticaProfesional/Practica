@@ -1651,6 +1651,33 @@ public class Inicio extends javax.swing.JFrame {
                 boxItem.doClick();
         }
     }
+    
+    private void limpiarExamenFisico()
+    {
+        javax.swing.JComboBox comboPartes [] = {cbAbdomen, cbAdenopatias, cbBoca, cbCorazon, cbEsqueletico,
+                                                cbNariz, cbNervioso, cbOidos, cbOjos, cbTiroides, cbTorax,
+                                                cbUrinario, cbDetallesAbdomen, cbDetallesBoca, cbDetallesCorazon,
+                                                cbDetallesEsqueletico, cbDetallesNariz, cbDetallesOidos, cbDetallesTorax,
+                                                cbDetallesUrinario};
+        
+        for (javax.swing.JComboBox comboItem : comboPartes)
+            comboItem.setSelectedIndex(0);
+        
+        javax.swing.JTextField camposDeTexto [] = {textOtrosDetallesAbdomen, textOtrosDetallesBoca, textOtrosDetallesCorazon,
+                                                   textOtrosDetallesEsqueletico, textOtrosDetallesNariz,
+                                                   textOtrosDetallesNariz, textOtrosDetallesOidos, textOtrosDetallesTorax,
+                                                   textOtrosDetallesUrinario};
+        
+        for (javax.swing.JTextField fieldItem : camposDeTexto)
+        {
+            fieldItem.setText("");
+            fieldItem.setEnabled(false);
+        }// fin del for
+        
+        textMotivo2.setText("");
+        textDiagnostico.setText("");
+        textObservaciones.setText("");
+    }// fin del metodo limpiarExamenFisico
 
     private void ingresarSignosConsulta() throws NumberFormatException {
         entidad.SignosVitales signosV = new entidad.SignosVitales();
@@ -2042,9 +2069,10 @@ public class Inicio extends javax.swing.JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
         
         else {
-        insertarExamenFisico();
-        actualizarConsulta();
-        tabExpediente.setSelectedIndex(0);
+            insertarExamenFisico();
+            actualizarConsulta();
+            limpiarExamenFisico();
+            //tabExpediente.setSelectedIndex(0);
         }// fin del else
     }//GEN-LAST:event_btnGuardarExamenFisicoActionPerformed
     private void actualizarConsulta(){
