@@ -9,6 +9,7 @@ package presentacion;
 import entidad.enums.EstadoCitaEnum;
 import entidad.ExamenFisico;
 import entidad.SignosVitales;
+import entidad.enums.EstadoConsultaMedicaEnum;
 import entidad.enums.SexoEnum;
 import java.io.File;
 import java.sql.SQLException;
@@ -1700,6 +1701,7 @@ public class Inicio extends javax.swing.JFrame {
         nuevaConsulta.setMotivoConsulta(textMotivoConsulta.getText());
         nuevaConsulta.setSintomaPaciente(textSintomas.getText());
         nuevaConsulta.setNotaEnfermeria(textNotaEnfermeria.getText());
+        nuevaConsulta.setEstado(EstadoConsultaMedicaEnum.Incompleta);
         insertarConsulta.insertarConsultaMedica(nuevaConsulta);
     }
 

@@ -1,6 +1,8 @@
 
 package entidad;
 
+import entidad.enums.EstadoConsultaMedicaEnum;
+
 /**
  *
  * @author cooper15
@@ -15,6 +17,7 @@ public class ConsultaMedica {
     private String motivo2 = "";
     private String observaciones = "";
     private String notaEnfermeria = "";
+    private EstadoConsultaMedicaEnum estado;
 
     public String getNotaEnfermeria() {
         return notaEnfermeria;
@@ -88,4 +91,14 @@ public class ConsultaMedica {
     public void setDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
+
+    public EstadoConsultaMedicaEnum getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoConsultaMedicaEnum estado) {
+        this.estado = estado;
+    }
+    
+    
 }

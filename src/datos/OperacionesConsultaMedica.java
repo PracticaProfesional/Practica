@@ -23,7 +23,8 @@ public class OperacionesConsultaMedica
                                      "'"+nuevaConsulta.getFecha()+"'"+","+
                                      "'"+nuevaConsulta.getMotivo2()+"'"+","+
                                      "'"+nuevaConsulta.getObservaciones()+"'"+","+
-                                     "'"+nuevaConsulta.getNotaEnfermeria()+"'";
+                                     "'"+nuevaConsulta.getNotaEnfermeria()+"'"+","+
+                                     "'"+nuevaConsulta.getEstado().obtenerEstadoNumero()+"'";
         
             estado = objetoDeConexion.conectar().createStatement();
             estado.executeQuery("Call InsertarConsultaMedica("+datosConsultaMedica+")");
