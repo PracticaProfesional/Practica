@@ -202,7 +202,7 @@ public class Inicio extends javax.swing.JFrame {
         btnGuardarLabGab = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jPanel17 = new javax.swing.JPanel();
+        panelImagenLabGab = new javax.swing.JPanel();
         tapAgenda = new javax.swing.JTabbedPane();
         agendaPanelPrincipal = new javax.swing.JPanel();
         agendaPanelCalendario = new javax.swing.JPanel();
@@ -1302,18 +1302,18 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Mostrar"));
 
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelImagenLabGabLayout = new javax.swing.GroupLayout(panelImagenLabGab);
+        panelImagenLabGab.setLayout(panelImagenLabGabLayout);
+        panelImagenLabGabLayout.setHorizontalGroup(
+            panelImagenLabGabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 507, Short.MAX_VALUE)
         );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelImagenLabGabLayout.setVerticalGroup(
+            panelImagenLabGabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 486, Short.MAX_VALUE)
         );
 
-        jScrollPane4.setViewportView(jPanel17);
+        jScrollPane4.setViewportView(panelImagenLabGab);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -2192,6 +2192,8 @@ public class Inicio extends javax.swing.JFrame {
             fichero = fileChooser.getSelectedFile();
             System.out.println(fichero);
             textRutaLabGab.setText(fichero.getPath());
+            ImagenLabGab img = new ImagenLabGab(panelImagenLabGab, fichero.getPath());
+            panelImagenLabGab.add(img).repaint();
         }
     }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
 
@@ -2601,7 +2603,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2620,6 +2621,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel lblPacienteActual;
     private javax.swing.JPanel panelBtnBuscarPaciente;
     private javax.swing.JTabbedPane panelConsultaMedica;
+    private javax.swing.JPanel panelImagenLabGab;
     private javax.swing.JTabbedPane panelPrincipal;
     private javax.swing.JMenuItem popItemCompletarActividad;
     private javax.swing.JMenuItem popItemEliminarActividad;
