@@ -596,7 +596,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     }//GEN-LAST:event_rbnPrediabetesActionPerformed
 
     private void rbnBajopesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnBajopesoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_rbnBajopesoActionPerformed
 
     private void txtEnfermedadesNeurologicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnfermedadesNeurologicasActionPerformed
