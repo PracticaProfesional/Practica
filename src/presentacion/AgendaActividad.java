@@ -5,6 +5,8 @@
  */
 package presentacion;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author cooper15
@@ -165,6 +167,16 @@ public class AgendaActividad extends javax.swing.JDialog {
         if(!cedula.equals("")){
             negocio.NegocioPaciente paciente = new negocio.NegocioPaciente();
             this.idPaciente = paciente.obtenerIdPaciente(cedula);
+            if(!this.idPaciente.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Asignación correcta",
+                                              "Information", JOptionPane.INFORMATION_MESSAGE);
+                textCitaPaciente.setEditable(false);
+            }
+                
+            else
+                JOptionPane.showMessageDialog(this, "No existe paciente registrado "
+                                            + "con el numero de cédula anterior",
+                                            "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnVerificarAsignacionActionPerformed
 
