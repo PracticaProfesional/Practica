@@ -1000,11 +1000,11 @@ jPanel9Layout.setHorizontalGroup(
         nuevoPaciente.setDireccion2(textDireccionLectiva.getText());
         
         switch(cbTipo.getSelectedIndex()) {
-            case 1: nuevoPaciente.setTipo(TipoEnum.Administrativo);
+            case 1: nuevoPaciente.setTipo(TipoEnum.ADMINISTRATIVO);
                 break;    
-            case 2: nuevoPaciente.setTipo(TipoEnum.Estudiante);
+            case 2: nuevoPaciente.setTipo(TipoEnum.ESTUDIANTE);
                 break;
-            case 3: nuevoPaciente.setTipo(TipoEnum.Docente);
+            case 3: nuevoPaciente.setTipo(TipoEnum.DOCENTE);
                 break;
         }// fin del switch
         
