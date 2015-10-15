@@ -242,6 +242,11 @@ public class Inicio extends javax.swing.JFrame {
         popMenuAccionesActividad.add(popItemCompletarActividad);
 
         popItemEliminarActividad.setText("Eliminar");
+        popItemEliminarActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                popItemEliminarActividadActionPerformed(evt);
+            }
+        });
         popMenuAccionesActividad.add(popItemEliminarActividad);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -2271,11 +2276,11 @@ public class Inicio extends javax.swing.JFrame {
            actCita.setFechaConsulta(fecha);
            negocio.NegocioCita cita = new negocio.NegocioCita();
            cita.actualizarCita(actCita);
+           cargarActividadesAgenda();
         }
         else
             JOptionPane.showMessageDialog(this, "No seleccionó ninguna fila",
-                                            "Error", JOptionPane.ERROR_MESSAGE);
-        cargarActividadesAgenda();
+                                            "Error", JOptionPane.ERROR_MESSAGE);    
     }//GEN-LAST:event_popItemCompletarActividadActionPerformed
 
     private void btnRefrescarTablaBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarTablaBuscarActionPerformed
@@ -2299,6 +2304,24 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No seleccionó ningún archivo",
                                           "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnGuardarLabGabActionPerformed
+
+    private void popItemEliminarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemEliminarActividadActionPerformed
+        int fila = agendaTabla.getSelectedRow();
+        String fecha = obtenerFechaCalendario();
+        
+        if(fila != -1){
+            String hora = agendaTabla.getValueAt(fila, 0).toString();
+            entidad.Cita cita = new entidad.Cita();
+            cita.setHora(hora);
+            cita.setFechaConsulta(fecha);
+            negocio.NegocioCita eliCita = new negocio.NegocioCita();
+            eliCita.eliminarCita(cita);
+            cargarActividadesAgenda();
+        }
+        else
+            JOptionPane.showMessageDialog(this, "No seleccionó ninguna fila",
+                                            "Error", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_popItemEliminarActividadActionPerformed
     private void splitFechaNac(String fecha){
         String year = "";
         String month = "";
