@@ -63,4 +63,17 @@ public class OperacionesCita
             System.err.println(sqle.getErrorCode() + sqle.getMessage());
         }
     }
+    
+    public void insertarCitaPaciente(String idCita, String idPaciente){
+        objetoDeConexion = new Conexion();
+        String datosCitaPaciente = "'" + idCita +"'" +","
+                                  +"'" + idPaciente + "'";
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call InsertarCitaPaciente("+datosCitaPaciente+")");
+        }
+        catch(SQLException sqle){
+            System.err.println(sqle.getErrorCode() + sqle.getMessage());
+        }
+    }
 }// fin de la clase OperacionesCita
