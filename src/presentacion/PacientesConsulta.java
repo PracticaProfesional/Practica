@@ -7,7 +7,6 @@ package presentacion;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import sun.security.x509.PrivateKeyUsageExtension;
 
 /**
  *
