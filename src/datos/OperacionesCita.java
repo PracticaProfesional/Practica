@@ -50,4 +50,17 @@ public class OperacionesCita
             System.out.println(e.getErrorCode() + e.getMessage());
         }
     }
+    
+    public void eliminarCita(Cita eliCita){
+        objetoDeConexion = new Conexion();
+        String datosCita = "'" + eliCita.getHora() + "'" + "," 
+                          +"'" + eliCita.getFechaConsulta() +"'";
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call EliminarCita("+ datosCita +")");
+        }
+        catch(SQLException sqle){
+            System.err.println(sqle.getErrorCode() + sqle.getMessage());
+        }
+    }
 }// fin de la clase OperacionesCita
