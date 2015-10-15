@@ -32,4 +32,9 @@ public class NegocioCita
         OperacionesCita operacionesCita = new OperacionesCita();
         operacionesCita.eliminarCita(eliCita);
     }
+    
+    public void insertarCitaPaciente(String idCita, String idPaciente){
+        OperacionesCita operacionesCita = new OperacionesCita();
+        operacionesCita.insertarCitaPaciente(idCita, idPaciente);
+    }
 }// fin de la clase NegocioCita
