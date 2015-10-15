@@ -1701,7 +1701,7 @@ public class Inicio extends javax.swing.JFrame {
         nuevaConsulta.setMotivoConsulta(textMotivoConsulta.getText());
         nuevaConsulta.setSintomaPaciente(textSintomas.getText());
         nuevaConsulta.setNotaEnfermeria(textNotaEnfermeria.getText());
-        nuevaConsulta.setEstado(EstadoConsultaMedicaEnum.Incompleta);
+        nuevaConsulta.setEstado(EstadoConsultaMedicaEnum.INCOMPLETA);
         insertarConsulta.insertarConsultaMedica(nuevaConsulta);
     }
 
@@ -2089,7 +2089,7 @@ public class Inicio extends javax.swing.JFrame {
         consulta.setDiagnostico(textDiagnostico.getText());
         consulta.setMotivo2(textMotivo2.getText());
         consulta.setObservaciones(textObservaciones.getText());
-        consulta.setEstado(EstadoConsultaMedicaEnum.Completa);
+        consulta.setEstado(EstadoConsultaMedicaEnum.COMPLETA);
         negocio.NegocioConsultaMedica actConsulta = new negocio.NegocioConsultaMedica();
         actConsulta.actualizarConsultaMedica(this.idExpediente, consulta);
         
