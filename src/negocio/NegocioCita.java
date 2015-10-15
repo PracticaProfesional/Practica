@@ -27,4 +27,9 @@ public class NegocioCita
         OperacionesCita operacionesCita = new OperacionesCita();
         operacionesCita.actualizarCita(actCita);
     }
+    
+    public void eliminarCita(Cita eliCita){
+        OperacionesCita operacionesCita = new OperacionesCita();
+        operacionesCita.eliminarCita(eliCita);
+    }
 }// fin de la clase NegocioCita
