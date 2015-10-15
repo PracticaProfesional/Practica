@@ -7,7 +7,7 @@ public enum EstadoConsultaMedicaEnum
     COMPLETA (1),
     INCOMPLETA (2);
     
-    private int numero;
+    private final int numero;
     
     private EstadoConsultaMedicaEnum(int numero)
     {
