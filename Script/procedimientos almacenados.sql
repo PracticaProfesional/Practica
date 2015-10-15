@@ -269,8 +269,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `obtenerPacientesConsulta`(fecha dat
 BEGIN
 	SELECT ConsultaMedica.id,idExpedienteMedico,idPaciente, nombrePaciente,apellido1Paciente, apellido2Paciente,signosVitales from ExpedienteMedico join ConsultaMedica
 	on ExpedienteMedico.id = ConsultaMedica.idExpedienteMedico
-	join Paciente on ExpedienteMedico.id = Paciente.id
-	Where ConsultaMedica.fecha = fecha;
+	join Paciente on ExpedienteMedico.idPaciente = Paciente.id
+	Where ConsultaMedica.fecha = fecha and ConsultaMedica.estado = '2';
 END $
 
 DELIMITER $
