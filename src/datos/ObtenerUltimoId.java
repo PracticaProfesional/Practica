@@ -17,16 +17,22 @@ public class ObtenerUltimoId {
         return estado;
     }
     
-    public String obtenerUltimoId(String nombreTabla) throws SQLException{
+    public String obtenerUltimoId(String nombreTabla) {
         String id = "";
         objetoDeConexion = new Conexion();
-        estado = objetoDeConexion.conectar().createStatement();
-        ResultSet rs = estado.executeQuery("Select MAX(id) as id FROM "+nombreTabla);
-        if(rs.next()){
-            id = rs.getString("id"); 
-           
-        }
         
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            ResultSet rs = estado.executeQuery("Select MAX(id) as id FROM "+nombreTabla);
+            if(rs.next()){
+                id = rs.getString("id"); 
+
+            }
+        
+        }
+        catch(java.sql.SQLException sqle){
+            System.err.println(sqle.getErrorCode() + sqle.getMessage());
+        }
         
         return id;
     }
