@@ -43,4 +43,21 @@ public class OperacionesPaciente {
         }    
         return rs;
     }
+    
+    public String obtenerIdPaciente(String cedulaPaciente){
+        objetoDeConexion = new Conexion();
+        java.sql.ResultSet rs = null;
+        String idPaciente = "";
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            rs = estado.executeQuery("Call obterIdPaciente("+"'"+cedulaPaciente+"'"+")");
+            while(rs.next())
+                idPaciente = rs.getString("id");
+            rs.close();
+        }
+        catch(SQLException sqle){
+            System.err.println(sqle.getErrorCode() + sqle.getMessage());
+        }
+        return idPaciente;
+    }
 }// fin de la clase OperacionesPaciente
