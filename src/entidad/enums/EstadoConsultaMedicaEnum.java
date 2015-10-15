@@ -4,8 +4,8 @@ package entidad.enums;
 
 public enum EstadoConsultaMedicaEnum 
 {
-    Completa (1),
-    Incompleta (2);
+    COMPLETA (1),
+    INCOMPLETA (2);
     
     private int numero;
     
