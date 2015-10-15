@@ -546,6 +546,23 @@ ALTER TABLE `sigos`.`consultamedica` CHANGE COLUMN `notaEnfermeria` `notaEnferme
 -- Dumping routines for database 'sigos'
 
 
+CREATE TABLE `sigos`.`citapaciente` (
+  `id` INT NOT NULL COMMENT '',
+  `idCita` INT NULL COMMENT '',
+  `idPaciente` INT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  INDEX `fkCita_idx` (`idCita` ASC)  COMMENT '',
+  INDEX `fkPaciente_idx` (`idPaciente` ASC)  COMMENT '',
+  CONSTRAINT `fkCita`
+    FOREIGN KEY (`idCita`)
+    REFERENCES `sigos`.`cita` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fkPaciente`
+    FOREIGN KEY (`idPaciente`)
+    REFERENCES `sigos`.`Paciente` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
 
 
 
