@@ -161,7 +161,7 @@ public class AgendaActividad extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnVerificarAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAsignacionActionPerformed
-        String cedula = textCitaPaciente.getText();
+        String cedula = textCitaPaciente.getText().trim();
         if(!cedula.equals("")){
             negocio.NegocioPaciente paciente = new negocio.NegocioPaciente();
             this.idPaciente = paciente.obtenerIdPaciente(cedula);
