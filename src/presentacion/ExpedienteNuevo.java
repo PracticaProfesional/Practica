@@ -836,24 +836,15 @@ jPanel9Layout.setHorizontalGroup(
         if (! textMedicamentos.getText().equals(""))  // valida si el campo de de texto de medicamento esta vacio
             nuevoAntPer.setMedicamento(textMedicamentos.getText());
         
-        try 
-        {   
-            if (! textAlergiaNombre.getText().equals("") || ! textAlergiaDescrip.getText().equals(""))
-            {
-                // la base de datos de pedro tiene el nombre de estas tablas en minuscula
-                nuevoAntPer.setAlergias(Integer.parseInt(ultimoId.obtenerUltimoId("Alergias")));
-            
-            }// fin del if
-            
-            if (! textVacunaTipo.getText().equals(""))
-                nuevoAntPer.setVacunas(Integer.parseInt(ultimoId.obtenerUltimoId("Vacunas")));
-        }// fin del try 
-        catch (SQLException ex) 
+        if (! textAlergiaNombre.getText().equals("") || ! textAlergiaDescrip.getText().equals("")) 
         {
-            System.out.println(ex.getErrorCode());
-            //Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+            // la base de datos de pedro tiene el nombre de estas tablas en minuscula
+            nuevoAntPer.setAlergias(Integer.parseInt(ultimoId.obtenerUltimoId("Alergias")));
+            
         }
-        try 
+        if (! textVacunaTipo.getText().equals("")) 
+            nuevoAntPer.setVacunas(Integer.parseInt(ultimoId.obtenerUltimoId("Vacunas")));
+        try
         {
             ultimoId.getEstado().close();
         } 
@@ -907,15 +898,9 @@ jPanel9Layout.setHorizontalGroup(
         {
             for (int i = 0; i < idsAntecedentesPersonales.length; i++)
             {
-                try
-                {
-                    nuevoAntecedente.setIdPadecimientos(idsAntecedentesPersonales[i]);
-                    nuevoAntecedente.setIdAntecedentesPersonales(
-                            Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesPersonales")));
-                }// fin del try
-                catch(SQLException e)
-                {
-                }// fin del catch
+                nuevoAntecedente.setIdPadecimientos(idsAntecedentesPersonales[i]);
+                nuevoAntecedente.setIdAntecedentesPersonales(
+                        Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesPersonales")));
             
                 negocioAntecedentes.insertarAntecedentePersPad(nuevoAntecedente);
             }// fin del for
@@ -935,17 +920,9 @@ jPanel9Layout.setHorizontalGroup(
         {
             for (int i = 0; i < idsAntecedentesFamiliares.length; i++)
             {
-                try
-                {
-                    nuevoAntecedente.setIdPadecimiento(idsAntecedentesFamiliares[i]);
-                    nuevoAntecedente.setIdAntecedenteFamiliar(
-                           Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesFamiliares")));
-                }// fin del try
-                catch(SQLException e)
-                {
-                    System.out
-                            .println(e.getErrorCode() + e.getMessage());
-                }// fin del catch
+                nuevoAntecedente.setIdPadecimiento(idsAntecedentesFamiliares[i]);
+                nuevoAntecedente.setIdAntecedenteFamiliar(
+                        Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesFamiliares")));
             
                 negocioAntecedentes.insertarAntecedenteFamiliarPadecimiento(nuevoAntecedente);
             }// fin del for
@@ -975,14 +952,7 @@ jPanel9Layout.setHorizontalGroup(
             case 2: nuevoPaciente.setSexo(SexoEnum.FEMENINO);
                 break;
         }
-        try 
-        {
-            nuevoPaciente.setTelefono(ultimoId.obtenerUltimoId("telefono"));
-        } 
-        catch (SQLException ex) 
-        {
-            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        nuevoPaciente.setTelefono(ultimoId.obtenerUltimoId("telefono"));
         try 
         {
             ultimoId.getEstado().close();
