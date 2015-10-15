@@ -50,7 +50,7 @@ public class OperacionesPaciente {
         String idPaciente = "";
         try{
             estado = objetoDeConexion.conectar().createStatement();
-            rs = estado.executeQuery("Call obterIdPaciente("+"'"+cedulaPaciente+"'"+")");
+            rs = estado.executeQuery("Call obtenerIdPaciente("+"'"+cedulaPaciente+"'"+")");
             while(rs.next())
                 idPaciente = rs.getString("id");
             rs.close();
