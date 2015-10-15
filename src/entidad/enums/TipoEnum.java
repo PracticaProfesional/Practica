@@ -4,9 +4,9 @@ package entidad.enums;
 
 public enum TipoEnum
 {
-    Administrativo (1),   // 1
-    Estudiante (2),       // 2
-    Docente (3);          // 3
+    ADMINISTRATIVO (1),   // 1
+    ESTUDIANTE (2),       // 2
+    DOCENTE (3);          // 3
     
     private int numero;
     
