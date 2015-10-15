@@ -1964,6 +1964,7 @@ public class Inicio extends javax.swing.JFrame {
         // al presionar la actividad de la tabla mostrar menu para ingresar actividad en caso de que no exista
         AgendaActividad nuevaActividad = new AgendaActividad(this, true);
         nuevaActividad.setVisible(true);
+        String idPac = nuevaActividad.getIdPaciente();
         String actividad = nuevaActividad.getDetalles();
         String fechaSeleccionada;
         String horaActividad;
@@ -1984,6 +1985,14 @@ public class Inicio extends javax.swing.JFrame {
             }
             else
                 JOptionPane.showMessageDialog(this, "Nada que insertar");
+            if(!idPac.isEmpty()){
+                // Llene la tabla de relacion.
+                negocio.NegocioObtenerUltimoId idCita;
+                idCita = new negocio.NegocioObtenerUltimoId();
+                String idC = idCita.obtenerUltimoId("cita");
+                negocio.NegocioCita cita = new negocio.NegocioCita();
+                cita.insertarCitaPaciente(idC, idPac);
+            }
            
         }
         catch(NullPointerException e){
