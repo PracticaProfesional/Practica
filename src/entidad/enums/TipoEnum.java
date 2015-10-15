@@ -8,7 +8,7 @@ public enum TipoEnum
     ESTUDIANTE (2),       // 2
     DOCENTE (3);          // 3
     
-    private int numero;
+    private final int numero;
     
     private TipoEnum(int numero)
     {
