@@ -14,11 +14,7 @@ public class NegocioObtenerUltimoId {
         String id = "";
         ObtenerUltimoId ultimoId = new ObtenerUltimoId();
        
-        try{
-           id = ultimoId.obtenerUltimoId(nombreTabla);
-        }
-        catch(java.sql.SQLException e){
-        }
+        id = ultimoId.obtenerUltimoId(nombreTabla);
         return id;
     }
 }
