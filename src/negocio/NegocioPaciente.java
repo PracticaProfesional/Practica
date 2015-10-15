@@ -15,4 +15,8 @@ public class NegocioPaciente {
        OperacionesPaciente operacionesPaciente = new OperacionesPaciente();
        return operacionesPaciente.obtenerPacientesConsulta(date);
    }
+   public String obtenerIdPaciente(String cedula){
+       OperacionesPaciente operacionesPaciente = new OperacionesPaciente();
+       return operacionesPaciente.obtenerIdPaciente(cedula);
+   }
 }
