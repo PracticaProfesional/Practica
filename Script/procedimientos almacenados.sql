@@ -7,7 +7,12 @@ END
 -- Alteracion en tabla consultamedica
 ALTER TABLE `sigos`.`ConsultaMedica` 
 ADD COLUMN `notaEnfermeria` VARCHAR(500) NULL COMMENT '' AFTER `observaciones`;
-
+-- Eliminar cita
+CREATE  PROCEDURE `EliminarCita`(hora varchar(10), fecha date)
+BEGIN
+	delete from cita 
+		where horaConsulta = hora and fechaConsulta = fecha;
+END
 
 -- INNER JOIN CON DATOS DE PERSONAS EN CONSULTA MEDICA
 SELECT ConsultaMedica.id,idExpedienteMedico,idPaciente, nombrePaciente,apellido1Paciente, apellido2Paciente,signosVitales from ExpedienteMedico join ConsultaMedica
