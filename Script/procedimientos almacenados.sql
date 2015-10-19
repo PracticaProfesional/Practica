@@ -267,12 +267,12 @@ END $
 DELIMITER $
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizarConsultaMedica`(
 		in id int, in diag varchar(45), in motiv varchar(45), 
-		in obs varchar(200), in est int)
+		in obs varchar(200), in est int, fechaAc date)
 BEGIN
 	UPDATE ConsultaMedica
     SET diagnostico = diag, motivo2 = motiv, observaciones = obs, 
 		estado = est 
-    WHERE idExpedienteMedico = id;
+    WHERE idExpedienteMedico = id and fechaConsulta = fechaAc;
 END $
 
 DELIMITER ;;
