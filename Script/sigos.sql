@@ -279,22 +279,19 @@ INSERT INTO `ExpedienteMedico` VALUES (1,1,5,1);
 /*!40000 ALTER TABLE `ExpedienteMedico` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `Inventario`
---
 
-DROP TABLE IF EXISTS `Inventario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Inventario` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) NOT NULL,
-  `tipo` varchar(45) NOT NULL,
-  `descripcion` varchar(45) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- -----------------------------------------------------
+-- Table `sigos`.`Inventario`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sigos`.`Inventario` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `nombre` VARCHAR(100) NOT NULL ,
+  `cantidad` INT NOT NULL ,
+  `tamano` VARCHAR(45) NULL ,
+  `tipo` INT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
 
 --
 -- Dumping data for table `Inventario`
