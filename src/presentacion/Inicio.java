@@ -2132,7 +2132,8 @@ public class Inicio extends javax.swing.JFrame {
         consulta.setEstado(EstadoConsultaMedicaEnum.COMPLETA);
         consulta.setObservaciones(textObservaciones.getText());
         negocio.NegocioConsultaMedica actConsulta = new negocio.NegocioConsultaMedica();
-        actConsulta.actualizarConsultaMedica(this.idExpediente, consulta);
+        String fecha= obtenerFechaActual();
+        actConsulta.actualizarConsultaMedica(this.idExpediente, consulta, fecha);
         
     }
     private void insertarExamenFisico(){
