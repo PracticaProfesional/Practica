@@ -44,6 +44,7 @@ public class Inicio extends javax.swing.JFrame {
     private int sexo;
     int contador = 0;
     String  [][] backUpList;
+    private String idSVitales;
     public Inicio() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | Inicio.MAXIMIZED_HORIZ);
@@ -196,6 +197,7 @@ public class Inicio extends javax.swing.JFrame {
         textDiagnostico = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         lblPacienteActual = new javax.swing.JLabel();
+        btnVerSignosVitales = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         btnLabGabineteAdjuntarExamen = new javax.swing.JButton();
@@ -261,6 +263,11 @@ public class Inicio extends javax.swing.JFrame {
         panelPrincipal.setToolTipText("");
         panelPrincipal.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
         panelPrincipal.setName("Panel principal"); // NOI18N
+        panelPrincipal.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                panelPrincipalStateChanged(evt);
+            }
+        });
         panelPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelPrincipalMouseClicked(evt);
@@ -1210,6 +1217,13 @@ public class Inicio extends javax.swing.JFrame {
             .addComponent(lblPacienteActual, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        btnVerSignosVitales.setText("Ver Signos Vitales");
+        btnVerSignosVitales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerSignosVitalesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1231,6 +1245,8 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(434, 434, 434)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVerSignosVitales)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1242,7 +1258,9 @@ public class Inicio extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVerSignosVitales))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2233,6 +2251,7 @@ public class Inicio extends javax.swing.JFrame {
         idExpediente = pacientesConsulta.getIdExpedienteMedico();
         pacienteActual = pacientesConsulta.getPacienteActual();
         idConsultaMedica = pacientesConsulta.getIdConsultaMedica();
+        idSVitales = pacientesConsulta.getIdSignosVitales();
         this.lblPacienteActual.setText(pacienteActual);  
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -2331,6 +2350,19 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No seleccionó ninguna fila",
                                             "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_popItemEliminarActividadActionPerformed
+
+    private void btnVerSignosVitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerSignosVitalesActionPerformed
+        
+    }//GEN-LAST:event_btnVerSignosVitalesActionPerformed
+
+    private void panelPrincipalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelPrincipalStateChanged
+        if(panelPrincipal.getSelectedIndex() == 3){
+            if(tabInventario.getComponentCount() <= 0){
+                ContenedorInventario ci = new ContenedorInventario();
+                tabInventario.addTab("Medicamentos & Inventarios", ci); 
+            }      
+        }
+    }//GEN-LAST:event_panelPrincipalStateChanged
     private void splitFechaNac(String fecha){
         String year = "";
         String month = "";
@@ -2579,6 +2611,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnRefrescarTablaBuscar;
     private javax.swing.JButton btnSignosVitalesCancelar;
     private javax.swing.JButton btnSignosVitalesGuardar;
+    private javax.swing.JButton btnVerSignosVitales;
     private javax.swing.JComboBox cbAbdomen;
     private javax.swing.JComboBox cbAdenopatias;
     private javax.swing.JComboBox cbBoca;
