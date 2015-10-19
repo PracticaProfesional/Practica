@@ -12,8 +12,8 @@ public class NegocioConsultaMedica
         OperacionesConsultaMedica operacionesConsultaMedica = new OperacionesConsultaMedica();
         operacionesConsultaMedica.insertarConsultaMedica(nuevaConsultaMedica);
     }// fin del metodo insertarConsultaMedica
-    public void actualizarConsultaMedica(String idExpediente, entidad.ConsultaMedica actConsulta){
+    public void actualizarConsultaMedica(String idExpediente, entidad.ConsultaMedica actConsulta, String fecha){
         OperacionesConsultaMedica operacionesConsultaMedica = new OperacionesConsultaMedica();
-        operacionesConsultaMedica.actualizarConsultaMedica(idExpediente, actConsulta);
+        operacionesConsultaMedica.actualizarConsultaMedica(idExpediente, actConsulta, fecha);
     }
 }// fin de la clase NegocioConsultaMedica
