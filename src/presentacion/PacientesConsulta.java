@@ -17,6 +17,7 @@ public class PacientesConsulta extends javax.swing.JDialog {
     /**
      * Creates new form PacientesConsulta
      */
+    private String idSignosVitales;
     private String idConsultaMedica;
     private String idExpedienteMedico;
     private String pacienteActual;
@@ -24,6 +25,10 @@ public class PacientesConsulta extends javax.swing.JDialog {
     private final int ID_EXPEDIENTE = 1;
     private final int ID_PACIENTE = 2;
     private final int ID_SIGNOS_VITALES = 6;
+
+    public String getIdSignosVitales() {
+        return idSignosVitales;
+    }
 
     public String getIdConsultaMedica() {
         return idConsultaMedica;
@@ -186,6 +191,7 @@ public class PacientesConsulta extends javax.swing.JDialog {
                    +" "+tablaPacientesConsulta.getValueAt(filaSeleccionada, 4).toString()
                    +" "+tablaPacientesConsulta.getValueAt(filaSeleccionada, 5).toString();
             idConsultaMedica = tablaPacientesConsulta.getValueAt(filaSeleccionada, 0).toString();
+            idSignosVitales = tablaPacientesConsulta.getValueAt(filaSeleccionada, 6).toString();
             this.dispose();
         }
         else
