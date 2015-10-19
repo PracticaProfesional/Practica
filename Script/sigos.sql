@@ -562,6 +562,30 @@ CREATE TABLE `sigos`.`citapaciente` (
     ON UPDATE NO ACTION);
 
 
+-- -----------------------------------------------------
+-- Table `sigos`.`Consulta-Inventario`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sigos`.`Consulta-Inventario` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `idInventario` INT NOT NULL ,
+  `idConsultaMedica` INT NOT NULL ,
+  `cantidad` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_idInventario_idx` (`idInventario` ASC) ,
+  INDEX `fk_idConsultaMedica_idx` (`idConsultaMedica` ASC) ,
+  CONSTRAINT `fk_idInventario`
+    FOREIGN KEY (`idInventario` )
+    REFERENCES `sigos`.`Inventario` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_idConsultaMedica`
+    FOREIGN KEY (`idConsultaMedica` )
+    REFERENCES `sigos`.`ConsultaMedica` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 
 
 
