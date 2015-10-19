@@ -1,9 +1,11 @@
 -- Procedimientos almacenados de insercion en las tablas de la base de datos SIGOS
+DELIMITER $
 CREATE PROCEDURE `InsertarCitaPaciente` (idC int, idP int)
 BEGIN
 	Insert into citapaciente(idCita, idPaciente)
 	values(idC, idP);
-END
+END $
+
 -- Alteracion en tabla consultamedica
 ALTER TABLE `sigos`.`ConsultaMedica` 
 ADD COLUMN `notaEnfermeria` VARCHAR(500) NULL COMMENT '' AFTER `observaciones`;

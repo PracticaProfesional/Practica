@@ -2,6 +2,7 @@
 package presentacion;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import negocio.NegocioPadecimiento;
 
 public class CatalogoPadecimientos extends javax.swing.JDialog
@@ -575,12 +576,27 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         
-        obtenerNumeroPadecimientos();
+        if (! verificarVacios())
+            JOptionPane.showMessageDialog(null, "Uno o mas campos son requeridos", "Información", 
+                    JOptionPane.INFORMATION_MESSAGE);
         
-        for (int i = 0; i < arreglo.length; i++)
-            System.out.println("Padecimiento: " + arreglo[i]);
-        this.dispose();
+        else {
+            obtenerNumeroPadecimientos();
+            
+            if (obtenerContador() == 0)
+                JOptionPane.showMessageDialog(null, "No ingreso ningún padecimiento, "
+                        + "sino desea ingresar ninguno presione cancelar", "Información",
+                        JOptionPane.INFORMATION_MESSAGE);
+            
+            else
+            {
+                for (int i = 0; i < arreglo.length; i++)
+                    System.out.println("Padecimiento: " + arreglo[i]);
+            
+                this.dispose();
+            }// fin del else
         //cargarIdsAArreglo();
+        }// fin del else
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void cbEnfTiroidesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEnfTiroidesActionPerformed
@@ -881,6 +897,53 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         
         return arregloIds;
     }// fin del metodo obtenerIds
+    
+    public boolean verificarVacios()
+    {
+        boolean vacio = true;
+        
+        if (txtCardiopatia.isEnabled())
+            if (txtCardiopatia.getText().isEmpty())
+                vacio = false;
+        
+        if (txtTiroides.isEnabled())
+            if (txtTiroides.getText().isEmpty())
+                vacio = false;
+        
+        if (txtEnfermedadesMentales.isEnabled())
+            if (txtEnfermedadesMentales.getText().isEmpty())
+                vacio = false;
+        
+        if (txtEnfermedadesNeurologicas.isEnabled())
+            if (txtEnfermedadesNeurologicas.getText().isEmpty())
+                vacio = false;
+        
+        if (txtEnfermedadesGastrointestinales.isEnabled())
+            if (txtEnfermedadesGastrointestinales.getText().isEmpty())
+                vacio = false;
+        
+        if (txtEnfermedadesMusculoesqueleticas.isEnabled())
+            if (txtEnfermedadesMusculoesqueleticas.getText().isEmpty())
+                vacio = false;
+        
+        if (txtEnfermedadesPulmonares.isEnabled())
+            if (txtEnfermedadesPulmonares.getText().isEmpty())
+                vacio = false;
+        
+        if (txtEnfermedadesRenales.isEnabled())
+            if (txtEnfermedadesRenales.getText().isEmpty())
+                vacio = false;
+        
+        if (txtCancer.isEnabled())
+            if (txtCancer.getText().isEmpty())
+                vacio = false;
+        
+        if (txtAdicciones.isEnabled())
+            if (txtAdicciones.getText().isEmpty())
+                vacio = false;
+        
+        return vacio;
+    }// fin del metodo verificarVacios
     
     
     public static void main(String args[]) 
