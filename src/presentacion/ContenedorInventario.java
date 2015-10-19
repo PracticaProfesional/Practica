@@ -1,22 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// @author cooper15
+ 
 package presentacion;
 
-/**
- *
- * @author cooper15
- */
-public class ContenedorInventario extends javax.swing.JPanel {
-
-    /**
-     * Creates new form ContenedorInventario
-     */
-    public ContenedorInventario() {
+public class ContenedorInventario extends javax.swing.JPanel 
+{
+    /*Creates new form ContenedorInventario*/
+    public ContenedorInventario() 
+    {
         initComponents();
-    }
+    }// fin del constructor de ContenedorInventario
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,6 +21,8 @@ public class ContenedorInventario extends javax.swing.JPanel {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+
+        setBackground(new java.awt.Color(153, 153, 255));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -47,17 +41,14 @@ public class ContenedorInventario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
+                .addContainerGap(177, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
         );
     }// </editor-fold>//GEN-END:initComponents
 
