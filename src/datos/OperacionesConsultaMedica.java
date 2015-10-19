@@ -37,13 +37,14 @@ public class OperacionesConsultaMedica
       
         
     }// fin del metodo insertarConsultaMedica
-    public void actualizarConsultaMedica(String idExpediente, entidad.ConsultaMedica consultaMedica){
+    public void actualizarConsultaMedica(String idExpediente, entidad.ConsultaMedica consultaMedica, String fecha){
         objetoDeConexion = new Conexion();
         String datos = "'"+idExpediente+"'"+","+
                        "'"+consultaMedica.getDiagnostico()+"'"+","+
                        "'"+consultaMedica.getMotivo2()+"'"+","+
                        "'"+consultaMedica.getObservaciones()+"'"+","+
-                       "'"+consultaMedica.getEstado().obtenerEstadoNumero()+"'";
+                       "'"+consultaMedica.getEstado().obtenerEstadoNumero()+"'"
+                      +","+"'"+fecha+"'";
         try{
             estado = objetoDeConexion.conectar().createStatement();
             estado.executeQuery("Call actualizarConsultaMedica("+datos+")");
