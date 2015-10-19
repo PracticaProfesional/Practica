@@ -1070,7 +1070,7 @@
                                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                                               <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="60" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="94" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="jPanel6" alignment="1" max="32767" attributes="0"/>
                                   </Group>
@@ -1106,11 +1106,11 @@
                                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jPanel8" max="32767" attributes="0"/>
+                                      <Component id="jPanel9" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="2316" max="32767" attributes="0"/>
                               </Group>
@@ -1642,7 +1642,7 @@
                                           <Component id="cbNervioso" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1805,39 +1805,38 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel45" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel10" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="textDiagnostico" alignment="0" pref="317" max="32767" attributes="0"/>
                                           <Component id="textMotivo2" alignment="0" max="32767" attributes="0"/>
                                           <Component id="textObservaciones" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="cbDiagnosticoOpcional" pref="317" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="75" max="32767" attributes="0"/>
+                                      <EmptySpace pref="33" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel45" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="textDiagnostico" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbDiagnosticoOpcional" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="textMotivo2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="textMotivo2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="textObservaciones" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                          <Component id="textObservaciones" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1855,14 +1854,39 @@
                                 <Property name="text" type="java.lang.String" value="Observaciones"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel45">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Diagn&#xf3;stico"/>
-                              </Properties>
-                            </Component>
                             <Component class="javax.swing.JTextField" name="textMotivo2">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="textDiagnostico">
+                            <Component class="javax.swing.JLabel" name="jLabel13">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Tipo de evento"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="cbDiagnosticoOpcional">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="18">
+                                    <StringItem index="0" value="Seleccione"/>
+                                    <StringItem index="1" value="Accidentes of&#xed;dicos"/>
+                                    <StringItem index="2" value="Filariasis"/>
+                                    <StringItem index="3" value="Leishmaniasis"/>
+                                    <StringItem index="4" value="Conjuntivitis hemorr&#xe1;gicas"/>
+                                    <StringItem index="5" value="Enfermedades diarreicas agudas (EDAS)"/>
+                                    <StringItem index="6" value="Infecciones respiratoriasagudas (IRAS)"/>
+                                    <StringItem index="7" value="Enfermedad tipo influenza (ETI)"/>
+                                    <StringItem index="8" value="Pediculosis"/>
+                                    <StringItem index="9" value="Anquilostomiasis"/>
+                                    <StringItem index="10" value="Necatoriasis"/>
+                                    <StringItem index="11" value="Ascariasis"/>
+                                    <StringItem index="12" value="Depresi&#xf3;n"/>
+                                    <StringItem index="13" value="Trichuriasis"/>
+                                    <StringItem index="14" value="Enterobiasis"/>
+                                    <StringItem index="15" value="Otras Helmintiasis Intestinales"/>
+                                    <StringItem index="16" value="Parasitosis intestinal sin especificar"/>
+                                    <StringItem index="17" value="Otros padecimientos importantes"/>
+                                  </StringArray>
+                                </Property>
+                                <Property name="toolTipText" type="java.lang.String" value="Este diagnostico se usa para realizar el Informe Mensual de Enfermedades para el Ministerio de Salud"/>
+                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -1942,7 +1966,7 @@
                                   <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="2400" max="32767" attributes="0"/>
+                                  <EmptySpace pref="2429" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
