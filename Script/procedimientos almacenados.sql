@@ -1,3 +1,63 @@
+-- SELECT DE SIGNOS VITALES PARA REPORTE
+SELECT distinct
+     SignosVitales.`id` AS SignosVitales_id,
+     SignosVitales.`peso` AS SignosVitales_peso,
+     SignosVitales.`FC` AS SignosVitales_FC,
+     SignosVitales.`PAR` AS SignosVitales_PAR,
+     SignosVitales.`IMC` AS SignosVitales_IMC,
+     SignosVitales.`IMB` AS SignosVitales_IMB,
+     SignosVitales.`H2O` AS SignosVitales_H2O,
+     SignosVitales.`MM` AS SignosVitales_MM,
+     SignosVitales.`GC` AS SignosVitales_GC,
+     SignosVitales.`AS` AS SignosVitales_AS,
+     SignosVitales.`AF` AS SignosVitales_AF,
+     SignosVitales.`SS` AS SignosVitales_SS,
+     SignosVitales.`PAP` AS SignosVitales_PAP,
+     SignosVitales.`IM` AS SignosVitales_IM,
+     SignosVitales.`IV` AS SignosVitales_IV,
+     SignosVitales.`SC` AS SignosVitales_SC,
+     SignosVitales.`GM` AS SignosVitales_GM,
+     SignosVitales.`CP` AS SignosVitales_CP,
+     SignosVitales.`ES` AS SignosVitales_ES,
+     SignosVitales.`PA` AS SignosVitales_PA,
+     SignosVitales.`exMama` AS SignosVitales_exMama,
+     SignosVitales.`curaciones` AS SignosVitales_curaciones,
+     SignosVitales.`temperatura` AS SignosVitales_temperatura,
+     SignosVitales.`talla` AS SignosVitales_talla,
+     ConsultaMedica.`id` AS ConsultaMedica_id,
+     ConsultaMedica.`idExpedienteMedico` AS ConsultaMedica_idExpedienteMedico,
+     ConsultaMedica.`motivoConsulta` AS ConsultaMedica_motivoConsulta,
+     ConsultaMedica.`descripcionSintomas` AS ConsultaMedica_descripcionSintomas,
+     ConsultaMedica.`signosVitales` AS ConsultaMedica_signosVitales,
+     ConsultaMedica.`fecha` AS ConsultaMedica_fecha,
+     ConsultaMedica.`notaEnfermeria` AS ConsultaMedica_notaEnfermeria,
+     ExpedienteMedico.`id` AS ExpedienteMedico_id,
+     ExpedienteMedico.`idPaciente` AS ExpedienteMedico_idPaciente,
+     Paciente.`id` AS Paciente_id,
+     Paciente.`nombrePaciente` AS Paciente_nombrePaciente,
+     Paciente.`apellido1Paciente` AS Paciente_apellido1Paciente,
+     Paciente.`apellido2Paciente` AS Paciente_apellido2Paciente,
+     Paciente.`cedulaPaciente` AS Paciente_cedulaPaciente,
+     Paciente.`tipo` AS Paciente_tipo,
+     Paciente_A.`id` AS Paciente_A_id,
+     Paciente_A.`nombrePaciente` AS Paciente_A_nombrePaciente,
+     Paciente_A.`apellido1Paciente` AS Paciente_A_apellido1Paciente,
+     Paciente_A.`apellido2Paciente` AS Paciente_A_apellido2Paciente,
+     Paciente_A.`sexo` AS Paciente_A_sexo,
+     Paciente_A.`fechaNacimientoPaciente` AS Paciente_A_fechaNacimientoPaciente,
+     Paciente_A.`nacionalidadPaciente` AS Paciente_A_nacionalidadPaciente,
+     Paciente_A.`cedulaPaciente` AS Paciente_A_cedulaPaciente,
+     Paciente_A.`idtelefono` AS Paciente_A_idtelefono,
+     Paciente_A.`direccion1` AS Paciente_A_direccion1,
+     Paciente_A.`direccion2` AS Paciente_A_direccion2,
+     Paciente_A.`email` AS Paciente_A_email,
+     Paciente_A.`tipo` AS Paciente_A_tipo
+FROM
+     `SignosVitales` SignosVitales INNER JOIN `ConsultaMedica` ConsultaMedica ON SignosVitales.`id` = '2'
+     INNER JOIN `ExpedienteMedico` ExpedienteMedico ON ConsultaMedica.`idExpedienteMedico` = ExpedienteMedico.`id`
+     INNER JOIN `Paciente` Paciente ON ExpedienteMedico.`idPaciente` = Paciente.`id`
+     INNER JOIN `Paciente` Paciente_A ON ExpedienteMedico.`idPaciente` = Paciente_A.`id`
+
 -- Procedimientos almacenados de insercion en las tablas de la base de datos SIGOS
 DELIMITER $
 CREATE PROCEDURE `InsertarCitaPaciente` (idC int, idP int)
