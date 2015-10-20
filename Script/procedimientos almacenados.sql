@@ -534,4 +534,11 @@ BEGIN
 		
 END $
 
+DELIMITER $;
+
+CREATE VIEW ListarInventario AS
+	select nombre, cantidad, tamano, tipo from Inventario
+delimiter $;
+
+
 Call ConsultarOInsertarPadecimiento ('Vertigo')

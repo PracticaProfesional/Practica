@@ -2,12 +2,18 @@
  
 package presentacion;
 
+import negocio.NegocioInventario;
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class ContenedorInventario extends javax.swing.JPanel 
 {
     /*Creates new form ContenedorInventario*/
     public ContenedorInventario() 
     {
         initComponents();
+        cargarInventario();
     }// fin del constructor de ContenedorInventario
 
     /**
@@ -21,16 +27,16 @@ public class ContenedorInventario extends javax.swing.JPanel
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblInventario = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnDescontar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Existencias"));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -38,10 +44,10 @@ public class ContenedorInventario extends javax.swing.JPanel
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Cantidad", "Tamaño", "Tipo"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblInventario);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -62,13 +68,13 @@ public class ContenedorInventario extends javax.swing.JPanel
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Acciones"));
 
-        jButton1.setText("jButton1");
+        btnAgregar.setText("Agregar");
 
-        jButton2.setText("jButton2");
+        btnEliminar.setText("Eliminar");
 
-        jButton3.setText("jButton3");
+        btnDescontar.setText("Descontar");
 
-        jButton4.setText("jButton4");
+        btnActualizar.setText("Actualizar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -76,24 +82,25 @@ public class ContenedorInventario extends javax.swing.JPanel
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(btnDescontar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAgregar)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDescontar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminar)
+                        .addComponent(btnActualizar)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -118,16 +125,49 @@ public class ContenedorInventario extends javax.swing.JPanel
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void cargarInventario()
+    {
+        NegocioInventario objNegocioInventario = new NegocioInventario();
+        ResultSet rs;
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        String cabezera [] = {"Nombre", "Cantidad", "Tamaño", "Tipo"};
+        String fila [] = new String [cabezera.length];  // fila con 4 campos en este caso
+        
+        for (int i = 0; i < cabezera.length; i++)  // recorremos cabezera y vamos insertando cada elemento
+            modelo.addColumn(cabezera [i]);            // de cabezera como una columna
+         
+        try
+        {
+            rs = objNegocioInventario.listarInventario();
+            
+            while(rs.next())
+            {
+                for (int i = 0; i < fila.length; i++)
+                    fila [i] = rs.getString(i + 1);
+                
+                modelo.addRow(fila);  // insertamos la fila en el modelo de la tabla
+            }// fin del whiele
+            
+            tblInventario.setModel(modelo);
+        }// fin del try
+        catch(SQLException sqle)
+        {
+        }// fin del catch
+        
+        
+    }// fin del metodo cargarInventario
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnDescontar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblInventario;
     // End of variables declaration//GEN-END:variables
 }
