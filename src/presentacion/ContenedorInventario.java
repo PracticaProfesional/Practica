@@ -69,6 +69,11 @@ public class ContenedorInventario extends javax.swing.JPanel
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Acciones"));
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -125,6 +130,12 @@ public class ContenedorInventario extends javax.swing.JPanel
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        
+        AgregarInventario nuevoAgregar = new AgregarInventario();
+        nuevoAgregar.setVisible(true);
+    }//GEN-LAST:event_btnAgregarActionPerformed
     
     public void cargarInventario()
     {
@@ -155,8 +166,7 @@ public class ContenedorInventario extends javax.swing.JPanel
         catch(SQLException sqle)
         {
         }// fin del catch
-        
-        
+                
     }// fin del metodo cargarInventario
     
 
