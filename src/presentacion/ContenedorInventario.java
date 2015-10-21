@@ -8,10 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ContenedorInventario extends javax.swing.JPanel 
-{
+{   java.awt.Frame parent;
     /*Creates new form ContenedorInventario*/
-    public ContenedorInventario() 
-    {
+    public ContenedorInventario(java.awt.Frame parent) 
+    {   
+         this.parent = parent;
         initComponents();
         cargarInventario();
     }// fin del constructor de ContenedorInventario
@@ -133,7 +134,7 @@ public class ContenedorInventario extends javax.swing.JPanel
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         
-        AgregarInventario nuevoAgregar = new AgregarInventario();
+        AgregarInventario nuevoAgregar = new AgregarInventario(this.parent,true);
         nuevoAgregar.setVisible(true);
     }//GEN-LAST:event_btnAgregarActionPerformed
     
