@@ -13,9 +13,9 @@ public class AgregarInventario extends javax.swing.JDialog
 {
     // Creates new form AgregarInventario
      
-    public AgregarInventario(/*java.awt.Frame parent, boolean modal*/) 
+    public AgregarInventario(java.awt.Frame parent, boolean modal) 
     {
-        //super(parent, modal);
+        super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(this);
     }// fin del construtor de AgregarInventario
@@ -224,7 +224,7 @@ public class AgregarInventario extends javax.swing.JDialog
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AgregarInventario dialog = new AgregarInventario(/*new javax.swing.JFrame(), true*/);
+                AgregarInventario dialog = new AgregarInventario(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
