@@ -92,16 +92,16 @@ END $
 
 
 DELIMITER $$ -- insertar en la inventario
-CREATE PROCEDURE InsertarInventario (in nom varchar(45), in tip varchar(45), 
-		in des varchar(45), in can int)
+CREATE PROCEDURE InsertarInventario (in nom varchar(100), in can int,
+		in tam varchar(45), in via varchar(45))
 BEGIN
-	insert into inventario (nombre, tipo, descripcion, cantidad)
-	values (nom, tip, des, can);
+	insert into inventario (nombre, cantidad, tamano, viaAdministracion)
+	values (nom, can, tam, via);
 END $
 
 
 DELIMITER $ -- insertar en la tabla telefono
-CREATE PROCEDURE InsertarTelefono (in numTel varchar(45), in deta varchar(45))
+CREATE PROCEDURE  InsertarTelefono (in numTel varchar(45), in deta varchar(45))
 BEGIN
 	insert into telefono (numeroTelefono, detalle)
 	values (numTel, deta);
