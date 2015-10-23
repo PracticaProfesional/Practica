@@ -163,9 +163,11 @@ public class ContenedorInventario extends javax.swing.JPanel
             }// fin del whiele
             
             tblInventario.setModel(modelo);
+            rs.close();
         }// fin del try
         catch(SQLException sqle)
         {
+            System.out.println(sqle.getErrorCode() + sqle.getMessage());
         }// fin del catch
                 
     }// fin del metodo cargarInventario
