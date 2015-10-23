@@ -240,7 +240,7 @@
                     <Column editable="true" title="Nombre" type="java.lang.Object"/>
                     <Column editable="true" title="Cantidad" type="java.lang.Object"/>
                     <Column editable="true" title="Tama&#xf1;o" type="java.lang.Object"/>
-                    <Column editable="true" title="Tipo" type="java.lang.Object"/>
+                    <Column editable="true" title="V&#xed;a de Administraci&#xf3;n" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -280,6 +280,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>

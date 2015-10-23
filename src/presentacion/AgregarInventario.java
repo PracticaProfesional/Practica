@@ -3,6 +3,7 @@
 package presentacion;
 
 import javax.swing.table.DefaultTableModel;
+import entidad.Inventario;
 
 
 public class AgregarInventario extends javax.swing.JDialog 
@@ -145,7 +146,7 @@ public class AgregarInventario extends javax.swing.JDialog
                 {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Cantidad", "Tamaño", "Tipo"
+                "Nombre", "Cantidad", "Tamaño", "Vía de Administración"
             }
         ));
         jScrollPane1.setViewportView(tblInventarioAgregar);
@@ -167,6 +168,11 @@ public class AgregarInventario extends javax.swing.JDialog
         );
 
         jButton3.setText("Aceptar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Cancelar");
 
@@ -231,6 +237,27 @@ public class AgregarInventario extends javax.swing.JDialog
         tblInventarioAgregar.setModel(modelo);
     }//GEN-LAST:event_btnRemoverActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        obtenerDatosTablaInventarioAgregar();
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
+    private void obtenerDatosTablaInventarioAgregar()
+    {
+        Inventario arregloInventario [] = new Inventario [tblInventarioAgregar.getRowCount()];
+        
+        for (int i = 0; i < 1; i++)
+        {
+            arregloInventario[i] = new Inventario();
+            arregloInventario[i].setNombre(tblInventarioAgregar.getValueAt(i, i).toString()); // indicamos el nombre
+            arregloInventario[i].setCantidad(Integer.parseInt(tblInventarioAgregar.getValueAt(i, i + 1).toString()));
+            arregloInventario[i].setTamanio(tblInventarioAgregar.getValueAt(i, i + 2).toString());
+            arregloInventario[i].setViaAdministracion(tblInventarioAgregar.getValueAt(i, i + 3).toString());
+            
+           System.out.println(arregloInventario[i].toString());
+        }// fin del for
+        
+    }// fin del metodo obtener datos tabla
     
     public static void main(String args[]) 
     {
