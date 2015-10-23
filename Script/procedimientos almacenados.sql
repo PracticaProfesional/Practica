@@ -363,7 +363,7 @@ END
 Call InsertarUsuario ('Juanito', '1234');
 $
 
-Call InsertarInventario ('Parasetamol', 'Pastillas', '100mg', 10);
+Call InsertarInventario ('Parasetamol 100mg', 60, null, 'oral');
 $
 
 Call InsertarTelefono ('26711972', 'Casa');
@@ -597,7 +597,7 @@ END $
 DELIMITER $;
 
 CREATE VIEW ListarInventario AS
-	select nombre, cantidad, tamano, tipo from Inventario
+	select nombre, cantidad, tamano, viaAdministracion from Inventario
 delimiter $;
 
 
