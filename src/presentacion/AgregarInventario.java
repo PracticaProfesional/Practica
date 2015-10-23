@@ -4,13 +4,15 @@ package presentacion;
 
 import javax.swing.table.DefaultTableModel;
 import entidad.Inventario;
+import javax.swing.JOptionPane;
+import negocio.NegocioInventario;
 
 
 public class AgregarInventario extends javax.swing.JDialog 
 {
     DefaultTableModel modelo = new DefaultTableModel();
     
-// Creates new form AgregarInventario
+    // Creates new form AgregarInventario
     public AgregarInventario(java.awt.Frame parent, boolean modal) 
     {
         super(parent, modal);
@@ -48,8 +50,8 @@ public class AgregarInventario extends javax.swing.JDialog
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInventarioAgregar = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar medicamentos y utensilios");
@@ -167,14 +169,14 @@ public class AgregarInventario extends javax.swing.JDialog
                 .addContainerGap())
         );
 
-        jButton3.setText("Aceptar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnAceptarActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Cancelar");
+        btnCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,9 +190,9 @@ public class AgregarInventario extends javax.swing.JDialog
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btnAceptar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btnCancelar)
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
@@ -202,8 +204,8 @@ public class AgregarInventario extends javax.swing.JDialog
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnAceptar)
+                    .addComponent(btnCancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -237,26 +239,34 @@ public class AgregarInventario extends javax.swing.JDialog
         tblInventarioAgregar.setModel(modelo);
     }//GEN-LAST:event_btnRemoverActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         
-        obtenerDatosTablaInventarioAgregar();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        NegocioInventario nuevoInventario = new NegocioInventario();  // objeto para invocar el procedimiento almacenado
+        Inventario arregloInventario [] = obtenerDatosTablaInventarioAgregar();
+        
+        for (int i = 0; i < arregloInventario.length; i++)
+            nuevoInventario.insertarInventario(arregloInventario[i]);
+        
+        JOptionPane.showMessageDialog(null, "Se ha ingreasado con exito en el inventario.", "Información", 
+                JOptionPane.INFORMATION_MESSAGE);
+        
+        this.dispose();
+    }//GEN-LAST:event_btnAceptarActionPerformed
     
-    private void obtenerDatosTablaInventarioAgregar()
+    private Inventario [] obtenerDatosTablaInventarioAgregar()
     {
         Inventario arregloInventario [] = new Inventario [tblInventarioAgregar.getRowCount()];
         
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < arregloInventario.length; i++)
         {
             arregloInventario[i] = new Inventario();
-            arregloInventario[i].setNombre(tblInventarioAgregar.getValueAt(i, i).toString()); // indicamos el nombre
-            arregloInventario[i].setCantidad(Integer.parseInt(tblInventarioAgregar.getValueAt(i, i + 1).toString()));
-            arregloInventario[i].setTamanio(tblInventarioAgregar.getValueAt(i, i + 2).toString());
-            arregloInventario[i].setViaAdministracion(tblInventarioAgregar.getValueAt(i, i + 3).toString());
-            
-           System.out.println(arregloInventario[i].toString());
+            arregloInventario[i].setNombre(tblInventarioAgregar.getValueAt(i, 0).toString()); // indicamos el nombre
+            arregloInventario[i].setCantidad(Integer.parseInt(tblInventarioAgregar.getValueAt(i, 1).toString()));
+            arregloInventario[i].setTamanio(tblInventarioAgregar.getValueAt(i, 2).toString());
+            arregloInventario[i].setViaAdministracion(tblInventarioAgregar.getValueAt(i, 3).toString());
         }// fin del for
         
+        return arregloInventario;
     }// fin del metodo obtener datos tabla
     
     public static void main(String args[]) 
@@ -300,11 +310,11 @@ public class AgregarInventario extends javax.swing.JDialog
     }// fin del main 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JComboBox cmbTipo;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

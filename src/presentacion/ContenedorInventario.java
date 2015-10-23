@@ -136,6 +136,7 @@ public class ContenedorInventario extends javax.swing.JPanel
         
         AgregarInventario nuevoAgregar = new AgregarInventario(this.parent,true);
         nuevoAgregar.setVisible(true);
+        cargarInventario();
     }//GEN-LAST:event_btnAgregarActionPerformed
     
     public void cargarInventario()

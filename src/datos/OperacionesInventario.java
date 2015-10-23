@@ -36,7 +36,7 @@ public class OperacionesInventario
         try
         {
             estado = objetoDeConexion.conectar().createStatement();
-            estado.executeQuery("Call InsertarInventario (" + datosInventario + ")");
+            estado.executeQuery("Call InsertarInventario2 (" + datosInventario + ")");
             estado.close();
         }// fin del try
         catch (SQLException sqle)
