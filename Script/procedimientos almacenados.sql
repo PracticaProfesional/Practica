@@ -90,13 +90,24 @@ BEGIN
 	values (nomUsu, pass);
 END $
 
-
-DELIMITER $$ -- insertar en la inventario
+DELIMITER $  -- inserta en la tabla inventario
 CREATE PROCEDURE InsertarInventario (in nom varchar(100), in can int,
-		in tam varchar(45), in via varchar(45))
+			in tam varchar(45), in via varchar(45))
 BEGIN
+	declare varTam varchar(45);
+	declare varVia varchar(45);
+		
+	if tam <> '' then      -- si el parametro no esta vacio
+		set varTam = tam;
+	end if;
+
+	if via <> '' then      -- si el parametro no esta vacio
+		set varVia = via;
+	end if;
+
 	insert into inventario (nombre, cantidad, tamano, viaAdministracion)
-	values (nom, can, tam, via);
+	values (nom, can, varTam, varVia);
+		
 END $
 
 
@@ -363,7 +374,7 @@ END
 Call InsertarUsuario ('Juanito', '1234');
 $
 
-Call InsertarInventario ('Parasetamol 100mg', 60, null, 'oral');
+Call InsertarInventario ('Alegra 100mg', 60, '', 'oral');
 $
 
 Call InsertarTelefono ('26711972', 'Casa');
