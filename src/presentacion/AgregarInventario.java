@@ -19,7 +19,7 @@ public class AgregarInventario extends javax.swing.JDialog
         initComponents();
         this.setLocationRelativeTo(this);
         
-        String cabezera [] = {"Nombre2", "Cantidad", "Tamaño", "Tipo"};
+        String cabezera [] = {"Nombre", "Cantidad", "Tamaño", "Vía de Administración"};
         
         for (int i = 0; i < cabezera.length; i++)
             modelo.addColumn(cabezera [i]);
@@ -44,9 +44,9 @@ public class AgregarInventario extends javax.swing.JDialog
         txtNombre = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         txtTamanio = new javax.swing.JTextField();
-        cmbTipo = new javax.swing.JComboBox();
         btnAgregar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
+        txtViaDeAdministracion = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInventarioAgregar = new javax.swing.JTable();
@@ -64,9 +64,7 @@ public class AgregarInventario extends javax.swing.JDialog
 
         jLabel3.setText("Tamaño");
 
-        jLabel4.setText("Tipo");
-
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Medicamento", "Utensilio", " " }));
+        jLabel4.setText("Vía de Administración");
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,9 +109,9 @@ public class AgregarInventario extends javax.swing.JDialog
                         .addComponent(btnRemover)
                         .addGap(18, 18, 18)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTamanio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTamanio, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(txtViaDeAdministracion))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,7 +128,7 @@ public class AgregarInventario extends javax.swing.JDialog
                     .addComponent(jLabel2)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtViaDeAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
@@ -219,7 +217,7 @@ public class AgregarInventario extends javax.swing.JDialog
         fila [0] = txtNombre.getText();      // ingresa cada campo de el formulario en el arreglo
         fila [1] = txtCantidad.getText();   // para posteriormente ingresar el arreglo como una fila
         fila [2] = txtTamanio.getText();
-        fila [3] = cmbTipo.getSelectedItem().toString();
+        fila [3] = txtViaDeAdministracion.getText();
         
         modelo.addRow(fila);
         tblInventarioAgregar.setModel(modelo);
@@ -228,7 +226,7 @@ public class AgregarInventario extends javax.swing.JDialog
         txtNombre.setText(null);
         txtCantidad.setText(null);
         txtTamanio.setText(null);
-        cmbTipo.setSelectedIndex(0);
+        txtViaDeAdministracion.setText(null);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
@@ -314,7 +312,6 @@ public class AgregarInventario extends javax.swing.JDialog
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRemover;
-    private javax.swing.JComboBox cmbTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -326,5 +323,6 @@ public class AgregarInventario extends javax.swing.JDialog
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTamanio;
+    private javax.swing.JTextField txtViaDeAdministracion;
     // End of variables declaration//GEN-END:variables
 }// fin de la clase AgregarInventario

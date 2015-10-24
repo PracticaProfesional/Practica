@@ -2,19 +2,28 @@
  
 package presentacion;
 
+import java.awt.event.MouseEvent;
 import negocio.NegocioInventario;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ContenedorInventario extends javax.swing.JPanel 
-{   java.awt.Frame parent;
+{   
+    java.awt.Frame parent;
     /*Creates new form ContenedorInventario*/
     public ContenedorInventario(java.awt.Frame parent) 
     {   
-         this.parent = parent;
+        this.parent = parent;
         initComponents();
         cargarInventario();
+        
+        // Deshabilitamos los botones innecesarios para actualizar, eliminar, descontar
+        btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        btnDescontar.setEnabled(false);
+        
+        setEventoMouseClicked();
     }// fin del constructor de ContenedorInventario
 
     /**
@@ -26,7 +35,7 @@ public class ContenedorInventario extends javax.swing.JPanel
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlTablaInventario = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblInventario = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -35,7 +44,12 @@ public class ContenedorInventario extends javax.swing.JPanel
         btnDescontar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Existencias"));
+        pnlTablaInventario.setBorder(javax.swing.BorderFactory.createTitledBorder("Existencias"));
+        pnlTablaInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlTablaInventarioMouseClicked(evt);
+            }
+        });
 
         tblInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -50,18 +64,18 @@ public class ContenedorInventario extends javax.swing.JPanel
         ));
         jScrollPane2.setViewportView(tblInventario);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlTablaInventarioLayout = new javax.swing.GroupLayout(pnlTablaInventario);
+        pnlTablaInventario.setLayout(pnlTablaInventarioLayout);
+        pnlTablaInventarioLayout.setHorizontalGroup(
+            pnlTablaInventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTablaInventarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        pnlTablaInventarioLayout.setVerticalGroup(
+            pnlTablaInventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTablaInventarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                 .addContainerGap())
@@ -117,7 +131,7 @@ public class ContenedorInventario extends javax.swing.JPanel
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlTablaInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -127,7 +141,7 @@ public class ContenedorInventario extends javax.swing.JPanel
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlTablaInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -138,6 +152,14 @@ public class ContenedorInventario extends javax.swing.JPanel
         nuevoAgregar.setVisible(true);
         cargarInventario();
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void pnlTablaInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTablaInventarioMouseClicked
+       
+        btnAgregar.setEnabled(true);
+        btnActualizar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        btnDescontar.setEnabled(false);
+    }//GEN-LAST:event_pnlTablaInventarioMouseClicked
     
     public void cargarInventario()
     {
@@ -145,7 +167,7 @@ public class ContenedorInventario extends javax.swing.JPanel
         ResultSet rs;
         
         DefaultTableModel modelo = new DefaultTableModel();
-        String cabezera [] = {"Nombre", "Cantidad", "Tamaño", "Tipo"};
+        String cabezera [] = {"Nombre", "Cantidad", "Tamaño", "Vía de Administración"};
         String fila [] = new String [cabezera.length];  // fila con 4 campos en este caso
         
         for (int i = 0; i < cabezera.length; i++)  // recorremos cabezera y vamos insertando cada elemento
@@ -173,15 +195,41 @@ public class ContenedorInventario extends javax.swing.JPanel
                 
     }// fin del metodo cargarInventario
     
-
+    // Este metodo llama al metodo que habilita los botones al clickear un elemento de la tabla
+    private void setEventoMouseClicked()
+    {
+        tblInventario.addMouseListener(new java.awt.event.MouseAdapter()
+            {
+                @Override
+                public void mouseClicked(MouseEvent e) 
+                {
+                    clickEnRegistro(e);
+                }
+            }// fin de la clase interna anonima
+        );
+    }// fin del metodo setEventoMouseClicked
+    
+    private void clickEnRegistro(MouseEvent evt)
+    {
+        int row = tblInventario.rowAtPoint(evt.getPoint());
+        
+        if (row >= 0)
+        {
+            btnAgregar.setEnabled(false);
+            btnActualizar.setEnabled(true);
+            btnEliminar.setEnabled(true);
+            btnDescontar.setEnabled(true);
+        }// fin del if
+    }// fin del metodo clickEnRegistro
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnDescontar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel pnlTablaInventario;
     private javax.swing.JTable tblInventario;
     // End of variables declaration//GEN-END:variables
 }
