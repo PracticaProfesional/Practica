@@ -21,4 +21,16 @@ public class NegocioInventario
         operacionesInventario.insertarInventario(nuevoInventario);
     }// fin del metodo insertarInventario
     
+    public String obtenerId(String nombreInventario)
+    {
+        OperacionesInventario operacionesInventario = new OperacionesInventario();
+        return operacionesInventario.obtenerId(nombreInventario);
+    }// fin del metodo obtenerId
+    
+    public void actualizarInventario(String id, Inventario actualizarInventario)
+    {
+        OperacionesInventario operacionesInventario = new OperacionesInventario();
+        operacionesInventario.actualizarInventario(id, actualizarInventario);
+    }// fin del metodo actualizarInventario
+    
 }// fin de la clase NegocioInventario
