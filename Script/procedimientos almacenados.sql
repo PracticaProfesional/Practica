@@ -608,8 +608,42 @@ END $
 DELIMITER $;
 
 CREATE VIEW ListarInventario AS
-	select nombre, cantidad, tamano, viaAdministracion from Inventario
-delimiter order by tamano;
+	select nombre, cantidad, tamano, viaAdministracion from Inventario order by tamano
+delimiter $;
 
 $
 Call ConsultarOInsertarPadecimiento ('Vertigo')
+$
+
+
+DELIMITER $
+CREATE PROCEDURE ObtenerIdInventario (in nom varchar(100))
+BEGIN
+	select id from Inventario
+	where nombre = nom;
+END $
+
+call ObtenerIdInventario('Dotur');
+$
+
+DELIMITER $
+CREATE PROCEDURE ActualizarInventario (in idI int, in nom varchar(100),
+		in can int, in tam varchar(45), in via varchar(45))
+BEGIN
+	declare varTam varchar(45);
+	declare varVia varchar(45);
+		
+	if tam <> '' then      -- si el parametro no esta vacio
+		set varTam = tam;
+	end if;
+
+	if via <> '' then      -- si el parametro no esta vacio
+		set varVia = via;
+	end if;
+
+	update Inventario
+	set nombre = nom, cantidad =  can, tamano = varTam, viaAdministracion = varVia
+	where id = idI;
+END $
+
+Call actualizarInventario (1, 'Acetaminofen', 50, '', '1')
