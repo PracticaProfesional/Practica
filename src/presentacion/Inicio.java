@@ -2368,7 +2368,7 @@ public class Inicio extends javax.swing.JFrame {
     private void panelPrincipalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelPrincipalStateChanged
         if(panelPrincipal.getSelectedIndex() == 3){
             if(tabInventario.getComponentCount() <= 0){
-                ContenedorInventario ci = new ContenedorInventario();
+                ContenedorInventario ci = new ContenedorInventario(this);
                 tabInventario.addTab("Medicamentos & Utensilios", ci); 
             }      
         }

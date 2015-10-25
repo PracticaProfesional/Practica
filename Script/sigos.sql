@@ -586,7 +586,7 @@ CREATE  TABLE IF NOT EXISTS `sigos`.`Consulta-Inventario` (
 ENGINE = InnoDB;
 
 
-
+ALTER TABLE `sigos`.`inventario` CHANGE COLUMN `tipo` `viaAdministracion` VARCHAR(45) NULL  ;
 
 
 
