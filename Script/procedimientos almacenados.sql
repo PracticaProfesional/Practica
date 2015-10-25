@@ -609,7 +609,7 @@ DELIMITER $;
 
 CREATE VIEW ListarInventario AS
 	select nombre, cantidad, tamano, viaAdministracion from Inventario
-delimiter $;
+delimiter order by tamano;
 
-
+$
 Call ConsultarOInsertarPadecimiento ('Vertigo')
