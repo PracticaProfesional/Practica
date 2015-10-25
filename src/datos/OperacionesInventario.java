@@ -46,5 +46,47 @@ public class OperacionesInventario
         
     }// fin del metodo insertarInventario
     
+    // El siguiente metodo retorna el id del articulo consultado en este mismo metodo
+    public String obtenerId(String nombreInventario)
+    {
+        String id = "";
+        objetoDeConexion = new Conexion();
+        
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            ResultSet rs = estado.executeQuery("Call ObtenerIdInventario ('" + nombreInventario + "')");
+            
+            if(rs.next())
+                id = rs.getString("id");       
+        }// fin del try
+        catch(java.sql.SQLException sqle)
+        {
+            System.err.println(sqle.getErrorCode() + sqle.getMessage());
+        }//fin del catch
+        
+        return id;
+    }// fin del metodo obtenerId
+    
+    public void actualizarInventario(String id, Inventario actualizarInventario)
+    {
+        objetoDeConexion = new Conexion();
+        
+        String datos = id + "," + "'" + actualizarInventario.getNombre() + "'" + "," +
+                       actualizarInventario.getCantidad() + "," +
+                       "'" + actualizarInventario.getTamanio() + "'" + "," +
+                       "'" + actualizarInventario.getViaAdministracion() + "'";
+        
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call ActualizarInventario (" + datos + ")");
+            estado.close();
+        }// fin del try
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode()+ sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo actualizarInventario()
     
 }// fin de la clase OperacionesInventario
