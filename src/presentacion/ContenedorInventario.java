@@ -225,10 +225,11 @@ public class ContenedorInventario extends javax.swing.JPanel
         
         cantidadStr = JOptionPane.showInputDialog(parent, "Ingrese la cantidad a descontar:", "Información",
                 JOptionPane.INFORMATION_MESSAGE);
-        cantidadDesc = Integer.parseInt(cantidadStr);
+        
         
         if (cantidadStr != null)
         {
+            cantidadDesc = Integer.parseInt(cantidadStr);
             int respuesta;
             respuesta = JOptionPane.showConfirmDialog(parent, "En realidad desea descontar en " + cantidadStr + 
                     " la cantidad de " + nombre + " ?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
