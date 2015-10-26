@@ -655,3 +655,14 @@ BEGIN
 	delete from Inventario
 	where nombre = nom;
 END $
+
+
+DELIMITER $
+CREATE PROCEDURE DescontarInventario(in nom varchar(100), in can int)
+BEGIN
+	update Inventario
+	set cantidad = cantidad - can
+	where nombre = nom;
+END $
+
+Call DescontarInventario('Gazas', 4)
