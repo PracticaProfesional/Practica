@@ -95,6 +95,11 @@ public class ContenedorInventario extends javax.swing.JPanel
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnDescontar.setText("Descontar");
 
@@ -178,6 +183,31 @@ public class ContenedorInventario extends javax.swing.JPanel
         actualizarObjeto.setVisible(true);
         cargarInventario();
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        
+        int row = tblInventario.getSelectedRow();
+        String nombre = tblInventario.getValueAt(row, 0).toString();
+        int respuesta;
+        
+        respuesta = JOptionPane.showConfirmDialog(parent, "En realidad desea eliminar " + nombre + " del inventario ?", 
+                "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if (respuesta == JOptionPane.YES_OPTION)
+        {
+            eliminarDelInventario(nombre);
+            
+            JOptionPane.showMessageDialog(parent, nombre + " ha sido eliminado del inventaio", "Información",
+                    JOptionPane.INFORMATION_MESSAGE);
+            
+            cargarInventario();
+        }// fin del if
+        
+        else
+            if (respuesta == JOptionPane.NO_OPTION)
+            {
+            }// fin del if
+    }//GEN-LAST:event_btnEliminarActionPerformed
     
     public void cargarInventario()
     {
@@ -287,6 +317,12 @@ public class ContenedorInventario extends javax.swing.JPanel
             }// fin de la clase interna anonima
         );// fin del metodo addMouseListener
     }// fin del metodo obtenerRegistroFila*/
+    
+    private void eliminarDelInventario(String nombre)
+    {
+        NegocioInventario objNegocioInventario = new NegocioInventario();
+        objNegocioInventario.eliminarDelInventario(nombre);
+    }// fin del metodo eliminarDelInventario
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
