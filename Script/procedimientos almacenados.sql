@@ -290,7 +290,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `obtenerUltimoId`(in tabla varchar(4
 BEGIN
 	declare nombreTabla Varchar(45);
 	set nombreTabla = tabla;
-	Select MAX(id) FROM nombreTabla;
+	Select MAX(id) FROM nombreTabla;ObtenerIdUsuario
 END $
 
 DELIMITER $
@@ -647,3 +647,11 @@ BEGIN
 END $
 
 Call actualizarInventario (1, 'Acetaminofen', 50, '', '1')
+$
+
+DELIMITER $
+CREATE PROCEDURE EliminarInventario(in nom varchar(100))
+BEGIN
+	delete from Inventario
+	where nombre = nom;
+END $
