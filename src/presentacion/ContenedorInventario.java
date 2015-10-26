@@ -102,6 +102,11 @@ public class ContenedorInventario extends javax.swing.JPanel
         });
 
         btnDescontar.setText("Descontar");
+        btnDescontar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDescontarActionPerformed(evt);
+            }
+        });
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -208,6 +213,38 @@ public class ContenedorInventario extends javax.swing.JPanel
             {
             }// fin del if
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnDescontarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescontarActionPerformed
+        
+        String cantidadStr, nombre;
+        int cantidadDesc, cantidad, row;
+        
+        row = tblInventario.getSelectedRow();
+        nombre = tblInventario.getValueAt(row, 0).toString();
+        cantidad = Integer.parseInt(tblInventario.getValueAt(row, 1).toString());
+        
+        cantidadStr = JOptionPane.showInputDialog(parent, "Ingrese la cantidad a descontar:", "Información",
+                JOptionPane.INFORMATION_MESSAGE);
+        cantidadDesc = Integer.parseInt(cantidadStr);
+        
+        if (cantidadStr != null)
+        {
+            int respuesta;
+            respuesta = JOptionPane.showConfirmDialog(parent, "En realidad desea descontar en " + cantidadStr + 
+                    " la cantidad de " + nombre + " ?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            
+            if (respuesta == JOptionPane.YES_OPTION)
+            {
+                descontarDelInventario(nombre, cantidadStr);
+                
+                JOptionPane.showMessageDialog(parent, "La cantidad de " + nombre + " ahora es de " + (cantidad - cantidadDesc),
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+                
+                cargarInventario();
+            }// fin del if
+            
+        }// fin del if
+    }//GEN-LAST:event_btnDescontarActionPerformed
     
     public void cargarInventario()
     {
@@ -323,6 +360,12 @@ public class ContenedorInventario extends javax.swing.JPanel
         NegocioInventario objNegocioInventario = new NegocioInventario();
         objNegocioInventario.eliminarDelInventario(nombre);
     }// fin del metodo eliminarDelInventario
+    
+    public void descontarDelInventario(String nombre, String cantidad)
+    {
+        NegocioInventario objNegocioInventario = new NegocioInventario();
+        objNegocioInventario.descontarDelInventario(nombre, cantidad);
+    }// fin del metodo descontarDelInventario
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
