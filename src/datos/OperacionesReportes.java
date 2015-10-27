@@ -30,7 +30,7 @@ public class OperacionesReportes {
     public void reporteMS(String dateDesde, String dateHasta){
         evento = new LinkedList<>();
         sexo = new LinkedList<>();
-        fechaNac = new LinkedList();
+        fechaNac = new LinkedList<>();
         String datos = "'"+dateDesde+"'"+","+"'"+dateHasta+"'";
         objetoDeConexion = new Conexion();
         java.sql.ResultSet rs = null;
