@@ -7,10 +7,14 @@ import negocio.NegocioInventario;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import entidad.Inventario;
+import javax.swing.JOptionPane;
 
 public class ContenedorInventario extends javax.swing.JPanel 
 {   
     java.awt.Frame parent;
+    private int filaSeleccionada;
+    
     /*Creates new form ContenedorInventario*/
     public ContenedorInventario(java.awt.Frame parent) 
     {   
@@ -91,10 +95,25 @@ public class ContenedorInventario extends javax.swing.JPanel
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnDescontar.setText("Descontar");
+        btnDescontar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDescontarActionPerformed(evt);
+            }
+        });
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -160,6 +179,73 @@ public class ContenedorInventario extends javax.swing.JPanel
         btnEliminar.setEnabled(false);
         btnDescontar.setEnabled(false);
     }//GEN-LAST:event_pnlTablaInventarioMouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        
+        ActualizarInventario actualizarObjeto = new ActualizarInventario(parent, true,
+                obtenerRegistroSeleccionado());
+        //actualizarObjeto.cargarRegistro(obtenerRegistroSeleccionado());
+        actualizarObjeto.setVisible(true);
+        cargarInventario();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        
+        int row = tblInventario.getSelectedRow();
+        String nombre = tblInventario.getValueAt(row, 0).toString();
+        int respuesta;
+        
+        respuesta = JOptionPane.showConfirmDialog(parent, "En realidad desea eliminar " + nombre + " del inventario ?", 
+                "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if (respuesta == JOptionPane.YES_OPTION)
+        {
+            eliminarDelInventario(nombre);
+            
+            JOptionPane.showMessageDialog(parent, nombre + " ha sido eliminado del inventaio", "Información",
+                    JOptionPane.INFORMATION_MESSAGE);
+            
+            cargarInventario();
+        }// fin del if
+        
+        else
+            if (respuesta == JOptionPane.NO_OPTION)
+            {
+            }// fin del if
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnDescontarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescontarActionPerformed
+        
+        String cantidadStr, nombre;
+        int cantidadDesc, cantidad, row;
+        
+        row = tblInventario.getSelectedRow();
+        nombre = tblInventario.getValueAt(row, 0).toString();
+        cantidad = Integer.parseInt(tblInventario.getValueAt(row, 1).toString());
+        
+        cantidadStr = JOptionPane.showInputDialog(parent, "Ingrese la cantidad a descontar:", "Información",
+                JOptionPane.INFORMATION_MESSAGE);
+        
+        
+        if (cantidadStr != null)
+        {
+            cantidadDesc = Integer.parseInt(cantidadStr);
+            int respuesta;
+            respuesta = JOptionPane.showConfirmDialog(parent, "En realidad desea descontar en " + cantidadStr + 
+                    " la cantidad de " + nombre + " ?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            
+            if (respuesta == JOptionPane.YES_OPTION)
+            {
+                descontarDelInventario(nombre, cantidadStr);
+                
+                JOptionPane.showMessageDialog(parent, "La cantidad de " + nombre + " ahora es de " + (cantidad - cantidadDesc),
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+                
+                cargarInventario();
+            }// fin del if
+            
+        }// fin del if
+    }//GEN-LAST:event_btnDescontarActionPerformed
     
     public void cargarInventario()
     {
@@ -203,16 +289,18 @@ public class ContenedorInventario extends javax.swing.JPanel
                 @Override
                 public void mouseClicked(MouseEvent e) 
                 {
-                    clickEnRegistro(e);
+                    filaSeleccionada = clickEnRegistro(e);
                 }
             }// fin de la clase interna anonima
         );
     }// fin del metodo setEventoMouseClicked
     
-    private void clickEnRegistro(MouseEvent evt)
+    private int clickEnRegistro(MouseEvent evt)
     {
-        int row = tblInventario.rowAtPoint(evt.getPoint());
+        int row = 0;
+        //row = tblInventario.rowAtPoint(evt.getPoint());
         
+        row = tblInventario.getSelectedRow();
         if (row >= 0)
         {
             btnAgregar.setEnabled(false);
@@ -220,7 +308,65 @@ public class ContenedorInventario extends javax.swing.JPanel
             btnEliminar.setEnabled(true);
             btnDescontar.setEnabled(true);
         }// fin del if
+        
+        return row;
     }// fin del metodo clickEnRegistro
+    
+    // Este meto obtiene los valores de la fila seleccionada en la tabla retorna un objeto de tipo inventario
+    public Inventario obtenerRegistroSeleccionado()
+    {
+        Inventario objeto = new Inventario();
+        
+        try
+        {
+            objeto.setNombre(tblInventario.getValueAt(filaSeleccionada, 0).toString());
+            objeto.setCantidad(Integer.parseInt(tblInventario.getValueAt(filaSeleccionada, 1).toString()));
+            objeto.setTamanio(tblInventario.getValueAt(filaSeleccionada, 2).toString());
+            objeto.setViaAdministracion(tblInventario.getValueAt(filaSeleccionada, 3).toString());
+        }// fin del try
+        catch(NullPointerException npe)
+        {
+            objeto.setTamanio("");
+            
+            try
+            {
+                objeto.setViaAdministracion(tblInventario.getValueAt(filaSeleccionada, 3).toString());
+            }// fin de try
+            catch(NullPointerException npe2)
+            {
+                objeto.setViaAdministracion("");
+            }// fin del catch
+        }// fin del catch
+        
+        return objeto;
+    }// fin del metodo obtenerRegistroSeleccionado
+    
+    /*private int obtenerRegistroFila()
+    {
+        int row;
+        
+        tblInventario.addMouseListener(new java.awt.event.MouseAdapter()
+            {
+                @Override
+                public void mouseClicked(MouseEvent evt)
+                {
+                    
+                }// fin del metodo mouseClicked
+            }// fin de la clase interna anonima
+        );// fin del metodo addMouseListener
+    }// fin del metodo obtenerRegistroFila*/
+    
+    private void eliminarDelInventario(String nombre)
+    {
+        NegocioInventario objNegocioInventario = new NegocioInventario();
+        objNegocioInventario.eliminarDelInventario(nombre);
+    }// fin del metodo eliminarDelInventario
+    
+    public void descontarDelInventario(String nombre, String cantidad)
+    {
+        NegocioInventario objNegocioInventario = new NegocioInventario();
+        objNegocioInventario.descontarDelInventario(nombre, cantidad);
+    }// fin del metodo descontarDelInventario
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
