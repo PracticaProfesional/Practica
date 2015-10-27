@@ -1520,7 +1520,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(agendaPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(agendaPanelActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(agendaPanelCalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         tapAgenda.addTab("Citas", agendaPanelPrincipal);
@@ -1587,7 +1587,7 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1605,29 +1605,6 @@ public class Inicio extends javax.swing.JFrame {
         nuevo.setVisible(true);
         cargarTablaBuscarPaciente();
     }//GEN-LAST:event_btnCrearExpedienteActionPerformed
-
-    private void cbOidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOidosActionPerformed
-        // TODO add your handling code here:
-        if (cbOidos.getSelectedItem().toString().equals("Anormal")){
-            cbDetallesOidos.setEnabled(true);
-        }// fin del if
-        
-        else {
-            cbDetallesOidos.setEnabled(false);
-            textOtrosDetallesOidos.setEnabled(false);
-            cbDetallesOidos.setSelectedIndex(0);
-        }// fin del else
-    }//GEN-LAST:event_cbOidosActionPerformed
-
-    private void btnSignosVitalesGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignosVitalesGuardarActionPerformed
-        if(validaSVitales()){
-            ingresarSignosConsulta();
-            limpiarSignosVitales();
-        }
-        else
-            JOptionPane.showMessageDialog(this, "Parecen haber datos incompletos"
-                    + "o erroneos", "Error", JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_btnSignosVitalesGuardarActionPerformed
     private boolean validaSVitales(){
         String validadorNumerico = ".*[1-9].*";
         boolean validado = false;
@@ -1803,177 +1780,6 @@ public class Inicio extends javax.swing.JFrame {
         signosV.setMasaCorporal(Double.parseDouble(textMM.getText()));
         return signosV;
     }
-
-    private void cbDetallesNarizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesNarizActionPerformed
-        // TODO add your handling code here:
-        if (cbDetallesNariz.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesNariz.setEnabled(true);
-        }
-        
-        else
-            textOtrosDetallesNariz.setEnabled(false);
-    }//GEN-LAST:event_cbDetallesNarizActionPerformed
-
-    private void cbDetallesBocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesBocaActionPerformed
-        // TODO add your handling code here:
-        if (cbDetallesBoca.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesBoca.setEnabled(true);
-        }
-        
-        else
-            textOtrosDetallesBoca.setEnabled(false);
-    }//GEN-LAST:event_cbDetallesBocaActionPerformed
-
-    private void cbBocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBocaActionPerformed
-        // TODO add your handling code here:
-        if (cbBoca.getSelectedItem().toString().equals("Anormal")){
-            cbDetallesBoca.setEnabled(true);
-        }// fin del if
-        
-        else {
-            cbDetallesBoca.setEnabled(false);
-            textOtrosDetallesBoca.setEnabled(false);
-            cbDetallesBoca.setSelectedIndex(0);
-        }// fin del else
-    }//GEN-LAST:event_cbBocaActionPerformed
-
-    private void cbNarizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNarizActionPerformed
-        // TODO add your handling code here:
-         if (cbNariz.getSelectedItem().toString().equals("Anormal")){
-            cbDetallesNariz.setEnabled(true);
-        }// fin del if
-         
-         else {
-            cbDetallesNariz.setEnabled(false);
-            textOtrosDetallesNariz.setEnabled(false);
-            cbDetallesNariz.setSelectedIndex(0);
-         }// fin del else
-    }//GEN-LAST:event_cbNarizActionPerformed
-
-    private void cbToraxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbToraxActionPerformed
-        // TODO add your handling code here:
-        if (cbTorax.getSelectedItem().toString().equals("Anormal")){
-            cbDetallesTorax.setEnabled(true);
-        }// fin del if
-         
-        else {
-            cbDetallesTorax.setEnabled(false);
-            textOtrosDetallesTorax.setEnabled(false);
-            cbDetallesTorax.setSelectedIndex(0);
-        }// fin del else
-    }//GEN-LAST:event_cbToraxActionPerformed
-
-    private void cbCorazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCorazonActionPerformed
-        // TODO add your handling code here:
-        if (cbCorazon.getSelectedItem().toString().equals("Anormal")){
-            cbDetallesCorazon.setEnabled(true);
-        }// fin del if
-        
-        else {
-            cbDetallesCorazon.setEnabled(false);
-            textOtrosDetallesCorazon.setEnabled(false);
-            cbDetallesCorazon.setSelectedIndex(0);
-        }// fin del else
-    }//GEN-LAST:event_cbCorazonActionPerformed
-
-    private void cbAbdomenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAbdomenActionPerformed
-        // TODO add your handling code here:
-        if (cbAbdomen.getSelectedItem().toString().equals("Anormal")){
-            cbDetallesAbdomen.setEnabled(true);
-        }
-         
-        else {
-            cbDetallesAbdomen.setEnabled(false);
-            textOtrosDetallesAbdomen.setEnabled(false);
-            cbDetallesAbdomen.setSelectedIndex(0);
-        }// fin del else
-    }//GEN-LAST:event_cbAbdomenActionPerformed
-
-    private void cbEsqueleticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEsqueleticoActionPerformed
-        // TODO add your handling code here:
-        if (cbEsqueletico.getSelectedItem().toString().equals("Anormal")){
-            cbDetallesEsqueletico.setEnabled(true);
-        }// fin del if
-        
-        else {
-            cbDetallesEsqueletico.setEnabled(false);
-            textOtrosDetallesEsqueletico.setEnabled(false);
-            cbDetallesEsqueletico.setSelectedIndex(0);
-        }// fin del else
-    }//GEN-LAST:event_cbEsqueleticoActionPerformed
-
-    private void cbUrinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUrinarioActionPerformed
-        // TODO add your handling code here:
-        if (cbUrinario.getSelectedItem().toString().equals("Anormal")){
-            cbDetallesUrinario.setEnabled(true);
-        }// fin del if
-        
-        else {
-            cbDetallesUrinario.setEnabled(false);
-            textOtrosDetallesUrinario.setEnabled(false);
-            cbDetallesUrinario.setSelectedIndex(0);
-        }// fin del else
-    }//GEN-LAST:event_cbUrinarioActionPerformed
-
-    private void cbDetallesOidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesOidosActionPerformed
-        // TODO add your handling code here:
-        if (cbDetallesOidos.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesOidos.setEnabled(true);
-        }
-        
-        else
-            textOtrosDetallesOidos.setEnabled(false);
-    }//GEN-LAST:event_cbDetallesOidosActionPerformed
-
-    private void cbDetallesToraxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesToraxActionPerformed
-        // TODO add your handling code here:
-        if (cbDetallesTorax.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesTorax.setEnabled(true);
-        }
-        
-        else
-            textOtrosDetallesTorax.setEnabled(false);
-    }//GEN-LAST:event_cbDetallesToraxActionPerformed
-
-    private void cbDetallesCorazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesCorazonActionPerformed
-        // TODO add your handling code here:
-        if (cbDetallesCorazon.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesCorazon.setEnabled(true);
-        }
-        
-        else
-            textOtrosDetallesCorazon.setEnabled(false);
-    }//GEN-LAST:event_cbDetallesCorazonActionPerformed
-
-    private void cbDetallesAbdomenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesAbdomenActionPerformed
-        // TODO add your handling code here:
-        if (cbDetallesAbdomen.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesAbdomen.setEnabled(true);
-        }
-        
-        else
-            textOtrosDetallesAbdomen.setEnabled(false);
-    }//GEN-LAST:event_cbDetallesAbdomenActionPerformed
-
-    private void cbDetallesEsqueleticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesEsqueleticoActionPerformed
-        // TODO add your handling code here:
-        if (cbDetallesEsqueletico.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesEsqueletico.setEnabled(true);
-        }
-        
-        else
-            textOtrosDetallesEsqueletico.setEnabled(false);
-    }//GEN-LAST:event_cbDetallesEsqueleticoActionPerformed
-
-    private void cbDetallesUrinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesUrinarioActionPerformed
-        // TODO add your handling code here:
-        if (cbDetallesUrinario.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesUrinario.setEnabled(true);
-        }
-        
-        else
-            textOtrosDetallesUrinario.setEnabled(false);
-    }//GEN-LAST:event_cbDetallesUrinarioActionPerformed
     
    
     private void agendaTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendaTablaMouseClicked
@@ -2028,10 +1834,6 @@ public class Inicio extends javax.swing.JFrame {
         for(int i = 0; i < 30; i++)
             agendaTabla.setValueAt("", i, 1);
     }
-
-    private void textPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPesoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textPesoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTablaBuscarPaciente();
@@ -2104,26 +1906,6 @@ public class Inicio extends javax.swing.JFrame {
         if(textBuscarPaciente.getText().equals(""))
         cargarTablaBuscarPaciente();
     }//GEN-LAST:event_textBuscarPacienteActionPerformed
-
-    private void btnGuardarExamenFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarExamenFisicoActionPerformed
-        
-        if (! verificarVacios())
-            JOptionPane.showMessageDialog(null, "Uno o mas campos son requeridos", 
-                                "Información", JOptionPane.INFORMATION_MESSAGE);
-        
-        else {
-            final String tipoEvento = cbDiagnosticoOpcional.getSelectedItem().toString();
-            if(!tipoEvento.equalsIgnoreCase("Seleccione")){
-                insertarExamenFisico();
-                actualizarConsulta();
-                limpiarExamenFisico();
-            }
-            else
-                JOptionPane.showMessageDialog(this, "Seleccione el tipo de evento"
-                                            ,"Error", JOptionPane.ERROR_MESSAGE);
-            //tabExpediente.setSelectedIndex(0);
-        }// fin del else
-    }//GEN-LAST:event_btnGuardarExamenFisicoActionPerformed
     private void actualizarConsulta(){
         entidad.ConsultaMedica consulta = new entidad.ConsultaMedica();
         String diagOp = cbDiagnosticoOpcional.getSelectedItem().toString();
@@ -2251,10 +2033,6 @@ public class Inicio extends javax.swing.JFrame {
         return listaExamen;
     }
 
-    private void panelConsultaMedicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelConsultaMedicaMouseClicked
-            // evento del panel de consulta medica
-    }//GEN-LAST:event_panelConsultaMedicaMouseClicked
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         PacientesConsulta pacientesConsulta = new PacientesConsulta(this, true);
         pacientesConsulta.setVisible(true);
@@ -2264,18 +2042,6 @@ public class Inicio extends javax.swing.JFrame {
         idSVitales = pacientesConsulta.getIdSignosVitales();
         this.lblPacienteActual.setText(pacienteActual);  
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void btnLabGabineteAdjuntarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLabGabineteAdjuntarExamenActionPerformed
-        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
-        int seleccion = fileChooser.showSaveDialog(this);
-        if(seleccion == JFileChooser.APPROVE_OPTION){
-            
-            fichero = fileChooser.getSelectedFile();
-            textRutaLabGab.setText(fichero.getPath());
-            ImagenLabGab img = new ImagenLabGab(panelImagenLabGab, fichero.getPath());
-            panelImagenLabGab.add(img).repaint();
-        }
-    }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
 
     private void insertarLabGab(File fichero) throws NumberFormatException {
         negocio.NegocioLaboratorioGabinete inLab;
@@ -2325,24 +2091,6 @@ public class Inicio extends javax.swing.JFrame {
         cargarTablaBuscarPaciente();
     }//GEN-LAST:event_btnRefrescarTablaBuscarActionPerformed
 
-    private void textTallaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTallaFocusLost
-        if(!textPeso.getText().equals("") || !textTalla.getText().equals("")){
-            calcularImc();
-            calcularImb();
-        }
-        
-        
-        
-    }//GEN-LAST:event_textTallaFocusLost
-
-    private void btnGuardarLabGabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarLabGabActionPerformed
-        if(fichero != null)
-            insertarLabGab(fichero);
-        else
-            JOptionPane.showMessageDialog(this, "No seleccionó ningún archivo",
-                                          "Error", JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_btnGuardarLabGabActionPerformed
-
     private void popItemEliminarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemEliminarActividadActionPerformed
         int fila = agendaTabla.getSelectedRow();
         String fecha = obtenerFechaCalendario();
@@ -2361,10 +2109,6 @@ public class Inicio extends javax.swing.JFrame {
                                             "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_popItemEliminarActividadActionPerformed
 
-    private void btnVerSignosVitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerSignosVitalesActionPerformed
-        
-    }//GEN-LAST:event_btnVerSignosVitalesActionPerformed
-
     private void panelPrincipalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelPrincipalStateChanged
         if(panelPrincipal.getSelectedIndex() == 3){
             if(tabInventario.getComponentCount() <= 0){
@@ -2373,6 +2117,259 @@ public class Inicio extends javax.swing.JFrame {
             }      
         }
     }//GEN-LAST:event_panelPrincipalStateChanged
+
+    private void panelConsultaMedicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelConsultaMedicaMouseClicked
+        // evento del panel de consulta medica
+    }//GEN-LAST:event_panelConsultaMedicaMouseClicked
+
+    private void btnGuardarLabGabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarLabGabActionPerformed
+        if(fichero != null)
+        insertarLabGab(fichero);
+        else
+        JOptionPane.showMessageDialog(this, "No seleccionó ningún archivo",
+            "Error", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_btnGuardarLabGabActionPerformed
+
+    private void btnLabGabineteAdjuntarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLabGabineteAdjuntarExamenActionPerformed
+        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+        int seleccion = fileChooser.showSaveDialog(this);
+        if(seleccion == JFileChooser.APPROVE_OPTION){
+
+            fichero = fileChooser.getSelectedFile();
+            textRutaLabGab.setText(fichero.getPath());
+            ImagenLabGab img = new ImagenLabGab(panelImagenLabGab, fichero.getPath());
+            panelImagenLabGab.add(img).repaint();
+        }
+    }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
+
+    private void btnVerSignosVitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerSignosVitalesActionPerformed
+
+    }//GEN-LAST:event_btnVerSignosVitalesActionPerformed
+
+    private void btnGuardarExamenFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarExamenFisicoActionPerformed
+
+        if (! verificarVacios())
+        JOptionPane.showMessageDialog(null, "Uno o mas campos son requeridos",
+            "Información", JOptionPane.INFORMATION_MESSAGE);
+
+        else {
+            final String tipoEvento = cbDiagnosticoOpcional.getSelectedItem().toString();
+            if(!tipoEvento.equalsIgnoreCase("Seleccione")){
+                insertarExamenFisico();
+                actualizarConsulta();
+                limpiarExamenFisico();
+            }
+            else
+            JOptionPane.showMessageDialog(this, "Seleccione el tipo de evento"
+                ,"Error", JOptionPane.ERROR_MESSAGE);
+            //tabExpediente.setSelectedIndex(0);
+        }// fin del else
+    }//GEN-LAST:event_btnGuardarExamenFisicoActionPerformed
+
+    private void cbDetallesUrinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesUrinarioActionPerformed
+        // TODO add your handling code here:
+        if (cbDetallesUrinario.getSelectedItem().toString().equals("Otros")){
+            textOtrosDetallesUrinario.setEnabled(true);
+        }
+
+        else
+        textOtrosDetallesUrinario.setEnabled(false);
+    }//GEN-LAST:event_cbDetallesUrinarioActionPerformed
+
+    private void cbDetallesEsqueleticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesEsqueleticoActionPerformed
+        // TODO add your handling code here:
+        if (cbDetallesEsqueletico.getSelectedItem().toString().equals("Otros")){
+            textOtrosDetallesEsqueletico.setEnabled(true);
+        }
+
+        else
+        textOtrosDetallesEsqueletico.setEnabled(false);
+    }//GEN-LAST:event_cbDetallesEsqueleticoActionPerformed
+
+    private void cbUrinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUrinarioActionPerformed
+        // TODO add your handling code here:
+        if (cbUrinario.getSelectedItem().toString().equals("Anormal")){
+            cbDetallesUrinario.setEnabled(true);
+        }// fin del if
+
+        else {
+            cbDetallesUrinario.setEnabled(false);
+            textOtrosDetallesUrinario.setEnabled(false);
+            cbDetallesUrinario.setSelectedIndex(0);
+        }// fin del else
+    }//GEN-LAST:event_cbUrinarioActionPerformed
+
+    private void cbEsqueleticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEsqueleticoActionPerformed
+        // TODO add your handling code here:
+        if (cbEsqueletico.getSelectedItem().toString().equals("Anormal")){
+            cbDetallesEsqueletico.setEnabled(true);
+        }// fin del if
+
+        else {
+            cbDetallesEsqueletico.setEnabled(false);
+            textOtrosDetallesEsqueletico.setEnabled(false);
+            cbDetallesEsqueletico.setSelectedIndex(0);
+        }// fin del else
+    }//GEN-LAST:event_cbEsqueleticoActionPerformed
+
+    private void cbDetallesCorazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesCorazonActionPerformed
+        // TODO add your handling code here:
+        if (cbDetallesCorazon.getSelectedItem().toString().equals("Otros")){
+            textOtrosDetallesCorazon.setEnabled(true);
+        }
+
+        else
+        textOtrosDetallesCorazon.setEnabled(false);
+    }//GEN-LAST:event_cbDetallesCorazonActionPerformed
+
+    private void cbDetallesToraxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesToraxActionPerformed
+        // TODO add your handling code here:
+        if (cbDetallesTorax.getSelectedItem().toString().equals("Otros")){
+            textOtrosDetallesTorax.setEnabled(true);
+        }
+
+        else
+        textOtrosDetallesTorax.setEnabled(false);
+    }//GEN-LAST:event_cbDetallesToraxActionPerformed
+
+    private void cbDetallesAbdomenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesAbdomenActionPerformed
+        // TODO add your handling code here:
+        if (cbDetallesAbdomen.getSelectedItem().toString().equals("Otros")){
+            textOtrosDetallesAbdomen.setEnabled(true);
+        }
+
+        else
+        textOtrosDetallesAbdomen.setEnabled(false);
+    }//GEN-LAST:event_cbDetallesAbdomenActionPerformed
+
+    private void cbAbdomenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAbdomenActionPerformed
+        // TODO add your handling code here:
+        if (cbAbdomen.getSelectedItem().toString().equals("Anormal")){
+            cbDetallesAbdomen.setEnabled(true);
+        }
+
+        else {
+            cbDetallesAbdomen.setEnabled(false);
+            textOtrosDetallesAbdomen.setEnabled(false);
+            cbDetallesAbdomen.setSelectedIndex(0);
+        }// fin del else
+    }//GEN-LAST:event_cbAbdomenActionPerformed
+
+    private void cbCorazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCorazonActionPerformed
+        // TODO add your handling code here:
+        if (cbCorazon.getSelectedItem().toString().equals("Anormal")){
+            cbDetallesCorazon.setEnabled(true);
+        }// fin del if
+
+        else {
+            cbDetallesCorazon.setEnabled(false);
+            textOtrosDetallesCorazon.setEnabled(false);
+            cbDetallesCorazon.setSelectedIndex(0);
+        }// fin del else
+    }//GEN-LAST:event_cbCorazonActionPerformed
+
+    private void cbToraxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbToraxActionPerformed
+        // TODO add your handling code here:
+        if (cbTorax.getSelectedItem().toString().equals("Anormal")){
+            cbDetallesTorax.setEnabled(true);
+        }// fin del if
+
+        else {
+            cbDetallesTorax.setEnabled(false);
+            textOtrosDetallesTorax.setEnabled(false);
+            cbDetallesTorax.setSelectedIndex(0);
+        }// fin del else
+    }//GEN-LAST:event_cbToraxActionPerformed
+
+    private void cbDetallesBocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesBocaActionPerformed
+        // TODO add your handling code here:
+        if (cbDetallesBoca.getSelectedItem().toString().equals("Otros")){
+            textOtrosDetallesBoca.setEnabled(true);
+        }
+
+        else
+        textOtrosDetallesBoca.setEnabled(false);
+    }//GEN-LAST:event_cbDetallesBocaActionPerformed
+
+    private void cbDetallesNarizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesNarizActionPerformed
+        // TODO add your handling code here:
+        if (cbDetallesNariz.getSelectedItem().toString().equals("Otros")){
+            textOtrosDetallesNariz.setEnabled(true);
+        }
+
+        else
+        textOtrosDetallesNariz.setEnabled(false);
+    }//GEN-LAST:event_cbDetallesNarizActionPerformed
+
+    private void cbDetallesOidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesOidosActionPerformed
+        // TODO add your handling code here:
+        if (cbDetallesOidos.getSelectedItem().toString().equals("Otros")){
+            textOtrosDetallesOidos.setEnabled(true);
+        }
+
+        else
+        textOtrosDetallesOidos.setEnabled(false);
+    }//GEN-LAST:event_cbDetallesOidosActionPerformed
+
+    private void cbBocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBocaActionPerformed
+        // TODO add your handling code here:
+        if (cbBoca.getSelectedItem().toString().equals("Anormal")){
+            cbDetallesBoca.setEnabled(true);
+        }// fin del if
+
+        else {
+            cbDetallesBoca.setEnabled(false);
+            textOtrosDetallesBoca.setEnabled(false);
+            cbDetallesBoca.setSelectedIndex(0);
+        }// fin del else
+    }//GEN-LAST:event_cbBocaActionPerformed
+
+    private void cbNarizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNarizActionPerformed
+        // TODO add your handling code here:
+        if (cbNariz.getSelectedItem().toString().equals("Anormal")){
+            cbDetallesNariz.setEnabled(true);
+        }// fin del if
+
+        else {
+            cbDetallesNariz.setEnabled(false);
+            textOtrosDetallesNariz.setEnabled(false);
+            cbDetallesNariz.setSelectedIndex(0);
+        }// fin del else
+    }//GEN-LAST:event_cbNarizActionPerformed
+
+    private void cbOidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOidosActionPerformed
+        // TODO add your handling code here:
+        if (cbOidos.getSelectedItem().toString().equals("Anormal")){
+            cbDetallesOidos.setEnabled(true);
+        }// fin del if
+
+        else {
+            cbDetallesOidos.setEnabled(false);
+            textOtrosDetallesOidos.setEnabled(false);
+            cbDetallesOidos.setSelectedIndex(0);
+        }// fin del else
+    }//GEN-LAST:event_cbOidosActionPerformed
+
+    private void btnSignosVitalesGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignosVitalesGuardarActionPerformed
+        if(validaSVitales()){
+            ingresarSignosConsulta();
+            limpiarSignosVitales();
+        }
+        else
+        JOptionPane.showMessageDialog(this, "Parecen haber datos incompletos"
+            + "o erroneos", "Error", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_btnSignosVitalesGuardarActionPerformed
+
+    private void textTallaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTallaFocusLost
+        if(!textPeso.getText().equals("") || !textTalla.getText().equals("")){
+            calcularImc();
+            calcularImb();
+        }
+    }//GEN-LAST:event_textTallaFocusLost
+
+    private void textPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textPesoActionPerformed
     private void splitFechaNac(String fecha){
         String year = "";
         String month = "";
