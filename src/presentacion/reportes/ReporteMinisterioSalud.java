@@ -209,21 +209,24 @@ public class ReporteMinisterioSalud {
         }
         
         for(int i = 0; i < listSexo.size();i++){
-            if(listSexo.getFirst().equals("1")){
-                Object obj = "1";
-                hoja.getCellAt(col1+fila).setValue(obj);
-                listSexo.removeFirst();
-                contador++;
+            switch (listSexo.getFirst()) {
+                case "1":
+                {
+                    Object obj = "1";
+                    hoja.getCellAt(col1+fila).setValue(obj);
+                    listSexo.removeFirst();
+                    contador++;
                     return;
-            }
-            else
-                if(listSexo.getFirst().equals("2")){
+                }
+                case "2":
+                {
                     Object obj = "2";
                     hoja.getCellAt(col2+fila).setValue(obj);    
                     listSexo.removeFirst();
                     contador++;
-                        return;
+                    return;
                 }
+            }
         }
         
     }
