@@ -89,4 +89,36 @@ public class OperacionesInventario
         }// fin del catch
     }// fin del metodo actualizarInventario()
     
+    public void eliminarDelInventario(String nombre)
+    {
+        objetoDeConexion = new Conexion();
+        
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call EliminarInventario ('" + nombre + "')");
+            estado.close();
+        }// fin del try
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode()+ sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo eliminarDelInventario
+    
+    public void descontarDelInventario(String nombre, String cantidad)
+    {
+        objetoDeConexion = new Conexion();
+        
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call DescontarInventario ('" + nombre +"', " + cantidad + ")");
+            estado.close();
+        }// fin del try
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode()+ sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo descontarDelInventario
+    
 }// fin de la clase OperacionesInventario

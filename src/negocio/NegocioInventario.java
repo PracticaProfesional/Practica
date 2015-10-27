@@ -33,4 +33,16 @@ public class NegocioInventario
         operacionesInventario.actualizarInventario(id, actualizarInventario);
     }// fin del metodo actualizarInventario
     
+    public void eliminarDelInventario(String nombre)
+    {
+        OperacionesInventario operacionesInventario = new OperacionesInventario();
+        operacionesInventario.eliminarDelInventario(nombre);
+    }// fin del metodo eliminarDelInventario
+    
+    public void descontarDelInventario(String nombre, String cantidad)
+    {
+        OperacionesInventario operacionesInventario = new OperacionesInventario();
+        operacionesInventario.descontarDelInventario(nombre, cantidad);
+    }// fin del metodo descontarDelInventario
+    
 }// fin de la clase NegocioInventario
