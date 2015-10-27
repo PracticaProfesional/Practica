@@ -35,16 +35,6 @@ public class ReporteMinisterioSalud {
         listaMasc = new LinkedList<>();
         listFem = new LinkedList<>();
         clasifica();
-//        for(String elemento: listEvento)
-//            System.out.println(elemento);
-//
-//        for(String elemento: listSexo)
-//            System.out.print(elemento);
-//        System.out.print("\n");
-//        for(String elemento: listEdad)
-//            System.out.print(elemento+"-");
-        
-        
     }
 
     private void clasifica() {
