@@ -2367,10 +2367,23 @@ public class Inicio extends javax.swing.JFrame {
 
     private void panelPrincipalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelPrincipalStateChanged
         if(panelPrincipal.getSelectedIndex() == 3){
+            // Evita que se agregue el panel mas de una vez.
             if(tabInventario.getComponentCount() <= 0){
                 ContenedorInventario ci = new ContenedorInventario(this);
                 tabInventario.addTab("Medicamentos & Utensilios", ci); 
             }      
+        }
+        if(panelPrincipal.getSelectedIndex() == 2){
+            if(tabReportes.getComponentCount() <= 0){
+                ContenedorReportes  cr = new ContenedorReportes();
+                tabReportes.addTab("Reportes", cr);
+            }
+        }
+        if(panelPrincipal.getSelectedIndex() == 0){
+            if(panelConsultaMedica.getComponentCount() < 4){
+                ContenedorReceta rc = new ContenedorReceta();
+                panelConsultaMedica.addTab("Receta", rc);
+            }
         }
     }//GEN-LAST:event_panelPrincipalStateChanged
     private void splitFechaNac(String fecha){
