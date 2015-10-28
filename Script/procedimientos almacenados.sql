@@ -1,3 +1,12 @@
+-- Procedimiento para reportes
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ReporteMS`(fechaDesde date, fechaHasta date)
+BEGIN
+	select ConsultaMedica.diagnostico, sexo, fechaNacimientoPaciente
+	from ExpedienteMedico join ConsultaMedica
+	on ExpedienteMedico.id = ConsultaMedica.idExpedienteMedico
+	join Paciente on ExpedienteMedico.idPaciente = Paciente.id
+	Where ConsultaMedica.fecha  between fechaDesde and fechaHasta order by ConsultaMedica.diagnostico;
+END
 -- SELECT DE SIGNOS VITALES PARA REPORTE
 SELECT distinct
      SignosVitales.`id` AS SignosVitales_id,
