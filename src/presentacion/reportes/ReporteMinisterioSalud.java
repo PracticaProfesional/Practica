@@ -1,8 +1,14 @@
 package presentacion.reportes;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.jopendocument.dom.OOUtils;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
 /**
@@ -15,7 +21,7 @@ public class ReporteMinisterioSalud {
     private LinkedList<String> listEdad;
     private LinkedList<String> listaMasc;
     private LinkedList<String> listFem;
-    private ArrayList<String> tabla;
+    private Map<String, Integer> valores;
     private File outputFile;
     private int contador = 0;
     private Sheet hoja;
@@ -33,6 +39,7 @@ public class ReporteMinisterioSalud {
         listaMasc = new LinkedList<>();
         listFem = new LinkedList<>();
         clasifica();
+        escribeHoja();
     }
 
     private void clasifica() {
@@ -96,16 +103,21 @@ public class ReporteMinisterioSalud {
 //                    break;        
             }
             listEvento.removeFirst();
+        }         
+    }
+
+    private void escribeHoja() {
+        try {
+            
+            for (Map.Entry element : valores.entrySet()) {
+                hoja.getCellAt(element.getKey().toString()).setValue(element.getValue());
+            }
+            outputFile = new File ("src/presentacion/reportes/plantillas/Reporte_Generado.ods");
+            hoja.getSpreadSheet().saveAs(outputFile);
+            OOUtils.open(outputFile);
+        } catch (IOException ex) {
+            Logger.getLogger(ReporteMinisterioSalud.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for(String elemento:tabla)
-            System.out.println(elemento);
-//        try {
-//                outputFile = new File ("src/presentacion/reportes/plantillas/Reporte_Generado.ods");
-//                hoja.getSpreadSheet().saveAs(outputFile);
-//                OOUtils.open(outputFile);
-//            } catch (IOException ex) {
-//                Logger.getLogger(ReporteMinisterioSalud.class.getName()).log(Level.SEVERE, null, ex);
-//            }
     }
     
     private void clasificaEdad(String fila){
@@ -190,9 +202,10 @@ public class ReporteMinisterioSalud {
     private void clasificaSexo(String fila, String col1, String col2){
         String url = "src/presentacion/reportes/plantillas/templateMinisterioSalud.ods";
         java.io.File archivo = new java.io.File(url);
-        if(contador == 0){
+        // Elementos que se crean una unica vez.
+        if(contador == 0){ 
             try{
-                tabla = new ArrayList<>();
+                valores = new HashMap<String, Integer>();
                 hoja = SpreadSheet.createFromFile(archivo).getSheet(0);
             }
             catch(java.io.IOException ioe){
@@ -204,18 +217,20 @@ public class ReporteMinisterioSalud {
             switch (listSexo.getFirst()) {
                 case "1":
                 {
-                    Object obj = "1";
-//                    hoja.getCellAt(col1+fila).setValue(obj);
-                    tabla.add(col1+fila);
+                    if(valores.containsKey(col1+fila))
+                        valores.put(col1 + fila, valores.get(col1+fila) + 1);
+                    else
+                        valores.put(col1 + fila, 1);
                     listSexo.removeFirst();
                     contador++;
                     return;
                 }
                 case "2":
                 {
-                    Object obj = "2";
-//                    hoja.getCellAt(col2+fila).setValue(obj);  
-                    tabla.add(col2+fila);
+                    if(valores.containsKey(col2+fila))
+                        valores.put(col2 + fila, valores.get(col2+fila) + 1);
+                    else
+                        valores.put(col2 + fila, 1);
                     listSexo.removeFirst();
                     contador++;
                     return;
@@ -224,5 +239,6 @@ public class ReporteMinisterioSalud {
         }
         
     }
+    
     
 }
