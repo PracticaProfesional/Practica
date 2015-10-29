@@ -18,6 +18,7 @@ public class ConsultaMedica {
     private String observaciones = "";
     private String notaEnfermeria = "";
     private EstadoConsultaMedicaEnum estado;
+    private int idReceta;
 
     public String getNotaEnfermeria() {
         return notaEnfermeria;
