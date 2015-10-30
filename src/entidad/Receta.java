@@ -4,23 +4,19 @@ package entidad;
  *
  * @author cooper15
  */
-public class Receta {
-    private String nombreMedicamento;
-    private String cantidad;
+public class Receta 
+{
+    private String descripcion;
 
-    public String getNombreMedicamento() {
-        return nombreMedicamento;
-    }
+    public String getDescripcion() 
+    {
+        return descripcion;
+    }// fin del metodo getDescripcion
 
-    public void setNombreMedicamento(String nombreMedicamento) {
-        this.nombreMedicamento = nombreMedicamento;
-    }
+    public void setDescripcion(String descripcion) 
+    {
+        this.descripcion = descripcion;
+    }// fin del metodo setDescripcion
 
-    public String getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
-    }
-}
+    
+}// fin de la clase Receta
