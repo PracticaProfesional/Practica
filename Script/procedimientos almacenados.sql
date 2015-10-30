@@ -680,4 +680,17 @@ BEGIN
 	where nombre = nom;
 END $
 
-Call DescontarInventario('Gazas', 4)
+Call DescontarInventario('Gazas', 4);
+$
+
+
+DELIMITER $
+CREATE PROCEDURE InsertarRecetaEnConsulta(in idExp int, in fechaAC date, 
+			in idRec int)
+BEGIN
+	update ConsultaMedica
+	set idReceta = idRec
+	where idExpedienteMedico = idExp and fecha = fechaAC;
+END $
+
+Call InsertarRecetaEnConsulta (1, '2015-10-30', 1)
