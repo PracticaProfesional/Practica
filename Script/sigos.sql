@@ -585,6 +585,7 @@ ENGINE = InnoDB;
 ALTER TABLE `sigos`.`inventario` CHANGE COLUMN `tipo` `viaAdministracion` VARCHAR(45) NULL  ;
 
 
+ALTER TABLE `sigos`.`consultamedica` ADD COLUMN `idReceta` INT NULL  AFTER `estado` ;
 
 
 
