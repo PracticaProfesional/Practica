@@ -45,6 +45,9 @@ public class Inicio extends javax.swing.JFrame {
     int contador = 0;
     String  [][] backUpList;
     private String idSVitales;
+    private ContenedorReceta rc;
+    
+    
     public Inicio() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | Inicio.MAXIMIZED_HORIZ);
@@ -2041,6 +2044,7 @@ public class Inicio extends javax.swing.JFrame {
         idConsultaMedica = pacientesConsulta.getIdConsultaMedica();
         idSVitales = pacientesConsulta.getIdSignosVitales();
         this.lblPacienteActual.setText(pacienteActual);  
+        rc.cargarCamposDeTexto(pacienteActual, obtenerFechaActual(), idExpediente);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void insertarLabGab(File fichero) throws NumberFormatException {
@@ -2125,7 +2129,7 @@ public class Inicio extends javax.swing.JFrame {
         }
         if(panelPrincipal.getSelectedIndex() == 0){
             if(panelConsultaMedica.getComponentCount() < 4){
-                ContenedorReceta rc = new ContenedorReceta();
+                rc = new ContenedorReceta(); 
                 panelConsultaMedica.addTab("Receta", rc);
             }
         }
@@ -2568,7 +2572,10 @@ public class Inicio extends javax.swing.JFrame {
     }// fin del metodo verificarVacios
     
     
-    
+    public String getPacienteActual()
+    {
+        return pacienteActual;
+    }
     /**
      * @param args the command line arguments
      */

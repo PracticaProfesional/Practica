@@ -1,22 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// @author QUINCHO
 package presentacion;
 
-/**
- *
- * @author QUINCHO
- */
-public class ContenedorReceta extends javax.swing.JPanel {
+import entidad.Receta;
+import negocio.NegocioReceta;
+import negocio.NegocioObtenerUltimoId;
+import negocio.NegocioConsultaMedica;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-    /**
-     * Creates new form ContenedorReceta
-     */
-    public ContenedorReceta() {
+public class ContenedorReceta extends javax.swing.JPanel 
+{
+    private String idExpediente;   // esta variable global se utiliza para pasar por parametro al procedimiento
+                                   // almacenado para llevar a cabo la consulta 
+    private String fechaActual;   // esta variable global se utiliza para pasar por parametro la fecha al 
+                            // procedimiento almacenado y realizar la consulta
+    
+    public ContenedorReceta()
+    {
         initComponents();
-    }
+        txtNombre.setEnabled(false);  // inhabilitado
+        txtFecha.setEnabled(false);   // inhabilitado
+        cmbMedicamentos.removeAllItems();
+    }// fin del constructor de ContenedorReceta
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +39,7 @@ public class ContenedorReceta extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox();
+        cmbMedicamentos = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         txtNombre = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
@@ -42,9 +47,9 @@ public class ContenedorReceta extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        txaReceta = new javax.swing.JTextArea();
+        btnAceptar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -67,10 +72,10 @@ public class ContenedorReceta extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(jTable1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cmbMedicamentos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbMedicamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cmbMedicamentosActionPerformed(evt);
             }
         });
 
@@ -93,7 +98,7 @@ public class ContenedorReceta extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(cmbMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -104,7 +109,7 @@ public class ContenedorReceta extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel1))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -128,9 +133,9 @@ public class ContenedorReceta extends javax.swing.JPanel {
 
         jLabel6.setText("Receta");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txaReceta.setColumns(20);
+        txaReceta.setRows(5);
+        jScrollPane2.setViewportView(txaReceta);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -176,9 +181,19 @@ public class ContenedorReceta extends javax.swing.JPanel {
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        jButton3.setText("Aceptar");
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Cancelar");
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -192,9 +207,9 @@ public class ContenedorReceta extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(111, 111, 111))
         );
         layout.setVerticalGroup(
@@ -206,28 +221,83 @@ public class ContenedorReceta extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnAceptar)
+                    .addComponent(btnCancelar))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cmbMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMedicamentosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmbMedicamentosActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        
+        insertarReceta();
+        insertarRecetaEnConsulta();
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        
+        obtenerReceta();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+    
+    public void cargarCamposDeTexto(String pacienteActual, String fechaActual, String idExpediente)
+    {
+        txtNombre.setText(pacienteActual);
+        txtFecha.setText(fechaActual);
+        this.idExpediente = idExpediente;  // inicializamos con el valor obtenido en el formulario Inicio
+        this.fechaActual = fechaActual;   // inicializamo con el valor obtenido del formulario Inicio
+    }// fin del metodo cargarCamposDeTexto
+    
+    private void insertarReceta ()
+    {
+        Receta nuevaReceta = new Receta();
+        nuevaReceta.setDescripcion(txaReceta.getText());
+        
+        NegocioReceta objNegocioReceta = new NegocioReceta();
+        objNegocioReceta.insertarReceta(nuevaReceta);
+    }// fin del metodo insertarReceta
+    
+    private void insertarRecetaEnConsulta()
+    {
+        NegocioObtenerUltimoId ultimoId = new NegocioObtenerUltimoId();
+        NegocioConsultaMedica objNegocioConsultaMedica = new NegocioConsultaMedica();
+        
+        String idReceta = ultimoId.obtenerUltimoId("Receta");
+        objNegocioConsultaMedica.insertarRecetaEnConsulta(idExpediente, fechaActual, idReceta);
+    }// fin del metodo insertarRecetaConsulta
+    
+    public void obtenerReceta()
+    {
+        NegocioReceta objNegocioReceta = new NegocioReceta();
+        ResultSet rs;
+        
+        try
+        {
+            rs = objNegocioReceta.obtenerReceta("2");
+            
+            if (rs.next())
+                txaReceta.setText(rs.getString("descripcion"));
+        }// fin del try
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode() + sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo obtenerReceta
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox cmbMedicamentos;
     private datechooser.beans.DateChooserDialog dateChooserDialog1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -237,7 +307,7 @@ public class ContenedorReceta extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea txaReceta;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
