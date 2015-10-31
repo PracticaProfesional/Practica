@@ -693,4 +693,14 @@ BEGIN
 	where idExpedienteMedico = idExp and fecha = fechaAC;
 END $
 
-Call InsertarRecetaEnConsulta (1, '2015-10-30', 1)
+Call InsertarRecetaEnConsulta (1, '2015-10-30', 1);
+$
+
+DELIMITER $
+CREATE PROCEDURE ListarMedicamentosInventario ()
+BEGIN
+	select nombre from Inventario
+	where viaAdministracion is not null;
+END $
+
+call ListarMedicamentosInventario ()
