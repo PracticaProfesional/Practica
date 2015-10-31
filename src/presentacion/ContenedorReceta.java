@@ -5,6 +5,7 @@ import entidad.Receta;
 import negocio.NegocioReceta;
 import negocio.NegocioObtenerUltimoId;
 import negocio.NegocioConsultaMedica;
+import negocio.NegocioInventario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -21,6 +22,7 @@ public class ContenedorReceta extends javax.swing.JPanel
         txtNombre.setEnabled(false);  // inhabilitado
         txtFecha.setEnabled(false);   // inhabilitado
         cmbMedicamentos.removeAllItems();
+        cargarMedicamentosEnComboBox();  // se cargan los medicamentos que estab en la BD
     }// fin del constructor de ContenedorReceta
 
     /**
@@ -297,6 +299,26 @@ public class ContenedorReceta extends javax.swing.JPanel
             System.out.println(sqle.getErrorCode() + sqle.getMessage());
         }// fin del catch
     }// fin del metodo obtenerReceta
+    
+    public void cargarMedicamentosEnComboBox()
+    {
+        NegocioInventario objNegocioInventario = new NegocioInventario();
+        ResultSet rs;
+        
+        try
+        {
+            rs = objNegocioInventario.listarMedicamentosInventario();
+            
+            while (rs.next())
+                cmbMedicamentos.addItem(rs.getString("nombre"));
+            
+            rs.close();
+        }// fin del try
+        catch (SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode()+ sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo cargarMedicamentosEnComboBox
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
