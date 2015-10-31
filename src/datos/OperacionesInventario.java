@@ -121,4 +121,13 @@ public class OperacionesInventario
         }// fin del catch
     }// fin del metodo descontarDelInventario
     
+    public ResultSet listarMedicamentosIventario() throws SQLException
+    {
+        ResultSet rs;
+        objetoDeConexion = new Conexion();
+        estado = objetoDeConexion.conectar().createStatement();
+        rs = estado.executeQuery("Call ListarMedicamentosInventario ()");
+        return rs;
+    }// fin del metodo listarMedicamentosInventario
+    
 }// fin de la clase OperacionesInventario
