@@ -2,11 +2,13 @@ package presentacion.reportes;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.jopendocument.dom.LengthUnit;
 import org.jopendocument.dom.OOUtils;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
@@ -23,7 +25,9 @@ public class ReporteMinisterioSalud {
     private Map<String, Integer> valores;
     private File outputFile;
     private int contador = 0;
+    private int contador2 = 0;
     private Sheet hoja;
+    private Sheet hoja2;
 
     public void generarReporteMS(String dateDesde, String dateHasta){
         negocio.NegocioReportes reporte  = new negocio.NegocioReportes();
@@ -39,6 +43,7 @@ public class ReporteMinisterioSalud {
         listFem = new LinkedList<>();
         clasifica();
         escribeHoja();
+        calculaTotales();
     }
 
     private void clasifica() {
@@ -113,10 +118,64 @@ public class ReporteMinisterioSalud {
             }
             outputFile = new File ("src/presentacion/reportes/plantillas/Reporte_Generado.ods");
             hoja.getSpreadSheet().saveAs(outputFile);
+//            OOUtils.open(outputFile);
+        } catch (IOException ex) {
+            Logger.getLogger(ReporteMinisterioSalud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void calculaTotales(){
+        String urlReporte = "src/presentacion/reportes/plantillas/Reporte_Generado.ods";
+        java.io.File archivo = new java.io.File(urlReporte);
+        if(contador2 == 0){
+            try {
+                hoja2 = SpreadSheet.createFromFile(archivo).getSheet(0);
+            } catch (IOException ex) {
+                Logger.getLogger(ReporteMinisterioSalud.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        int auxM = 0;
+        int auxF = 0;
+        LinkedList<Integer> arrayM = new LinkedList<>();
+        LinkedList<Integer> arrayF = new LinkedList<>();
+        for(int i = 13; i < 29; i++){
+            for(int j = 0; j < 29; j++){
+                if(!hoja2.getCellAt(impar(j),i).getValue().toString().equals("")){
+                    auxM += Integer.parseInt(hoja2.getCellAt(impar(j),i).getValue().toString());
+                    System.out.println("fila"+i+"valor par"+impar(j)+"Resultado"+auxM);
+                }
+                    
+                    
+                if(!hoja2.getCellAt(par(j),i).getValue().toString().equals(""))
+                    auxF += Integer.parseInt(hoja2.getCellAt(par(j),i).getValue().toString());
+                }
+            arrayM.add(auxM);
+            arrayF.add(auxF);
+            auxM = 0;
+            auxF = 0;
+        }
+
+            for(int i = 14; i < 30; i++){
+                hoja2.getCellAt("AF"+i).setValue(arrayM.removeFirst());
+                hoja2.getCellAt("AG"+i).setValue(arrayF.removeFirst());
+            }
+        try {
+            hoja2.getSpreadSheet().saveAs(archivo);
             OOUtils.open(outputFile);
         } catch (IOException ex) {
             Logger.getLogger(ReporteMinisterioSalud.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+                
+    }
+    
+    private int par(int i){      
+        final int par = 2 * i + 2;
+        return par;
+    }
+    
+    private int impar(int i){
+        return 2 * i + 1; 
     }
     
     private void clasificaEdad(String fila){
