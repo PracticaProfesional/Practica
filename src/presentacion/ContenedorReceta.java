@@ -264,6 +264,7 @@ public class ContenedorReceta extends javax.swing.JPanel
         
         insertarReceta();
         insertarRecetaEnConsulta();
+        insertarRecetaFisica();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -360,6 +361,16 @@ public class ContenedorReceta extends javax.swing.JPanel
         cmbMedicamentos.setSelectedIndex(0);
         txtCantidad.setText(null);
     }// fin del metodo cargarFilaEnTabla
+    
+    public void insertarRecetaFisica()
+    {
+        NegocioConsultaMedica objNegocioConsultaMedica = new NegocioConsultaMedica();
+        int filas = tblMedicamentos.getRowCount();
+        
+        for (int i = 0; i < filas; i++)
+            objNegocioConsultaMedica.insertarRecetaFisica(tblMedicamentos.getValueAt(i, 0).toString(),
+                    tblMedicamentos.getValueAt(i, 1).toString());
+    }// fin del metodo insertarRecetaFisica
             
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;

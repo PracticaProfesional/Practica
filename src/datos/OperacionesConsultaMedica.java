@@ -76,4 +76,24 @@ public class OperacionesConsultaMedica
         }// fin del catch
     }// fin del metodo insertaRecetaEnConsulta
     
+    public void insertarRecetaFisica(String nombreMedicamento, String cantidad)
+    {
+        objetoDeConexion = new Conexion();
+        String datos =  "'" + nombreMedicamento + "'" + "," +
+                        cantidad;
+        
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call InsertarConsultaInventario(" + datos + ")");
+            estado.close();
+            objetoDeConexion.desconectar();
+        }// fin del try
+        catch (SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode()+ sqle.getMessage());
+            // esta excepcion puede surgir al haber dos medicamentos en el inventario con el mismo nombre
+        }// fin del catch
+    }// fin del metodo insertarRecetaFisca
+    
 }// fin de la clase OperacionesConsultaMedica
