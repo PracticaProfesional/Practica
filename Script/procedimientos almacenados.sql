@@ -651,3 +651,21 @@ BEGIN
 END $
 
 call ListarMedicamentosInventario ()
+$
+
+CREATE PROCEDURE InsertarConsultaInventario (in nombreMed varchar(100), 
+		in cant int)
+BEGIN
+	declare ultimoId int;
+	declare varIdInventario int;
+
+	select MAX(id) into ultimoId from ConsultaMedica;
+	select id into varIdInventario from Inventario
+	where nombre = nombreMed;
+
+	insert into `Consulta-Inventario` (idInventario, idConsultaMedica, cantidad)
+	values (varIdInventario, ultimoId, cant);
+END $
+
+Call InsertarConsultaInventario('Ibuprofeno', 3);
+$
