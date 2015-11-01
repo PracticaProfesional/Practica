@@ -1,4 +1,7 @@
 -- Procedimiento para reportes
+
+
+DELIMITER $
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ReporteMS`(fechaDesde date, fechaHasta date)
 BEGIN
 	select ConsultaMedica.diagnostico, sexo, fechaNacimientoPaciente
@@ -7,6 +10,9 @@ BEGIN
 	join Paciente on ExpedienteMedico.idPaciente = Paciente.id
 	Where ConsultaMedica.fecha  between fechaDesde and fechaHasta order by ConsultaMedica.diagnostico;
 END
+
+
+
 -- SELECT DE SIGNOS VITALES PARA REPORTE
 SELECT distinct
      SignosVitales.`id` AS SignosVitales_id,
@@ -674,4 +680,27 @@ BEGIN
 	where nombre = nom;
 END $
 
-Call DescontarInventario('Gazas', 4)
+Call DescontarInventario('Gazas', 4);
+$
+
+
+DELIMITER $
+CREATE PROCEDURE InsertarRecetaEnConsulta(in idExp int, in fechaAC date, 
+			in idRec int)
+BEGIN
+	update ConsultaMedica
+	set idReceta = idRec
+	where idExpedienteMedico = idExp and fecha = fechaAC;
+END $
+
+Call InsertarRecetaEnConsulta (1, '2015-10-30', 1);
+$
+
+DELIMITER $
+CREATE PROCEDURE ListarMedicamentosInventario ()
+BEGIN
+	select nombre from Inventario
+	where viaAdministracion is not null;
+END $
+
+call ListarMedicamentosInventario ()

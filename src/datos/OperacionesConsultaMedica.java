@@ -37,6 +37,7 @@ public class OperacionesConsultaMedica
       
         
     }// fin del metodo insertarConsultaMedica
+    
     public void actualizarConsultaMedica(String idExpediente, entidad.ConsultaMedica consultaMedica, String fecha){
         objetoDeConexion = new Conexion();
         String datos = "'"+idExpediente+"'"+","+
@@ -53,5 +54,26 @@ public class OperacionesConsultaMedica
         catch(SQLException e){
             System.out.println(e.getErrorCode()+ e.getMessage());
         }
-    }
+    }// fin del metodo actualizarConsultaMedica
+    
+    public void insertarRecetaEnConsulta(String idExpediente, String fecha, String idReceta)
+    {
+        objetoDeConexion = new Conexion();
+        String datos = idExpediente + "," +
+                       "'" + fecha + "'" + "," +
+                       idReceta;
+                       
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call InsertarRecetaEnConsulta (" + datos + ")");
+            estado.close();
+            objetoDeConexion.desconectar();
+        }// fin del try
+        catch (SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode()+ sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo insertaRecetaEnConsulta
+    
 }// fin de la clase OperacionesConsultaMedica

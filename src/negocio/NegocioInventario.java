@@ -45,4 +45,10 @@ public class NegocioInventario
         operacionesInventario.descontarDelInventario(nombre, cantidad);
     }// fin del metodo descontarDelInventario
     
+    public ResultSet listarMedicamentosInventario() throws SQLException
+    {
+        OperacionesInventario operacionesInventario = new OperacionesInventario();
+        return operacionesInventario.listarMedicamentosIventario();
+    }// fin del metodo ResultSet
+    
 }// fin de la clase NegocioInventario

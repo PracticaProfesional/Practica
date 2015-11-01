@@ -16,4 +16,11 @@ public class NegocioConsultaMedica
         OperacionesConsultaMedica operacionesConsultaMedica = new OperacionesConsultaMedica();
         operacionesConsultaMedica.actualizarConsultaMedica(idExpediente, actConsulta, fecha);
     }
+    
+    public void insertarRecetaEnConsulta(String idExpediente, String fecha, String idReceta)
+    {
+        OperacionesConsultaMedica operacionesConsultaMedica = new OperacionesConsultaMedica();
+        operacionesConsultaMedica.insertarRecetaEnConsulta(idExpediente, fecha, idReceta);
+    }// fin del metodo insertarRecetaEnConsulta
+    
 }// fin de la clase NegocioConsultaMedica

@@ -5,6 +5,8 @@ package datos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Conexion {
     
@@ -24,5 +26,17 @@ public class Conexion {
             return null;
         }// fin de catch
     }// fin del metodo conectar
+    
+    public void desconectar()
+    {
+        try 
+        {    
+            conexion.close();
+        }// fin del try
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }// fin de catch
+    }// fin del metodo
     
 }// fin de la clase Conexion

@@ -363,19 +363,15 @@ INSERT INTO `Padecimientos` VALUES (23,'Vertigo'),(24,'Sordera'),(25,'Miopia'),(
 UNLOCK TABLES;
 
 --
--- Table structure for table `Receta`
---
 
-DROP TABLE IF EXISTS `Receta`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Receta` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombreMedicamento` varchar(45) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Table `sigos`.`Receta`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `sigos`.`Receta` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `descripcion` LONGTEXT NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
 
 --
 -- Dumping data for table `Receta`
@@ -589,6 +585,7 @@ ENGINE = InnoDB;
 ALTER TABLE `sigos`.`inventario` CHANGE COLUMN `tipo` `viaAdministracion` VARCHAR(45) NULL  ;
 
 
+ALTER TABLE `sigos`.`consultamedica` ADD COLUMN `idReceta` INT NULL  AFTER `estado` ;
 
 
 
