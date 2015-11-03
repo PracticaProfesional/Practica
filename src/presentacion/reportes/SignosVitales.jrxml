@@ -253,10 +253,6 @@ FROM
 			<elementGroup>
 				<frame>
 					<reportElement mode="Opaque" x="0" y="0" width="554" height="72" backcolor="#006699" uuid="b3b9bb73-001d-48dd-86ec-532fb4d46a79"/>
-					<image>
-						<reportElement x="447" y="9" width="93" height="43" uuid="18b993a7-8385-4d70-8c08-f5e4ea4e66ef"/>
-						<imageExpression><![CDATA["C:\\Users\\Paula Yacira\\Documents\\NetBeansProjects\\Practica\\src\\presentacion\\icons\\sigos.png"]]></imageExpression>
-					</image>
 				</frame>
 			</elementGroup>
 			<staticText>
