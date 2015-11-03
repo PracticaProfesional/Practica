@@ -18,8 +18,6 @@ public class ReporteMinisterioSalud {
     private LinkedList<String> listEvento;
     private LinkedList<String> listSexo;
     private LinkedList<String> listEdad;
-    private LinkedList<String> listaMasc;
-    private LinkedList<String> listFem;
     private Map<String, Integer> valores;
     private File outputFile;
     private int contador = 0;
@@ -36,8 +34,6 @@ public class ReporteMinisterioSalud {
     }
     
     private void mapeoCalc(){
-        listaMasc = new LinkedList<>();
-        listFem = new LinkedList<>();
         clasifica();
         escribeHoja();
         calculaTotales();
