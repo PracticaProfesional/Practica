@@ -125,7 +125,7 @@ public class OperacionesInventario
     {
         ResultSet rs;
         objetoDeConexion = new Conexion();
-        estado = objetoDeConexion.conectar().createStatement();
+        estado = objetoDeConexion.conectar().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         rs = estado.executeQuery("Call ListarMedicamentosInventario ()");
         return rs;
     }// fin del metodo listarMedicamentosInventario

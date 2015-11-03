@@ -8,6 +8,7 @@ import negocio.NegocioConsultaMedica;
 import negocio.NegocioInventario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ContenedorReceta extends javax.swing.JPanel 
@@ -17,6 +18,8 @@ public class ContenedorReceta extends javax.swing.JPanel
     private String fechaActual;   // esta variable global se utiliza para pasar por parametro la fecha al 
                             // procedimiento almacenado y realizar la consulta
     DefaultTableModel modelo = new DefaultTableModel();
+    int cantidades [];    // se guardaran las cantidades que estan en la tabla inventario de la base de datos
+    
     
     public ContenedorReceta()
     {
@@ -262,9 +265,55 @@ public class ContenedorReceta extends javax.swing.JPanel
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         
-        insertarReceta();
-        insertarRecetaEnConsulta();
-        insertarRecetaFisica();
+        if ((! txaReceta.getText().isEmpty()) && (tblMedicamentos.getValueAt(0, 0) == null) )   // este if debe cambiar si se decide dejar el modelo por defecto vacio en la tabla y hacer la comparacion con tblMedicamentos.getRowCount == 0
+        {
+            // En caso de que solo se ingrese la receta y no se brinde medicamentos ejecuto el siguiente codigo
+            if (idExpediente != null && fechaActual != null)
+            {
+                insertarReceta();
+                insertarRecetaEnConsulta();
+            }// fin del if
+            
+            else
+                JOptionPane.showMessageDialog(null, "La receta no corresponde a ninguna consulta médica",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+        }// fin del if
+        
+        else
+        {
+            if (txaReceta.getText().isEmpty() && tblMedicamentos.getValueAt(0, 0) != null)
+            {
+                // en caso de que solo de brinden medicamentos y no se realice la reseta ejecuto el siguiente codigo
+                if (idExpediente != null && fechaActual != null)
+                    insertarRecetaFisica();
+                
+                else
+                    JOptionPane.showMessageDialog(null, "La receta no corresponde a ninguna consulta médica2",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }// fin del if
+            
+            else
+            {
+                if ((! txaReceta.getText().isEmpty()) && tblMedicamentos.getValueAt(0, 0) != null)
+                {
+                    if (idExpediente != null && fechaActual != null)
+                    {
+                        insertarReceta();
+                        insertarRecetaEnConsulta();
+                        insertarRecetaFisica();
+                    }// fin del if
+                    
+                    else
+                        JOptionPane.showMessageDialog(null, "La receta no corresponde a ninguna consulta médica3",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                }// fin del if
+                
+                else
+                    JOptionPane.showMessageDialog(null, "Debe ingresar la receta o los medicamentos a entregar",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }// fin del else
+        //insertarRecetaFisica();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -279,8 +328,34 @@ public class ContenedorReceta extends javax.swing.JPanel
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         
-        modelo.removeRow(tblMedicamentos.getSelectedRow());
-        tblMedicamentos.setModel(modelo);
+        try
+        {
+            modelo.removeRow(tblMedicamentos.getSelectedRow());
+            tblMedicamentos.setModel(modelo);
+            
+            if (tblMedicamentos.getRowCount() == 0)
+                tblMedicamentos.setModel(new javax.swing.table.DefaultTableModel(
+                        new Object [][] {
+                            {null, null},
+                            {null, null},
+                            {null, null},
+                            {null, null}
+                        },
+                        new String [] {
+                            "Medicamento", "Cantidad"
+                        }
+                ));
+        }//fin del try
+        catch(ArrayIndexOutOfBoundsException aioobe)
+        {
+            if (tblMedicamentos.getRowCount() != 4 || tblMedicamentos.getValueAt(0, 0) != null)
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el medicamento que desea remover",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+            
+            else
+                JOptionPane.showMessageDialog(null, "No hay medicamentes para remover en la tabla",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+        }// fin del catch
     }//GEN-LAST:event_btnRemoverActionPerformed
     
     public void cargarCamposDeTexto(String pacienteActual, String fechaActual, String idExpediente)
@@ -331,13 +406,25 @@ public class ContenedorReceta extends javax.swing.JPanel
     {
         NegocioInventario objNegocioInventario = new NegocioInventario();
         ResultSet rs;
+        int contador = 0;  // para interara a tavez de de el arreglo cantidades
         cmbMedicamentos.addItem("Seleccione");
+        
         try
         {
             rs = objNegocioInventario.listarMedicamentosInventario();
             
-            while (rs.next())
+            rs.last();    // nos movemos a la ultimo fila obtenida en el ResultSet
+            int filas = rs.getRow();    // obtenemos el numero de la fila (ultima)
+            rs.beforeFirst();   // nos movemos antes de la primera fila obtenida en el ResultSet
+  
+            cantidades =  new int [filas];
+            
+            while(rs.next())
+            {
                 cmbMedicamentos.addItem(rs.getString("nombre"));
+                cantidades[contador] = rs.getInt("cantidad");
+                contador++;
+            }// fin del while
             
             rs.close();
         }// fin del try
@@ -349,27 +436,47 @@ public class ContenedorReceta extends javax.swing.JPanel
     
     public void cargarFilaEnTabla()
     {
-        String fila [] = new String [2];
+        if ((cmbMedicamentos.getSelectedIndex() == 0) || txtCantidad.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un medicamento e ingresar la cantidad para agregar", 
+                    "Información", JOptionPane.INFORMATION_MESSAGE);
         
-        fila [0] = cmbMedicamentos.getSelectedItem().toString(); // ingresa cada campo de el formulario en el arreglo
-        fila [1] = txtCantidad.getText();   // para posteriormente ingresar el arreglo como una fila
+        else
+        {
+            if (cantidades[cmbMedicamentos.getSelectedIndex() - 1] < Integer.parseInt(txtCantidad.getText()))
+                JOptionPane.showMessageDialog(null, "La cantidad debe se menor a " + cantidades[cmbMedicamentos.getSelectedIndex() -1] +
+                        ", que es la cantidad en existencia", "Información", JOptionPane.INFORMATION_MESSAGE);
+            
+            else 
+            {
+                String fila [] = new String [2];
         
-        modelo.addRow(fila);
-        tblMedicamentos.setModel(modelo);
+                fila [0] = cmbMedicamentos.getSelectedItem().toString(); // ingresa cada campo de el formulario en el arreglo
+                fila [1] = txtCantidad.getText();   // para posteriormente ingresar el arreglo como una fila
         
-        // Se limpian los campos despues de cada ingreso
-        cmbMedicamentos.setSelectedIndex(0);
-        txtCantidad.setText(null);
+                modelo.addRow(fila);
+                tblMedicamentos.setModel(modelo);
+        
+                // Se limpian los campos despues de cada ingreso
+                cmbMedicamentos.setSelectedIndex(0);
+                txtCantidad.setText(null);
+            }// fin del else
+        }// fin del else
     }// fin del metodo cargarFilaEnTabla
     
     public void insertarRecetaFisica()
     {
         NegocioConsultaMedica objNegocioConsultaMedica = new NegocioConsultaMedica();
+        NegocioInventario objNegocioInventario = new NegocioInventario();
         int filas = tblMedicamentos.getRowCount();
         
         for (int i = 0; i < filas; i++)
+        {
             objNegocioConsultaMedica.insertarRecetaFisica(tblMedicamentos.getValueAt(i, 0).toString(),
                     tblMedicamentos.getValueAt(i, 1).toString());
+            
+            objNegocioInventario.descontarDelInventario(tblMedicamentos.getValueAt(i, 0).toString(), 
+                    tblMedicamentos.getValueAt(i, 1).toString());
+        }// fin del for
     }// fin del metodo insertarRecetaFisica
             
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -394,4 +501,4 @@ public class ContenedorReceta extends javax.swing.JPanel
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
-}
+}// fin de la clase ContenedorReceta

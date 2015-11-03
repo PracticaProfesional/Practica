@@ -646,7 +646,7 @@ $
 DELIMITER $
 CREATE PROCEDURE ListarMedicamentosInventario ()
 BEGIN
-	select nombre from Inventario
+	select nombre, cantidad from Inventario
 	where viaAdministracion is not null;
 END $
 
