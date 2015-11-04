@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26013218-96f3-49c3-a04b-659a09025356">
-	<property name="ireport.zoom" value="1.1000000000000052"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SignosVitales" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="26013218-96f3-49c3-a04b-659a09025356">
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="9"/>
+	<property name="ireport.y" value="16"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -153,69 +153,127 @@ FROM
 		</group>
 	</subDataset>
 	<subDataset name="Table Dataset 1" uuid="5d54888f-1478-4b11-8db4-cc03402c08a4"/>
+	<parameter name="id" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT DISTINCT
-     paciente.`nombrePaciente` AS paciente_nombrePaciente,
-     paciente.`apellido1Paciente` AS paciente_apellido1Paciente,
-     paciente.`apellido2Paciente` AS paciente_apellido2Paciente,
-     paciente.`cedulaPaciente` AS paciente_cedulaPaciente,
-     signosvitales.`peso` AS signosvitales_peso,
-     signosvitales.`FC` AS signosvitales_FC,
-     signosvitales.`PAR` AS signosvitales_PAR,
-     signosvitales.`IMC` AS signosvitales_IMC,
-     signosvitales.`IMB` AS signosvitales_IMB,
-     signosvitales.`H2O` AS signosvitales_H2O,
-     signosvitales.`MM` AS signosvitales_MM,
-     signosvitales.`GC` AS signosvitales_GC,
-     signosvitales.`AS` AS signosvitales_AS,
-     signosvitales.`AF` AS signosvitales_AF,
-     signosvitales.`SS` AS signosvitales_SS,
-     signosvitales.`PAP` AS signosvitales_PAP,
-     signosvitales.`IM` AS signosvitales_IM,
-     signosvitales.`IV` AS signosvitales_IV,
-     signosvitales.`SC` AS signosvitales_SC,
-     signosvitales.`GM` AS signosvitales_GM,
-     signosvitales.`CP` AS signosvitales_CP,
-     signosvitales.`ES` AS signosvitales_ES,
-     signosvitales.`PA` AS signosvitales_PA,
-     signosvitales.`exMama` AS signosvitales_exMama,
-     signosvitales.`curaciones` AS signosvitales_curaciones,
-     signosvitales.`temperatura` AS signosvitales_temperatura,
-     signosvitales.`talla` AS signosvitales_talla
+		<![CDATA[SELECT
+     Paciente.`cedulaPaciente`,
+     Paciente.`nombrePaciente`,
+     Paciente.`apellido1Paciente`,
+     Paciente.`apellido2Paciente`,
+     SignosVitales.`peso`,
+     SignosVitales.`FC`,
+     SignosVitales.`PAR`,
+     SignosVitales.`IMC`,
+     SignosVitales.`IMB`,
+     SignosVitales.`H2O`,
+     SignosVitales.`MM`,
+     SignosVitales.`GC`,
+     `AS`,
+     SignosVitales.`AF`,
+     SignosVitales.`SS`,
+     SignosVitales.`PAP`,
+     SignosVitales.`IM`,
+     SignosVitales.`IV`,
+     SignosVitales.`SC`,
+     SignosVitales.`GM`,
+     SignosVitales.`CP`,
+     SignosVitales.`ES`,
+     SignosVitales.`PA`,
+     SignosVitales.`exMama`,
+     SignosVitales.`curaciones`,
+     SignosVitales.`temperatura`,
+     SignosVitales.`talla`
 FROM
-     `paciente` paciente,
-     `signosvitales` signosvitales]]>
+     `ExpedienteMedico` ExpedienteMedico INNER JOIN `ConsultaMedica` ConsultaMedica ON ExpedienteMedico.`id` = ConsultaMedica.`idExpedienteMedico`
+     INNER JOIN `Paciente` Paciente ON ExpedienteMedico.`idPaciente` = Paciente.`id`
+     INNER JOIN `SignosVitales` SignosVitales ON ConsultaMedica.`signosVitales` = SignosVitales.`id`
+WHERE
+     ConsultaMedica.signosVitales = $P{id}]]>
 	</queryString>
-	<field name="paciente_nombrePaciente" class="java.lang.String"/>
-	<field name="paciente_apellido1Paciente" class="java.lang.String"/>
-	<field name="paciente_apellido2Paciente" class="java.lang.String"/>
-	<field name="paciente_cedulaPaciente" class="java.lang.String"/>
-	<field name="signosvitales_peso" class="java.lang.Double"/>
-	<field name="signosvitales_FC" class="java.lang.Double"/>
-	<field name="signosvitales_PAR" class="java.lang.Double"/>
-	<field name="signosvitales_IMC" class="java.lang.Double"/>
-	<field name="signosvitales_IMB" class="java.lang.Double"/>
-	<field name="signosvitales_H2O" class="java.lang.Double"/>
-	<field name="signosvitales_MM" class="java.lang.Double"/>
-	<field name="signosvitales_GC" class="java.lang.Double"/>
-	<field name="signosvitales_AS" class="java.lang.Boolean"/>
-	<field name="signosvitales_AF" class="java.lang.Boolean"/>
-	<field name="signosvitales_SS" class="java.lang.Boolean"/>
-	<field name="signosvitales_PAP" class="java.lang.Boolean"/>
-	<field name="signosvitales_IM" class="java.lang.Boolean"/>
-	<field name="signosvitales_IV" class="java.lang.Boolean"/>
-	<field name="signosvitales_SC" class="java.lang.Boolean"/>
-	<field name="signosvitales_GM" class="java.lang.Boolean"/>
-	<field name="signosvitales_CP" class="java.lang.Boolean"/>
-	<field name="signosvitales_ES" class="java.lang.Boolean"/>
-	<field name="signosvitales_PA" class="java.lang.Boolean"/>
-	<field name="signosvitales_exMama" class="java.lang.Integer"/>
-	<field name="signosvitales_curaciones" class="java.lang.Integer"/>
-	<field name="signosvitales_temperatura" class="java.lang.Double"/>
-	<field name="signosvitales_talla" class="java.lang.Double"/>
+	<field name="cedulaPaciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombrePaciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido1Paciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido2Paciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peso" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FC" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PAR" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IMC" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IMB" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="H2O" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MM" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GC" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AS" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AF" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SS" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PAP" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IM" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IV" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SC" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GM" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CP" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ES" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PA" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="exMama" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="curaciones" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="temperatura" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="talla" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<sortField name="PAGE_NUMBER" type="Variable"/>
-	<group name="paciente_cedulaPaciente">
-		<groupExpression><![CDATA[$F{paciente_cedulaPaciente}]]></groupExpression>
+	<group name="cedulaPaciente">
+		<groupExpression><![CDATA[$F{cedulaPaciente}]]></groupExpression>
 		<groupHeader>
 			<band height="23">
 				<textField pattern="" isBlankWhenNull="false">
@@ -224,7 +282,7 @@ FROM
 						<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{paciente_nombrePaciente}+" "+$F{paciente_apellido1Paciente}+" "+$F{paciente_apellido2Paciente}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{nombrePaciente}+" "+$F{apellido1Paciente}+" "+$F{apellido2Paciente}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="0" y="0" width="555" height="1" uuid="ee45b21b-af33-4846-aa47-91fe0bd04db7"/>
@@ -237,7 +295,7 @@ FROM
 					<textElement>
 						<font size="14" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{paciente_cedulaPaciente}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{cedulaPaciente}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -252,18 +310,30 @@ FROM
 		<band height="72">
 			<elementGroup>
 				<frame>
-					<reportElement mode="Opaque" x="0" y="0" width="554" height="72" backcolor="#006699" uuid="b3b9bb73-001d-48dd-86ec-532fb4d46a79"/>
+					<reportElement mode="Opaque" x="1" y="0" width="554" height="72" backcolor="#FFFFFF" uuid="b3b9bb73-001d-48dd-86ec-532fb4d46a79"/>
+					<image>
+						<reportElement x="365" y="1" width="90" height="48" uuid="1e4a9e7c-fb6a-4965-b9b7-4f28b73fcf5e"/>
+						<imageExpression><![CDATA["C:\\Users\\Paula Yacira\\Documents\\NetBeansProjects\\Practica\\sigos.png"]]></imageExpression>
+					</image>
+					<staticText>
+						<reportElement x="455" y="19" width="98" height="30" uuid="81d4e777-506f-497c-bec3-69682e214cc3"/>
+						<text><![CDATA[Sistema Gestor de la Oficina de Salud]]></text>
+					</staticText>
+					<image>
+						<reportElement x="9" y="2" width="76" height="37" uuid="cc1a0f31-7c30-4e90-bc14-97add72f2371"/>
+						<imageExpression><![CDATA["C:\\Users\\Paula Yacira\\Documents\\NetBeansProjects\\Practica\\img\\ucr-ico.png"]]></imageExpression>
+					</image>
 				</frame>
 			</elementGroup>
 			<staticText>
-				<reportElement x="204" y="9" width="146" height="30" forecolor="#FFFFFF" uuid="d593f05e-6649-45d7-af12-9d064538a2e7"/>
+				<reportElement x="169" y="37" width="186" height="30" forecolor="#000000" uuid="d593f05e-6649-45d7-af12-9d064538a2e7"/>
 				<textElement>
-					<font size="20" isBold="true"/>
+					<font size="16" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Signos Vitales]]></text>
+				<text><![CDATA[Reporte de Signos Vitales]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="231" y="39" width="90" height="20" forecolor="#FFFFFF" uuid="58a87bc1-33a5-4f65-8616-05e70160d144"/>
+				<reportElement x="10" y="39" width="90" height="20" forecolor="#000000" uuid="58a87bc1-33a5-4f65-8616-05e70160d144"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
@@ -307,14 +377,14 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{signosvitales_talla}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{talla}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="131" y="1" width="146" height="20" uuid="a50a075c-0ab3-420c-b852-ca20011c7ea3"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{signosvitales_peso}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="1" width="131" height="20" uuid="caff6c0f-49ba-4b93-b148-3738d73d8dae"/>
@@ -329,7 +399,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{signosvitales_temperatura}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temperatura}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="41" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="c05247f2-2dea-4065-9b99-03868c6c91dd"/>
@@ -345,7 +415,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{signosvitales_FC}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{FC}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="61" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="72bae616-1e9c-45e3-9379-834ccbd0a562"/>
@@ -361,7 +431,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{signosvitales_PAR}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PAR}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="81" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="b0fc1755-53e8-4e1d-887a-d7fcb87ac119"/>
@@ -377,7 +447,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{signosvitales_IMC}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{IMC}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="101" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="416a1af1-465a-4c08-9092-6c5ccdb4d41a"/>
@@ -393,7 +463,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{signosvitales_IMB}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{IMB}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="121" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="1a21a6bb-8e0e-4c98-9231-94f69092f34c"/>
@@ -409,7 +479,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{signosvitales_H2O}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{H2O}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="141" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="86688096-0131-4d17-b8e5-d28f4c1809e9"/>
@@ -433,7 +503,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{signosvitales_MM}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{MM}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="181" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="724f406d-ed0d-4ba7-9f42-9831ce52c463"/>
@@ -449,7 +519,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{signosvitales_GC}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{GC}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="201" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="bf99f270-7a46-46fe-8392-408cfc4244fe"/>
@@ -465,7 +535,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_AS} ,"Si" ,"No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{AS} ,"Si" ,"No")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="221" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="1422c7c5-9f66-4023-bf52-e3d2b81509ca"/>
@@ -481,7 +551,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_AF} ,"Si" ,"No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{AF} ,"Si" ,"No")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="277" y="1" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="5c1c4b8b-5807-4b45-9c54-b3128ef5017e"/>
@@ -497,7 +567,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_SS}, "Si", "No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{SS}, "Si", "No")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="277" y="60" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3af6bee9-ebb2-48e4-9040-5b7aa2222c17"/>
@@ -537,7 +607,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_PAP}, "Si", "No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{PAP}, "Si", "No")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="408" y="120" width="146" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="775a9eaf-e634-4c2a-b381-a73bc07f8840"/>
@@ -545,7 +615,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_CP}, "Si", "No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{CP}, "Si", "No")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="408" y="100" width="146" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9bdcbe0b-8859-474a-a35c-6525b66e0c73"/>
@@ -553,7 +623,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_GM}, "Si", "No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{GM}, "Si", "No")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="408" y="60" width="146" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="a037a816-590a-4d0c-85f2-428c01b1109e"/>
@@ -561,7 +631,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_IV}, "Si", "No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{IV}, "Si", "No")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="408" y="40" width="146" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="7d7cb935-ce8f-4867-bc60-29e9f69e85fd"/>
@@ -569,7 +639,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_IM}, "Si", "No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{IM}, "Si", "No")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="408" y="80" width="146" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="0bf913a0-ae58-4918-87dc-4c2cc03832a0"/>
@@ -577,7 +647,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_SC}, "Si", "No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{SC}, "Si", "No")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="277" y="20" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="7a988be4-10d6-4c5d-bc8c-8ebcb5d23d4c"/>
@@ -609,7 +679,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_ES} ,"Si" ,"No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{ES} ,"Si" ,"No")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="408" y="160" width="146" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="34b50483-b450-421d-90ad-d49c0a2c5ced"/>
@@ -617,7 +687,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_PA}, "Si", "No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{PA}, "Si", "No")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="277" y="160" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="60b87765-cdee-441b-9e99-250ac6cdf338"/>
@@ -641,7 +711,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_exMama} == 1, "Si", "No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{exMama} == 1, "Si", "No")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="408" y="200" width="146" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="46a654a3-eac9-4e7a-b4c0-c9100de17187"/>
@@ -649,7 +719,7 @@ FROM
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF($F{signosvitales_curaciones} ==1, "Si", "No")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF($F{curaciones} ==1, "Si", "No")]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="277" y="200" width="131" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="2d49fb3d-37bd-4dcc-b502-8863938d9aff"/>
