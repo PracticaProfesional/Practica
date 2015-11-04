@@ -23,7 +23,15 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
+import presentacion.reportes.ReporteSignosVitales;
+import sun.security.krb5.JavaxSecurityAuthKerberosAccess;
 /**
  *
  * @author cooper15
@@ -2160,7 +2168,10 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
 
     private void btnVerSignosVitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerSignosVitalesActionPerformed
-
+           ReporteSignosVitales rsv = new ReporteSignosVitales();
+           java.util.Map<String, Object> dicc = new java.util.HashMap();
+           dicc.put("id", idSVitales);
+           rsv.generarReporte(dicc);
     }//GEN-LAST:event_btnVerSignosVitalesActionPerformed
 
     private void btnGuardarExamenFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarExamenFisicoActionPerformed
@@ -2576,6 +2587,8 @@ public class Inicio extends javax.swing.JFrame {
     {
         return pacienteActual;
     }
+    
+        
     /**
      * @param args the command line arguments
      */
