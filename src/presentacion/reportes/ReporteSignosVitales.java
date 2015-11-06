@@ -23,11 +23,12 @@ public class ReporteSignosVitales {
        try{
            nConexion = new NegocioConexion();
            reporte = (JasperReport) JRLoader.loadObjectFromFile(ruta);
-           reporteFill = JasperFillManager.fillReport(reporte, params,nConexion.conexion());
+           reporteFill = JasperFillManager.fillReport(reporte, params, nConexion.conexion());
            visor = new JasperViewer(reporteFill);
            visor.setVisible(true);
        }
        catch(JRException ex){
+           System.out.println(ex.getMessage());
        }
     }
 }

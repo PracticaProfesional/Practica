@@ -15,6 +15,7 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -2168,10 +2169,11 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLabGabineteAdjuntarExamenActionPerformed
 
     private void btnVerSignosVitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerSignosVitalesActionPerformed
-           ReporteSignosVitales rsv = new ReporteSignosVitales();
+           ReporteSignosVitales rsv = new presentacion.reportes.ReporteSignosVitales();
            java.util.Map<String, Object> dicc = new java.util.HashMap();
            dicc.put("id", idSVitales);
            rsv.generarReporte(dicc);
+           
     }//GEN-LAST:event_btnVerSignosVitalesActionPerformed
 
     private void btnGuardarExamenFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarExamenFisicoActionPerformed
