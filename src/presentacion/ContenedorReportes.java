@@ -7,6 +7,7 @@ package presentacion;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import presentacion.reportes.ReporteInventario;
 import presentacion.reportes.ReporteMinisterioSalud;
 
 /**
@@ -45,6 +46,7 @@ public class ContenedorReportes extends javax.swing.JPanel {
         dtChDesdeConsulta = new datechooser.beans.DateChooserCombo();
         jLabel5 = new javax.swing.JLabel();
         btnGenerarConsultaMedicas = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setName(""); // NOI18N
 
@@ -123,10 +125,9 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnGenerarConsultaMedicas, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(dtChHastaConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                        .addComponent(textCedula)
-                        .addComponent(dtChDesdeConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(dtChHastaConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(textCedula)
+                    .addComponent(dtChDesdeConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(81, 81, 81))
         );
         jPanel2Layout.setVerticalGroup(
@@ -149,6 +150,13 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,6 +167,10 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +179,9 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(jButton1)
+                .addContainerGap(246, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -191,6 +205,12 @@ public class ContenedorReportes extends javax.swing.JPanel {
         dicc.put("pFechaDos", hasta);
         rpc.generarReporte(desde, hasta, cedula, dicc);
     }//GEN-LAST:event_btnGenerarConsultaMedicasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        ReporteInventario objReporteInventario = new ReporteInventario();
+        objReporteInventario.generarReporte();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private String obtenerFechaCalendario(datechooser.beans.DateChooserCombo dt) {
         int year = dt.getCurrent().get(Calendar.YEAR);
@@ -219,6 +239,7 @@ public class ContenedorReportes extends javax.swing.JPanel {
     private datechooser.beans.DateChooserCombo dtChDesdeConsulta;
     private datechooser.beans.DateChooserCombo dtChHasta;
     private datechooser.beans.DateChooserCombo dtChHastaConsulta;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
