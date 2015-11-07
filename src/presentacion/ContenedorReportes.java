@@ -7,6 +7,7 @@ package presentacion;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import javax.swing.JFrame;
 import presentacion.reportes.ReporteInventario;
 import presentacion.reportes.ReporteMinisterioSalud;
 
@@ -15,12 +16,13 @@ import presentacion.reportes.ReporteMinisterioSalud;
  * @author cooper15
  */
 public class ContenedorReportes extends javax.swing.JPanel {
-
+    private JFrame parent;
     /**
      * Creates new form ContenedorReportes
      */
     public ContenedorReportes() {
         initComponents();
+        this.parent = parent;
     }
 
     /**
@@ -193,17 +195,18 @@ public class ContenedorReportes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGenerarRepMinisterioActionPerformed
 
     private void btnGenerarConsultaMedicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarConsultaMedicasActionPerformed
+        final String ruta = "src/presentacion/reportes/ReporteCitas.jasper";
         String desde = obtenerFechaCalendario(dtChDesdeConsulta);
         String hasta = obtenerFechaCalendario(dtChHastaConsulta);
         String cedula = textCedula.getText();
-        presentacion.reportes.ReporteCitas rpc;
-        rpc = new presentacion.reportes.ReporteCitas();
+        presentacion.reportes.CrearReporte rpc;
+        rpc = new presentacion.reportes.CrearReporte();
         java.util.Map<String, Object> dicc;
         dicc = new HashMap();
         dicc.put("pCedula", cedula);
         dicc.put("pFechaUno", desde);
         dicc.put("pFechaDos", hasta);
-        rpc.generarReporte(desde, hasta, cedula, dicc);
+        rpc.generarReporte(dicc, ruta);
     }//GEN-LAST:event_btnGenerarConsultaMedicasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
