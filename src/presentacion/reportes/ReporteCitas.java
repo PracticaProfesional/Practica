@@ -19,7 +19,7 @@ public class ReporteCitas {
     NegocioConexion  nConexion;
     private final String ruta = "src/presentacion/reportes/ReporteCitas.jasper";
     
-    public void generarReporte(String fDesde, String fHasta, String cedula, Map params){
+    public void generarReporte(Map params){
        try{
            nConexion = new NegocioConexion();
            reporte = (JasperReport) JRLoader.loadObjectFromFile(ruta);
