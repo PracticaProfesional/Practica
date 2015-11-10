@@ -99,12 +99,13 @@ BEGIN
 END $
 
 
-DELIMITER $  -- insertar en la tabla receta
-CREATE PROCEDURE InsertarReceta(in nomMed varchar(45), in cant int)
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarReceta`(in des longtext)
 BEGIN
-	insert into receta (nombreMedicamento, cantidad)
-	values (nomMed, cant);
-END $
+	insert into Receta (descripcion)
+	values (des);
+END
 
 
 DELIMITER $ -- insertar en la tabla de examen medico aqui no se utiliza la variable blob para hacer la insercio pero deberia
@@ -346,7 +347,12 @@ Call InsertarSignosVitales (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 							1, 1, 1, 30);
 $
 
-Call InsertarReceta('Jarabe', 6);
+Call 
+
+
+
+
+('Jarabe', 6);
 $
 
 Call InsertarExamenMedico ();
