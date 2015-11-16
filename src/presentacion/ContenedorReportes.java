@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import presentacion.reportes.ReporteInventario;
 import presentacion.reportes.ReporteMinisterioSalud;
+import presentacion.reportes.CrearReporte;
 
 /**
  *
@@ -217,6 +218,8 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 reporteCitas();
                 break;
             case 3:
+                CrearReporte objCR = new CrearReporte();
+                objCR.generarReporte("src/presentacion/reportes/nuevoReporte.jasper");
                 break;
             case 4:
                 break;
