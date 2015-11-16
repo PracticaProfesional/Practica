@@ -12,14 +12,14 @@ import java.sql.SQLException;
 
 public class ColeccionReporteMedicamentos 
 {
-    private static List<ReporteMedicamentosBean>  listaDeMedicamentos = new ArrayList<>(); //  Aqui se guradaran todas los objetos de el reporte
-    private static String nombre;
-    private static int totalAdministrativos;
-    private static int totalEstudiantes;
-    private static int totalDocentes;
+    private /*static*/ List<ReporteMedicamentosBean>  listaDeMedicamentos = new ArrayList<>(); //  Aqui se guradaran todas los objetos de el reporte
+    private  String nombre;
+    private  int totalAdministrativos;
+    private  int totalEstudiantes;
+    private  int totalDocentes;
     
     
-    public static void llenarColeccion()
+    public  void llenarColeccion()
     {
         ReporteMedicamentosBean objReporteMedicamentosBean;
         NegocioReporteMedicamentosBean objNegocioReporteMedicamentosBean = new NegocioReporteMedicamentosBean();
@@ -88,11 +88,11 @@ public class ColeccionReporteMedicamentos
         
     }// fin del metodo llenarColeccion
     
-    public static List<ReporteMedicamentosBean> cargarMedicamentosALaColeccion()
+    /*public static List<ReporteMedicamentosBean> cargarMedicamentosALaColeccion()
     {
         llenarColeccion();
         return listaDeMedicamentos;
-    }// fin del metodo cargarMedicamentosALaColeccion
+    }// fin del metodo cargarMedicamentosALaColeccion*/
     
     public void imprimirLista()
     {

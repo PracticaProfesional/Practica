@@ -219,7 +219,7 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 break;
             case 3:
                 CrearReporte objCR = new CrearReporte();
-                objCR.generarReporte("src/presentacion/reportes/nuevoReporte.jasper");
+                objCR.generarReporte(RUTA);
                 break;
             case 4:
                 break;
@@ -228,6 +228,7 @@ public class ContenedorReportes extends javax.swing.JPanel {
                                 ,JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
+    private static final String RUTA = "src/presentacion/reportes/ReporteMedicamentosPaciente.jasper";
 
     private void reporteMS() {
         ReporteMinisterioSalud reporte = new ReporteMinisterioSalud();
