@@ -11,6 +11,8 @@ import entidad.Usuario;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.plaf.ButtonUI;
+import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
 
 public class Login extends javax.swing.JFrame {
@@ -22,6 +24,7 @@ public class Login extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        btnCancelar.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.red));
     }
 
     /**
@@ -39,10 +42,11 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPTContrasena = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
         jTNombreUsuario = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jPTContrasena = new javax.swing.JPasswordField();
         jBAceptar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -67,18 +71,18 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Usuario");
         jPanel1.add(jLabel2);
 
+        jTNombreUsuario.setName("jtNombre"); // NOI18N
+        jPanel1.add(jTNombreUsuario);
+
+        jLabel3.setText("Contraseña");
+        jPanel1.add(jLabel3);
+
         jPTContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPTContrasenaActionPerformed(evt);
             }
         });
         jPanel1.add(jPTContrasena);
-
-        jLabel3.setText("Contraseña");
-        jPanel1.add(jLabel3);
-
-        jTNombreUsuario.setName("jtNombre"); // NOI18N
-        jPanel1.add(jTNombreUsuario);
 
         jBAceptar.setText("Aceptar");
         jBAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,17 +96,30 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setForeground(new java.awt.Color(211, 211, 211));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
-                    .addComponent(jBAceptar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1))
+                            .addComponent(jBAceptar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,8 +130,10 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addComponent(jBAceptar)
+                .addGap(10, 10, 10)
+                .addComponent(btnCancelar)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -142,16 +161,16 @@ public class Login extends javax.swing.JFrame {
 
     private void jBAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBAceptarMouseClicked
         if(ValidaCampos()){
-            entidad.Usuario Usu = new Usuario();
-            entidad.Usuario o;
+            entidad.Usuario usuarioDigitado = new Usuario();
+            entidad.Usuario usuarioObtenido;
             String cont= new String (jPTContrasena.getPassword()); 
-            Usu.setNombreUsuario(jTNombreUsuario.getText());
-            Usu.setContrasena(cont);
+            usuarioDigitado.setNombreUsuario(jTNombreUsuario.getText());
+            usuarioDigitado.setContrasena(cont);
             negocio.NegocioUsuario opUsu = new negocio.NegocioUsuario();
                       
             try{
-                o = opUsu.ObtenerIdUsuario(Usu);                
-                if(o != null){                    
+                usuarioObtenido = opUsu.ObtenerIdUsuario(usuarioDigitado);                
+                if(usuarioObtenido != null){                    
                     presentacion.Inicio pI= new presentacion.Inicio();
                     pI.setVisible(true);
                     dispose();                    
@@ -169,6 +188,10 @@ public class Login extends javax.swing.JFrame {
     private void jBAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAceptarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBAceptarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +224,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton jBAceptar;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JFrame jFrame1;
