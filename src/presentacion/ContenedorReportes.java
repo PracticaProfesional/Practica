@@ -223,6 +223,13 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 break;
             case 4:
                 break;
+                
+            case 5:
+                java.util.Map<String, Object>dic = new HashMap();
+                dic.put("cedula", textCedula.getText());
+                objCR = new CrearReporte();
+                objCR.generarReporte(dic, "src/presentacion/reportes/ReporteExamenLaboratorio.jasper");
+                
             default: JOptionPane.showMessageDialog(this,
                                 "No seleccionó ningún reporte", "Error"
                                 ,JOptionPane.ERROR_MESSAGE);
