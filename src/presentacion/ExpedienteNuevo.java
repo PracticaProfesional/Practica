@@ -24,6 +24,7 @@ import negocio.NegocioAntecedentesFamPad;
 import entidad.AntecedentesFamPad;
 import entidad.enums.SexoEnum;
 import entidad.enums.TipoEnum;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -769,22 +770,38 @@ jPanel9Layout.setHorizontalGroup(
     }//GEN-LAST:event_btnAgregarPadecimientoFamActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        if(tabExpedienteNuevo.getSelectedIndex() == 0)
-            if(validaciones()){
-                tabExpedienteNuevo.setSelectedIndex(1);
-                cuentaClick++;
-            }
-        if(tabExpedienteNuevo.getSelectedIndex() == 1)
-            if(validaciones()){
-                tabExpedienteNuevo.setSelectedIndex(2);
-                cuentaClick++;
-            }               
-        if(tabExpedienteNuevo.getSelectedIndex() == 2)
-            if(validaciones()){
-                btnExpedienteNuevoGuardar.setEnabled(true);
-            } 
-        cuentaClick++;
+        int selectedIndex = tabExpedienteNuevo.getSelectedIndex();
+        switch(selectedIndex){
+            case 0: 
+                setPanel2(selectedIndex);
+                break;
+            case 1: 
+                setPanel3(selectedIndex); 
+                    
+                break;
+        }
     }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void setPanel2(int selectedIndex) {
+        if(validaciones(selectedIndex))
+            tabExpedienteNuevo.setSelectedIndex(selectedIndex + 1);
+    }
+
+    private void setPanel3(int selectedIndex) throws HeadlessException {
+        if(validaciones(selectedIndex))
+            tabExpedienteNuevo.setSelectedIndex(selectedIndex + 1);
+        else{
+            int valor = JOptionPane.showConfirmDialog(null,
+                    "No agrego ningún padecimiento.¿Desea continuar?",
+                    "Atención",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if(valor == 0){
+                tabExpedienteNuevo.setSelectedIndex(selectedIndex + 1);
+                btnExpedienteNuevoGuardar.setEnabled(true);
+            }
+                
+        }
+    }
 
     private void textFechaNacOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_textFechaNacOnSelectionChange
         negocio.Edad calculaEdad = new negocio.Edad();
@@ -998,8 +1015,8 @@ jPanel9Layout.setHorizontalGroup(
         fechaVacuna = year+"-"+month+"-"+day;
         return fechaVacuna;
     }
-    private boolean validaciones(){
-        switch(tabExpedienteNuevo.getSelectedIndex()){
+    private boolean validaciones(int seleccion){
+        switch(seleccion){
             case 0:
                 return validaDatosPersonales();
             case 1:
