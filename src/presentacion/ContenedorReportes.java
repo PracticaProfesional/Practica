@@ -230,7 +230,7 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 break;
                 
             case 5:
-                java.util.Map<String, Object>dic = new HashMap();
+                java.util.Map<String, Object>dic = new HashMap<>();
                 dic.put("cedula", textCedula.getText());
                 objCR = new CrearReporte();
                 objCR.generarReporte(dic, "src/presentacion/reportes/ReporteExamenLaboratorio.jasper");
@@ -272,7 +272,7 @@ public class ContenedorReportes extends javax.swing.JPanel {
         presentacion.reportes.CrearReporte rpc;
         rpc = new presentacion.reportes.CrearReporte();
         java.util.Map<String, Object> dicc;
-        dicc = new HashMap();
+        dicc = new HashMap<>();
         dicc.put("pCedula", cedula);
         dicc.put("pFechaUno", desde);
         dicc.put("pFechaDos", hasta);
