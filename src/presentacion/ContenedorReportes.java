@@ -9,7 +9,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import presentacion.reportes.ReporteInventario;
 import presentacion.reportes.ReporteMinisterioSalud;
 import presentacion.reportes.CrearReporte;
 
@@ -24,7 +23,6 @@ public class ContenedorReportes extends javax.swing.JPanel {
      */
     public ContenedorReportes() {
         initComponents();
-        this.parent = parent;
     }
 
     /**
