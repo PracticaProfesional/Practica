@@ -206,6 +206,12 @@ public class ContenedorReportes extends javax.swing.JPanel {
             case 3:
                 break;
                 
+            case 4:
+                dtChDesde.setEnabled(true);
+                dtChHasta.setEnabled(true);
+                textCedula.setEnabled(true);
+                break;
+                
         }
     }//GEN-LAST:event_jlistReportsValueChanged
 
@@ -222,6 +228,7 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 objCR.generarReporte(RUTA);
                 break;
             case 4:
+                reporteHistCli();
                 break;
             default: JOptionPane.showMessageDialog(this,
                                 "No seleccionó ningún reporte", "Error"
@@ -229,7 +236,22 @@ public class ContenedorReportes extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
     private static final String RUTA = "src/presentacion/reportes/ReporteMedicamentosPaciente.jasper";
-
+    
+    private void reporteHistCli(){
+        final String ruta = "src/presentacion/reportes/HistorialClinico.jasper";
+        String desde = obtenerFechaCalendario(dtChDesde);
+        String hasta = obtenerFechaCalendario(dtChHasta);
+        String cedula = textCedula.getText();
+        java.util.Map<String, Object> dicc;
+        dicc = new HashMap<>();
+        dicc.put("pCedula",cedula);
+        dicc.put("pFechaUno", desde);
+        dicc.put("pFechaDos", hasta);
+        CrearReporte nuevoRep = new CrearReporte();
+        nuevoRep.generarReporte(dicc, ruta);
+        
+    }
+    
     private void reporteMS() {
         ReporteMinisterioSalud reporte = new ReporteMinisterioSalud();
         String desde = obtenerFechaCalendario(dtChDesde);
