@@ -2163,7 +2163,7 @@ public class Inicio extends javax.swing.JFrame {
     private void btnVerSignosVitalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerSignosVitalesActionPerformed
            CrearReporte rsv = new presentacion.reportes.CrearReporte();
            final String ruta = "src/presentacion/reportes/ReporteSignosVitales.jasper";
-           java.util.Map<String, Object> dicc = new java.util.HashMap();
+           java.util.Map<String, Object> dicc = new java.util.HashMap<>();
            dicc.put("id", idSVitales);
            rsv.generarReporte(dicc, ruta);
            

@@ -24,7 +24,7 @@ public class CrearReporte {
     JRViewer panelVisor;
     NegocioConexion  nConexion;
     
-    public void generarReporte(Map params, String ruta){
+    public void generarReporte(Map <String, Object>params, String ruta){
        try{
             nConexion = new NegocioConexion();
             reporte = (JasperReport) JRLoader.loadObjectFromFile(ruta);

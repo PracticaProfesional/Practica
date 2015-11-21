@@ -777,7 +777,7 @@ jPanel9Layout.setHorizontalGroup(
                 break;
             case 1: 
                 setPanel3(selectedIndex); 
-                    
+             
                 break;
         }
     }//GEN-LAST:event_btnSiguienteActionPerformed
@@ -798,6 +798,7 @@ jPanel9Layout.setHorizontalGroup(
             if(valor == 0){
                 tabExpedienteNuevo.setSelectedIndex(selectedIndex + 1);
                 btnExpedienteNuevoGuardar.setEnabled(true);
+                btnSiguiente.setEnabled(false);
             }
                 
         }
