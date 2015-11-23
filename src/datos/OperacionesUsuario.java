@@ -53,6 +53,7 @@ public class OperacionesUsuario {
                 nUsuario.setNombreUsuario(rs.getString("nombreUsuario"));
                 nUsuario.setContrasena(rs.getString("contrasena"));
                 nUsuario.setTipoUsuario(Integer.parseInt(rs.getString("tipo")));
+                nUsuario.setId(rs.getString("id"));
                 listUsuario.add(nUsuario);
             }
         }
