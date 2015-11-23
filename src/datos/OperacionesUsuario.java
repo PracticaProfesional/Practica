@@ -77,4 +77,18 @@ public class OperacionesUsuario {
         }
     }
     
+    public void actualizarDatosUsuario(Usuario eUsuario){
+        objetoDeConexion = new Conexion();
+        String datos = "'"+eUsuario.getId()+"'" 
+                     + "," +"'"+eUsuario.getNombreUsuario()+"'"
+                     + "," +"'"+eUsuario.getContrasena()+"'";
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call ActualizarUsuario("+datos+")");
+        }
+        catch(SQLException sqle){
+            System.out.println(sqle.getErrorCode()+sqle.getMessage());
+        }
+    }
+    
 }
