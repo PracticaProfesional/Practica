@@ -257,14 +257,10 @@ BEGIN
 END $
 
 DELIMITER $
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerIdUsuario`(
-    in nomUsu varchar(45), in con varchar(45)
-    )
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerIdUsuario`()
 BEGIN
     SELECT  *
-      FROM sigos.usuario
-        WHERE usuario.nombreUsuario = nomUsu
-          AND usuario.contrasena = con;
+      FROM sigos.Usuario;
 END $
 
 -- PROCEDIMIENTOS NUEVOS 19-09-2015
