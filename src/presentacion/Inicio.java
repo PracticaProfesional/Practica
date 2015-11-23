@@ -68,7 +68,7 @@ public class Inicio extends javax.swing.JFrame {
                 panelPrincipal.remove(tabReportes);
                 menuBar.remove(mnListaEspera);
                 EditarUsuario panelEditar = new EditarUsuario();
-                tabAdministrador.add(panelEditar);
+                tabAdministrador.addTab("Editar Usuarios", panelEditar);
                 break;
             case 1:
                 this.remove(mnMantenimiento);
