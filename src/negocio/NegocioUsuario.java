@@ -3,6 +3,7 @@ package negocio;
 import entidad.Usuario;
 import datos.OperacionesUsuario;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 public class NegocioUsuario {
     OperacionesUsuario opUsuario = new OperacionesUsuario();
@@ -10,4 +11,11 @@ public class NegocioUsuario {
         return opUsuario.ObtenerIdUsuario(nuevoUsuario);
     }
     
+    public void insertarUsuario(entidad.Usuario nUsuario){
+        opUsuario.insertarUsuario(nUsuario);
+    }
+    
+    public LinkedList listaUsuarios(){
+        return opUsuario.listaUsuarios();
+    }
 }
