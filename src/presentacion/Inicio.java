@@ -47,10 +47,49 @@ public class Inicio extends javax.swing.JFrame {
     String  [][] backUpList;
     private String idSVitales;
     private ContenedorReceta rc;
-    
+    private int loginUser;
     
     public Inicio() {
         initComponents();
+        setAppearanceProperties();
+        
+    }
+    public void setUser(int loginUser){
+        this.loginUser = loginUser;
+        acceso();
+    }
+    
+    private void acceso(){
+        switch(loginUser){
+            case 0:
+                panelPrincipal.remove(tabExpediente);
+                panelPrincipal.remove(tabAgenda);
+                panelPrincipal.remove(tabInventario);
+                panelPrincipal.remove(tabReportes);
+                menuBar.remove(mnListaEspera);
+                EditarUsuario panelEditar = new EditarUsuario();
+                tabAdministrador.add(panelEditar);
+                break;
+            case 1:
+                this.remove(mnMantenimiento);
+                panelPrincipal.remove(tabAdministrador);
+                break;
+            case 2:
+                panelConsultaMedica.remove(subTabExamenFisico);
+                this.remove(mnMantenimiento);
+                panelPrincipal.remove(tabAdministrador);
+                break;
+            
+            case 3:
+                panelPrincipal.remove(tabExpediente);
+                panelPrincipal.remove(tabInventario);
+                panelPrincipal.remove(tabReportes);
+                panelPrincipal.remove(tabAdministrador);
+                break;
+        }
+    }
+    
+    private void setAppearanceProperties() {
         this.setExtendedState(this.getExtendedState() | Inicio.MAXIMIZED_HORIZ);
         btnGuardarLabGab.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
         btnRefrescarTablaBuscar.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
@@ -84,7 +123,7 @@ public class Inicio extends javax.swing.JFrame {
         btnCrearExpediente = new javax.swing.JButton();
         tabConsultaMedica = new javax.swing.JPanel();
         panelConsultaMedica = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        subTabSignosVitales = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         textPeso = new javax.swing.JTextField();
@@ -144,7 +183,7 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         textNotaEnfermeria = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        subTabExamenFisico = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jlOjos = new javax.swing.JLabel();
         jlOidos = new javax.swing.JLabel();
@@ -202,7 +241,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         lblPacienteActual = new javax.swing.JLabel();
         btnVerSignosVitales = new javax.swing.JButton();
-        jPanel15 = new javax.swing.JPanel();
+        subTabLabAndGab = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         btnLabGabineteAdjuntarExamen = new javax.swing.JButton();
         textRutaLabGab = new javax.swing.JTextField();
@@ -210,7 +249,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         panelImagenLabGab = new javax.swing.JPanel();
-        tapAgenda = new javax.swing.JTabbedPane();
+        tabAgenda = new javax.swing.JTabbedPane();
         agendaPanelPrincipal = new javax.swing.JPanel();
         agendaPanelCalendario = new javax.swing.JPanel();
         agendaCalendario = new datechooser.beans.DateChooserPanel();
@@ -220,15 +259,13 @@ public class Inicio extends javax.swing.JFrame {
         tabReportes = new javax.swing.JTabbedPane();
         tabInventario = new javax.swing.JTabbedPane();
         tabAdministrador = new javax.swing.JTabbedPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnMantenimiento = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        mnAgregarUsuario = new javax.swing.JMenuItem();
+        mnListaEspera = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         popItemNuevaActividad.setText("Añadir actividad");
@@ -755,22 +792,22 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout subTabSignosVitalesLayout = new javax.swing.GroupLayout(subTabSignosVitales);
+        subTabSignosVitales.setLayout(subTabSignosVitalesLayout);
+        subTabSignosVitalesLayout.setHorizontalGroup(
+            subTabSignosVitalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subTabSignosVitalesLayout.createSequentialGroup()
                 .addGap(79, 79, 79)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(subTabSignosVitalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(209, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        subTabSignosVitalesLayout.setVerticalGroup(
+            subTabSignosVitalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subTabSignosVitalesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -782,7 +819,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelConsultaMedica.addTab("Signos Vitales", jPanel1);
+        panelConsultaMedica.addTab("Signos Vitales", subTabSignosVitales);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Cabeza"));
 
@@ -1230,62 +1267,62 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout subTabExamenFisicoLayout = new javax.swing.GroupLayout(subTabExamenFisico);
+        subTabExamenFisico.setLayout(subTabExamenFisicoLayout);
+        subTabExamenFisicoLayout.setHorizontalGroup(
+            subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subTabExamenFisicoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(subTabExamenFisicoLayout.createSequentialGroup()
+                        .addGroup(subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 94, Short.MAX_VALUE))
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(subTabExamenFisicoLayout.createSequentialGroup()
                 .addGap(434, 434, 434)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVerSignosVitales)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(subTabExamenFisicoLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        subTabExamenFisicoLayout.setVerticalGroup(
+            subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subTabExamenFisicoLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerSignosVitales))
                 .addGap(43, 43, 43)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(70, 70, 70)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(2316, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(subTabExamenFisicoLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        panelConsultaMedica.addTab("Examen Físico", jPanel2);
+        panelConsultaMedica.addTab("Examen Físico", subTabExamenFisico);
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Adjuntar"));
         jPanel16.setMaximumSize(new java.awt.Dimension(543, 171));
@@ -1366,22 +1403,22 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
+        javax.swing.GroupLayout subTabLabAndGabLayout = new javax.swing.GroupLayout(subTabLabAndGab);
+        subTabLabAndGab.setLayout(subTabLabAndGabLayout);
+        subTabLabAndGabLayout.setHorizontalGroup(
+            subTabLabAndGabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subTabLabAndGabLayout.createSequentialGroup()
                 .addGap(330, 330, 330)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(346, Short.MAX_VALUE))
-            .addGroup(jPanel15Layout.createSequentialGroup()
+            .addGroup(subTabLabAndGabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
+        subTabLabAndGabLayout.setVerticalGroup(
+            subTabLabAndGabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subTabLabAndGabLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1389,7 +1426,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(2429, Short.MAX_VALUE))
         );
 
-        panelConsultaMedica.addTab("Laboratorio & Gabinete", jPanel15);
+        panelConsultaMedica.addTab("Laboratorio & Gabinete", subTabLabAndGab);
 
         tabConsultaMedica.add(panelConsultaMedica, java.awt.BorderLayout.PAGE_START);
 
@@ -1527,43 +1564,46 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(155, Short.MAX_VALUE))
         );
 
-        tapAgenda.addTab("Citas", agendaPanelPrincipal);
+        tabAgenda.addTab("Citas", agendaPanelPrincipal);
 
-        panelPrincipal.addTab("Agenda", tapAgenda);
+        panelPrincipal.addTab("Agenda", tabAgenda);
         panelPrincipal.addTab("Reportes", tabReportes);
         panelPrincipal.addTab("Inventario", tabInventario);
         panelPrincipal.addTab("Administrador", tabAdministrador);
 
-        jMenuBar1.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
+        menuBar.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
 
         jMenu1.setText("Archivo");
         jMenu1.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
-        jMenuBar1.add(jMenu1);
+        menuBar.add(jMenu1);
 
-        jMenu2.setText("Mantenimiento");
-        jMenu2.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
-
-        jMenu4.setText("Paciente");
-
-        jMenuItem2.setText("Datos Paciente");
-        jMenu4.add(jMenuItem2);
-
-        jMenu2.add(jMenu4);
+        mnMantenimiento.setText("Mantenimiento");
+        mnMantenimiento.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
 
         jMenu5.setText("Usuarios");
 
         jMenuItem3.setText("Cambiar Contraseña");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem3);
 
-        jMenuItem4.setText("Añadir usuario");
-        jMenu5.add(jMenuItem4);
+        mnAgregarUsuario.setText("Añadir usuario");
+        mnAgregarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnAgregarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu5.add(mnAgregarUsuario);
 
-        jMenu2.add(jMenu5);
+        mnMantenimiento.add(jMenu5);
 
-        jMenuBar1.add(jMenu2);
+        menuBar.add(mnMantenimiento);
 
-        jMenu3.setText("Lista de espera");
-        jMenu3.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
+        mnListaEspera.setText("Lista de espera");
+        mnListaEspera.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Pacientes a consulta");
@@ -1572,11 +1612,11 @@ public class Inicio extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        mnListaEspera.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu3);
+        menuBar.add(mnListaEspera);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2393,6 +2433,15 @@ public class Inicio extends javax.swing.JFrame {
     private void textPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPesoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textPesoActionPerformed
+
+    private void mnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarUsuarioActionPerformed
+        CrearUsuario cUsuario = new CrearUsuario(this, true);
+        cUsuario.setVisible(true);
+    }//GEN-LAST:event_mnAgregarUsuarioActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        panelPrincipal.setSelectedComponent(tabAdministrador);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
     private void splitFechaNac(String fecha){
         String year = "";
         String month = "";
@@ -2722,24 +2771,15 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -2755,6 +2795,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jlOidos;
     private javax.swing.JLabel jlOjos;
     private javax.swing.JLabel lblPacienteActual;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem mnAgregarUsuario;
+    private javax.swing.JMenu mnListaEspera;
+    private javax.swing.JMenu mnMantenimiento;
     private javax.swing.JPanel panelBtnBuscarPaciente;
     private javax.swing.JTabbedPane panelConsultaMedica;
     private javax.swing.JPanel panelImagenLabGab;
@@ -2763,14 +2807,17 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem popItemEliminarActividad;
     private javax.swing.JMenuItem popItemNuevaActividad;
     private javax.swing.JPopupMenu popMenuAccionesActividad;
+    private javax.swing.JPanel subTabExamenFisico;
+    private javax.swing.JPanel subTabLabAndGab;
+    private javax.swing.JPanel subTabSignosVitales;
     private javax.swing.JTabbedPane tabAdministrador;
+    private javax.swing.JTabbedPane tabAgenda;
     private javax.swing.JPanel tabBuscarPaciente;
     private javax.swing.JPanel tabConsultaMedica;
     private javax.swing.JTabbedPane tabExpediente;
     private javax.swing.JTabbedPane tabInventario;
     private javax.swing.JTabbedPane tabReportes;
     private javax.swing.JTable tableBuscarPaciente;
-    private javax.swing.JTabbedPane tapAgenda;
     private javax.swing.JTextField textBuscarPaciente;
     private javax.swing.JTextField textFC;
     private javax.swing.JTextField textGC;
