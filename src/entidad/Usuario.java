@@ -2,10 +2,19 @@ package entidad;
 
 
 public class Usuario {
-     private String nombreUsuario;
+    private String nombreUsuario;
     private String contrasena;
     private int tipoUsuario;
+    private String id;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     public int getTipoUsuario() {
         return tipoUsuario;
     }
