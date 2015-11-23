@@ -18,4 +18,8 @@ public class NegocioUsuario {
     public LinkedList listaUsuarios(){
         return opUsuario.listaUsuarios();
     }
+    
+    public void actualizarUsuario(entidad.Usuario aUsuario){
+        opUsuario.actualizarDatosUsuario(aUsuario);
+    }
 }
