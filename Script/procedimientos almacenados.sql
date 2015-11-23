@@ -328,6 +328,18 @@ BEGIN
     where fechaConsulta = fec  and horaConsulta = hor;
 END
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarUsuario`(in idU tinyint, in nomU varchar(45), in pass varchar(45))
+BEGIN
+	declare passNueva varchar(45);
+    if passNueva <> '' then
+    update Usuario
+    set Usuario.contrasena = passNueva;
+    end if;
+	update Usuario
+    set nombreUsuario = nomU
+    where id = idU;
+END
+
 -- Llamadas a los procedimientos almacenados
 
 Call InsertarUsuario ('Juanito', '1234');
