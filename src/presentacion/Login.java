@@ -5,13 +5,11 @@
  */
 package presentacion;
 
-import datos.OperacionesUsuario;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import entidad.Usuario;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import javax.swing.plaf.ButtonUI;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
 
@@ -173,6 +171,7 @@ public class Login extends javax.swing.JFrame {
                 if(usuarioObtenido != null){                    
                     presentacion.Inicio pI= new presentacion.Inicio();
                     pI.setVisible(true);
+                    pI.setUser(usuarioObtenido.getTipoUsuario());
                     dispose();                    
                 }else{
                     JOptionPane.showMessageDialog(null, "Nombre de Usuario y Contraseña no coinciden!!");
