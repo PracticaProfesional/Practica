@@ -792,7 +792,7 @@ jPanel9Layout.setHorizontalGroup(
             tabExpedienteNuevo.setSelectedIndex(selectedIndex + 1);
         else{
             int valor = JOptionPane.showConfirmDialog(null,
-                    "No agrego ningún padecimiento.¿Desea continuar?",
+                    "Existen valores en blanco.¿Desea continuar?",
                     "Atención",
                     JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
             if(valor == 0){
@@ -911,22 +911,25 @@ jPanel9Layout.setHorizontalGroup(
     {
         NegocioAntecedentesPersPad negocioAntecedentes = new NegocioAntecedentesPersPad();
         AntecedentesPersPad nuevoAntecedente = new AntecedentesPersPad();
-        
-        try
-        {
-            for (int i = 0; i < idsAntecedentesPersonales.length; i++)
+        if(idsAntecedentesPersonales != null){
+            try
             {
-                nuevoAntecedente.setIdPadecimientos(idsAntecedentesPersonales[i]);
-                nuevoAntecedente.setIdAntecedentesPersonales(
-                        Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesPersonales")));
-            
-                negocioAntecedentes.insertarAntecedentePersPad(nuevoAntecedente);
-            }// fin del for
-        }// fin del try
-        catch (NullPointerException npe)
-        {
-            JOptionPane.showMessageDialog(null, "No se asociaron padecimientos a el paciente");
-        }// fin del catch
+                for (int i = 0; i < idsAntecedentesPersonales.length; i++)
+                {
+                    nuevoAntecedente.setIdPadecimientos(idsAntecedentesPersonales[i]);
+                    nuevoAntecedente.setIdAntecedentesPersonales(
+                    Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesPersonales")));
+
+                    negocioAntecedentes.insertarAntecedentePersPad(nuevoAntecedente);
+                }// fin del for
+            }// fin del try
+            catch (NullPointerException npe)
+            {
+                System.err.println(npe.getMessage());
+                JOptionPane.showMessageDialog(null, "No se asociaron padecimientos a el paciente");
+            }// fin del catch
+        }
+        
     }// fin del metodo insertarAntecedentesPersonalesPadecimientos
     
     public void insertarAntecedenteFamiliaresPAdecimientos(ObtenerUltimoId ultimoId)
