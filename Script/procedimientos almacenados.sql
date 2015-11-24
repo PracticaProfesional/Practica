@@ -46,11 +46,11 @@ Where ConsultaMedica.fecha = '2015-08-22';
 
 
 DELIMITER $   -- insertar en la tabla usuario
-CREATE PROCEDURE InsertarUsuario (in nomUsu varchar(45), in pass varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarUsuario`(in usuario varchar(45), in pass varchar(45), in tipo tinyint(10))
 BEGIN
-	insert into usuario (nombreUsuario, `password`)
-	values (nomUsu, pass);
-END $
+	insert into Usuario(nombreUsuario, contrasena, tipo) 
+    values(usuario, pass, tipo);
+END$
 
 DELIMITER $  -- inserta en la tabla inventario
 CREATE PROCEDURE InsertarInventario (in nom varchar(100), in can int,
