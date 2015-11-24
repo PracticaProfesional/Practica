@@ -41,7 +41,7 @@ public class OperacionesUsuario {
         return null;
     }// fin del metodo insertarPaciente
     
-    public LinkedList listaUsuarios(){
+    public LinkedList<entidad.Usuario> listaUsuarios(){
         entidad.Usuario nUsuario;
         LinkedList<entidad.Usuario> listUsuario = new LinkedList<>();
         objetoDeConexion = new Conexion();
