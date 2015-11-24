@@ -103,6 +103,11 @@ public class EditarUsuario extends javax.swing.JPanel {
         chbCambiarPassword.setText("Cambiar Password");
         chbCambiarPassword.setHideActionText(true);
         chbCambiarPassword.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        chbCambiarPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chbCambiarPasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -204,6 +209,13 @@ public class EditarUsuario extends javax.swing.JPanel {
         }
             
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void chbCambiarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbCambiarPasswordActionPerformed
+        if(chbCambiarPassword.isSelected())
+            textEditarPass.setEditable(true);
+        else
+            textEditarPass.setEditable(false);
+    }//GEN-LAST:event_chbCambiarPasswordActionPerformed
     
     private boolean validaciones(){
         return  !textEditarNomUsuario.getText().equals("") && !textEditarPass.getText().equals("");

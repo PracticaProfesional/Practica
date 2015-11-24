@@ -196,6 +196,9 @@
             <Property name="hideActionText" type="boolean" value="true"/>
             <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chbCambiarPasswordActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
