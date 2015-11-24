@@ -74,7 +74,7 @@ public class OperacionesUsuario {
             estado.executeQuery("Call InsertarUsuario("+datosUsuario+")");
         }
         catch(SQLException sqle){
-        
+            System.err.println(sqle.getErrorCode()+ sqle.getMessage());
         }
     }
     
