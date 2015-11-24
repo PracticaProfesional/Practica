@@ -71,8 +71,9 @@ public class Inicio extends javax.swing.JFrame {
                 tabAdministrador.addTab("Editar Usuarios", panelEditar);
                 break;
             case 1:
-                this.remove(mnMantenimiento);
+                menuBar.remove(mnMantenimiento);
                 panelPrincipal.remove(tabAdministrador);
+                
                 break;
             case 2:
                 panelConsultaMedica.remove(subTabExamenFisico);
@@ -85,6 +86,8 @@ public class Inicio extends javax.swing.JFrame {
                 panelPrincipal.remove(tabInventario);
                 panelPrincipal.remove(tabReportes);
                 panelPrincipal.remove(tabAdministrador);
+                menuBar.remove(mnListaEspera);
+                menuBar.remove(mnMantenimiento);
                 break;
         }
     }
