@@ -62,7 +62,7 @@ public class Login extends javax.swing.JFrame {
         setName("Login"); // NOI18N
         setResizable(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/cooper15/NetBeansProjects/SIGOS/Practica/img/key.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/icons/key.png"))); // NOI18N
 
         jPanel1.setLayout(new java.awt.GridLayout(5, 0));
 
