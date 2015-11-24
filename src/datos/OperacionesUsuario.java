@@ -42,7 +42,7 @@ public class OperacionesUsuario {
     }// fin del metodo insertarPaciente
     
     public LinkedList listaUsuarios(){
-        entidad.Usuario nUsuario = new entidad.Usuario();
+        entidad.Usuario nUsuario;
         LinkedList<entidad.Usuario> listUsuario = new LinkedList<>();
         objetoDeConexion = new Conexion();
         ResultSet rs;
@@ -50,6 +50,7 @@ public class OperacionesUsuario {
             estado = objetoDeConexion.conectar().createStatement();
             rs = estado.executeQuery("Call ObtenerIdUsuario()");
             while(rs.next()){
+                nUsuario  = new entidad.Usuario();
                 nUsuario.setNombreUsuario(rs.getString("nombreUsuario"));
                 nUsuario.setContrasena(rs.getString("contrasena"));
                 nUsuario.setTipoUsuario(Integer.parseInt(rs.getString("tipo")));
