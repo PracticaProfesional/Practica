@@ -96,6 +96,7 @@ public class Inicio extends javax.swing.JFrame {
         this.setExtendedState(this.getExtendedState() | Inicio.MAXIMIZED_HORIZ);
         btnGuardarLabGab.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
         btnRefrescarTablaBuscar.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
+        tabExpediente.setEnabledAt(1, false); // inhabilita la pestaña consulta.
     }
     /**
      * This method is called from within the constructor to initialize the form.
