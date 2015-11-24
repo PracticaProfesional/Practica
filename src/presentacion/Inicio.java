@@ -1927,23 +1927,18 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnConsultaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaMedicaActionPerformed
        // Obtener el idPaciente de la fila seleccionada.
-        
-        try{
             int filaSeleccionada = this.tableBuscarPaciente.getSelectedRow();
-            idPaciente = tableBuscarPaciente.getValueAt(filaSeleccionada, 0).toString();
+            final String mensaje = "Seleccione un Paciente para continuar";
             if(filaSeleccionada == -1)
-                JOptionPane.showMessageDialog(rootPane, "Por favor seleccione un paciente.");
+                JOptionPane.showMessageDialog(rootPane,  mensaje,
+                                                "Error", JOptionPane.ERROR_MESSAGE);
             else{
+                idPaciente = tableBuscarPaciente.getValueAt(filaSeleccionada, 0).toString();
                 this.idPaciente = tableBuscarPaciente.getValueAt(filaSeleccionada, 0).toString();
                 splitFechaNac(tableBuscarPaciente.getValueAt(filaSeleccionada, 5).toString());
                 this.sexo = Integer.parseInt(tableBuscarPaciente.getValueAt(filaSeleccionada, 6).toString());
                 this.tabExpediente.setSelectedIndex(1);
-            }   
-        }
-        catch(ArrayIndexOutOfBoundsException ae){
-            JOptionPane.showMessageDialog(this, "Parece que no hay expedientes, cree uno nuevo para continuar.",null, JOptionPane.ERROR_MESSAGE);
-        }
-          
+            }       
     }//GEN-LAST:event_btnConsultaMedicaActionPerformed
 
     private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
