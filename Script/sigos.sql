@@ -587,6 +587,8 @@ ALTER TABLE `sigos`.`inventario` CHANGE COLUMN `tipo` `viaAdministracion` VARCHA
 
 ALTER TABLE `sigos`.`consultamedica` ADD COLUMN `idReceta` INT NULL  AFTER `estado` ;
 
+ALTER TABLE `sigos`.`ExamenMedico` 
+CHANGE COLUMN `archivoExamen` `archivoExamen` MEDIUMBLOB NULL DEFAULT NULL COMMENT '' ;
 
 
 
