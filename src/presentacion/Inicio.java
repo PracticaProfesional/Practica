@@ -11,6 +11,7 @@ import entidad.ExamenFisico;
 import entidad.SignosVitales;
 import entidad.enums.EstadoConsultaMedicaEnum;
 import entidad.enums.SexoEnum;
+import java.awt.HeadlessException;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -2453,11 +2454,19 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        limpiarExamenFisico();
+        if(confirmacionLimpiar() == 0)
+            limpiarExamenFisico();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private int confirmacionLimpiar() throws HeadlessException {
+        final String mensaje = "¿Está seguro que desea descartar la información?";
+        return JOptionPane.showConfirmDialog(this,mensaje,"Pregunta",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);     
+    }
+
     private void btnSignosVitalesCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignosVitalesCancelarActionPerformed
-        limpiarSignosVitales();
+        if(confirmacionLimpiar() == 0)
+            limpiarSignosVitales();
     }//GEN-LAST:event_btnSignosVitalesCancelarActionPerformed
     private void splitFechaNac(String fecha){
         String year = "";
