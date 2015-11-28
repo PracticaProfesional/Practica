@@ -725,6 +725,11 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         btnSignosVitalesCancelar.setText("Limpiar");
+        btnSignosVitalesCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignosVitalesCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -1172,6 +1177,11 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         jButton2.setText("Limpiar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         btnGuardarExamenFisico.setText("Guardar");
         btnGuardarExamenFisico.addActionListener(new java.awt.event.ActionListener() {
@@ -2441,6 +2451,14 @@ public class Inicio extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         panelPrincipal.setSelectedComponent(tabAdministrador);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        limpiarExamenFisico();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnSignosVitalesCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignosVitalesCancelarActionPerformed
+        limpiarSignosVitales();
+    }//GEN-LAST:event_btnSignosVitalesCancelarActionPerformed
     private void splitFechaNac(String fecha){
         String year = "";
         String month = "";
