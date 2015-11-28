@@ -2460,7 +2460,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private int confirmacionLimpiar() throws HeadlessException {
         final String mensaje = "¿Está seguro que desea descartar la información?";
-        return JOptionPane.showConfirmDialog(this,mensaje,"Pregunta",
+        return JOptionPane.showConfirmDialog(this,mensaje,"¡Atención!",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);     
     }
 
