@@ -135,7 +135,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelPrincipal" pref="1341" max="32767" attributes="0"/>
+              <Component id="panelPrincipal" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -510,8 +510,14 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace min="76" pref="76" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="textTalla" min="-2" pref="64" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -521,6 +527,12 @@
                                                   <Component id="textH2O" pref="64" max="32767" attributes="0"/>
                                                   <Component id="textGC" max="32767" attributes="0"/>
                                               </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="textIMC" pref="64" max="32767" attributes="0"/>
@@ -531,23 +543,12 @@
                                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                               <Component id="textMM" min="-2" pref="64" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
+                                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="textTalla" min="-2" pref="64" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                                                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
-                                                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="textIMB" min="-2" pref="64" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
+                                              <Component id="textIMB" min="-2" pref="64" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace pref="127" max="32767" attributes="0"/>
@@ -1062,9 +1063,9 @@
                                               <Component id="jPanel8" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jPanel9" max="32767" attributes="0"/>
+                                              <Component id="jPanel5" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
                                       </Group>
@@ -1098,8 +1099,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jPanel4" max="32767" attributes="0"/>
                                       <Component id="jPanel5" max="32767" attributes="0"/>
-                                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1416,9 +1417,9 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="cbDetallesAbdomen" alignment="0" pref="155" max="32767" attributes="0"/>
+                                          <Component id="cbDetallesAbdomen" alignment="0" max="32767" attributes="0"/>
                                           <Component id="cbDetallesCorazon" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cbDetallesTorax" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="cbDetallesTorax" alignment="0" pref="155" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1608,9 +1609,9 @@
                                           <Component id="cbDetallesEsqueletico" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                                           <Component id="cbDetallesUrinario" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="textOtrosDetallesEsqueletico" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="textOtrosDetallesEsqueletico" min="-2" pref="100" max="-2" attributes="0"/>
                                           <Component id="textOtrosDetallesUrinario" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
