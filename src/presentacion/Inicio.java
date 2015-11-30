@@ -1901,7 +1901,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void limpiaAgenda() {
         for(int i = 0; i < 30; i++)
-            agendaTabla.setValueAt("", i, 1);
+            agendaTabla.setValueAt(null, i, 1);
     }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -2122,6 +2122,7 @@ public class Inicio extends javax.swing.JFrame {
     private void popItemNuevaActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popItemNuevaActividadActionPerformed
         final int selectedRow = agendaTabla.getSelectedRow();
         if(selectedRow != -1){
+            //System.out.println(agendaTabla.getValueAt(selectedRow, 1).toString());
             if(agendaTabla.getValueAt(selectedRow, 1) == null)
                 insertarNuevaActividad();
             else
