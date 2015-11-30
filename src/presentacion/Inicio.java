@@ -2085,6 +2085,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         PacientesConsulta pacientesConsulta = new PacientesConsulta(this, true);
+        pacientesConsulta.setTabExpediente(tabExpediente);
         pacientesConsulta.setVisible(true);
         idExpediente = pacientesConsulta.getIdExpedienteMedico();
         pacienteActual = pacientesConsulta.getPacienteActual();

@@ -5,7 +5,10 @@
  */
 package presentacion;
 
+import java.awt.Component;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,7 +28,12 @@ public class PacientesConsulta extends javax.swing.JDialog {
     private final int ID_EXPEDIENTE = 1;
     private final int ID_PACIENTE = 2;
     private final int ID_SIGNOS_VITALES = 6;
+    private javax.swing.JTabbedPane tabExpediente;
 
+    public void setTabExpediente(JTabbedPane tabExpediente) {
+        this.tabExpediente = tabExpediente;
+    }
+    
     public String getIdSignosVitales() {
         return idSignosVitales;
     }
@@ -192,6 +200,7 @@ public class PacientesConsulta extends javax.swing.JDialog {
                    +" "+tablaPacientesConsulta.getValueAt(filaSeleccionada, 5).toString();
             idConsultaMedica = tablaPacientesConsulta.getValueAt(filaSeleccionada, 0).toString();
             idSignosVitales = tablaPacientesConsulta.getValueAt(filaSeleccionada, 6).toString();
+            this.tabExpediente.setSelectedIndex(1);
             this.dispose();
         }
         else
@@ -221,7 +230,7 @@ public class PacientesConsulta extends javax.swing.JDialog {
             rs.close();
         }
         catch(java.sql.SQLException e){
-            
+            System.err.println(e.getErrorCode() + e.getMessage());
         }
         esconderColumnas(ID_CONSULTA);
         esconderColumnas(ID_EXPEDIENTE);
