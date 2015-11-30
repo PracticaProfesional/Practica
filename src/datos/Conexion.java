@@ -17,14 +17,16 @@ public class Conexion {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost/sigos", "root", "");
+            conexion = DriverManager.getConnection("jdbc:mysql://163.178.97.202/sigos", "remoto", "123");
             return conexion;
         }// fin de try
         catch (SQLException | ClassNotFoundException exception)
         {
-            exception.printStackTrace();
+            System.err.println(exception.getMessage());
             return null;
         }// fin de catch
+
+        
     }// fin del metodo conectar
     
     public void desconectar()
