@@ -14,10 +14,12 @@ public class Conexion {
     
     public Connection conectar()
     {
+        negocio.LeerEscribirDatosConexion datos;
+        datos = new negocio.LeerEscribirDatosConexion(); 
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://163.178.97.202/sigos", "remoto", "123");
+            conexion = DriverManager.getConnection("jdbc:mysql://"+datos.recuperarDatos().get("ip")+"/sigos", datos.recuperarDatos().get("user"), datos.recuperarDatos().get("pass"));
             return conexion;
         }// fin de try
         catch (SQLException | ClassNotFoundException exception)

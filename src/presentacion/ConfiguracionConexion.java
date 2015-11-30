@@ -125,7 +125,7 @@ public class ConfiguracionConexion extends javax.swing.JPanel {
        datos.put("user", txtUsuario.getText());
        String pass = new String(txtContrasena.getPassword());
        datos.put("pass", pass);
-       negocio.GuardarConexion guardar = new negocio.GuardarConexion(datos);
+       negocio.LeerEscribirDatosConexion guardar = new negocio.LeerEscribirDatosConexion(datos);
        guardar.guardar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
