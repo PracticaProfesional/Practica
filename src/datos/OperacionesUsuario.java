@@ -37,6 +37,9 @@ public class OperacionesUsuario {
         {
             System.out.println(e.getErrorCode() + e.getMessage());
         }// fin de catch
+        catch(NullPointerException npe){
+            System.err.println(npe.getMessage());
+        }
        
         return null;
     }// fin del metodo insertarPaciente
