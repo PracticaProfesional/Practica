@@ -32,7 +32,7 @@ public class LeerEscribirDatosConexion {
     
     private void crearArchivo(){
         try{
-            fichero = new FileWriter("src/configuracion/conf.txt");
+            fichero = new FileWriter("configuracion/conf.txt");
             printer = new PrintWriter(fichero);
             printer.println(datos.get("ip"));
             printer.println(datos.get("user"));
@@ -58,7 +58,7 @@ public class LeerEscribirDatosConexion {
         Map<String, String> datosRec = new HashMap<>();
         
         try{
-           archivo = new File("src/configuracion/conf.txt"); 
+           archivo = new File("configuracion/conf.txt"); 
            lector = new FileReader(archivo);
            bLector = new BufferedReader(lector);
            String linea;
