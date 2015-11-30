@@ -22,7 +22,10 @@ public class LeerEscribirDatosConexion {
     File archivo = null;
     FileReader lector = null;
     BufferedReader bLector = null;
-        
+    
+    public LeerEscribirDatosConexion(){
+    }
+    
     public LeerEscribirDatosConexion(Map<String, String> datos){
        this.datos = datos;
     }
