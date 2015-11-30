@@ -135,7 +135,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelPrincipal" max="32767" attributes="0"/>
+              <Component id="panelPrincipal" pref="1341" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -230,7 +230,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jScrollPane3" pref="1176" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane3" pref="1183" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -456,7 +456,7 @@
                                       <Component id="jPanel14" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jPanel13" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="209" max="32767" attributes="0"/>
+                                  <EmptySpace pref="221" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -540,8 +540,9 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                                                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
                                                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Component id="textIMB" min="-2" pref="64" max="-2" attributes="0"/>
@@ -549,7 +550,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="113" max="32767" attributes="0"/>
+                                      <EmptySpace pref="127" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -701,70 +702,68 @@
                                               <Component id="chES" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="76" pref="26" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="2" attributes="0">
-                                          <Component id="jLabel37" alignment="2" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel35" alignment="2" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="chSC" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chIM" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                      <EmptySpace pref="62" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="chAF" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chPA" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                              <Component id="chGM" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="chIV" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="chPAP" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="chExMamas" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="chCP" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                              <Component id="chCuraciones" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jLabel37" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel35" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="chSC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chIM" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="chAF" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="chPA" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="chGM" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chIV" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="chExMamas" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chPAP" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                              <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="chCuraciones" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="chCP" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                       <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="chSS" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="110" max="32767" attributes="0"/>
+                                      <EmptySpace pref="67" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1067,7 +1066,7 @@
                                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                                               <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="199" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="jPanel6" alignment="1" max="32767" attributes="0"/>
                                   </Group>
@@ -1950,7 +1949,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="330" max="-2" attributes="0"/>
                                   <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="346" max="32767" attributes="0"/>
+                                  <EmptySpace pref="350" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2083,7 +2082,7 @@
                                   <Layout>
                                     <DimensionLayout dim="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <EmptySpace min="0" pref="1145" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="1152" max="32767" attributes="0"/>
                                       </Group>
                                     </DimensionLayout>
                                     <DimensionLayout dim="1">
