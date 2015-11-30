@@ -2145,7 +2145,7 @@
                               <Component id="agendaPanelActividades" max="32767" attributes="0"/>
                               <Component id="agendaPanelCalendario" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="155" max="32767" attributes="0"/>
+                          <EmptySpace pref="140" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2163,9 +2163,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="agendaCalendario" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="agendaCalendario" max="32767" attributes="0"/>
+                                  <Component id="btnRefrescarAgenda" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -2175,6 +2178,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="agendaCalendario" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="btnRefrescarAgenda" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -2184,6 +2189,14 @@
                     <Component class="datechooser.beans.DateChooserPanel" name="agendaCalendario">
                       <Events>
                         <EventHandler event="onSelectionChange" listener="datechooser.events.SelectionChangedListener" parameters="datechooser.events.SelectionChangedEvent" handler="agendaCalendarioOnSelectionChange"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnRefrescarAgenda">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Refrescar"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRefrescarAgendaActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

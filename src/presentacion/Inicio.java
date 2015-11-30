@@ -254,6 +254,7 @@ public class Inicio extends javax.swing.JFrame {
         agendaPanelPrincipal = new javax.swing.JPanel();
         agendaPanelCalendario = new javax.swing.JPanel();
         agendaCalendario = new datechooser.beans.DateChooserPanel();
+        btnRefrescarAgenda = new javax.swing.JButton();
         agendaPanelActividades = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         agendaTabla = new javax.swing.JTable();
@@ -1453,13 +1454,22 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        btnRefrescarAgenda.setText("Refrescar");
+        btnRefrescarAgenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefrescarAgendaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout agendaPanelCalendarioLayout = new javax.swing.GroupLayout(agendaPanelCalendario);
         agendaPanelCalendario.setLayout(agendaPanelCalendarioLayout);
         agendaPanelCalendarioLayout.setHorizontalGroup(
             agendaPanelCalendarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(agendaPanelCalendarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(agendaCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(agendaPanelCalendarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(agendaCalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRefrescarAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         agendaPanelCalendarioLayout.setVerticalGroup(
@@ -1467,6 +1477,8 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(agendaPanelCalendarioLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(agendaCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(btnRefrescarAgenda)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1572,7 +1584,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(agendaPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(agendaPanelActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(agendaPanelCalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         tabAgenda.addTab("Citas", agendaPanelPrincipal);
@@ -2465,6 +2477,10 @@ public class Inicio extends javax.swing.JFrame {
         if(confirmacionLimpiar() == 0)
             limpiarSignosVitales();
     }//GEN-LAST:event_btnSignosVitalesCancelarActionPerformed
+
+    private void btnRefrescarAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarAgendaActionPerformed
+        cargarActividadesAgenda();
+    }//GEN-LAST:event_btnRefrescarAgendaActionPerformed
     private void splitFechaNac(String fecha){
         String year = "";
         String month = "";
@@ -2713,6 +2729,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarExamenFisico;
     private javax.swing.JButton btnGuardarLabGab;
     private javax.swing.JButton btnLabGabineteAdjuntarExamen;
+    private javax.swing.JButton btnRefrescarAgenda;
     private javax.swing.JButton btnRefrescarTablaBuscar;
     private javax.swing.JButton btnSignosVitalesCancelar;
     private javax.swing.JButton btnSignosVitalesGuardar;
