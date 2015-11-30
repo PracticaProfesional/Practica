@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -53,6 +51,11 @@ public class ConfiguracionConexion extends javax.swing.JPanel {
         jLabel2.setText("Usurario");
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,6 +118,16 @@ public class ConfiguracionConexion extends javax.swing.JPanel {
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
+    
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+       Map<String, String> datos = new HashMap<>();
+       datos.put("ip",txtIPServidor.getText());
+       datos.put("user", txtUsuario.getText());
+       String pass = new String(txtContrasena.getPassword());
+       datos.put("pass", pass);
+       negocio.GuardarConexion guardar = new negocio.GuardarConexion(datos);
+       guardar.guardar();
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
