@@ -9,10 +9,10 @@ import datos.OperacionesReporteMedicamentosBean;
 
 public class NegocioReporteMedicamentosBean 
 {
-    public ResultSet obtenerDatosConsultaInventario() throws SQLException
+    public ResultSet obtenerDatosConsultaInventario(String fechaDesde, String fechaHasta) throws SQLException
     {
         OperacionesReporteMedicamentosBean operacionesReporteMedicamentosBean = new OperacionesReporteMedicamentosBean();
-        return operacionesReporteMedicamentosBean.obtenerDatosConsultaInventario();
+        return operacionesReporteMedicamentosBean.obtenerDatosConsultaInventario(fechaDesde, fechaHasta);
     }// fin del metodo obtenerDatosConsultaInventario
     
 }// fin de la clase NegocioReporteMedicamentosBean
