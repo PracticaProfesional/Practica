@@ -272,6 +272,9 @@ public class ContenedorReceta extends javax.swing.JPanel
             {
                 insertarReceta();
                 insertarRecetaEnConsulta();
+                
+                JOptionPane.showMessageDialog(null, "La receta se ingreso con exito",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
             }// fin del if
             
             else
@@ -285,15 +288,21 @@ public class ContenedorReceta extends javax.swing.JPanel
             {
                 // en caso de que solo de brinden medicamentos y no se realice la reseta ejecuto el siguiente codigo
                 if (idExpediente != null && fechaActual != null)
+                {
                     insertarRecetaFisica();
+                    
+                    JOptionPane.showMessageDialog(null, "Los medicamentos se ingresaron con exito",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+                }// fin del if
                 
                 else
-                    JOptionPane.showMessageDialog(null, "La receta no corresponde a ninguna consulta médica2",
+                    JOptionPane.showMessageDialog(null, "La receta no corresponde a ninguna consulta médica",
                         "Error", JOptionPane.ERROR_MESSAGE);
             }// fin del if
             
             else
             {
+                // En caso de que que se brinden medicamentos y se escriba la receta
                 if ((! txaReceta.getText().isEmpty()) && tblMedicamentos.getValueAt(0, 0) != null)
                 {
                     if (idExpediente != null && fechaActual != null)
@@ -301,10 +310,13 @@ public class ContenedorReceta extends javax.swing.JPanel
                         insertarReceta();
                         insertarRecetaEnConsulta();
                         insertarRecetaFisica();
+                        
+                        JOptionPane.showMessageDialog(null, "La receta y los medicamentos fueron ingresados con exito",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
                     }// fin del if
                     
                     else
-                        JOptionPane.showMessageDialog(null, "La receta no corresponde a ninguna consulta médica3",
+                        JOptionPane.showMessageDialog(null, "La receta no corresponde a ninguna consulta médica",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 }// fin del if
                 
@@ -314,6 +326,8 @@ public class ContenedorReceta extends javax.swing.JPanel
             }
         }// fin del else
         //insertarRecetaFisica();
+        
+        limpiar();  // se limpian los componentes del formulario
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -442,24 +456,32 @@ public class ContenedorReceta extends javax.swing.JPanel
         
         else
         {
-            if (cantidades[cmbMedicamentos.getSelectedIndex() - 1] < Integer.parseInt(txtCantidad.getText()))
-                JOptionPane.showMessageDialog(null, "La cantidad debe se menor a " + cantidades[cmbMedicamentos.getSelectedIndex() -1] +
-                        ", que es la cantidad en existencia", "Información", JOptionPane.INFORMATION_MESSAGE);
-            
-            else 
+            if (validarCantidad())
             {
-                String fila [] = new String [2];
+                if (cantidades[cmbMedicamentos.getSelectedIndex() - 1] < Integer.parseInt(txtCantidad.getText()))
+                    JOptionPane.showMessageDialog(null, "La cantidad debe se menor a " + cantidades[cmbMedicamentos.getSelectedIndex() -1] +
+                            ", que es la cantidad en existencia", "Información", JOptionPane.INFORMATION_MESSAGE);
+            
+                else 
+                {
+                    String fila [] = new String [2];
         
-                fila [0] = cmbMedicamentos.getSelectedItem().toString(); // ingresa cada campo de el formulario en el arreglo
-                fila [1] = txtCantidad.getText();   // para posteriormente ingresar el arreglo como una fila
+                    fila [0] = cmbMedicamentos.getSelectedItem().toString(); // ingresa cada campo de el formulario en el arreglo
+                    fila [1] = txtCantidad.getText();   // para posteriormente ingresar el arreglo como una fila
         
-                modelo.addRow(fila);
-                tblMedicamentos.setModel(modelo);
+                    modelo.addRow(fila);
+                    tblMedicamentos.setModel(modelo);
         
-                // Se limpian los campos despues de cada ingreso
-                cmbMedicamentos.setSelectedIndex(0);
-                txtCantidad.setText(null);
-            }// fin del else
+                    // Se limpian los campos despues de cada ingreso
+                    cmbMedicamentos.setSelectedIndex(0);
+                    txtCantidad.setText(null);
+                }// fin del else
+            }// fin del if
+            
+            else
+                JOptionPane.showMessageDialog(null, "Dato incorrecto, solo se pueden ingresar"
+                        + " numeros enteros en el campo cantidad y mayores que cero", 
+                    "Información", JOptionPane.INFORMATION_MESSAGE);
         }// fin del else
     }// fin del metodo cargarFilaEnTabla
     
@@ -478,7 +500,37 @@ public class ContenedorReceta extends javax.swing.JPanel
                     tblMedicamentos.getValueAt(i, 1).toString());
         }// fin del for
     }// fin del metodo insertarRecetaFisica
-            
+    
+    // El siguiente metodo validarCantidad valida el campo de texto de cantidad con expresiones regulare para que
+    // no se pueda ingresar un caracter que no sean numeros, ya que el de dejar en blanco se valida desde el metod cargarFila
+    public boolean validarCantidad()
+    {
+        if (txtCantidad.getText().matches("[1-9]{1}([0-9])?"))
+            return true;
+        
+        else
+            return false;
+    }// fin del metodo validarCantidad
+    
+    // El siguiente metodo limpia todos los componentes, (estado inicial)
+    public void limpiar()
+    {
+        txtNombre.setText("");
+        txtFecha.setText("");
+        txaReceta.setText("");
+        
+        tblMedicamentos.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null}
+                }, new String [] {
+                            "Medicamento", "Cantidad"
+                   }
+        ));
+    }// fin del metodo limpiar
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnAgregar;
