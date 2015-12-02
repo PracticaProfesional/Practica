@@ -46,10 +46,11 @@ public class CrearReporte {
         viewer.setVisible(true);
     }
     
-    public void generarReporte(String ruta){
+    public void generarReporteMedicamentosXPaciente(String ruta, String fechaDesde, String fechaHasta){
        try{
            ColeccionReporteMedicamentos objRM =  new ColeccionReporteMedicamentos();
-           JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(objRM.cargarMedicamentosALaColeccionNoStatic());
+           JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource
+                    (objRM.cargarMedicamentosALaColeccionNoStatic(fechaDesde, fechaHasta));
             nConexion = new NegocioConexion();
             reporte = (JasperReport) JRLoader.loadObjectFromFile(ruta);
             reporteFill = JasperFillManager.fillReport(reporte, null,ds);
