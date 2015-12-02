@@ -1,13 +1,18 @@
 package negocio;
 
+import java.awt.HeadlessException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,7 +63,9 @@ public class LeerEscribirDatosConexion {
         Map<String, String> datosRec = new HashMap<>();
         
         try{
-           archivo = new File("configuracion/conf.txt"); 
+           
+           Path p = Paths.get("conf.txt");
+           archivo = new File(p.toAbsolutePath().toUri());
            lector = new FileReader(archivo);
            bLector = new BufferedReader(lector);
            String linea;
@@ -78,7 +85,7 @@ public class LeerEscribirDatosConexion {
                contador ++;
            }
         }
-        catch(Exception e){
+        catch(HeadlessException | IOException e){
             System.err.println(e.getMessage());
         }
         finally{
@@ -96,4 +103,5 @@ public class LeerEscribirDatosConexion {
     public Map<String, String> recuperarDatos(){
         return obtieneDatosCon();
     }
+    
 }

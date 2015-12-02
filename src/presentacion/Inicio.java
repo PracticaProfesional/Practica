@@ -67,6 +67,7 @@ public class Inicio extends javax.swing.JFrame {
                 EditarUsuario panelEditar = new EditarUsuario();
                 tabAdministrador.addTab("Editar Usuarios", panelEditar);
                 ConfiguracionConexion objConfiguracionConexion = new ConfiguracionConexion();
+                objConfiguracionConexion.leeDatos();
                 tabAdministrador.addTab("Configuración Conexión", objConfiguracionConexion);
                 break;
             case 1:
