@@ -688,18 +688,22 @@ $
 
 -- PROCEDIMIENTO ALMACENADO PARA UTILIZAR EN REPORTE DE MEDICAMENTOS
 DELIMITER $
-CREATE PROCEDURE ReporteDeMedicamentos()
+CREATE PROCEDURE ReporteDeMedicamentos(in fechaDesde date, in fechaHasta date)
 BEGIN
 	select `Consulta-Inventario`.id, `Consulta-Inventario`.idInventario, 
 			`Consulta-Inventario`.idConsultaMedica, `Consulta-Inventario`.cantidad,
 		Inventario.nombre,
 		Paciente.nombrePaciente,
-		Paciente.tipo
+		Paciente.tipo,
+		ConsultaMedica.fecha
 	from `Consulta-Inventario` join Inventario
 	on `Consulta-Inventario`.idInventario = Inventario.id
 	join ConsultaMedica on `Consulta-Inventario`.idConsultaMedica = ConsultaMedica.id
 	join ExpedienteMedico on ConsultaMedica.idExpedienteMedico = ExpedienteMedico.id
 	join Paciente on ExpedienteMedico.idPaciente = Paciente.id
+	where ConsultaMedica.fecha between fechaDesde and fechaHasta
 	order by `Consulta-Inventario`.id;
 END $
+
+Call ReporteDeMedicamentos('2015-11-30', '2015-12-01')
 
