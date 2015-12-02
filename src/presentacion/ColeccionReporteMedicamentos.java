@@ -19,7 +19,7 @@ public class ColeccionReporteMedicamentos
     private  int totalDocentes;
     
     
-    public  void llenarColeccion()
+    public  void llenarColeccion(String fechaDesde, String fechaHasta)
     {
         ReporteMedicamentosBean objReporteMedicamentosBean;
         NegocioReporteMedicamentosBean objNegocioReporteMedicamentosBean = new NegocioReporteMedicamentosBean();
@@ -29,7 +29,7 @@ public class ColeccionReporteMedicamentos
         
         try
         {
-            rs1 = objNegocioReporteMedicamentosBean.obtenerDatosConsultaInventario();
+            rs1 = objNegocioReporteMedicamentosBean.obtenerDatosConsultaInventario(fechaDesde, fechaHasta);
             rs2 = objeNegocioInventario.listarMedicamentosInventario();
             
             String nombreMedicamento;
@@ -109,9 +109,9 @@ public class ColeccionReporteMedicamentos
         }// fin del while
     }// fin del metodo imprimirLista
     
-    public List<ReporteMedicamentosBean> cargarMedicamentosALaColeccionNoStatic()
+    public List<ReporteMedicamentosBean> cargarMedicamentosALaColeccionNoStatic(String fechaDesde, String fechaHasta)
     {
-        llenarColeccion();
+        llenarColeccion(fechaDesde, fechaHasta);
         return listaDeMedicamentos;
     }// fin del metodo cargarMedicamentosALaColeccion
 }// fin de la clase ColeccionReporteMedicamentos
