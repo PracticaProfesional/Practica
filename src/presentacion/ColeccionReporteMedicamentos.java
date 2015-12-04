@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ColeccionReporteMedicamentos 
 {
@@ -109,9 +111,25 @@ public class ColeccionReporteMedicamentos
         }// fin del while
     }// fin del metodo imprimirLista
     
+    //El siguiente metodo oredena la lista en orden alfabetico por el nombre de medicamento
+    @SuppressWarnings("Convert2Lambda")
+    public void ordenarLista()
+    {
+        Collections.sort(listaDeMedicamentos, new Comparator<ReporteMedicamentosBean>()
+            {
+                @Override
+                public int compare(ReporteMedicamentosBean t, ReporteMedicamentosBean t1) 
+                {
+                    return t.getNombreMedicamento().compareTo(t1.getNombreMedicamento());
+                }// fin del metodo abstracto compare
+            }// fin de la clase interna anonima
+        );
+    }// fin del metodo ordenarLista
+    
     public List<ReporteMedicamentosBean> cargarMedicamentosALaColeccionNoStatic(String fechaDesde, String fechaHasta)
     {
         llenarColeccion(fechaDesde, fechaHasta);
+        ordenarLista();
         return listaDeMedicamentos;
     }// fin del metodo cargarMedicamentosALaColeccion
 }// fin de la clase ColeccionReporteMedicamentos
