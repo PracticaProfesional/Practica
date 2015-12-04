@@ -64,6 +64,7 @@ public class LeerEscribirDatosConexion {
         
         try{
            
+            
            Path p = Paths.get("conf.txt");
            archivo = new File(p.toAbsolutePath().toUri());
            lector = new FileReader(archivo);
