@@ -12,13 +12,15 @@ public class OperacionesReporteMedicamentosBean
     private Statement estado;
     
     
-    public ResultSet obtenerDatosConsultaInventario() throws SQLException
+    public ResultSet obtenerDatosConsultaInventario(String fechaDesde, String fechaHasta) throws SQLException
     {
         ResultSet rs;
+        String datos = "'" + fechaDesde + "'" + "," +
+                       "'" + fechaHasta + "'";
         objetoDeConexion = new Conexion();
         
         estado = objetoDeConexion.conectar().createStatement();
-        rs = estado.executeQuery("Call ReporteDeMedicamentos()");
+        rs = estado.executeQuery("Call ReporteDeMedicamentos(" + datos + ")");
         return rs;
     }// fin del metodo obtenerDatosConsulaInventario
     

@@ -223,7 +223,7 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 break;
             case 3:
                 CrearReporte objCR = new CrearReporte();
-                objCR.generarReporte(RUTA);
+                objCR.generarReporteMedicamentosXPaciente(RUTA, obtenerFechaCalendario(dtChDesde), obtenerFechaCalendario(dtChHasta));
                 break;
             case 4:
                 reporteHistCli();
