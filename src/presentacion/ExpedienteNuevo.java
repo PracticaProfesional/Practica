@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion;
 
 import datos.ObtenerUltimoId;
@@ -1066,8 +1061,7 @@ jPanel9Layout.setHorizontalGroup(
         JTextField [] campos = {textAlergiaNombre,textAlergiaDescrip
                                 , textTratamiento, textVacunaTipo
                                 , textMedicamentos};
-        if(cuentaClick > 2){
-            for(JTextField campo:campos)
+        for(JTextField campo:campos){
             if(campo.getText().equals("")){
                 confirmacion = JOptionPane.showConfirmDialog(this, "Esta seguro en dejar los campos en blanco.");
                 if(confirmacion == 0)
@@ -1076,6 +1070,7 @@ jPanel9Layout.setHorizontalGroup(
             else 
                 return true;
         }
+            
         return false;
     }
     private boolean validaAntecedentesFamiliares(){
