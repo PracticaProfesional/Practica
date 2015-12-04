@@ -32,7 +32,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     
     int idsAntecedentesPersonales [];
     int idsAntecedentesFamiliares [];
-    int cuentaClick = 1;
     
     public ExpedienteNuevo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
