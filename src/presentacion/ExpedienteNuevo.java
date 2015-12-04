@@ -113,7 +113,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         textAntFamDescrip = new javax.swing.JTextField();
-        textAntFamParentezco = new javax.swing.JTextField();
+        textAntFamParentesco = new javax.swing.JTextField();
         btnAgregarPadecimientoFam = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
@@ -131,6 +131,11 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nuevo Expediente");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btnExpedienteNuevoGuardar.setText("Guardar");
         btnExpedienteNuevoGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -193,38 +198,38 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
         textFechaNac.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
             new datechooser.view.appearance.ViewAppearance("custom",
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                    new java.awt.Color(85, 85, 85),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                    new java.awt.Color(85, 85, 85),
                     new java.awt.Color(0, 0, 255),
                     true,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
                     new java.awt.Color(0, 0, 255),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
                     new java.awt.Color(128, 128, 128),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                    new java.awt.Color(85, 85, 85),
                     new java.awt.Color(0, 0, 255),
                     false,
                     true,
                     new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                    new java.awt.Color(85, 85, 85),
                     new java.awt.Color(255, 0, 0),
                     false,
                     false,
@@ -333,38 +338,38 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
 
     textFechaNac1.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
         new datechooser.view.appearance.ViewAppearance("custom",
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                new java.awt.Color(85, 85, 85),
                 new java.awt.Color(0, 0, 255),
                 false,
                 true,
                 new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                new java.awt.Color(85, 85, 85),
                 new java.awt.Color(0, 0, 255),
                 true,
                 true,
                 new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
                 new java.awt.Color(0, 0, 255),
                 new java.awt.Color(0, 0, 255),
                 false,
                 true,
                 new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
                 new java.awt.Color(128, 128, 128),
                 new java.awt.Color(0, 0, 255),
                 false,
                 true,
                 new datechooser.view.appearance.swing.LabelPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                new java.awt.Color(85, 85, 85),
                 new java.awt.Color(0, 0, 255),
                 false,
                 true,
                 new datechooser.view.appearance.swing.LabelPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Noto Sans", java.awt.Font.PLAIN, 12),
+                new java.awt.Color(85, 85, 85),
                 new java.awt.Color(255, 0, 0),
                 false,
                 false,
@@ -612,7 +617,7 @@ jPanel9Layout.setHorizontalGroup(
 
     jLabel18.setText("Descripción");
 
-    jLabel19.setText("Parentezco");
+    jLabel19.setText("Parentesco");
 
     btnAgregarPadecimientoFam.setText("Añadir");
     btnAgregarPadecimientoFam.addActionListener(new java.awt.event.ActionListener() {
@@ -633,7 +638,7 @@ jPanel9Layout.setHorizontalGroup(
                 .addComponent(jLabel19))
             .addGap(109, 109, 109)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(textAntFamParentezco, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(textAntFamParentesco, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addComponent(textAntFamDescrip, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addComponent(btnAgregarPadecimientoFam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addContainerGap(368, Short.MAX_VALUE))
@@ -652,7 +657,7 @@ jPanel9Layout.setHorizontalGroup(
             .addGap(18, 18, 18)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel19)
-                .addComponent(textAntFamParentezco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(textAntFamParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addContainerGap(18, Short.MAX_VALUE))
     );
 
@@ -807,6 +812,11 @@ jPanel9Layout.setHorizontalGroup(
         lblAnios.setText("Edad: "+edad + " Años");
     }//GEN-LAST:event_textFechaNacOnSelectionChange
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        tabExpedienteNuevo.setEnabledAt(1, false);
+        tabExpedienteNuevo.setEnabledAt(2, false);
+    }//GEN-LAST:event_formWindowOpened
+
     private void crearExpedienteMedico() {
         negocio.NegocioExpedienteMedico insertarExpediente = new negocio.NegocioExpedienteMedico();
         try {
@@ -821,8 +831,8 @@ jPanel9Layout.setHorizontalGroup(
         NegocioAntecedenteFamiliar objetoNegocioAntFam = new NegocioAntecedenteFamiliar();
         AntecedenteFamiliar nuevoAntFam = new AntecedenteFamiliar();
         
-        if (! textAntFamParentezco.getText().equals(""))  // valida si el campo de texto de parentesco esta vacio
-            nuevoAntFam.setParentezco(textAntFamParentezco.getText());
+        if (! textAntFamParentesco.getText().equals(""))  // valida si el campo de texto de parentesco esta vacio
+            nuevoAntFam.setParentezco(textAntFamParentesco.getText());
         
         if (! textAntFamDescrip.getText().equals("")) // valida si el campo de de texto de medicamento esta vacio
             nuevoAntFam.setDescripcion(textAntFamDescrip.getText());
@@ -1073,7 +1083,9 @@ jPanel9Layout.setHorizontalGroup(
         return false;
     }
     private boolean validaAntecedentesFamiliares(){
-        return true;
+        String descrip = textAntFamDescrip.getText();
+        String parentesco = textAntFamParentesco.getText();
+        return (!descrip.equals("") && !parentesco.equals(""));
     }
 
     private boolean regExValidation(String validador, JTextField campo) {
@@ -1178,7 +1190,7 @@ jPanel9Layout.setHorizontalGroup(
     private javax.swing.JTextField textAlergiaDescrip;
     private javax.swing.JTextField textAlergiaNombre;
     private javax.swing.JTextField textAntFamDescrip;
-    private javax.swing.JTextField textAntFamParentezco;
+    private javax.swing.JTextField textAntFamParentesco;
     private javax.swing.JTextField textApellido1;
     private javax.swing.JTextField textApellido2;
     private javax.swing.JTextArea textDireccionFamiliar;
