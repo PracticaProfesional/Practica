@@ -1,5 +1,3 @@
-// Con esta clase logramremos la conexion a la base de datos en MySQL
-
 package datos;
 
 import java.sql.Connection;
