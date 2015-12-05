@@ -1914,7 +1914,13 @@ public class Inicio extends javax.swing.JFrame {
         negocio.NegocioExpedienteMedico opExpediente = new negocio.NegocioExpedienteMedico();
         try {
             rs = opExpediente.obtenerExpedientePaciente();
-            DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
+            DefaultTableModel nuevoModeloTabla;
+            nuevoModeloTabla = new DefaultTableModel(){
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex){
+                    return false;
+                }
+            };
             this.tableBuscarPaciente.setModel(nuevoModeloTabla);
             String [] nombreColumnas = {"Id", "Cédula", "Nombre",
                                         "Primer Apellido", "Segundo Apellido",
