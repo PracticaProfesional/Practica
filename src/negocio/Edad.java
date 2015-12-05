@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- *
+ * Clase utilitaria para calcular la edad de los pacientes.
  * @author cooper15
  */
 public class Edad {
@@ -15,6 +15,14 @@ public class Edad {
     private int currentMonth;
     private int currentDay;
     
+    /**
+     * Metodo recibe los parametros correspondientes y retorna la edad, según se 
+     * cumplan una serie de criterios. 
+     * @param birthYear
+     * @param birthMonth
+     * @param birthDay
+     * @return edad retorna la edad calculada previamente
+     */
     public String getAge(int birthYear, int birthMonth, int birthDay){
         this.birthYear = birthYear;
         this.birthMonth = birthMonth;
