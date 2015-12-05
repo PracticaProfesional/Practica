@@ -24,7 +24,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- *
+ * Esta clase permite crear una ventana que contendrá el asistente para 
+ * crear nuevos expedientes.
  * @author cooper15
  */
 public class ExpedienteNuevo extends javax.swing.JDialog {
@@ -33,6 +34,11 @@ public class ExpedienteNuevo extends javax.swing.JDialog {
     int idsAntecedentesPersonales [];
     int idsAntecedentesFamiliares [];
     
+    /**
+     * El constructor de la clase.
+     * @param parent ventana padre
+     * @param modal establece la modalidad de la ventana
+     */
     public ExpedienteNuevo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -937,6 +943,11 @@ jPanel9Layout.setHorizontalGroup(
         
     }// fin del metodo insertarAntecedentesPersonalesPadecimientos
     
+    /**
+     * Inserta los padecimientos en la tabla de la base de datos respectiva
+     * @param ultimoId toma como parametro el id del ultimo registro insertado
+     * en la BD
+     */
     public void insertarAntecedenteFamiliaresPAdecimientos(ObtenerUltimoId ultimoId)
     {
         NegocioAntecedentesFamPad negocioAntecedentes = new NegocioAntecedentesFamPad();
@@ -1099,10 +1110,7 @@ jPanel9Layout.setHorizontalGroup(
         return comparador.matches();  
     }
     
-    
-    public void revisarArreglo (int Ids [])
-    {
-    }// fin del metodo
+
     /**
      * @param args the command line arguments
      */
