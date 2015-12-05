@@ -8,10 +8,20 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Esta clase es la encargada de crear y retornar 
+ * el objeto de conexión con la BD.
+ * @author cooper15
+ */
 public class Conexion {
     
     private Connection conexion;
     
+    /**
+     * Esta clase se encarga de crear una conexión con la base de datos,
+     * posteriormente se obtiene como retorno dicho vínculo de conexión.
+     * @return coneccion
+     */
     public Connection conectar()
     {
         negocio.LeerEscribirDatosConexion datos;
@@ -31,6 +41,10 @@ public class Conexion {
         
     }// fin del metodo conectar
     
+    /**
+     * Método para realizar la desconexión con la base de datos.
+     * Su finalizad es evitar que los recursos se desperdicien.
+     */
     public void desconectar()
     {
         try 
