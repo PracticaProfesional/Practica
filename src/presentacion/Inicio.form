@@ -2271,7 +2271,7 @@
                                   <Data value="20:00"/>
                                   <Data value="21:00"/>
                                 </Column>
-                                <Column editable="true" title="Actividad" type="java.lang.String"/>
+                                <Column editable="false" title="Actividad" type="java.lang.String"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

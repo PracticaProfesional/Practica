@@ -1528,7 +1528,7 @@ public class Inicio extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
