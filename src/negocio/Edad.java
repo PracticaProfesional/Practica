@@ -10,10 +10,9 @@ import java.util.GregorianCalendar;
 public class Edad {
     private int birthYear;
     private int birthMonth;
-    private int birthDay;
     private int currentYear;
     private int currentMonth;
-    private int currentDay;
+
     
     /**
      * Metodo recibe los parametros correspondientes y retorna la edad, según se 
