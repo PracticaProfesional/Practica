@@ -7,15 +7,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JOptionPane;
 
 /**
- *
+ * La función primordial de esta clase es la de facilitar el guardado y
+ * la recuperado de los datos necesarios para establecer una conexión
+ * con la base de datos.
  * @author cooper15
  */
 public class LeerEscribirDatosConexion {
@@ -28,9 +28,17 @@ public class LeerEscribirDatosConexion {
     FileReader lector = null;
     BufferedReader bLector = null;
     
+    /**
+     * Constructor sobrecargdo y vacío
+     */
     public LeerEscribirDatosConexion(){
     }
     
+    /**
+     * Constructor que se encarga de recibir el diccionario con los
+     * parámetros e inicializar el diccionario local.
+     * @param datos
+     */
     public LeerEscribirDatosConexion(Map<String, String> datos){
        this.datos = datos;
     }
@@ -55,6 +63,11 @@ public class LeerEscribirDatosConexion {
             }
         }
     }
+
+    /**
+     * Método de acceso público para crear el archivo que guarda
+     * las configuraciones necesarias para realizar la conexión con la BD.
+     */
     public void guardar(){
         crearArchivo();
     }
@@ -101,6 +114,11 @@ public class LeerEscribirDatosConexion {
         return datosRec;
     }
     
+    /**
+     * Este método retorna un diccionario que contiene los datos
+     * necesarios para la conexión y que están guardados en el conf.txt.
+     * @return  datos - diccionario de datos de conexión
+     */
     public Map<String, String> recuperarDatos(){
         return obtieneDatosCon();
     }
