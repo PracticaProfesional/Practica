@@ -45,7 +45,7 @@ public class LeerEscribirDatosConexion {
     
     private void crearArchivo(){
         try{
-            fichero = new FileWriter("configuracion/conf.txt");
+            fichero = new FileWriter("conf.txt");
             printer = new PrintWriter(fichero);
             printer.println(datos.get("ip"));
             printer.println(datos.get("user"));
