@@ -24,6 +24,12 @@ public class CrearReporte {
     JRViewer panelVisor;
     NegocioConexion  nConexion;
     
+    /**
+     * Genera los reportes que contienen parámetros como requisitos para ser
+     * ejecutados.
+     * @param params Diccionario de parámetros.
+     * @param ruta  Ruta donde se encuentra el archivo .jasper.
+     */
     public void generarReporte(Map <String, Object>params, String ruta){
        try{
             nConexion = new NegocioConexion();
@@ -46,6 +52,13 @@ public class CrearReporte {
         viewer.setVisible(true);
     }
     
+    /**
+     * Genera el reporte especifico de medicamentos por paciente
+     * el cual emplea JavaBeans para funcionar correctamente
+     * @param ruta ruta donde se encuentra el archivo .jasper
+     * @param fechaDesde fecha o intervalo inicial.
+     * @param fechaHasta fecha o invervalo final.
+     */
     public void generarReporteMedicamentosXPaciente(String ruta, String fechaDesde, String fechaHasta){
        try{
            ColeccionReporteMedicamentos objRM =  new ColeccionReporteMedicamentos();
