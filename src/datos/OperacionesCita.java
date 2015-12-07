@@ -104,4 +104,20 @@ public class OperacionesCita
             System.err.println(sqle.getErrorCode() + sqle.getMessage());
         }
     }
+    
+    public String idCitaPaciente(String fecha, String hora){
+        objetoDeConexion = new Conexion();
+        String datos = "'" + fecha + "'" + "," + "'" + hora + "'";
+        ResultSet rs;
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            rs = estado.executeQuery("call seleccionarCitaPaciente("+datos+")");
+            while(rs.next())
+                return rs.getString("id");
+        }
+        catch (SQLException sqle){
+            System.err.println(sqle.getErrorCode() +  sqle.getMessage());
+        }
+        return "";
+    }
 }// fin de la clase OperacionesCita
