@@ -2241,9 +2241,9 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnGuardarLabGabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarLabGabActionPerformed
         if(fichero != null)
-        insertarLabGab(fichero);
+            insertarLabGab(fichero);
         else
-        JOptionPane.showMessageDialog(this, "No seleccionó ningún archivo",
+            JOptionPane.showMessageDialog(this, "No seleccionó ningún archivo",
             "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnGuardarLabGabActionPerformed
 
