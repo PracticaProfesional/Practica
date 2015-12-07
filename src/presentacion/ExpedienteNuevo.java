@@ -790,11 +790,15 @@ jPanel9Layout.setHorizontalGroup(
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void setPanel2(int selectedIndex) {
+        tabExpedienteNuevo.setEnabledAt(0, false);
+        tabExpedienteNuevo.setEnabledAt(1, true);
         if(validaciones(selectedIndex))
             tabExpedienteNuevo.setSelectedIndex(selectedIndex + 1);
     }
 
     private void setPanel3(int selectedIndex) throws HeadlessException {
+        tabExpedienteNuevo.setEnabledAt(1, false);
+        tabExpedienteNuevo.setEnabledAt(2, true);
         if(validaciones(selectedIndex))
             tabExpedienteNuevo.setSelectedIndex(selectedIndex + 1);
         else{
