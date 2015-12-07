@@ -7,8 +7,10 @@ import entidad.ExamenFisico;
 import entidad.SignosVitales;
 import entidad.enums.EstadoConsultaMedicaEnum;
 import entidad.enums.SexoEnum;
+import java.awt.Desktop;
 import java.awt.HeadlessException;
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -1674,6 +1676,11 @@ public class Inicio extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
 
         mnAyuda.setText("Ayuda");
+        mnAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnAyudaActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnAyuda);
 
         mnAcercaDe.setText("Acerca de");
@@ -2558,6 +2565,16 @@ public class Inicio extends javax.swing.JFrame {
         AcercaDe acerca = new AcercaDe(this, true);
         acerca.setVisible(true);
     }//GEN-LAST:event_mnAcercaDeActionPerformed
+
+    private void mnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAyudaActionPerformed
+        try {
+             File path = new File ("src/documentacion/manual.pdf");
+             Desktop.getDesktop().open(path);
+        }catch (IOException ex) {
+             JOptionPane.showMessageDialog(this, "Error al abrir documento",
+                     "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_mnAyudaActionPerformed
 
     private void limpiarAgenda(){
         int nFilas = agendaTabla.getRowCount();
