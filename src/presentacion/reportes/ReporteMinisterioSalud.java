@@ -11,8 +11,9 @@ import org.jopendocument.dom.OOUtils;
 import org.jopendocument.dom.spreadsheet.Sheet;
 import org.jopendocument.dom.spreadsheet.SpreadSheet;
 /**
- *
+ * Esta clase se encarga de generar el reporte para el ministerio de salud
  * @author cooper15
+ * @version 1.0, 06/12/2015
  */
 public class ReporteMinisterioSalud {
     private LinkedList<String> listEvento;

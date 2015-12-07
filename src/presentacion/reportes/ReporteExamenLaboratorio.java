@@ -13,8 +13,9 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JRViewer;
 
 /**
- *
+ * Esta clase genera el reporte para los examenes de laboratorio
  * @author cooper15
+ * @version 1.0, 06/12/2015
  */
 public class ReporteExamenLaboratorio {
     JasperReport reporte;
@@ -23,6 +24,10 @@ public class ReporteExamenLaboratorio {
     NegocioConexion  nConexion;
     private final String ruta = "src/presentacion/reportes/ReporteExamenLaboratorio.jasper";
     
+    /**
+     * Este método se encarga de generar el reporte
+     * @param params diccionario de datos
+     */
     public void generarReporte(Map params){
        try{
             nConexion = new NegocioConexion();

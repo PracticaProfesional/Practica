@@ -15,8 +15,9 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
- *
- * @author QUINCHO
+ * Esta clase genera el reporte para el inventario
+ * @author QUINCHO 
+ * @version 1.0, 06/12/2015
  */
 public class ReporteInventario {
     
@@ -26,6 +27,9 @@ public class ReporteInventario {
     NegocioConexion  nConexion;
     private final String ruta = "src/presentacion/reportes/Inventario.jasper";
     
+    /**
+     * Este método se encarga de generar el reporte de inventario
+     */
     public void generarReporte(){
        try{
            nConexion = new NegocioConexion();

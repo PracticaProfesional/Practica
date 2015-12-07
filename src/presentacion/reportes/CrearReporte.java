@@ -15,8 +15,9 @@ import net.sf.jasperreports.view.JRViewer;
 import presentacion.ColeccionReporteMedicamentos;
 
 /**
- *
+ * Esta clase se encarga de generar los reportes
  * @author cooper15
+ * @version 1.0, 06/12/2015
  */
 public class CrearReporte {
     JasperReport reporte;
