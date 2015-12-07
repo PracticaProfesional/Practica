@@ -2571,6 +2571,7 @@ public class Inicio extends javax.swing.JFrame {
              File path = new File ("src/documentacion/manual.pdf");
              Desktop.getDesktop().open(path);
         }catch (IOException ex) {
+            System.err.println(ex.getMessage());
              JOptionPane.showMessageDialog(this, "Error al abrir documento",
                      "Error", JOptionPane.ERROR_MESSAGE);
         }
