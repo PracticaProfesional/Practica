@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentacion;
 
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Esta clase contiene la agenda, en la cual se anotan todas las incidencias
+ * y citas que la Doctora y la Enfermera consideren convenientes.
  * @author cooper15
  */
 public class AgendaActividad extends javax.swing.JDialog {
@@ -19,14 +15,27 @@ public class AgendaActividad extends javax.swing.JDialog {
     private String detalles;
     private String idPaciente;
 
+    /**
+     * Retorna el id del paciente para ser actualizado en la BD
+     * @return
+     */
     public String getIdPaciente() {
         return idPaciente;
     }
 
+    /**
+     *
+     * @return los detalles para ser mostrados en la tabla.
+     */
     public String getDetalles() {
         return detalles;
     }
     
+    /**
+     * Constructor de la clase
+     * @param parent ventana padre
+     * @param modal establece la modalidad de la ventana.
+     */
     public AgendaActividad(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

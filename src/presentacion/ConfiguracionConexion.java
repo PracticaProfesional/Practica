@@ -5,7 +5,8 @@ import java.util.Map;
 import negocio.LeerEscribirDatosConexion;
 
 /**
- *
+ * Esta clase crea un panel que será anexado a la ventana principal de 
+ * administrador, con el fin de realizar la configuración del archivo.
  * @author QUINCHO
  */
 public class ConfiguracionConexion extends javax.swing.JPanel {
@@ -170,6 +171,9 @@ public class ConfiguracionConexion extends javax.swing.JPanel {
         txtContrasena.setText(pass);
     }
     
+    /**
+     * Invoca al mentodo para cargar los datos del archivo de configuracion.
+     */
     public void leeDatos(){
         cargarDatosFichero();
     }

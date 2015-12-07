@@ -7,17 +7,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Esta clase establece la conexion a la base de datos MySQL
- * @author QUINCHO
- * @version 1.0, 05/12/2015 
+ * Esta clase es la encargada de crear y retornar 
+ * el objeto de conexión con la BD.
+ * @author cooper15
  */
 public class Conexion {
     
     private Connection conexion;
     
     /**
-     * Contiene todas las instrucciones para lograr establecer la conexión
-     * @return objeto Connection
+     * Esta clase se encarga de crear una conexión con la base de datos,
+     * posteriormente se obtiene como retorno dicho vínculo de conexión.
+     * @return coneccion
      */
     public Connection conectar()
     {
@@ -39,7 +40,8 @@ public class Conexion {
     }// fin del metodo conectar
     
     /**
-     * Cierra la conxion con la base de datos
+     * Método para realizar la desconexión con la base de datos.
+     * Su finalizad es evitar que los recursos se desperdicien.
      */
     public void desconectar()
     {

@@ -23,7 +23,9 @@ import javax.swing.table.DefaultTableModel;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 import presentacion.reportes.CrearReporte;
 /**
- *
+ * Esta clase construye la ventana principal del sistema por lo cual contiene
+ * una gran cantidad de métodos y funciones. Al ser la ventana principal se
+ * empleo un JFrame lo cual sigue las recomendaciones oficiales del lenguaje.
  * @author cooper15
  */
 public class Inicio extends javax.swing.JFrame {
@@ -46,11 +48,19 @@ public class Inicio extends javax.swing.JFrame {
     private ContenedorReceta rc;
     private int loginUser;
     
+    /**
+     *
+     */
     public Inicio() {
         initComponents();
         setAppearanceProperties();
         
     }
+
+    /**
+     *
+     * @param loginUser
+     */
     public void setUser(int loginUser){
         this.loginUser = loginUser;
         acceso();
@@ -1528,7 +1538,7 @@ public class Inicio extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1914,7 +1924,13 @@ public class Inicio extends javax.swing.JFrame {
         negocio.NegocioExpedienteMedico opExpediente = new negocio.NegocioExpedienteMedico();
         try {
             rs = opExpediente.obtenerExpedientePaciente();
-            DefaultTableModel nuevoModeloTabla = new DefaultTableModel();
+            DefaultTableModel nuevoModeloTabla;
+            nuevoModeloTabla = new DefaultTableModel(){
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex){
+                    return false;
+                }
+            };
             this.tableBuscarPaciente.setModel(nuevoModeloTabla);
             String [] nombreColumnas = {"Id", "Cédula", "Nombre",
                                         "Primer Apellido", "Segundo Apellido",
@@ -2626,6 +2642,11 @@ public class Inicio extends javax.swing.JFrame {
         } 
     }
 
+    /**
+     * Verifica o realiza una validación de los campos del formulario, con el
+     * propósito de conocer si están vacíos.
+     * @return boolean value
+     */
     public boolean verificarVacios()
     {
         boolean vacio = true;
@@ -2669,7 +2690,11 @@ public class Inicio extends javax.swing.JFrame {
         return vacio;
     }// fin del metodo verificarVacios
     
-    
+    /**
+     * Este método retorna el paciente seleccionado para poder efectuar un 
+     * reconocimiento médico general en la pestaña de consulta médica.
+     * @return pacienteActual 
+     */
     public String getPacienteActual()
     {
         return pacienteActual;

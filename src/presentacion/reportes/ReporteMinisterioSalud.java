@@ -24,6 +24,14 @@ public class ReporteMinisterioSalud {
     private Sheet hoja;
     private Sheet hoja2;
 
+    /**
+     * Este método se encarga de generar el reporte que se entregará al ministerio
+     * de salud, para realizar la confección del mismo se requiere una plantilla
+     * en excel, la cual se escribe y se guarda una vez que se han realizado los 
+     * calculos.
+     * @param dateDesde
+     * @param dateHasta
+     */
     public void generarReporteMS(String dateDesde, String dateHasta){
         negocio.NegocioReportes reporte  = new negocio.NegocioReportes();
         reporte.reporteMs(dateDesde, dateHasta);
