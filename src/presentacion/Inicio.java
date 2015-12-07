@@ -2204,8 +2204,14 @@ public class Inicio extends javax.swing.JFrame {
             entidad.Cita cita = new entidad.Cita();
             cita.setHora(hora);
             cita.setFechaConsulta(fecha);
-            negocio.NegocioCita eliCita = new negocio.NegocioCita();
-            eliCita.eliminarCita(cita);
+            negocio.NegocioCita oCita = new negocio.NegocioCita();
+            String idCitaPaciente = oCita.idCitaPaciente(fecha, hora);
+            if(!idCitaPaciente.equals("")){
+                oCita.eliminarCitaPaciente(idCitaPaciente);
+                oCita.eliminarCita(cita);
+            }
+            else
+                oCita.eliminarCita(cita);
             cargarActividadesAgenda();
         }
         else
@@ -2531,6 +2537,15 @@ public class Inicio extends javax.swing.JFrame {
             limpiarLabGab();
     }//GEN-LAST:event_panelConsultaMedicaStateChanged
 
+    private void limpiarAgenda(){
+        int nFilas = agendaTabla.getRowCount();
+        int cuentaFila = 0;
+        while(cuentaFila < nFilas){
+            agendaTabla.setValueAt(null, cuentaFila, 1);
+            cuentaFila ++;
+        }
+    }
+    
     private void limpiarLabGab() {
         textRutaLabGab.setText("");
         panelImagenLabGab.removeAll();
@@ -2604,6 +2619,7 @@ public class Inicio extends javax.swing.JFrame {
     }
     private void cargarActividadesAgenda(){
         // DEPURAR CODIGO.
+        limpiarAgenda();
         String fechaSeleccionada;
         fechaSeleccionada = "'" +obtenerFechaCalendario() + "'";
         final String arregloHoras [] = {"08:00","08:15","08:30", "08:45", "09:00", 
