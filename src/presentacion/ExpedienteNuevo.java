@@ -783,7 +783,8 @@ jPanel9Layout.setHorizontalGroup(
                 break;
             case 1: 
                 setPanel3(selectedIndex); 
-             
+                btnExpedienteNuevoGuardar.setEnabled(true);
+                btnSiguiente.setEnabled(false);
                 break;
         }
     }//GEN-LAST:event_btnSiguienteActionPerformed
@@ -1084,8 +1085,8 @@ jPanel9Layout.setHorizontalGroup(
         String tratamiento = textTratamiento.getText();
         String vacuna = textVacunaTipo.getText();
         String medicamento = textMedicamentos.getText();
-            if(!alergiaNombre.equals("") || !alergiaDescrip.equals("")
-               || !tratamiento.equals("") || !vacuna.equals("") || !medicamento.equals("")){
+            if(alergiaNombre.equals("") || alergiaDescrip.equals("")
+               || tratamiento.equals("") || vacuna.equals("") || medicamento.equals("")){
                 confirmacion = JOptionPane.showConfirmDialog(this, "Esta seguro en dejar los campos en blanco.");
                 if(confirmacion == 0)
                     return true;
