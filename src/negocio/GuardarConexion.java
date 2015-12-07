@@ -6,8 +6,9 @@ import java.io.PrintWriter;
 import java.util.Map;
 
 /**
- *
+ * Esta clase se encarga de guardar los datos para realizar la conexión cliente-servidor
  * @author cooper15
+ * @version 1.0, 06/12/2015
  */
 public class GuardarConexion {
     Map<String, String> datos;
@@ -15,6 +16,10 @@ public class GuardarConexion {
     FileWriter fichero = null;
     PrintWriter printer = null;
         
+    /**
+     * Este método guarda los datos de la conexión
+     * @param datos de tipo Map
+     */
     public GuardarConexion(Map<String, String> datos){
        this.datos = datos;
     }
@@ -39,6 +44,10 @@ public class GuardarConexion {
             }
         }
     }
+
+    /**
+     * Este metodo guarda el fichero
+     */
     public void guardar(){
         crearArchivo();
     }

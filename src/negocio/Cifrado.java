@@ -2,8 +2,9 @@
 package negocio;
 import org.jasypt.util.password.BasicPasswordEncryptor;
 /**
- *
+ * Esta clase se encarga de cifrar datos sensibles
  * @author cooper15
+ * @version 1.0, 03/12/2015
  */
 public class Cifrado {
 
