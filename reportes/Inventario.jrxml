@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Inventario3" pageWidth="612" pageHeight="792" columnWidth="470" leftMargin="71" rightMargin="71" topMargin="56" bottomMargin="71" uuid="3b9ab953-4ec9-4557-b49a-728a5c2269ff">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIGOS"/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<queryString>
+		<![CDATA[SELECT
+     IFNULL(inventario.`tamano`,"-") AS inventario_tamano,
+     inventario.`id` AS inventario_id,
+     inventario.`nombre` AS inventario_nombre,
+     inventario.`cantidad` AS inventario_cantidad,
+     inventario.`viaAdministracion` AS inventario_viaAdministracion
+FROM
+     `inventario` inventario
+ORDER BY
+     tamano ASC]]>
+	</queryString>
+	<field name="inventario_nombre" class="java.lang.String"/>
+	<field name="inventario_cantidad" class="java.lang.Integer"/>
+	<field name="inventario_viaAdministracion" class="java.lang.String"/>
+	<field name="inventario_tamano" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="115">
+			<frame>
+				<reportElement mode="Opaque" x="-70" y="0" width="611" height="110" backcolor="#FFFFFF" uuid="9a951fd5-0e61-42df-bc27-e9c52bfae1be"/>
+				<staticText>
+					<reportElement x="445" y="0" width="95" height="37" forecolor="#000000" uuid="37859765-0f1d-42e5-9ccd-4c3332e8cfa1"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Gestor de la Oficina de Salud]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="170" y="0" width="80" height="30" uuid="a9b04879-bb47-48ae-b790-7cbb4fc6ae89"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Vicerrectoría de Vida Estudiantil]]></text>
+				</staticText>
+				<image>
+					<reportElement x="381" y="0" width="59" height="38" uuid="35fcac00-5d8d-4544-a7d6-df6f44dc6250"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/sigos.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement x="70" y="0" width="80" height="50" uuid="3e6447bd-c65e-453b-af02-5319346f8eaa"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/escudo.png"]]></imageExpression>
+				</image>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="70" y="100" width="470" height="1" uuid="1ae6b127-bd0c-4606-903f-e4b295f1f916"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="260" y="0" width="80" height="30" uuid="b8966f7e-deb2-4478-aa9c-593becc9c27c"/>
+					<text><![CDATA[Área de servicios médicos]]></text>
+				</staticText>
+				<image>
+					<reportElement x="250" y="0" width="10" height="30" uuid="c0c11cc3-9c04-45bf-bc9c-60019f90eefd"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/raya.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement x="160" y="0" width="10" height="30" uuid="135a4dfb-c658-452a-8c85-6e861454e939"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/raya.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="210" y="70" width="220" height="30" uuid="b56c6906-95ef-4dd2-a2ce-24835c6cddc5"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reporte Inventario]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="28">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="130" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="b8c83e28-89f4-4265-8f98-f419f7f01762"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="130" y="1" width="80" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="c1421e3f-c3d3-495b-ab9f-561150d48905">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="211" y="1" width="149" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="98dddf43-5a9f-40db-b1d4-605f5bcaba20">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Vía de administración]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="360" y="0" width="110" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="837a8eaf-a846-4a91-ad61-e402b1ec59d0">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tamaño]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="1" y="20" width="469" height="1" uuid="7f7f29c1-0244-4e42-b418-5e5e46c4eb73"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="130" y="0" width="80" height="20" uuid="b2db1675-68eb-4c21-bce6-7b8a236f41bd">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{inventario_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="211" y="0" width="149" height="20" uuid="81c82543-9b36-4cd6-94d1-8d6a843f09e0">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{inventario_viaAdministracion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="360" y="0" width="110" height="20" uuid="463ccbae-0da6-495d-8aee-ddffde945c57">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{inventario_tamano}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="1" y="20" width="469" height="1" uuid="e1b0a05b-513f-471d-9692-e9ed97e3b182"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="130" height="20" uuid="5e98582f-36c1-422b-a812-a75b24867978"/>
+				<textFieldExpression><![CDATA[$F{inventario_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="18">
+			<textField evaluationTime="Report">
+				<reportElement mode="Transparent" x="430" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="72f3efa7-9a2e-423d-b897-b3946299d616"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Opaque" x="0" y="4" width="100" height="13" uuid="e9d9707f-225c-43c2-8f31-e7d92894cafd"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="365" y="4" width="65" height="13" backcolor="#FFFFFF" uuid="d3500f48-39e0-4eb6-aba0-1ee472a8b9ee"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
