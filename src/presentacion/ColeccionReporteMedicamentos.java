@@ -12,6 +12,12 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * Esta clase representa una colección de medicamentos del inventario que se han otorgado a los pacientes.
+ * Es un uso del patrón de diseño JavaBean
+ * @author QUINCHO
+ * @version 1.0, 06/12/2015
+ */
 public class ColeccionReporteMedicamentos 
 {
     private /*static*/ List<ReporteMedicamentosBean>  listaDeMedicamentos = new ArrayList<>(); //  Aqui se guradaran todas los objetos de el reporte
@@ -20,7 +26,11 @@ public class ColeccionReporteMedicamentos
     private  int totalEstudiantes;
     private  int totalDocentes;
     
-    
+    /**
+     * Llena la colección con un Bean (objeto que se desea insertar en la colección)
+     * @param fechaDesde para filtrar la consulta
+     * @param fechaHasta para filtrar la consulta
+     */
     public  void llenarColeccion(String fechaDesde, String fechaHasta)
     {
         ReporteMedicamentosBean objReporteMedicamentosBean;
@@ -95,7 +105,10 @@ public class ColeccionReporteMedicamentos
         llenarColeccion();
         return listaDeMedicamentos;
     }// fin del metodo cargarMedicamentosALaColeccion*/
-    
+
+    /**
+     * Imprime la colección
+     */
     public void imprimirLista()
     {
         Iterator iter = listaDeMedicamentos.iterator();
@@ -111,8 +124,12 @@ public class ColeccionReporteMedicamentos
         }// fin del while
     }// fin del metodo imprimirLista
     
-    //El siguiente metodo oredena la lista en orden alfabetico por el nombre de medicamento
-    @SuppressWarnings("Convert2Lambda")
+    //
+
+    /**
+     * El siguiente metodo oredena la lista o colección en orden alfabetico por el nombre de medicamento
+     */
+        @SuppressWarnings("Convert2Lambda")
     public void ordenarLista()
     {
         Collections.sort(listaDeMedicamentos, new Comparator<ReporteMedicamentosBean>()
@@ -126,6 +143,12 @@ public class ColeccionReporteMedicamentos
         );
     }// fin del metodo ordenarLista
     
+    /**
+     * Método encargado de llenar el reporte con la colección
+     * @param fechaDesde para filtrar la consulta
+     * @param fechaHasta para filtrar la consulta
+     * @return
+     */
     public List<ReporteMedicamentosBean> cargarMedicamentosALaColeccionNoStatic(String fechaDesde, String fechaHasta)
     {
         llenarColeccion(fechaDesde, fechaHasta);

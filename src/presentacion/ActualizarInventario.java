@@ -5,11 +5,22 @@ package presentacion;
 import entidad.Inventario;
 import negocio.NegocioInventario;
 
+/**
+ *
+ * @author QUINCHO
+ */
 public class ActualizarInventario extends javax.swing.JDialog 
 {
     private String id;   // en esta variable se guardara el "id" del registro a actualizar
     // Creates new form ActualizarInventario
-    public ActualizarInventario(java.awt.Frame parent, boolean modal, Inventario registroInventario) 
+ 
+    /**
+     * Constructor que crea la ventana modal
+     * @param parent de tipo Frame
+     * @param modal 
+     * @param registroInventario de tipo Inventario que contiene el obejeto a actualizar
+     */
+        public ActualizarInventario(java.awt.Frame parent, boolean modal, Inventario registroInventario) 
     {
         super(parent, modal);
         initComponents();
@@ -144,6 +155,10 @@ public class ActualizarInventario extends javax.swing.JDialog
         actualizarInventario();
     }//GEN-LAST:event_btnAceptarActionPerformed
     
+    /**
+     * Este metodo carga las variable del objeto Inventario en los componentes de la interfaz
+     * @param registroInventario de tipo Inventario que representa los datos
+     */
     public void cargarRegistro(Inventario registroInventario)
     {
         txtNombre.setText(registroInventario.getNombre());
@@ -152,12 +167,19 @@ public class ActualizarInventario extends javax.swing.JDialog
         txtViaDeAdministracion.setText(registroInventario.getViaAdministracion());
     }// fin del metodo cargarRegistro
     
+    /**
+     * Llama al metodo obtenerId de la capa de negocio para decidir que registro actualizar
+     * @return un String que representa el id(identificador) del registro
+     */
     public String obtenerId()
     {
         NegocioInventario objetoNegocioInventario = new NegocioInventario();
         return objetoNegocioInventario.obtenerId(txtNombre.getText());
     }// fin del metodo obtenerId
     
+    /**
+     * Actualiza el registro del Inventario
+     */
     public void actualizarInventario()
     {
         Inventario objetoInventario = new Inventario();
@@ -170,6 +192,10 @@ public class ActualizarInventario extends javax.swing.JDialog
         objNegocioInventario.actualizarInventario(id, objetoInventario);
     }// fin del metodo actualizarInventario
     
+    /**
+     * No sirvo para nada estoy de adorno o por si algún día me deciden ejecutar
+     * @param args
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

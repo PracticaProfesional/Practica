@@ -9,15 +9,16 @@ import javax.swing.JOptionPane;
 import negocio.NegocioUsuario;
 
 /**
- *
+ * Esta clase permite al usuario gestionar usuarios
  * @author cooper15
+ * @version 1.0, 06/12/2015
  */
 public class CrearUsuario extends javax.swing.JDialog {
 
     /**
      * Creates new form CreaModificaUsuario
-     * @param parent
-     * @param modal
+     * @param parent ventana padre
+     * @param modal establece la modalidad de la ventana.
      */
     public CrearUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

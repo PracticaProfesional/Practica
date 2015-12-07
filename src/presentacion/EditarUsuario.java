@@ -19,13 +19,14 @@ import java.util.LinkedList;
 import javax.swing.DefaultListModel;
 
 /**
- *
+ * Permite al usurio editar la información de un usuario
  * @author cooper15
+ * @version 1.0, 06/12/2015
  */
 public class EditarUsuario extends javax.swing.JPanel {
     LinkedList<entidad.Usuario> listaUsuario;
     /**
-     * Creates new form EditarUsuario
+     * Crea nuevo formulario EditarUsuario
      */
     public EditarUsuario() {
         initComponents();

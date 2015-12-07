@@ -7,13 +7,24 @@ import entidad.Inventario;
 import javax.swing.JOptionPane;
 import negocio.NegocioInventario;
 
-
+/**
+ * Esta clase cargar la interfaz para permitir al usuario agregar un registro
+ * en el inventario con la capa de presentación
+ * @author QUINCHO
+ * @version 1.0, 06/12/2015
+ */
 public class AgregarInventario extends javax.swing.JDialog 
 {
     DefaultTableModel modelo = new DefaultTableModel();
     
     // Creates new form AgregarInventario
-    public AgregarInventario(java.awt.Frame parent, boolean modal) 
+ 
+    /**
+     * Carga la ventana modal
+     * @param parent ventana padre
+     * @param modal establece la modalidad de la ventana.
+     */
+        public AgregarInventario(java.awt.Frame parent, boolean modal) 
     {
         super(parent, modal);
         initComponents();
@@ -267,6 +278,10 @@ public class AgregarInventario extends javax.swing.JDialog
         return arregloInventario;
     }// fin del metodo obtener datos tabla
     
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) 
     {
         /* Set the Nimbus look and feel */

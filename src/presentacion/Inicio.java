@@ -49,7 +49,7 @@ public class Inicio extends javax.swing.JFrame {
     private int loginUser;
     
     /**
-     *
+     * Constructor sin argumentos
      */
     public Inicio() {
         initComponents();
@@ -58,7 +58,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * Establece el usuraio
      * @param loginUser
      */
     public void setUser(int loginUser){

@@ -12,8 +12,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Esta clase permite al usuario tener un lista de espera de atención de pacientes
  * @author cooper15
+ * @version 1.0, 06/12/2015
  */
 public class PacientesConsulta extends javax.swing.JDialog {
 

@@ -5,12 +5,24 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import negocio.NegocioPadecimiento;
 
+/**
+ * Esta clase carga la ventana para que el usuario pueda agregar padecimientos a los antecedentes
+ * de un paciente
+ * @author QUINCHO
+ * @version 1.0, 06/12/2015
+ */
 public class CatalogoPadecimientos extends javax.swing.JDialog
 {
     String arreglo [] = new String [21];
     private int contador;  // contador de los padecimientos seleccionados
     NegocioPadecimiento objetoPadecimiento = new NegocioPadecimiento(); /* objeto creado para llamar a sus metodos
                                                                          desde distintos metodos */
+
+    /**
+     * Constructor de la clase
+     * @param parent ventana padre
+     * @param modal establece la modalidad de la ventana.
+     */
     public CatalogoPadecimientos(java.awt.Dialog parent, boolean modal) 
     {
         super(parent, modal);
@@ -683,8 +695,10 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         txtEnfermedadesMentales.setEditable(estado);
     }//GEN-LAST:event_cbMentalesActionPerformed
 
-    // Este metodo nos retorna el numero de padecimientos seleccionados para su posterior uso
-    public void obtenerNumeroPadecimientos()
+    /**
+     * Este metodo nos retorna el numero de padecimientos seleccionados para su posterior uso
+     */
+        public void obtenerNumeroPadecimientos()
     { 
         if (chbVertigo.isSelected())
         {
@@ -886,7 +900,13 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     }// fin del metodo obtnerNumeroPadecimientos
     
     // metodo para cargar  todos los id seleccionados en un arrglo
-    public int [] cargarIdsAArreglo()
+
+    /**
+     * Este método retorno un arreglo con todos los padecimientos agregados a los antecedetes
+     * del paciente
+     * @return un arreglo de enteros que contiene los padeciemientos
+     */
+        public int [] cargarIdsAArreglo()
     {
         int arregloIds [] = new int [contador];
         
@@ -898,6 +918,10 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         return arregloIds;
     }// fin del metodo obtenerIds
     
+    /**
+     * Verifica que los campos de texto no se queden vacios
+     * @return un booleano 
+     */
     public boolean verificarVacios()
     {
         boolean vacio = true;
@@ -945,7 +969,10 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         return vacio;
     }// fin del metodo verificarVacios
     
-    
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) 
     {
         /* Set the Nimbus look and feel */
@@ -992,11 +1019,20 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         );// fin del metodo invokeLater
     }// fin del main
     
+    /**
+     * Ontiene el valor de la variable global contador
+     * @return entero
+     */
     public int obtenerContador()
     {
         return contador;
     }// fin del metodo obtenerContador
 
+    /**
+     * Determin si ha seleccionado un combo box
+     * @param comboGenerico
+     * @return
+     */
     public boolean seleccionaCombo(JComboBox comboGenerico)
     {
         String seleccionado;

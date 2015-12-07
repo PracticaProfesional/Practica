@@ -10,12 +10,23 @@ import java.sql.SQLException;
 import entidad.Inventario;
 import javax.swing.JOptionPane;
 
+/**
+ * Esta clase permite al usuario gestionar todo lo correspondiente con el inventario
+ * @author QUINCHO
+ * @version 1.0, 06/12/2015
+ */
 public class ContenedorInventario extends javax.swing.JPanel 
 {   
     java.awt.Frame parent;
     private int filaSeleccionada;
     
-    /*Creates new form ContenedorInventario*/
+    
+
+    /**
+     * Crea nuevo formulario ContenedorInventario
+     * @param parent ventana padre
+     */
+    
     public ContenedorInventario(java.awt.Frame parent) 
     {   
         this.parent = parent;
@@ -247,6 +258,9 @@ public class ContenedorInventario extends javax.swing.JPanel
         }// fin del if
     }//GEN-LAST:event_btnDescontarActionPerformed
     
+    /**
+     * Carga los registros del inventario existentes en la base de datos en el formulario(JTable)
+     */
     public void cargarInventario()
     {
         NegocioInventario objNegocioInventario = new NegocioInventario();
@@ -312,8 +326,11 @@ public class ContenedorInventario extends javax.swing.JPanel
         return row;
     }// fin del metodo clickEnRegistro
     
-    // Este meto obtiene los valores de la fila seleccionada en la tabla retorna un objeto de tipo inventario
-    public Inventario obtenerRegistroSeleccionado()
+    /**
+     * Este método obtiene los valores de la fila seleccionada en la tabla retorna un objeto de tipo inventario
+     * @return un objeto Inventario
+     */
+        public Inventario obtenerRegistroSeleccionado()
     {
         Inventario objeto = new Inventario();
         
@@ -362,6 +379,11 @@ public class ContenedorInventario extends javax.swing.JPanel
         objNegocioInventario.eliminarDelInventario(nombre);
     }// fin del metodo eliminarDelInventario
     
+    /**
+     * Este método permiteo al usuario descontar del inventario
+     * @param nombre tipo String que representa el nombre del insumo
+     * @param cantidad tipo String que representa la cantidad a descontar del insumo
+     */
     public void descontarDelInventario(String nombre, String cantidad)
     {
         NegocioInventario objNegocioInventario = new NegocioInventario();

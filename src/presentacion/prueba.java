@@ -6,8 +6,9 @@
 package presentacion;
 
 /**
- *
+ * Esta clase esta de prueba
  * @author Paula Yacira
+ * @version 1.0, 06/12/2015
  */
 public class prueba extends javax.swing.JDialog {
 

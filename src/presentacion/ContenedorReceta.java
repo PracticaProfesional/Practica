@@ -11,6 +11,11 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Esta clase permite al usuario gestionar todo lo correspondiente a las recetas
+ * @author QUINCHO
+ * @version 1.0, 06/12/2015
+ */
 public class ContenedorReceta extends javax.swing.JPanel 
 {
     private String idExpediente;   // esta variable global se utiliza para pasar por parametro al procedimiento
@@ -20,7 +25,9 @@ public class ContenedorReceta extends javax.swing.JPanel
     DefaultTableModel modelo = new DefaultTableModel();
     int cantidades [];    // se guardaran las cantidades que estan en la tabla inventario de la base de datos
     
-    
+    /**
+     * Constructor de la clase sin argumentos
+     */
     public ContenedorReceta()
     {
         initComponents();
@@ -372,6 +379,12 @@ public class ContenedorReceta extends javax.swing.JPanel
         }// fin del catch
     }//GEN-LAST:event_btnRemoverActionPerformed
     
+    /**
+     * Carga los campos de texto con la consulta médica correspondiente
+     * @param pacienteActual nombre del paciente
+     * @param fechaActual fecha de la consulta médica
+     * @param idExpediente el identificador del expediente
+     */
     public void cargarCamposDeTexto(String pacienteActual, String fechaActual, String idExpediente)
     {
         txtNombre.setText(pacienteActual);
@@ -398,6 +411,9 @@ public class ContenedorReceta extends javax.swing.JPanel
         objNegocioConsultaMedica.insertarRecetaEnConsulta(idExpediente, fechaActual, idReceta);
     }// fin del metodo insertarRecetaConsulta
     
+    /**
+     * Obtiene ela receta de la base de datos
+     */
     public void obtenerReceta()
     {
         NegocioReceta objNegocioReceta = new NegocioReceta();
@@ -448,6 +464,9 @@ public class ContenedorReceta extends javax.swing.JPanel
         }// fin del catch
     }// fin del metodo cargarMedicamentosEnComboBox
     
+    /**
+     * Carga filas que contienen información de los medicamentos en un JTable
+     */
     public void cargarFilaEnTabla()
     {
         if ((cmbMedicamentos.getSelectedIndex() == 0) || txtCantidad.getText().equals(""))
@@ -485,6 +504,9 @@ public class ContenedorReceta extends javax.swing.JPanel
         }// fin del else
     }// fin del metodo cargarFilaEnTabla
     
+    /**
+     * Inserta receta física en la base de datos
+     */
     public void insertarRecetaFisica()
     {
         NegocioConsultaMedica objNegocioConsultaMedica = new NegocioConsultaMedica();
@@ -501,9 +523,14 @@ public class ContenedorReceta extends javax.swing.JPanel
         }// fin del for
     }// fin del metodo insertarRecetaFisica
     
-    // El siguiente metodo validarCantidad valida el campo de texto de cantidad con expresiones regulare para que
-    // no se pueda ingresar un caracter que no sean numeros, ya que el de dejar en blanco se valida desde el metod cargarFila
-    public boolean validarCantidad()
+    
+
+    /**
+     * El siguiente metodo validarCantidad valida el campo de texto de cantidad con expresiones regulare para que 
+     * no se pueda ingresar un caracter que no sean numeros, ya que el de dejar en blanco se valida desde el metod cargarFila
+     * @return un booleano
+     */
+        public boolean validarCantidad()
     {
         if (txtCantidad.getText().matches("[1-9]{1}([0-9])?"))
             return true;
@@ -512,8 +539,11 @@ public class ContenedorReceta extends javax.swing.JPanel
             return false;
     }// fin del metodo validarCantidad
     
-    // El siguiente metodo limpia todos los componentes, (estado inicial)
-    public void limpiar()
+
+    /**
+     * El siguiente metodo limpia todos los componentes, (estado inicial)
+     */
+        public void limpiar()
     {
         txtNombre.setText("");
         txtFecha.setText("");
