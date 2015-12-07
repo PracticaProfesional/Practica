@@ -192,9 +192,8 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="chbCambiarPassword">
           <Properties>
-            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Cambiar Password"/>
-            <Property name="toolTipText" type="java.lang.String" value="No deseleccione este recuadro"/>
+            <Property name="toolTipText" type="java.lang.String" value="Seleccione si desea cambiar la contrase&#xf1;a"/>
             <Property name="hideActionText" type="boolean" value="true"/>
             <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>

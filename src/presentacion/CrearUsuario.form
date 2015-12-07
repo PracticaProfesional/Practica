@@ -97,8 +97,9 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="chbCifrar">
       <Properties>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Cifrar Contrase&#xf1;a"/>
-        <Property name="toolTipText" type="java.lang.String" value="Garantiza mayor seguridad en la base de datos."/>
+        <Property name="toolTipText" type="java.lang.String" value="Mantega Seleccionado"/>
         <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
     </Component>
