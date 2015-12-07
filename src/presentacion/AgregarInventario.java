@@ -24,7 +24,7 @@ public class AgregarInventario extends javax.swing.JDialog
      * @param parent ventana padre
      * @param modal establece la modalidad de la ventana.
      */
-        public AgregarInventario(java.awt.Frame parent, boolean modal) 
+    public AgregarInventario(java.awt.Frame parent, boolean modal) 
     {
         super(parent, modal);
         initComponents();
@@ -186,6 +186,11 @@ public class AgregarInventario extends javax.swing.JDialog
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,21 +228,29 @@ public class AgregarInventario extends javax.swing.JDialog
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         
-        String fila [] = new String [4];
+        if (validarCantidad())
+        {
+            String fila [] = new String [4];
         
-        fila [0] = txtNombre.getText();      // ingresa cada campo de el formulario en el arreglo
-        fila [1] = txtCantidad.getText();   // para posteriormente ingresar el arreglo como una fila
-        fila [2] = txtTamanio.getText();
-        fila [3] = txtViaDeAdministracion.getText();
+            fila [0] = txtNombre.getText();      // ingresa cada campo de el formulario en el arreglo
+            fila [1] = txtCantidad.getText();   // para posteriormente ingresar el arreglo como una fila
+            fila [2] = txtTamanio.getText();
+            fila [3] = txtViaDeAdministracion.getText();
         
-        modelo.addRow(fila);
-        tblInventarioAgregar.setModel(modelo);
+            modelo.addRow(fila);
+            tblInventarioAgregar.setModel(modelo);
         
-        // Se limpian los campos despues de cada ingreso
-        txtNombre.setText(null);
-        txtCantidad.setText(null);
-        txtTamanio.setText(null);
-        txtViaDeAdministracion.setText(null);
+            // Se limpian los campos despues de cada ingreso
+            txtNombre.setText(null);
+            txtCantidad.setText(null);
+            txtTamanio.setText(null);
+            txtViaDeAdministracion.setText(null);
+        }// fin del if 
+        
+        else
+            JOptionPane.showMessageDialog(null, "Dato incorrecto, solo se pueden ingresar"
+                        + " numeros enteros en el campo cantidad y mayores que cero", 
+                    "Información", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
@@ -261,6 +274,11 @@ public class AgregarInventario extends javax.swing.JDialog
         
         this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
     
     private Inventario [] obtenerDatosTablaInventarioAgregar()
     {
@@ -278,6 +296,14 @@ public class AgregarInventario extends javax.swing.JDialog
         return arregloInventario;
     }// fin del metodo obtener datos tabla
     
+    private boolean validarCantidad()
+    {
+        if (txtCantidad.getText().matches("[1-9]{1}([0-9])?"))
+            return true;
+        
+        else
+            return false;
+    }// fin del metodo validarCantidad
     /**
      *
      * @param args

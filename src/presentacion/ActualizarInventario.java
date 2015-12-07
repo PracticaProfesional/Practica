@@ -3,6 +3,7 @@
 package presentacion;
 
 import entidad.Inventario;
+import javax.swing.JOptionPane;
 import negocio.NegocioInventario;
 
 /**
@@ -20,7 +21,7 @@ public class ActualizarInventario extends javax.swing.JDialog
      * @param modal 
      * @param registroInventario de tipo Inventario que contiene el obejeto a actualizar
      */
-        public ActualizarInventario(java.awt.Frame parent, boolean modal, Inventario registroInventario) 
+    public ActualizarInventario(java.awt.Frame parent, boolean modal, Inventario registroInventario) 
     {
         super(parent, modal);
         initComponents();
@@ -119,6 +120,11 @@ public class ActualizarInventario extends javax.swing.JDialog
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,7 +159,17 @@ public class ActualizarInventario extends javax.swing.JDialog
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         
         actualizarInventario();
+        
+        JOptionPane.showMessageDialog(null, "El registro se actulizó con éxito", 
+                    "Información", JOptionPane.INFORMATION_MESSAGE);
+        
+        this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     /**
      * Este metodo carga las variable del objeto Inventario en los componentes de la interfaz
@@ -163,6 +179,10 @@ public class ActualizarInventario extends javax.swing.JDialog
     {
         txtNombre.setText(registroInventario.getNombre());
         txtCantidad.setText(Integer.toString(registroInventario.getCantidad()));
+        
+        if (registroInventario.getTamanio().isEmpty())
+            txtTamanio.setEnabled(false);
+        
         txtTamanio.setText(registroInventario.getTamanio());
         txtViaDeAdministracion.setText(registroInventario.getViaAdministracion());
     }// fin del metodo cargarRegistro

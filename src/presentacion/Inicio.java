@@ -2240,7 +2240,7 @@ public class Inicio extends javax.swing.JFrame {
             // Evita que se agregue el panel mas de una vez.
             if(tabInventario.getComponentCount() <= 0){
                 ContenedorInventario ci = new ContenedorInventario(this);
-                tabInventario.addTab("Medicamentos & Utensilios", ci); 
+                tabInventario.addTab("Medicamentos e Insumos", ci); 
             }      
         }
         if(panelPrincipal.getSelectedIndex() == 2){
