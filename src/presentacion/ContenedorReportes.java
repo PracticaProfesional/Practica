@@ -200,9 +200,15 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 break;
                 
             case 2:
+                dtChDesde.setEnabled(true);
+                dtChHasta.setEnabled(true);
+                textCedula.setEnabled(true);
                 break;
                 
             case 3:
+                dtChDesde.setEnabled(true);
+                dtChHasta.setEnabled(true);
+                textCedula.setEnabled(true);
                 break;
                 
             case 4:
@@ -285,8 +291,9 @@ public class ContenedorReportes extends javax.swing.JPanel {
     
     private void reporteInventario()
     {
-        ReporteInventario objReporteInventario = new ReporteInventario();
-        objReporteInventario.generarReporte();
+        final String ruta = "src/presentacion/reportes/Inventario.jasper";
+        CrearReporte reporte = new CrearReporte();
+        reporte.generarReporte(null, ruta);
     }// fin del metodo reporeteInventario
     
     private String obtenerFechaCalendario(datechooser.beans.DateChooserCombo dt) {
