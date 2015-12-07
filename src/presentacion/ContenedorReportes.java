@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import presentacion.reportes.ReporteMinisterioSalud;
 import presentacion.reportes.CrearReporte;
+import presentacion.reportes.ReporteInventario;
 
 /**
  *
@@ -221,6 +222,9 @@ public class ContenedorReportes extends javax.swing.JPanel {
             case 1:
                 reporteCitas();
                 break;
+            case 2:
+                reporteInventario();
+                break;
             case 3:
                 CrearReporte objCR = new CrearReporte();
                 objCR.generarReporteMedicamentosXPaciente(RUTA, obtenerFechaCalendario(dtChDesde), obtenerFechaCalendario(dtChHasta));
@@ -234,7 +238,7 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 dic.put("cedula", textCedula.getText());
                 objCR = new CrearReporte();
                 objCR.generarReporte(dic, "src/presentacion/reportes/ReporteExamenLaboratorio.jasper");
-                
+                break;
             default: JOptionPane.showMessageDialog(this,
                                 "No seleccionó ningún reporte", "Error"
                                 ,JOptionPane.ERROR_MESSAGE);
@@ -278,6 +282,12 @@ public class ContenedorReportes extends javax.swing.JPanel {
         dicc.put("pFechaDos", hasta);
         rpc.generarReporte(dicc, ruta);
     }
+    
+    private void reporteInventario()
+    {
+        ReporteInventario objReporteInventario = new ReporteInventario();
+        objReporteInventario.generarReporte();
+    }// fin del metodo reporeteInventario
     
     private String obtenerFechaCalendario(datechooser.beans.DateChooserCombo dt) {
         int year = dt.getCurrent().get(Calendar.YEAR);
