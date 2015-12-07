@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Template" pageWidth="612" pageHeight="792" columnWidth="470" leftMargin="71" rightMargin="71" topMargin="56" bottomMargin="71" uuid="9892baf2-4258-4ae0-81f6-3f157e23941c">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="8"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<group name="Group1">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group4">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="115">
+			<frame>
+				<reportElement mode="Opaque" x="-70" y="0" width="611" height="110" backcolor="#FFFFFF" uuid="5c366541-6505-4fa1-8dd7-0f992e7b27ac"/>
+				<staticText>
+					<reportElement x="445" y="0" width="95" height="37" forecolor="#000000" uuid="5c009ca7-6d09-42b5-be0b-43e551580eb1"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Gestor de la Oficina de Salud]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="170" y="0" width="80" height="30" uuid="8148b365-69e3-4ddc-993f-e61c3546c797"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Vicerrectoría de Vida Estudiantil]]></text>
+				</staticText>
+				<image>
+					<reportElement x="381" y="0" width="59" height="38" uuid="c01e9d0d-e722-4999-8841-45e14b401a92"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/sigos.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement x="70" y="0" width="80" height="50" uuid="ee27c13f-98d4-4326-a8eb-c7ede5699207"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/escudo.png"]]></imageExpression>
+				</image>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="70" y="100" width="470" height="1" uuid="468c27e7-b146-4d3b-8458-c0068ef515f4"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="260" y="0" width="80" height="30" uuid="e1d802bf-bade-4666-a763-5cff594b235f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Área de servicios médicos]]></text>
+				</staticText>
+				<image>
+					<reportElement x="250" y="0" width="10" height="30" uuid="3ae9e638-0e58-4c8c-bd3b-4c8ae02d256f"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/raya.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement x="160" y="0" width="10" height="30" uuid="0b104496-5d02-4815-90eb-32d70b9ea247"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/raya.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="210" y="70" width="220" height="30" uuid="a1f55211-fb25-47a3-bea3-c3ee913b4dc5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Titulo del reporte]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="110">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="176">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="140" width="470" height="1" uuid="059dee9b-3555-4405-b40d-4af64ecf81c4"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="470" height="2" forecolor="#666666" uuid="5105092f-84e4-4d4e-a8ea-b260cfb25998"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="50" width="470" height="1" forecolor="#666666" uuid="e89b8c1f-ed7e-42a8-a461-b8879c7638fc"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="2" width="180" height="13" uuid="6a0d5335-fffe-457c-9193-147b440f9a86"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="375" y="4" width="60" height="13" backcolor="#FFFFFF" uuid="b43ed3ab-578b-4863-a40f-c552b29deb48"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Transparent" x="435" y="4" width="35" height="13" backcolor="#E6E6E6" uuid="07598a92-2159-4148-a9ca-cb518ee2aa1c"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
