@@ -44,6 +44,8 @@ public class OperacionesLaboratorioGabinete {
             System.out.println(ex.getMessage());
         } catch(java.sql.SQLException sqle){
             System.out.println(sqle.getErrorCode() + sqle.getMessage());
+            JOptionPane.showMessageDialog(null, "Eror n° "+sqle.getErrorCode(),
+                                    "Error", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
