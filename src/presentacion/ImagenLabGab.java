@@ -22,7 +22,6 @@ public class ImagenLabGab extends javax.swing.JPanel{
     }
     @Override
     public void paint(Graphics g){
-        System.out.println(ruta);
         if(ruta != null){
             Image imagen = new ImageIcon(ruta).getImage();
             
