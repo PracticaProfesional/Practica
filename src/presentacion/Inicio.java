@@ -276,13 +276,15 @@ public class Inicio extends javax.swing.JFrame {
         tabInventario = new javax.swing.JTabbedPane();
         tabAdministrador = new javax.swing.JTabbedPane();
         menuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
         mnMantenimiento = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         mnAgregarUsuario = new javax.swing.JMenuItem();
         mnListaEspera = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        mnAyuda = new javax.swing.JMenuItem();
+        mnAcercaDe = new javax.swing.JMenuItem();
 
         popItemNuevaActividad.setText("Añadir actividad");
         popItemNuevaActividad.addActionListener(new java.awt.event.ActionListener() {
@@ -1629,10 +1631,6 @@ public class Inicio extends javax.swing.JFrame {
 
         menuBar.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
 
-        jMenu1.setText("Archivo");
-        jMenu1.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
-        menuBar.add(jMenu1);
-
         mnMantenimiento.setText("Mantenimiento");
         mnMantenimiento.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
 
@@ -1671,6 +1669,22 @@ public class Inicio extends javax.swing.JFrame {
         mnListaEspera.add(jMenuItem1);
 
         menuBar.add(mnListaEspera);
+
+        jMenu1.setText("Ayuda");
+        jMenu1.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
+
+        mnAyuda.setText("Ayuda");
+        jMenu1.add(mnAyuda);
+
+        mnAcercaDe.setText("Acerca de");
+        mnAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnAcercaDeActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnAcercaDe);
+
+        menuBar.add(jMenu1);
 
         setJMenuBar(menuBar);
 
@@ -2540,6 +2554,11 @@ public class Inicio extends javax.swing.JFrame {
             limpiarLabGab();
     }//GEN-LAST:event_panelConsultaMedicaStateChanged
 
+    private void mnAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAcercaDeActionPerformed
+        AcercaDe acerca = new AcercaDe(this, true);
+        acerca.setVisible(true);
+    }//GEN-LAST:event_mnAcercaDeActionPerformed
+
     private void limpiarAgenda(){
         int nFilas = agendaTabla.getRowCount();
         int cuentaFila = 0;
@@ -2919,7 +2938,9 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jlOjos;
     private javax.swing.JLabel lblPacienteActual;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem mnAcercaDe;
     private javax.swing.JMenuItem mnAgregarUsuario;
+    private javax.swing.JMenuItem mnAyuda;
     private javax.swing.JMenu mnListaEspera;
     private javax.swing.JMenu mnMantenimiento;
     private javax.swing.JPanel panelBtnBuscarPaciente;
