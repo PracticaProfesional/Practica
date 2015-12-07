@@ -2229,9 +2229,17 @@ public class Inicio extends javax.swing.JFrame {
             }
         }
         if(panelPrincipal.getSelectedIndex() == 0){
-            if(panelConsultaMedica.getComponentCount() < 4){
-                rc = new ContenedorReceta(); 
-                panelConsultaMedica.addTab("Receta", rc);
+            if(loginUser == 2){
+                if(panelConsultaMedica.getComponentCount() < 3){
+                    rc = new ContenedorReceta();
+                    panelConsultaMedica.addTab("Receta", rc);
+                }
+            }
+            else{
+                if(panelConsultaMedica.getComponentCount() < 4){
+                    rc = new ContenedorReceta(); 
+                    panelConsultaMedica.addTab("Receta", rc);
+                }
             }
         }
     }//GEN-LAST:event_panelPrincipalStateChanged
