@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2015-11-16T19:56:33 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubReporteCitas" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="65997a97-285e-4fa1-9b14-6f364d862cf1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="pCedula" class="java.lang.String"/>
+	<parameter name="pFechaUno" class="java.lang.String"/>
+	<parameter name="pFechaDos" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select cedulaPaciente, nombrePaciente, apellido1Paciente, fecha, motivoConsulta, diagnostico
+from ExpedienteMedico join ConsultaMedica
+on ExpedienteMedico.id = ConsultaMedica.idExpedienteMedico
+join Paciente on ExpedienteMedico.idPaciente = Paciente.id
+where cedulaPaciente = $P{pCedula}  and fecha between  $P{pFechaUno}   and  $P{pFechaDos}]]>
+	</queryString>
+	<field name="cedulaPaciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombrePaciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido1Paciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="motivoConsulta" class="java.lang.String"/>
+	<field name="diagnostico" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{cedulaPaciente}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<staticText>
+					<reportElement mode="Transparent" x="370" y="0" width="185" height="20" forecolor="#474747" backcolor="#E6E6E6" uuid="15cd9e72-ede3-4844-b1f9-35f557118ac2"/>
+					<textElement textAlignment="Left">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="3" width="180" height="20" forecolor="#454545" backcolor="#E6E6E6" uuid="bae35861-adad-4fba-ae21-1e5cb31ae21b"/>
+					<textElement textAlignment="Left">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Motivo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="185" y="3" width="175" height="20" forecolor="#474747" backcolor="#E6E6E6" uuid="99f2f046-c7a1-42cf-8d5d-983be4f1bf6f"/>
+					<textElement textAlignment="Left">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Diagnostico]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="6"/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="25">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="370" y="0" width="185" height="20" uuid="cfa529fb-dd7c-44dc-b3e2-dd0753de8357"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="180" y="0" width="175" height="20" uuid="ceb8c061-5921-4bca-9478-72aaf59aa12e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnostico}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="2" width="185" height="20" uuid="556faa19-cad4-4779-bf1e-6d5d3654561c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motivoConsulta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

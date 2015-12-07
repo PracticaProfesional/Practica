@@ -64,4 +64,14 @@ public class NegocioCita
         OperacionesCita operacionesCita = new OperacionesCita();
         operacionesCita.insertarCitaPaciente(idCita, idPaciente);
     }
+    
+    public String idCitaPaciente(String fecha, String hora){
+        OperacionesCita operacionesCita = new OperacionesCita();
+        return operacionesCita.idCitaPaciente(fecha, hora);
+    }
+    
+    public void eliminarCitaPaciente(String id){
+        OperacionesCita operacionesCita = new OperacionesCita();
+        operacionesCita.eliminaCitaPaciente(id);
+    }
 }// fin de la clase NegocioCita

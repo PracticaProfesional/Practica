@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  * Esta clase realiza todas las operaciones correspondientes a los Examenes de Laboratorio y Gabinete (Scanneo)
@@ -36,11 +37,15 @@ public class OperacionesLaboratorioGabinete {
             ps.execute();
             entraDatos.close();
             ps.close();
+            JOptionPane.showMessageDialog(null, "Imagen guardad con éxito"
+                                        ,"Atención", JOptionPane.INFORMATION_MESSAGE);
             
         } catch (FileNotFoundException ex ) {
             System.out.println(ex.getMessage());
         } catch(java.sql.SQLException sqle){
             System.out.println(sqle.getErrorCode() + sqle.getMessage());
+            JOptionPane.showMessageDialog(null, "Eror n° "+sqle.getErrorCode(),
+                                    "Error", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
