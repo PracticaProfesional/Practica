@@ -52,8 +52,9 @@ public class CrearUsuario extends javax.swing.JDialog {
 
         jLabel2.setText("Contraseña");
 
+        chbCifrar.setSelected(true);
         chbCifrar.setText("Cifrar Contraseña");
-        chbCifrar.setToolTipText("Garantiza mayor seguridad en la base de datos.");
+        chbCifrar.setToolTipText("Mantega Seleccionado");
         chbCifrar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         btnAceptar.setText("Aceptar");
