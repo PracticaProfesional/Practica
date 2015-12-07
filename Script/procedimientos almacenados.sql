@@ -723,5 +723,13 @@ BEGIN
             citapaciente.idCita  = idC;
 END
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarCitaPaciente`(idC varchar(10))
+BEGIN
+	delete 
+    from 
+		eliminarCitaPaciente
+    where 
+		id = idC;
+END
 Call ReporteDeMedicamentos('2015-11-30', '2015-12-01')
 
