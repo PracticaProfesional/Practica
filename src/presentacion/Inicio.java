@@ -2527,7 +2527,8 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLabGabLimpiarActionPerformed
 
     private void panelConsultaMedicaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelConsultaMedicaStateChanged
-        limpiarLabGab();
+        if(panelConsultaMedica.getSelectedComponent().equals(subTabLabAndGab))
+            limpiarLabGab();
     }//GEN-LAST:event_panelConsultaMedicaStateChanged
 
     private void limpiarLabGab() {
