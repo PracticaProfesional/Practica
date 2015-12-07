@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2015-11-16T18:32:45 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AntPers" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c5f8e2eb-fe07-413e-82ae-19c8048b7cc8">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="cedula" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select 
+	nombrePadecimiento as Padecimiento, 
+	nombreAlergia as Alergia, 
+	descripcionAlergia as Decripción, 
+	Vacunas.tipo as Vacuna, 
+	fechaAplicacion as Aplicación
+from 
+	Paciente join ExpedienteMedico
+    on ExpedienteMedico.idPaciente = Paciente.id
+    join AntecedentesPersonales on ExpedienteMedico.idAntecedentesPersonales =
+    AntecedentesPersonales.id
+    join `AntecedentesPersonales-Padecimientos` on AntecedentesPersonales.id = 
+    `AntecedentesPersonales-Padecimientos`.idAntecedentesPersonales
+    join Padecimientos on `AntecedentesPersonales-Padecimientos`.idPadecimientos =
+    Padecimientos.id
+    join Alergias on AntecedentesPersonales.idAlergias = Alergias.id
+    join Vacunas on AntecedentesPersonales.idVacunas = Vacunas.id
+where cedulaPaciente = $P{cedula} ]]>
+	</queryString>
+	<field name="Padecimiento" class="java.lang.String"/>
+	<field name="Alergia" class="java.lang.String"/>
+	<field name="Decripción" class="java.lang.String"/>
+	<field name="Vacuna" class="java.lang.String"/>
+	<field name="Aplicación" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="120" height="18" forecolor="#474747" uuid="866a14fa-319d-4de6-b8db-c5b35607ac5e"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Padecimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="2" width="100" height="19" forecolor="#474747" uuid="dc32b51f-77a1-4bf9-b640-3616cbd67892"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alergia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="0" width="100" height="19" forecolor="#474747" uuid="393b5f06-5752-456a-a6c2-6abb055ddc7b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Decripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="-1" width="100" height="20" forecolor="#474747" uuid="2214b9b4-b686-4125-acd2-f5be29e2905e"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vacuna]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="1" width="100" height="20" forecolor="#474747" uuid="2405ddc1-e285-4c25-9e09-a9eec8111bed"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aplicación]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="b46083c0-1b9d-431e-953b-feaa6969701b"/>
+				<textFieldExpression><![CDATA[$F{Padecimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="100" height="20" uuid="ce5255b2-fde2-4947-934d-a8cb66b2a3e9"/>
+				<textFieldExpression><![CDATA[$F{Alergia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="100" height="20" uuid="fa6fb8a5-925b-4304-8587-991aeba4c24d"/>
+				<textFieldExpression><![CDATA[$F{Decripción}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="0" width="100" height="20" uuid="c15bb0cc-9136-4210-8977-cf2b9b3aa759"/>
+				<textFieldExpression><![CDATA[$F{Vacuna}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="100" height="20" uuid="2736328c-2f26-4d1b-a959-ca9e951a615a"/>
+				<textFieldExpression><![CDATA[$F{Aplicación}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
