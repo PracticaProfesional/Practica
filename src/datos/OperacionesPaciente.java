@@ -4,11 +4,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import entidad.Paciente; // Cambiar a capa de negocio
 
+/**
+ * Esta clase realiza las operaciones correspondientes a un paciente en la base de datos
+ * @author QUINCHO
+ */
 public class OperacionesPaciente {
     
     private Conexion objetoDeConexion = new Conexion() ;
     private Statement estado;
     
+    /**
+     * Inserta campos correspondientes a paciente en la base de datos
+     * @param objetoPaciente de tipo Paciente que representa los datos a insertar
+     */
     public void insertarPaciente(Paciente objetoPaciente)
     { 
         
@@ -30,6 +38,12 @@ public class OperacionesPaciente {
             System.out.println(e.getErrorCode() + e.getMessage());
         }// fin de catch
     }// fin del metodo insertarPaciente
+
+    /**
+     * Obtiene los pacientes que tienen consulta en la fecha establecida
+     * @param date de tipo String que representa la fecha
+     * @return un objeto ResultSet que representa los registros retornados por la consulta
+     */
     public java.sql.ResultSet obtenerPacientesConsulta(String date){
         String datos = "'"+date+"'";
         objetoDeConexion = new Conexion();
@@ -44,6 +58,11 @@ public class OperacionesPaciente {
         return rs;
     }
     
+    /**
+     * Obtiene el id(identificador) de algún registro de paciente en la base de datos
+     * @param cedulaPaciente de tipo String que representa la cedula del paciente
+     * @return un String que representa el id(identificador) de un registro de paciente obtenido por la consulta
+     */
     public String obtenerIdPaciente(String cedulaPaciente){
         objetoDeConexion = new Conexion();
         java.sql.ResultSet rs = null;

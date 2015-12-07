@@ -5,13 +5,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ * Esta clase realiza operaciones correspondientes a Antecedentes Personales
  * @author cooper15
+ * @version 1.0, 06/12/2015
  */
 public class OperacionesAntecedentesPersonales {
     private Conexion objetoDeConexion;
     private Statement estado;
     
+    /**
+     * Inserta campos correspondientes a Antecedentes Personales en la base de datos
+     * @param antecPersonales de tipo AntecedentesPersonales que representa los datos de un Antecedente Personal
+     */
     public void insertarAntecedentesPersonales(AntecedentesPersonales antecPersonales){
         objetoDeConexion = new Conexion();
         String idVacuna;

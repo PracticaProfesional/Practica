@@ -8,11 +8,20 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Esta clase realiza las operaciones correspondientes a Examen Físco
+ * @author QUINCHO
+ * @version 1.0, 06/12/2015
+ */
 public class OperacionesExamenFisico 
 {
     private Conexion objetoDeConexion;
     private Statement estado;
     
+    /**
+     * Inserta campos correspondientes a Examen Físico en la base de datos
+     * @param objetoExamenFisico de tipo ExamenFisico que representa los datos de un examen físico
+     */
     public void insertarExamenFisico(ExamenFisico objetoExamenFisico) {
         objetoDeConexion = new Conexion();
        
@@ -31,6 +40,11 @@ public class OperacionesExamenFisico
        
     }// fin del metodo insertarExamenFisico
     
+    /**
+     * Este metodo permite obtener el identificador de algún registro de examen físco en la base de datos 
+     * @param id de tipo String que reprsenta el id(identificador) del registro a consultar
+     * @return un objeto ResulSet que represent los registros retornados por la consulta
+     */
     public ResultSet obtenerExamenFisico(String id){
        objetoDeConexion = new Conexion();     
        ResultSet rs = null;

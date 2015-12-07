@@ -7,14 +7,25 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Esta clase realiza las operaciones correspondientes a Inventario
+ * @author QUINCHO
+ * @version 1.0, 06/12/2015
+ */
 public class OperacionesInventario 
 {
     private Conexion objetoDeConexion;
     private Statement estado;
     
     
-    // El siguiente metodo lista el inventario existente
-    public ResultSet listarInventario() throws SQLException
+    
+
+    /**
+     * Este método retorna el inventario existente en la base de datos
+     * @return objeto ResultSet que contiene la información de registros de inventario
+     * @throws SQLException
+     */
+        public ResultSet listarInventario() throws SQLException
     {
         ResultSet rs;
         objetoDeConexion = new Conexion();
@@ -23,8 +34,13 @@ public class OperacionesInventario
         return rs;
     }// fin del metodo listarInventario
     
-    // El siguiente metodo inserta existencias del inventario en la base de datos
-    public void insertarInventario(Inventario nuevoInventario)
+    
+
+    /**
+     * Este método inserta existencias del inventario en la base de datos
+     * @param nuevoInventario de tipo Inventario que representa los datos de una existencia en el inventario
+     */
+        public void insertarInventario(Inventario nuevoInventario)
     {
         objetoDeConexion = new Conexion();
         
@@ -46,8 +62,14 @@ public class OperacionesInventario
         
     }// fin del metodo insertarInventario
     
-    // El siguiente metodo retorna el id del articulo consultado en este mismo metodo
-    public String obtenerId(String nombreInventario)
+    // 
+
+    /**
+     * Esre método retorna el id(identificador) del artículo consultado en este mismo metodo
+     * @param nombreInventario de tipo String que representa el nombre de la existencia en el inventario
+     * @return un String que representa el id(identificador) de la existencia en el inventario
+     */
+        public String obtenerId(String nombreInventario)
     {
         String id = "";
         objetoDeConexion = new Conexion();
@@ -68,6 +90,11 @@ public class OperacionesInventario
         return id;
     }// fin del metodo obtenerId
     
+    /**
+     * Actualiza un registro de inventario en la base de datos
+     * @param id de tipo String que representa el id(identificador) del registro a actualizar en el inventario
+     * @param actualizarInventario de tipo Inventario que representa los datos del registro de inventario
+     */
     public void actualizarInventario(String id, Inventario actualizarInventario)
     {
         objetoDeConexion = new Conexion();
@@ -89,6 +116,10 @@ public class OperacionesInventario
         }// fin del catch
     }// fin del metodo actualizarInventario()
     
+    /**
+     * Elimina un registro de inventario de la base de datos
+     * @param nombre de tipo String que representa el nombre del registro a eliminar del inventario
+     */
     public void eliminarDelInventario(String nombre)
     {
         objetoDeConexion = new Conexion();
@@ -105,6 +136,11 @@ public class OperacionesInventario
         }// fin del catch
     }// fin del metodo eliminarDelInventario
     
+    /**
+     * Este método descuenta la cantidad en existencia de un insumo del inventario en la base de datos
+     * @param nombre de tipo String que representa el nombre del insumo a descontar del inventario
+     * @param cantidad de tipo String que representa la cantidad que se descontará del inventario
+     */
     public void descontarDelInventario(String nombre, String cantidad)
     {
         objetoDeConexion = new Conexion();
@@ -121,6 +157,11 @@ public class OperacionesInventario
         }// fin del catch
     }// fin del metodo descontarDelInventario
     
+    /**
+     * Este método lista los medicamentos registrados en el inventario
+     * @return un objeto ResultSet que representa todos los registros retornados por la consulta
+     * @throws SQLException
+     */
     public ResultSet listarMedicamentosIventario() throws SQLException
     {
         ResultSet rs;

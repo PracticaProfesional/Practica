@@ -5,12 +5,20 @@ import entidad.ConsultaMedica;
 import java.sql.Statement;
 import java.sql.SQLException;
 
+/** 
+ * Esta clase representa las operaciones correspondientes a Consulta Médica
+ * @author QUINCHO
+ * @version 1.0, 06/12/2015
+ */
 public class OperacionesConsultaMedica 
 {
     private Conexion objetoDeConexion;
     private Statement estado;
     
-    
+    /**
+     * Inserta los campos correspondientes a Consulta Médica en la base de datos
+     * @param nuevaConsulta de tipo ConsultaMedica que representa los datos de una Consulta Medica
+     */
     public void insertarConsultaMedica(ConsultaMedica nuevaConsulta) 
     {   
         objetoDeConexion = new Conexion();
@@ -38,6 +46,12 @@ public class OperacionesConsultaMedica
         
     }// fin del metodo insertarConsultaMedica
     
+    /**
+     * Actualiza un registro de Consulta Médica en la base de datos
+     * @param idExpediente de tipo String que representa id(identificador) de Expediente Médico
+     * @param consultaMedica de tipo ConsultaMedica que representa los datos a actualiar de la Consulta Médica
+     * @param fecha de tipo String que representa la fecha
+     */
     public void actualizarConsultaMedica(String idExpediente, entidad.ConsultaMedica consultaMedica, String fecha){
         objetoDeConexion = new Conexion();
         String datos = "'"+idExpediente+"'"+","+
@@ -56,6 +70,12 @@ public class OperacionesConsultaMedica
         }
     }// fin del metodo actualizarConsultaMedica
     
+    /**
+     * Inserta una receta detro de la Consulta Médica
+     * @param idExpediente de tipo String que representa el id(identificador) de Expediente Médico
+     * @param fecha de tipo String que representa la fecha
+     * @param idReceta de tipo String que representa el id(identificador) de Receta
+     */
     public void insertarRecetaEnConsulta(String idExpediente, String fecha, String idReceta)
     {
         objetoDeConexion = new Conexion();
@@ -76,6 +96,11 @@ public class OperacionesConsultaMedica
         }// fin del catch
     }// fin del metodo insertaRecetaEnConsulta
     
+    /**
+     * Inserta los campos correspondientes de una receta físicas en la base de datos
+     * @param nombreMedicamento de tipo String que representa el nombre del medicamento
+     * @param cantidad de tipo String que representa la cantidad del medicamento
+     */
     public void insertarRecetaFisica(String nombreMedicamento, String cantidad)
     {
         objetoDeConexion = new Conexion();

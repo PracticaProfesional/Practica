@@ -6,11 +6,20 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
 
+/**
+ * Esta clase representa las operaciones correspondiente a Cita
+ * @author QUINCHO
+ * @version 1.0, 06/12/2015
+ */
 public class OperacionesCita 
 {
     private Conexion objetoDeConexion;
     private Statement estado;
  
+    /**
+     * Inserta campos correspondientes a Cita en la base de datos
+     * @param objetoCita de tipo Cita que represensta los datos de una cita
+     */
     public void insertarCita(Cita objetoCita) 
     {
         objetoDeConexion = new Conexion();
@@ -29,6 +38,12 @@ public class OperacionesCita
        }
     }// fin del metodo insertarCita
         
+    /**
+     * Obtiene un registro de Cita de la base de datos por medio de la fecha 
+     * @param fecha de String que representa la fecha de la Cita
+     * @return un objeto ResultSet que representa los registros que genera la consulta
+     * @throws SQLException 
+     */
     public ResultSet obtenerFechaConsulta(String fecha) throws SQLException{
         ResultSet rs;
         objetoDeConexion = new Conexion();
@@ -37,6 +52,10 @@ public class OperacionesCita
         return rs;
     }
     
+    /**
+     * Actualiza un registro de Cita en la base de datos
+     * @param actCita de tipo Cita que representa el registro de cita a actualizar
+     */
     public void actualizarCita(Cita actCita){
         objetoDeConexion = new Conexion();
         String datosCita = "'" + actCita.getEstado().obtenerEstadoNumero() +"'" + ","
@@ -51,6 +70,10 @@ public class OperacionesCita
         }
     }
     
+    /**
+     * Elimina un registro de Cita de la base de datos
+     * @param eliCita de tipo Cita que representa el registro de cita a eliminar
+     */
     public void eliminarCita(Cita eliCita){
         objetoDeConexion = new Conexion();
         String datosCita = "'" + eliCita.getHora() + "'" + "," 
@@ -64,6 +87,11 @@ public class OperacionesCita
         }
     }
     
+    /**
+     * Inserta campos correspondientes para realizar la asociación de una Cita con un Paciente
+     * @param idCita de tipo String que representa el id(identificador) de Cita
+     * @param idPaciente de tipo String que representa el id(identificador) de Paciente
+     */
     public void insertarCitaPaciente(String idCita, String idPaciente){
         objetoDeConexion = new Conexion();
         String datosCitaPaciente = "'" + idCita +"'" +","

@@ -1,5 +1,3 @@
-// Con esta clase logramremos la conexion a la base de datos en MySQL
-
 package datos;
 
 import java.sql.Connection;
@@ -8,10 +6,19 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Esta clase establece la conexion a la base de datos MySQL
+ * @author QUINCHO
+ * @version 1.0, 05/12/2015 
+ */
 public class Conexion {
     
     private Connection conexion;
     
+    /**
+     * Contiene todas las instrucciones para lograr establecer la conexión
+     * @return objeto Connection
+     */
     public Connection conectar()
     {
         negocio.LeerEscribirDatosConexion datos;
@@ -31,6 +38,9 @@ public class Conexion {
         
     }// fin del metodo conectar
     
+    /**
+     * Cierra la conxion con la base de datos
+     */
     public void desconectar()
     {
         try 

@@ -6,8 +6,9 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 /**
- *
+ * Esta clase realiza las operaciones correspondietes a pacecimientos en la base de datos
  * @author cooper15
+ * @version 1.0, 06/12/2015
  */
 public class OperacionesPadecimiento 
 {
@@ -15,6 +16,10 @@ public class OperacionesPadecimiento
    private Conexion objetoDeConexion;
     private Statement estado;
     
+    /**
+     * Inserta campos correpsondiente a un registro de padecimiento
+     * @param padecimiento de tipo Padecimiento que representa los datos a insertar de un padecimiento
+     */
     public void insertarPadecimiento(Padecimiento padecimiento)
     {
         objetoDeConexion = new Conexion();
@@ -32,8 +37,14 @@ public class OperacionesPadecimiento
         }// fin de catch
     }// fin del metodo insertarPadecimiento
     
-    // El siguiente metodo obtiene el id de la tabla a partir de otro atributo
-    public int obtenerId(String nombrePadecimiento)
+    // 
+
+    /**
+     * Este método obtiene el id(identificador) de la tabla padecimientos a partir de otro atributo
+     * @param nombrePadecimiento de tipo String que representa el nombre del padecimiento
+     * @return en entero que representa el id(identificador) obtenido por la consulta
+     */
+        public int obtenerId(String nombrePadecimiento)
     {
         objetoDeConexion = new Conexion();
         int id = 0;
@@ -56,9 +67,14 @@ public class OperacionesPadecimiento
         }// fin de catach
     }// fin del metodo obtenerId
     
-    // El siguiente metodo llama a un procedimiento almacenado para insertar un padecimiento siempre y cuando
-    // el padecimiento ya no se encuentre ingresado
-    public void consultarOInsertarPadecimiento(String nombrePadecimiento)
+    // 
+
+    /**
+     * Este método llama a un procedimiento almacenado para insertar un padecimiento siempre y cuando
+     * el padecimiento ya no se encuentre ingresado
+     * @param nombrePadecimiento de tipo String que representa el nombre del padecimiento
+     */
+        public void consultarOInsertarPadecimiento(String nombrePadecimiento)
     {
         objetoDeConexion = new Conexion();
         
