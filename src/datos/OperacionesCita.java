@@ -122,9 +122,10 @@ public class OperacionesCita
     }
     public void eliminaCitaPaciente(String id){
         objetoDeConexion = new Conexion();
+        String datos = "'"+id+"'";
         try{
             estado = objetoDeConexion.conectar().createStatement();
-            estado.executeQuery("eliminarCitaPaciente("+"'"+id+"'"+")");
+            estado.executeQuery("call eliminarCitaPaciente("+datos+")");
         }
         catch(SQLException sqle){
             System.err.println(sqle.getErrorCode() + sqle.getMessage());
