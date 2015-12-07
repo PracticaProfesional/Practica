@@ -120,4 +120,17 @@ public class OperacionesCita
         }
         return "";
     }
+    public void eliminaCitaPaciente(String id){
+        objetoDeConexion = new Conexion();
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("eliminarCitaPaciente("+"'"+id+"'"+")");
+        }
+        catch(SQLException sqle){
+            System.err.println(sqle.getErrorCode() + sqle.getMessage());
+        }
+        finally{
+            objetoDeConexion.desconectar();
+        }
+    }
 }// fin de la clase OperacionesCita
