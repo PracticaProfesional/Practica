@@ -705,5 +705,23 @@ BEGIN
 	order by `Consulta-Inventario`.id;
 END $
 
+-- PROCEDIMIENTO ALMACENADO PARA SELECCIONAR EL ID DE LA TABLA CITA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `seleccionarCitaPaciente`(fecha varchar(10), hora varchar(10))
+BEGIN
+    declare idC varchar(10);
+    set idC = (	select 
+                        id 
+		from 
+                        cita 
+		where 
+                        fechaConsulta = fecha and horaConsulta = hora);
+    select 
+            id 
+    from 
+            citapaciente 
+    where 
+            citapaciente.idCita  = idC;
+END
+
 Call ReporteDeMedicamentos('2015-11-30', '2015-12-01')
 
