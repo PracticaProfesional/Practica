@@ -101,7 +101,6 @@ public class EditarUsuario extends javax.swing.JPanel {
 
         btnCancelar.setText("Cancelar");
 
-        chbCambiarPassword.setSelected(true);
         chbCambiarPassword.setText("Cambiar Password");
         chbCambiarPassword.setToolTipText("No deseleccione este recuadro");
         chbCambiarPassword.setHideActionText(true);
