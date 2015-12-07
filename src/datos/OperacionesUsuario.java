@@ -7,11 +7,22 @@ import entidad.Usuario;
 import java.sql.ResultSet;
 import java.util.LinkedList;
 
+/**
+ * Esta clase realiza las operaciones correspondientes a usuario en la base de datos
+ * @author QUINCHO
+ * @version 1.0, 06/12/2015
+ */
 public class OperacionesUsuario {
     
     private Conexion objetoDeConexion;
     private Statement estado;
     
+    /**
+     * Este método obtine el id(identificador) de un registro de la tabla Usuario en la base de datos
+     * @param usuario de tipo Usuario que representa los datos del usuriao
+     * @return un objeto Usuario que representa los datos de un registro de usuario retornado por la consulta
+     * @throws SQLException
+     */
     public entidad.Usuario ObtenerIdUsuario(Usuario usuario) throws SQLException
     { 
         objetoDeConexion = new Conexion();
@@ -44,6 +55,10 @@ public class OperacionesUsuario {
         return null;
     }// fin del metodo insertarPaciente
     
+    /**
+     * Este método crea una lista enlazada de con los registros de usuarios retornados por la consulta
+     * @return un objeto LinkedList que representa un lista de usuarios
+     */
     public LinkedList<entidad.Usuario> listaUsuarios(){
         entidad.Usuario nUsuario;
         LinkedList<entidad.Usuario> listUsuario = new LinkedList<>();
@@ -67,6 +82,10 @@ public class OperacionesUsuario {
        return listUsuario; 
     }
     
+    /**
+     * Inserta un registro en la tabla Usuario en la base de datos
+     * @param nUsuario de tipo Usuario que representa los datos de un usuario a insertar en la base de datos
+     */
     public void insertarUsuario(Usuario nUsuario){
         objetoDeConexion = new Conexion();
         String datosUsuario = "'"+nUsuario.getNombreUsuario()+"'"
@@ -81,6 +100,10 @@ public class OperacionesUsuario {
         }
     }
     
+    /**
+     * Actuliza un registro de usuario en la base de datos
+     * @param eUsuario de tipo Usuario que contiene los datos actualizados del registro
+     */
     public void actualizarDatosUsuario(Usuario eUsuario){
         objetoDeConexion = new Conexion();
         String datos = "'"+eUsuario.getId()+"'" 

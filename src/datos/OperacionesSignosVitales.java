@@ -5,12 +5,20 @@ import entidad.SignosVitales;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Esta clase realiza las operaciones correspondientes a Signos Vitales en la base de datos
+ * @author QUINCHO 
+ * @version 1.0, 06/12/2015
+ */
 public class OperacionesSignosVitales
 {
     private Conexion objetoDeConexion;
     private Statement estado;
     
-    
+    /**
+     * Este metodo es el encargado de insertar los campos correspondientes a Signos Vitales en la base de datos
+     * @param objetoSignosVitales de tipo SignosVitales que representa los datos de signos vitales
+     */
     public void insertarSignosVitales(SignosVitales objetoSignosVitales) 
     {
         objetoDeConexion = new Conexion();
