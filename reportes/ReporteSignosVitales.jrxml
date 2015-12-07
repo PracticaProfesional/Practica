@@ -11,9 +11,11 @@
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="DatosSV" uuid="c8e13b7d-d9f5-428f-9409-97b2f03cd15b">
-		<property name="com.jaspersoft.studio.data.sql.tables" value="YFNpZ25vc1ZpdGFsZXNgICwxNSwxNSxiY2QxNTFmMy1mYzNkLTQwNzItYTFmYS1lOWNjYTlkZDQ2
-NGM7"/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value="YFNpZ25vc1ZpdGFsZXNgICwxNSwxNSxiY2QxNTFmMy1mYzNkLTQwNzItYTFmYS1lOWNjYTlkZDQ2 NGM7"/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIGOS"/>
 		<queryString>
 			<![CDATA[SELECT peso,
@@ -333,14 +335,14 @@ where ConsultaMedica.signosVitales = $P{id}]]>
 				<reportElement mode="Opaque" x="-70" y="0" width="611" height="110" backcolor="#FFFFFF" uuid="24865cf6-8eaf-43a2-9ba9-84b57fe1d7cc"/>
 				<staticText>
 					<reportElement x="445" y="0" width="95" height="37" forecolor="#000000" uuid="135df5a3-a7dd-4867-b2ed-00df2f0281a0"/>
-					<textElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font isBold="false"/>
 					</textElement>
 					<text><![CDATA[Sistema Gestor de la Oficina de Salud]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="170" y="0" width="80" height="30" uuid="d06732f7-c025-4a51-9e10-8767956c7a85"/>
-					<textElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font isBold="false"/>
 					</textElement>
 					<text><![CDATA[Vicerrectoría de Vida Estudiantil]]></text>
@@ -361,6 +363,7 @@ where ConsultaMedica.signosVitales = $P{id}]]>
 				</line>
 				<staticText>
 					<reportElement x="260" y="0" width="80" height="30" uuid="dfb858dd-c147-494b-b91f-cc81db51b845"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<text><![CDATA[Área de servicios médicos]]></text>
 				</staticText>
 				<image>
@@ -373,8 +376,8 @@ where ConsultaMedica.signosVitales = $P{id}]]>
 				</image>
 				<staticText>
 					<reportElement x="210" y="70" width="220" height="30" uuid="6e11c17c-a30c-4353-a564-6ac64f6f8b18"/>
-					<textElement>
-						<font isBold="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Reporte de Signos Vitales]]></text>
 				</staticText>
@@ -627,15 +630,15 @@ where ConsultaMedica.signosVitales = $P{id}]]>
 				<text><![CDATA[Nota de enfermería:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="150" y="290" width="380" height="18" uuid="53db2ecf-172e-4067-aa3e-dc8286c2da9c"/>
+				<reportElement x="150" y="290" width="320" height="18" uuid="53db2ecf-172e-4067-aa3e-dc8286c2da9c"/>
 				<textFieldExpression><![CDATA[$F{motivoConsulta}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="308" width="380" height="21" uuid="7db34a73-2d42-4b47-b83c-298e1e87c01e"/>
+				<reportElement x="150" y="308" width="320" height="21" uuid="7db34a73-2d42-4b47-b83c-298e1e87c01e"/>
 				<textFieldExpression><![CDATA[$F{descripcionSintomas}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="330" width="380" height="20" uuid="4e1a1660-dfdc-4f5b-a6b3-abc822b9bb02"/>
+				<reportElement x="150" y="330" width="320" height="20" uuid="4e1a1660-dfdc-4f5b-a6b3-abc822b9bb02"/>
 				<textFieldExpression><![CDATA[$F{notaEnfermeria}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -654,7 +657,7 @@ where ConsultaMedica.signosVitales = $P{id}]]>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="4" width="100" height="13" uuid="2044b1fa-6175-4c9c-9f1b-880bfc61cf1d"/>
+				<reportElement x="0" y="4" width="180" height="13" uuid="2044b1fa-6175-4c9c-9f1b-880bfc61cf1d"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>

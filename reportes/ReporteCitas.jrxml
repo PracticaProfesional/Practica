@@ -4,7 +4,7 @@
 	<property name="com.jaspersoft.studio.unit." value="cm"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="78"/>
 	<parameter name="pCedula" class="java.lang.String"/>
 	<parameter name="pFechaUno" class="java.lang.String"/>
 	<parameter name="pFechaDos" class="java.lang.String"/>
@@ -181,7 +181,7 @@ where cedulaPaciente = $P{pCedula}  and fecha between  $P{pFechaUno}   and  $P{p
 	<pageFooter>
 		<band height="17">
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="2" width="80" height="13" uuid="7e1b4ac0-f516-4a8b-9e7b-6f8c5126e27e"/>
+				<reportElement x="0" y="2" width="190" height="13" uuid="7e1b4ac0-f516-4a8b-9e7b-6f8c5126e27e"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
