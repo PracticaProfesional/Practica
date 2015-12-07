@@ -1926,14 +1926,9 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     private void agendaCalendarioOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_agendaCalendarioOnSelectionChange
-        limpiaAgenda();
+        limpiarAgenda();
         cargarActividadesAgenda();
     }//GEN-LAST:event_agendaCalendarioOnSelectionChange
-
-    private void limpiaAgenda() {
-        for(int i = 0; i < 30; i++)
-            agendaTabla.setValueAt(null, i, 1);
-    }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTablaBuscarPaciente();
