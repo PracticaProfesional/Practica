@@ -3,6 +3,9 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIGOS"/>
 	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
      IFNULL(inventario.`tamano`,"-") AS inventario_tamano,
@@ -68,8 +71,8 @@ ORDER BY
 				</image>
 				<staticText>
 					<reportElement x="210" y="70" width="220" height="30" uuid="b56c6906-95ef-4dd2-a2ce-24835c6cddc5"/>
-					<textElement>
-						<font isBold="true"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Reporte Inventario]]></text>
 				</staticText>
@@ -81,7 +84,7 @@ ORDER BY
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="0" width="130" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="b8c83e28-89f4-4265-8f98-f419f7f01762"/>
 				<textElement>
-					<font isBold="false"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
@@ -89,26 +92,26 @@ ORDER BY
 				<reportElement mode="Transparent" x="130" y="1" width="80" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="c1421e3f-c3d3-495b-ab9f-561150d48905">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
-				<textElement>
-					<font isBold="false"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="211" y="1" width="149" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="98dddf43-5a9f-40db-b1d4-605f5bcaba20">
+				<reportElement mode="Transparent" x="230" y="0" width="129" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="98dddf43-5a9f-40db-b1d4-605f5bcaba20">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
-				<textElement>
-					<font isBold="false"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Vía de administración]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="360" y="0" width="110" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="837a8eaf-a846-4a91-ad61-e402b1ec59d0">
+				<reportElement mode="Transparent" x="380" y="1" width="79" height="20" forecolor="#000000" backcolor="#E6E6E6" uuid="837a8eaf-a846-4a91-ad61-e402b1ec59d0">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
-				<textElement>
-					<font isBold="false"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tamaño]]></text>
 			</staticText>
@@ -121,31 +124,28 @@ ORDER BY
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="35">
+		<band height="23">
 			<textField isStretchWithOverflow="true">
-				<reportElement x="130" y="0" width="80" height="20" uuid="b2db1675-68eb-4c21-bce6-7b8a236f41bd">
+				<reportElement x="130" y="0" width="79" height="20" uuid="b2db1675-68eb-4c21-bce6-7b8a236f41bd">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
+				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{inventario_cantidad}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="211" y="0" width="149" height="20" uuid="81c82543-9b36-4cd6-94d1-8d6a843f09e0">
+				<reportElement x="230" y="0" width="130" height="20" uuid="81c82543-9b36-4cd6-94d1-8d6a843f09e0">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
+				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{inventario_viaAdministracion}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="360" y="0" width="110" height="20" uuid="463ccbae-0da6-495d-8aee-ddffde945c57">
+				<reportElement x="380" y="0" width="78" height="20" uuid="463ccbae-0da6-495d-8aee-ddffde945c57">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
+				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{inventario_tamano}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="1" y="20" width="469" height="1" uuid="e1b0a05b-513f-471d-9692-e9ed97e3b182"/>
-				<graphicElement>
-					<pen lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="0" y="0" width="130" height="20" uuid="5e98582f-36c1-422b-a812-a75b24867978"/>
 				<textFieldExpression><![CDATA[$F{inventario_nombre}]]></textFieldExpression>
@@ -162,7 +162,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement mode="Opaque" x="0" y="4" width="100" height="13" uuid="e9d9707f-225c-43c2-8f31-e7d92894cafd"/>
+				<reportElement mode="Opaque" x="0" y="4" width="154" height="13" uuid="e9d9707f-225c-43c2-8f31-e7d92894cafd"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>

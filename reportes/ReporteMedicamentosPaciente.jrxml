@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6c260420-5ac8-4f49-af78-fbb390e0b1da">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6c260420-5ac8-4f49-af78-fbb390e0b1da">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -25,81 +25,140 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="113" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="595" height="110" backcolor="#FFFFFF" uuid="13647e65-ae21-4784-a254-f0f9e16cca1f"/>
+				<staticText>
+					<reportElement x="465" y="0" width="110" height="35" forecolor="#000000" uuid="6fb92dfe-20df-4457-aee5-bf26fb21bbb7"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Gestor de la Oficina de Salud]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="130" y="0" width="80" height="30" uuid="febb66c8-46cc-4374-b768-9a0abfe5f72c"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Vicerrectoría de Vida Estudiantil]]></text>
+				</staticText>
+				<image>
+					<reportElement x="400" y="0" width="59" height="38" uuid="0654067a-e45a-419b-80a1-9e0b7de14909"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/sigos.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement x="20" y="0" width="90" height="60" uuid="0ca5e284-4da4-446b-84ee-9070d2f08217"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/escudo.png"]]></imageExpression>
+				</image>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="25" y="105" width="550" height="1" uuid="133dc3b3-2c1c-4608-9ad5-b862e188c86e"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="220" y="0" width="80" height="30" uuid="5939de3a-dc7d-4a7b-8b90-f04cc898435c"/>
+					<text><![CDATA[Área de servicios médicos]]></text>
+				</staticText>
+				<image>
+					<reportElement x="210" y="0" width="10" height="30" uuid="c378c3ed-dce2-4700-bd64-eda6103a4bc7"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/raya.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement x="120" y="0" width="10" height="30" uuid="cf747e33-493e-4478-b4c8-affeb25f79a4"/>
+					<imageExpression><![CDATA["src/presentacion/reportes/raya.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="190" y="60" width="220" height="30" uuid="947c0d04-1a32-4442-8a87-680068e417a0"/>
+					<textElement textAlignment="Center">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reporte de medicamentos por paciente]]></text>
+				</staticText>
+			</frame>
+		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
 	<columnHeader>
 		<band height="24" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="2" width="84" height="20" uuid="5cf05cdd-883b-44a9-b7e7-34ca22a7b07f"/>
+				<reportElement x="0" y="0" width="84" height="20" uuid="5cf05cdd-883b-44a9-b7e7-34ca22a7b07f"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Medicamentos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="464" y="2" width="91" height="20" uuid="37a02da7-f7fa-42c1-9da3-6c99f5b0366d"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Total]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="110" y="2" width="87" height="20" uuid="812ef081-9f0e-4840-b4c3-7c645341ec12"/>
+				<reportElement x="124" y="0" width="87" height="20" uuid="812ef081-9f0e-4840-b4c3-7c645341ec12"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Administrativos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="359" y="0" width="77" height="20" uuid="712afd49-2cc1-4718-a434-2b24842f050d"/>
+				<reportElement x="373" y="0" width="77" height="20" uuid="712afd49-2cc1-4718-a434-2b24842f050d"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Docentes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="240" y="2" width="87" height="20" uuid="68405cd8-7ccd-49da-a400-8885bacd0950"/>
+				<reportElement x="251" y="0" width="87" height="20" uuid="68405cd8-7ccd-49da-a400-8885bacd0950"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Estudiantes]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="495" y="0" width="60" height="20" uuid="37a02da7-f7fa-42c1-9da3-6c99f5b0366d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="24" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="84" height="20" uuid="18831fd7-c541-4805-8e10-772cb6245d82"/>
+				<reportElement x="0" y="0" width="118" height="20" uuid="18831fd7-c541-4805-8e10-772cb6245d82"/>
 				<textFieldExpression><![CDATA[$F{nombreMedicamento}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="464" y="0" width="91" height="20" uuid="cebf6904-95e9-4ccc-b8c6-36c299edaac0"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="0" width="87" height="20" uuid="3e7d46b9-2015-4172-8b90-293967e574a6"/>
+				<reportElement x="118" y="0" width="87" height="20" uuid="3e7d46b9-2015-4172-8b90-293967e574a6"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{totalAdministrativos}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="359" y="0" width="77" height="20" uuid="685f5a74-e9e8-4c52-b981-fbc6e4358e4a"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{totalDocentes}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="240" y="0" width="87" height="20" uuid="7bb00295-23d6-4c22-9d16-cc548715204a"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{totalEstudiantes}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="26" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="102" height="13" uuid="582a3ca0-aa1c-413d-afd5-89ad1955de81"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="460" y="0" width="60" height="13" backcolor="#FFFFFF" uuid="a72d25c5-be6f-4a93-842a-33ec881714b8"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Transparent" x="520" y="0" width="35" height="13" backcolor="#E6E6E6" uuid="801e2a95-ec84-4931-9485-f8e038896a6b"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
