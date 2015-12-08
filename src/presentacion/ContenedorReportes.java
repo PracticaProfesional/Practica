@@ -5,6 +5,7 @@
  */
 package presentacion;
 
+import java.io.File;
 import java.util.Calendar;
 import java.util.HashMap;
 import javax.swing.JFrame;
@@ -292,6 +293,8 @@ public class ContenedorReportes extends javax.swing.JPanel {
     private void reporteInventario()
     {
         final String ruta = "src/presentacion/reportes/Inventario.jasper";
+        /*File objFile = new File(ruta);
+        JOptionPane.showMessageDialog(null, objFile.getAbsolutePath());*/
         CrearReporte reporte = new CrearReporte();
         reporte.generarReporte(null, ruta);
     }// fin del metodo reporeteInventario
