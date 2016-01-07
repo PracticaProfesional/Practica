@@ -727,7 +727,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarCitaPaciente`(idC varchar(1
 BEGIN
 	delete 
     from 
-		eliminarCitaPaciente
+		citapaciente
     where 
 		id = idC;
 END
