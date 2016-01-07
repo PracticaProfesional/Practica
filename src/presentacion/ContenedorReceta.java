@@ -1,4 +1,4 @@
-// @author QUINCHO
+ // @author QUINCHO
 package presentacion;
 
 import entidad.Receta;

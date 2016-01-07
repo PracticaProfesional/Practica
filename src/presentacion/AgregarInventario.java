@@ -298,7 +298,7 @@ public class AgregarInventario extends javax.swing.JDialog
     
     private boolean validarCantidad()
     {
-        if (txtCantidad.getText().matches("[1-9]{1}([0-9])?"))
+        if (txtCantidad.getText().matches(".*[0-9].*"))
             return true;
         
         else
