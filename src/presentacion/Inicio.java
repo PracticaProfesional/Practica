@@ -137,6 +137,7 @@ public class Inicio extends javax.swing.JFrame {
         panelBtnBuscarPaciente = new javax.swing.JPanel();
         btnConsultaMedica = new javax.swing.JButton();
         btnCrearExpediente = new javax.swing.JButton();
+        btnVerExpediente = new javax.swing.JButton();
         tabConsultaMedica = new javax.swing.JPanel();
         panelConsultaMedica = new javax.swing.JTabbedPane();
         subTabSignosVitales = new javax.swing.JPanel();
@@ -395,7 +396,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(btnBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnRefrescarTablaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(161, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,12 +428,16 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        btnVerExpediente.setText("Ver Expediente");
+
         javax.swing.GroupLayout panelBtnBuscarPacienteLayout = new javax.swing.GroupLayout(panelBtnBuscarPaciente);
         panelBtnBuscarPaciente.setLayout(panelBtnBuscarPacienteLayout);
         panelBtnBuscarPacienteLayout.setHorizontalGroup(
             panelBtnBuscarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBtnBuscarPacienteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVerExpediente, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(btnConsultaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(btnCrearExpediente, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -444,7 +449,8 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE)
                 .addGroup(panelBtnBuscarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsultaMedica)
-                    .addComponent(btnCrearExpediente))
+                    .addComponent(btnCrearExpediente)
+                    .addComponent(btnVerExpediente))
                 .addGap(33, 33, 33))
         );
 
@@ -2853,6 +2859,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnRefrescarTablaBuscar;
     private javax.swing.JButton btnSignosVitalesCancelar;
     private javax.swing.JButton btnSignosVitalesGuardar;
+    private javax.swing.JButton btnVerExpediente;
     private javax.swing.JButton btnVerSignosVitales;
     private javax.swing.JComboBox cbAbdomen;
     private javax.swing.JComboBox cbAdenopatias;
