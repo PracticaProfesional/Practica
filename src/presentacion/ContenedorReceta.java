@@ -532,7 +532,7 @@ public class ContenedorReceta extends javax.swing.JPanel
      */
         public boolean validarCantidad()
     {
-        if (txtCantidad.getText().matches("[1-9]{1}([0-9])?"))
+        if (txtCantidad.getText().matches(".*[0-9].*"))
             return true;
         
         else
