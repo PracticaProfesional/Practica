@@ -1735,31 +1735,31 @@ public class Inicio extends javax.swing.JFrame {
     private boolean validaSVitales(){
         String validadorNumerico = ".*[1-9].*";
         boolean validado = false;
-        javax.swing.JTextField [] 
-                textsSignosVitales = {textFC, textGC, textH2O,
-                                      textIMB, textIMC, textMM, 
-                                      textPAR, textPeso,
-                                      textTalla, textTemperatura};
-            for(javax.swing.JTextField campo: textsSignosVitales){
-                if(campo.getText().equals("") 
-                        || textMotivoConsulta.getText().equals("")
-                        || textSintomas.getText().equals(""))
-                    return validado;
-                else{
-                    if(!regExValidation(validadorNumerico, campo)){
-                        JOptionPane.showMessageDialog(this, "Valores Invalidos" 
-                                            ,"Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                        
-                    else{
-                        validado = true;
-                        return validado;
-                    }
-                }
-            }
+//        javax.swing.JTextField [] 
+//                textsSignosVitales = {textFC, textGC, textH2O,
+//                                      textIMB, textIMC, textMM, 
+//                                      textPAR, textPeso,
+//                                      textTalla, textTemperatura};
+//            for(javax.swing.JTextField campo: textsSignosVitales){
+//                if(campo.getText().equals("") 
+//                        || textMotivoConsulta.getText().equals("")
+//                        || textSintomas.getText().equals(""))
+//                    return validado;
+//                else{
+//                    if(!regExValidation(validadorNumerico, campo)){
+//                        JOptionPane.showMessageDialog(this, "Valores Invalidos" 
+//                                            ,"Error", JOptionPane.ERROR_MESSAGE);
+//                    }
+//                        
+//                    else{
+//                        validado = true;
+//                        return validado;
+//                    }
+//                }
+//            }
                 
             
-        return validado;
+        return true;
     }
     
     private boolean regExValidation(String validador, JTextField campo) {
