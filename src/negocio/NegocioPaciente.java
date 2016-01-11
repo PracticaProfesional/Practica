@@ -2,6 +2,9 @@
 package negocio;
 import entidad.Paciente;
 import datos.OperacionesPaciente;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Esta clase relaciona la clase OperacionesPaciente con la capa de presentación
  * @author cooper15
@@ -39,4 +42,10 @@ public class NegocioPaciente {
        OperacionesPaciente operacionesPaciente = new OperacionesPaciente();
        return operacionesPaciente.obtenerIdPaciente(cedula);
    }
+    
+    public ResultSet obtenerDatosPaciente(String cedulaPaciente) throws SQLException
+    {
+        OperacionesPaciente operacionesPaciente = new OperacionesPaciente();
+        return operacionesPaciente.obtenerDatosPaciente(cedulaPaciente);
+    }// fin del metodo obtenerDatosPaciente
 }
