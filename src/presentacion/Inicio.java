@@ -429,6 +429,11 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         btnVerExpediente.setText("Ver Expediente");
+        btnVerExpediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerExpedienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBtnBuscarPacienteLayout = new javax.swing.GroupLayout(panelBtnBuscarPaciente);
         panelBtnBuscarPaciente.setLayout(panelBtnBuscarPacienteLayout);
@@ -2582,6 +2587,15 @@ public class Inicio extends javax.swing.JFrame {
                      "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_mnAyudaActionPerformed
+
+    private void btnVerExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerExpedienteActionPerformed
+        // TODO add your handling code here:
+        int fila = tableBuscarPaciente.getSelectedRow();  // obtenemos la fila seleccionada de la tabla
+        String cedulaPaciente = tableBuscarPaciente.getValueAt(fila, 1).toString();   // obtenemos la cedula de la registro seleccionado de la tabla
+        
+        VerExpediente objetoExpediente = new VerExpediente(this, true, cedulaPaciente);
+        objetoExpediente.setVisible(true);
+    }//GEN-LAST:event_btnVerExpedienteActionPerformed
 
     private void limpiarAgenda(){
         int nFilas = agendaTabla.getRowCount();
