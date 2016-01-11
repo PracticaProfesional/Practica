@@ -723,6 +723,7 @@ BEGIN
             citapaciente.idCita  = idC;
 END
 
+DELIMITER $
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarCitaPaciente`(idC varchar(10))
 BEGIN
 	delete 
@@ -730,6 +731,15 @@ BEGIN
 		citapaciente
     where 
 		id = idC;
-END
+END $
 Call ReporteDeMedicamentos('2015-11-30', '2015-12-01')
 
+DELIMITER $
+CREATE PROCEDURE ObtenerDatosPaciente (in ced varchar(45) )
+BEGIN
+	select * from Paciente join Telefono
+	on Paciente.idtelefono = Telefono.id
+    where Paciente.cedulaPaciente = ced;
+END $
+
+Call ObtenerDatosPaciente('222')
