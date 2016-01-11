@@ -2,6 +2,7 @@ package datos;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.ResultSet;
 import entidad.Paciente; // Cambiar a capa de negocio
 
 /**
@@ -79,4 +80,19 @@ public class OperacionesPaciente {
         }
         return idPaciente;
     }
+    
+    /**
+     * Obtiene los datos personales de un paciente de la base de datos, utilizando la cedula como parametro
+     * @param cedulaPaciente de tipo String que representa la cedula de un paciente
+     * @return un objeto ResultSet que representa los datos personales de un paciente
+     */
+    public ResultSet obtenerDatosPaciente(String cedulaPaciente) throws SQLException
+    {
+        ResultSet rs;
+        objetoDeConexion = new Conexion();
+        estado = objetoDeConexion.conectar().createStatement();
+        rs =  estado.executeQuery("Call ObtenerDatosPaciente ('" + cedulaPaciente + "')");
+        return rs;
+    }// fin del metodo obtenerDatosPaciente
+    
 }// fin de la clase OperacionesPaciente
