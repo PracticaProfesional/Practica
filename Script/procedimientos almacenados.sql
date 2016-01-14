@@ -743,3 +743,25 @@ BEGIN
 END $
 
 Call ObtenerDatosPaciente('222')
+
+DELIMITER $
+CREATE PROCEDURE ActualizarDatosPaciente (in idP int, in nomP varchar(45), in ape1 varchar(45), 
+		in ape2 varchar(45), in sex tinyint, in fecNacP date, in naci varchar(45),
+        in ced varchar(45), in idTel int, in dir1 varchar(45), in dir2 varchar(45),
+        in ema varchar(45), in tip int, in numTel varchar(45))
+BEGIN
+	update Paciente
+    set nombrePaciente = nomP, apellido1Paciente = ape1, apellido2Paciente = ape2,
+		sexo = sex, fechaNacimientoPaciente = fecNacP, nacionalidadPaciente = naci,
+        cedulaPaciente = ced, direccion1 = dir1, direccion2 = dir2, email = ema,
+        tipo = tip
+        where id = idP;
+        
+	update Telefono
+    set numeroTelefono = numTel
+    where Telefono.id = idTel;
+END $
+
+Call ActualizarDatosPaciente (2, 'Juan Jose', 'Pasos', 'Vargas', 1, '1991-02-15',
+		'Nicaraguense', '222', 2, 'Santa Cruz', 'Bagaces', 'juajo@hotmail.com',
+        1, '87059456')
