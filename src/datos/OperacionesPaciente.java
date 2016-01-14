@@ -95,4 +95,38 @@ public class OperacionesPaciente {
         return rs;
     }// fin del metodo obtenerDatosPaciente
     
+    /**
+     * Actualiza los datos personales de un paciente en la base de datos
+     * @param objetoPaciente que representa los datos personales de un paciente
+     * @param idPaciente que representa el identificador(id) de un paciente
+     * @param idTelefono que representa el identificador(id) del telefono perteneciente a un paciente
+     */
+    public void actualizarDatosPaciente(Paciente objetoPaciente, String idPaciente, String idTelefono)
+    {
+        String datosPaciente = idPaciente + ", " + "'" + objetoPaciente.getNombrePaciente() + "'" + ", " + 
+                               "'" + objetoPaciente.getApellido1() + "'" + ", " +
+                               "'" + objetoPaciente.getApellido2() + "'" + ", " +
+                               objetoPaciente.getSexo().getSexo() + ", " +
+                               "'" + objetoPaciente.getFechaNacimiento() + "'" + ", " + 
+                               "'" + objetoPaciente.getNacionalidad() + "'" + ", " +
+                               "'" + objetoPaciente.getIdentificacion() + "'" + ", " +
+                               idTelefono + ", " + "'" + objetoPaciente.getDireccion1() + "'" + ", " +
+                               "'" + objetoPaciente.getDireccion2() + "'" + ", " +
+                               "'" + objetoPaciente.getEmail() + "'" + ", " +
+                               objetoPaciente.getTipo().obtenerTipoNumero() + ", " +
+                               "'" + objetoPaciente.getTelefono() + "'";
+        
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call ActualizarDatosPaciente (" + datosPaciente + ")");
+            estado.close();
+            objetoDeConexion.desconectar();
+        }// fin del try
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode() + sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo actualizarDatosPaciente
+    
 }// fin de la clase OperacionesPaciente
