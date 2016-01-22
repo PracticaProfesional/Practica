@@ -13,6 +13,15 @@ public class AntecedentesPersonales {
     private String medicamento;
     private int alergias;
     private int vacunas;
+    private int expediente;
+
+    public int getExpediente() {
+        return expediente;
+    }
+
+    public void setExpediente(int expediente) {
+        this.expediente = expediente;
+    }
     
     /**
      * Inicializa los atributos tratamiento y medicamento con los valores de tipo String, "No tiene"

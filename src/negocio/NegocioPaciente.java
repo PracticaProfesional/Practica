@@ -48,4 +48,10 @@ public class NegocioPaciente {
         OperacionesPaciente operacionesPaciente = new OperacionesPaciente();
         return operacionesPaciente.obtenerDatosPaciente(cedulaPaciente);
     }// fin del metodo obtenerDatosPaciente
+    
+    public void actualizarDatosPaciente(Paciente objetoPaciente, String idPaciente, String idTelefono)
+    {
+        OperacionesPaciente operacionesPaciente = new OperacionesPaciente();
+        operacionesPaciente.actualizarDatosPaciente(objetoPaciente, idPaciente, idTelefono);
+    }// fin del metodo actualizarDatosPaciente
 }
