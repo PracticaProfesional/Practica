@@ -33,10 +33,13 @@ public class VerExpediente extends javax.swing.JDialog
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(parent);
+        cargarPestanas();                        // se cargan las demas pestañas del formulario
         cargarDatosPaciente(cedulaPaciente);
         deshabilitarComponentes();
         ocultarEtiquetas();
         
+        this.setTitle("Expediente - " + textNombre.getText() + " " + 
+                textApellido1.getText() + " " + textApellido2.getText());  // Ponemos de titulo el nombre del paciente
         this.idPaciente = id;
     }// fin del constructor de VerExpediente
 
@@ -49,7 +52,7 @@ public class VerExpediente extends javax.swing.JDialog
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabActualizarExpediente = new javax.swing.JTabbedPane();
         panelDatosPersonales = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -91,8 +94,6 @@ public class VerExpediente extends javax.swing.JDialog
         jLabel9 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -396,33 +397,7 @@ public class VerExpediente extends javax.swing.JDialog
             .addContainerGap(56, Short.MAX_VALUE))
     );
 
-    jTabbedPane1.addTab("DatosPersonales", panelDatosPersonales);
-
-    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-    jPanel2.setLayout(jPanel2Layout);
-    jPanel2Layout.setHorizontalGroup(
-        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 1063, Short.MAX_VALUE)
-    );
-    jPanel2Layout.setVerticalGroup(
-        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 575, Short.MAX_VALUE)
-    );
-
-    jTabbedPane1.addTab("tab2", jPanel2);
-
-    javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-    jPanel3.setLayout(jPanel3Layout);
-    jPanel3Layout.setHorizontalGroup(
-        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 1063, Short.MAX_VALUE)
-    );
-    jPanel3Layout.setVerticalGroup(
-        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGap(0, 575, Short.MAX_VALUE)
-    );
-
-    jTabbedPane1.addTab("tab3", jPanel3);
+    tabActualizarExpediente.addTab("DatosPersonales", panelDatosPersonales);
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -430,14 +405,14 @@ public class VerExpediente extends javax.swing.JDialog
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jTabbedPane1)
+            .addComponent(tabActualizarExpediente)
             .addContainerGap())
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jTabbedPane1)
+            .addComponent(tabActualizarExpediente)
             .addContainerGap())
     );
 
@@ -735,7 +710,13 @@ public class VerExpediente extends javax.swing.JDialog
         return validado;
     }// fin del metodo validar campos
     
-    
+    // El siguiente metodo cargas las pestanas de antecedentes personales y familiares en este formulario(dialogo)
+    private void cargarPestanas()
+    {
+        ContenedorAntecedentesPersonales objContAntecedentesPersonales = 
+                new ContenedorAntecedentesPersonales();
+        tabActualizarExpediente.addTab("Antecedentes Personales", objContAntecedentesPersonales);
+    }// fin del metodo cargarPestanas
     
     /**
      * @param args the command line arguments
@@ -797,13 +778,10 @@ public class VerExpediente extends javax.swing.JDialog
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblValidaApellido1;
     private javax.swing.JLabel lblValidaEmail;
     private javax.swing.JLabel lblValidaIndentificacion;
@@ -814,6 +792,7 @@ public class VerExpediente extends javax.swing.JDialog
     private javax.swing.JLabel lblValidaTelefono;
     private javax.swing.JLabel lblValidaTipo;
     private javax.swing.JPanel panelDatosPersonales;
+    private javax.swing.JTabbedPane tabActualizarExpediente;
     private javax.swing.JTextField textApellido1;
     private javax.swing.JTextField textApellido2;
     private javax.swing.JTextArea textDireccionFamiliar;
