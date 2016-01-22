@@ -244,6 +244,7 @@ public class Inicio extends javax.swing.JFrame {
         cbDetallesUrinario = new javax.swing.JComboBox();
         textOtrosDetallesEsqueletico = new javax.swing.JTextField();
         textOtrosDetallesUrinario = new javax.swing.JTextField();
+        textOtrosDetallesSistNervioso = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         btnGuardarExamenFisico = new javax.swing.JButton();
@@ -928,10 +929,20 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         textOtrosDetallesOidos.setEnabled(false);
+        textOtrosDetallesOidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textOtrosDetallesOidosActionPerformed(evt);
+            }
+        });
 
         textOtrosDetallesNariz.setEnabled(false);
 
         textOtrosDetallesBoca.setEnabled(false);
+        textOtrosDetallesBoca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textOtrosDetallesBocaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1062,6 +1073,11 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         textOtrosDetallesTorax.setEnabled(false);
+        textOtrosDetallesTorax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textOtrosDetallesToraxActionPerformed(evt);
+            }
+        });
 
         textOtrosDetallesCorazon.setEnabled(false);
 
@@ -1132,6 +1148,11 @@ public class Inicio extends javax.swing.JFrame {
         jLabel34.setText("Sistema Nervioso");
 
         cbNervioso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Anormal" }));
+        cbNervioso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNerviosoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Sistema Urinario");
 
@@ -1162,6 +1183,13 @@ public class Inicio extends javax.swing.JFrame {
 
         textOtrosDetallesUrinario.setEnabled(false);
 
+        textOtrosDetallesSistNervioso.setEnabled(false);
+        textOtrosDetallesSistNervioso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textOtrosDetallesSistNerviosoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -1178,9 +1206,10 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(cbUrinario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbNervioso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbDetallesEsqueletico, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbDetallesUrinario, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbDetallesEsqueletico, 0, 89, Short.MAX_VALUE)
+                    .addComponent(cbDetallesUrinario, 0, 89, Short.MAX_VALUE)
+                    .addComponent(textOtrosDetallesSistNervioso))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textOtrosDetallesEsqueletico, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1204,7 +1233,8 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbNervioso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel34))
+                    .addComponent(jLabel34)
+                    .addComponent(textOtrosDetallesSistNervioso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1251,7 +1281,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel13.setText("Tipo de evento");
 
-        cbDiagnosticoOpcional.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Accidentes ofídicos", "Filariasis", "Leishmaniasis", "Conjuntivitis hemorrágicas", "Enfermedades diarreicas agudas (EDAS)", "Infecciones respiratoriasagudas (IRAS)", "Enfermedad tipo influenza (ETI)", "Pediculosis", "Anquilostomiasis", "Necatoriasis", "Ascariasis", "Depresión", "Trichuriasis", "Enterobiasis", "Otras Helmintiasis Intestinales", "Parasitosis intestinal sin especificar", "Otros padecimientos importantes" }));
+        cbDiagnosticoOpcional.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Accidentes ofídicos", "Filariasis", "Leishmaniasis", "Conjuntivitis hemorrágicas", "Enfermedades diarreicas agudas (EDAS)", "Infecciones respiratoriasagudas (IRAS)", "Enfermedad tipo influenza (ETI)", "Pediculosis", "Anquilostomiasis", "Necatoriasis", "Ascariasis", "Depresión", "Trichuriasis", "Enterobiasis", "Otras Helmintiasis Intestinales", "Parasitosis intestinal sin especificar", "Otros padecimientos importantes", "No aplica" }));
         cbDiagnosticoOpcional.setToolTipText("Este diagnostico se usa para realizar el Informe Mensual de Enfermedades para el Ministerio de Salud");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -1328,7 +1358,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addGroup(subTabExamenFisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 203, Short.MAX_VALUE))
+                        .addGap(0, 300, Short.MAX_VALUE))
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(subTabExamenFisicoLayout.createSequentialGroup()
@@ -1808,7 +1838,7 @@ public class Inicio extends javax.swing.JFrame {
         javax.swing.JTextField camposDeTexto [] = {textOtrosDetallesAbdomen, textOtrosDetallesBoca, textOtrosDetallesCorazon,
                                                    textOtrosDetallesEsqueletico, textOtrosDetallesNariz,
                                                    textOtrosDetallesNariz, textOtrosDetallesOidos, textOtrosDetallesTorax,
-                                                   textOtrosDetallesUrinario};
+                                                    textOtrosDetallesSistNervioso};
         
         for (javax.swing.JTextField fieldItem : camposDeTexto)
         {
@@ -2127,6 +2157,7 @@ public class Inicio extends javax.swing.JFrame {
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
             nuevoExamen.setCategoria("Nervioso");
             listaExamen.add(nuevoExamen);
+            nuevoExamen.setDetalle(textOtrosDetallesSistNervioso.getText());
         }
         if(cbUrinario.getSelectedIndex() == 1){
             entidad.ExamenFisico nuevoExamen = new entidad.ExamenFisico();
@@ -2331,28 +2362,29 @@ public class Inicio extends javax.swing.JFrame {
 
     private void cbDetallesUrinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesUrinarioActionPerformed
         // TODO add your handling code here:
-        if (cbDetallesUrinario.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesUrinario.setEnabled(true);
-        }
-
-        else
-        textOtrosDetallesUrinario.setEnabled(false);
+//        if (cbDetallesUrinario.getSelectedItem().toString().equals("Otros")){
+//            textOtrosDetallesUrinario.setEnabled(true);
+//        }
+//
+//        else
+//        textOtrosDetallesUrinario.setEnabled(false);
     }//GEN-LAST:event_cbDetallesUrinarioActionPerformed
 
     private void cbDetallesEsqueleticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesEsqueleticoActionPerformed
         // TODO add your handling code here:
-        if (cbDetallesEsqueletico.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesEsqueletico.setEnabled(true);
-        }
-
-        else
-        textOtrosDetallesEsqueletico.setEnabled(false);
+//        if (cbDetallesEsqueletico.getSelectedItem().toString().equals("Otros")){
+//            textOtrosDetallesEsqueletico.setEnabled(true);
+//        }
+//
+//        else
+//        textOtrosDetallesEsqueletico.setEnabled(false);
     }//GEN-LAST:event_cbDetallesEsqueleticoActionPerformed
 
     private void cbUrinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUrinarioActionPerformed
         // TODO add your handling code here:
         if (cbUrinario.getSelectedItem().toString().equals("Anormal")){
             cbDetallesUrinario.setEnabled(true);
+            textOtrosDetallesUrinario.setEnabled(true);
         }// fin del if
 
         else {
@@ -2366,6 +2398,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbEsqueletico.getSelectedItem().toString().equals("Anormal")){
             cbDetallesEsqueletico.setEnabled(true);
+            textOtrosDetallesEsqueletico.setEnabled(true);
         }// fin del if
 
         else {
@@ -2377,38 +2410,39 @@ public class Inicio extends javax.swing.JFrame {
 
     private void cbDetallesCorazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesCorazonActionPerformed
         // TODO add your handling code here:
-        if (cbDetallesCorazon.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesCorazon.setEnabled(true);
-        }
-
-        else
-        textOtrosDetallesCorazon.setEnabled(false);
+//        if (cbDetallesCorazon.getSelectedItem().toString().equals("Otros")){
+//            textOtrosDetallesCorazon.setEnabled(true);
+//        }
+//
+//        else
+//        textOtrosDetallesCorazon.setEnabled(false);
     }//GEN-LAST:event_cbDetallesCorazonActionPerformed
 
     private void cbDetallesToraxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesToraxActionPerformed
         // TODO add your handling code here:
-        if (cbDetallesTorax.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesTorax.setEnabled(true);
-        }
-
-        else
-        textOtrosDetallesTorax.setEnabled(false);
+//        if (cbDetallesTorax.getSelectedItem().toString().equals("Otros")){
+//            textOtrosDetallesTorax.setEnabled(true);
+//        }
+//
+//        else
+//        textOtrosDetallesTorax.setEnabled(false);
     }//GEN-LAST:event_cbDetallesToraxActionPerformed
 
     private void cbDetallesAbdomenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesAbdomenActionPerformed
         // TODO add your handling code here:
-        if (cbDetallesAbdomen.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesAbdomen.setEnabled(true);
-        }
-
-        else
-        textOtrosDetallesAbdomen.setEnabled(false);
+//        if (cbDetallesAbdomen.getSelectedItem().toString().equals("Otros")){
+//            textOtrosDetallesAbdomen.setEnabled(true);
+//        }
+//
+//        else
+//        textOtrosDetallesAbdomen.setEnabled(false);
     }//GEN-LAST:event_cbDetallesAbdomenActionPerformed
 
     private void cbAbdomenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAbdomenActionPerformed
         // TODO add your handling code here:
         if (cbAbdomen.getSelectedItem().toString().equals("Anormal")){
             cbDetallesAbdomen.setEnabled(true);
+            textOtrosDetallesAbdomen.setEnabled(true);
         }
 
         else {
@@ -2422,6 +2456,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbCorazon.getSelectedItem().toString().equals("Anormal")){
             cbDetallesCorazon.setEnabled(true);
+            textOtrosDetallesCorazon.setEnabled(true);
         }// fin del if
 
         else {
@@ -2435,6 +2470,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbTorax.getSelectedItem().toString().equals("Anormal")){
             cbDetallesTorax.setEnabled(true);
+            textOtrosDetallesTorax.setEnabled(true);
         }// fin del if
 
         else {
@@ -2446,38 +2482,39 @@ public class Inicio extends javax.swing.JFrame {
 
     private void cbDetallesBocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesBocaActionPerformed
         // TODO add your handling code here:
-        if (cbDetallesBoca.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesBoca.setEnabled(true);
-        }
-
-        else
-        textOtrosDetallesBoca.setEnabled(false);
+//        if (cbDetallesBoca.getSelectedItem().toString().equals("Otros")){
+//            textOtrosDetallesBoca.setEnabled(true);
+//        }
+//
+//        else
+//        textOtrosDetallesBoca.setEnabled(false);
     }//GEN-LAST:event_cbDetallesBocaActionPerformed
 
     private void cbDetallesNarizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesNarizActionPerformed
         // TODO add your handling code here:
-        if (cbDetallesNariz.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesNariz.setEnabled(true);
-        }
-
-        else
-        textOtrosDetallesNariz.setEnabled(false);
+//        if (cbDetallesNariz.getSelectedItem().toString().equals("Otros")){
+//            textOtrosDetallesNariz.setEnabled(true);
+//        }
+//
+//        else
+//        textOtrosDetallesNariz.setEnabled(false);
     }//GEN-LAST:event_cbDetallesNarizActionPerformed
 
     private void cbDetallesOidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesOidosActionPerformed
         // TODO add your handling code here:
-        if (cbDetallesOidos.getSelectedItem().toString().equals("Otros")){
-            textOtrosDetallesOidos.setEnabled(true);
-        }
-
-        else
-        textOtrosDetallesOidos.setEnabled(false);
+//        if (cbDetallesOidos.getSelectedItem().toString().equals("Otros")){
+//            textOtrosDetallesOidos.setEnabled(true);
+//        }
+//
+//        else
+//        textOtrosDetallesOidos.setEnabled(false);
     }//GEN-LAST:event_cbDetallesOidosActionPerformed
 
     private void cbBocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBocaActionPerformed
         // TODO add your handling code here:
         if (cbBoca.getSelectedItem().toString().equals("Anormal")){
             cbDetallesBoca.setEnabled(true);
+            textOtrosDetallesBoca.setEnabled(true);
         }// fin del if
 
         else {
@@ -2491,6 +2528,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbNariz.getSelectedItem().toString().equals("Anormal")){
             cbDetallesNariz.setEnabled(true);
+            textOtrosDetallesNariz.setEnabled(true);
         }// fin del if
 
         else {
@@ -2504,10 +2542,12 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (cbOidos.getSelectedItem().toString().equals("Anormal")){
             cbDetallesOidos.setEnabled(true);
+            textOtrosDetallesOidos.setEnabled(true);
         }// fin del if
 
         else {
             cbDetallesOidos.setEnabled(false);
+            textOtrosDetallesOidos.setEnabled(false);
             textOtrosDetallesOidos.setEnabled(false);
             cbDetallesOidos.setSelectedIndex(0);
         }// fin del else
@@ -2596,6 +2636,33 @@ public class Inicio extends javax.swing.JFrame {
         VerExpediente objetoExpediente = new VerExpediente(this, true, cedulaPaciente);
         objetoExpediente.setVisible(true);
     }//GEN-LAST:event_btnVerExpedienteActionPerformed
+
+    private void cbNerviosoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNerviosoActionPerformed
+        // TODO add your handling code here:
+        if(cbNervioso.getSelectedItem().toString().equals("Anormal") )
+        {
+            textOtrosDetallesSistNervioso.setEnabled(true);
+        } else
+        {
+            textOtrosDetallesSistNervioso.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbNerviosoActionPerformed
+
+    private void textOtrosDetallesBocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textOtrosDetallesBocaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textOtrosDetallesBocaActionPerformed
+
+    private void textOtrosDetallesOidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textOtrosDetallesOidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textOtrosDetallesOidosActionPerformed
+
+    private void textOtrosDetallesSistNerviosoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textOtrosDetallesSistNerviosoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textOtrosDetallesSistNerviosoActionPerformed
+
+    private void textOtrosDetallesToraxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textOtrosDetallesToraxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textOtrosDetallesToraxActionPerformed
 
     private void limpiarAgenda(){
         int nFilas = agendaTabla.getRowCount();
@@ -3018,6 +3085,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField textOtrosDetallesEsqueletico;
     private javax.swing.JTextField textOtrosDetallesNariz;
     private javax.swing.JTextField textOtrosDetallesOidos;
+    private javax.swing.JTextField textOtrosDetallesSistNervioso;
     private javax.swing.JTextField textOtrosDetallesTorax;
     private javax.swing.JTextField textOtrosDetallesUrinario;
     private javax.swing.JTextField textPAR;

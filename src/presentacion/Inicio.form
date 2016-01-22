@@ -1097,7 +1097,7 @@
                                               <Component id="jPanel9" max="32767" attributes="0"/>
                                               <Component id="jPanel5" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="jPanel6" alignment="1" max="32767" attributes="0"/>
                                   </Group>
@@ -1407,6 +1407,9 @@
                               <Properties>
                                 <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textOtrosDetallesOidosActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JTextField" name="textOtrosDetallesNariz">
                               <Properties>
@@ -1417,6 +1420,9 @@
                               <Properties>
                                 <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textOtrosDetallesBocaActionPerformed"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -1596,6 +1602,9 @@
                               <Properties>
                                 <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textOtrosDetallesToraxActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JTextField" name="textOtrosDetallesCorazon">
                               <Properties>
@@ -1635,9 +1644,10 @@
                                           <Component id="cbNervioso" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="cbDetallesEsqueletico" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
-                                          <Component id="cbDetallesUrinario" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="cbDetallesEsqueletico" alignment="0" pref="89" max="32767" attributes="0"/>
+                                          <Component id="cbDetallesUrinario" alignment="0" pref="89" max="32767" attributes="0"/>
+                                          <Component id="textOtrosDetallesSistNervioso" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1668,6 +1678,7 @@
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="cbNervioso" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="textOtrosDetallesSistNervioso" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -1707,6 +1718,9 @@
                                   </StringArray>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbNerviosoActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel2">
                               <Properties>
@@ -1767,6 +1781,14 @@
                               <Properties>
                                 <Property name="enabled" type="boolean" value="false"/>
                               </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="textOtrosDetallesSistNervioso">
+                              <Properties>
+                                <Property name="enabled" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textOtrosDetallesSistNerviosoActionPerformed"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -1894,7 +1916,7 @@
                             <Component class="javax.swing.JComboBox" name="cbDiagnosticoOpcional">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="18">
+                                  <StringArray count="19">
                                     <StringItem index="0" value="Seleccione"/>
                                     <StringItem index="1" value="Accidentes of&#xed;dicos"/>
                                     <StringItem index="2" value="Filariasis"/>
@@ -1913,6 +1935,7 @@
                                     <StringItem index="15" value="Otras Helmintiasis Intestinales"/>
                                     <StringItem index="16" value="Parasitosis intestinal sin especificar"/>
                                     <StringItem index="17" value="Otros padecimientos importantes"/>
+                                    <StringItem index="18" value="No aplica"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="toolTipText" type="java.lang.String" value="Este diagnostico se usa para realizar el Informe Mensual de Enfermedades para el Ministerio de Salud"/>
