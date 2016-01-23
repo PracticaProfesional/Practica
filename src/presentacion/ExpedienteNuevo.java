@@ -988,11 +988,11 @@ jPanel9Layout.setHorizontalGroup(
         NegocioAntecedenteFamiliar objetoNegocioAntFam = new NegocioAntecedenteFamiliar();
         AntecedenteFamiliar nuevoAntFam = new AntecedenteFamiliar();
         
-        if (! textAntFamParentesco.getText().equals(""))  // valida si el campo de texto de parentesco esta vacio
+        /*if (! textAntFamParentesco.getText().equals(""))  // valida si el campo de texto de parentesco esta vacio
             nuevoAntFam.setParentezco(textAntFamParentesco.getText());
         
         if (! textAntFamDescrip.getText().equals("")) // valida si el campo de de texto de medicamento esta vacio
-            nuevoAntFam.setDescripcion(textAntFamDescrip.getText());
+            nuevoAntFam.setDescripcion(textAntFamDescrip.getText());*/
         
         try
         {
@@ -1015,12 +1015,12 @@ jPanel9Layout.setHorizontalGroup(
         if (! textMedicamentos.getText().equals(""))  // valida si el campo de de texto de medicamento esta vacio
             nuevoAntPer.setMedicamento(textMedicamentos.getText());
         
-        if (! textAlergiaNombre.getText().equals("") || ! textAlergiaDescrip.getText().equals("")) 
+       /* if (! textAlergiaNombre.getText().equals("") || ! textAlergiaDescrip.getText().equals("")) 
         {
             // la base de datos de pedro tiene el nombre de estas tablas en minuscula
             nuevoAntPer.setAlergias(Integer.parseInt(ultimoId.obtenerUltimoId("Alergias")));
             
-        }
+        }*/
         if (! textVacunaTipo.getText().equals("")) 
             nuevoAntPer.setVacunas(Integer.parseInt(ultimoId.obtenerUltimoId("Vacunas")));
         try
@@ -1057,10 +1057,10 @@ jPanel9Layout.setHorizontalGroup(
     }// fin del metodo insertarVacuna
 
     private void insertarAlergia(Alergia nuevaAlergia){
-        if(!textAlergiaNombre.getText().equals("") & !textAlergiaDescrip.getText().equals("")){
+        /*if(!textAlergiaNombre.getText().equals("") & !textAlergiaDescrip.getText().equals("")){
             nuevaAlergia.setNombreAlergia(textAlergiaNombre.getText());
             nuevaAlergia.setDetalleAlergia(textAlergiaDescrip.getText());
-        } 
+        } */
         if (! nuevaAlergia.getNombreAlergia().equals("") && ! nuevaAlergia.getDetalleAlergia().equals(""))
         {
             negocio.NegocioAlergia insertarAlergia = new negocio.NegocioAlergia();
@@ -1192,7 +1192,7 @@ jPanel9Layout.setHorizontalGroup(
             case 1:
                 return validaAntecedentesPersonales();
             case 2:
-                return validaAntecedentesFamiliares();
+                //return validaAntecedentesFamiliares();
         }
       return false;
     }
@@ -1228,9 +1228,9 @@ jPanel9Layout.setHorizontalGroup(
         return validado;
     }
     private boolean validaAntecedentesPersonales(){
-        int confirmacion;
-        String alergiaNombre = textAlergiaNombre.getText();
-        String alergiaDescrip = textAlergiaDescrip.getText();
+        /*int confirmacion;
+        //String alergiaNombre = textAlergiaNombre.getText();
+        //String alergiaDescrip = textAlergiaDescrip.getText();
         String tratamiento = textTratamiento.getText();
         String vacuna = textVacunaTipo.getText();
         String medicamento = textMedicamentos.getText();
@@ -1248,8 +1248,8 @@ jPanel9Layout.setHorizontalGroup(
     }
     private boolean validaAntecedentesFamiliares(){
         String descrip = textAntFamDescrip.getText();
-        String parentesco = textAntFamParentesco.getText();
-        return (!descrip.equals("") && !parentesco.equals(""));
+        String parentesco = textAntFamParentesco.getText();*/
+        return false;  //(!descrip.equals("") && !parentesco.equals(""));
     }
 
     private boolean regExValidation(String validador, JTextField campo) {
