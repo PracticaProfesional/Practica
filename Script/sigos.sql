@@ -601,6 +601,28 @@ CHANGE COLUMN `archivoExamen` `archivoExamen` MEDIUMBLOB NULL DEFAULT NULL COMME
 
 
 
+-- MODIFICACIONES A LA BASE DE DATOS A PARTIR DE NUEVA VERSION
+
+
+ALTER TABLE `sigos`.`expedientemedico` 
+DROP FOREIGN KEY `fk_antecedentesPersonales`;    -- eliminamos campo y llave foranea
+ALTER TABLE `sigos`.`expedientemedico`           -- de antecedentes personales en esta
+DROP COLUMN `idAntecedentesPersonales`,			 -- tabla
+DROP INDEX `fk_antecedentesPersonales_idx` ;
+
+
+
+ALTER TABLE `sigos`.`antecedentespersonales`       -- insertamos campos en esta tabla
+ADD COLUMN `idExpedienteMedico` INT NOT NULL COMMENT '' AFTER `medicamento`;
+
+ALTER TABLE `sigos`.`antecedentespersonales` 
+ADD INDEX `fk_expediente_idx` (`idExpedienteMedico` ASC)  COMMENT '';
+ALTER TABLE `sigos`.`antecedentespersonales`       -- Agregamos llave foranea en esta tabla
+ADD CONSTRAINT `fk_expediente`
+  FOREIGN KEY (`idExpedienteMedico`)
+  REFERENCES `sigos`.`expedientemedico` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
 
 
 
@@ -608,9 +630,126 @@ CHANGE COLUMN `archivoExamen` `archivoExamen` MEDIUMBLOB NULL DEFAULT NULL COMME
 
 
 
-
-
-
+ALTER TABLE `sigos`.`antecedentespersonales` 
+DROP FOREIGN KEY `fk_vacunas`,                -- eliminamos primero las llaves
+DROP FOREIGN KEY `fk_expediente`, 			  -- foraneas para poder eliminar la tabla	
+DROP FOREIGN KEY `fk_alergias`;
+ALTER TABLE `sigos`.`antecedentespersonales` 
+DROP INDEX `fk_expediente_idx` ,
+DROP INDEX `fk_vacunas_idx` ,
+DROP INDEX `fk_alergias_idx` ;
+ALTER TABLE `sigos`.`antecedentespersonales-padecimientos` 
+DROP FOREIGN KEY `fk_AntecendentesPersonales`;
  
+ DROP TABLE `sigos`.`antecedentespersonales`;     -- se elimina la tabla
+ 
+ 
+ ALTER TABLE `sigos`.`antecedentesfamiliares-padecimientos` 
+DROP FOREIGN KEY `fk_AntecedenteFam3`;
+ALTER TABLE `sigos`.`antecedentesfamiliares-padecimientos` 
+DROP FOREIGN KEY `fk_Padecimiento3`;
+ALTER TABLE `sigos`.`expedientemedico` 
+DROP FOREIGN KEY `fk_antecedentesFamiliares`;
 
+DROP TABLE `sigos`.`antecedentesfamiliares`;      -- se elimina la tabla
+
+DROP TABLE `sigos`.`antecedentesfamiliares-padecimientos`;  -- se elimina la tabla
+
+DROP TABLE `sigos`.`antecedentespersonales-padecimientos`;  -- se elimina la tabla
 -- Dump completed on 2015-10-02 20:26:57
+
+
+
+-- NUEVAS TABLAS
+
+ALTER TABLE `sigos`.`expedientemedico` 
+CHANGE COLUMN `idAntecedentesFamiliares` `alergias` INT(11) NOT NULL COMMENT '' ,
+DROP INDEX `fk_antecedentesFamiliares_idx` ;
+ALTER TABLE `sigos`.`expedientemedico` 
+DROP COLUMN `alergias`;
+ALTER TABLE `sigos`.`expedientemedico` 
+ADD COLUMN `alergias` TEXT NULL COMMENT '' AFTER `idPaciente`;
+
+
+   -- tabla expediente-padecimientos
+CREATE TABLE `sigos`.`expediente-padecimientos` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `idPadecimiento` INT NOT NULL COMMENT '',
+  `idExpediente` INT NOT NULL COMMENT '',
+  `tratamiento` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');
+  ALTER TABLE `sigos`.`expediente-padecimientos` 
+ADD COLUMN `medicamento` VARCHAR(45) NULL COMMENT '' AFTER `tratamiento`;
+
+  
+  
+  
+    -- tabla expediente-padecimientosfamiliares
+CREATE TABLE `sigos`.`expediente-padecimientosfamiliares` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `idPadecimiento` INT NOT NULL COMMENT '',
+  `idExpediente` INT NOT NULL COMMENT '',
+  `parentezco` VARCHAR(45) NULL COMMENT '',
+  `descripcion` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');
+  
+    -- tabla expediente-vacunas
+  CREATE TABLE `sigos`.`expediente-vacunas` (
+  `id` INT NOT NULL COMMENT '',
+  `idVacuna` INT NOT NULL COMMENT '',
+  `idExpediente` INT NOT NULL COMMENT '',
+  `fecha` DATE NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');
+  
+  
+  ALTER TABLE `sigos`.`vacunas` 
+DROP COLUMN `fechaAplicacion`,      -- modificacion en tabla vacuna
+CHANGE COLUMN `tipo` `vacuna` VARCHAR(45) NOT NULL COMMENT '' ;
+
+
+
+
+-- Asignacion  de las llaves foraneas
+
+ALTER TABLE `sigos`.`expediente-padecimientos` 
+ADD INDEX `fk_padecimiento_idx` (`idPadecimiento` ASC)  COMMENT '',
+ADD INDEX `fk_expediente_idx` (`idExpediente` ASC)  COMMENT '';
+ALTER TABLE `sigos`.`expediente-padecimientos` 
+ADD CONSTRAINT `fk_padecimiento`
+  FOREIGN KEY (`idPadecimiento`)
+  REFERENCES `sigos`.`padecimientos` (`id`)				-- tabla expediente-padecimientos
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_expediente`
+  FOREIGN KEY (`idExpediente`)
+  REFERENCES `sigos`.`expedientemedico` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+  
+  ALTER TABLE `sigos`.`expediente-padecimientosfamiliares` 
+ADD CONSTRAINT `fk_padecimientoF`
+  FOREIGN KEY (`idPadecimiento`)
+  REFERENCES `sigos`.`padecimientos` (`id`)
+  ON DELETE NO ACTION                                  -- tabla expediente-padecimientosfamiliares
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_expedienteF`
+  FOREIGN KEY (`idExpediente`)
+  REFERENCES `sigos`.`expedientemedico` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+  ALTER TABLE `sigos`.`expediente-vacunas` 
+ADD INDEX `fk_vacuna_idx` (`idVacuna` ASC)  COMMENT '',
+ADD INDEX `fk_expedienteV_idx` (`idExpediente` ASC)  COMMENT '';
+ALTER TABLE `sigos`.`expediente-vacunas` 
+ADD CONSTRAINT `fk_vacuna`
+  FOREIGN KEY (`idVacuna`)
+  REFERENCES `sigos`.`vacunas` (`id`)      -- tabla expediente-vacunas
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_expedienteV`
+  FOREIGN KEY (`idExpediente`)
+  REFERENCES `sigos`.`expedientemedico` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
