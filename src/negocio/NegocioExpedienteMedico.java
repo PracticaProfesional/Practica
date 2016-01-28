@@ -16,10 +16,11 @@ public class NegocioExpedienteMedico {
     /**
      * Este método llama al método en la capa de datos  que inserta un examen médico en la base de datos
      * @throws SQLException
+     * @param alergias 
      */
-    public void insertarExpedientMedico() throws SQLException{
+    public void insertarExpedientMedico(String alergias) throws SQLException{
         OperacionesExpedienteMedico opExpediente = new OperacionesExpedienteMedico();
-        opExpediente.insertarExpedienteMedico();
+        opExpediente.insertarExpedienteMedico(alergias);
     }
     
     /**
