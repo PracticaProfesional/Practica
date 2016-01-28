@@ -734,6 +734,12 @@ BEGIN
 END $
 Call ReporteDeMedicamentos('2015-11-30', '2015-12-01')
 
+
+
+
+
+-- PROCEDIMIENTOS ALMACENADOS A PARTIR DE LA NUEVA VERSION
+
 DELIMITER $
 CREATE PROCEDURE ObtenerDatosPaciente (in ced varchar(45) )
 BEGIN
@@ -765,3 +771,46 @@ END $
 Call ActualizarDatosPaciente (2, 'Juan Jose', 'Pasos', 'Vargas', 1, '1991-02-15',
 		'Nicaraguense', '222', 2, 'Santa Cruz', 'Bagaces', 'juajo@hotmail.com',
         1, '87059456')
+        
+        
+        
+        
+ -- PROCEDIMIENTO ALMACENADO PARA QUE INSERTA EN LA TABLA ExpedienteMedico
+DELIMITER $
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarExpedienteMedico2`(in idPac int,
+		in aler text)
+BEGIN
+	declare varAler varchar(45);
+    
+    if aler <> '' then      -- si el parametro no esta vacio
+		set varAler = aler;
+	end if;
+
+	insert into expedientemedico (idPaciente, alergias)
+	values (idPac, varAler);
+END $
+
+Call InsertarExpedienteMedico2 (3, null)
+
+
+DELIMITER $
+CREATE PROCEDURE InsertarExpedientePadecimientos(in idPad int, in idExp int, 
+		in tra varchar(45), in med varchar(45))
+BEGIN
+	declare varTra varchar(45);
+    declare varMed varchar(45);
+    
+    if tra <> '' then      -- si el parametro no esta vacio
+		set varTra = tra;
+	end if;
+    
+    if med <> '' then
+		set varMed = med;
+	end if;
+    
+    insert into `expediente-padecimientos` (idPadecimiento, idExpediente, tratamiento,
+			medicamento)
+	values (idPad, idExp, varTra, varMed);
+END $
+
+Call InsertarExpedientePadecimientos (5, 4, null, null)       
