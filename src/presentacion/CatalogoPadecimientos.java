@@ -702,7 +702,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
     { 
         if (chbVertigo.isSelected())
         {
-            arreglo[contador] = "Vertigo";
+            arreglo[contador] = "Vértigo";
             contador++;
         }// fin de if
         
@@ -714,7 +714,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         
         if (chbMiopia.isSelected())
         {
-            arreglo[contador] = "Miopia";
+            arreglo[contador] = "Miopía";
             contador++;
         }// fin de if
         
@@ -906,7 +906,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
      * del paciente
      * @return un arreglo de enteros que contiene los padeciemientos
      */
-        public int [] cargarIdsAArreglo()
+    public int [] cargarIdsAArreglo()
     {
         int arregloIds [] = new int [contador];
         
@@ -917,6 +917,15 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         
         return arregloIds;
     }// fin del metodo obtenerIds
+    
+    /**
+     * Metodo para obtener el id del padecimiento seleccionado
+     * 
+     */
+    protected int obtenerIdDePadecimiento()
+    {
+        return objetoPadecimiento.obtenerId(arreglo[0]);
+    }// fin del metodo obtenerIdDePadecimiento
     
     /**
      * Verifica que los campos de texto no se queden vacios
