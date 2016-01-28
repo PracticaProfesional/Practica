@@ -17,19 +17,18 @@ public class OperacionesExpedienteMedico {
      * Inserta campos correspondientes a expediente médico en la base de datos
      * @throws SQLException
      */
-    public void insertarExpedienteMedico() throws SQLException{
+    public void insertarExpedienteMedico(String alergias) throws SQLException{
         objetoDeConexion = new Conexion();
         String idAntecedentesPersonales;
         String idAntecedentesFam;
         String idPaciente;
         ObtenerUltimoId ultimoId = new ObtenerUltimoId();
-        idAntecedentesPersonales = ultimoId.obtenerUltimoId("AntecedentesPersonales");
-        idAntecedentesFam = ultimoId.obtenerUltimoId("AntecedentesFamiliares");
+        /*idAntecedentesPersonales = ultimoId.obtenerUltimoId("AntecedentesPersonales");
+        idAntecedentesFam = ultimoId.obtenerUltimoId("AntecedentesFamiliares");*/
         idPaciente = ultimoId.obtenerUltimoId("Paciente");
         estado = objetoDeConexion.conectar().createStatement();
-        String datosExpediente = "'"+idPaciente+"'"+","+"'"+idAntecedentesPersonales+"'"+","
-                                +"'"+idAntecedentesFam+"'";
-        estado.executeQuery("Call InsertarExpedienteMedico("+datosExpediente+")");
+        String datosExpediente = idPaciente + "," + "'" + alergias + "'";
+        estado.executeQuery("Call InsertarExpedienteMedico2("+datosExpediente+")");
     }
     
     /**
