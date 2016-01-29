@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 public class OperacionesPadecimiento 
 {
     
-   private Conexion objetoDeConexion;
+    private Conexion objetoDeConexion;
     private Statement estado;
     
     /**
@@ -34,6 +34,7 @@ public class OperacionesPadecimiento
         }
         catch(SQLException e)
         {
+            System.out.println(e.getErrorCode() + e.getMessage());
         }// fin de catch
     }// fin del metodo insertarPadecimiento
     
@@ -44,7 +45,7 @@ public class OperacionesPadecimiento
      * @param nombrePadecimiento de tipo String que representa el nombre del padecimiento
      * @return en entero que representa el id(identificador) obtenido por la consulta
      */
-        public int obtenerId(String nombrePadecimiento)
+    public int obtenerId(String nombrePadecimiento)
     {
         objetoDeConexion = new Conexion();
         int id = 0;
@@ -62,7 +63,7 @@ public class OperacionesPadecimiento
         }// fin del try
         catch (SQLException e)
         {
-            e.printStackTrace();
+            System.out.println(e.getErrorCode() + e.getMessage());
             return 0;
         }// fin de catach
     }// fin del metodo obtenerId
@@ -86,7 +87,7 @@ public class OperacionesPadecimiento
         }// fin del try
         catch (SQLException e)
         {
-            e.printStackTrace();
+            System.out.println(e.getErrorCode() + e.getMessage());
         }// fin de catch
         
     }// fin del metodo consultarOInsertarPadecimiento
