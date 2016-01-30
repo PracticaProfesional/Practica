@@ -374,7 +374,7 @@ public class ContenedorReceta extends javax.swing.JPanel
                         "Información", JOptionPane.INFORMATION_MESSAGE);
             
             else
-                JOptionPane.showMessageDialog(null, "No hay medicamentes para remover en la tabla",
+                JOptionPane.showMessageDialog(null, "No hay medicamentos para remover en la tabla",
                         "Información", JOptionPane.INFORMATION_MESSAGE);
         }// fin del catch
     }//GEN-LAST:event_btnRemoverActionPerformed
