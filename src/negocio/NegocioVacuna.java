@@ -19,5 +19,18 @@ public class NegocioVacuna
     public void insertarVacuna(Vacuna nuevaVacuna){   
         OperacionesVacuna operacionesVacuna = new OperacionesVacuna();
         operacionesVacuna.insertarVacuna(nuevaVacuna);
-    }
+    }// fin del metodo insertarVacuna
+    
+    public void consultarInsertarVacuna(String nombreVacuna)
+    {
+        OperacionesVacuna operacionesVacuna = new OperacionesVacuna();
+        operacionesVacuna.consultarInsertarVacuna(nombreVacuna);
+    }// fin del metodo insertarVacuna
+    
+    public String obtenerIdVacuna(String nombreVacuna)
+    {
+        OperacionesVacuna operacionesVacuna = new OperacionesVacuna();
+        return operacionesVacuna.obtenerIdVacuna(nombreVacuna);
+    }// fin del metodo obtenerIdVacuna
+    
 }
