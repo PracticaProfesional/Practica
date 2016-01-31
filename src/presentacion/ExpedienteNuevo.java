@@ -17,8 +17,10 @@ import negocio.NegocioAntecedentesPersPad;
 import negocio.NegocioAntecedenteFamiliar;
 import negocio.NegocioAntecedentesFamPad;
 import negocio.NegocioExpedientePadecimientos;
+import negocio.NegocioExpedienteVacunas;
 import entidad.AntecedentesFamPad;
 import entidad.ExpedientePadecimientos;
+import entidad.ExpedienteVacunas;
 import entidad.enums.SexoEnum;
 import entidad.enums.TipoEnum;
 import java.awt.HeadlessException;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import negocio.NegocioVacuna;
 
 /**
  * Esta clase permite crear una ventana que contendrá el asistente para 
@@ -123,7 +126,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         jScrollPane4 = new javax.swing.JScrollPane();
         tblPadecimientos = new javax.swing.JTable();
         btnAgregarPadecimiento = new javax.swing.JButton();
-        btnElimarPadecimiento = new javax.swing.JButton();
+        btnEliminarPadecimiento = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         txtPadecimiento = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -137,7 +140,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         tblVacunas = new javax.swing.JTable();
         btnAgregarVacuna = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnEliminarVacuna = new javax.swing.JButton();
         txtVacunaFechaApli = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -512,10 +515,10 @@ jPanel9Layout.setHorizontalGroup(
         }
     });
 
-    btnElimarPadecimiento.setText("Eliminar");
-    btnElimarPadecimiento.addActionListener(new java.awt.event.ActionListener() {
+    btnEliminarPadecimiento.setText("Eliminar");
+    btnEliminarPadecimiento.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnElimarPadecimientoActionPerformed(evt);
+            btnEliminarPadecimientoActionPerformed(evt);
         }
     });
 
@@ -531,7 +534,7 @@ jPanel9Layout.setHorizontalGroup(
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
-            .addComponent(btnElimarPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnEliminarPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
             .addComponent(btnAgregarPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
@@ -573,7 +576,7 @@ jPanel9Layout.setHorizontalGroup(
             .addGap(21, 21, 21)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnAgregarPadecimiento)
-                .addComponent(btnElimarPadecimiento)
+                .addComponent(btnEliminarPadecimiento)
                 .addComponent(jButton3))
             .addGap(8, 8, 8)
             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -638,7 +641,12 @@ jPanel9Layout.setHorizontalGroup(
 
     jButton6.setText("Actualizar");
 
-    jButton5.setText("Eliminar");
+    btnEliminarVacuna.setText("Eliminar");
+    btnEliminarVacuna.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnEliminarVacunaActionPerformed(evt);
+        }
+    });
 
     txtVacunaFechaApli.setDateFormatString("MM/dd/yy");
 
@@ -656,7 +664,7 @@ jPanel9Layout.setHorizontalGroup(
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jButton6)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEliminarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -680,14 +688,13 @@ jPanel9Layout.setHorizontalGroup(
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                     .addComponent(txtVacunaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(jLabel16)
                 .addComponent(txtVacunaFechaApli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnAgregarVacuna)
-                .addComponent(jButton5)
+                .addComponent(btnEliminarVacuna)
                 .addComponent(jButton6))
             .addGap(18, 18, 18)
             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -947,7 +954,8 @@ jPanel9Layout.setHorizontalGroup(
         CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(this, true);
         padecimientos.setVisible(true);
         
-        int idPadecimiento = padecimientos.obtenerIdDePadecimiento();
+        
+        idPadecimiento = padecimientos.obtenerIdDePadecimiento();
                 
         listaDeIds.add(idPadecimiento);
         
@@ -1072,7 +1080,7 @@ jPanel9Layout.setHorizontalGroup(
         cargarFilaEnTablaPadecimientos();
     }//GEN-LAST:event_btnAgregarPadecimientoActionPerformed
 
-    private void btnElimarPadecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElimarPadecimientoActionPerformed
+    private void btnEliminarPadecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPadecimientoActionPerformed
         // TODO add your handling code here:
         try
         {
@@ -1095,19 +1103,51 @@ jPanel9Layout.setHorizontalGroup(
         catch(ArrayIndexOutOfBoundsException aioobe)
         {
             if (tblPadecimientos.getRowCount() != 4 || tblPadecimientos.getValueAt(0, 0) != null)
-                JOptionPane.showMessageDialog(null, "Debe seleccionar el medicamento que desea remover",
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el padecimiento que desea eliminar",
                         "Información", JOptionPane.INFORMATION_MESSAGE);
             
             else
-                JOptionPane.showMessageDialog(null, "No hay medicamentes para remover en la tabla",
+                JOptionPane.showMessageDialog(null, "No hay padecimientos para eliminar en la tabla",
                         "Información", JOptionPane.INFORMATION_MESSAGE);
         }// fin del catch
-    }//GEN-LAST:event_btnElimarPadecimientoActionPerformed
+    }//GEN-LAST:event_btnEliminarPadecimientoActionPerformed
 
     private void btnAgregarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVacunaActionPerformed
         // TODO add your handling code here:
         cargarFilaEnTablaVacunas();
     }//GEN-LAST:event_btnAgregarVacunaActionPerformed
+
+    private void btnEliminarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVacunaActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            modeloVacunas.removeRow(tblVacunas.getSelectedRow());
+            tblVacunas.setModel(modeloVacunas);
+            
+            if (tblVacunas.getRowCount() == 0)
+                tblVacunas.setModel(new javax.swing.table.DefaultTableModel(
+                        new Object [][] {
+                            {null, null},
+                            {null, null},
+                            {null, null},
+                            {null, null}
+                        },
+                        new String [] {
+                            "Tipo", "Fecha de aplicación"
+                        }
+                ));
+        }//fin del try
+        catch(ArrayIndexOutOfBoundsException aioobe)
+        {
+            if (tblVacunas.getRowCount() != 4 || tblVacunas.getValueAt(0, 0) != null)
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el medicamento que desea eliminar",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+            
+            else
+                JOptionPane.showMessageDialog(null, "No hay vacunas para eliminar en la tabla",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+        }// fin del catch
+    }//GEN-LAST:event_btnEliminarVacunaActionPerformed
 
     private void crearExpedienteMedico() 
     {
@@ -1156,6 +1196,8 @@ jPanel9Layout.setHorizontalGroup(
         if (tblPadecimientos.getValueAt(0, 0) != null)
             insertarPadecimientos(idExpedienteMedico);
         
+        if (tblVacunas.getValueAt(0, 0) != null)
+            insertarVacunas(idExpedienteMedico);
         /*AntecedentesPersonales nuevoAntPer = new AntecedentesPersonales();
         
         if (! txtTratamiento.getText().equals(""))  // valida si el campo de texto de tratamiento esta vacio
@@ -1203,6 +1245,7 @@ jPanel9Layout.setHorizontalGroup(
             objExpedientePadecimientos[i].setTratamiento(tblPadecimientos.getValueAt(i, 1).toString());  // restantes
             objExpedientePadecimientos[i].setMedicamento(tblPadecimientos.getValueAt(i, 2).toString()); // atributos
             
+            // insertamos en la base de datos
             objExpPad.insertarExpedientePadecimientos(objExpedientePadecimientos[i]);
         } // fin del for
         
@@ -1210,6 +1253,42 @@ jPanel9Layout.setHorizontalGroup(
     
     private void insertarVacunas(String idExpedienteMedico)
     {
+        NegocioVacuna objNegocioVacuna = new NegocioVacuna();
+        NegocioExpedienteVacunas objNegocioExpVac = new NegocioExpedienteVacunas();
+        
+        int tamanoFilas = tblVacunas.getRowCount();   // tamano filas para definir el arreglo
+        String nombreVacunas [] = new String [tamanoFilas]; // se crea el arreglo de string para las vacunas
+        String idVacunas [] = new String [tamanoFilas];
+        
+        ExpedienteVacunas objExpedienteVacunas [] = new ExpedienteVacunas [tamanoFilas];
+        
+        for (int i = 0; i < nombreVacunas.length; i++)
+        {
+            nombreVacunas[i] = tblVacunas.getValueAt(i, 0).toString();
+            objNegocioVacuna.consultarInsertarVacuna(nombreVacunas[i]);
+        }// fin del for
+        
+        for (int i = 0; i < idVacunas.length; i++)
+        {
+            idVacunas[i] = objNegocioVacuna.obtenerIdVacuna(nombreVacunas[i]);
+        }// fin del for
+        
+        for (int i = 0; i < nombreVacunas.length; i++) 
+        {
+            objExpedienteVacunas[i] = new ExpedienteVacunas();
+            
+            objExpedienteVacunas[i].setIdVacuna(Integer.parseInt(idVacunas[i]));
+            objExpedienteVacunas[i].setIdExpediente(Integer.parseInt(idExpedienteMedico));
+            
+            if (! tblVacunas.getValueAt(i, 1).toString().equals(""))
+                objExpedienteVacunas[i].setFecha(tblVacunas.getValueAt(i, 1).toString());
+            
+            else
+                objExpedienteVacunas[i].setFecha("0000-00-00");
+            // insertamos en la base de datos
+            objNegocioExpVac.insertarExpedienteVacunas(objExpedienteVacunas[i]);
+        } // fin del for
+        
     }// fin del metodo insertarVacunas
     
     private void insertarTelefono(Telefono nuevoTelefono) {
@@ -1339,7 +1418,7 @@ jPanel9Layout.setHorizontalGroup(
                 break;
         }// fin del switch
         
-        negocio.NegocioPaciente insertarPaciente = new negocio.NegocioPaciente();
+         negocio.NegocioPaciente insertarPaciente = new negocio.NegocioPaciente();
         insertarPaciente.insetarPaciente(nuevoPaciente);
     }
     // PROBAR PASAR EL NOMBRE DEL CAMPO DE TEXTO COMO PARAMETRO.
@@ -1547,14 +1626,14 @@ jPanel9Layout.setHorizontalGroup(
     private javax.swing.JButton btnAgregarPadecimientoPer;
     private javax.swing.JButton btnAgregarPadecimientoPer1;
     private javax.swing.JButton btnAgregarVacuna;
-    private javax.swing.JButton btnElimarPadecimiento;
+    private javax.swing.JButton btnEliminarPadecimiento;
+    private javax.swing.JButton btnEliminarVacuna;
     private javax.swing.JButton btnExpedienteNuevoCancelar;
     private javax.swing.JButton btnExpedienteNuevoGuardar;
     private javax.swing.JButton btnPasar;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JComboBox cbTipo;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
