@@ -753,3 +753,10 @@ ADD CONSTRAINT `fk_expedienteV`
   REFERENCES `sigos`.`expedientemedico` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+  
+  
+  
+  
+  -- correcion en la tabla expediente-vacunas
+  ALTER TABLE `sigos`.`expediente-vacunas` 
+CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '' ;
