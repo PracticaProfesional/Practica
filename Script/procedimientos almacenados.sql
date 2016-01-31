@@ -792,7 +792,7 @@ END $
 
 Call InsertarExpedienteMedico2 (3, null)
 
-
+-- Procedimiento almacenado que inserta en la tabla ExpedientePadecimientos
 DELIMITER $
 CREATE PROCEDURE InsertarExpedientePadecimientos(in idPad int, in idExp int, 
 		in tra varchar(45), in med varchar(45))
@@ -813,4 +813,53 @@ BEGIN
 	values (idPad, idExp, varTra, varMed);
 END $
 
-Call InsertarExpedientePadecimientos (5, 4, null, null)       
+Call InsertarExpedientePadecimientos (5, 4, null, null)
+
+-- Procedimiento almacenado que inserta vacunas en la tabla Vacunas
+DELIMITER $
+CREATE PROCEDURE `ConsultarInsertarVacuna`(in vac varchar(45))
+BEGIN
+	declare tipVacuna varchar(45);
+
+	select vacuna into tipVacuna from vacunas
+	where vacuna = vac;
+	
+	if tipVacuna <=> null then
+		insert into vacunas (vacuna)
+		values (vac);
+		
+	end if;
+		
+END $
+
+Call ConsultarInsertarVacuna('bpm')
+
+
+-- Procedimiento que inserta en la tabla Expediente-Vacunas
+DELIMITER $
+CREATE PROCEDURE `InsertarExpedienteVacunas` (in idVac int, in idExp int, 
+		in fecVac date)
+BEGIN
+	declare fechaVacuna date;
+    
+    if fecVac <> '' then      -- si el parametro no esta vacio
+		set fechaVacuna = fecVac;
+	end if;
+    
+    insert into `expediente-vacunas` (idVacuna, idExpediente, fecha)
+	values (idVac, idExp, fechaVacuna);
+END $
+
+Call InsertarExpedienteVacunas (1, 4, 2015-03-03) 
+
+
+-- Procedimiento almacenado para obtener los id's de la tabla vacunas utilizando de parametro el nombre de a=la vacuna
+DELIMITER $
+CREATE PROCEDURE `ObtenerIdVacuna`(in nom varchar(100))
+BEGIN
+	select id from Vacunas
+	where vacuna = nom;
+END $
+
+
+Call ObtenerIdVacuna ('AH1N1')      
