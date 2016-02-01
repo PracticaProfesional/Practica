@@ -757,6 +757,10 @@ ADD CONSTRAINT `fk_expedienteV`
   
   
   
-  -- correcion en la tabla expediente-vacunas
+  -- correcion en la tabla expediente-vacunas y expediente-padecimientosfamiliares
   ALTER TABLE `sigos`.`expediente-vacunas` 
 CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '' ;
+
+
+ALTER TABLE `sigos`.`expediente-padecimientosfamiliares` 
+CHANGE COLUMN `parentezco` `parentesco` VARCHAR(45) NULL DEFAULT NULL COMMENT '' ;
