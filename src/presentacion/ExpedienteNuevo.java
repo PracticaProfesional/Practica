@@ -17,10 +17,12 @@ import negocio.NegocioAntecedentesPersPad;
 import negocio.NegocioAntecedenteFamiliar;
 import negocio.NegocioAntecedentesFamPad;
 import negocio.NegocioExpedientePadecimientos;
+import negocio.NegocioExpedientePadecimientosFamiliares;
 import negocio.NegocioExpedienteVacunas;
 import entidad.AntecedentesFamPad;
 import entidad.ExpedientePadecimientos;
 import entidad.ExpedienteVacunas;
+import entidad.ExpedientePadecimientosFamiliares;
 import entidad.enums.SexoEnum;
 import entidad.enums.TipoEnum;
 import java.awt.HeadlessException;
@@ -38,11 +40,13 @@ import negocio.NegocioVacuna;
 public class ExpedienteNuevo extends javax.swing.JDialog 
 {
 
-    ArrayList listaDeIds = new ArrayList();
+    ArrayList listaDeIdsPersonales = new ArrayList();
+    ArrayList listaDeIdsFamiliares = new ArrayList();
     int idPadecimiento;
     int idsAntecedentesFamiliares [];
     DefaultTableModel modeloPadecimientos = new DefaultTableModel();   // modelo de la tabla de padecimientos
     DefaultTableModel modeloVacunas = new DefaultTableModel();         // modelo de la tabla de vacunas
+    DefaultTableModel modeloPadecimientosFamiliares = new DefaultTableModel();   // modelo de la tabla padecimientos familiares
     
     
     /**
@@ -67,7 +71,9 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         modeloVacunas.addColumn("Tipo");
         modeloVacunas.addColumn("Fecha de Aplicación");
         
-        
+        modeloPadecimientosFamiliares.addColumn("Padecimiento");
+        modeloPadecimientosFamiliares.addColumn("Parentesco");
+        modeloPadecimientosFamiliares.addColumn("Descripción");
     }// fin del constructor de ExpedienteNuevo
 
     /**
@@ -122,7 +128,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         Medicamentos = new javax.swing.JLabel();
         txtMedicamentos = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        btnAgregarPadecimientoPer = new javax.swing.JButton();
+        btnIngresarPadecimientoPer = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblPadecimientos = new javax.swing.JTable();
         btnAgregarPadecimiento = new javax.swing.JButton();
@@ -145,16 +151,16 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         jPanel1 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        btnAgregarPadecimientoPer1 = new javax.swing.JButton();
+        btnIngresarPadecimientoFam = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        tblPadecimientos2 = new javax.swing.JTable();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        tblPadecimientosFamiliares = new javax.swing.JTable();
+        btnAgregarPadecimientoFamiliar = new javax.swing.JButton();
+        btnEliminarPadecimientoFamiliar = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        textAntFamDescrip1 = new javax.swing.JTextField();
-        textAntFamParentesco1 = new javax.swing.JTextField();
+        txtParentesco = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
+        txtPadecimientoFamiliar = new javax.swing.JTextField();
         btnPasar = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
         btnExpedienteNuevoGuardar = new javax.swing.JButton();
@@ -480,10 +486,10 @@ jPanel9Layout.setHorizontalGroup(
 
     jLabel11.setText("Padecimiento");
 
-    btnAgregarPadecimientoPer.setText("Añadir");
-    btnAgregarPadecimientoPer.addActionListener(new java.awt.event.ActionListener() {
+    btnIngresarPadecimientoPer.setText("Añadir");
+    btnIngresarPadecimientoPer.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnAgregarPadecimientoPerActionPerformed(evt);
+            btnIngresarPadecimientoPerActionPerformed(evt);
         }
     });
 
@@ -550,7 +556,7 @@ jPanel9Layout.setHorizontalGroup(
                     .addGap(32, 32, 32)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(btnAgregarPadecimientoPer, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnIngresarPadecimientoPer, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(txtPadecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
                         .addComponent(txtTratamiento)
@@ -563,7 +569,7 @@ jPanel9Layout.setHorizontalGroup(
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel11)
-                .addComponent(btnAgregarPadecimientoPer)
+                .addComponent(btnIngresarPadecimientoPer)
                 .addComponent(txtPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -729,27 +735,24 @@ jPanel9Layout.setHorizontalGroup(
 
     jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Padecimientos"));
 
-    jLabel14.setText("Padecimientos");
+    jLabel14.setText("Padecimiento");
 
-    btnAgregarPadecimientoPer1.setText("Añadir");
-    btnAgregarPadecimientoPer1.addActionListener(new java.awt.event.ActionListener() {
+    btnIngresarPadecimientoFam.setText("Añadir");
+    btnIngresarPadecimientoFam.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnAgregarPadecimientoPer1ActionPerformed(evt);
+            btnIngresarPadecimientoFamActionPerformed(evt);
         }
     });
 
-    tblPadecimientos2.setModel(new javax.swing.table.DefaultTableModel(
+    tblPadecimientosFamiliares.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
             {null, null, null},
             {null, null, null},
             {null, null, null},
             {null, null, null}
         },
         new String [] {
-            "Padecimiento", "Tratamiento", "Medicamento"
+            "Padecimiento", "Parentesco", "Descripción"
         }
     ) {
         boolean[] canEdit = new boolean [] {
@@ -760,16 +763,16 @@ jPanel9Layout.setHorizontalGroup(
             return canEdit [columnIndex];
         }
     });
-    jScrollPane6.setViewportView(tblPadecimientos2);
-    if (tblPadecimientos2.getColumnModel().getColumnCount() > 0) {
-        tblPadecimientos2.getColumnModel().getColumn(2).setHeaderValue("Medicamento");
-    }
+    jScrollPane6.setViewportView(tblPadecimientosFamiliares);
 
-    jButton7.setText("Agregar");
+    btnAgregarPadecimientoFamiliar.setText("Agregar");
+    btnAgregarPadecimientoFamiliar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnAgregarPadecimientoFamiliarActionPerformed(evt);
+        }
+    });
 
-    jButton8.setText("Eliminar");
-
-    jButton9.setText("Actualizar");
+    btnEliminarPadecimientoFamiliar.setText("Eliminar");
 
     jLabel23.setText("Descripción");
 
@@ -784,46 +787,52 @@ jPanel9Layout.setHorizontalGroup(
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 996, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createSequentialGroup()
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jButton9))
-                .addGroup(jPanel10Layout.createSequentialGroup()
+                    .addGap(5, 5, 5)
                     .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel23)
-                        .addComponent(jLabel24)
-                        .addComponent(jLabel14))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(textAntFamParentesco1)
-                        .addComponent(textAntFamDescrip1)
-                        .addComponent(btnAgregarPadecimientoPer1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE))))
+                        .addGroup(jPanel10Layout.createSequentialGroup()
+                            .addComponent(btnEliminarPadecimientoFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnAgregarPadecimientoFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel10Layout.createSequentialGroup()
+                            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel14)
+                                .addComponent(jLabel23)
+                                .addComponent(jLabel24))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel10Layout.createSequentialGroup()
+                                        .addComponent(btnIngresarPadecimientoFam, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtPadecimientoFamiliar))))))
+                    .addGap(0, 0, Short.MAX_VALUE)))
             .addContainerGap())
     );
     jPanel10Layout.setVerticalGroup(
         jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
-            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton9)
-                .addComponent(jButton8)
-                .addComponent(jButton7))
-            .addGap(67, 67, 67)
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel14)
-                .addComponent(btnAgregarPadecimientoPer1))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel23)
-                .addComponent(textAntFamDescrip1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnIngresarPadecimientoFam)
+                .addComponent(txtPadecimientoFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(18, 18, 18)
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel24)
-                .addComponent(textAntFamParentesco1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(txtParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel23))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(btnEliminarPadecimientoFamiliar)
+                .addComponent(btnAgregarPadecimientoFamiliar))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(25, 25, 25))
     );
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -831,16 +840,16 @@ jPanel9Layout.setHorizontalGroup(
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
-            .addContainerGap()
+            .addGap(50, 50, 50)
             .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(121, Short.MAX_VALUE))
+            .addContainerGap(81, Short.MAX_VALUE))
     );
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel1Layout.createSequentialGroup()
             .addContainerGap()
             .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(111, Short.MAX_VALUE))
+            .addContainerGap(107, Short.MAX_VALUE))
     );
 
     tabExpedienteNuevo.addTab("Antecedentes Familiares", jPanel1);
@@ -923,7 +932,10 @@ jPanel9Layout.setHorizontalGroup(
             guardarNuevoExpediente();
     }//GEN-LAST:event_btnExpedienteNuevoGuardarActionPerformed
 
-    private void guardarNuevoExpediente() {
+    private void guardarNuevoExpediente() 
+    {
+        int confirmacion;   // variable de decision del confirm dialog mas abajo en este metodo
+        
         // Primero que nada se deben validar los datos ingresados.
         entidad.Paciente nuevoPaciente = new entidad.Paciente();
         entidad.Vacuna nuevaVacuna = new entidad.Vacuna();
@@ -935,9 +947,38 @@ jPanel9Layout.setHorizontalGroup(
         datos.ObtenerUltimoId ultimoId = new datos.ObtenerUltimoId(); // Cambia el obtener id a la capa de datos.
         
         // Llamada a funcion para realizar los procedimientos de insercion de paciente.
-        insertarPaciente(nuevoPaciente, ultimoId);
-        crearExpedienteMedico();
-        insertarAntecedentesPersonales(ultimoId);
+        if (validaAntecedentesFamiliares())    // llamamos a la validacion de antecedentes familiares aqui 
+        {                                      // ya que la validacion de antecedentes personales y los datos
+            insertarPaciente(nuevoPaciente, ultimoId);         // se dispara desde el boton siguiente 
+            crearExpedienteMedico();
+            insertarAntecedentesPersonales(ultimoId);
+            insertarAntecedentesFamiliares(ultimoId);
+            
+            JOptionPane.showMessageDialog(null, "El expediente se ha guardado con éxito", 
+                    "Información", JOptionPane.INFORMATION_MESSAGE);
+            
+            this.dispose();   // cerramos la ventana
+        }// fin del if
+        
+        else
+        {
+            confirmacion = JOptionPane.showConfirmDialog(this, 
+                    "Continuar sin agregar ningún antecedente familiar?");
+                        
+            if (confirmacion == JOptionPane.YES_OPTION)
+            {
+                insertarPaciente(nuevoPaciente, ultimoId);         // se dispara desde el siguiente 
+                crearExpedienteMedico();
+                insertarAntecedentesPersonales(ultimoId);
+                
+                JOptionPane.showMessageDialog(null, "El expediente se ha guardado con éxito", 
+                    "Información", JOptionPane.INFORMATION_MESSAGE);
+                
+                this.dispose();
+            }// fin del if
+        }// fin del else
+        
+        
         //insertarPadecimiento(nuevoPadecimiento);
         /*insertarAlergia(nuevaAlergia);
         insertarVacuna(nuevaVacuna);
@@ -946,18 +987,17 @@ jPanel9Layout.setHorizontalGroup(
         insertarAntecedenteFamiliar();
         insertarAntecedenteFamiliaresPAdecimientos(ultimoId);
         crearExpedienteMedico();*/
-        this.dispose();
+        //this.dispose();
     }
 
-    private void btnAgregarPadecimientoPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoPerActionPerformed
+    private void btnIngresarPadecimientoPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPadecimientoPerActionPerformed
         
         CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(this, true);
         padecimientos.setVisible(true);
         
-        
         idPadecimiento = padecimientos.obtenerIdDePadecimiento();
                 
-        listaDeIds.add(idPadecimiento);
+        listaDeIdsPersonales.add(idPadecimiento);
         
         /*for (int i = 0; i < idDePadecimientos.length; i++)
         {
@@ -965,7 +1005,7 @@ jPanel9Layout.setHorizontalGroup(
         }// fin del for*/
         
         txtPadecimiento.setText(padecimientos.arreglo[0]);
-    }//GEN-LAST:event_btnAgregarPadecimientoPerActionPerformed
+    }//GEN-LAST:event_btnIngresarPadecimientoPerActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         
@@ -979,7 +1019,7 @@ jPanel9Layout.setHorizontalGroup(
                     
                     else
                         JOptionPane.showMessageDialog(null, "Uno o más campos son incorrectos",
-                    "Atención", JOptionPane.ERROR_MESSAGE);
+                                "Atención", JOptionPane.ERROR_MESSAGE);
                     break;
                     
                 case 1:
@@ -1066,9 +1106,16 @@ jPanel9Layout.setHorizontalGroup(
         tabExpedienteNuevo.setEnabledAt(2, false);
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnAgregarPadecimientoPer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoPer1ActionPerformed
+    private void btnIngresarPadecimientoFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPadecimientoFamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarPadecimientoPer1ActionPerformed
+        CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(this, true);
+        padecimientos.setVisible(true);
+        
+        idPadecimiento = padecimientos.obtenerIdDePadecimiento();      
+        listaDeIdsFamiliares.add(idPadecimiento);
+        
+        txtPadecimientoFamiliar.setText(padecimientos.arreglo[0]);
+    }//GEN-LAST:event_btnIngresarPadecimientoFamActionPerformed
 
     private void btnPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasarActionPerformed
         // TODO add your handling code here:
@@ -1149,6 +1196,11 @@ jPanel9Layout.setHorizontalGroup(
         }// fin del catch
     }//GEN-LAST:event_btnEliminarVacunaActionPerformed
 
+    private void btnAgregarPadecimientoFamiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoFamiliarActionPerformed
+        // TODO add your handling code here:
+        cargarFilaEnTablaPadecimientosFamiliares();
+    }//GEN-LAST:event_btnAgregarPadecimientoFamiliarActionPerformed
+
     private void crearExpedienteMedico() 
     {
         negocio.NegocioExpedienteMedico insertarExpediente = new negocio.NegocioExpedienteMedico();
@@ -1188,7 +1240,7 @@ jPanel9Layout.setHorizontalGroup(
 
     private void insertarAntecedentesPersonales(ObtenerUltimoId ultimoId) 
     { 
-        System.out.println(tblPadecimientos.getRowCount());
+        //System.out.println(tblPadecimientos.getRowCount());
         
         // Obtenemos el ultimo id del ultimo expediente medico ingresado en la base de datos
         String idExpedienteMedico = ultimoId.obtenerUltimoId("ExpedienteMedico");
@@ -1239,7 +1291,7 @@ jPanel9Layout.setHorizontalGroup(
             objExpedientePadecimientos[i] = new ExpedientePadecimientos();
             
             // se ingresa el padecimiento seleccionado del catalogo de padecimientos (CatalogoPadecimientos.java)
-            objExpedientePadecimientos[i].setIdPadecimiento((Integer)listaDeIds.get(i));
+            objExpedientePadecimientos[i].setIdPadecimiento((Integer)listaDeIdsPersonales.get(i));
             
             objExpedientePadecimientos[i].setIdExpediente(Integer.parseInt(idExpedienteMedico));   // se ingresan los    
             objExpedientePadecimientos[i].setTratamiento(tblPadecimientos.getValueAt(i, 1).toString());  // restantes
@@ -1290,6 +1342,32 @@ jPanel9Layout.setHorizontalGroup(
         } // fin del for
         
     }// fin del metodo insertarVacunas
+    
+    private void insertarPadecimientosFamiliares(String idExpedienteMedico)
+    {
+        NegocioExpedientePadecimientosFamiliares objNegocioExpPadFam = 
+                new NegocioExpedientePadecimientosFamiliares();
+        
+        int tamanoFilas = tblPadecimientosFamiliares.getRowCount();   // tamano filas para definir el arreglo
+        ExpedientePadecimientosFamiliares objExpPadFam [] = 
+                new ExpedientePadecimientosFamiliares[tamanoFilas];
+        
+        for (int i = 0; i < objExpPadFam.length; i++)
+        {
+            objExpPadFam[i] = new ExpedientePadecimientosFamiliares();
+            
+            // se ingresa el padecimiento seleccionado del catalogo de padecimientos (CatalogoPadecimientos.java)
+            objExpPadFam[i].setIdPadecimiento((Integer)listaDeIdsFamiliares.get(i));
+            
+            objExpPadFam[i].setIdExpediente(Integer.parseInt(idExpedienteMedico));   // se ingresan los    
+            objExpPadFam[i].setParentesco(tblPadecimientosFamiliares.getValueAt(i, 1).toString());  // restantes
+            objExpPadFam[i].setDescripcion(tblPadecimientosFamiliares.
+                    getValueAt(i, 2).toString()); // atributos
+            
+            // insertamos en la base de datos
+            objNegocioExpPadFam.insertarExpedientePadecimientosFamiliares(objExpPadFam[i]);
+        } // fin del for
+    }// fin del metodo insertarPadecimientosFamiliares
     
     private void insertarTelefono(Telefono nuevoTelefono) {
         negocio.NegocioTelefono insertarTelefono = new negocio.NegocioTelefono();
@@ -1352,9 +1430,13 @@ jPanel9Layout.setHorizontalGroup(
      * @param ultimoId toma como parametro el id del ultimo registro insertado
      * en la BD
      */
-    public void insertarAntecedenteFamiliaresPAdecimientos(ObtenerUltimoId ultimoId)
+    public void insertarAntecedentesFamiliares(ObtenerUltimoId ultimoId)
     {
-        NegocioAntecedentesFamPad negocioAntecedentes = new NegocioAntecedentesFamPad();
+        // Obtenemos el ultimo id del ultimo expediente medico ingresado en la base de datos
+        String idExpedienteMedico = ultimoId.obtenerUltimoId("ExpedienteMedico");
+        
+        insertarPadecimientosFamiliares(idExpedienteMedico);
+        /*NegocioAntecedentesFamPad negocioAntecedentes = new NegocioAntecedentesFamPad();
         AntecedentesFamPad nuevoAntecedente = new AntecedentesFamPad();
         
         try
@@ -1371,7 +1453,7 @@ jPanel9Layout.setHorizontalGroup(
         catch(NullPointerException npe)
         {
             JOptionPane.showMessageDialog(null, "No se asociaron padecimientos a los antecedentes familiares del paciente");
-        }// fin del catach
+        }// fin del catach*/
     }// fin del metodo insertarAntecedenteFamiliaresPAdecimientos
     
     private void insertarPadecimiento(Padecimiento nuevoPadecimiento) {
@@ -1530,11 +1612,14 @@ jPanel9Layout.setHorizontalGroup(
         
     }// fin del metodo validaAntecedentesPersonales
     
-    private boolean validaAntecedentesFamiliares(){
-        //String descrip = textAntFamDescrip.getText();
-        //String parentesco = textAntFamParentesco.getText();
-        return false;  //(!descrip.equals("") && !parentesco.equals(""));
-    }
+    private boolean validaAntecedentesFamiliares()
+    {
+        if (tblPadecimientosFamiliares.getValueAt(0, 0) != null)
+            return true;
+        
+        else
+            return false;
+    }// fin del metodo validaAntecedentesFamiliares
 
     private boolean regExValidation(String validador, JTextField campo) {
         java.util.regex.Pattern patronComparar;
@@ -1544,7 +1629,7 @@ jPanel9Layout.setHorizontalGroup(
         return comparador.matches();  
     }
     
-    // El siguiente metodo carga una fila en la tabla de padecimientos
+    // El siguiente metodo carga una fila en la tabla de padecimientos en antecedentes personales
     private void cargarFilaEnTablaPadecimientos()
     {
         String fila [] = new String [3];  // cada objeto fila es una fila de la tabla
@@ -1578,6 +1663,25 @@ jPanel9Layout.setHorizontalGroup(
         txtVacunaTipo.setText(null);
         txtVacunaFechaApli.setDate(null);
     }// fin del metodo cargarFilaEnTablaVacunas
+    
+    // El siguiente metodo carga una fila en la tabla de padecimientos de antecedentes familiares
+    private void cargarFilaEnTablaPadecimientosFamiliares()
+    {
+        String fila [] = new String [3];  // cada objeto fila es una fila de la tabla
+        
+        fila [0] = txtPadecimientoFamiliar.getText();    // ingresa cada campo de el formulario en el arreglo
+        fila [1] = txtParentesco.getText();     // para posteriormente ingresar el arreglo como una fila
+        fila [2] = txtDescripcion.getText();
+        
+        modeloPadecimientosFamiliares.addRow(fila);
+        tblPadecimientosFamiliares.setModel(modeloPadecimientosFamiliares);
+        
+        // Se limpian los campos despues de cada ingreso
+        txtPadecimientoFamiliar.setText(null);
+        txtDescripcion.setText(null);
+        txtParentesco.setText(null);
+    }// fin del metodo cargarFilaEnTablaPadecimientosFamiliares
+
     /**
      * @param args the command line arguments
      */
@@ -1623,21 +1727,20 @@ jPanel9Layout.setHorizontalGroup(
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Medicamentos;
     private javax.swing.JButton btnAgregarPadecimiento;
-    private javax.swing.JButton btnAgregarPadecimientoPer;
-    private javax.swing.JButton btnAgregarPadecimientoPer1;
+    private javax.swing.JButton btnAgregarPadecimientoFamiliar;
     private javax.swing.JButton btnAgregarVacuna;
     private javax.swing.JButton btnEliminarPadecimiento;
+    private javax.swing.JButton btnEliminarPadecimientoFamiliar;
     private javax.swing.JButton btnEliminarVacuna;
     private javax.swing.JButton btnExpedienteNuevoCancelar;
     private javax.swing.JButton btnExpedienteNuevoGuardar;
+    private javax.swing.JButton btnIngresarPadecimientoFam;
+    private javax.swing.JButton btnIngresarPadecimientoPer;
     private javax.swing.JButton btnPasar;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JComboBox cbTipo;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1678,10 +1781,8 @@ jPanel9Layout.setHorizontalGroup(
     private javax.swing.JPanel panelBtnExpedienteNUevo;
     private javax.swing.JTabbedPane tabExpedienteNuevo;
     private javax.swing.JTable tblPadecimientos;
-    private javax.swing.JTable tblPadecimientos2;
+    private javax.swing.JTable tblPadecimientosFamiliares;
     private javax.swing.JTable tblVacunas;
-    private javax.swing.JTextField textAntFamDescrip1;
-    private javax.swing.JTextField textAntFamParentesco1;
     private javax.swing.JTextField textApellido1;
     private javax.swing.JTextField textApellido2;
     private javax.swing.JTextArea textDireccionFamiliar;
@@ -1696,8 +1797,11 @@ jPanel9Layout.setHorizontalGroup(
     private javax.swing.JTextField textTelefono;
     private javax.swing.JTextField textTelefono1;
     private javax.swing.JTextArea txaAlergias;
+    private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtMedicamentos;
     private javax.swing.JTextField txtPadecimiento;
+    private javax.swing.JTextField txtPadecimientoFamiliar;
+    private javax.swing.JTextField txtParentesco;
     private javax.swing.JTextField txtTratamiento;
     private com.toedter.calendar.JDateChooser txtVacunaFechaApli;
     private javax.swing.JTextField txtVacunaTipo;
