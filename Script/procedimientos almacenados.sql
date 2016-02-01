@@ -862,4 +862,26 @@ BEGIN
 END $
 
 
-Call ObtenerIdVacuna ('AH1N1')      
+Call ObtenerIdVacuna ('AH1N1')
+
+
+-- Procedimiento que inserta en la tabla expedeiente-padecemientosfamiliares
+DELIMITER $
+CREATE PROCEDURE `InsertarExpedientePadecimientosFamiliares`(in idPad int, in idExp int, 
+		in par varchar(45), in des varchar(45))
+BEGIN
+	declare varPar varchar(45);
+    declare varDes varchar(45);
+    
+    if par <> '' then      -- si el parametro no esta vacio
+		set varPar = par;
+	end if;
+    
+    if des <> '' then
+		set varDes = des;
+	end if;
+    
+    insert into `expediente-padecimientosfamiliares` (idPadecimiento, idExpediente, parentesco,
+			descripcion)
+	values (idPad, idExp, varPar, varDes);
+END $      
