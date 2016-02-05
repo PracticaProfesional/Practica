@@ -189,7 +189,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
             }
         });
 
-        cbCancer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Piel", "Mama", "Pulmón", "Gastrico", "Tiroides", "Próstata", "Tiroides", "Colon", "Leucemia", "Melanoma", "Otros" }));
+        cbCancer.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Piel", "Mama", "Pulmón", "Gástrico", "Tiroides", "Próstata", "Tiroides", "Colon", "Leucemia", "Melanoma", "Otros" }));
         cbCancer.setName("Cancer"); // NOI18N
         cbCancer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -726,7 +726,7 @@ public class CatalogoPadecimientos extends javax.swing.JDialog
         
         if (chbPresionAlta.isSelected())
         {
-            arreglo[contador] = "Presion Alta";
+            arreglo[contador] = "Presión Alta";
             contador++;
         }// fin de if
         
