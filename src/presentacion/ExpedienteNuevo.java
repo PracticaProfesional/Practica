@@ -1,35 +1,33 @@
 package presentacion;
 
+import com.sun.javafx.binding.StringFormatter;
 import datos.ObtenerUltimoId;
-import entidad.Alergia;
-import entidad.AntecedenteFamiliar;
-import entidad.AntecedentesPersPad;
 import entidad.Paciente;
-import entidad.Padecimiento;
 import entidad.Telefono;
-import entidad.Vacuna;
-import entidad.AntecedentesPersonales;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import negocio.NegocioAntecedentesPersPad;
-import negocio.NegocioAntecedenteFamiliar;
-import negocio.NegocioAntecedentesFamPad;
 import negocio.NegocioExpedientePadecimientos;
 import negocio.NegocioExpedientePadecimientosFamiliares;
 import negocio.NegocioExpedienteVacunas;
-import entidad.AntecedentesFamPad;
 import entidad.ExpedientePadecimientos;
 import entidad.ExpedienteVacunas;
 import entidad.ExpedientePadecimientosFamiliares;
 import entidad.enums.SexoEnum;
 import entidad.enums.TipoEnum;
 import java.awt.HeadlessException;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import negocio.Edad;
 import negocio.NegocioVacuna;
 
 /**
@@ -44,9 +42,9 @@ public class ExpedienteNuevo extends javax.swing.JDialog
     ArrayList listaDeIdsFamiliares = new ArrayList();
     int idPadecimiento;
     int idsAntecedentesFamiliares [];
-    DefaultTableModel modeloPadecimientos = new DefaultTableModel();   // modelo de la tabla de padecimientos
-    DefaultTableModel modeloVacunas = new DefaultTableModel();         // modelo de la tabla de vacunas
-    DefaultTableModel modeloPadecimientosFamiliares = new DefaultTableModel();   // modelo de la tabla padecimientos familiares
+    DefaultTableModel modeloPadecimientos;   // modelo de la tabla padecimientos personales
+    DefaultTableModel modeloVacunas;         // modelo de la tabla de vacunas
+    DefaultTableModel modeloPadecimientosFamiliares;  // modelo de la tabla de padecimientos familiares
     
     
     /**
@@ -58,22 +56,49 @@ public class ExpedienteNuevo extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
+        eventoTxtFechaNac();
+    
         this.setResizable(false);
-        //this.pack();
         this.setSize(1150, 650);
         this.setLocationRelativeTo(parent);
         this.btnExpedienteNuevoGuardar.setEnabled(false);
-        
+         modeloPadecimientos= new DefaultTableModel()
+            {
+                @Override // ihabilitamos la tabla para no permitir la edicion de sus columnas
+                public boolean isCellEditable(int rowIndex, int columnIndex)
+                {
+                    return false;
+                }// fin del metodo isCellEditable
+            };   // modelo de la tabla de padecimientos
+         
         modeloPadecimientos.addColumn("Padecimiento");   // columnas de la tabla de padecimientos
         modeloPadecimientos.addColumn("Tratamiento");
         modeloPadecimientos.addColumn("Medicamento");
         
+        modeloVacunas = new DefaultTableModel()
+            {
+                @Override  // ihabilitamos la tabla para no permitir la edicion de sus columnas
+                public boolean isCellEditable(int rowIndex, int columnIndex)
+                {
+                    return false;
+                }// fin del metodo isCellEditable
+            };
         modeloVacunas.addColumn("Tipo");
         modeloVacunas.addColumn("Fecha de Aplicación");
         
+        modeloPadecimientosFamiliares = new DefaultTableModel()
+            {
+                @Override  // ihabilitamos la tabla para no permitir la edicion de sus columnas
+                public boolean isCellEditable(int rowIndex, int columnIndex)
+                {
+                    return false;
+                }// fin del metodo isCellEditable
+            };
         modeloPadecimientosFamiliares.addColumn("Padecimiento");
         modeloPadecimientosFamiliares.addColumn("Parentesco");
         modeloPadecimientosFamiliares.addColumn("Descripción");
+        
+       // eventoCalcularEdad();
     }// fin del constructor de ExpedienteNuevo
 
     /**
@@ -102,7 +127,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         jLabel3 = new javax.swing.JLabel();
         textApellido1 = new javax.swing.JTextField();
         textNacionalidad = new javax.swing.JTextField();
-        textFechaNac = new datechooser.beans.DateChooserCombo();
         jLabel7 = new javax.swing.JLabel();
         textTelefono = new javax.swing.JTextField();
         textNombre = new javax.swing.JTextField();
@@ -110,6 +134,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         jLabel22 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         cbTipo = new javax.swing.JComboBox();
+        txtFechaNac = new com.toedter.calendar.JDateChooser();
         jLabel12 = new javax.swing.JLabel();
         textTelefono1 = new javax.swing.JTextField();
         textFechaNac1 = new datechooser.beans.DateChooserCombo();
@@ -133,7 +158,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         tblPadecimientos = new javax.swing.JTable();
         btnAgregarPadecimiento = new javax.swing.JButton();
         btnEliminarPadecimiento = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         txtPadecimiento = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -145,7 +169,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         jScrollPane5 = new javax.swing.JScrollPane();
         tblVacunas = new javax.swing.JTable();
         btnAgregarVacuna = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         btnEliminarVacuna = new javax.swing.JButton();
         txtVacunaFechaApli = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
@@ -212,7 +235,103 @@ public class ExpedienteNuevo extends javax.swing.JDialog
 
         jLabel3.setText("S. Apellido");
 
-        textFechaNac.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
+        jLabel7.setText("Nacionalidad");
+
+        textSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Masculino", "Femenino" }));
+
+        jLabel22.setText("Teléfono");
+
+        jLabel20.setText("Tipo");
+
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Administrativo", "Estudiante", "Docente" }));
+
+        txtFechaNac.setDateFormatString("dd-MM-yyyy");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(textIdentificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(textNacionalidad))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textApellido1)
+                            .addComponent(textEmail)
+                            .addComponent(textSexo, 0, 171, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel22))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textApellido2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(textTelefono)
+                            .addComponent(txtFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(textApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(textApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(textIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5))
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(textNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel7))
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel22)
+                                .addComponent(textTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(txtFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
+        );
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/icons/profile128.png"))); // NOI18N
+
+        textFechaNac1.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
             new datechooser.view.appearance.ViewAppearance("custom",
                 new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
                     new java.awt.Color(0, 0, 0),
@@ -253,178 +372,38 @@ public class ExpedienteNuevo extends javax.swing.JDialog
                 (datechooser.view.BackRenderer)null,
                 false,
                 true)));
-    textFechaNac.setCurrentNavigateIndex(0);
-    textFechaNac.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
-    textFechaNac.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
-        public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
-            textFechaNacOnSelectionChange(evt);
-        }
-    });
+    textFechaNac1.setCurrentNavigateIndex(0);
+    textFechaNac1.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
 
-    jLabel7.setText("Nacionalidad");
+    jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Direcciones"));
 
-    textSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Masculino", "Femenino" }));
+    textDireccionFamiliar.setColumns(20);
+    textDireccionFamiliar.setRows(5);
+    jScrollPane1.setViewportView(textDireccionFamiliar);
 
-    jLabel22.setText("Teléfono");
+    jLabel10.setText("En tiempo lectivo");
 
-    jLabel20.setText("Tipo");
+    textDireccionLectiva.setColumns(20);
+    textDireccionLectiva.setRows(5);
+    jScrollPane2.setViewportView(textDireccionLectiva);
 
-    cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Administrativo", "Estudiante", "Docente" }));
+    jLabel9.setText("Familiar");
 
-    javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-    jPanel8.setLayout(jPanel8Layout);
-    jPanel8Layout.setHorizontalGroup(
-        jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel8Layout.createSequentialGroup()
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1)
-                .addComponent(jLabel4)
-                .addComponent(jLabel7)
-                .addComponent(jLabel20))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel8Layout.createSequentialGroup()
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textNacionalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel8))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textApellido1)
-                        .addComponent(textEmail)
-                        .addComponent(textSexo, 0, 177, Short.MAX_VALUE))
-                    .addGap(18, 18, 18)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel22))
-                    .addGap(18, 18, 18)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)))
-                .addGroup(jPanel8Layout.createSequentialGroup()
-                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE))))
-    );
-    jPanel8Layout.setVerticalGroup(
-        jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel20)
-                .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel1)
-                .addComponent(jLabel2)
-                .addComponent(textApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel3)
-                .addComponent(textApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addComponent(textFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(textTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7))
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22)))
-            .addGap(27, 27, 27))
-    );
-
-    jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/icons/profile128.png"))); // NOI18N
-
-    textFechaNac1.setCurrentView(new datechooser.view.appearance.AppearancesList("Swing",
-        new datechooser.view.appearance.ViewAppearance("custom",
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(0, 0, 255),
-                true,
-                true,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 255),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(128, 128, 128),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.LabelPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.LabelPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(255, 0, 0),
-                false,
-                false,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            (datechooser.view.BackRenderer)null,
-            false,
-            true)));
-textFechaNac1.setCurrentNavigateIndex(0);
-textFechaNac1.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
-
-jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Direcciones"));
-
-textDireccionFamiliar.setColumns(20);
-textDireccionFamiliar.setRows(5);
-jScrollPane1.setViewportView(textDireccionFamiliar);
-
-jLabel10.setText("En tiempo lectivo");
-
-textDireccionLectiva.setColumns(20);
-textDireccionLectiva.setRows(5);
-jScrollPane2.setViewportView(textDireccionLectiva);
-
-jLabel9.setText("Familiar");
-
-javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-jPanel9.setLayout(jPanel9Layout);
-jPanel9Layout.setHorizontalGroup(
-    jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-    .addGroup(jPanel9Layout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1107, Short.MAX_VALUE)
-            .addComponent(jScrollPane2)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(0, 0, Short.MAX_VALUE)))
-        .addContainerGap())
+    javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+    jPanel9.setLayout(jPanel9Layout);
+    jPanel9Layout.setHorizontalGroup(
+        jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel9Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1107, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel10))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
     );
     jPanel9Layout.setVerticalGroup(
         jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,8 +507,6 @@ jPanel9Layout.setHorizontalGroup(
         }
     });
 
-    jButton3.setText("Actualizar");
-
     txtPadecimiento.setEditable(false);
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -538,8 +515,6 @@ jPanel9Layout.setHorizontalGroup(
         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel2Layout.createSequentialGroup()
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(18, 18, 18)
             .addComponent(btnEliminarPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
             .addComponent(btnAgregarPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -582,8 +557,7 @@ jPanel9Layout.setHorizontalGroup(
             .addGap(21, 21, 21)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnAgregarPadecimiento)
-                .addComponent(btnEliminarPadecimiento)
-                .addComponent(jButton3))
+                .addComponent(btnEliminarPadecimiento))
             .addGap(8, 8, 8)
             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
@@ -645,8 +619,6 @@ jPanel9Layout.setHorizontalGroup(
         }
     });
 
-    jButton6.setText("Actualizar");
-
     btnEliminarVacuna.setText("Eliminar");
     btnEliminarVacuna.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -654,7 +626,7 @@ jPanel9Layout.setHorizontalGroup(
         }
     });
 
-    txtVacunaFechaApli.setDateFormatString("MM/dd/yy");
+    txtVacunaFechaApli.setDateFormatString("dd-MM-yyyy");
 
     javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
     jPanel6.setLayout(jPanel6Layout);
@@ -668,8 +640,6 @@ jPanel9Layout.setHorizontalGroup(
                         .addComponent(jLabel15)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jButton6)
-                                .addGap(18, 18, 18)
                                 .addComponent(btnEliminarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -700,8 +670,7 @@ jPanel9Layout.setHorizontalGroup(
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnAgregarVacuna)
-                .addComponent(btnEliminarVacuna)
-                .addComponent(jButton6))
+                .addComponent(btnEliminarVacuna))
             .addGap(18, 18, 18)
             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
@@ -773,10 +742,17 @@ jPanel9Layout.setHorizontalGroup(
     });
 
     btnEliminarPadecimientoFamiliar.setText("Eliminar");
+    btnEliminarPadecimientoFamiliar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnEliminarPadecimientoFamiliarActionPerformed(evt);
+        }
+    });
 
     jLabel23.setText("Descripción");
 
     jLabel24.setText("Parentesco");
+
+    txtPadecimientoFamiliar.setEditable(false);
 
     javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
     jPanel10.setLayout(jPanel10Layout);
@@ -977,18 +953,7 @@ jPanel9Layout.setHorizontalGroup(
                 this.dispose();
             }// fin del if
         }// fin del else
-        
-        
-        //insertarPadecimiento(nuevoPadecimiento);
-        /*insertarAlergia(nuevaAlergia);
-        insertarVacuna(nuevaVacuna);
-        insertarAntecedentesPersonal(ultimoId);
-        insertarAntecedentesPersonalesPadecimientos(ultimoId);
-        insertarAntecedenteFamiliar();
-        insertarAntecedenteFamiliaresPAdecimientos(ultimoId);
-        crearExpedienteMedico();*/
-        //this.dispose();
-    }
+    }// fin del metodo guardarNuevoExpediente
 
     private void btnIngresarPadecimientoPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPadecimientoPerActionPerformed
         
@@ -1092,15 +1057,6 @@ jPanel9Layout.setHorizontalGroup(
         }*/
     }
 
-    private void textFechaNacOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_textFechaNacOnSelectionChange
-        negocio.Edad calculaEdad = new negocio.Edad();
-        int year = textFechaNac.getCurrent().get(Calendar.YEAR);
-        int month = textFechaNac.getCurrent().get(Calendar.MONTH) + 1;
-        int day = textFechaNac.getCurrent().get(Calendar.DAY_OF_MONTH);
-        String edad = calculaEdad.getAge(year, month, day);
-        lblAnios.setText("Edad: "+edad + " Años");
-    }//GEN-LAST:event_textFechaNacOnSelectionChange
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tabExpedienteNuevo.setEnabledAt(1, false);
         tabExpedienteNuevo.setEnabledAt(2, false);
@@ -1201,6 +1157,38 @@ jPanel9Layout.setHorizontalGroup(
         cargarFilaEnTablaPadecimientosFamiliares();
     }//GEN-LAST:event_btnAgregarPadecimientoFamiliarActionPerformed
 
+    private void btnEliminarPadecimientoFamiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPadecimientoFamiliarActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            modeloPadecimientosFamiliares.removeRow(tblPadecimientosFamiliares.getSelectedRow());
+            tblPadecimientosFamiliares.setModel(modeloPadecimientosFamiliares);
+            
+            if (tblPadecimientosFamiliares.getRowCount() == 0)
+                tblPadecimientosFamiliares.setModel(new javax.swing.table.DefaultTableModel(
+                        new Object [][] {
+                            {null, null},
+                            {null, null},
+                            {null, null},
+                            {null, null}
+                        },
+                        new String [] {
+                            "Padecimiento", "Parentesco", "Descripción"
+                        }
+                ));
+        }//fin del try
+        catch(ArrayIndexOutOfBoundsException aioobe)
+        {
+            if (tblPadecimientosFamiliares.getRowCount() != 4 || tblPadecimientosFamiliares.getValueAt(0, 0) != null)
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el padecimiento que desea eliminar",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+            
+            else
+                JOptionPane.showMessageDialog(null, "No hay padecimientos para eliminar en la tabla",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+        }// fin del catch
+    }//GEN-LAST:event_btnEliminarPadecimientoFamiliarActionPerformed
+
     private void crearExpedienteMedico() 
     {
         negocio.NegocioExpedienteMedico insertarExpediente = new negocio.NegocioExpedienteMedico();
@@ -1216,27 +1204,6 @@ jPanel9Layout.setHorizontalGroup(
         }// fin del catch
     }// fin del metodo crearExpedienteMedico
 
-    private void insertarAntecedenteFamiliar() 
-    {
-        NegocioAntecedenteFamiliar objetoNegocioAntFam = new NegocioAntecedenteFamiliar();
-        AntecedenteFamiliar nuevoAntFam = new AntecedenteFamiliar();
-        
-        /*if (! textAntFamParentesco.getText().equals(""))  // valida si el campo de texto de parentesco esta vacio
-            nuevoAntFam.setParentezco(textAntFamParentesco.getText());
-        
-        if (! textAntFamDescrip.getText().equals("")) // valida si el campo de de texto de medicamento esta vacio
-            nuevoAntFam.setDescripcion(textAntFamDescrip.getText());*/
-        
-        try
-        {
-            objetoNegocioAntFam.insertarAntecedenteFamiliar(nuevoAntFam);
-        }// fin del try
-        catch(SQLException ex)
-        {
-            System.out.println("Exepcion");
-        }// fin del catch
-        
-    }// fin del metodo insertarAntecedenteFamiliar
 
     private void insertarAntecedentesPersonales(ObtenerUltimoId ultimoId) 
     { 
@@ -1333,8 +1300,9 @@ jPanel9Layout.setHorizontalGroup(
             objExpedienteVacunas[i].setIdExpediente(Integer.parseInt(idExpedienteMedico));
             
             if (! tblVacunas.getValueAt(i, 1).toString().equals(""))
-                objExpedienteVacunas[i].setFecha(tblVacunas.getValueAt(i, 1).toString());
-            
+                objExpedienteVacunas[i].setFecha(getFechaVacuna(
+                        tblVacunas.getValueAt(i, 1).toString()));
+                
             else
                 objExpedienteVacunas[i].setFecha("0000-00-00");
             // insertamos en la base de datos
@@ -1376,54 +1344,6 @@ jPanel9Layout.setHorizontalGroup(
         insertarTelefono.insertarTelefono(nuevoTelefono);
     }
 
-    private void insertarVacuna(Vacuna nuevaVacuna) {
-        if(!getFechaNac().equals("") & !txtVacunaTipo.getText().equals("")){
-            nuevaVacuna.setFechaAplicacion(getFechaVacuna());
-            nuevaVacuna.setTipo(txtVacunaTipo.getText());
-        }  
-        if (! nuevaVacuna.getTipo().equals(""))
-        {
-            negocio.NegocioVacuna insertarVacuna = new negocio.NegocioVacuna();
-            insertarVacuna.insertarVacuna(nuevaVacuna);
-        }// fin del if        
-    }// fin del metodo insertarVacuna
-
-    private void insertarAlergia(Alergia nuevaAlergia){
-        /*if(!textAlergiaNombre.getText().equals("") & !textAlergiaDescrip.getText().equals("")){
-            nuevaAlergia.setNombreAlergia(textAlergiaNombre.getText());
-            nuevaAlergia.setDetalleAlergia(textAlergiaDescrip.getText());
-        } */
-        if (! nuevaAlergia.getNombreAlergia().equals("") && ! nuevaAlergia.getDetalleAlergia().equals(""))
-        {
-            negocio.NegocioAlergia insertarAlergia = new negocio.NegocioAlergia();
-            insertarAlergia.insertarAlergia(nuevaAlergia);
-        }// fin del if
-    }// fin del metodo insertarAlergia
-    
-    private void insertarAntecedentesPersonalesPadecimientos(ObtenerUltimoId ultimoId)
-    {
-        /*NegocioAntecedentesPersPad negocioAntecedentes = new NegocioAntecedentesPersPad();
-        AntecedentesPersPad nuevoAntecedente = new AntecedentesPersPad();
-        if(idsAntecedentesPersonales != null){
-            try
-            {
-                for (int i = 0; i < idsAntecedentesPersonales.length; i++)
-                {
-                    nuevoAntecedente.setIdPadecimientos(idsAntecedentesPersonales[i]);
-                    nuevoAntecedente.setIdAntecedentesPersonales(
-                    Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesPersonales")));
-
-                    negocioAntecedentes.insertarAntecedentePersPad(nuevoAntecedente);
-                }// fin del for
-            }// fin del try
-            catch (NullPointerException npe)
-            {
-                System.err.println(npe.getMessage());
-                JOptionPane.showMessageDialog(null, "No se asociaron padecimientos a el paciente");
-            }// fin del catch
-        }*/
-        
-    }// fin del metodo insertarAntecedentesPersonalesPadecimientos
     
     /**
      * Inserta los padecimientos en la tabla de la base de datos respectiva
@@ -1436,32 +1356,9 @@ jPanel9Layout.setHorizontalGroup(
         String idExpedienteMedico = ultimoId.obtenerUltimoId("ExpedienteMedico");
         
         insertarPadecimientosFamiliares(idExpedienteMedico);
-        /*NegocioAntecedentesFamPad negocioAntecedentes = new NegocioAntecedentesFamPad();
-        AntecedentesFamPad nuevoAntecedente = new AntecedentesFamPad();
         
-        try
-        {
-            for (int i = 0; i < idsAntecedentesFamiliares.length; i++)
-            {
-                nuevoAntecedente.setIdPadecimiento(idsAntecedentesFamiliares[i]);
-                nuevoAntecedente.setIdAntecedenteFamiliar(
-                        Integer.parseInt(ultimoId.obtenerUltimoId("AntecedentesFamiliares")));
-            
-                negocioAntecedentes.insertarAntecedenteFamiliarPadecimiento(nuevoAntecedente);
-            }// fin del for
-        }// fin del try
-        catch(NullPointerException npe)
-        {
-            JOptionPane.showMessageDialog(null, "No se asociaron padecimientos a los antecedentes familiares del paciente");
-        }// fin del catach*/
     }// fin del metodo insertarAntecedenteFamiliaresPAdecimientos
     
-    private void insertarPadecimiento(Padecimiento nuevoPadecimiento) {
-//        nuevoPadecimiento.setNombrePadecimiento(textPadecimientoNombre.getText());
-//        nuevoPadecimiento.setDescripcion(textPadecimientoDesc.getText());
-//        negocio.NegocioPadecimiento insertarPadecimiento = new negocio.NegocioPadecimiento();
-//        insertarPadecimiento.insertarPadecimiento(nuevoPadecimiento);
-    }
 
     private void insertarPaciente(Paciente nuevoPaciente, ObtenerUltimoId ultimoId) 
     {
@@ -1504,34 +1401,50 @@ jPanel9Layout.setHorizontalGroup(
         insertarPaciente.insetarPaciente(nuevoPaciente);
     }
     // PROBAR PASAR EL NOMBRE DEL CAMPO DE TEXTO COMO PARAMETRO.
-    private String getFechaNac(){
+    private String getFechaNac()
+    {
         String fechaNac = "";
-        final int year = textFechaNac.getCurrent().get(Calendar.YEAR);
-        final int day = textFechaNac.getCurrent().get(Calendar.DAY_OF_MONTH);
-        final int month = textFechaNac.getCurrent().get(Calendar.MONTH) + 1;
+        final int year = txtFechaNac.getCalendar().get(Calendar.YEAR);
+        final int day = txtFechaNac.getCalendar().get(Calendar.DAY_OF_MONTH);
+        final int month = txtFechaNac.getCalendar().get(Calendar.MONTH) + 1;
         fechaNac = year+"-"+month+"-"+day;
         return fechaNac;
     }
-    private String getFechaVacuna(){
+    private String getFechaVacuna(String fecha)
+    {
         String fechaVacuna = "";
+        SimpleDateFormat formatoTexto = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaNueva = null;
         
-        try
+        try 
         {
+            fechaNueva = formatoTexto.parse(fecha);
+            formatoTexto = null;
+            formatoTexto = new SimpleDateFormat("yyyy-MM-dd");
+            fechaVacuna = formatoTexto.format(fechaNueva);
+            /*try
+            {
             final int year = txtVacunaFechaApli.getCalendar().get(Calendar.YEAR);
             final int day = txtVacunaFechaApli.getCalendar().get(Calendar.DAY_OF_MONTH);
             final int month = txtVacunaFechaApli.getCalendar().get(Calendar.MONTH) + 1;
             fechaVacuna = year+"-"+month+"-"+day;
-        }// fin del try
-        catch(NullPointerException npe)
-        {
+            }// fin del try
+            catch(NullPointerException npe)
+            {
             npe.getMessage();
-        }// fin del catch
-        finally
-        {
+            }// fin del catch
+            finally
+            {
             return fechaVacuna;
-        }// fin del finally
+            }// fin del finally*/
+        } catch (ParseException ex) {
+            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        return fechaVacuna;
     }
+    
+    
     private boolean validaciones(int seleccion)
     {
         switch(seleccion)
@@ -1632,6 +1545,7 @@ jPanel9Layout.setHorizontalGroup(
     // El siguiente metodo carga una fila en la tabla de padecimientos en antecedentes personales
     private void cargarFilaEnTablaPadecimientos()
     {
+        
         String fila [] = new String [3];  // cada objeto fila es una fila de la tabla
         
         fila [0] = txtPadecimiento.getText();    // ingresa cada campo de el formulario en el arreglo
@@ -1650,11 +1564,12 @@ jPanel9Layout.setHorizontalGroup(
     // El siguiente metodo carga una fila en la tabla de vacunas
     private void cargarFilaEnTablaVacunas()
     {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+        Date fecha = new Date();
         String fila [] = new String [2];  // cada objeto fila es una fila de la tabla
         
         fila [0] = txtVacunaTipo.getText();    // ingresa cada campo de el formulario en el arreglo
-        fila [1] = getFechaVacuna();  // para posteriormente ingresar el arreglo como una fila
-        //System.out.println(getFechaVacuna());
+        fila [1] = formatoFecha.format(txtVacunaFechaApli.getDate());
         
         modeloVacunas.addRow(fila);
         tblVacunas.setModel(modeloVacunas);
@@ -1682,6 +1597,68 @@ jPanel9Layout.setHorizontalGroup(
         txtParentesco.setText(null);
     }// fin del metodo cargarFilaEnTablaPadecimientosFamiliares
 
+    /*private Date toStringDate(String fechaString)
+    {
+        /*SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar fecha = Calendar.getInstance();
+        
+        try
+        {
+            fecha = formatoFecha.format(date);
+        }// fin del try
+        catch(ParseException pe)
+        {
+            System.err.println("Erro el convertir fecha");
+        }// fin del catch
+        
+        return fecha;
+    }// fin del metodo toStringDate*/
+    
+    private void eventoTxtFechaNac()
+    {    
+        txtFechaNac.addPropertyChangeListener(
+                new PropertyChangeListener()
+                {
+                    @Override
+                    public void propertyChange(PropertyChangeEvent e)
+                    {
+                        try 
+                        {
+                            Edad objCalculaEdad = new Edad();
+                            final int year = txtFechaNac.getCalendar().get(Calendar.YEAR);
+                            final int day = txtFechaNac.getCalendar().get(Calendar.DAY_OF_MONTH);
+                            final int month = txtFechaNac.getCalendar().get(Calendar.MONTH) + 1;
+                        
+                            String edad = objCalculaEdad.getAge(year, month, day);
+                            lblAnios.setText("Edad: " + edad + " Años");
+                        }// fin del try
+                        catch(Exception exc)
+                        {
+                        }// fin del catch
+                    }// fin del metodo propertyChange
+                }// fin de la clase interna anonima PropertyCahngeListener
+        );
+        /*txtFechaNac.getDateEditor().getUiComponent().addFocusListener( 
+                new FocusListener()
+                {
+                   
+
+            @Override
+            public void focusGained(FocusEvent fe) {
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void focusLost(FocusEvent fe) {
+                JOptionPane.showMessageDialog(null, fe.getComponent().getClass().getName());
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+                }
+        );*/
+                
+       
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1739,8 +1716,6 @@ jPanel9Layout.setHorizontalGroup(
     private javax.swing.JButton btnPasar;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JComboBox cbTipo;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1788,7 +1763,6 @@ jPanel9Layout.setHorizontalGroup(
     private javax.swing.JTextArea textDireccionFamiliar;
     private javax.swing.JTextArea textDireccionLectiva;
     private javax.swing.JTextField textEmail;
-    private datechooser.beans.DateChooserCombo textFechaNac;
     private datechooser.beans.DateChooserCombo textFechaNac1;
     private javax.swing.JTextField textIdentificacion;
     private javax.swing.JTextField textNacionalidad;
@@ -1798,6 +1772,7 @@ jPanel9Layout.setHorizontalGroup(
     private javax.swing.JTextField textTelefono1;
     private javax.swing.JTextArea txaAlergias;
     private javax.swing.JTextField txtDescripcion;
+    private com.toedter.calendar.JDateChooser txtFechaNac;
     private javax.swing.JTextField txtMedicamentos;
     private javax.swing.JTextField txtPadecimiento;
     private javax.swing.JTextField txtPadecimientoFamiliar;
@@ -1806,4 +1781,8 @@ jPanel9Layout.setHorizontalGroup(
     private com.toedter.calendar.JDateChooser txtVacunaFechaApli;
     private javax.swing.JTextField txtVacunaTipo;
     // End of variables declaration//GEN-END:variables
+
+
+
+    
 }
