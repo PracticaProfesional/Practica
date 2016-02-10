@@ -850,7 +850,7 @@ BEGIN
 	values (idVac, idExp, fechaVacuna);
 END $
 
-Call InsertarExpedienteVacunas (1, 4, 2015-03-03) 
+Call InsertarExpedienteVacunas (1, 4, ('22-03-1992')) 
 
 
 -- Procedimiento almacenado para obtener los id's de la tabla vacunas utilizando de parametro el nombre de a=la vacuna
@@ -884,4 +884,28 @@ BEGIN
     insert into `expediente-padecimientosfamiliares` (idPadecimiento, idExpediente, parentesco,
 			descripcion)
 	values (idPad, idExp, varPar, varDes);
-END $      
+END $
+
+
+-- Procedimiento almacenado que consulta los padecimientos familiares de cada paciente
+DELIMITER $
+CREATE PROCEDURE `ListarPadecimientosFamilires` (in idExp int)
+BEGIN
+	select padecimientos.nombrePadecimiento,
+		   `expediente-padecimientosfamiliares`.parentesco,
+           `expediente-padecimientosfamiliares`.descripcion,
+           `expediente-padecimientosfamiliares`.idPadecimiento
+	from `expediente-padecimientosfamiliares` join padecimientos
+	on `expediente-padecimientosfamiliares`.idPadecimiento = padecimientos.id 
+	where `expediente-padecimientosfamiliares`.idExpediente = IdExp;
+END $
+
+Call `ListarPadecimientosFamilires` (3);      
+
+
+DELIMITER $
+CREATE PROCEDURE EliminarPadecimientosFamiliares (in idPad int, in idExp int)
+BEGIN
+	delete from `expediente-padecimientosfamiliares`
+	where idPadecimiento = idPad and idExpediente = idExp;
+END $
