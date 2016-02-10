@@ -31,6 +31,7 @@ public class VerExpediente extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
+        this.idPaciente = id;
         this.setResizable(false);
         this.setLocationRelativeTo(parent);
         cargarPestanas();                        // se cargan las demas pestañas del formulario
@@ -40,7 +41,7 @@ public class VerExpediente extends javax.swing.JDialog
         
         this.setTitle("Expediente - " + textNombre.getText() + " " + 
                 textApellido1.getText() + " " + textApellido2.getText());  // Ponemos de titulo el nombre del paciente
-        this.idPaciente = id;
+        
     }// fin del constructor de VerExpediente
 
     /**
@@ -716,6 +717,10 @@ public class VerExpediente extends javax.swing.JDialog
         ContenedorAntecedentesPersonales objContAntecedentesPersonales = 
                 new ContenedorAntecedentesPersonales();
         tabActualizarExpediente.addTab("Antecedentes Personales", objContAntecedentesPersonales);
+        
+        ContenedorAntecedentesFamiliares objContAntecedentesFamiliares = 
+                new ContenedorAntecedentesFamiliares(idPaciente, this);
+        tabActualizarExpediente.addTab("AntecedentesFamiliares", objContAntecedentesFamiliares);
     }// fin del metodo cargarPestanas
     
     /**
