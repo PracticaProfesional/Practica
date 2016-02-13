@@ -5,15 +5,38 @@
  */
 package presentacion;
 
-public class ContenedorAntecedentesPersonales extends javax.swing.JPanel {
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import entidad.ExpedienteVacunas;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import negocio.NegocioExpedienteVacunas;
+import negocio.NegocioExpedienteMedico;
+import negocio.NegocioVacuna;
 
-    /**
-     * Creates new form ContenedorAntecedentesPersonales
-     */
-    public ContenedorAntecedentesPersonales() 
+
+public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
+{
+    DefaultTableModel modeloVacunas;
+    ArrayList<String> idsDeVacunasAEliminar = new ArrayList<>();
+    ArrayList<String> nombresDeVacunasAAgregar = new ArrayList<>();   // se guarda el tipo o nombre de la vacuna
+    String idExpedienteMedico;
+    
+    public ContenedorAntecedentesPersonales(String idPaciente) 
     {
         initComponents();
-    }
+        String idExpediente = obtenerIdExpediente(idPaciente);
+        inicializarTablaVacunas(idExpediente);
+        this.idExpedienteMedico = idExpediente;
+        
+        inhabilitarCamposVacunas();
+    }// fin del constructor de ContenedorAntecedentesPersonales
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,8 +59,21 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        pnlVacunas = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblVacunas = new javax.swing.JTable();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txtVacunaFechaApli = new com.toedter.calendar.JDateChooser();
+        txtVacunaTipo = new javax.swing.JTextField();
+        btnAgregarVacuna = new javax.swing.JButton();
+        btnEliminarVacuna = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        pnlAlergias = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        btnGuardar = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("")));
         setPreferredSize(new java.awt.Dimension(1063, 575));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Padecimientos"));
@@ -130,8 +166,126 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 50, Short.MAX_VALUE))
+                .addGap(0, 56, Short.MAX_VALUE))
         );
+
+        pnlVacunas.setBorder(javax.swing.BorderFactory.createTitledBorder("Vacunas"));
+
+        tblVacunas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Tipo", "Fecha de aplicación"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tblVacunas);
+
+        jLabel15.setText("Tipo");
+
+        jLabel16.setText("Fecha Aplicación");
+
+        txtVacunaFechaApli.setDateFormatString("dd-MM-yyyy");
+
+        btnAgregarVacuna.setText("Agregar");
+        btnAgregarVacuna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarVacunaActionPerformed(evt);
+            }
+        });
+
+        btnEliminarVacuna.setText("Eliminar");
+        btnEliminarVacuna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarVacunaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlVacunasLayout = new javax.swing.GroupLayout(pnlVacunas);
+        pnlVacunas.setLayout(pnlVacunasLayout);
+        pnlVacunasLayout.setHorizontalGroup(
+            pnlVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVacunasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+                    .addGroup(pnlVacunasLayout.createSequentialGroup()
+                        .addGroup(pnlVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlVacunasLayout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addGap(69, 69, 69)
+                                .addComponent(txtVacunaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlVacunasLayout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtVacunaFechaApli, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlVacunasLayout.createSequentialGroup()
+                                .addComponent(btnAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEliminarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlVacunasLayout.setVerticalGroup(
+            pnlVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVacunasLayout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarVacuna)
+                    .addComponent(btnEliminarVacuna))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtVacunaTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addGap(18, 18, 18)
+                .addGroup(pnlVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel16)
+                    .addComponent(txtVacunaFechaApli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(99, 99, 99))
+        );
+
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        pnlAlergias.setBorder(javax.swing.BorderFactory.createTitledBorder("Alergias"));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout pnlAlergiasLayout = new javax.swing.GroupLayout(pnlAlergias);
+        pnlAlergias.setLayout(pnlAlergiasLayout);
+        pnlAlergiasLayout.setHorizontalGroup(
+            pnlAlergiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
+        );
+        pnlAlergiasLayout.setVerticalGroup(
+            pnlAlergiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+        );
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -139,15 +293,39 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(517, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pnlAlergias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlVacunas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlVacunas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlAlergias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnEditar)
+                            .addComponent(btnGuardar))
+                        .addGap(56, 56, 56))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -155,19 +333,264 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void btnAgregarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVacunaActionPerformed
+        // TODO add your handling code here:
+        
+        //NegocioPadecimiento objNegocioPad = new NegocioPadecimiento();
+        String fila [] = new String [2];
+        int idPadecimiento;   // variable donde se guardara el id del padecimiento recien agregado,
+                              // retornado por el metodo obtenerId
+        SimpleDateFormat formatoFecha = new SimpleDateFormat(
+                txtVacunaFechaApli.getDateFormatString());
+        
+        if (txtVacunaTipo.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Debe ingresar una vacuna para agregar", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        
+        else
+        {
+            fila[0] = txtVacunaTipo.getText();
+            fila[1] = formatoFecha.format(txtVacunaFechaApli.getDate());
+        
+            modeloVacunas.addRow(fila);
+            nombresDeVacunasAAgregar.add(fila[0]);  // se agrega a la lista
+        
+            limpiarCamposVacunas();   // se limpian los campos de texto
+        }// fin del else
+    }//GEN-LAST:event_btnAgregarVacunaActionPerformed
 
+    private void btnEliminarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVacunaActionPerformed
+        // TODO add your handling code here:
+        
+        int filaSeleccionada = tblVacunas.getSelectedRow();
+        
+        if (filaSeleccionada == -1)
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una vacuna para eliminar", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        
+        else
+        {
+            int confirmacion = JOptionPane.showConfirmDialog(null, 
+                    "Está seguro de eliminar la vacuna");
+            
+            if (confirmacion == JOptionPane.YES_OPTION)
+            {                
+                try 
+                {
+                    idsDeVacunasAEliminar.add(
+                            tblVacunas.getValueAt(filaSeleccionada, 2).toString());
+                
+                    modeloVacunas.removeRow(filaSeleccionada);
+                }// fin del try
+                catch (NullPointerException npe)
+                {
+                    System.out.println(nombresDeVacunasAAgregar.size());
+                    nombresDeVacunasAAgregar.remove(
+                            tblVacunas.getValueAt(filaSeleccionada, 0).toString());
+                    
+                    modeloVacunas.removeRow(filaSeleccionada);
+                    System.out.println(nombresDeVacunasAAgregar.size());
+                }// fin del catch
+                
+            }// fin del if
+        }// fin del else
+    }//GEN-LAST:event_btnEliminarVacunaActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        ingresarVacunas();
+        //eliminarVacunas();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        habilitarCamposVacunas();
+        /*for (int i = 0; i < nombresDeVacunasAAgregar.size(); i++)
+            System.out.println(nombresDeVacunasAAgregar.get(i));*/
+    }//GEN-LAST:event_btnEditarActionPerformed
+    
+    private void inicializarTablaVacunas(String idExpedienteMedico)
+    {
+        modeloVacunas = new DefaultTableModel()   //  modelo instanciado
+                {
+                    @Override // ihabilitamos la tabla para no permitir la edicion de sus columnas
+                    public boolean isCellEditable(int rowIndex, int columnIndex)
+                    {
+                        return false;
+                    }// fin del metodo isCellEditable
+                };   // modelo de la tabla de padecimientos
+        
+        modeloVacunas.addColumn("Tipo");  // agregamos las cabeceras de columnas
+        modeloVacunas.addColumn("Fecha de aplicación");    // al modelo
+        modeloVacunas.addColumn("Id");
+        
+        NegocioExpedienteVacunas objNegocioExpVacu = new NegocioExpedienteVacunas();
+        String fila [] = new String [3];
+        ResultSet rs;
+        
+        try
+        {
+            rs = objNegocioExpVacu.listarVacunas(idExpedienteMedico);
+            
+            while (rs.next())
+            {
+                fila[0] = rs.getString(1);
+                fila[1] = rs.getString(2);
+                fila[2] = rs.getString(3);                
+                
+                modeloVacunas.addRow(fila);  // agregamos una fila al modelo por el arreglo
+            }// fin del while
+            
+            tblVacunas.setModel(modeloVacunas);
+            
+            // Escondemos la columna de Id
+            tblVacunas.getColumnModel().getColumn(2).setMaxWidth(0);
+            tblVacunas.getColumnModel().getColumn(2).setMinWidth(0);
+            tblVacunas.getColumnModel().getColumn(2).setPreferredWidth(0);
+            
+            
+        }// fin del try
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode() + sqle.getMessage());
+        }// fin del catch
+        
+    }// fin del metodo inicilizarTablaVacunas
+
+    // El siguiente metodo elimina las vacunas seleccionadas de la BD
+    private void eliminarVacunas()
+    {
+        NegocioExpedienteVacunas objNegocioExpVac = new NegocioExpedienteVacunas();
+        
+        for (int i = 0; i < idsDeVacunasAEliminar.size(); i++)
+        {
+            objNegocioExpVac.eliminarVacuna(idsDeVacunasAEliminar.get(i));
+                    
+        }// fin del for
+        
+    }// fin del metodo eliminarPadecimientosFamiliares
+    
+    // El siguiente metodo ingresa vacunas asociadas al paciente en la base de datos
+    private void ingresarVacunas()
+    {
+        NegocioVacuna objNegocioVacuna = new NegocioVacuna();
+        NegocioExpedienteVacunas objNegocioExpVac = new NegocioExpedienteVacunas();
+        ExpedienteVacunas objExpVac [] = new ExpedienteVacunas[nombresDeVacunasAAgregar.size()];
+        
+        String idVacunas [] = new String [nombresDeVacunasAAgregar.size()];  // se guardaran los ids de cada
+                                                                    // vacunas para despues insertar
+                                                                    
+        for (int i = 0; i < nombresDeVacunasAAgregar.size(); i++)
+            objNegocioVacuna.consultarInsertarVacuna(nombresDeVacunasAAgregar.get(i));
+        
+        for (int i = 0; i < idVacunas.length; i++)
+            idVacunas[i] = objNegocioVacuna.obtenerIdVacuna(nombresDeVacunasAAgregar.get(i));
+        
+        // Extraemos el indice de la tabla desde donde se agregaron nuevos padecimientos
+        int indice = tblVacunas.getRowCount() - nombresDeVacunasAAgregar.size();
+        
+        for (int i = 0; i < objExpVac.length; i++)
+        {
+            objExpVac[i] = new ExpedienteVacunas();
+            
+            // se ingresa el padecimiento seleccionado del catalogo de padecimientos (CatalogoPadecimientos.java)
+            objExpVac[i].setIdVacuna(Integer.parseInt(idVacunas[i]));
+            
+            objExpVac[i].setIdExpediente(Integer.parseInt(idExpedienteMedico));
+            objExpVac[i].setFecha(getFechaVacuna(tblVacunas.getValueAt(indice, 1).toString()));
+             
+            // insertamos en la base de datos
+            objNegocioExpVac.insertarExpedienteVacunas(objExpVac[i]);
+            
+            indice++;
+        } // fin del for
+                
+    }// fin del metodo ingresarVacunas
+    
+    // El siguiente metodo obtiene el id del expediente medico a partir de id del paciente
+    private String obtenerIdExpediente(String idPaciente)
+    {
+        NegocioExpedienteMedico objNegocioExpMed = new NegocioExpedienteMedico();        
+        return objNegocioExpMed.obtenerIdExpedienteMedico(idPaciente);
+    }// fin del metodo obtenerIdExpediente
+    
+    private String getFechaVacuna(String fecha)
+    {
+        String fechaVacuna = "";
+        SimpleDateFormat formatoTexto = new SimpleDateFormat("dd-MM-yyyy");
+        Date fechaNueva = null;
+        
+        try 
+        {
+            fechaNueva = formatoTexto.parse(fecha);
+            formatoTexto = null;
+            formatoTexto = new SimpleDateFormat("yyyy-MM-dd");
+            fechaVacuna = formatoTexto.format(fechaNueva);
+        }// fin del try 
+        catch (ParseException ex) 
+        {
+            Logger.getLogger(ExpedienteNuevo.class.getName()).log(Level.SEVERE, null, ex);
+        }// fin del catch
+        
+        return fechaVacuna;
+    }
+    
+    // Limpia los campos en el formulario de vacunas
+    private void limpiarCamposVacunas()
+    {
+        txtVacunaTipo.setText("");
+        txtVacunaFechaApli.setDate(null);
+    }// fin del metodo limpiarCamposVacuna
+    
+    
+    private void inhabilitarCamposVacunas()
+    {
+        txtVacunaTipo.setEnabled(false);
+        txtVacunaFechaApli.setEnabled(false);
+        btnAgregarVacuna.setEnabled(false);
+        btnEliminarVacuna.setEnabled(false);
+    }// fin del metodo inhabilitarCamposVacunas
+    
+    private void habilitarCamposVacunas()
+    {
+        txtVacunaTipo.setEnabled(true);
+        txtVacunaFechaApli.setEnabled(true);
+        btnAgregarVacuna.setEnabled(true);
+        btnEliminarVacuna.setEnabled(true);
+    }// fin del metodo habilitarCamposVacunas
+    
+    
+    // DE AQUI PARA ABAJO COMIENZAN TODOS LOS METODO QUE TIENE QUE VER CON LA PARTE ALERGIAS
+    private void inicializarAlergias()
+    {
+    }// fin del metodo inicializarAlergias
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarVacuna;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminarVacuna;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel pnlAlergias;
+    private javax.swing.JPanel pnlVacunas;
     private javax.swing.JTable tblPadecimientos;
+    private javax.swing.JTable tblVacunas;
+    private com.toedter.calendar.JDateChooser txtVacunaFechaApli;
+    private javax.swing.JTextField txtVacunaTipo;
     // End of variables declaration//GEN-END:variables
-}
+}// fin de la clase ContenedorAntecedentesPersonales
