@@ -5,6 +5,7 @@
  */
 package negocio;
 import datos.OperacionesExpedienteMedico;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
  * Esta clase relaciona la clase OperacionesExpedeinteMedico con la capa de presentación
@@ -42,4 +43,16 @@ public class NegocioExpedienteMedico {
         OperacionesExpedienteMedico opExpediente = new OperacionesExpedienteMedico();
         return opExpediente.obtenerIdExpedienteMedico(idPaciente);
     }
+    
+    public ResultSet obtenerAlergias(String id) throws SQLException
+    {
+        OperacionesExpedienteMedico opExpediente = new OperacionesExpedienteMedico();
+        return opExpediente.obtenerAlergias(id);
+    }// fin del metodo obtenerAlergias
+    
+    public void actualizarAlergias(String id, String alergias)
+    {
+        OperacionesExpedienteMedico opExpediente = new OperacionesExpedienteMedico();
+        opExpediente.actualizarAlergias(id, alergias);
+    }// fin del metodo actualizarAlergias
 }
