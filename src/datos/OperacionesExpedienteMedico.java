@@ -62,4 +62,29 @@ public class OperacionesExpedienteMedico {
         }
         return idExpediente;
     }
+    
+    public ResultSet obtenerAlergias(String id) throws SQLException
+    {
+        objetoDeConexion = new Conexion();
+        estado = objetoDeConexion.conectar().createStatement();
+        ResultSet rs = estado.executeQuery("Call ObtenerAlergiaExpediente(" + id + ")");
+        return rs;
+    }// fin del metodo obtenerAlergias
+    
+    public void actualizarAlergias(String id, String alergias)
+    {
+        objetoDeConexion = new Conexion();
+        
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call ActualizarAlergiaExpediente (" + id + ", '" + alergias + "'" + ")");
+            estado.close();
+            objetoDeConexion.desconectar();
+        }// fin del try
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode() + sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo actualizarAlergias
 }
