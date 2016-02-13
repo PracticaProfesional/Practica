@@ -26,8 +26,9 @@ public class Conexion {
         datos = new negocio.LeerEscribirDatosConexion(); 
         try
         {
+            //"jdbc:mysql://localhost:3306/pagos?user=root&password=root&zeroDateTimeBehavior=convertToNull";
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://"+datos.recuperarDatos().get("ip")+"/sigos", datos.recuperarDatos().get("user"), datos.recuperarDatos().get("pass"));
+            conexion = DriverManager.getConnection("jdbc:mysql://"+datos.recuperarDatos().get("ip")+"/sigos?zeroDateTimeBehavior=convertToNull", datos.recuperarDatos().get("user"), datos.recuperarDatos().get("pass"));
             return conexion;
         }// fin de try
         catch (SQLException | ClassNotFoundException exception)
