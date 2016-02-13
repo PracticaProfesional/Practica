@@ -67,7 +67,7 @@ public class AgregarInventario extends javax.swing.JDialog
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar medicamentos y utensilios");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingresar Productos"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingresar"));
 
         jLabel1.setText("Nombre");
 
@@ -147,7 +147,7 @@ public class AgregarInventario extends javax.swing.JDialog
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Productos"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Insumos"));
 
         tblInventarioAgregar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
