@@ -297,12 +297,12 @@ public class ContenedorAntecedentesFamiliares extends javax.swing.JPanel
                 }// fin del try
                 catch (NullPointerException npe)
                 {
-                    System.out.println(nombreDePadecimientosAgregar.size());
+                    //System.out.println(nombreDePadecimientosAgregar.size());
                     nombreDePadecimientosAgregar.remove(
                             tblPadecimientosFamiliares.getValueAt(filaSeleccionada, 0).toString());
                     
                     modeloPadecimientosFamiliares.removeRow(filaSeleccionada);
-                    System.out.println(nombreDePadecimientosAgregar.size());
+                    //System.out.println(nombreDePadecimientosAgregar.size());
                 }// fin del catch
                 
             }// fin del if
