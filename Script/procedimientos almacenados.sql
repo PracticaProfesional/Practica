@@ -832,7 +832,8 @@ BEGIN
 		
 END $
 
-Call ConsultarInsertarVacuna('bpm')
+$
+Call ConsultarInsertarVacuna('bpm');
 
 
 -- Procedimiento que inserta en la tabla Expediente-Vacunas
@@ -850,7 +851,7 @@ BEGIN
 	values (idVac, idExp, fechaVacuna);
 END $
 
-Call InsertarExpedienteVacunas (1, 4, ('22-03-1992')) 
+Call InsertarExpedienteVacunas (7, 5, '');
 
 
 -- Procedimiento almacenado para obtener los id's de la tabla vacunas utilizando de parametro el nombre de a=la vacuna
@@ -909,3 +910,24 @@ BEGIN
 	delete from `expediente-padecimientosfamiliares`
 	where idPadecimiento = idPad and idExpediente = idExp;
 END $
+
+DELIMITER $
+CREATE PROCEDURE ListarVacunas (in idExp int)
+BEGIN
+	select vacunas.vacuna,
+		   `expediente-vacunas`.fecha,
+		   `expediente-vacunas`.id
+	from `expediente-vacunas` join vacunas
+	on `expediente-vacunas`.idVacuna = vacunas.id
+	where `expediente-vacunas`.idExpediente = idExp;
+END $
+
+Call ListarVacunas (4);
+
+
+DELIMITER $
+CREATE PROCEDURE `EliminarVacunasExpediente`(in idExpVac int)
+BEGIN
+	delete from `expediente-vacunas`
+	where id = idExpVac;
+END
