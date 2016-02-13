@@ -715,7 +715,7 @@ public class VerExpediente extends javax.swing.JDialog
     private void cargarPestanas()
     {
         ContenedorAntecedentesPersonales objContAntecedentesPersonales = 
-                new ContenedorAntecedentesPersonales();
+                new ContenedorAntecedentesPersonales(idPaciente);
         tabActualizarExpediente.addTab("Antecedentes Personales", objContAntecedentesPersonales);
         
         ContenedorAntecedentesFamiliares objContAntecedentesFamiliares = 
