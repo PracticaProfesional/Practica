@@ -34,7 +34,7 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
         String idExpediente = obtenerIdExpediente(idPaciente);
         inicializarTablaVacunas(idExpediente);
         this.idExpedienteMedico = idExpediente;
-        
+        inicializarAlergias();
         inhabilitarCamposVacunas();
     }// fin del constructor de ContenedorAntecedentesPersonales
 
@@ -71,7 +71,7 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
         btnEditar = new javax.swing.JButton();
         pnlAlergias = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txaAlergias = new javax.swing.JTextArea();
         btnGuardar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1063, 575));
@@ -265,9 +265,9 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
 
         pnlAlergias.setBorder(javax.swing.BorderFactory.createTitledBorder("Alergias"));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txaAlergias.setColumns(20);
+        txaAlergias.setRows(5);
+        jScrollPane2.setViewportView(txaAlergias);
 
         javax.swing.GroupLayout pnlAlergiasLayout = new javax.swing.GroupLayout(pnlAlergias);
         pnlAlergias.setLayout(pnlAlergiasLayout);
@@ -398,8 +398,9 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        ingresarVacunas();
+        //ingresarVacunas();
         //eliminarVacunas();
+        actualizarAlergias();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -563,7 +564,29 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
     // DE AQUI PARA ABAJO COMIENZAN TODOS LOS METODO QUE TIENE QUE VER CON LA PARTE ALERGIAS
     private void inicializarAlergias()
     {
+        NegocioExpedienteMedico objNegocioExpMed = new NegocioExpedienteMedico();
+        ResultSet rs;
+        
+        try
+        {
+            rs = objNegocioExpMed.obtenerAlergias(idExpedienteMedico);
+            
+            if (rs.next())
+                txaAlergias.setText(rs.getString("alergias"));
+        }// fin del try
+        catch (SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode() + sqle.getMessage());
+        }// fin del catch
+        
     }// fin del metodo inicializarAlergias
+    
+    // El siguiente metodo metodo actualiza las alergias pertenecientes a un paciente en la BD
+    private void actualizarAlergias()
+    {
+        NegocioExpedienteMedico objNegocioExpMed = new NegocioExpedienteMedico();
+        objNegocioExpMed.actualizarAlergias(idExpedienteMedico, txaAlergias.getText());
+    }// fin del metodo actualizarAlergias
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarVacuna;
@@ -583,13 +606,13 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel pnlAlergias;
     private javax.swing.JPanel pnlVacunas;
     private javax.swing.JTable tblPadecimientos;
     private javax.swing.JTable tblVacunas;
+    private javax.swing.JTextArea txaAlergias;
     private com.toedter.calendar.JDateChooser txtVacunaFechaApli;
     private javax.swing.JTextField txtVacunaTipo;
     // End of variables declaration//GEN-END:variables
