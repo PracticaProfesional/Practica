@@ -930,4 +930,24 @@ CREATE PROCEDURE `EliminarVacunasExpediente`(in idExpVac int)
 BEGIN
 	delete from `expediente-vacunas`
 	where id = idExpVac;
-END
+END $
+
+DELIMITER $
+CREATE PROCEDURE ObtenerAlergiaExpediente (in idExp int)
+BEGIN
+	select alergias from expedientemedico
+	where id = idExp;
+END $
+
+Call ObtenerAlergiaExpediente (3)
+
+
+DELIMITER $
+CREATE PROCEDURE ActualizarAlergiaExpediente (in idExp int, in aler text)
+BEGIN
+	update expedientemedico
+    set alergias = aler
+    where id = idExp;
+END $
+
+Call ActualizarAlergiaExpediente (1, 'Al polvo:leve\n A la pintura')
