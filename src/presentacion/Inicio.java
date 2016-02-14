@@ -1767,9 +1767,25 @@ public class Inicio extends javax.swing.JFrame {
         nuevo.setVisible(true);
         cargarTablaBuscarPaciente();
     }//GEN-LAST:event_btnCrearExpedienteActionPerformed
+    
     private boolean validaSVitales(){
         String validadorNumerico = ".*[1-9].*";
-        boolean validado = false;
+        boolean validado = true;
+        
+        // Revisa los campos que necesitan ser validad en caso de que esten vacios devuelve false
+        // y pone el foco en el ultimo que reviso
+        if (textMotivoConsulta.getText().isEmpty())
+        {
+            textMotivoConsulta.requestFocus();
+            validado = false;
+        }// fin del if
+        
+        if (textSintomas.getText().isEmpty())
+        {
+            textSintomas.requestFocus();
+            validado = false;
+        }// fin del if
+        
 //        javax.swing.JTextField [] 
 //                textsSignosVitales = {textFC, textGC, textH2O,
 //                                      textIMB, textIMC, textMM, 
@@ -1794,7 +1810,7 @@ public class Inicio extends javax.swing.JFrame {
 //            }
                 
             
-        return true;
+        return validado;
     }
     
     private boolean regExValidation(String validador, JTextField campo) {
@@ -1930,16 +1946,38 @@ public class Inicio extends javax.swing.JFrame {
             signosV.setPapanicolaou(1);
         else
             signosV.setPapanicolaou(0);
-        signosV.setAguaCorporal(Double.parseDouble(textH2O.getText()));
-        signosV.setGrasaCorporal(Double.parseDouble(textGC.getText()));
-        signosV.setIndiceMasaCorporal(Double.parseDouble(textIMC.getText()));
-        signosV.setIndiceMetabolicoBasal(Double.parseDouble(textIMB.getText()));
-        signosV.setPeso(Double.parseDouble(textPeso.getText()));
-        signosV.setPresionArterial(textPAR.getText());
-        signosV.setTalla(Double.parseDouble(textTalla.getText()));
-        signosV.setTemperatura(Double.parseDouble(textTemperatura.getText()));
-        signosV.setFrecuenciaCardiaca(Integer.parseInt(textFC.getText()));
-        signosV.setMasaCorporal(Double.parseDouble(textMM.getText()));
+        
+        // ingreso de los campos de texto de signos vitales
+        if ( !(textH2O.getText().isEmpty()))
+            signosV.setAguaCorporal(Double.parseDouble(textH2O.getText()));
+        
+        if ( !(textGC.getText().isEmpty()))
+            signosV.setGrasaCorporal(Double.parseDouble(textGC.getText()));
+        
+        if ( !(textIMC.getText().isEmpty()))
+            signosV.setIndiceMasaCorporal(Double.parseDouble(textIMC.getText()));
+        
+        if ( !(textIMB.getText().isEmpty()))
+            signosV.setIndiceMetabolicoBasal(Double.parseDouble(textIMB.getText()));
+        
+        if ( !(textPeso.getText().isEmpty()))
+            signosV.setPeso(Double.parseDouble(textPeso.getText()));
+        
+        if ( !(textPAR.getText().isEmpty()))
+            signosV.setPresionArterial(textPAR.getText());
+        
+        if ( !(textTalla.getText().isEmpty()))
+            signosV.setTalla(Double.parseDouble(textTalla.getText()));
+        
+        if ( !(textTemperatura.getText().isEmpty()))
+            signosV.setTemperatura(Double.parseDouble(textTemperatura.getText()));
+        
+        if ( !(textFC.getText().isEmpty()))
+            signosV.setFrecuenciaCardiaca(Integer.parseInt(textFC.getText()));
+        
+        if ( !(textMM.getText().isEmpty()))
+            signosV.setMasaCorporal(Double.parseDouble(textMM.getText()));
+        
         return signosV;
     }
     
@@ -2557,6 +2595,9 @@ public class Inicio extends javax.swing.JFrame {
         if(validaSVitales()){
             ingresarSignosConsulta();
             limpiarSignosVitales();
+            
+            JOptionPane.showMessageDialog(null, "Los signos vitales se han guardado exitosamente", 
+                    "Información", JOptionPane.INFORMATION_MESSAGE);
         }
         else
         JOptionPane.showMessageDialog(this, "Parecen haber datos incompletos"
