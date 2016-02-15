@@ -5,6 +5,7 @@
  */
 package presentacion;
 
+import java.awt.Dialog;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -12,21 +13,29 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import entidad.ExpedienteVacunas;
+import entidad.ExpedientePadecimientos;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import negocio.NegocioExpedientePadecimientos;
 import negocio.NegocioExpedienteVacunas;
 import negocio.NegocioExpedienteMedico;
 import negocio.NegocioVacuna;
+import negocio.NegocioPadecimiento;
 
 
 public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
 {
     DefaultTableModel modeloVacunas;
+    DefaultTableModel modeloPadecimientosPersonales;
     ArrayList<String> idsDeVacunasAEliminar = new ArrayList<>();
     ArrayList<String> nombresDeVacunasAAgregar = new ArrayList<>();   // se guarda el tipo o nombre de la vacuna
+    ArrayList<String> idsDePadecimientosAEliminar = new ArrayList<>();
+    ArrayList<String> nombresDePadecimientosAAgregar = new ArrayList<>();
     String idExpedienteMedico;
+    String contenidoDeAlergias;
+    Dialog parent;
     
     public ContenedorAntecedentesPersonales(String idPaciente) 
     {
@@ -34,8 +43,12 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
         String idExpediente = obtenerIdExpediente(idPaciente);
         inicializarTablaVacunas(idExpediente);
         this.idExpedienteMedico = idExpediente;
+        inicializarTablaPadecimientos();
         inicializarAlergias();
         inhabilitarCamposVacunas();
+        inhabilitarCamposPadecimientos();
+        txaAlergias.setEnabled(false);
+        contenidoDeAlergias = txaAlergias.getText();
     }// fin del constructor de ContenedorAntecedentesPersonales
 
     /**
@@ -50,15 +63,15 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPadecimientos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAgregarPadecimiento = new javax.swing.JButton();
+        btnEliminarPadecimiento = new javax.swing.JButton();
+        btnIngresarPadecimiento = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtTratamiento = new javax.swing.JTextField();
+        txtMedicamento = new javax.swing.JTextField();
+        txtPadecimiento = new javax.swing.JTextField();
         pnlVacunas = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblVacunas = new javax.swing.JTable();
@@ -99,13 +112,26 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
         });
         jScrollPane1.setViewportView(tblPadecimientos);
 
-        jButton1.setText("Agregar");
+        btnAgregarPadecimiento.setText("Agregar");
+        btnAgregarPadecimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarPadecimientoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Eliminar");
+        btnEliminarPadecimiento.setText("Eliminar");
+        btnEliminarPadecimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPadecimientoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Actualizar");
-
-        jButton4.setText("Añadir");
+        btnIngresarPadecimiento.setText("Añadir");
+        btnIngresarPadecimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarPadecimientoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Padecimiento");
 
@@ -113,11 +139,13 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
 
         jLabel3.setText("Medicamento");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtMedicamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtMedicamentoActionPerformed(evt);
             }
         });
+
+        txtPadecimiento.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,20 +156,21 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAgregarPadecimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                            .addComponent(txtTratamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                            .addComponent(txtMedicamento)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnIngresarPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEliminarPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3))
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2))
+                                .addComponent(txtPadecimiento)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -151,21 +180,21 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btnAgregarPadecimiento)
+                    .addComponent(btnEliminarPadecimiento))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jLabel1))
+                    .addComponent(btnIngresarPadecimiento)
+                    .addComponent(jLabel1)
+                    .addComponent(txtPadecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 56, Short.MAX_VALUE))
         );
 
@@ -329,9 +358,9 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedicamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtMedicamentoActionPerformed
 
     private void btnAgregarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVacunaActionPerformed
         // TODO add your handling code here:
@@ -384,12 +413,10 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
                 }// fin del try
                 catch (NullPointerException npe)
                 {
-                    System.out.println(nombresDeVacunasAAgregar.size());
                     nombresDeVacunasAAgregar.remove(
                             tblVacunas.getValueAt(filaSeleccionada, 0).toString());
                     
                     modeloVacunas.removeRow(filaSeleccionada);
-                    System.out.println(nombresDeVacunasAAgregar.size());
                 }// fin del catch
                 
             }// fin del if
@@ -400,15 +427,86 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
         // TODO add your handling code here:
         //ingresarVacunas();
         //eliminarVacunas();
-        actualizarAlergias();
+        //actualizarAlergias();
+        //eliminarPadecimientos();
+        //ingresarPadecimientosPersonales();
+        guardarCambios();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
         habilitarCamposVacunas();
-        /*for (int i = 0; i < nombresDeVacunasAAgregar.size(); i++)
-            System.out.println(nombresDeVacunasAAgregar.get(i));*/
+        habilitarCamposPadecimientos();
+        txaAlergias.setEnabled(true);
     }//GEN-LAST:event_btnEditarActionPerformed
+    private void btnEliminarPadecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPadecimientoActionPerformed
+        // TODO add your handling code here:
+        int filaSeleccionada = tblPadecimientos.getSelectedRow();
+        
+        if (filaSeleccionada == -1)
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un padecimiento  para eliminar", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        
+        else
+        {
+            int confirmacion = JOptionPane.showConfirmDialog(null, 
+                    "Está seguro de eliminar el padecimiento");
+            
+            if (confirmacion == JOptionPane.YES_OPTION)
+            {                
+                try 
+                {
+                    idsDePadecimientosAEliminar.add(
+                            tblPadecimientos.getValueAt(filaSeleccionada, 3).toString());
+                
+                    modeloPadecimientosPersonales.removeRow(filaSeleccionada);
+                }// fin del try
+                catch (NullPointerException npe)
+                {
+                    System.out.println(nombresDePadecimientosAAgregar.size());
+                    nombresDePadecimientosAAgregar.remove(
+                            tblPadecimientos.getValueAt(filaSeleccionada, 0).toString());
+                    
+                    modeloPadecimientosPersonales.removeRow(filaSeleccionada);
+                    System.out.println(nombresDePadecimientosAAgregar.size());
+                }// fin del catch
+                
+            }// fin del if
+        }// fin del else
+    }//GEN-LAST:event_btnEliminarPadecimientoActionPerformed
+
+    private void btnAgregarPadecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoActionPerformed
+        // TODO add your handling code here:
+        
+        String fila [] = new String [3];
+        int idPadecimiento;   // variable donde se guardara el id del padecimiento recien agregado,
+                              // retornado por el metodo obtenerId
+        
+        if (txtPadecimiento.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Debe ingresar un padecimiento para agregar", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        
+        else
+        {
+            fila[0] = txtPadecimiento.getText();
+            fila[1] = txtTratamiento.getText();
+            fila[2] = txtMedicamento.getText();
+        
+            modeloPadecimientosPersonales.addRow(fila);
+            nombresDePadecimientosAAgregar.add(fila[0]);  // se agrega a la lista
+        
+            limpiarCamposPadecimientos();   // se limpian los campos de texto
+        }// fin del else
+    }//GEN-LAST:event_btnAgregarPadecimientoActionPerformed
+
+    private void btnIngresarPadecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPadecimientoActionPerformed
+        // TODO add your handling code here:
+        
+        CatalogoPadecimientos padecimientos = new CatalogoPadecimientos(parent, true);
+        padecimientos.setVisible(true);
+        
+        txtPadecimiento.setText(padecimientos.arreglo[0]);
+    }//GEN-LAST:event_btnIngresarPadecimientoActionPerformed
     
     private void inicializarTablaVacunas(String idExpedienteMedico)
     {
@@ -561,7 +659,7 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
     }// fin del metodo habilitarCamposVacunas
     
     
-    // DE AQUI PARA ABAJO COMIENZAN TODOS LOS METODO QUE TIENE QUE VER CON LA PARTE ALERGIAS
+    // DE AQUI PARA ABAJO COMIENZAN TODOS LOS METODOS QUE TIENEN QUE VER CON LA PARTE ALERGIAS
     private void inicializarAlergias()
     {
         NegocioExpedienteMedico objNegocioExpMed = new NegocioExpedienteMedico();
@@ -588,15 +686,180 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
         objNegocioExpMed.actualizarAlergias(idExpedienteMedico, txaAlergias.getText());
     }// fin del metodo actualizarAlergias
     
+    
+    // DE AQUI PARA ABAJ0 COMIENZAN TODOS LOS METODOS QUE TIENE QUE VER CON LOS PADECIMIENTOS PERSONALES
+    private void inicializarTablaPadecimientos()
+    {
+        modeloPadecimientosPersonales = new DefaultTableModel()   //  modelo instanciado
+                {
+                    @Override // ihabilitamos la tabla para no permitir la edicion de sus columnas
+                    public boolean isCellEditable(int rowIndex, int columnIndex)
+                    {
+                        return false;
+                    }// fin del metodo isCellEditable
+                };   // modelo de la tabla de padecimientos
+        
+        modeloPadecimientosPersonales.addColumn("Padecimiento");  // agregamos las cabeceras de columnas
+        modeloPadecimientosPersonales.addColumn("Trtamiento");    // al modelo
+        modeloPadecimientosPersonales.addColumn("Medicamento");
+        modeloPadecimientosPersonales.addColumn("Id");
+        
+        NegocioExpedientePadecimientos objNegocioExpPad = new NegocioExpedientePadecimientos();
+        String fila [] = new String [4];
+        ResultSet rs;
+        
+        try
+        {
+            rs = objNegocioExpPad.listarPadecimientosPersonales(idExpedienteMedico);
+            
+            while (rs.next())
+            {
+                fila[0] = rs.getString(1);
+                fila[1] = rs.getString(2);
+                fila[2] = rs.getString(3);     
+                fila[3] = rs.getString(4);
+                
+                modeloPadecimientosPersonales.addRow(fila);  // agregamos una fila al modelo por el arreglo
+            }// fin del while
+            
+            tblPadecimientos.setModel(modeloPadecimientosPersonales);
+            
+            // Escondemos la columna de Id
+            tblPadecimientos.getColumnModel().getColumn(3).setMaxWidth(0);
+            tblPadecimientos.getColumnModel().getColumn(3).setMinWidth(0);
+            tblPadecimientos.getColumnModel().getColumn(3).setPreferredWidth(0);
+        }// fin del try
+        catch (SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode() + sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo eliminarPadecimientosFamiliares
+    
+    // El siguiente metodo elimina los padecimientos seleccionados en la BD
+    private void eliminarPadecimientos()
+    {
+        NegocioExpedientePadecimientos objNegocioExpPad = new NegocioExpedientePadecimientos();
+        
+        for (int i = 0; i < idsDePadecimientosAEliminar.size(); i++)
+            objNegocioExpPad.eliminarPadecimientoPersonal(idsDePadecimientosAEliminar.get(i));
+    }// fin del metodo inicializarTablaPadecimientos
+    
+    // El siguiente metodo ingresa los antecedentes seleccionado de la BD
+    private void ingresarPadecimientosPersonales()
+    {
+        NegocioExpedientePadecimientos objNegocioExpPad = 
+                new NegocioExpedientePadecimientos();
+        NegocioPadecimiento objNegocioPad = new NegocioPadecimiento();
+        int idsPadecimientos [] = new int [nombresDePadecimientosAAgregar.size()];
+        ExpedientePadecimientos objExpPad [] 
+                = new ExpedientePadecimientos [idsPadecimientos.length];
+        
+        for (int i = 0; i < idsPadecimientos.length; i++)  // obtemos los ids de los padecimientos enlistados
+            idsPadecimientos[i] = objNegocioPad.obtenerId(nombresDePadecimientosAAgregar.get(i));
+        
+        // Extraemos el indice de la tabla desde donde se agregaron nuevos padecimientos
+        int indice = tblPadecimientos.getRowCount() - nombresDePadecimientosAAgregar.size();
+        
+        for (int i = 0; i < objExpPad.length; i++)
+        {
+            objExpPad[i] = new ExpedientePadecimientos();
+            
+            // se ingresa el padecimiento seleccionado del catalogo de padecimientos (CatalogoPadecimientos.java)
+            objExpPad[i].setIdPadecimiento(idsPadecimientos[i]);
+            
+            objExpPad[i].setIdExpediente(Integer.parseInt(idExpedienteMedico));   // se ingresan los    
+            objExpPad[i].setTratamiento(tblPadecimientos.getValueAt(indice, 1).toString());  // restantes
+            objExpPad[i].setMedicamento(tblPadecimientos.getValueAt(indice, 2).toString()); // atributos
+            
+            // insertamos en la base de datos
+            objNegocioExpPad.insertarExpedientePadecimientos(objExpPad[i]);
+            
+            indice++;
+        } // fin del for
+    }// fin del metodo ingresarPadecimientosFamiliares
+    
+    // limpia los campos en el formulario de padecimientos
+    private void limpiarCamposPadecimientos()
+    {
+        txtPadecimiento.setText("");
+        txtTratamiento.setText("");
+        txtMedicamento.setText("");
+    }// fin del metodo limpiarCamposPadecimientos
+    
+    private void inhabilitarCamposPadecimientos()
+    {
+        txtPadecimiento.setEnabled(false);
+        txtTratamiento.setEnabled(false);
+        txtMedicamento.setEnabled(false);
+        btnAgregarPadecimiento.setEnabled(false);
+        btnEliminarPadecimiento.setEnabled(false);
+        btnIngresarPadecimiento.setEnabled(false);
+    }// fin del metodo inhabilitarCamposPadecimientos
+    
+    private void habilitarCamposPadecimientos()
+    {
+        txtPadecimiento.setEnabled(true);
+        txtTratamiento.setEnabled(true);
+        txtMedicamento.setEnabled(true);
+        btnAgregarPadecimiento.setEnabled(true);
+        btnEliminarPadecimiento.setEnabled(true);
+        btnIngresarPadecimiento.setEnabled(true);
+    }// fin del metodo inhabilitarCamposPadecimientos
+    
+    
+    // EL SIGUIENTE METODO GUARDA LOS CAMBIOS SI LOS HUBIESE EN ESTE FORMULARIO
+    private void guardarCambios()
+    {
+        boolean cambios = false;   // variable para determinar si se realizaron cambios
+        
+        if (! idsDePadecimientosAEliminar.isEmpty())
+        {
+            eliminarPadecimientos();
+            cambios = true;
+        }// fin del if
+        
+        if (! nombresDePadecimientosAAgregar.isEmpty())
+        {
+            ingresarPadecimientosPersonales();
+            cambios = true;
+        }// fin del if
+        
+        if (! idsDeVacunasAEliminar.isEmpty())
+        {
+            eliminarVacunas();
+            cambios = true;
+        }// fin del if 
+        
+        if (! nombresDeVacunasAAgregar.isEmpty())
+        {
+            ingresarVacunas();
+            cambios = true;
+        }// fin del if 
+        
+        if (! contenidoDeAlergias.equals(txaAlergias.getText()))  // compara si se realizaron cambios en alergias
+        {
+            actualizarAlergias();
+            cambios = true;
+        }// fin del if
+        
+        if (cambios == true)
+            JOptionPane.showMessageDialog(null, "Los cambios en antecedenes personales se han guardado "
+                    + "con éxito", "Información", JOptionPane.INFORMATION_MESSAGE);
+        
+        else
+            JOptionPane.showMessageDialog(null, "No se realizaron cambios", "Información", 
+                    JOptionPane.INFORMATION_MESSAGE);
+    }// fin del metodo guardarCambios
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarPadecimiento;
     private javax.swing.JButton btnAgregarVacuna;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminarPadecimiento;
     private javax.swing.JButton btnEliminarVacuna;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnIngresarPadecimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -606,13 +869,14 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel pnlAlergias;
     private javax.swing.JPanel pnlVacunas;
     private javax.swing.JTable tblPadecimientos;
     private javax.swing.JTable tblVacunas;
     private javax.swing.JTextArea txaAlergias;
+    private javax.swing.JTextField txtMedicamento;
+    private javax.swing.JTextField txtPadecimiento;
+    private javax.swing.JTextField txtTratamiento;
     private com.toedter.calendar.JDateChooser txtVacunaFechaApli;
     private javax.swing.JTextField txtVacunaTipo;
     // End of variables declaration//GEN-END:variables
