@@ -67,7 +67,7 @@ public class ContenedorReceta extends javax.swing.JPanel
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txaReceta = new javax.swing.JTextArea();
-        btnAceptar = new javax.swing.JButton();
+        Guardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -216,10 +216,10 @@ public class ContenedorReceta extends javax.swing.JPanel
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        btnAceptar.setText("Aceptar");
-        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+        Guardar.setText("Aceptar");
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarActionPerformed(evt);
+                GuardarActionPerformed(evt);
             }
         });
 
@@ -242,7 +242,7 @@ public class ContenedorReceta extends javax.swing.JPanel
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(111, 111, 111))
@@ -256,7 +256,7 @@ public class ContenedorReceta extends javax.swing.JPanel
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptar)
+                    .addComponent(Guardar)
                     .addComponent(btnCancelar))
                 .addContainerGap(134, Short.MAX_VALUE))
         );
@@ -270,7 +270,7 @@ public class ContenedorReceta extends javax.swing.JPanel
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         
         if ((! txaReceta.getText().isEmpty()) && (tblMedicamentos.getValueAt(0, 0) == null) )   // este if debe cambiar si se decide dejar el modelo por defecto vacio en la tabla y hacer la comparacion con tblMedicamentos.getRowCount == 0
         {
@@ -335,7 +335,7 @@ public class ContenedorReceta extends javax.swing.JPanel
         //insertarRecetaFisica();
         
         limpiar();  // se limpian los componentes del formulario
-    }//GEN-LAST:event_btnAceptarActionPerformed
+    }//GEN-LAST:event_GuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         
@@ -562,7 +562,7 @@ public class ContenedorReceta extends javax.swing.JPanel
     }// fin del metodo limpiar
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton Guardar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRemover;
