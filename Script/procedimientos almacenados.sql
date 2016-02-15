@@ -951,3 +951,29 @@ BEGIN
 END $
 
 Call ActualizarAlergiaExpediente (1, 'Al polvo:leve\n A la pintura')
+
+
+
+DELIMITER $
+CREATE PROCEDURE ListarPadecimientosPersonales(in idExp int)
+BEGIN
+	select padecimientos.nombrePadecimiento,
+		   `expediente-padecimientos`.tratamiento,
+           `expediente-padecimientos`.medicamento,
+           `expediente-padecimientos`.id
+	from `expediente-padecimientos` join padecimientos
+	on `expediente-padecimientos`.idPadecimiento = padecimientos.id 
+	where `expediente-padecimientos`.idExpediente = IdExp;
+END $
+
+Call ListarPadecimientosPersonales (3);
+
+
+DELIMITER $
+CREATE PROCEDURE `EliminarPadecimientosPersonales`(in idExpPad int)
+BEGIN
+	delete from `expediente-padecimientos`
+	where id = idExpPad;
+END $
+
+Call `EliminarPadecimientosPersonales` (2)
