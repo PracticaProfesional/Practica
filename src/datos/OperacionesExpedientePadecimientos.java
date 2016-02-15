@@ -6,6 +6,8 @@
 package datos;
 
 import entidad.ExpedientePadecimientos;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -39,4 +41,30 @@ public class OperacionesExpedientePadecimientos
         }// fin del catch
         
     }// fin del metodo insertarExpedientePadecimientos
+    
+    public ResultSet listarPadecimientosPersonales(String idExpedientePaciente) throws SQLException
+    {
+        ResultSet rs;
+        objetoDeConexion = new Conexion();
+        estado = objetoDeConexion.conectar().createStatement();
+        rs = estado.executeQuery("Call ListarPadecimientosPersonales (" + idExpedientePaciente + ")");
+        return rs;
+    }// fin del metodo listarPadecimientosFamiliares
+    
+    public void eliminarPadecimientoPersonal(String id)
+    {
+        objetoDeConexion = new Conexion();
+        
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call EliminarPadecimientosPersonales (" + id + ")");
+            estado.close();
+        }// fin del try
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode()+ sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo eliminarPadecimientoPersonal
+    
 }// fin de la clase OperacionesExpedientePadecimientos
