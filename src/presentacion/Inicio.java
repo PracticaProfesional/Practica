@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
@@ -1821,7 +1822,7 @@ public class Inicio extends javax.swing.JFrame {
         return comparador.matches();  
     }
             
-    private void limpiarSignosVitales() {
+    public void limpiarSignosVitales() {
         javax.swing.JTextField [] 
             textsSignosVitales = {textFC, textGC, textH2O,
                                   textIMB, textIMC, textMM, 
@@ -1840,7 +1841,7 @@ public class Inicio extends javax.swing.JFrame {
         }
     }
     
-    private void limpiarExamenFisico()
+    public void limpiarExamenFisico()
     {
         javax.swing.JComboBox comboPartes [] = {cbAbdomen, cbAdenopatias, cbBoca, cbCorazon, cbEsqueletico,
                                                 cbNariz, cbNervioso, cbOidos, cbOjos, cbTiroides, cbTorax,
@@ -2091,7 +2092,9 @@ public class Inicio extends javax.swing.JFrame {
                 splitFechaNac(tableBuscarPaciente.getValueAt(filaSeleccionada, 5).toString());
                 this.sexo = Integer.parseInt(tableBuscarPaciente.getValueAt(filaSeleccionada, 6).toString());
                 this.tabExpediente.setSelectedIndex(1);
-            }       
+                panelConsultaMedica.setSelectedIndex(0);
+            }
+            
     }//GEN-LAST:event_btnConsultaMedicaActionPerformed
 
     private void panelPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrincipalMouseClicked
@@ -2131,10 +2134,22 @@ public class Inicio extends javax.swing.JFrame {
 
     private void insertarAnormalidadesExFisico(ArrayList<ExamenFisico> listaExamen) {
         negocio.NegocioExamenFisico nuevoExFisico = new negocio.NegocioExamenFisico();
-        for(entidad.ExamenFisico examen:listaExamen){
-            examen.setConsultaMedica(Integer.parseInt(idConsultaMedica));
-            nuevoExFisico.insertarExamenFisico(examen);
-        }
+        
+        //try
+        //{
+            for(entidad.ExamenFisico examen:listaExamen){
+                examen.setConsultaMedica(Integer.parseInt(idConsultaMedica));
+                nuevoExFisico.insertarExamenFisico(examen);
+            }// fin del for
+        //}// fin del try
+        /*catch (NumberFormatException nfe)
+        {
+            JOptionPane.showMessageDialog(null, "No selecciono ningún paciente de la "
+                    + "lista de espera", "Información", JOptionPane.ERROR_MESSAGE);
+            
+            mnListaEspera.requestFocus();
+        }// fin del catch*/
+        
     }
 
     private ArrayList obtenerDatosExamenFisico(ArrayList<ExamenFisico> listaExamen) {
@@ -2316,6 +2331,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_popItemEliminarActividadActionPerformed
 
     private void panelPrincipalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelPrincipalStateChanged
+           
         if(panelPrincipal.getSelectedIndex() == 3){
             // Evita que se agregue el panel mas de una vez.
             if(tabInventario.getComponentCount() <= 0){
@@ -2332,13 +2348,13 @@ public class Inicio extends javax.swing.JFrame {
         if(panelPrincipal.getSelectedIndex() == 0){
             if(loginUser == 2){
                 if(panelConsultaMedica.getComponentCount() < 3){
-                    rc = new ContenedorReceta();
+                    rc = new ContenedorReceta(this);
                     panelConsultaMedica.addTab("Receta", rc);
                 }
             }
             else{
                 if(panelConsultaMedica.getComponentCount() < 4){
-                    rc = new ContenedorReceta(); 
+                    rc = new ContenedorReceta(this);
                     panelConsultaMedica.addTab("Receta", rc);
                 }
             }
@@ -2379,22 +2395,42 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerSignosVitalesActionPerformed
 
     private void btnGuardarExamenFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarExamenFisicoActionPerformed
+        
+        if (idConsultaMedica == null)
+        {
+            JOptionPane.showMessageDialog(null, "Ne seleccionó ningún paciente de la "
+                    + "lista de espera", "Error", JOptionPane.ERROR_MESSAGE);
+            mnListaEspera.requestFocus();
+        }
+        else
+        {
+            if (! verificarVacios())
+                JOptionPane.showMessageDialog(null, "Uno o mas campos son requeridos",
+                        "Error", JOptionPane.ERROR_MESSAGE);
 
-        if (! verificarVacios())
-        JOptionPane.showMessageDialog(null, "Uno o mas campos son requeridos",
-            "Información", JOptionPane.INFORMATION_MESSAGE);
-
-        else {
-            final String tipoEvento = cbDiagnosticoOpcional.getSelectedItem().toString();
-            if(!tipoEvento.equalsIgnoreCase("Seleccione")){
-                insertarExamenFisico();
-                actualizarConsulta();
-                limpiarExamenFisico();
-            }
-            else
-            JOptionPane.showMessageDialog(this, "Seleccione el tipo de evento"
-                ,"Error", JOptionPane.ERROR_MESSAGE);
-            //tabExpediente.setSelectedIndex(0);
+            else 
+            {
+                final String tipoEvento = cbDiagnosticoOpcional.getSelectedItem().toString();
+                
+                if(!tipoEvento.equalsIgnoreCase("Seleccione"))
+                {
+                    insertarExamenFisico();
+                    actualizarConsulta();
+                    
+                
+                    JOptionPane.showMessageDialog(null, "El examen físico se ha guardado "
+                            + "exitosamente",
+                        "Información", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarExamenFisico();
+                    panelConsultaMedica.setSelectedIndex(panelConsultaMedica.getSelectedIndex() + 2);
+                    
+                }
+                
+                else
+                    JOptionPane.showMessageDialog(this, "Seleccione el tipo de evento"
+                            ,"Error", JOptionPane.ERROR_MESSAGE);
+                //tabExpediente.setSelectedIndex(0);
+            }// fin del else
         }// fin del else
     }//GEN-LAST:event_btnGuardarExamenFisicoActionPerformed
 
@@ -2594,14 +2630,16 @@ public class Inicio extends javax.swing.JFrame {
     private void btnSignosVitalesGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignosVitalesGuardarActionPerformed
         if(validaSVitales()){
             ingresarSignosConsulta();
-            limpiarSignosVitales();
+            
             
             JOptionPane.showMessageDialog(null, "Los signos vitales se han guardado exitosamente", 
                     "Información", JOptionPane.INFORMATION_MESSAGE);
+            limpiarSignosVitales();
+            panelConsultaMedica.setSelectedIndex(panelConsultaMedica.getSelectedIndex() +1);
         }
         else
         JOptionPane.showMessageDialog(this, "Parecen haber datos incompletos"
-            + "o erroneos", "Error", JOptionPane.ERROR_MESSAGE);
+            + " o erroneos", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnSignosVitalesGuardarActionPerformed
 
     private void textTallaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTallaFocusLost
@@ -2878,7 +2916,7 @@ public class Inicio extends javax.swing.JFrame {
     {
         boolean vacio = true;
         
-        if (textOtrosDetallesOidos.isEnabled())
+        /*if (textOtrosDetallesOidos.isEnabled())
             if (textOtrosDetallesOidos.getText().isEmpty())
                 vacio = false;
         
@@ -2908,11 +2946,14 @@ public class Inicio extends javax.swing.JFrame {
         
         if (textOtrosDetallesUrinario.isEnabled())
             if (textOtrosDetallesUrinario.getText().isEmpty())
-                vacio = false;
+                vacio = false;*/
         
         
         if (textMotivo2.getText().isEmpty())
+        {
             vacio = false;
+            textMotivo2.requestFocus();
+        }// fin del if
         
         return vacio;
     }// fin del metodo verificarVacios
@@ -2927,7 +2968,6 @@ public class Inicio extends javax.swing.JFrame {
         return pacienteActual;
     }
     
-        
     /**
      * @param args the command line arguments
      */
