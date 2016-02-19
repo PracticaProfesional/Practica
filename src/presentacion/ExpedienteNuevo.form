@@ -54,7 +54,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panelBtnExpedienteNUevo" max="32767" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnPasar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAnterior" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnSiguiente" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -77,7 +77,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="panelBtnExpedienteNUevo" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="btnPasar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSiguiente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnExpedienteNuevoGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnExpedienteNuevoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1090,12 +1090,13 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnPasar">
+    <Component class="javax.swing.JButton" name="btnAnterior">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pasar"/>
+        <Property name="text" type="java.lang.String" value="&lt; Anterior"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPasarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnteriorActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSiguiente">

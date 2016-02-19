@@ -184,7 +184,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         txtParentesco = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
         txtPadecimientoFamiliar = new javax.swing.JTextField();
-        btnPasar = new javax.swing.JButton();
+        btnAnterior = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
         btnExpedienteNuevoGuardar = new javax.swing.JButton();
         btnExpedienteNuevoCancelar = new javax.swing.JButton();
@@ -830,10 +830,11 @@ public class ExpedienteNuevo extends javax.swing.JDialog
 
     tabExpedienteNuevo.addTab("Antecedentes Familiares", jPanel1);
 
-    btnPasar.setText("Pasar");
-    btnPasar.addActionListener(new java.awt.event.ActionListener() {
+    btnAnterior.setText("< Anterior");
+    btnAnterior.setEnabled(false);
+    btnAnterior.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnPasarActionPerformed(evt);
+            btnAnteriorActionPerformed(evt);
         }
     });
 
@@ -869,7 +870,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(panelBtnExpedienteNUevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPasar)
+                    .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
@@ -888,7 +889,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelBtnExpedienteNUevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPasar)
+                    .addComponent(btnAnterior)
                     .addComponent(btnSiguiente)
                     .addComponent(btnExpedienteNuevoGuardar)
                     .addComponent(btnExpedienteNuevoCancelar)))
@@ -1036,6 +1037,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         tabExpedienteNuevo.setEnabledAt(1, true);
         //if(validaciones(selectedIndex))
         tabExpedienteNuevo.setSelectedIndex(selectedIndex + 1);
+        btnAnterior.setEnabled(true);
     }
 
     private void setPanel3(int selectedIndex) throws HeadlessException {
@@ -1073,10 +1075,19 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         txtPadecimientoFamiliar.setText(padecimientos.arreglo[0]);
     }//GEN-LAST:event_btnIngresarPadecimientoFamActionPerformed
 
-    private void btnPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasarActionPerformed
+    private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
         // TODO add your handling code here:
-        tabExpedienteNuevo.setSelectedIndex(tabExpedienteNuevo.getSelectedIndex() + 1);
-    }//GEN-LAST:event_btnPasarActionPerformed
+        
+        int indice = tabExpedienteNuevo.getSelectedIndex();
+        
+        tabExpedienteNuevo.setSelectedIndex(indice - 1);
+        tabExpedienteNuevo.setEnabledAt(indice, false);
+        tabExpedienteNuevo.setEnabledAt(indice - 1 , true);
+        btnSiguiente.setEnabled(true);
+        btnExpedienteNuevoGuardar.setEnabled(false);
+        if (indice == 1)
+            btnAnterior.setEnabled(false);
+    }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnAgregarPadecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPadecimientoActionPerformed
         // TODO add your handling code here:
@@ -1464,30 +1475,30 @@ public class ExpedienteNuevo extends javax.swing.JDialog
     }// fin del metodo validaciones
 
     private boolean validaDatosPersonales() {
-        boolean validado = false;
+        boolean validado = true;
         JTextField [] camposTexto = {textNombre, textApellido1, textApellido2,
-            textIdentificacion, textEmail,textTelefono,
-            textNacionalidad};
+                textIdentificacion, textNacionalidad};
+        
         for(JTextField campo:camposTexto)
-            if(campo.getText().equals("")
-                    || textDireccionFamiliar.getText().equals("")
-                    /*|| textDireccionLectiva.getText().equals("")*/
-                    || textSexo.getSelectedItem().toString().equals("Seleccione"))
-                return false;
-            else{
+            if(campo.getText().equals("") || textSexo.getSelectedItem().toString().equals("Seleccione") ||
+                    cbTipo.getSelectedIndex() == 0 || txtFechaNac.getDate() == null)
+                validado = false;
+            
+            else
+            {
                 // no estan vacios los campos, procede a validar email y telefono.
-                String regEmail = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)"
-                        + "*(\\.[A-Za-z]{2,})$";
-                String regTelefono = ".*[1-9].*";
+                String regEmail = "([a-zA-Z0-9]+([-_.]*)?([a-zA-Z0-9]+)?\\@[a-zA-Z]+\\.[a-zA-Z]+)?";
+                String regTelefono = "(.*[0-9].*)?";
                 String regCedula = ".*[1-9].*";
+                
                 if (!regExValidation(regEmail, textEmail)
                         || !regExValidation(regTelefono, textTelefono)
                         || !regExValidation(regCedula, textIdentificacion))
-                    return validado;
-                else{
+                    validado = false;
+                
+                else
+                {
                     validado = true;
-                    return validado;
                 }
             }
         
@@ -1706,6 +1717,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog
     private javax.swing.JButton btnAgregarPadecimiento;
     private javax.swing.JButton btnAgregarPadecimientoFamiliar;
     private javax.swing.JButton btnAgregarVacuna;
+    private javax.swing.JButton btnAnterior;
     private javax.swing.JButton btnEliminarPadecimiento;
     private javax.swing.JButton btnEliminarPadecimientoFamiliar;
     private javax.swing.JButton btnEliminarVacuna;
@@ -1713,7 +1725,6 @@ public class ExpedienteNuevo extends javax.swing.JDialog
     private javax.swing.JButton btnExpedienteNuevoGuardar;
     private javax.swing.JButton btnIngresarPadecimientoFam;
     private javax.swing.JButton btnIngresarPadecimientoPer;
-    private javax.swing.JButton btnPasar;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JComboBox cbTipo;
     private javax.swing.JInternalFrame jInternalFrame1;
