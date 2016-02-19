@@ -6,6 +6,7 @@ import negocio.NegocioReceta;
 import negocio.NegocioObtenerUltimoId;
 import negocio.NegocioConsultaMedica;
 import negocio.NegocioInventario;
+import java.awt.Frame;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -16,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  * @author QUINCHO
  * @version 1.0, 06/12/2015
  */
-public class ContenedorReceta extends javax.swing.JPanel 
+public class ContenedorReceta extends javax.swing.JPanel
 {
     private String idExpediente;   // esta variable global se utiliza para pasar por parametro al procedimiento
                                    // almacenado para llevar a cabo la consulta 
@@ -24,13 +25,17 @@ public class ContenedorReceta extends javax.swing.JPanel
                             // procedimiento almacenado y realizar la consulta
     DefaultTableModel modelo = new DefaultTableModel();
     int cantidades [];    // se guardaran las cantidades que estan en la tabla inventario de la base de datos
+    Frame parent;
+    
     
     /**
      * Constructor de la clase sin argumentos
+     * @param parent de tipo Frame que representa el framen padre de este JPanel
      */
-    public ContenedorReceta()
+    public ContenedorReceta(Frame parent)
     {
         initComponents();
+        this.parent = parent;
         txtNombre.setEnabled(false);  // inhabilitado
         txtFecha.setEnabled(false);   // inhabilitado
         cmbMedicamentos.removeAllItems();
@@ -67,7 +72,8 @@ public class ContenedorReceta extends javax.swing.JPanel
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txaReceta = new javax.swing.JTextArea();
-        Guardar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -216,10 +222,17 @@ public class ContenedorReceta extends javax.swing.JPanel
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        Guardar.setText("Aceptar");
-        Guardar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
             }
         });
 
@@ -242,10 +255,12 @@ public class ContenedorReceta extends javax.swing.JPanel
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,7 +271,8 @@ public class ContenedorReceta extends javax.swing.JPanel
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Guardar)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnLimpiar)
                     .addComponent(btnCancelar))
                 .addContainerGap(134, Short.MAX_VALUE))
         );
@@ -270,7 +286,7 @@ public class ContenedorReceta extends javax.swing.JPanel
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
         if ((! txaReceta.getText().isEmpty()) && (tblMedicamentos.getValueAt(0, 0) == null) )   // este if debe cambiar si se decide dejar el modelo por defecto vacio en la tabla y hacer la comparacion con tblMedicamentos.getRowCount == 0
         {
@@ -280,7 +296,7 @@ public class ContenedorReceta extends javax.swing.JPanel
                 insertarReceta();
                 insertarRecetaEnConsulta();
                 
-                JOptionPane.showMessageDialog(null, "La receta se ingreso con exito",
+                JOptionPane.showMessageDialog(null, "La receta se ingreso con éxito",
                         "Información", JOptionPane.INFORMATION_MESSAGE);
             }// fin del if
             
@@ -298,7 +314,7 @@ public class ContenedorReceta extends javax.swing.JPanel
                 {
                     insertarRecetaFisica();
                     
-                    JOptionPane.showMessageDialog(null, "Los medicamentos se ingresaron con exito",
+                    JOptionPane.showMessageDialog(null, "Los medicamentos se ingresaron con éxito",
                         "Información", JOptionPane.INFORMATION_MESSAGE);
                 }// fin del if
                 
@@ -318,8 +334,12 @@ public class ContenedorReceta extends javax.swing.JPanel
                         insertarRecetaEnConsulta();
                         insertarRecetaFisica();
                         
-                        JOptionPane.showMessageDialog(null, "La receta y los medicamentos fueron ingresados con exito",
+                        JOptionPane.showMessageDialog(null, "La receta y los medicamentos fueron ingresados con éxito",
                         "Información", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        limpiar();  // se limpian los componentes del formulario
+                        txtFecha.setText("");
+                        txtNombre.setText("");
                     }// fin del if
                     
                     else
@@ -334,13 +354,13 @@ public class ContenedorReceta extends javax.swing.JPanel
         }// fin del else
         //insertarRecetaFisica();
         
-        limpiar();  // se limpian los componentes del formulario
-    }//GEN-LAST:event_GuardarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         
-        obtenerReceta();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        
+        limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         
@@ -378,6 +398,21 @@ public class ContenedorReceta extends javax.swing.JPanel
                         "Información", JOptionPane.INFORMATION_MESSAGE);
         }// fin del catch
     }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        
+        int confirmacion = JOptionPane.showConfirmDialog(null, 
+                    "Está de seguro de cancelar la asignacion de medicamentos y receta ?");
+            
+        if (confirmacion == JOptionPane.YES_OPTION)
+        {                
+            limpiar();
+            txtNombre.setText("");
+            txtFecha.setText("");                   
+        }// fin del if
+        
+    }//GEN-LAST:event_btnCancelarActionPerformed
     
     /**
      * Carga los campos de texto con la consulta médica correspondiente
@@ -543,10 +578,10 @@ public class ContenedorReceta extends javax.swing.JPanel
     /**
      * El siguiente metodo limpia todos los componentes, (estado inicial)
      */
-        public void limpiar()
+    public void limpiar()
     {
-        txtNombre.setText("");
-        txtFecha.setText("");
+        cmbMedicamentos.setSelectedIndex(0);
+        txtCantidad.setText("");
         txaReceta.setText("");
         
         tblMedicamentos.setModel(new javax.swing.table.DefaultTableModel(
@@ -559,12 +594,14 @@ public class ContenedorReceta extends javax.swing.JPanel
                             "Medicamento", "Cantidad"
                    }
         ));
+        
     }// fin del metodo limpiar
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Guardar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JComboBox cmbMedicamentos;
     private datechooser.beans.DateChooserDialog dateChooserDialog1;
