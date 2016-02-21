@@ -3,6 +3,7 @@ package datos;
 
 import entidad.ConsultaMedica;
 import java.sql.Statement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /** 
@@ -120,5 +121,24 @@ public class OperacionesConsultaMedica
             // esta excepcion puede surgir al haber dos medicamentos en el inventario con el mismo nombre
         }// fin del catch
     }// fin del metodo insertarRecetaFisca
+    
+    public ResultSet listarConsultasPorPaciente(String idExpediente) throws SQLException
+    {
+        ResultSet rs;
+        objetoDeConexion = new Conexion();
+        estado = objetoDeConexion.conectar().createStatement();
+        rs = estado.executeQuery("Call ListarConsultas (" + idExpediente + ")");
+        return rs;
+    }// fin del metodo listarConsultasPorPaciente
+    
+    public ResultSet obtenerDatosConsulta(String idConsultaMedica) throws SQLException
+    {
+        ResultSet rs;
+        objetoDeConexion = new Conexion();
+        estado = objetoDeConexion.conectar().createStatement();
+        rs = estado.executeQuery("Call ObtenerDatosConsultaMedica (" + idConsultaMedica + ")");
+        return rs;
+    }// fin del metodo obtenerDatosConsulta
+    
     
 }// fin de la clase OperacionesConsultaMedica
