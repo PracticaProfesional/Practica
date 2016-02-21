@@ -977,3 +977,44 @@ BEGIN
 END $
 
 Call `EliminarPadecimientosPersonales` (2)
+
+
+DELIMITER $
+CREATE PROCEDURE ListarConsultas (in idExp int)
+BEGIN
+	select id, fecha from consultamedica
+    where idExpedienteMedico = idExp;
+END $
+
+Call ListarConsultas(4)
+
+DELIMITER $
+CREATE PROCEDURE ObtenerDatosConsultaMedica(in idConMed int)
+BEGIN
+	select consultamedica.motivo2, 
+		   consultamedica.descripcionSintomas, 
+           consultamedica.diagnostico,
+           receta.descripcion,
+           consultamedica.notaEnfermeria
+	from consultamedica  LEFT OUTER JOIN receta
+	on receta.id = consultamedica.idReceta
+    where consultamedica.id = idConMed;
+			
+END $
+
+Call ObtenerDatosConsultaMedica(11);
+$
+
+
+DELIMITER $
+CREATE PROCEDURE ListarExamenFisicoPorConsulta (in idConMed int)
+BEGIN
+	select examenfisico.categoria,
+		   examenfisico.subCategoria,
+           examenfisico.detalle
+	from examenfisico join consultamedica
+	on examenfisico.idConsultaMedica = consultamedica.id
+	where consultamedica.id = idConMed;
+END $
+
+Call ListarExamenFisicoPorConsulta (1)
