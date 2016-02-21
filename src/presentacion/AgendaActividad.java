@@ -1,6 +1,8 @@
 package presentacion;
 
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Esta clase contiene la agenda, en la cual se anotan todas las incidencias
@@ -14,7 +16,9 @@ public class AgendaActividad extends javax.swing.JDialog {
      */
     private String detalles;
     private String idPaciente;
-
+    public String nombre;
+    public String apellido1;
+    public String apellido2;
     /**
      * Retorna el id del paciente para ser actualizado en la BD
      * @return
@@ -173,19 +177,41 @@ public class AgendaActividad extends javax.swing.JDialog {
 
     private void btnVerificarAsignacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarAsignacionActionPerformed
         String cedula = textCitaPaciente.getText().trim();
-        if(!cedula.equals("")){
+        
+        ResultSet rs;
+        if(!cedula.equals(""))
+        {
             negocio.NegocioPaciente paciente = new negocio.NegocioPaciente();
-            this.idPaciente = paciente.obtenerIdPaciente(cedula);
-            if(!this.idPaciente.isEmpty()){
-                JOptionPane.showMessageDialog(this, "Asignación correcta",
-                                              "Information", JOptionPane.INFORMATION_MESSAGE);
-                textCitaPaciente.setEditable(false);
-            }
+            
+            try
+            {
+                rs = paciente.obtenerDatosPaciente(cedula);
                 
-            else
-                JOptionPane.showMessageDialog(this, "No existe paciente registrado "
+                if (rs.next())
+                {
+                    idPaciente = rs.getString("id");
+                    nombre = rs.getString("nombrePaciente");
+                    apellido1 = rs.getString("apellido1Paciente");
+                    apellido2 = rs.getString("apellido2Paciente");
+                }// fin del if
+                
+                if(!this.idPaciente.isEmpty())
+                {
+                    JOptionPane.showMessageDialog(this, "Asignación correcta",
+                                              "Information", JOptionPane.INFORMATION_MESSAGE);
+                    textCitaPaciente.setEditable(false);
+                }
+                
+                else
+                    JOptionPane.showMessageDialog(this, "No existe paciente registrado "
                                             + "con el numero de cédula anterior",
                                             "Warning", JOptionPane.WARNING_MESSAGE);
+            }// fin del try
+            
+            catch (SQLException sqle)
+            {
+                System.out.println(sqle.getErrorCode() + sqle.getMessage());
+            }// fin del catch
         }
     }//GEN-LAST:event_btnVerificarAsignacionActionPerformed
 
