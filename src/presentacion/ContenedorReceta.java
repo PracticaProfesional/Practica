@@ -403,7 +403,7 @@ public class ContenedorReceta extends javax.swing.JPanel
         // TODO add your handling code here:
         
         int confirmacion = JOptionPane.showConfirmDialog(null, 
-                    "Está de seguro de cancelar la asignacion de medicamentos y receta ?");
+                    "Está de seguro de cancelar la asignación de medicamentos y receta ?");
             
         if (confirmacion == JOptionPane.YES_OPTION)
         {                
