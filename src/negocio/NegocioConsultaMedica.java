@@ -4,6 +4,8 @@ package negocio;
 
 import entidad.ConsultaMedica;
 import datos.OperacionesConsultaMedica;
+import java.sql.SQLException;
+import java.sql.ResultSet;
 
 /**
  * Esta clase relaciona la clase OperacionesConsultaMedica con la capa de presentación
@@ -58,5 +60,18 @@ public class NegocioConsultaMedica
         OperacionesConsultaMedica operacionesConsultaMedica = new OperacionesConsultaMedica();
         operacionesConsultaMedica.insertarRecetaFisica(nombreMedicamento, cantidad);
     }// fin del metodo insertarRecetaFisica
+    
+    public ResultSet listarConsultasPorPaciente(String idExpediente) throws SQLException
+    {
+        OperacionesConsultaMedica operacionesConsultaMedica = new OperacionesConsultaMedica();
+        return operacionesConsultaMedica.listarConsultasPorPaciente(idExpediente);
+    }// fin del metodo listarConsultasPorPaciente
+    
+    public ResultSet obtenerDatosConsulta(String idConsultaMedica) throws SQLException
+    {
+        OperacionesConsultaMedica operacionesConsultaMedica = new OperacionesConsultaMedica();
+        return operacionesConsultaMedica.obtenerDatosConsulta(idConsultaMedica);
+    }// fin del metodo listarConsultasPorPaciente
+    
     
 }// fin de la clase NegocioConsultaMedica
