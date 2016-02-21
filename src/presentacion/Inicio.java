@@ -1992,7 +1992,8 @@ public class Inicio extends javax.swing.JFrame {
         AgendaActividad nuevaActividad = new AgendaActividad(this, true);
         nuevaActividad.setVisible(true);
         String idPac = nuevaActividad.getIdPaciente();
-        String actividad = nuevaActividad.getDetalles();
+        String actividad = nuevaActividad.getDetalles() + ". " + nuevaActividad.nombre + " " +
+                nuevaActividad.apellido1 + " " + nuevaActividad.apellido2 + ".";
         String fechaSeleccionada;
         String horaActividad;
         fechaSeleccionada = obtenerFechaCalendario();
