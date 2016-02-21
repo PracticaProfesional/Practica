@@ -20,6 +20,7 @@ import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import negocio.Edad;
 
 
 public class VerExpediente extends javax.swing.JDialog 
@@ -42,6 +43,7 @@ public class VerExpediente extends javax.swing.JDialog
         this.setTitle("Expediente - " + textNombre.getText() + " " + 
                 textApellido1.getText() + " " + textApellido2.getText());  // Ponemos de titulo el nombre del paciente
         
+        //calcularEdad();
     }// fin del constructor de VerExpediente
 
     /**
@@ -95,6 +97,7 @@ public class VerExpediente extends javax.swing.JDialog
         jLabel9 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        lblEdad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -143,6 +146,11 @@ public class VerExpediente extends javax.swing.JDialog
         lblValidaTelefono.setText("*");
 
         txtFechaNacimiento.setDateFormatString("dd-MM-yyyy");
+        txtFechaNacimiento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtFechaNacimientoPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -318,17 +326,14 @@ public class VerExpediente extends javax.swing.JDialog
             }
         });
 
+        lblEdad.setText("jLabel11");
+
         javax.swing.GroupLayout panelDatosPersonalesLayout = new javax.swing.GroupLayout(panelDatosPersonales);
         panelDatosPersonales.setLayout(panelDatosPersonalesLayout);
         panelDatosPersonalesLayout.setHorizontalGroup(
             panelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDatosPersonalesLayout.createSequentialGroup()
                 .addGroup(panelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDatosPersonalesLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosPersonalesLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -337,17 +342,32 @@ public class VerExpediente extends javax.swing.JDialog
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)))
+                        .addGap(17, 17, 17))
+                    .addGroup(panelDatosPersonalesLayout.createSequentialGroup()
+                        .addGroup(panelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDatosPersonalesLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelDatosPersonalesLayout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(lblEdad)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         panelDatosPersonalesLayout.setVerticalGroup(
             panelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDatosPersonalesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelDatosPersonalesLayout.createSequentialGroup()
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(panelDatosPersonalesLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblEdad)
+                        .addGap(17, 17, 17)))
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(panelDatosPersonalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -400,6 +420,25 @@ public class VerExpediente extends javax.swing.JDialog
         }// fin del else
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void txtFechaNacimientoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtFechaNacimientoPropertyChange
+        // TODO add your handling code here:
+        
+        try
+        {
+            Edad objCalculaEdad = new Edad();
+            final int year = txtFechaNacimiento.getCalendar().get(Calendar.YEAR);
+            final int day = txtFechaNacimiento.getCalendar().get(Calendar.DAY_OF_MONTH);
+            final int month = txtFechaNacimiento.getCalendar().get(Calendar.MONTH) + 1;
+                        
+            String edad = objCalculaEdad.getAge(year, month, day);
+            lblEdad.setText("Edad: " + edad + " Años");
+        }// fin del try
+        catch (NullPointerException npe)
+        {
+        }// fin del catch
+    }//GEN-LAST:event_txtFechaNacimientoPropertyChange
+    
+    
     // metodo que carga los datos del paciente en este formulario
     private void cargarDatosPaciente(String cedulaPaciente)
     {
@@ -664,7 +703,7 @@ public class VerExpediente extends javax.swing.JDialog
         
         return validado;
     }// fin del metodo validar campos
-    
+            
     // El siguiente metodo cargas las pestanas de antecedentes personales y familiares en este formulario(dialogo)
     private void cargarPestanas()
     {
@@ -675,6 +714,9 @@ public class VerExpediente extends javax.swing.JDialog
         ContenedorAntecedentesFamiliares objContAntecedentesFamiliares = 
                 new ContenedorAntecedentesFamiliares(idPaciente, this);
         tabActualizarExpediente.addTab("AntecedentesFamiliares", objContAntecedentesFamiliares);
+        
+        ContenedorConsultas objContenedorConsultar = new ContenedorConsultas(idPaciente);
+        tabActualizarExpediente.addTab("Consultas", objContenedorConsultar);
     }// fin del metodo cargarPestanas
     
     /**
@@ -741,6 +783,7 @@ public class VerExpediente extends javax.swing.JDialog
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblValidaApellido1;
     private javax.swing.JLabel lblValidaEmail;
     private javax.swing.JLabel lblValidaIndentificacion;
