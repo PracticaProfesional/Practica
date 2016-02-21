@@ -57,4 +57,14 @@ public class OperacionesExamenFisico
         return rs;
     }
     
+    public ResultSet listarExamenFisicoPorConsulta (String idConsultaMedica) throws SQLException
+    {
+        ResultSet rs;
+        objetoDeConexion = new Conexion();
+        estado = objetoDeConexion.conectar().createStatement();
+        rs = estado.executeQuery("Call ListarExamenFisicoPorConsulta (" + idConsultaMedica + ")");
+        return rs;
+    }// fin del metodo listarExamenFisicoPorConsulta
+    
+    
 }// fin de la clase OperacionesExamenFisico
