@@ -3,6 +3,7 @@ package negocio;
 import entidad.ExamenFisico;
 import datos.OperacionesExamenFisico;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Esta clase relaciona la clase OperacionesExamenFisico con la capa de presentación
@@ -32,4 +33,11 @@ public class NegocioExamenFisico
         datos.OperacionesExamenFisico nuevoExamen = new datos.OperacionesExamenFisico();
         return nuevoExamen.obtenerExamenFisico(id);
     }
+    
+    public ResultSet listarExamenFisicoPorConsulta(String idConsultaMedica) throws SQLException
+    {
+        OperacionesExamenFisico nuevoExamen = new OperacionesExamenFisico();
+        return nuevoExamen.listarExamenFisicoPorConsulta(idConsultaMedica);
+    }// fin del metodo listarExamenFisicoPorConsulta
+    
 }// fin de la clase NegocioExamenFisico
