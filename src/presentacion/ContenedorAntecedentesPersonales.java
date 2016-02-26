@@ -378,13 +378,24 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
         
         else
         {
-            fila[0] = txtVacunaTipo.getText();
-            fila[1] = formatoFecha.format(txtVacunaFechaApli.getDate());
+            try
+            {
+                fila[0] = txtVacunaTipo.getText();
+                fila[1] = formatoFecha.format(txtVacunaFechaApli.getDate());
         
-            modeloVacunas.addRow(fila);
-            nombresDeVacunasAAgregar.add(fila[0]);  // se agrega a la lista
+                modeloVacunas.addRow(fila);
+                nombresDeVacunasAAgregar.add(fila[0]);  // se agrega a la lista
         
-            limpiarCamposVacunas();   // se limpian los campos de texto
+                limpiarCamposVacunas();   // se limpian los campos de texto
+            }// fin del try
+            catch (NullPointerException npe)
+            {
+                fila[1] = null;
+                
+                modeloVacunas.addRow(fila);
+                nombresDeVacunasAAgregar.add(fila[0]);  // se agrega a la lista
+            }// fin del catch
+            
         }// fin del else
     }//GEN-LAST:event_btnAgregarVacunaActionPerformed
 
@@ -596,8 +607,13 @@ public class ContenedorAntecedentesPersonales extends javax.swing.JPanel
             objExpVac[i].setIdVacuna(Integer.parseInt(idVacunas[i]));
             
             objExpVac[i].setIdExpediente(Integer.parseInt(idExpedienteMedico));
-            objExpVac[i].setFecha(getFechaVacuna(tblVacunas.getValueAt(indice, 1).toString()));
-             
+            
+            if (tblVacunas.getValueAt(i, 1) != null)
+                objExpVac[i].setFecha(getFechaVacuna(tblVacunas.getValueAt(indice, 1).toString()));
+            
+            else
+                objExpVac[i].setFecha("0000-00-00");
+            
             // insertamos en la base de datos
             objNegocioExpVac.insertarExpedienteVacunas(objExpVac[i]);
             
