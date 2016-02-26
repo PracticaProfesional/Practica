@@ -128,30 +128,35 @@ public class ContenedorConsultas extends javax.swing.JPanel
 
         jLabel1.setText("Motivo de la consulta");
 
+        txaMotivoConsulta.setEditable(false);
         txaMotivoConsulta.setColumns(20);
         txaMotivoConsulta.setRows(5);
         jScrollPane2.setViewportView(txaMotivoConsulta);
 
         jLabel2.setText("Síntomas");
 
+        txaSintomas.setEditable(false);
         txaSintomas.setColumns(20);
         txaSintomas.setRows(5);
         jScrollPane3.setViewportView(txaSintomas);
 
         jLabel3.setText("Diagnóstico");
 
+        txaDiagnostico.setEditable(false);
         txaDiagnostico.setColumns(20);
         txaDiagnostico.setRows(5);
         jScrollPane4.setViewportView(txaDiagnostico);
 
         jLabel4.setText("Tratamiento");
 
+        txaTratamiento.setEditable(false);
         txaTratamiento.setColumns(20);
         txaTratamiento.setRows(5);
         jScrollPane5.setViewportView(txaTratamiento);
 
         jLabel5.setText("Nota de enfermería");
 
+        txaNotaEnfermeria.setEditable(false);
         txaNotaEnfermeria.setColumns(20);
         txaNotaEnfermeria.setRows(5);
         jScrollPane6.setViewportView(txaNotaEnfermeria);

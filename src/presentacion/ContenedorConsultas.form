@@ -215,6 +215,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="txaMotivoConsulta">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
@@ -235,6 +236,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="txaSintomas">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
@@ -255,6 +257,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="txaDiagnostico">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
@@ -275,6 +278,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="txaTratamiento">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
@@ -295,6 +299,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="txaNotaEnfermeria">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
