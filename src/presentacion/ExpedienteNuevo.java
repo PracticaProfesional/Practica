@@ -1310,7 +1310,7 @@ public class ExpedienteNuevo extends javax.swing.JDialog
             objExpedienteVacunas[i].setIdVacuna(Integer.parseInt(idVacunas[i]));
             objExpedienteVacunas[i].setIdExpediente(Integer.parseInt(idExpedienteMedico));
             
-            if (! tblVacunas.getValueAt(i, 1).toString().equals(""))
+            if (tblVacunas.getValueAt(i, 1) != null)
                 objExpedienteVacunas[i].setFecha(getFechaVacuna(
                         tblVacunas.getValueAt(i, 1).toString()));
                 
@@ -1579,15 +1579,31 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         Date fecha = new Date();
         String fila [] = new String [2];  // cada objeto fila es una fila de la tabla
         
-        fila [0] = txtVacunaTipo.getText();    // ingresa cada campo de el formulario en el arreglo
-        fila [1] = formatoFecha.format(txtVacunaFechaApli.getDate());
+        try
+        {
+            fila [0] = txtVacunaTipo.getText();    // ingresa cada campo de el formulario en el arreglo
+            fila [1] = formatoFecha.format(txtVacunaFechaApli.getDate());
         
-        modeloVacunas.addRow(fila);
-        tblVacunas.setModel(modeloVacunas);
+            modeloVacunas.addRow(fila);
+            tblVacunas.setModel(modeloVacunas);
         
-        // Se limpian los campos despues de cada ingreso
-        txtVacunaTipo.setText(null);
-        txtVacunaFechaApli.setDate(null);
+            // Se limpian los campos despues de cada ingreso
+            txtVacunaTipo.setText(null);
+            txtVacunaFechaApli.setDate(null);
+        }// fin del try
+        catch(NullPointerException npe)
+        {
+            fila [1] = null;
+        }// fin del catch
+        finally 
+        {
+            modeloVacunas.addRow(fila);
+            tblVacunas.setModel(modeloVacunas);
+        
+            // Se limpian los campos despues de cada ingreso
+            txtVacunaTipo.setText(null);
+            txtVacunaFechaApli.setDate(null);
+        }// fin del finally
     }// fin del metodo cargarFilaEnTablaVacunas
     
     // El siguiente metodo carga una fila en la tabla de padecimientos de antecedentes familiares
