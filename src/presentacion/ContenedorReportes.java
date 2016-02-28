@@ -255,14 +255,14 @@ public class ContenedorReportes extends javax.swing.JPanel {
     
     private void reporteHistCli(){
         final String ruta = "src/presentacion/reportes/HistorialClinico.jasper";
-        String desde = obtenerFechaCalendario(dtChDesde);
-        String hasta = obtenerFechaCalendario(dtChHasta);
+        /*String desde = obtenerFechaCalendario(dtChDesde);
+        String hasta = obtenerFechaCalendario(dtChHasta);*/
         String cedula = textCedula.getText();
         java.util.Map<String, Object> dicc;
         dicc = new HashMap<>();
         dicc.put("pCedula",cedula);
-        dicc.put("pFechaUno", desde);
-        dicc.put("pFechaDos", hasta);
+        /*dicc.put("pFechaUno", desde);
+        dicc.put("pFechaDos", hasta);*/
         CrearReporte nuevoRep = new CrearReporte();
         nuevoRep.generarReporte(dicc, ruta);
         
