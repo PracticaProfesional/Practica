@@ -100,6 +100,18 @@ public class ReporteMinisterioSalud {
                 case "Parasitosis intestinal sin especificar":
                     clasificaEdad("29");
                     break;
+                /*case "No aplica":   
+                    outputFile = new File ("src/presentacion/reportes/plantillas/templateMinisterioSalud.ods");
+                    
+                    try{
+                    OOUtils.open(outputFile);
+                    }
+                    catch(IOException ioe)
+                    {
+                        System.err.println("Se cayo");
+                    }
+                        break;*/
+                            
                 default:
                     listSexo.removeFirst();
                     listEdad.removeFirst();
@@ -115,12 +127,28 @@ public class ReporteMinisterioSalud {
     private void escribeHoja() {
         try {
             
-            for (Map.Entry element : valores.entrySet()) {
-                hoja.getCellAt(element.getKey().toString()).setValue(element.getValue());
+            if (valores != null)
+            {
+                for (Map.Entry element : valores.entrySet()) {
+                    hoja.getCellAt(element.getKey().toString()).setValue(element.getValue());
+                }
+                outputFile = new File ("src/presentacion/reportes/plantillas/Reporte_Generado.ods");
+                hoja.getSpreadSheet().saveAs(outputFile);
+                OOUtils.open(outputFile);
             }
-            outputFile = new File ("src/presentacion/reportes/plantillas/Reporte_Generado.ods");
-            hoja.getSpreadSheet().saveAs(outputFile);
-//            OOUtils.open(outputFile);
+            
+            else
+            {
+                outputFile = new File ("src/presentacion/reportes/plantillas/templateMinisterioSalud.ods");
+                    
+                    try{
+                    OOUtils.open(outputFile);
+                    }
+                    catch(IOException ioe)
+                    {
+                        System.err.println("Se cayo");
+                    }
+            }
         } catch (IOException ex) {
             Logger.getLogger(ReporteMinisterioSalud.class.getName()).log(Level.SEVERE, null, ex);
         }
