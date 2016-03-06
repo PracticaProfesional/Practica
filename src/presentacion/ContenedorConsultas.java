@@ -46,6 +46,7 @@ public class ContenedorConsultas extends javax.swing.JPanel
         tblConsultas = new javax.swing.JTable();
         btnSignosVitales = new javax.swing.JButton();
         btnExamenFisico = new javax.swing.JButton();
+        btnEliminarConsultaMedica = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -97,6 +98,13 @@ public class ContenedorConsultas extends javax.swing.JPanel
             }
         });
 
+        btnEliminarConsultaMedica.setText("Eliminar");
+        btnEliminarConsultaMedica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarConsultaMedicaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlListaDeConsultasLayout = new javax.swing.GroupLayout(pnlListaDeConsultas);
         pnlListaDeConsultas.setLayout(pnlListaDeConsultasLayout);
         pnlListaDeConsultasLayout.setHorizontalGroup(
@@ -107,7 +115,8 @@ public class ContenedorConsultas extends javax.swing.JPanel
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlListaDeConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSignosVitales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnExamenFisico, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                    .addComponent(btnExamenFisico, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                    .addComponent(btnEliminarConsultaMedica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlListaDeConsultasLayout.setVerticalGroup(
@@ -119,6 +128,8 @@ public class ContenedorConsultas extends javax.swing.JPanel
                         .addComponent(btnSignosVitales)
                         .addGap(18, 18, 18)
                         .addComponent(btnExamenFisico)
+                        .addGap(62, 62, 62)
+                        .addComponent(btnEliminarConsultaMedica)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
@@ -266,6 +277,13 @@ public class ContenedorConsultas extends javax.swing.JPanel
         
         //tblConsultas.clearSelection();
     }//GEN-LAST:event_pnlListaDeConsultasMouseClicked
+
+    private void btnEliminarConsultaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarConsultaMedicaActionPerformed
+        // TODO add your handling code here:
+        
+        eliminarConsultaMedica();
+        inicializarTablaConsultas();
+    }//GEN-LAST:event_btnEliminarConsultaMedicaActionPerformed
     
     
     // El siguiente metodo carga la fecha de las consultas de un paciente en la tabla tblConsultas
@@ -395,6 +413,31 @@ public class ContenedorConsultas extends javax.swing.JPanel
         }// fin del catch
     }// fin del metodo obtenerDatosExamenFisico
     
+    // El siguiente metodo elimina el registro de consulta medica de la base de datos,
+    // seleccionado por el usuario
+    private void eliminarConsultaMedica()
+    {
+        NegocioConsultaMedica objConMed = new NegocioConsultaMedica();
+        
+        int filaSeleccionada = tblConsultas.getSelectedRow();
+        
+        if (filaSeleccionada != -1)
+        {
+            int confirmacion = JOptionPane.showConfirmDialog(null, 
+                    "Está de seguro de elimianar la consulta del día\n" + 
+                    tblConsultas.getValueAt(filaSeleccionada, 0) + " de la base de datos?");
+            
+            if (confirmacion == JOptionPane.YES_OPTION)
+            {                
+                String idConsultaMedica = tblConsultas.getValueAt(filaSeleccionada, 1).toString();
+                objConMed.eliminarConsultaMedica(idConsultaMedica);
+            }// fin del if           
+        }// fin del if
+        
+        else
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha de consulta", 
+                        "Error", JOptionPane.ERROR_MESSAGE);
+    }// fin del metodo eliminarConsultaMedica
     
     // El siguiente metodo establece el evento de clicar sobre una fila de la tabla
     private void clicarFilaEnTabla()
@@ -420,6 +463,7 @@ public class ContenedorConsultas extends javax.swing.JPanel
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminarConsultaMedica;
     private javax.swing.JButton btnExamenFisico;
     private javax.swing.JButton btnSignosVitales;
     private javax.swing.JLabel jLabel1;
