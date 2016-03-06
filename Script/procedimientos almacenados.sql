@@ -1018,3 +1018,23 @@ BEGIN
 END $
 
 Call ListarExamenFisicoPorConsulta (1)
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ActualizarConsultMedicaPorId`(in idConsultaMedica int, 
+		in diag varchar(45), in motiv varchar(45), 
+        in obs varchar(200), in est int)
+BEGIN
+	UPDATE ConsultaMedica
+    SET diagnostico = diag, motivo2 = motiv, observaciones = obs, 
+		estado = est 
+    WHERE consultamedica.id = idConsultaMedica;
+END
+
+
+DELIMITER $
+CREATE PROCEDURE EliminarConsultaMedica (in idConsultaMedica int)
+BEGIN
+	delete from consultamedica
+    where id = idConsultaMedica;
+END $
+
+Call EliminarConsultaMedica (26)
