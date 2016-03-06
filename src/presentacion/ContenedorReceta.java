@@ -101,6 +101,11 @@ public class ContenedorReceta extends javax.swing.JPanel
         jScrollPane3.setViewportView(tblMedicamentos);
 
         cmbMedicamentos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbMedicamentos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmbMedicamentosFocusGained(evt);
+            }
+        });
         cmbMedicamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMedicamentosActionPerformed(evt);
@@ -280,6 +285,8 @@ public class ContenedorReceta extends javax.swing.JPanel
 
     private void cmbMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMedicamentosActionPerformed
         // TODO add your handling code here:
+        //cmbMedicamentos.removeAllItems();
+        //cargarMedicamentosEnComboBox();  // se cargan los medicamentos que estab en la BD
     }//GEN-LAST:event_cmbMedicamentosActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -298,6 +305,8 @@ public class ContenedorReceta extends javax.swing.JPanel
                 
                 JOptionPane.showMessageDialog(null, "La receta se ingreso con éxito",
                         "Información", JOptionPane.INFORMATION_MESSAGE);
+                
+                limpiar();
             }// fin del if
             
             else
@@ -316,6 +325,8 @@ public class ContenedorReceta extends javax.swing.JPanel
                     
                     JOptionPane.showMessageDialog(null, "Los medicamentos se ingresaron con éxito",
                         "Información", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    limpiar();
                 }// fin del if
                 
                 else
@@ -413,6 +424,12 @@ public class ContenedorReceta extends javax.swing.JPanel
         }// fin del if
         
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void cmbMedicamentosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmbMedicamentosFocusGained
+        // TODO add your handling code here:
+        cmbMedicamentos.removeAllItems();
+        cargarMedicamentosEnComboBox();
+    }//GEN-LAST:event_cmbMedicamentosFocusGained
     
     /**
      * Carga los campos de texto con la consulta médica correspondiente
