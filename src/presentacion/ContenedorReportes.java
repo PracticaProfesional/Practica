@@ -192,6 +192,7 @@ public class ContenedorReportes extends javax.swing.JPanel {
             case 0:
                 dtChDesde.setEnabled(true);
                 dtChHasta.setEnabled(true);
+                textCedula.setEnabled(false);
                 break;
                 
             case 1:
@@ -201,20 +202,26 @@ public class ContenedorReportes extends javax.swing.JPanel {
                 break;
                 
             case 2:
-                dtChDesde.setEnabled(true);
-                dtChHasta.setEnabled(true);
-                textCedula.setEnabled(true);
+                dtChDesde.setEnabled(false);
+                dtChHasta.setEnabled(false);
+                textCedula.setEnabled(false);
                 break;
                 
             case 3:
-                dtChDesde.setEnabled(true);
-                dtChHasta.setEnabled(true);
-                textCedula.setEnabled(true);
+                dtChDesde.setEnabled(false);
+                dtChHasta.setEnabled(false);
+                textCedula.setEnabled(false);
                 break;
                 
             case 4:
-                dtChDesde.setEnabled(true);
-                dtChHasta.setEnabled(true);
+                dtChDesde.setEnabled(false);
+                dtChHasta.setEnabled(false);
+                textCedula.setEnabled(true);
+                break;
+                
+            case 5:
+                dtChDesde.setEnabled(false);
+                dtChHasta.setEnabled(false);
                 textCedula.setEnabled(true);
                 break;
                 
