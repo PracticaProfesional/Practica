@@ -73,5 +73,15 @@ public class NegocioConsultaMedica
         return operacionesConsultaMedica.obtenerDatosConsulta(idConsultaMedica);
     }// fin del metodo listarConsultasPorPaciente
     
+    public void actualizarConsultaMedica(String idConsultaMedica, entidad.ConsultaMedica actConsulta){
+        OperacionesConsultaMedica operacionesConsultaMedica = new OperacionesConsultaMedica();
+        operacionesConsultaMedica.actualizarConsultaMedica(idConsultaMedica, actConsulta);
+    }
+    
+    public void eliminarConsultaMedica(String idConsultaMedica)
+    {
+        OperacionesConsultaMedica operacionesConsultaMedica = new OperacionesConsultaMedica();
+        operacionesConsultaMedica.eliminarConsultaMedica(idConsultaMedica);
+    }// fin del metodo eliminarConsultaMedica
     
 }// fin de la clase NegocioConsultaMedica
