@@ -140,5 +140,37 @@ public class OperacionesConsultaMedica
         return rs;
     }// fin del metodo obtenerDatosConsulta
     
+    public void actualizarConsultaMedica(String idConsultaMedica, ConsultaMedica consultaMedica){
+        objetoDeConexion = new Conexion();
+        String datos = "'" + idConsultaMedica + "'" + "," +
+                       "'" + consultaMedica.getDiagnostico() + "'" + "," +
+                       "'" + consultaMedica.getMotivo2() + "'" + "," +
+                       "'" + consultaMedica.getObservaciones() + "'" + "," +
+                       "'" + consultaMedica.getEstado().obtenerEstadoNumero() + "'";
+        try{
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call ActualizarConsultMedicaPorId("+datos+")");
+            estado.close();
+        }
+        catch(SQLException e){
+            System.out.println(e.getErrorCode()+ e.getMessage());
+        }
+    }// fin del metodo actualizarConsultaMedica
+    
+    public void eliminarConsultaMedica(String idConsultaMedica)
+    {
+        objetoDeConexion = new Conexion();
+        
+        try
+        {
+            estado = objetoDeConexion.conectar().createStatement();
+            estado.executeQuery("Call EliminarConsultaMedica ('" + idConsultaMedica + "')");
+            estado.close();
+        }// fin del try
+        catch(SQLException sqle)
+        {
+            System.out.println(sqle.getErrorCode()+ sqle.getMessage());
+        }// fin del catch
+    }// fin del metodo eliminarConsultaMedica
     
 }// fin de la clase OperacionesConsultaMedica
