@@ -1594,16 +1594,15 @@ public class ExpedienteNuevo extends javax.swing.JDialog
         catch(NullPointerException npe)
         {
             fila [1] = null;
-        }// fin del catch
-        finally 
-        {
+            
             modeloVacunas.addRow(fila);
             tblVacunas.setModel(modeloVacunas);
         
             // Se limpian los campos despues de cada ingreso
             txtVacunaTipo.setText(null);
             txtVacunaFechaApli.setDate(null);
-        }// fin del finally
+        }// fin del catch
+        
     }// fin del metodo cargarFilaEnTablaVacunas
     
     // El siguiente metodo carga una fila en la tabla de padecimientos de antecedentes familiares
