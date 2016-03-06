@@ -7,6 +7,7 @@ import entidad.ExamenFisico;
 import entidad.SignosVitales;
 import entidad.enums.EstadoConsultaMedicaEnum;
 import entidad.enums.SexoEnum;
+import negocio.NegocioObtenerUltimoId;
 import java.awt.Desktop;
 import java.awt.HeadlessException;
 import java.io.File;
@@ -1866,6 +1867,7 @@ public class Inicio extends javax.swing.JFrame {
         textMotivo2.setText("");
         cbDiagnosticoOpcional.setSelectedIndex(0);
         textObservaciones.setText("");
+        lblPacienteActual.setText("");
     }// fin del metodo limpiarExamenFisico
 
     private void ingresarSignosConsulta() throws NumberFormatException {
@@ -2115,7 +2117,12 @@ public class Inicio extends javax.swing.JFrame {
         consulta.setObservaciones(textObservaciones.getText());
         negocio.NegocioConsultaMedica actConsulta = new negocio.NegocioConsultaMedica();
         String fecha= obtenerFechaActual();
-        actConsulta.actualizarConsultaMedica(this.idExpediente, consulta, fecha);
+        //actConsulta.actualizarConsultaMedicaPorFecha(this.idExpediente, consulta, fecha);
+        
+        NegocioObtenerUltimoId ultimoIdConsultaMedica = new NegocioObtenerUltimoId();
+        
+        String idDeConsultaMedica = ultimoIdConsultaMedica.obtenerUltimoId("ConsultaMedica");
+        actConsulta.actualizarConsultaMedica(idDeConsultaMedica, consulta);
         
     }
     private void insertarExamenFisico(){
